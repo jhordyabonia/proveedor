@@ -1,0 +1,135 @@
+#form1{
+position:relative;
+top:12px;
+}
+#form1 img{
+padding-left:45px;
+
+}
+#formulario{
+position:relative;
+top:30px;
+left:22%;
+-webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+border-radius: 30px;
+width:643px;
+height:455px;
+border-style:solid;
+border-color:#F4F4F4;
+border-width:1px;
+font-family:Arial,Helvetica,sans-serif;
+font-size:12px;
+}
+#left1{
+-webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+border-radius: 30px;
+border-style:solid;
+border-color:#F4F4F4;
+border-width:1px;
+width:233px;
+height:106px;
+position:absolute;
+left:72%;
+top:105px;
+text-align:center;
+}
+#left1 p{
+text-align:center;
+font-weight:bold;
+color:#7F7F95;
+}
+#left1 button{
+	-moz-box-shadow: 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow: 0px 1px 0px 0px #fff6af;
+	box-shadow: 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #f36325));
+	background:-moz-linear-gradient(top, #ffec64 5%, #f36325100%);
+	background:-webkit-linear-gradient(top, #ffec64 5%, #f36325 100%);
+	background:-o-linear-gradient(top, #ffec64 5%, #f36325 100%);
+	background:-ms-linear-gradient(top, #ffec64 5%, #f36325 100%);
+	background:linear-gradient(to bottom, #ffec64 5%, #f36325 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#f36325',GradientType=0);
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffee66;
+	}
+#left1 button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f36325), color-stop(1, #ffec64));
+	background:-moz-linear-gradient(top, #f36325 5%, #ffec64 100%);
+	background:-webkit-linear-gradient(top, #f36325 5%, #ffec64 100%);
+	background:-o-linear-gradient(top, #f36325 5%, #ffec64 100%);
+	background:-ms-linear-gradient(top, #f36325 5%, #ffec64 100%);
+	background:linear-gradient(to bottom, #f36325 5%, #ffec64 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f36325', endColorstr='#ffec64',GradientType=0);
+	background-color:#f36325;
+}
+#left1 button:active {
+	position:relative;
+	top:1px;
+}
+
+#left2{
+position:absolute;
+left:72%;
+top:225px;
+}
+#left2 p{
+position:relative;
+left:50%;
+top:-55px;
+}
+#left2 img{
+line-height:0px;
+}
+.btn2 {
+	-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+	background:-moz-linear-gradient(top, #79bbff 5%, #378de5100%);
+	background:-webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+	background:-o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+	background:-ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5',GradientType=0);
+	background-color:#79bbff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 60px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+.btn2:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
+	background:-moz-linear-gradient(top, #378de5 5%, #79bbff 100%);
+	background:-webkit-linear-gradient(top, #378de5 5%, #79bbff 100%);
+	background:-o-linear-gradient(top, #378de5 5%, #79bbff 100%);
+	background:-ms-linear-gradient(top, #378de5 5%, #79bbff 100%);
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff',GradientType=0);
+	background-color:#378de5;
+}
+.btn2:active {
+	position:relative;
+	top:1px;
+}
+

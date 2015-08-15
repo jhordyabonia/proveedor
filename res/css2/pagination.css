@@ -1,0 +1,81 @@
+.pagination {
+	/* contenedor general */
+    font-size: 96%;
+    background: #e9e9e9;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    height: 35px;
+}
+        
+.pagination a {
+	/* texto de los botones activos */
+    text-decoration: none;
+	/* border: solid 1px #AAE; */ border: none;
+	color: #15B;
+	height: 23px;
+}
+
+.pagination a, .pagination span {
+    display: block;
+    float: left;
+    padding: 0.3em 0.5em;
+    margin-right: 10px;
+	margin-bottom: 5px;
+	min-width: 1.4em;
+	text-align: center;
+}
+
+.pagination .current {
+    background: #26B;
+    color: #fff;
+	border: solid 1px #AAE;
+	height: 23px;
+}
+
+.pagination .current.prev { /* boton ATRAS inactivo */
+	color:#999;
+	border-color:#999;
+	background: transparent;
+	height: 23px;
+	background-image: url("../img/pag_anterior.png");
+	background-repeat: no-repeat;
+	background-position: 3px 4px;
+	border: none;
+}
+.pagination .prev { /* boton ATRAS activo */
+	border: solid 1px #AAE;
+	color: #15B;
+	background: transparent;
+	height: 23px;
+	background-image: url("../img/pag_anterior_ok.png");
+	background-repeat: no-repeat;
+	background-position: 3px 4px;
+	border: none;
+}
+
+.pagination .current.next { /* boton SIGUIENTE inactivo */
+	color:#999;
+	border-color:#999;
+	background: transparent;
+	height: 23px;
+	background-image: url("../img/pag_siguiente.png");
+	background-repeat: no-repeat;
+	background-position: 74px 4px;
+	border: none;
+}
+.pagination .next { /* boton SIGUIENTE activo */
+	border: solid 1px #AAE;
+	color: #15B;
+	background: transparent;
+	height: 23px;
+	background-image: url("../img/pag_siguiente_ok.png");
+	background-repeat: no-repeat;
+	background-position: 74px 4px;
+	border: none;
+}
+
+
+
+
+
+

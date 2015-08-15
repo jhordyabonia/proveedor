@@ -1,0 +1,109 @@
+ body {
+        font-family: Arial;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      .container_12{
+        background:#ffffff;
+        height: auto;
+        width: 1336px;
+        max-width: 1299px;
+        /* margin:50px 50px; */
+        text-align: center;
+        margin-top: 30px;
+        margin-left: 50px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      header {
+        height: 150px;
+        background-color:gray;
+      }
+
+      /* estilos botones grandes alargados hacia abajo */
+      .grid_4 {
+        height: 512px;
+        /* margin: 12px 12px; */
+        margin-left: 7px;
+        margin-top: 12px;
+        width: 220px;
+      }
+
+      #div1 {
+        height: auto;
+      }
+      /* ------------------------------------------- */
+
+      /* estilos conjunto de 4 botones */
+      #div2 {
+        background: #ffffff;
+      }
+      /* ------------------------------------------- */
+
+      /* estilos cada cuadro del conjunto de 4 botones */
+      .grid_2 {
+        background: red;
+        height: 172px;
+        width: 200px;
+      }
+      /* ------------------------------------------- */
+
+      #div3 {
+        background-color: transparent;
+        margin:10px 18px;
+        height: auto;
+      }
+
+      /* estilos footer */          
+      #div4 {
+        background: #f2f2f2;
+        width: 1325px;
+      }
+      /* ------------------------------------------- */
+
+      header,section {
+        margin: 10px 0;
+      }
+
+      footer {
+        height: 50px;
+        background-color: yellow;
+      }
+
+      /* header */
+      .grid_1 {
+        background-color: transparent;
+        height: 50px;
+        width: 225px;
+        /* display: block;
+        margin-left: auto;
+        margin-right: auto; */
+        margin-right: 0px;
+        padding-left: 0px;
+      }
+
+      #he {
+        width: 1015px;
+        max-width: 1054px;
+      }
+      /* ------------------------------------------- */
+
+      /* estilos para todas las tablas de esta pagina */
+      table {
+        border-collapse: separate;
+        border-spacing: 20px;
+      }
+      /* ------------------------------------------- */
+
+      /* estilos links del footer */
+      #links_footer {
+        color: grey;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+ 

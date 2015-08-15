@@ -1,0 +1,43 @@
+/* ESTILOS VENTANA DE TABS DEL INDEX */
+
+/*---------- YOU CAN CHANGE THIS STUFF -----------*/
+#bannerRotator { width: 810px; height:228px; padding:0px; margin:10px auto; background::#EEE; /*border:1px solid #CCC; */}
+#bannerRotator ul li img{ max-width:713px; max-height:100%; }
+
+
+/*---------- YOU MIGHT BREAK IT IF YOU CHANGE THIS STUFF -----------*/
+#bannerRotator { position:relative; }
+#bannerRotator ul { list-style:none; padding:0; position:relative; margin:0; }
+#bannerRotator ul li { display:none; position:absolute; border: none; }
+#bannerRotator ul li a { text-decoration:none; }
+
+#bannerRotator ul li a:hover {
+	text-decoration: none!important;
+}
+
+#bannerNav {
+	height: 15px;
+	font-size:12px;
+	text-align: center;
+	font-family: Arial;
+	font-weight: bold;
+	
+}
+
+#bannerNav  a {
+	padding: 18px 8px;
+	text-decoration:none;
+	color:#5F5F5F;
+}
+
+#bannerNav a.active { color: #FF8500 !important;}
+#bannerNav span.pause, #bannerNav span.play { cursor:pointer; display:block; background:url(img/pause.png) no-repeat 0 0;  }
+#bannerNav span.play { background-image:url(img/play.png) }
+
+#bannerNav  li { display: inline-block; }
+
+#bannerNav  li a,
+#bannerNav  li a span {
+	text-decoration:none;
+	
+}

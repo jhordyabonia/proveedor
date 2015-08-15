@@ -1,0 +1,41 @@
+/*
+	Totem Ticker Stylesheet
+	Zach Dunn / Build Internet (buildinternet.com)
+	Winter 2011
+*/
+
+
+*{margin:0; padding:0;}
+
+body{
+	font-family: Arial;
+	-webkit-font-smoothing:antialiased;
+}
+
+/*
+
+	This is the only semi-important stuff for plugin installation
+	It's just an example, so customize away!
+*/
+
+#movimiento1 {
+	height: 655px;
+	overflow: hidden;
+	margin: 0; padding:0;
+}
+
+	#movimiento1 li{
+		display:block;
+		border: none;
+	}
+
+#movimiento2 {
+	height: 655px;
+	overflow: hidden;
+	margin: 0; padding:0;
+}
+
+	#movimiento2 li{
+		display:block;
+		border: none;
+	}

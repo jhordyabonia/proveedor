@@ -1,0 +1,21 @@
+html, body {
+  font-family: Arial;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header_iconos {
+  font-family: Arial;
+  background-color: #f1f1f1; 
+  width: 153px;
+  border-right: 1px dotted #969696; 
+  vertical-align: middle; 
+  text-align: center;
+  border-bottom: 4px solid #00a2e8;
+}
+
+.header_iconos.activo {
+  border-bottom: 4px solid #ff7f27;
+}

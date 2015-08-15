@@ -1,0 +1,93 @@
+         .pestana {
+  float: left;
+  width: auto;
+  height: auto;
+  margin: none;
+  background: white;
+  border-bottom: 3px solid #00A2E8;
+}
+
+
+/*css para el menu de salir*/
+
+
+
+ul.menu li { /* cada item de la lista principal */
+  border: none solid #A9A9A9;
+  display: block;
+  float: left;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/*desde aqui  si*/
+ul.menu li.drop:hover li {
+  border: none;
+}
+ul.menu li.drop span.toggle {
+  background: transparent url(URL_toggle.png) no-repeat scroll 0 -20px;
+  display: block;
+  float: left;
+  height: 26px;
+  margin: 0 5px;
+  padding: 0;
+  width: 20px;
+}
+
+/* los efectos al pasar el ratón que desplegarán el submenú */
+
+ul.menu li.drop:hover ul {
+  display: block;
+  padding: 0 0 10px 0;
+  z-index: 1;
+}
+
+ul.menu li ul { /* la lista con el submenú   sii*/
+  background-color: #555;
+ display: none;
+  left: 0;
+  list-style-type: none;
+  margin-left: 25%;
+  padding: 0;
+  position: absolute;
+  top: 53px;
+  width: 60%;
+}
+ul.menu li ul li { /* cada item del submenú sii*/
+  border: none;
+  float: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+ul.menu li ul li a { /* cada item del submenú es un enlace sii */
+  background-color: transparent;
+  color: #FF7111 !important;
+  display: block;
+  float: none;
+  font-size: 15px;
+  font-weight: bold;
+  height: auto;
+  margin: 0;
+  padding: 5px 15px;
+}
+
+/* efectos sobre los items del submenú sii*/
+ul.menu li:hover ul {
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border: none;
+  background-color: #EAEAEA;
+}
+
+ul.menu li:hover ul * {
+  -moz-border-radius: 0;
+  background-color: transparent;
+}
+
+/*  sii*/
+ul.menu li ul li:hover {
+  background-color: #98D9EA;
+  
+}

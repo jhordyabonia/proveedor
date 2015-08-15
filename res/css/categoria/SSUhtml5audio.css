@@ -1,0 +1,59 @@
+/*Play button*/
+#songPlay{
+
+}
+/*Pause button*/
+#songPause{
+
+}
+/*Stop button*/
+#songStop{
+
+}
+/*Play/Pause button*/
+#songPlayPause{
+
+}
+/*Song location slider*/
+#songSlider{
+    width: 110px;
+    height: 10px;
+    background-color: #cccccc;
+}
+/*Track progress bar*/
+#trackProgress{
+    width: 0px;
+    height: 10px;
+    background-color: black;
+}
+/*Volume Up Button*/
+#volumeUp{
+
+}
+/*Volume Down Button*/
+#volumeDown{
+
+}
+/*Volume Meter*/
+#volumeMeter{
+    width: 60px;
+    height: 10px;
+    background-color: black;
+}
+/*Volume Location Meter*/
+#volumeStatus{
+    height: 10px;
+    background-color: green;
+}
+
+#songTime {
+    font-family: Arial;
+    font-size: 12px;
+    padding-bottom: 17px;
+}
+
+#tiempoTotal {
+    font-family: Arial;
+    font-size: 12px;
+    padding-bottom: 17px;
+}

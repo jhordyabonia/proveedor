@@ -1,0 +1,146 @@
+
+		body {
+			font-family: Arial;
+			font-size: 15px;
+		}
+
+		a {
+			text-decoration: none;
+			color: blue;
+		}
+
+		/* contenedor general */
+		.container_12{
+			background:#ffffff;
+			height:auto;
+			width: 1336px;
+			max-width: 1299px;
+			margin-top: 10px;
+			margin-left: center;
+			margin-right: center;
+		}
+
+		/* estilos barra de arriba */
+		#ho {
+			background: transparent;
+			width: 1260px;
+			max-width: 1394px;
+			margin-top: 0px;  
+		}
+
+		.grid_1{
+			margin-top: 20px;
+			height: auto;
+			width: 225px;
+		}
+		#ha{
+			background: #ffffff;
+			height:100px;
+			width: 300px;
+		}
+		#he{
+			margin-top: 20px;
+			width: 1015px;
+			max-width: 1054px;
+		}
+
+		#div1{
+			height:auto;
+			width: 220px;
+		}
+		#div2 {
+			height:auto;
+			/* width: 720px; */
+			width: 831px;
+		}
+		#div3 {
+			background: #ffffff;
+			height: auto;
+			width: 190px;
+		}
+
+		.grid_4 {
+			background: #ffffff;
+			height:512px;
+			margin: 12px 12px;
+			width: 300px;
+		}
+
+		/* aside izquierdo: accesos directos; */
+		.grid_2 {
+			height:300px;
+			width: 100%;
+			background-color: yellow;
+		} 
+
+		li {
+			color: blue;
+			border-bottom: 1px solid #ddd;
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
+
+		#div4{
+			background: blue;
+			height:20px;
+		}
+
+		/* estilos del select de arriba (dentro de un label) */
+		select {
+		    /* height: 50px;
+		    width: 160px; */
+		    padding: 10px;
+		    margin: 0;
+		    /* -webkit-border-radius:4px;
+		    -moz-border-radius:4px;
+		    border-radius:4px;
+		    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+		    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+		    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset; */
+		    background: transparent;
+		    color: #ff812d; /* naranja el texto */
+		    /* border:none; */
+		    border-right: 1px solid #ddd;
+		    border-top: none;
+		    border-left: none;
+		    border-bottom: none;
+		    outline:none;
+		    display: inline-block;
+		    -webkit-appearance:none;
+		    -moz-appearance:none;
+		    appearance:none;
+		    cursor:pointer;
+		    font-weight: bold;
+		}
+
+		/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+		    select {padding-right:10px}
+		}
+
+		label {position:relative}
+		label:after {
+		    content:'>';
+		    font:16px "Consolas", monospace;
+		    color: #ff812d;
+		    -webkit-transform:rotate(90deg);
+		    -moz-transform:rotate(90deg);
+		    -ms-transform:rotate(90deg);
+		    transform:rotate(90deg);
+		    right: 25px; 
+		    top:0px;
+		    padding:0 0 2px;
+		    /* border-top:2px solid #ddd; */
+		    position:absolute;
+		    pointer-events:none;
+		}
+		label:before {
+		    content:'';
+		    right:6px; top:0px;
+		    width:20px; height:20px;
+		    background: transparent;
+		    position:absolute;
+		    pointer-events:none;
+		    display:block;
+		}
+	

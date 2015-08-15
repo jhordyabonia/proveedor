@@ -1,0 +1,28 @@
+/* estilos de los tooltip de PROVEEDOR by PADRE */
+body {
+	overflow-x: hidden !important;
+}
+
+.tooltip_general {
+	background-color: white;
+	font-size: 13px;
+	padding: 10px 10px 10px 10px;
+	position: absolute;
+	z-index: 9999999; 
+	pointer-events: none;
+	width: auto;
+	text-align: left;
+	box-shadow: 3px 3px 3px #e1e1e1;
+	-moz-box-shadow: 3px 3px 3px #e1e1e1;
+	-webkit-box-shadow: 3px 3px 3px #e1e1e1;
+	border: 1px solid #dddddd;
+	color: #525252;
+}
+
+.tooltip_general .tooltip-arrow {
+	text-shadow: 0px -2px 0px #dddddd, 0px 0px 0px #dddddd, -1px 0px 0px #dddddd;
+}
+
+
+
+

@@ -1,0 +1,48 @@
+        .container_12{
+            background:#ffffff;
+            height:auto;
+            width: 1336px;
+            max-width: 1299px;
+            margin-top: 30px;
+            margin-left: 10px;
+            margin-right: center;
+          }
+           #he{
+              float: left;
+              width: 1085px;
+              padding-left: 0px;
+              margin-right: -75px;
+              margin-left: 30px;
+              display: block;
+          }
+          .grid_1{
+            background: transparent;
+             height: 50px;
+             width: 225px;
+          }
+          .grid_4{
+             background: #ffffff;
+             height:512px;
+             margin:12px 12px;
+             width: 300px;
+          }
+
+           #div1{
+             height:auto;
+             width: 220px;
+          }
+          .grid_2{
+             background: red;
+             height:300px;
+             width: 100%;
+          } 
+           #div2{
+             height:auto;
+             margin-right: -67px;
+             width: 1084px;
+          }
+          #div3{
+             height:auto;
+             width: 1332px;
+             margin-left: -16px;
+          }

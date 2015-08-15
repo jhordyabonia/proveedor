@@ -1,0 +1,183 @@
+html, body {
+  width: 100%;
+}
+
+header, nav, section, article, footer {
+  display: block;
+}
+
+header {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+}
+nav {
+  width:19%;  
+  float: left;  
+  margin-right: 3px;
+  background: #ffffff;
+  border: 1px solid white;
+}
+section {
+  width:80%;
+  float: left;
+  background: white;
+  
+}
+article {
+  background: #fffffa;
+}
+
+footer {
+  width:100%;
+  overflow: hidden;
+  clear:both;
+  background: #F2F2F2;
+  border: 1px solid white; 
+}
+
+aside {
+ width: 100%;
+ border: 1px solid green; 
+}
+
+.patrocinadores{
+  width: 100%;
+}
+
+.img_empresas{
+border: 3px solid #E6E6E6;
+width: 15%;
+height: 70px;
+text-align: center;
+display: inline-block;
+margin-top: 10px; 
+}
+
+.img_empresas img {
+  float: left;
+  width: 20%;
+}
+
+
+
+#publi1 {
+float: left;
+color: red;
+ background: #ffffff;
+ border: 1px solid white;
+height: 35%;
+width:70%;
+}
+
+#publi3 {
+border: 1px solid white;
+float: left;
+width:29%;
+height: 31px;
+
+}
+
+#publi2 {
+border: 1px solid white;
+background: #ffffff;
+}
+
+.video{
+color: #000000;
+background-color: #F5F5F5;
+}
+
+
+ingresar.middle { vertical-align: middle; }
+IMG        { vertical-align: -10px; }
+.exponente  { vertical-align: super; }
+
+logo2.middle { vertical-align: middle; }
+IMG        { vertical-align: -10px; }
+.exponente  { vertical-align: super; }
+
+pc.middle { vertical-align: middle; }
+IMG        { vertical-align: -10px; }
+.exponente  { vertical-align: super; }
+
+#buscar{
+float: left;
+width:65%;
+border: 1px solid blue;
+}
+
+#combo-producto{
+float:  left;
+position: relative;
+width: 50px%;
+border: 1px solid white;
+
+}
+ option.prod {
+width:400px; 
+color:orange;
+}
+ .img_boton{
+float:  right;
+}
+
+#cont_banner{
+position: relative;
+width: 100%;
+border: 1px solid orange;
+}
+
+#menu_derecha {
+float: right;
+height: 214px;
+width:18%;
+padding-left: 10px;
+border: 1px solid white;
+position: relative;
+
+}
+
+#search-box {
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+#search-form {
+    height: 40px;
+    border: 1px solid #999;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+}
+#search-text {
+    font-size: 14px;
+    color: #ddd;
+    border-width: 0;
+    background: transparent;
+}
+#search-box input[type="text"] {
+    width: 50px%;
+    padding: 11px 0 12px 1em;
+    color: #333;
+    outline: none;
+}
+#search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 42px;
+    width: 80px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 42px;
+    border-width: 0;
+    background-color: #FF7F27;
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
