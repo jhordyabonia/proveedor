@@ -115,6 +115,7 @@ class Producto extends CI_Controller
 		$datos['productos_cantidad'] = count($datos['productos']);
 
 		$datos['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$datos['administrador']=$datos['usuario']->permisos;
 		$datos['titulo']="Administrar mis productos - PROVEEDOR.com.co";
 		$datos['empresa']=$empresa;
 		//Carga de las vistas
@@ -175,9 +176,11 @@ class Producto extends CI_Controller
 		if (!$this->verificar_logged($id_producto))
 		{	return;	}	
 		
-		$data['usuario']=$this->session->userdata('id_usuario');
+		$data['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
 
 			if ($data['usuario']) {
+
+				$data['administrador']=$data['usuario']->permisos;
 				$data['producto']=$this->producto->get($id_producto);
 
 				if ($data['producto']) 
@@ -191,8 +194,7 @@ class Producto extends CI_Controller
 					$data['categoria'] = $this->categoria->get_all();
 					$data['datos_categoria'] = $this->obtener_datos_categoria($data['producto']->subcategoria);
 					$data['titulo']="Editar ".$data['producto']->nombre." - PROVEEDOR.com.co";
-					$data['empresa']=$this->empresa->get(array('usuario'=>$data['usuario']));
-					$data['usuario']=$this->usuarios->get($data['usuario'])->usuario;
+					$data['empresa']=$this->empresa->get(array('usuario'=>$data['usuario']->id));
 					$this->load->view('template/head', $data, FALSE);
 					$this->load->view('tablero_usuario/header', $data, FALSE);
 					$this->load->view('template/javascript', $data, FALSE);

@@ -9,8 +9,10 @@ class Publicar_producto extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('new/Usuarios_model', "usuarios");
 		$this->load->model('new/Producto_model', "producto");
 		$this->load->model('new/Categoria_model', "categoria");
+		$this->load->model('new/Subcategoria_model', "subcategoria");
 		$this->load->model('new/Departamento_model', "departamento");
 		$this->load->model('new/Tipo_empresa_model', "tipo_empresa");
 		$this->load->model('new/Empresa_model', "empresa");
@@ -53,18 +55,20 @@ class Publicar_producto extends CI_Controller {
 		$this->verificar_logged();
 
 		$data['categoria'] = $this->categoria->get_all();
-		$data['tipo_empresa'] = $this->tipo_empresa->get_all();
-		$data['dept'] = $this->departamento->get_all();
+		$data['tipos_empresas'] = $this->tipo_empresa->get_all();
+		$data['departamentos'] = $this->departamento->get_all();
 		$data['municipios'] = $this->municipio->get_all(array('id_departamento'=>$this->input->post('provincia')));
 		
 		#$data['error'] = '';
-		$data['usuario']->usuario=$this->session->userdata('usuario');
 		$id_usuario=$this->session->userdata('id_usuario');
-		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$data['titulo']="Crear solicitud de producto - PROVEEDOR.com.co";
+		$data['usuario']=$this->usuarios->get($id_usuario);
+		$data['administrador']=$data['usuario']->permisos;
+		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$this->load->view('template/head', $data);
 		$this->load->view('template/javascript', $data, FALSE);
 		$this->load->view('tablero_usuario/header', $data, FALSE);
+		$this->load->view('producto/funcionalidades',FALSE);
 		$this->load->view('producto/publicar', $data, FALSE);
 		$this->load->view('template/footer', $data, FALSE);	
 	}
@@ -76,6 +80,13 @@ class Publicar_producto extends CI_Controller {
 		#if($this->validar())
 		{
 			$producto=$this->get_data_form();
+			/*
+			echo "<PRE>";
+			print_r($producto);
+			echo "</PRE>";
+			return;
+			*/
+
 			$id_registro=$this->producto->insert($producto);
 			$this->_images_form($id_registro);
 			$this->session->set_flashdata('producto_registrado', 'Producto registrado exitosamente!!');
@@ -103,13 +114,14 @@ class Publicar_producto extends CI_Controller {
 
 	function get_data_form() 
 	{
-		$data['nombre'] = $this->input->post('nombre');
+		$data['nombre'] = $this->input->post('nombre_avanzado');
 		#$data['categoria'] = $this->input->post('categoria');
 		$data['subcategoria'] = $this->input->post('subcategoria');
-		$data['descripcion'] = $this->input->post('descripcion');
-		$data['palabras_clave'] = $this->a_string($this->input->post('etiquetas'));
-		$data['precio_unidad'] = $this->input->post('precio');
-		$data['medida'] = $this->input->post('list_medidas');
+		$data['descripcion'] = $this->input->post('descripcion_avanzada');
+		$data['palabras_clave'] = $this->input->post('Pclave');
+		#$data['palabras_clave'] = $this->a_string($this->input->post('Pclave'));
+		$data['precio_unidad'] = $this->input->post('precio_avan');
+		$data['medida'] = $this->input->post('list_medidas_avan');
 		$data['pedido_minimo'] = $this->input->post('pedido_min');
 		#$data['tiempo_entrega'] = $this->input->post('tiempo_entrega');
 		#$data['list_entrega'] = $this->input->post('list_entrega');
@@ -132,7 +144,7 @@ class Publicar_producto extends CI_Controller {
 		$out = '';
 		if (!is_array($datos)) 
 		{
-			return $out;
+			return 'No keys word';
 		}
 		foreach ($datos as $key => $value)
 		{
@@ -174,6 +186,17 @@ class Publicar_producto extends CI_Controller {
 
 		$this->producto->update(array('imagenes'=> $imagenes),$id_registro);
 	}
+
+	public function ver_subcatgorias($id=FLASE)
+	{
+			$subcategoria = $this->subcategoria->get_all(array('id_categoria'=>$id));
+			foreach ($subcategoria as $fila)
+			{
+				echo '<option value="'.$fila->id_subcategoria.'">'.$fila->nom_subcategoria.'</option>';
+			}
+				
+	}
+
 
 }
 
