@@ -1,257 +1,166 @@
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<title>Registro I / PROVEEDOR.com.co</title>
-		<meta charset='utf-8'>
-		<link rel="shortcut icon" href="<?php echo img_url(); ?>logoweb.ico" type="image/x-icon"/>
-		<link type='text/css' rel="stylesheet" href="<?php echo css_url(); ?>registro.css">
-		<!-- -->
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="<?php echo css_url(); ?>bootstrap.min.css">
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo css_url(); ?>buttons.css">
-		<!--<link rel="stylesheet" href="<?php echo css_url(); ?>validationEngine.jquery.css" type="text/css"> -->
-		<script src="http://www.position-relative.net/creation/formValidator/js/jquery-1.7.2.min.js" type="text/javascript"> </script>
-		<script src="<?php echo js_url(); ?>jquery.validationEngine-es.js" type="text/javascript" charset="utf-8"> </script>
-		<script src="http://www.position-relative.net/creation/formValidator/js/jquery.validationEngine.js" 
-			type="text/javascript" charset="utf-8">
-		</script>
+<a data-toggle="modal" id="popup_launch" name="popup_launch" data-target="#popup-registro" class="enlace_registro cursor-mano" href="JavaScript:;">
+	</a>
+	<div class="registro">
+        <div class="modal fade" id="popup-registro" tabindex="-1" role="dialog" aria-hidden="false" style="padding: 0 15px;">
+		    <div class="modal-dialog modal-dialog-registro">
+		        <div class="modal-header encabezado">
+		        	<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">
+						    <span class="fa fa-times cerrar" aria-hidden="true"></span>
+						</span>
+		                <span class="sr-only">Cerrar</span>
+	              	</button>
+		            <h4 class="modal-title text-center titulo_popup">
+		            	<span class="glyphicon glyphicon-pencil" style="font-size: 24px;left: -1px;"></span> 
+		            	Registrar Empresa
+		            </h4>
+		        </div>
+				<form action="<?=base_url()?>registro/registrar/1" method="post" accept-charset="utf-8">                
+				<div class="modal-body text-center popup_central">
+            		<p class="style-p">Información de Usuario</p>
+            			<div class="input-group ">
+			                <span class="input-group-addon new-input-group">
+			                  <span class="glyphicon glyphicon-user iconos-gly"></span>
+			                </span>
+			                <input name="usuario" value="<?php echo set_value('usuario'); ?>" 
+							onchange="JavaScript:verificar_attime(this);verificar_largo(this,5);"
+							onclick="JavaScript:limpiar(this);"
+							class="input-style" placeholder="Nombre de usuario" required type="text"
+							rel='tooltip' data-placement='right'>
+							<!-- <span class="bar"></span> -->
+			                <span class="input-group-addon new-input-group margen-input-veri">
+			                  <i id='err_usuario'>
+										<?php if(form_error('usuario', '','')!='')
+											{
+											echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+											}
+										?>
+										</i>
+			                </span>
+			                <span class="input-group-addon new-input-group margen-input-aste">
+			                  <span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+			                </span>
+                  		</div>
 
-		<script type="text/javascript">
-			// 	jQuery(document).ready(function(){
-			// 		// binds form submission and fields to the validation engine
-			// 		jQuery("#formID").validationEngine();
-			// 	});
+                  		<!-- Campo De Validación -->
+                  		<div class="input-group" style="margin: 0;display:none;" id="parent_msj_err_usuario">
+			                <span class="input-group-addon new-input-group" style="color: transparent;">
+			                  <span class="glyphicon glyphicon-user iconos-gly"></span>
+			                </span>
+			                <span class="style-text-validation" id="msj_err_usuario"><?=form_error('usuario', '','')?></span>
+                  		</div>
 
-			// 	*
-			// 	*
-			// 	* @param {jqObject} the field where the validation applies
-			// 	* @param {Array[String]} validation rules for this field
-			// 	* @param {int} rule index
-			// 	* @param {Map} form options
-			// 	* @return an error string if validation failed
+						<div class="input-group">
+							<span class="input-group-addon new-input-group">
+								<i class="fa fa-at scale-icon"></i>
+							</span>
+							<input name="email" value="<?php echo set_value('email'); ?>" 
+							onchange="JavaScript:verificar_formato(this);verificar_attime(this)" onclick="JavaScript:limpiar(this);"
+							class="input-style" placeholder="Email" required type="email"
+							rel='tooltip' data-placement='right'>
+							<span class="input-group-addon new-input-group margen-input-veri">
+								<i id='err_email'>
+								<?php if(form_error('email', '','')!='')
+									{
+									echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+									}
+								?>
+								</i>
+							</span>
+							<span class="input-group-addon new-input-group margen-input-aste">
+								<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+							</span>
+						</div>
 
-			$(document).on("ready",function(){
-		    $(document).on("click", function(e){    
-		        if($(e.target).attr("class") == "error"){
-		            $(".error").hide();
-		            // $(":input:first").focus();
-		        }
-		    });
-			});
-		</script> 
+						<!-- Campo De Validación -->
+                  		<div class="input-group" style="margin: 0;display:none;" id="parent_msj_err_email">
+			                <span class="input-group-addon new-input-group" style="color: transparent;">
+			                  <span class="glyphicon glyphicon-user iconos-gly"></span>
+			                </span>
+			                <span class="style-text-validation" id="msj_err_email"><?=form_error('email', '','')?></span>
+                  		</div>		
 
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"> </script> 
-		<script type="text/javascript" src="<?php echo js_url(); ?>buttons.js"> </script>
-
-	<!-- Con este script manejamos el evento cuando el boton ingresar es presionado -->
-	<script src="<?=base_url()?>js/jquery-1.9.1.js" type="text/javascript" charset="utf-8"> </script>
-
-
-		<!-- estilos css generales -->
-		<style>
-			.texto{
-				font-family:Arial,Helvetica,sans-serif;	
-			}
-
-			/*  ---- Estilos para los mensajes de error -----*/
-			/*.error {
-				position:absolute;
-				font-size: 8pt;
-				box-shadow: 10px 5px 20px #58ACFA; 
-				border-radius: 20px;  
-				background-color:#ddd;
-				width:250px;
-				padding:10px;
-				float: left;
-				/*color: blue;
-				width: 350px;
-			} */
-
-			span.tooltip_perso {
-				/* tooltip creado con http://csstooltip.com/ */
-				position: absolute;
-				width: 225px;
-				height: 40px;
-				padding: 3px;
-				font-size: 13px;
-				line-height: 15px;
-				text-align: center;
-				color: red;
-				background: rgb(255, 255, 255);
-				border: 1px solid #DDD;
-				border-radius: 2px;
-				text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
-				box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px 0px;
-				z-index: 3;
-				margin-left: 22px;
-				margin-top: -6px;
-			}
-
-			span.tooltip_perso:after {
-				content: "";
-				position: absolute;
-				width: 0;
-				height: 0;
-				border-width: 10px;
-				border-style: solid;
-				border-color: #fff #ddd #fff #fff;
-				top: 9px;
-				left: -21px;
-			}
-
-			/* header 1 */
-			#header1 {
-				text-align: right; 
-				margin-right: 94px; /* margin-right: 168px; */
-				margin-top: 10px;
-			}
-
-			/* texto "Paso 1 de 3" */
-			#textopaso_nde3 {
-				font-size: 16px; 
-				color: #ff7f27; 
-				margin: 10px 63px 0px 0px; /* margin: 10px 145px 0px 0px; */
-				font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-				text-align: right;
-			}
-
-			/* estilos cuatro links (publique sus productos online, incremente...) */
-			#cuatrolinks {
-				text-align: center;
-				background: white;
-				margin-top: -3px;
-				height: 50px;
-				border-radius: 3px;
-			}
-
-			/* separador abajo de #cuatrolinks */
-			#separador {
-				height: 6px;
-				background: #ddd;
-				margin-top: 162px;
-				margin-left: 48px;
-				width: 92%;
-			}
-
-			/* publicidad (abajo del separador, footer) */
-			#publi_publi {
-				height: auto; 
-				background:#ffffff; 
-				text-align: center;
-				margin-top: 28px;
-			}
-
-			/* footer */
-			#foo {
-				margin-top: 40px;
-				height: 333px;
-				/* width: 1363px; */
-				background: #f2f2f2;
-			}
-
-			#foo_iframe {
-				height: 333px;
-				width: 100%;
-				margin-left: 0px;
-				border: none;
-			}
-		</style>
-
-		<!-- estilos css resolucion 1024 (estilos by Padre sobrescritos bootstrap) -->
-		<style type="text/css">
-			@media screen and (max-width: 1024px) {
-				/* header 1 */
-				#header1 {
-					margin-right: 0px; /* margin-right: 23px; */
-				}
-
-				/* div col-md-3 del logo proveedor */
-				#logoproveedor {
-					margin-left: -27px;
-					margin-right: -43px;
-					z-index: 3;
-				}
-
-				/* texto "Paso 1 de 3" */
-				#textopaso_nde3 {
-					margin: 10px -50px 0px 0px;
-				}
-			}
-		</style>
-	</head>
- 
-	<body>
-		<div class="container" id="contenedorcentral" style="padding: auto; margin: auto;">
-			<!-- header 1 -->
-			<div id="header1">
-				<a href="<?=base_url()?>ayuda"> <p style="color: black; margin: 0;"> Ayuda </p> </a>
-			</div>
-			<div class="page-header" style="margin-top: 0px; border-bottom: none;">
-				<!-- logo proveedor (header 2) -->
-				<div class="row">
-					<div class="col-md-3" id="logoproveedor"> 
-						<a href="<?=base_url()?>index"> 
-							<img align="right" src="<?php echo img_url() ?>logo3.png" style="/*width: 215px; height: 61px;*/"> </a> 
-					</div>
-					<div class="col-md-9" style="margin-top: 15px;" id="recorte"> 
-						<img src="<?php echo img_url() ?>header1.png" >
-						<p id="textopaso_nde3"> Paso 1 de 3 </p>
-					</div>
-				</div> <!--Fin Row-->
-				
-				<!-- separador -->
-				<div class="row">
-					<div class="col-md-12"> <br> </div>
+				<div class="input-group"> 
+					<span class="input-group-addon new-input-group">
+						<span class="glyphicon glyphicon-asterisk iconos-gly"></span>
+					</span>
+					<input id="password" name="password"  value="<?php echo set_value('password'); ?>"  onclick="JavaScript:limpiar(this);"
+					onchange="JavaScript:verificar_igualdad(document.getElementById('password2'),this);verificar_largo(this,6)" class="input-style" 
+					placeholder="Contraseña" required type="password" rel='tooltip' 
+					data-placement='right'>	
+					<span class="input-group-addon new-input-group margen-input-veri">
+						<i id="err_password">
+					  	<?php if(form_error('password', '','')!='')
+						   	{
+						   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+						   	}
+					   	 ?>
+					   	</i>
+				   	</span>
+				   	<span class="input-group-addon new-input-group margen-input-aste">
+						<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+					</span>
 				</div>
 
-				<!-- el resto -->
-				<div class="row">
-					<!-- el resto / separador izquierda -->
-					<div class="col-md-3"> </div>
+				<!-- Campo De Validación -->
+                  		<div class="input-group" style="margin: 0;display:none;" id="parent_msj_err_password">
+			                <span class="input-group-addon new-input-group" style="color: transparent;">
+			                  <span class="glyphicon glyphicon-user iconos-gly"></span>
+			                </span>
+			                <span class="style-text-validation" id="msj_err_password"><?=form_error('password', '','')?></span>
+                  		</div>
 
-					<!-- el resto / contenido central formulario -->
-					<div class="col-md-6" style="color:#808080;">
-						<?=form_open("/registro/registrar/1");?>
-						<table class="texto" id="formtable" align="center" width="100%" style="border-collapse: separate;border-spacing: 15px;">
-							<tr>
-								<td> </td>
-								<td align="center">
-									<p style="color: #197bdb; font-size: 19px; padding-right: 70px; 
-										font-family: 'Arial Rounded MT Bold', Arial, sans-serif;">
-										¡Quiero Registrarme!</p>
-								</td>
-							</tr>
-							<!-- </td></tr> -->
-							<tr>
-								<td align="right" style="font-size: 12px;">
-									<font color=red>*</font>&#32;Usuario: 
-								</td>
-								<td>
-									<input type="text" name="usuario" size="40" value="<?php echo set_value('usuario'); ?>" style="float: left;">
-									<!-- <?php /*echo form_error('usuario', '<div class="error">', '</div>');*/ ?> -->
-									<?php echo form_error('usuario', '<span class="tooltip_perso">', '</span>'); ?>
-								</td>
-							</tr> 
-							<tr>
-								<td align="right" style="font-size: 12px;">
-									<font color=red>*</font>&#32;Email: 
-								</td>
-								<td> 
-									<input type="text" name="email" size="40" value="<?php echo set_value('email'); ?>" style="float: left;"> 
-									<?php /* echo form_error('email', '<div class="error">', '</div>'); */ ?> 
-									<?php echo form_error('email', '<span class="tooltip_perso">', '</span>'); ?>
-								</td>
-							</tr>
-							<tr>
-								<td align="right" style="font-size: 12px;">
-									<font color=red>*</font>&#32;Contraseña: 
+				<div class="input-group"> 
+					<span class="input-group-addon new-input-group">
+						<span class="glyphicon glyphicon-asterisk iconos-gly"></span>
+					</span>
+				  	<input id="password2"  name="password2"  value="<?php echo set_value('password2'); ?>" 
+				  	onclick="JavaScript:limpiar(this);"
+				  	onchange="JavaScript:verificar_igualdad(this,document.getElementById('password'))"
+				  	class="input-style" placeholder="Confirmar Contraseña" required type="password" 
+				  	rel='tooltip' data-placement='right'>
+				  	<span class="input-group-addon new-input-group margen-input-veri">
+				   	<i id="err_password2">
+				  	<?php if(form_error('password2', '','')!='')
+					   	{
+					   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+					   	}
+				   	 ?>
+				   	</i>
+				   	</span>
+					<span class="input-group-addon new-input-group margen-input-aste">
+						<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+					</span>
+				</div>
+
+				<!-- Campo De Validación -->
+          		<div class="input-group" style="margin: 0;display:none;" id="parent_msj_err_password2">
+	                <span class="input-group-addon new-input-group" style="color: transparent;">
+	                  <span class="glyphicon glyphicon-user iconos-gly"></span>
+	                </span>
+	                <span class="style-text-validation" id="msj_err_password2"><?=form_error('password2', '','')?></span>
+          		</div>
+
+                <div class="style-pasos margin-top-registro">
+                	<p class="text-pasos">Paso 1 de 3</p>
+                </div>
+
+				<div class="group">
+                	<button type="submit" class="btn center-block boton_enviar">
+                		Siguiente
+                	</button>
+              	</div> 
+          </div>
+      </form>
+        </div>
+    </div>
+    </div>  
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("[rel=tooltip]").tooltip({ placement: 'right'});
+});
+</script>32;Contraseña: 
 								</td>
 								<td> 
 									<input type="password" name="password" size="40" value="<?php echo set_value('password'); ?>" style="float: left;">

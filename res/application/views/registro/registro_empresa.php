@@ -1,483 +1,372 @@
-<?php
-if (isset($_POST["verificaForm"])) {
-	$arrayError = array(
-		'validate' => array(
-			'nombre' =>
-			form_error('nombre', '<span class="tooltip_perso" dataname="nombre">', '</span>'),
-			'nit' =>
-			form_error('nit', '<span class="tooltip_perso" dataname="nit">', '</span>'),
-			'tipo' =>
-			form_error('tipo', '<span class="tooltip_perso" dataname="tipo">', '</span>'),
-			'descripcion' =>
-			form_error('descripcion', '<span class="tooltip_perso" dataname="descripcion">', '</span>'),
-			'categorias' =>
-			form_error('categorias', '<span class="tooltip_perso" dataname="categorias">', '</span>'),
-			'prod1' =>
-			form_error('prod1', '<span class="tooltip_perso" dataname="prod1">', '</span>'),
-			'prod_int1' =>
-			form_error('prod_int1', '<span class="tooltip_perso" dataname="prod_int1">', '</span>'),
-			'captcha' =>
-			form_error('captcha', '<span class="tooltip_perso" dataname="captcha">', '</span>'),
-			'condiciones' =>
-			form_error('condiciones', '<span class="tooltip_perso">', '</span>'),
-		),
-		'captchaSrc' => ($captcha['image']),
-		'uploadVerific' => $uploadVerific
-	);
+<a data-toggle="modal" id='popup_launch' data-target="#popup-registro" class="enlace_registro cursor-mano" hhref="JavaScript:;">
+											</a>
+										
+<!---->
+    <div class="registro">
+        <div class="modal fade" id="popup-registro" tabindex="-1" role="dialog" aria-hidden="true" >
+		      <div class="modal-dialog modal-dialog-registro" style="padding-left: 15px;padding-right: 15px;">
+		          <div class="modal-header encabezado">
+		            <button type="button" class="close" data-dismiss="modal" >
+                  <span aria-hidden="true">
+		                <span class="fa fa-times cerrar" aria-hidden="true"></span>
+                  </span>
+		                <span class="sr-only">Cerrar</span>
+		              </button>
+		            <h4 id='title' class="modal-title text-center titulo_popup">
+		            	<span class="glyphicon glyphicon-pencil" style="font-size: 24px;left: -1px;"></span> 
+		            	Registrar Empresa
+		            </h4>
+		          </div>
+		          <?= form_open_multipart('registro/registrar/3/'.$this->uri->segment(4)) ?> 
+				<div class="modal-body text-center popup_central_paso3" id="content_paso3">
+					<p class="style-p">Información de la Empresa</p>
+					<div class="input-group">
+			                <span class="input-group-addon new-input-group">
+			                	<i class="fa fa-building-o iconos-font"></i>
+			                </span>
+			                <input id="name" name="nombre_empresa" value="<?php echo set_value('nombre_empresa'); ?>" 
+							onchange="JavaScript:verificar_largo(this,6)" onclick="JavaScript:limpiar(this)"
+							class="input-style" placeholder="Nombre de la empresa" required type="text"
+							title="<?=form_error('nombre_empresa', '','')?>" rel='tooltip' data-placement='right'>
+							<!-- <span class="bar"></span> -->
+			                <span class="input-group-addon new-input-group margen-input-veri">
+			                  	<i id='err_nombre_empresa'>
+									<?php if(form_error('nombre_empresa', '','')!='')
+									{
+									echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+									}
+									?>
+								</i>
+			                </span>
+			                <span class="input-group-addon new-input-group margen-input-aste">
+			                  <span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+			                </span>
+                  		</div>
 
-	if (!$uploadVerific) {
-		$arrayError['validate']['logo'] = '<span class="tooltip_perso">El campo del logo es obligatorio</span>';
-	} else {
-		$arrayError['validate']['logo'] = '';
-	}
-
-	echo json_encode($arrayError);
-	return;
-}
-?>
-
-
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<!--[if lt IE 9]>
-			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<title>Registro III / PROVEEDOR.com.co</title>
-		<meta charset='utf-8'>
-		<link rel="shortcut icon" href="<?php echo img_url(); ?>logoweb.ico" type="image/x-icon"/>
-		<link type='text/css' rel="stylesheet" href="<?php echo css_url(); ?>registro.css">
-		<script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-
-		<script>
-			// tinymce.init({selector:'textarea'});
-		</script>
-
-		<!-- Latest compiled and minified JavaScript -->
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo css_url(); ?>buttons.css">		
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script> 
-		<script type="text/javascript" src="<?php echo js_url(); ?>buttons.js"></script>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="<?= base_url() ?>css/bootstrap.min.css">
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
-
-		<script type="text/javascript">
-			var x = 0;
-			function pasar() {
-				// 		if(x!=5){
-				// 	var indice = document.forms[0].categoria.options.selectedIndex;
-				// 	document.forms[0].categorias.value = document.forms[0].categoria.options[indice].text+'\n'+document.forms[0].categorias.value;
-				// 	document.forms[0].categoria.value = document.forms[0].categoria.value-document.forms[0].categoria.options[indice].text;
-				// 	x +=1;
-				// }else{
-				// 	document.getElementById('msj').innerHTML += "Solo 5 categorias.";
-				// 	document.getElementById('categoria').disabled=true;
-				// 	}
-
-				obj = document.getElementById('categoria');
-				if (obj.selectedIndex == -1)
-					return;
-				valor = obj.value;
-				txt = obj.options[obj.selectedIndex].text;
-				obj.options[obj.selectedIndex] = null;
-				obj2 = document.getElementById('categorias');
-				opc = new Option(txt, valor);
-				eval(obj2.options[obj2.options.length] = opc);
-			}
-
-			// La funcion quitar  esta pendiente .....falta completar la funcionalidad #############
-			function quitar() {
-				var indice = document.forms[0].categorias.options.selectedIndex;
-				var txt = document.getElementById('categoria').value.split('\n');
-				txt.splice(parseInt(indice) - 1, 1);
-				document.getElementById('categoria').value = txt.join('\n');
-			}
-
-			//jquery para la opcion de pasar y quitar categorias
-				$('.pasar').click(function() {
-					return !$('#categoria option:selected').remove().appendTo('#categorias');
-					console.log("funt!!");
-				});
-				$('.quitar').click(function() {
-					return !$('#categorias option:selected').remove().appendTo('#categoria');
-					console.log("funt!!");
-				});
-			
-
-			//quitar los  div de mensaje de validacion al hacer clic
-			$(document).on("ready", function() {
-				$(document).on("click", function(e) {
-					if ($(e.target).attr("class") == "error") {
-						$(".error").hide();
-						// $(":input:first").focus();
-					}
-				});
-			});
-		</script>
-
-		<!-- Los siguientes estilos seran migrados a un archivo css aparte   -->
-		<style type="text/css"> 
-			.box {
-				float: left;
-				width: 250px;
-				height: 200px;
-				margin: 1px;
-				/*border: 1px solid blue;*/
-			}
-
-			.box2 {
-				float: left;
-				width: 80px;
-				height: 200px;
-				margin: 1px;
-				/*border: 1px solid blue;*/
-			}
-
-			.box3 {
-				float: left;
-				width: 300px;
-				height: 200px;
-				margin: 1px;
-				padding-left: 40px;
-				/*border: 1px solid blue;*/
-			}
-			/*.after-box {
-			  clear: left;
-			}*/
-
-			.error{
-				position:absolute;
-				background: transparent;
-				font-size: 8pt;
-				color: blue;
-				width: 350px;
-				height:30px;
-				padding-top: 5px;
-			}
-		</style>
-
-		<!-- estilos css generales -->
-		<style type="text/css">
-			span.tooltip_perso {
-				/* tooltip creado con http://csstooltip.com/ */
-				position: absolute;
-				width: 225px;
-				height: 32px; /*height: 40px;*/
-				padding: 3px;
-				font-size: 13px;
-				line-height: 12px; /*line-height: 15px;*/
-				text-align: center;
-				color: red;
-				background: rgb(255, 255, 255);
-				border: 1px solid #DDD;
-				border-radius: 2px;
-				text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
-				box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 5px 0px;
-				z-index: 3;
-				margin-left: 22px;
-				margin-top: -6px;
-			}
-
-			span.tooltip_perso:after {
-				content: "";
-				position: absolute;
-				width: 0;
-				height: 0;
-				border-width: 10px;
-				border-style: solid;
-				border-color: #fff #ddd #fff #fff;
-				top: 9px;
-				left: -21px;
-			}
-
-			/* fuente c/subtitulo antes de campo texto */
-			#fuentesubtitulo {
-				font-size: 13px;
-				color: #808080;
-			}
-
-			/* header 1 */
-			#header1 {
-				text-align: right; 
-				margin-right: 94px; /* margin-right: 168px; */
-				margin-top: 10px;
-			}
-
-			/* texto "Paso 3 de 3" */
-			#textopaso_nde3 {
-				font-size: 16px; 
-				color: #ff7f27; 
-				margin: 10px 63px 0px 0px; /* margin: 10px 145px 0px 0px; */
-				font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-				text-align: right;
-			}
-
-			/* estilos cuatro links (publique sus productos online, incremente...) */
-			#cuatrolinks {
-				text-align: center;
-				background: white;
-				margin-top: -3px;
-				height: 50px;
-				border-radius: 3px;
-			}
-
-			/* separador abajo de #cuatrolinks */
-			#separador {
-				height: 6px;
-				background: #ddd;
-				margin-top: 162px;
-				margin-left: 48px;
-				width: 92%;
-			}
-
-			/* publicidad (abajo del separador, footer) */
-			#publi_publi {
-				height: auto; 
-				background:#ffffff; 
-				text-align: center;
-				margin-top: 28px;
-			}
-
-			/* footer */
-			#foo {
-				margin-top: 40px;
-				height: 333px;
-				/* width: 1363px; */
-				background: #f2f2f2;
-			}
-
-			#foo_iframe {
-				height: 333px;
-				width: 100%;
-				margin-left: 0px;
-				border: none;
-			}
-		</style>
-
-		<!-- estilos css resolucion 1024 -->
-		<style type="text/css">
-			@media screen and (max-width: 1024px) {
-				/* header 1 */
-				#header1 {
-					margin-right: 0px; /* margin-right: 23px; */
-				}
-
-				/* div col-md-3 del logo proveedor */
-				#logoproveedor {
-					margin-left: -27px;
-					margin-right: -43px;
-					z-index: 3;
-				}
-
-				/* texto "Paso 3 de 3" */
-				#textopaso_nde3 {
-					margin-right: -50px;
-				}
-			}
-		</style>
-	</head>
-
-	<body>
-		<div class="container" style="padding: auto; margin: auto;">
-			<!-- header 1 -->
-			<div id="header1">
-				<a href="#"> <p style="color: black; margin: 0;"> Ayuda </p> </a>
-			</div>
-			<div class="page-header" style="margin-top: 0px; border-bottom: none;">
-				<!-- logo proveedor (header 2) -->
-				<div class="row">
-					<div class="col-md-3" id="logoproveedor"> 
-						<a href="<?= base_url() ?>index"> 
-							<img align="right" src="<?php echo img_url(); ?>logo3.png" style="/*width: 215px; height: 61px;*/"> </a> 
+                  		<!-- Campo De Validación -->
+					<div class="input-group" style="margin: 0;display: none;" id="parent_msj_err_nombre_empresa">
+						<span class="input-group-addon new-input-group" style="color: transparent;">
+							<span class="glyphicon glyphicon-user iconos-gly"></span>
+						</span>
+						<span class="style-text-validation" id="msj_err_nombre_empresa"><?=form_error('nombre_empresa', '','');?></span>
 					</div>
-					<div class="col-md-9" style="margin-top: 15px;" id="recorte"> 
-						<img src="<?php echo img_url(); ?>header3.png" >
-						<p id="textopaso_nde3"> Paso 3 de 3 </p>
+
+					<div class="input-group"> 
+						<span class="input-group-addon new-input-group">
+							<i class="fa fa-newspaper-o iconos-font"></i>
+			            </span>
+						<input id="nit" name="nit"  value="<?php echo set_value('nit'); ?>" onclick="JavaScript:limpiar(this)" onchange="JavaScript:verificar_attime(this);"
+						class="input-style" type="text" placeholder="Nit de la empresa / CC del comerciante" required
+						rel='tooltip' data-placement='right'>
+						<span class="input-group-addon new-input-group margen-input-veri">
+							<i id='err_nit'>
+								<?php 
+									if(form_error('nit', '','')!='')
+									   	{
+									   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+									   	}
+						   	 	?>
+						   	 </i>
+						</span>
+						<span class="input-group-addon new-input-group margen-input-aste">
+			                  <span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+			            </span>
 					</div>
-				</div> <!--Fin Row-->
-			</div><!--Fin page-header-->		
 
-			<!-- <div class="row"> <!--primera fila --> <!-- 
-				<div class="col-md-3"> </div>
-				<div class="col-md-6">
-					<p class="text-left">Ingrese la información de la empresa</p> 
-				</div>
-				<div class="col-md-2" ><p class="text-right" >(<font color="red">*</font>)Datos requeridos</div>
-				<div class="col-xs-6 col-sm-6 col-md-4"> </div>
-			</div>
-			<br> -->
-
-			<?= form_open_multipart('registro/registrar/3') ?> <!--formulario -->
-			<?//=form_open_multipart('registro_3/empresa') ?>
-			<!-- titulo -->
-			<table style="margin-bottom: 8px; width: 100%;"> <tr>
-					<td style="text-align: center;">
-						<p style="color: #ff7f27; font-size: 19px; font-family: 'Arial Rounded MT Bold', Arial, sans-serif;">
-							¡Quiero Registrarme!</p>
-					</td>
-				</tr> </table>
-
-			<!--1da fila -->
-			<div class="row" id="fuentesubtitulo"> 
-				<div class="col-md-3"> </div>
-				<div class="col-md-2" style="width: 15%; padding-right: 0;">
-					<p class="text-right" ><font color="red">*</font><font size="2px">&#32;Nombre de la empresa:</font></p>
-				</div>
-
-				<div class="col-md-3" style="width:auto">
-					<input type="text" name="nombre" size="30"  value="" style="float: left; margin-left: 1px;"/>
-					<!-- <img src="<?= base_url() ?>img/help.png" title="texto de ayuda para este campo" style="margin-left: 5px;"> -->
-					<div style="float: left;" id="nombre-error">
-						<!-- <?php echo form_error('nombre', '<div class="error">', '</div>'); ?> -->
-						<?php echo form_error('nombre', '<span class="tooltip_perso">', '</span>'); ?>
+					<!-- Campo De Validación -->
+					<div class="input-group" style="margin: 0;display: none;" id="parent_msj_err_nit">
+						<span class="input-group-addon new-input-group" style="color: transparent;">
+							<span class="glyphicon glyphicon-user iconos-gly"></span>
+						</span>
+						<span class="style-text-validation" id="msj_err_nit"><?=form_error('nit', '','');?></span>
 					</div>
-				</div>
 
-				<!-- aqui iba tipo empresa -->
-			</div>
-
-			<!--2da fila -->
-			<div class="row" id="fuentesubtitulo">
-				<div class="col-md-3"> </div>
-				<div class="col-md-2" style="width:15%;padding-right:0;" >
-					<p class="text-right"><font color="red">*</font>&#32;NIT de la empresa / CC:</p>
-				</div>
-
-				<div class="col-md-3">
-					<input type="text" name="nit" size="30" value="<?php echo set_value('nit'); ?>" 
-						   style="float: left; margin-left: 1px; float: left;"/>
-					   <!-- <img src="<?= base_url() ?>img/help.png" title="ej 123456789-1" style="margin-left: 5px;"> -->
-					<div style="height:30px; float: left;" id="nit-error">
-						<!-- <?php echo form_error('nit', '<div  class="error">', '</div>'); ?> -->
-						<?php echo form_error('nit', '<span class="tooltip_perso">', '</span>'); ?>
-					</div>
-				</div>
-
-				<!-- aqui iba logo empresa -->
-			</div>
-
-			<!-- 3ra fila -->
-			<div class="row" id="fuentesubtitulo">
-				<div class="col-md-3"> </div>
-				<div class="col-md-2" style="width: 15%; padding-right: 0;">
-					<p class="text-right"><font color="red">*</font>&#32;Tipo de empresa: </p>
-				</div>
-
-				<div class="col-md-3" style="width:auto;">
-					<input type="hidden" name ="id_registro" value="<?=$id_registro?>">
-					<select name="tipo" id="tipo" style="width: 213px; float: left; margin-left: 1px;">
-						<option value="0">Selecciona una opción</option>
-						<?php foreach ($lista as $item) { ?>
+					<div class="input-group">
+						<span class="input-group-addon new-input-group">
+							<span class="glyphicon glyphicon-tags iconos-font"></span>
+			            </span> 
+						<select id="tipo_empresa" name="tipo"  value="<?php echo set_value('tipo'); ?>"
+							class="input-style font-text" id="select" required onclick="JavaScript:limpiar(this)" 
+							rel='tooltip' data-placement='right'>
+						<option value="0">Tipo de empresa</option>
+						<?php foreach ($lista as $item) : ?>
 							<option value="<?= $item->id_tipoempresa ?>" <?php echo set_select('tipo', $item->id_tipoempresa); ?> ><?= $item->tipo ?>
 							</option>
-						<?php } ?>
-					</select>
-					<!-- <img src="<?= base_url() ?>img/help.png" title="texto de ayuda para este campo" style="margin-left: 5px;"> -->
-					<div style="height:30px; float: left" id="tipo-error">
-						<!-- <?php echo form_error('tipo', '<div class="error">', '</div>'); ?> -->
-						<?php echo form_error('tipo', '<span class="tooltip_perso">', '</span>'); ?>
-					</div>
-				</div>
-			</div>  
-
-			<!-- 4ta fila -->
-			<div class="row" id="fuentesubtitulo">
-				<div class="col-md-3"> </div>
-				<div class="col-md-2" style="width: 15%; padding-right: 0;">
-					<p class="text-right"> <font color="red">*</font>&#32;Logo de<br>la empresa: </p>
-				</div>           
-
-				<div class="col-md-3" style="width:auto;">
-					<input type="file" style="width:214px; float: left;" name="userfile" value="<?php echo set_value('userfile', 'userfile'); ?>" 
-						   class="input-file">
-
-					<div style="height:30px; float:left" id="logo-error">
-						<?php if (@$error) { ?>
-							<span class="tooltip_perso"> <?= @$error; ?> </span> 
-						<?php } ?>  
-						<?php echo form_error('tipo', '<span class="tooltip_perso">', '</span>'); ?>
-					</div>
-
-				</div>
-			</div>   
-
-			<!--5ta fila -->
-			<div class="row" id="fuentesubtitulo" style="margin-bottom: 15px;"> 
-				<div class="col-md-3"> </div>
-				<div class="col-md-2" style="width:15%;padding-right:0;">
-					<br>
-					<p class="text-right"><font color="red">*</font>&#32;Descripción de la<br>empresa:</p>
-				</div> 
-
-				<div class="col-md-7"> 
-					<textarea name="descripcion" rows="4" cols="70" style="float: left;"><?php echo set_value('descripcion'); ?></textarea>
-					<!-- <img src="<?= base_url() ?>img/help.png" title="texto de ayuda para este campo" style="margin-left: 5px;"> -->
-					<div style="height:30px; float: left;" id="descripcion-error">
-						<!-- <?php echo form_error('descripcion', '<div  class="error">', '</div>'); ?> -->
-						<?php echo form_error('descripcion', '<span class="tooltip_perso">', '</span>'); ?>
-					</div>
-				</div> 
-			</div>
-
-			<!--6ta fila -->
-			<div class="row" id="fuentesubtitulo"> 
-				<div class="col-md-3"> </div>
-				<div class="col-md-2" style="width:15%;padding-right:0;">
-					<br> <br>
-					<p class="text-right">Sector o categoría de <br> la empresa <br><br> Máximo 5 </p>
-				</div>
-
-				<div class="col-md-3">
-					<select name="categorias" id="categoria" multiple="multiple" size="9" style="width: 85%;" >
-						<?php foreach ($categorias as $row): ?> 
-							<?php echo '<option>('. $row->id_categoria .')'.$row->nombre_categoria .'</option>'; ?>
 						<?php endforeach; ?>
-					</select>
-					 <script type="text/javascript">
-			                function agregar_categoria(categoria)
-			                {
-			                  if(document.getElementById('numero_categorias').value>=5)
-			                  {
-			                    alert('Numero maxiomo categorias alcanzado!');
-			                    return;
-			                  }
-			                  id=categoria.substring(categoria.lastIndexOf('(')+1, categoria.lastIndexOf(')')); 
-			                  categoria=categoria.substring(categoria.lastIndexOf(')')+1);  
-			                  document.getElementById('id_categorias').value+="|"+id;
-			                  document.getElementById('nombre_categorias').value+="|"+categoria;
-			                  document.getElementById('textarea2').innerHTML+='<option  value="('+id+')'+categoria+'">'+categoria+'</option>';
-			                  document.getElementById('numero_categorias').value++;                
-			                }
-			                function eliminar_categoria()
-			                {
-			                  if(document.getElementById('numero_categorias').value<=0)
-			                  {
-			                    alert('No hay categorias!');
-			                    return;
-			                  }
-			                  var nombre_categorias=document.getElementById('nombre_categorias');
-			                  var tmp_nombres=nombre_categorias.value;
-			                  tmp_nombres=tmp_nombres.substring(0, tmp_nombres.lastIndexOf('|'));
-			                  document.getElementById('nombre_categorias').value=tmp_nombres;
+						</select>
+							<span class="input-group-addon new-input-group margen-input-veri">
+							<i id='err_tipo'>
+								<?php if(form_error('tipo', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						   	</i>
+						   	</span>
+						<span class="input-group-addon new-input-group margen-input-aste">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div>
 
-			                  var id_categorias=document.getElementById('id_categorias');
-			                  var tmp_ids=id_categorias.value;
-			                  tmp_ids=tmp_ids.substring(0, tmp_ids.lastIndexOf('|'));
-			                  document.getElementById('id_categorias').value=tmp_ids;
-			                            
-			                  document.getElementById('textarea2').lastChild.remove();
-			                  //Las categorias precargadas requieren doble llamado al metodo remove
-			                  var numero_base = document.getElementById('numero_base').value;
-			                  var numero_categorias = document.getElementById('numero_categorias').value
-			                  if(numero_categorias<=numero_base&&numero_categorias>=0)
-			                  { 
-			                    document.getElementById('textarea2').lastChild.remove();
-			                    document.getElementById('numero_base').value--;
-			                  }
+					<!-- Campo De Validación -->
+					<div class="input-group" style="margin: 0;display: none;" id="parent_msj_err_tipo">
+						<span class="input-group-addon new-input-group" style="color: transparent;">
+							<span class="glyphicon glyphicon-user iconos-gly"></span>
+						</span>
+						<span class="style-text-validation" id="msj_err_tipo"><?=form_error('tipo', '','');?></span>
+					</div>
 
-			                  document.getElementById('numero_categorias').value--;
+					<div class="input-group"> 
+						<span class="input-group-addon new-input-group">
+							<i class="fa fa-file-text iconos-font"></i>
+			            </span>
+						<textarea id="descripcion" name="descripcion" rows="3" cols="50" value="<?php echo set_value('descripcion'); ?>"
+						class="input-style" type="textarea" placeholder="Descripcion de la empresa" required
+						onclick="JavaScript:limpiar(this)" rel='tooltip' data-placement='right'></textarea>
+						<span class="input-group-addon new-input-group margen-input-veri">
+							<i id='err_descripcion'>
+								<?php if(form_error('descripcion', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						   	</i>
+						</span>
+						<span class="input-group-addon new-input-group margen-input-aste">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div>
+
+					<!-- Campo De Validación -->
+					<div class="input-group" style="margin: 0;display: none;" id="parent_msj_err_descripcion">
+						<span class="input-group-addon new-input-group" style="color: transparent;">
+							<span class="glyphicon glyphicon-user iconos-gly"></span>
+						</span>
+						<span class="style-text-validation" id="msj_err_descripcion"><?=form_error('descripcion', '','');?></span>
+					</div>
+
+					<!-- <div class="input-group"> 
+						<span class="input-group-addon new-input-group">
+							<i class="fa fa-list-ul iconos-font"></i>
+			            </span>
+						<select name="categorias"  value="<?=set_value('categorias'); ?>"
+							class="input-style font-text" id="select" required title="<?=form_error('categorias', '','')?>" 
+							rel='tooltip' data-placement='right'>
+							<option value="38">Sector de la empresa</option>
+							<?php foreach ($categorias as $row): ?> 
+							<option value="<?=$row->id_categoria?>" <?=set_select('categorias', $row->id_categoria); ?> ><?=$row->nombre_categoria; ?></option>
+							<?php endforeach; ?>
+						</select>
+						<span class="input-group-addon new-input-group margen-input-veri">
+							<?php if(form_error('categorias', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						</span>
+						<span class="input-group-addon new-input-group margen-input-aste">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div> -->
+					<!-- Segundo Select con checkbox de prueba -->
+					<div class="input-group"> 
+						<span class="input-group-addon new-input-group">
+							<i class="fa fa-cubes iconos-font"></i>
+						</span>
+						<input id="sectores" class="input-style" type="text" placeholder="Selecciona los sectores (Maximo 5)"
+						onclick="JavaScript:mostrar_categorias()" rel='tooltip' data-placement='right' required>
+						<span class="input-group-addon new-input-group margen-input-veri"
+						style="padding-right: 26px !important;">
+							<a href="JavaScript:mostrar_categorias()">								
+								<span class="glyphicon glyphicon-chevron-down"></span>
+								<!--
+								<ul class="list-inline">
+					                <li><i class="fa fa-list-ul" id="fuente_menu"></i></li>
+					                <li><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" id="icono_flechita"></span></li>
+				             	</ul>
+				             	-->
+							</a>
+
+						</span>
+						<span class="input-group-addon new-input-group" style="display: none;">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div>
+					<div class="input-group"> 
+						<span class="input-group-addon new-input-group">
+							<i class="fa fa-cubes iconos-font"></i>
+						</span>
+						<input id="prod_prin" name="prod1"  value="<?php echo set_value('prod1'); ?>"
+						class="input-style" type="text" placeholder="Productos principales(separados por comas)"
+						onclick="JavaScript:limpiar(this)" rel='tooltip' data-placement='right'>
+						<span class="input-group-addon new-input-group margen-input-veri"
+						style="padding-right: 26px !important;">
+						<i id='err_prod1'>								
+							<?php if(form_error('prod1', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						   	</i>
+						</span>
+						<span class="input-group-addon new-input-group" style="display: none;">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div>
+
+					<div class="input-group"> 
+						<span class="input-group-addon new-input-group">
+							<i class="fa fa-truck iconos-font"></i>
+						</span>
+						<input id="prod_int" name="prod_int4"  value="<?php echo set_value('prod_int4'); ?>" 
+						class="input-style" type="text" placeholder="Productos requeridos(separados por comas)">
+						<span class="input-group-addon new-input-group margen-input-veri"
+						style="padding-right: 26px !important;">
+							<i id='err_prod_int4'>
+								<?php if(form_error('prod_int4', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						   	</i>
+						</span>
+						<span class="input-group-addon new-input-group" style="display: none;">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div>
+					<div class="">
+						<div class="button raised blue container-logotipo alineacion-inlineblock"
+						onclick="JavaScript:document.getElementById('btn_archivos').click();">
+							<div class="center" fit style="font-size: 17px;margin-top: 8px;">
+							<span class="glyphicon glyphicon-picture ico_pitu"></span>
+							<span class="tex_subi">Subir Logotipo de Empresa</span>
+							 	<div style="display:none">
+								    <input type="file" id="btn_archivos" name="logo" style="display:none"
+							       onchange="JavaScript:load_new_logo()">
+							  	</div>
+							</div>
+							<!--<paper-ripple fit></paper-ripple>-->
+						</div>
+						<div>
+							<div class="alineacion-inlineblock style-default">
+		 						<p style="line-height: 1;margin-top: 2px;">
+		 							<img  id="logo" style="display:none; max-width:70px; max-height:50px" src="<?=base_url()?>uploads/default.jpg">
+		 							<!--<div id="txt_alt">Subir logo<br>de empresa</div>-->
+		 							<!-- <img  id="logo" style="max-width:70px; max-height:50px" src="<?=base_url()?>assets/img/administrar_productos/icono_prod_publicados.png"> -->
+		 						</p>
+		 						<a href="JavaScript:delete_logo();" id="eliminar_img" style="display:none" class="btn btn-danger">Eliminar Imagen</a>
+		 					</div>
+	 					</div>
+					</div>
+					
+					<div class="group col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top:15px;"> 
+						<label class="label-radiosbutton" style="font-size: 13px;">Que va hacer en proveedor?</label>
+					</div>
+					<div class="group ">
+						<div class='style-radiobutton'>
+							<input type='radio' name='rol'>
+							<label class="label-radiosbutton" style="font-size: 13px;" for="comprar">Comprar</label>
+						</div>
+						<div class='style-radiobutton'>
+							<input type='radio' name='rol'>
+							<label class="label-radiosbutton" style="font-size: 13px;" for="comprar">Vender</label>
+						</div>
+						<div class='style-radiobutton'>
+							<input type='radio' name='rol' checked>
+							<label class="label-radiosbutton" style="font-size: 13px;" for="comprar">Ambas</label>
+						</div>
+					</div>
+					<div class="group " style="margin-top: 12px;">
+						<input type='checkbox' name='radio' required>
+						<label class="label-radiosbutton" style="font-size: 13px;"s for="comprar">Acepto los Terminos y Condiciones de uso</label>
+						<span class="glyphicon glyphicon-asterisk left-aste-acepto"></span>
+					</div>
+					<div class=" col-md-12 col-lg-12 col-sm-12 col-xs-12 style-pasos3">
+						<p for="pasos">Paso 3 de 3</p>
+					</div>
+	            	<div class="group">
+	                	<button type="submit" class="btn center-block boton_enviar">Listo!</button>
+	              	</div> 					 
+	        	</div>
+        	<?= form_close() ?>
+        </div>
+    </div> 
+
+
+</div>
+
+<div id="content_categorias" style="display:none">
+	<ul style="z-index: 1;">
+	<div class="button raised orange " onclick="JavaScript:ocultar_categorias()">
+			<<< Regresar
+	</div>
+	   	<?php foreach ($categorias as $row): ?> 
+			<li class="lista_categoria">
+	       		<input class="checkbox_categoria" onclick="JavaScript:marcar_categoria(this.value)" type="checkbox" value="<?=$row->id_categoria?>" style="float:left;margin-right:6px;"/>
+	       		<!--<input class="checkbox_categoria" onclick="JavaScript:marcar_categoria(this.value)" type="checkbox" value="<?=$row->nombre_categoria; ?>" style="float:left;margin-right:6px;"/>-->
+		   			<span class="titulo_categoria"><?=$row->nombre_categoria; ?></span>
+	   		</li>
+		<?php endforeach; ?>
+	<div class="button raised orange " onclick="JavaScript:ocultar_categorias()">
+			<<< Regresar
+	</div>
+	</ul>
+</div>  
+
+
+<SCRIPT TYPE="text/javascript">
+window.onload=fun();
+function fun()
+{
+	document.getElementById('popup_launch').click();
+}
+</SCRIPT>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("[rel=tooltip]").tooltip({ placement: 'right'}).style.display="block;";
+});
+$('tooltip').attr({
+   'style': 'display: block'
+});
+</script>
+
+<script type="text/javascript">
+$(".select_box dt select").on('click', function () {
+          $(".select_box dd ul").slideToggle('fast');
+      });
+
+      $(".select_box dd ul li select").on('click', function () {
+          $(".select_box dd ul").hide();
+      });
+
+      function getSelectedValue(id) {
+           return $("#" + id).find("dt select option.value").html();
+      }
+
+      $(document).bind('click', function (e) {
+          var $clicked = $(e.target);
+          if (!$clicked.parents().hasClass("select_box")) $(".select_box dd ul").hide();
+      });
+
+
+      $('.mutliSelect input[type="checkbox"]').on('click', function () {
+        
+          var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+              title = $(this).val() + "  ";
+        
+          if ($(this).is(':checked')) {
+              var html = '<span title="' + title + '">' + title + '</span>';
+              $('.multiSel').append(html);
+              $(".hida").hide();
+          } 
+          else {
+              $('span[title="' + title + '"]').remove();
+              var ret = $(".hida");
+              $('.select_box dt select').append(ret);
+              
+          }
+      });
+</script>                document.getElementById('numero_categorias').value--;
 			                }
 	            </script>
 				</div>
