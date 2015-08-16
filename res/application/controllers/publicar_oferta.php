@@ -13,6 +13,7 @@ class Publicar_oferta extends CI_Controller {
 		$this->load->model('new/Usuarios_model', "usuarios");
 		$this->load->model('new/Solicitud_model', "solicitud");
 		$this->load->model('new/Categoria_model', "categoria");
+		$this->load->model('new/Subcategoria_model', "subcategoria");
 		$this->load->model('new/Departamento_model', "departamento");
 		$this->load->model('new/Tipo_empresa_model', "tipo_empresa");
 		$this->load->model('new/Empresa_model', "empresa");
@@ -61,6 +62,7 @@ class Publicar_oferta extends CI_Controller {
 		
 		#$data['error'] = '';
 		$data['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$data['administrador']=$data['usuario']->permisos;
 		$id_usuario=$this->session->userdata('id_usuario');
 		$data['titulo']="Crear solicitud de producto - PROVEEDOR.com.co";
 		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
@@ -175,5 +177,16 @@ class Publicar_oferta extends CI_Controller {
 
 		$this->solicitud->update(array('imagenes'=> $imagenes),$id_registro);
 	}
+
+	public function ver_subcatgorias($id_categoria=FLASE)
+	{
+			$subcategoria = $this->subcategoria->get_all(array('id_categoria'=>$id_categoria));
+			foreach ($subcategoria as $fila)
+			{
+				echo '<option value="'.$fila->nom_subcategoria.'">'.$fila->nom_subcategoria.'</option>';
+			}
+				
+	}
+
 
 }
