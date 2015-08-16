@@ -1,0 +1,412 @@
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title></title>
+	<link rel="stylesheet"  href="dist/css/bootstrap.css">
+
+	<style>
+	@media(max-width: 1200px){
+		button.boton_guardar{
+			width: auto;
+		}
+
+	}
+	@media(max-width: 500px){
+		button.boton_guardar{
+			font-size: 12px;
+		}
+		
+	}
+		@media(max-width: 300px){
+		button.boton_guardar{
+			font-size: 10px;
+		}
+		
+	}
+	@media(max-width: 400px){
+		p.text_contra{
+			margin-top: -5px;
+		}
+		p.text_newContra{
+			margin-top: -5px;
+		}
+	}
+	
+	
+	@media(max-width: : 1279px){
+		button.boton_agregar{
+			margin-top: -80px;
+		}
+	}
+	@media(max-width: 991px){
+			select.selector2{
+				margin-top: 100px;
+			}
+			button.boton_agregar{
+				margin-top: -180px;
+			}
+			button.boton_quitar{
+				margin-top: -140px;
+			}
+			button.boton_logo{
+				margin-top: 2px;
+			}
+	}
+
+	 .azul{
+	 	color: #269fda;
+	 }
+	 .gris{
+	 	color: #b1b1b1;
+	 }
+	 .text_contra{
+	 	margin-top: 22px;
+	 }
+	 .text_newContra{
+	 	margin-top: 24px;
+	 }
+	 .boton_guardar{
+	    width: 356px;
+		margin-left: -13px
+	 }
+	
+	 .boton_agregar{
+           margin-top: -80px;
+	 }
+	 .boton_quitar{
+	 	margin-top: -20px;
+	 }
+	
+	 
+	</style>
+</head>
+<body>
+	<div class="container">
+			<h2><p class="text-left azul"> Editar perfil de empresa</p> </h2> 
+
+				<div class="well well-sm">
+					<p class="text-left"><strong>Editar informacion de cuenta </strong></p>
+				</div>
+	</div>
+
+		<div class="container">
+			<div class="row">
+				<form role="form"> <!--formulario 1 -->
+					<div class="col-xs-4">
+							<div class="form-group">
+								<div class="input-group">
+									 <span class="input-group-addon">@</span>
+									<input type="mail" class="form-control" id="" placeholder="Enter email">
+								</div>
+							</div>	
+							<div class="form-group">
+								<div class="input-group">
+									 <span class="input-group-addon">@</span>
+									<input type="mail" class="form-control" id="" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									 <span class="input-group-addon">@</span>
+									<input type="mail" class="form-control" id="" placeholder="New password">
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-primary boton_guardar" type="button">Guardar cambios</button>
+							</div>	
+					</div>
+					
+						<div class="col-xs-6 ">
+							<p class="gris">Ingresar correo electronico</p>
+						</div>
+
+					<div class="col-xs-6 ">
+						<p class="gris text_contra">Ingresar contraseña actual</p>
+					</div>
+					<div class="col-xs-6 ">
+						<p class="gris text_newContra">Ingresar nueva contraseña </p>
+					</div>
+
+				</form>	<!--end form 1 -->
+
+			</div>
+
+			<br>
+
+				<div class="well well-sm">
+					<p><strong>Editar informacion de contacto </strong></p>
+				</div>
+
+				<form class="form">  
+					<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Nombre y apellido</label>
+								</div>
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<input type="mail" class="form-control" id="" placeholder="">
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Cargo/funcion en la empresa</label>
+								</div>
+						</div>
+
+						<div class="col-md-4 col-md-offset-0">
+							<input type="mail" class="form-control" id="" placeholder="">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Direccion de la empresa</label>
+								</div>
+						</div>
+							<div class="col-md-4 col-md-offset-0">
+								<input type="mail" class="form-control" id="" placeholder="">
+							</div>
+					</div>
+						<div class="row">
+							<div class="col-md-3 col-md-offset-1 ">
+									<div class="form-group">
+										<label  class="control-label">Departamento</label>
+									</div>
+							</div>
+							<div class="col-md-4 col-md-offset-0">
+								<select class="form-control">
+								  <option>Selecciones su departamento</option>
+								  <option>2</option>
+								  <option>3</option>
+								  <option>4</option>
+								  <option>5</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 col-md-offset-1 ">
+									<div class="form-group">
+										<label  class="control-label">Ciudad /municipio</label>
+									</div>
+							</div>
+							<div class="col-md-4 col-md-offset-0">
+								<select class="form-control">
+								  <option>Municipio</option>
+								  <option>2</option>
+								  <option>3</option>
+								  <option>4</option>
+								  <option>5</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 col-md-offset-1 ">
+									<div class="form-group">
+										<label  class="control-label">Telefono celular</label>
+									</div>
+							</div>
+								<div class="col-md-4 col-md-offset-0">
+									<input type="mail" class="form-control" id="" placeholder="">
+								</div>
+					    </div>
+
+					    <div class="row">
+							<div class="col-md-3 col-md-offset-1 ">
+									<div class="form-group">
+										<label  class="control-label">Telefono fijo y/o PBX</label>
+									</div>
+							</div>
+								<div class="col-md-1 col-md-offset-0">
+									<input type="mail" class="form-control" id="" placeholder="Indicativo">
+								</div>
+								<div class="col-md-2 col-md-offset-0">
+									<input type="mail" class="form-control" id="" placeholder="Numero telefonico">
+								</div>
+								<div class="col-md-1 col-md-offset-0">
+									<input type="mail" class="form-control" id="" placeholder="Extencion">
+								</div>
+					    </div>
+
+					    <div class="row">
+							<div class="col-md-3 col-md-offset-1 ">
+									<div class="form-group">
+										<label  class="control-label">Pagina web</label>
+									</div>
+							</div>
+								<div class="col-md-4 col-md-offset-0">
+									<input type="mail" class="form-control" id="" placeholder="">
+								</div>
+					    </div>
+
+					    <br>
+
+				<div class="well well-sm">
+					<p class="text-left"><strong>Editar informacion de la empresa </strong></p>
+				</div>
+
+				<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Nombre de la empresa</label>
+								</div>
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<input type="mail" class="form-control" id="" placeholder="">
+						</div>
+				</div>
+
+				<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Nit la empresa/CC </label>
+								</div>
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<input type="mail" class="form-control" id="" placeholder="">
+						</div>
+				</div>
+
+				<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Tipo de empresa</label>
+								</div>
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+								<select class="form-control">
+								  <option>Seleccione una opcion</option>
+								  <option>2</option>
+								  <option>3</option>
+								  <option>4</option>
+								  <option>5</option>
+								</select>
+							</div>
+				</div>
+
+				<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Logo de la empresa</label>
+								</div>
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<img src="..." class="img-responsive" alt="Responsive image">
+						</div>
+						<div class="col-md-2 col-md-offset-0">
+							<button type="button" class="btn btn-warning active boton_logo">Modificar logo</button>
+						</div>
+				</div>
+				<div class="row">
+						<div class="col-md-3 col-md-offset-1 ">
+								<div class="form-group">
+									<label  class="control-label">Descripcion de la empresa</label>
+								</div>
+						</div>
+						<div class="col-md-5 col-md-offset-0">
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+				</div>
+			<br>
+				<div class="well well-sm">
+					<p> <strong>Editar las categorias </strong></p>
+				</div>
+
+				<p class="gris">Selecciona una categoria y luego click en agregar</p>
+
+				<div class="row">
+					<div class="col-md-5 col-md-offset-0 ">
+						<div class="form-group">
+						<select multiple class="form-control">
+							  <option>A</option>
+							  <option>B</option>
+							  <option>C</option>
+							  <option>D</option>
+							  <option>E</option>
+							  <option>E</option>
+							  <option>E</option>
+							  <option>E</option>
+							  <option>E</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4 col-md-offset-3 ">
+							<div class="form-group">
+								<select multiple class="form-control selector2">
+									  <option>U</option>
+									  <option>G</option>
+									  <option>N</option>
+									  <option>M</option>
+									  <option>H</option>
+									  <option>J</option>
+									  <option>E</option>
+									  <option>Q</option>
+									  <option>W</option>
+									</select>
+							</div>
+						</div>	
+
+					<div class="col-md-3 col-md-offset-5 ">
+						<button type="button" class="btn btn-primary active boton_agregar">Agregar &raquo;</button>
+					</div>
+				
+				</div>
+
+				
+				<div class="row">
+						<div class="col-md-4 col-md-offset-5">
+							<button type="button" class="btn btn-warning active boton_quitar">&laquo; Quitar </button>
+						</div>
+				</div>
+
+		<br>
+						
+				<div class="well well-sm">
+					<p><strong>Productos </strong></p>
+				</div>
+
+				<p class="gris">Productos Principales de empresa</p>
+
+				<div class="row">
+				 		<div class="col-xs-6">
+				 			<input type="mail" class="form-control input_cargo" id="" placeholder="">
+				 		</div>
+				</div>
+			 		<div class="row">
+				 		<div class="col-xs-6">
+				 			<p class="gris">Ingresa la palabra clave y pulsa la tecla enter <br>
+				 				Ej. Zapato en cuero</p>
+				 		</div>
+			 		</div>
+		<br>
+
+						<P class="gris">Productos que le interesan a la empresa</P>
+					 		<div class="row">
+							 		<div class="col-xs-6">
+							 			<input type="mail" class="form-control input_cargo" id="" placeholder="">
+							 		</div>
+							 	</div>
+							 	<div class="row">
+							 		<div class="col-xs-6">
+							 			<p class="gris">Ingresa la palabra clave y pulsa la tecla enter <br>
+						 				Ej. Zapato en cuero</p>
+							 		</div>
+							 	</div>
+
+
+
+		</div> <!-- fin del container interior-->
+
+
+	       </form>
+	</div> <!-- fin del container principal-->
+
+	
+				
+</body>
+</html>

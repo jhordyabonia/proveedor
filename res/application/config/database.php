@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'iguana_iguana';
-$db['default']['password'] = 'scriptmedia2014';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'root';
 $db['default']['database'] = 'iguana_proveedor';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

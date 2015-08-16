@@ -1,0 +1,214 @@
+#contenedor{
+	background: #5D5D5D;
+}
+
+.margen_footer{
+	margin-bottom: 32px;
+}
+
+#boton_comprar{
+	background: #E66110;
+	color:#FFFEFD;
+	font-size: 25px;
+	padding: 5px 31px;
+	border: none;
+	margin-bottom: 10px;
+
+}
+
+#boton_vender{
+	background: #2B73B4;
+	color:#FFFEFD;
+	font-size: 25px;
+	padding: 5px 31px;
+	border: none;
+	margin-bottom: 10px;
+
+
+}
+.footer{
+    margin-right: 0px;
+}
+.borde{
+border-bottom: 2px Solid #858588;
+width: 75%;
+}
+
+#borde1{
+border-bottom: 2px Solid #858588;
+width: 72%;
+margin-left: 3px;
+}
+
+#borde2{
+border-bottom: 2px Solid #858588;
+width: 94%;
+margin-left: -28px;
+margin-top: 6px;
+}
+
+#borde3{
+border-bottom: 2px Solid #858588;
+width: 105%;
+margin-left: -25px;
+margin-top: -2px;
+}
+
+#borde4{
+border-bottom: 2px Solid #858588;
+width: 103%;
+margin-left: -12px;
+margin-top: -10px;
+}
+
+.borde_der{
+border-right: 1px solid #BEC0C1;
+height: 25px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+@media (max-width: 768px){
+  .borde_der{
+  border-right: 0;
+  }
+}
+
+#borde_der2{
+width: 23%;
+height: 15px;
+}
+
+.contene_todos_top{
+padding-top: 10px;
+}
+
+.borde_der3{
+border-right: 1px solid #BEC0C1;
+margin-top: -12px;
+}
+@media (max-width: 768px){
+  .borde_der3{
+  border-right: 0;
+  }
+}
+
+#borde_der4{
+height: 14px;
+margin-top: -11px;
+}
+
+.texto_links{
+	color:#BEC0C1;
+	font-size: 15px;
+    margin-left: -11px;
+    line-height: 37px;
+    margin-top: -10px;
+}
+
+.texto_links2{
+	color:#BEC0C1;
+	font-size: 15px;
+    margin-left: -25px;
+    line-height: 37px;
+    margin-top: -10px;
+}
+
+.texto_links3{
+	color: #BEC0C1;
+	font-size: 12px;
+	line-height: 37px;
+	margin-top: -6px;
+	margin-left: -5px;
+	text-decoration: none;
+}
+
+#texto_links4{
+color: #BEC0C1;
+font-size: 15px;
+margin-left: -23px;
+margin-top: 15px;
+}
+
+#texto_links5{
+color: #BEC0C1;
+font-size: 15px;
+line-height: 37px;
+margin-top: -1px;
+margin-left: 37px;
+}
+
+.texto_links6{
+color: #BEC0C1;
+font-size: 12px;
+line-height: 37px;
+margin-left: 30px;
+
+}
+
+#texto_links7{
+	color: #BEC0C1;
+line-height: 37px;
+margin-left: 30px;
+font-size: 12px;
+}
+
+#texto_Proveedor{
+color: #BEC0C1;
+font-size: 18px;
+text-align: center;
+padding-top: 8px;
+}
+
+.texto_Proveedor2{
+	color:#BEC0C1;
+	font-size: 15px;
+    margin-left: 134px;
+    margin-top: 6px;
+}
+
+.texto_Proveedor3{
+	color:#BEC0C1;
+	font-size: 15px;
+    margin-left: 134px;
+    margin-top:-10px;
+}
+
+#Logo_proveedor{
+	width: 239px;
+margin-left: -31px;
+margin-bottom: -15px;
+margin-top: 19px;
+}
+ .contenedores{
+ 	margin-top: 36px;
+ }
+
+ #letra_social{
+   font-family: arial;
+font-size: 18px;
+margin-left: -13px;
+margin-top: 19px;
+color: #FFFEFD;
+ }
+
+ .logo_Social{
+margin-top: 14px;
+margin-left: -23px;
+margin-right: 32px;
+width: 28px;
+border-radius: 4px;
+ }
+
+ .contenedor_row{
+   margin-top: 18px;
+ }
+
+.contenedor_row_1{
+   margin-top: 17px;
+ }
+
+ #contenedor_politicas{
+ 	margin-left: -52px;
+margin-top: 10px;
+ }
+

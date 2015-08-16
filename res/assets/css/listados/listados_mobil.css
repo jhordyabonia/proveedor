@@ -1,0 +1,133 @@
+.listados_mobil .icono_tab{
+	color: #ff7f27;
+	font-size: 22px;
+	margin-right: 12px;
+  	margin-left: 1px;
+}
+
+.listados_mobil .nav-tabs > li.active > a{
+	border-top: 0;
+	border-bottom: 5px solid #ff7f27;
+	border-right: 0;
+	border-left: 0;
+	background-color: #fff;
+	text-align: center;
+	margin: 0;
+}
+
+.listados_mobil .nav-tabs > li.active > a > p{
+	color: #111;
+	font-weight: bold;
+	line-height: 1;
+}
+
+.listados_mobil .nav-tabs > li > a{
+	margin-right: 0;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	border-bottom: 0;
+	text-align: center;	
+}
+
+.listados_mobil .nav-tabs > li{
+	float: left;
+  	margin-bottom: -5px;
+}
+
+.listados_mobil .nav-tabs > li > a:hover{
+	background-color: #fff;
+	font-size: 14px;
+	color: #111;
+	text-align: center;
+}
+
+.listados_mobil .nav-tabs > li > a:before{
+	background-color: #fff;
+	font-size: 14px;
+	color: #111;
+	text-align: center;
+}
+
+.listados_mobil .nav-tabs > li:hover{
+	font-size: 14px;
+	color: #ccc;
+	text-align: center;
+}
+
+.listados_mobil .nav-tabs{
+	border-bottom: 5px solid #00a2e8;
+}
+
+.listados_mobil .texto_tab{
+	display: inline-block;
+	font-size: 15px;
+	color: #7f7f7f;
+	font-weight: bold;
+	margin-bottom: 0;
+	line-height: 1;
+	text-align: left;
+}
+
+@media (max-width: 465px){
+
+	.listados_mobil .icono_tab{
+		color: #ff7f27;
+		font-size: 20px;
+		margin-right: 0;
+  		margin-left: 0;
+	}
+}
+
+@media (max-width: 425px) {
+
+	.listados_mobil .icono_tab{
+		color: #ff7f27;
+		font-size: 20px;
+		margin-right: 0;
+  		margin-left: 0;
+	}
+	
+	.listados_mobil .texto_tab{
+		display: inline-block;
+		font-size: 13px;
+		color: #7f7f7f;
+		font-weight: bold;
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 396px) {
+
+	.listados_mobil .icono_tab{
+		color: #ff7f27;
+		font-size: 18px;
+	}
+	
+	.listados_mobil .texto_tab{
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 359px) {
+
+	.listados_mobil .icono_tab{
+		color: #ff7f27;
+		font-size: 24px;
+		margin: 8px 20px 5px 20px;
+	}
+	
+	.listados_mobil .texto_tab{
+		display: none;
+	}
+}
+.btn-todos, .btn-todos:hover{
+	background-color: #ff7f27;
+	width: 90px;
+	height: 40px;
+	margin-top: 10px; 
+	margin-bottom: 10px;
+	color: #fff;
+	border-radius: 3px;
+	margin-left: 60%;
+}

@@ -1,0 +1,178 @@
+@font-face {
+	font-family: '616';
+	
+	src: url('<?=base_url()?>assets/fonts/616.eot');
+	src: local('616'), url('<?=base_url()?>assets/fonts/616.woff') format('woff'), url('<?=base_url()?>assets/fonts/616.ttf') format('truetype');
+}
+/*seccion para el menu principal del header*/
+	#content_menu{
+		background: #f6f6f6;
+	}
+	#linea_header{
+		border-right: 2px solid;
+		height: 27px;
+	}
+
+	#tab_buscqueda_header{
+		margin-top: 18px;
+		width: 100%;
+	}
+	.input_buscador_header{
+		border: 1px solid #36a9e1;
+		height: 36px;
+		margin-bottom: 2px;
+		width: 100%;
+	}
+
+
+	.btn_buscar_header{
+		border: 0px;
+		border-radius: 0px;
+		height: 36px;
+		background: #36a9e1;
+		color: #fff;
+		width: 54px;
+		margin-top: -1px;
+	}
+	#logo_buscar{
+		font-size: 22px;
+		top: 1;
+		margin-right: 0px;
+	}
+
+	.text_header{
+		font-size: 12px;
+		margin-top: 6px;
+	}
+
+	.content_text_header{
+		margin-top: 26px;
+	}
+
+	#content_general_text{
+		margin-left: 7px;
+		margin-top: 22px;
+	}
+	#content_button{
+		margin-top: 7px;
+	}
+
+/*---------------------------------------*/
+/* verificación*/
+.verificada{
+	margin-top: 2px;
+}
+.imagen_verificada{
+	width: 30px;
+  	max-width: 40px;
+  	margin-left: 21px;
+  	margin-top: 9px;
+}
+.texto_verificada{
+	font-size: 18px;
+  	color: #1D71B8;
+  	font-weight: bold;
+  	padding-left: 15px;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+}
+/*---------------------------------------*/
+/* seccion del titulo*/
+	#contenedor_title{
+		margin-top: 35px;
+  		margin-bottom: 70px;
+	}
+
+	
+	.logo_empresa{
+		/*margin: 0 auto;
+		width: auto;*/
+		max-width: 180px;
+		/*height: auto;*/
+		max-height: 90px;
+	}
+
+	#content_name_empresa{
+		width: 100%;
+	}
+	
+	#content_membresia_empresa{
+		margin-right: 20px;
+		margin-left: 23px;
+		height: 128px;
+	}
+	#text_membresia{
+		text-align: center;
+		font-size: 18px;
+		margin-top: 44px;
+		font-weight: bold;
+		color:#418ccd;
+	}
+
+	#name_empresa{
+		/*font-family: '616' !important;*/
+		font-size: 314%;
+		font-weight: bold;
+		color: black;
+	}
+
+	.glyphicon{
+		position: relative;
+		top: 5px;
+		margin-right: 10px;
+		display: inline-block;
+		font-family: 'Glyphicons Halflings';
+		font-style: normal;
+		font-weight: 400;
+		line-height: 0;
+		font-size: 23px;
+		-webkit-font-smoothing: antialiased;
+	}
+
+.buscador_header{
+	width: 100%;
+	margin-top: 4%;
+}
+.line-right {
+  margin-right: -1px;
+  border-right: 1px solid #C9C9C9;
+}
+.center_vertical{
+	margin-top: 60px;
+}
+#content_titulo_membresia{
+	     width: initial;
+	     margin-left: -15px;
+	     
+        }
+         .imagen_membresias{
+         width: 32%;	
+         }
+
+         #texto_membresiaEstandar{
+	     font-family: arial;
+	     font-size: 18px;
+	     color:grey;
+	     font-weight: bold;
+	     display: inline;
+         }
+         .border-logo{
+         	border: 1px solid #e3e3e3;
+			border-radius: 3px;
+         }
+         .background{
+         	display: table;
+         	border: 1px solid gray;
+         	border: 1px solid #e3e3e3;
+			border-radius: 3px;
+         	position: relative;
+         	width: 180px;
+         	height: 90px;
+         }
+
+         .center-vertical{
+         	display: table-cell;
+         	text-align: center;
+         	vertical-align: middle;
+         }
+/* --------------------------------- */

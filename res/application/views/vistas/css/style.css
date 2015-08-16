@@ -1,0 +1,926 @@
+/*******************************
+ 	Estilos css generales (1366) 
+********************************/
+	body {
+		font-family: Arial;
+		font-size: 15px;
+		text-align: center;
+	}
+
+	.container_12{
+		background: #FFFFFF;
+		height: auto;
+		width: 1342px;
+		max-width: 1342px;
+		/* margin:50px 50px; */
+		text-align: center;
+		margin-top: 30px;
+		margin-left: center;
+		margin-right: center;
+	}
+
+	header {
+		height: 150px;
+		background-color:gray;
+	}
+
+/************************************************ 
+	Estilos botones grandes alargados hacia abajo 
+*************************************************/
+	.grid_4 {
+		height: 512px;
+		/* margin: 12px 12px; */
+		margin-left: 7px;
+		margin-top: 12px;
+		width: 220px;
+	}
+
+	#div1 {
+		height: auto;
+	}
+/* ------------------------------------------- */
+
+
+/************************************************ 
+	Estilos conjunto de 4 botones 
+*************************************************/
+	#div2_boton1{
+		width: 196px;
+		height: 357px;
+		background: #EA5B0C;
+		margin-top: 5px;
+		margin-left: 175px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton2{
+		width: 196px;
+		height: 357px;
+		background: #1D71B8;
+		margin-top: 5px;
+		margin-left: 5px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton3{
+		width: 180px;
+		height: 172px;
+		background: #36A9E1;
+		margin-top: 190px;
+		margin-left: -580px;
+		z-index: 1;
+		position: relative;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton4{
+		width: 180px;
+		height: 172px;
+		background: #95C11F;
+		margin-top: 190px;
+		margin-left: -190px;
+		z-index: 1;
+		position: relative;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton5{
+		width: 180px;
+		height: 172px;
+		background: #1D71B8;
+		margin-top: 5px;
+		margin-left: 50px;
+		z-index: 1;
+		position: relative;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton6{
+		width: 180px;
+		height: 172px;
+		background: #B2B2B2;
+		margin-top: 190px;
+		margin-left: -385px;
+		z-index: 1;
+		position: relative;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton7{
+		width: 375px;
+		height: 174px;
+		background: #3AAA35;
+		margin-top: 5px;
+		margin-left: 5px;
+		margin-right: -35px;
+		position: relative;
+		z-index: 1;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+/* ------------------------------------------- */
+
+/*****************************************************
+	Estilos cada cuadro del conjunto de 4 botones 
+******************************************************/
+	.grid_2 {
+		background: none;
+		height: 172px;
+		width: 200px;
+	}
+/* ------------------------------------------- */
+
+	#div3 {
+		background-color: transparent;
+		margin:10px 18px;
+		height: auto;
+	}
+
+/************************************************** 
+	Estilos footer 
+***************************************************/          
+	#div4 {
+		background: #f2f2f2;
+		width: 1325px;
+	}
+/* ------------------------------------------- */
+
+	header,section {
+		margin: 10px 0;
+	}
+
+	footer {
+		height: 50px;
+		background-color: yellow;
+	}
+
+/************************************************ 
+	Header 
+*************************************************/
+	.grid_1 {
+		background-color: transparent;
+		height: 59px;
+		width: 203px;
+		margin-right: 3px;
+		padding-left: 0px;
+		margin-left: 31px;
+	}
+
+	#he {
+		width: 1086px;
+		max-width: 1086px;
+		margin-left: 17px;
+		margin-right: -8px;
+	}
+/* ------------------------------------------- */
+
+/*****************************************************
+	Estilos para todas las tablas de esta pagina 
+******************************************************/
+	table {
+		border-collapse: separate;
+		border-spacing: 20px;
+	}
+/* ------------------------------------------- */
+
+/***************************************************** 
+	Estilos links del footer 
+******************************************************/
+	#links_footer {
+		color: grey;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	#datos_img_usu{
+		padding-top: 15px;
+		padding-left: 70px;
+		width: 50px;
+	}
+	#imagen_boton1{
+		width: 150px;
+		height: 155px;
+		margin-top: 70px
+	}
+	#imagen_boton2{
+		width: 165px;
+		height: 150px;
+		margin-top: 75px;
+	}
+	#imagen_boton3{
+		width: 90px;
+		height: 75px;
+		margin-top: 5px;
+	}
+	#imagen_boton4{
+		width: 75px;
+		height: 75px;
+		margin-top: 10px;
+	}
+	#imagen_boton5{
+		width: 125px;
+		height: 80px;
+		margin-top: 5px;
+	}
+	#imagen_boton6{
+		width: 115px;
+		height: 80px;
+	}
+	#imagen_boton7{
+		width: 95px;
+		height: 90px;
+		margin-top: -100px;
+		margin-right: 250px;
+	}
+	#foto_logo{
+		height: 59px; width: 204px;
+	}
+
+/* ------------------------------------------- */
+
+/********************************************** 
+	Footer 
+***********************************************/
+	#section_footer {
+		width: 1348px;
+		margin: 0;
+		padding-top: 230px;
+		height: auto;
+	}
+	#div4_footer {
+		height: 332px;
+		width: 1347px;
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+	#iframe_footer {
+		height: 332px;
+		width: 1345px;
+		margin-left: 0px;
+	}
+
+/* --------------------------------------------- */
+
+
+/*************************************************
+	Estilos css resolucion 1280 
+**************************************************/	
+
+@media screen and (max-width: 1280px) {
+	body {
+		font-family: Arial;
+		font-size: 15px;
+		text-align: center;
+	} 
+
+	.container_12{
+		background: #FFFFFF;
+		height: auto;
+		width: 1260px;
+		max-width: 1260px;
+		/* margin:50px 50px; */
+		text-align: center;
+		margin-top: 20px;
+		margin-left: center;
+		margin-right: center;
+	}
+
+	header {
+		height: 150px;
+		background-color:gray;
+	}
+
+/**************************************************
+	Estilos botones grandes alargados hacia abajo 
+***************************************************/
+	.grid_4 {
+		height: 512px;
+		/* margin: 12px 12px; */
+		margin-left: 7px;
+		margin-top: 12px;
+		width: 220px;
+	}
+
+	#div1 {
+		height: auto;
+	}
+/* ------------------------------------------- */
+
+/***************************************************
+	Estilos conjunto de 4 botones 
+****************************************************/
+	#div2_boton1{
+		width: 196px;
+		background: #EA5B0C;
+		height: 357px;
+		margin-top: 5px;
+		margin-left: 135px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton2{
+		width: 196px;
+		background: #1D71B8;
+		height: 357px;
+		margin-top: 5px;
+		margin-left: 5px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton3{
+		width: 180px;
+		height: 172px;
+		background: #36A9E1;
+		margin-top: 190px;
+		margin-left: -580px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton4{
+		width: 180px;
+		height: 172px;
+		background: #95C11F;
+		margin-top: 190px;
+		margin-left: -190px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton5{
+		width: 180px;
+		height: 172px;
+		background: #1D71B8;
+		margin-top: 5px;
+		margin-left: 50px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;	
+	}
+
+	#div2_boton6{
+		width: 180px;
+		height: 172px;
+		background: #B2B2B2;
+		margin-top: 190px;
+		margin-left: -385px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+
+	#div2_boton7{
+		width: 375px;
+		background: #3AAA35;
+		height: 174px;
+		margin-top: 5px;
+		margin-left: 5px;
+		margin-right: -35px;
+		box-shadow: 2px 2px 5px #999;
+		border-radius: 7px 7px 7px 7px;
+		-moz-border-radius: 7px 7px 7px 7px;
+		-webkit-border-radius: 7px 7px 7px 7px;
+	}
+/* ------------------------------------------- */
+
+/***************************************************
+	Estilos cada cuadro del conjunto de 4 botones 
+****************************************************/
+	.grid_2 {
+		background: red;
+		height: 172px;
+		width: 200px;
+	}
+/* ------------------------------------------- */
+
+	#div3 {
+		background-color: transparent;
+		margin:10px 18px;
+		height: auto;
+	}
+
+/****************************************************
+	Estilos footer 
+*****************************************************/          
+	#div4 {
+		background: #f2f2f2;
+		width: 1325px;
+	}
+/* ------------------------------------------- */
+
+	header,section {
+		margin: 10px 0;
+	}
+
+	footer {
+		height: 50px;
+		background-color: yellow;
+	}
+
+/****************************************************
+	Header 
+*****************************************************/
+	.grid_1 {
+		background-color: transparent;
+		height: 59px;
+		width: 203px;
+		margin-right: 3px;
+		padding-left: 0px;
+		margin-left: 27px;
+	}
+
+	#he {
+		width: 1011px;
+		max-width: 1011px;
+		margin-left: 17px;
+		margin-right: -8px;
+	}
+/* ------------------------------------------- */
+
+/*****************************************************
+	Estilos para todas las tablas de esta pagina 
+******************************************************/
+	table {
+		border-collapse: separate;
+		border-spacing: 20px;
+	}
+/* ------------------------------------------- */
+
+/**************************************** 
+	Estilos links del footer 
+*****************************************/
+
+	#links_footer {
+		color: grey;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	#datos_img_usu{
+		padding-top: 15px;
+		padding-left: 70px;
+		width: 50px;
+	}
+	#imagen_boton1{
+		width: 150px;
+		height: 155px;
+		margin-top: 70px;
+	}
+	#imagen_boton2{
+		width: 165px;
+		height: 150px;
+		margin-top: 75px;
+	}
+	#imagen_boton3{
+		width: 90px;
+		height: 75px;
+		margin-top: 5px;
+	}
+	#imagen_boton4{
+		width: 75px;
+		height: 75px;
+		margin-top: 10px;
+	}
+	#imagen_boton5{
+		width: 125px;
+		height: 80px;
+		margin-top: 5px;
+	}
+	#imagen_boton6{
+		width: 115px;
+		height: 80px;
+	}
+	#imagen_boton7{
+		width: 95px;
+		height: 90px;
+		margin-top: -100px;
+		margin-right: 250px;
+	}
+	#foto_logo{
+		height: 59px; width: 204px;
+	}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+	
+
+/********************************************
+	Footer 
+*********************************************/
+	#section_footer {
+		width: 1262px;
+	}
+	#div4_footer, #iframe_footer {
+		width: 1260px;
+	}
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+
+/********************************************
+	Estilos css resolucion 1024 
+*********************************************/
+@media screen and (max-width: 1024px) {
+		body {
+			font-family: Arial;
+			font-size: 15px;
+			text-align: center;
+		}
+
+		.container_12{
+			background: #FFFFFF;
+			height: auto;
+			width: 1007px;
+			max-width: 1007px;
+			text-align: center;
+			margin-top: 20px;
+			margin-left: center;
+			margin-right: center;
+		}
+
+		header {
+			height: 150px;
+			background-color:gray;
+		}
+
+/******************************************************
+	Estilos botones grandes alargados hacia abajo 
+*******************************************************/
+		.grid_4 {
+			height: 512px;
+			/* margin: 12px 12px; */
+			margin-left: 7px;
+			margin-top: 12px;
+			width: 220px;
+		}
+
+		#div1 {
+			height: auto;
+		}
+/* ------------------------------------------- */
+
+/*****************************************************
+	Estilos conjunto de 4 botones 
+******************************************************/
+		#div2_boton1{
+			width: 196px;
+			background: #EA5B0C;
+			height: 357px;
+			margin-top: 5px;
+			margin-left: 11px;
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+		#div2_boton2{
+			width: 196px;
+			background: #1D71B8;
+			height: 357px;
+			margin-top: 5px;
+			margin-left: -2px;
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+		#div2_boton3{
+			width: 180px;
+			height: 172px;
+			background: #36A9E1;
+			margin-top: 10px;
+			margin-left: -2px;
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+		#div2_boton4{
+			width: 181px;
+			height: 172px;
+			background: #95C11F;
+			margin-top: 10px;
+			margin-left: -1px;
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+		#div2_boton5{
+			width: 183px;
+			height: 174px;
+			background: #1D71B8;
+			margin-top: 5px;
+			margin-left: 44px;
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+		#div2_boton6{
+			width: 180px;
+			height: 172px;
+			background: #B2B2B2;;
+			margin-top: 10px;
+			margin-left: 0px;
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+		#div2_boton7{
+			width: 369px;
+			background: #3AAA35;;
+			height: 174px;
+			margin-top: 5px;
+			margin-left: -2px;
+			margin-right: -36px;   
+			/* Sombreado y profundidad de los btn*/
+			box-shadow: 2px 2px 5px #999;
+			/* Bordes redondeados*/
+			border-radius: 7px 7px 7px 7px;
+			-moz-border-radius: 7px 7px 7px 7px;
+			-webkit-border-radius: 7px 7px 7px 7px;
+		}
+/* ------------------------------------------- */
+
+/*****************************************************
+	Estilos cada cuadro del conjunto de 4 botones 
+******************************************************/
+		.grid_2 {
+			background: red;
+			height: 172px;
+			width: 200px;
+		}
+/* ------------------------------------------- */
+
+		#div3 {
+			background-color: transparent;
+			margin:10px 18px;
+			height: auto;
+		}
+
+/****************************************************
+	Estilos footer 
+*****************************************************/          
+		#div4 {
+			background: #f2f2f2;
+			width: 1325px;
+		}
+/* ------------------------------------------- */
+
+		header,section {
+			margin: 10px 0;
+		}
+
+		footer {
+			height: 50px;
+			background-color: yellow;
+		}
+
+/***************************************************
+	Header 
+****************************************************/
+		.grid_1 {
+			background-color: transparent;
+			height: 59px;
+			width: 203px;
+			margin-right: 3px;
+			padding-left: 0px;
+			margin-left: 9px;
+		}
+
+		#he {
+			width: 775px;
+			max-width: 775px;
+			margin-left: 17px;
+			margin-right: -8px;
+		}
+/* ------------------------------------------- */
+
+/********************************************************
+	Estilos para todas las tablas de esta pagina 
+*********************************************************/
+		table {
+			border-collapse: separate;
+			border-spacing: 20px;
+		}
+/* ------------------------------------------- */
+
+/******************************************************
+	Estilos links del footer 
+*******************************************************/
+		#links_footer {
+			color: grey;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		#datos_img_usu{
+			padding-top: 15px;
+			padding-left: 70px;
+			width: 50px;
+		}
+		#imagen_boton1{
+			width: 150px;
+			height: 155px;
+			margin-top: 70px;
+		}
+		#imagen_boton2{
+			width: 150px;
+			height: 150px;
+			margin-top: 75px;
+		}
+		#imagen_boton3{
+			width: 75px;
+			height: 75px;
+			margin-top: 5px;
+		}
+		#imagen_boton4{
+			width: 75px;
+			height: 75px;
+			margin-top: 10px;
+		}
+		#imagen_boton5{
+			width: 125px;
+			height: 80px;
+			margin-top: 5px;
+		}
+		#imagen_boton6{
+			width: 100px;
+			height: 80px;
+		}
+		#imagen_boton7{
+			width: 95px;
+			height: 90px;
+			margin-top: -100px;
+			margin-right: 250px;
+		}
+		#foto_logo{
+			height: 59px; 
+			width: 204px;
+		}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/**********************************************
+	Footer 
+***********************************************/
+		#section_footer {
+			width: 1007px;
+		}
+		#div4_footer {
+			width: 1006px;
+		}
+		#iframe_footer {
+			width: 1005px;
+		}
+	}
+
+
+/**
+	
+*/
+<style type="text/css">
+	.menu {
+		position: absolute;
+		display: none;
+		background-color: transparent;
+		color: blue;
+		width: auto;
+		height: auto;
+		display: block;
+		z-index: 2;
+	}
+
+	a:hover + div {
+		display: block;
+	}
+
+
+	#div2_boton7 
+	.contacto_number {
+		font-size: 14pt;
+		font-weight: bold;
+		color: white;
+		position:absolute;
+		top:55%;
+		left:50%;
+	}
+
+	#div2_boton3
+	.msj_number{
+		font-size: 14pt;
+		font-weight: bold;
+		color: white;
+		position:absolute;
+		top:45%;
+		left:50%;
+	}
+
+	#div2_boton6
+	.msj_number2{
+		font-size: 14pt;
+		font-weight: bold;
+		color: white;
+		position:absolute;
+		top:46%;
+		left:50%;
+	}
+
+	#div2_boton5
+	.oferta_number{
+		font-size: 14pt;
+		font-weight: bold;
+		color: white;
+		position:absolute;
+		top:50%;
+		left:85%;
+	}
+
+	#div2_boton4
+	.producto_number{
+		font-size: 14pt;
+		font-weight: bold;
+		color: white;
+		position:absolute;
+		top:45%;
+		left:85%;
+	} 
+	.btn-group{
+		margin-top: -9px
+	}       
+
+/************************************************************
+	Nuevos estilos de las nuevas fuentes de las Valdosas
+*************************************************************/
+	@font-face {
+		font-family: Champagne;
+		font-style: normal;
+		font-weight: normal;
+		src: local("?"), url("assets/fonts/Champagne%20&%20Limousines.ttf") format("truetype");
+	}		
+
+	@font-face {
+		font-family: Champagne-Bold;
+		font-style: normal;
+		font-weight: normal;
+		src: local("?"), url("<?= base_url() ?>assets/fonts/Champagne-n-Limousines-Bold.ttf") format("truetype");
+	}
+
+	h2a{
+		font-family: Champagne;
+		font-size: 20px;
+		letter-spacing: ;
+		color: #ffffff;
+	}
+

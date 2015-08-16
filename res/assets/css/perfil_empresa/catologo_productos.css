@@ -1,0 +1,271 @@
+
+
+/* Seccion para las pestañas de la pagina */
+	#contenedor_pesta{
+		background: #FAFAFA;
+		margin-top: -35px;
+	}
+
+	.tab_active{
+		background: white;
+		text-align: center;
+		font-size: 17px;
+		font-weight: bold;
+		border-top: 3px solid #ff7f27;
+		line-height: 46px;
+	}
+
+	.tab_inactive{
+		text-align: center;
+		font-size: 17px;
+		font-weight: bold;
+		line-height: 46px;
+	}
+	a{
+		color: black;
+		text-decoration: none;
+		font-size: 13px;
+	}
+
+	a:hover, a:focus{
+		color: #ff7f27;
+		text-decoration: none;
+	}
+
+	#tab_buscqueda1{
+		margin: 5px auto -2px;
+	}
+	#input_buscador{
+		border: none;
+		height: 35px;
+		margin-bottom: 7px;
+	}
+	@media (min-width: 768px){
+		.navbar-form .form-control{
+			width: 220px;
+			font-size: 12px;
+		}
+	}
+	.navbar-form{
+		margin-bottom: 0px;
+	}
+
+	#btn_buscar1{
+		margin-top: -7px;
+		border: 0px;
+		border-radius: 0px;
+		height: 35px;
+		background: #36a9e1;
+		color: #fff;
+		width: 54px;
+	}
+
+	#logo_buscar{
+		font-size: 22px;
+		top: 1;
+		margin-right: 0px;
+	}
+	
+/* --------------------------------- */
+
+/* Categorias y subcategorias (Menu Lateral) */
+	#content_title{
+		height: 50px;
+		background: #646464;
+		text-align: center;
+	}
+
+	#text_title_categoria{
+		font-size: 20px;
+		color:white;
+		padding-top: 10px
+	}
+
+	.categorias_div{
+				border-bottom: 1px solid #f1f1f1;		
+	}
+
+	#text_subtitle{
+		font-size: 15px;
+		color:black;
+		margin-top: 15px;
+		font-weight: bold;
+	}
+
+.text_categoria{
+	font-size: 12px;
+}
+	#content_descrip_categoria{
+		font-size: 13px;
+		padding-left: 3px;
+		margin-left: 5px;
+		margin-top: 6px;
+		line-height: 13px;
+		margin-bottom: -6px;
+	}
+	.text_subcategoria{
+		margin-bottom: 0;
+	}
+/* --------------------------------- */
+
+/*contenedor general(cuerpo)*/
+#content_central{
+	border-left: 1px solid #f1f1f1;
+}
+#espacio{
+	height: 69px;
+}
+.boton_empresa{
+	width: 238px;
+	height: 45px;
+	font-size: 18px;
+	color: #FFF;
+}
+.contenedor_productos{
+	padding-top: 20px;
+}
+.background_imagen{
+	display: table;
+	border: 0;
+	border-radius: 3px;
+	position: relative;
+	width: 220px;  
+	height: 185px; 	
+}
+.center-vertical_imagen{
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.img_imagen
+{
+	max-width: 215px;
+	max-height: 140px;
+}
+
+
+#btn_contactar{
+	background: #ff7f27;
+	border-color: #ff7f27;
+	margin-right: 10px;
+}
+
+#btn_chat{
+	background: #3e8acc;
+	border-color: #3e8acc;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default{
+	color: #ffffff;
+}
+
+#content_text_info_contact{
+	margin-bottom: 6px;
+}
+
+#content_foto{
+	background: #FFF;
+	border-radius: 3px;
+	float: right;
+	margin-right: -31px;
+	margin-top: 8px;
+	padding-bottom: 12px;
+	padding-top: 12px;
+}
+
+.boton_agregar{
+	padding-top: 20px;
+}
+#foto_agregar_proveedor{
+	width: 76%;
+	margin-left: 12px;
+	display: none;
+}
+
+#titulo_empresa{
+	color:#36a9e1;
+	font-weight: bold;
+	margin-bottom: 1px;
+}
+
+#informacion_contacto{
+	color:#27348b;
+	font-weight: 600;
+	margin-left: 7px;
+	vertical-align: text-top;
+}
+
+.text_info{
+	line-height: 16px;
+	font-size: 11px;
+	color: #000000;
+	font-weight: bold;
+}
+.text_info_result{
+	font-size: 11px;
+	margin-left: -15px;
+	padding: 0;
+}
+/* --------------------------------- */
+.categorias_div{
+	border-bottom: 1px solid #f1f1f1;
+	padding: 0;
+	padding-bottom: 11px;
+	margin: -7px 0;
+}
+/*Seccion Productos*/
+.content_producto{
+	background: #FFFFFF;
+	border: 1px solid #ededed;
+	border-radius: 3px;
+	height: 270px;
+	margin-bottom: 40px;
+}
+
+
+
+.text_info_producto{
+	line-height: 10px;
+	margin-top: -7px;
+	font-size: 12px;
+}
+.name_producto{
+	font-size: 16px;
+	color: #ff7f27;
+	font-weight: bold;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	height: 43px;
+	line-height: 1em;
+	padding-top: 10px;
+}
+#select{
+	width: 22px;
+	height: 22px;
+	float: right;
+	margin-top: -18px;
+	margin-bottom: 8px;
+}
+/* --------------------------------- */
+
+/*seccion Paginador*/
+#text_paginador{
+	text-align: center;
+}
+
+#content_btn_paginador{
+	margin-top: 16px;
+	margin-bottom: 150px;
+}
+
+
+
+.pagination > li > a, .pagination > li > span{
+	margin-right: 6px;
+	color: #050505;
+}
+/* --------------------------------- */
+
+.col-md-12.no-solicitudes {
+    padding-bottom: 400px;
+}

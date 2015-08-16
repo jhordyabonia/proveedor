@@ -1,0 +1,202 @@
+.tabla_oportunidades .centrado{
+	text-align: center;
+}
+.tabla_oportunidades .dato{
+	color: #ff7e00;
+  	font-size: 12px;
+  	padding-bottom: 5px;
+}
+.tabla_oportunidades .dato1{
+	color:#006BE5;
+}
+.tabla_oportunidades .titulo{
+	background-color:#F8F8F8;
+}
+.tabla_oportunidades .sobre{
+	color: #FF7F27;
+	font-size: 28px;
+}
+.tabla_oportunidades a:hover, a:focus {
+  color: black;
+  text-decoration: none;
+}
+.tabla_oportunidades a{
+	font-size: 11px;
+  	font-weight: bold;
+}
+.tabla_oportunidades input[type="checkbox"] {
+  	margin-top: 40px;
+  	line-height: normal;
+  	width: 20px;
+  	height: 20px;
+}
+.tabla_oportunidades .fecha_solicitud{
+	margin-top:32px;
+}
+.tabla_oportunidades .titulo_solicitud{
+	margin-top: 30px;
+}
+.tabla_oportunidades .descripcion_solicitud{
+	margin-top: 20px;
+}
+.tabla_oportunidades .contenedor_estandar{
+	padding: 0;
+}
+.tabla_oportunidades .contenedor_estandar_2{
+	padding: 0;
+	height: 100px;
+  	background-color: #F8F8F8;
+}
+.tabla_oportunidades .ver_contacto{
+	margin-top: 33px;
+  	background-color: #FF7F27;
+  	border-color: #FF7F27;
+  	font-size: 16px;
+  	font-weight: bold;
+}
+.tabla_oportunidades .telefono{
+	margin-right: 5px;
+  	font-size: 20px;
+}
+.tabla_oportunidades .contenedor_tabla_estandar{
+	padding: 0;
+}
+.tabla_oportunidades .label_dato{
+	width: 80px;
+	font-size: 12px;
+	padding-bottom: 5px;
+}
+.tabla_oportunidades .label_dato2{
+	width: 136px;
+  	font-size: 12px;
+}
+#popup_info .modal-header{
+	border-bottom:0!important;
+}
+#popup_info .contenido_popup{
+	margin-bottom: 15px;
+}
+#popup_info .contenedor_candado{
+	text-align: center;
+}
+#popup_info .ico_candado{
+	color: #FF7F27;
+  	font-size: 160px;
+}
+#popup_info .contenido_exclusivo{
+	color:#7F7F7F;
+	text-align: center;
+	font-size: 20px;
+  	font-weight: bold;
+}
+#popup_info .empresas_platino{
+	text-align: center;
+  	font-size: 20px;
+  	font-weight: bold;
+}
+#popup_info .img_platino{
+	width: 75%;
+  	margin-top: -30px;
+}
+#popup_info .background_img{
+	display: table;
+  	border: 0;
+  	border-radius: 3px;
+  	position: relative;
+  	width: 175px;
+  	margin-left: 22px;
+}
+#popup_info .center-vertical_img {
+  	display: table-cell;
+  	text-align: center;
+}
+#popup_info .btn_acceder{
+	background-color: #3E8ACC;
+  	border-color: #3E8ACC;
+  	font-size: 16px;
+  	font-weight: bold;
+  	margin-left: 182px;
+  	width: 200px;
+  	height: 45px;
+}
+.contenedor_oportunidades .contenedor_select_categoria{
+	margin-bottom: 10px;
+  	padding-left: 0;
+}
+.contenedor_oportunidades .select_categorias{
+	color: #7F7F7F;
+	font-size: 28px;
+  	font-weight: bold;
+  	border: 2px solid #F8F8F8;
+}
+.contenedor_oportunidades .item_select_categoria{
+	font-size: 12px;
+	color: #7F7F7F;
+}
+.contenedor_oportunidades a:hover, a:focus {
+  color: white;
+  text-decoration: none;
+}
+.contenedor_oportunidades .contacto{
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+}
+.contenedor_oportunidades .contactar{
+	height: 50px;
+	text-align: center;
+	background: #FF7F27;
+	padding-top: 9px;
+	border-radius: 6px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+.contenedor_oportunidades .nuevos_mensajes{
+	background-color:white;
+	color:black;
+	border-radius: 0px;
+	border-color: lightgray;
+	height: 42px;
+}
+.contenedor_oportunidades .total_oportunidades{
+	text-align: center;
+  	font-size: 16px;
+  	padding-top: 20px;
+  	font-weight: bold;
+  	color:#7F7F7F;
+  	margin-bottom: 0;
+}
+.contenedor_oportunidades .numero_oportunidades{
+	text-align: center;
+	font-size: 30px;
+}
+.contenedor_oportunidades .nombre_categoria{
+	color: #7F7F7F;
+	font-size: 28px;
+  	font-weight: bold;
+}
+.contenedor_oportunidades .titulo_oportunidades{
+	color: #ff7e00;
+	font-size: 38px;
+}
+.contenedor_oportunidades .texto_oportunidades{
+	text-align: center;
+  	font-size: 13px;
+  	color: #7F7F7F;
+  	padding-bottom: 10px;
+}
+.contenedor_oportunidades{
+	margin-top: 80px;
+}
+.contenedor_oportunidades .nuevas_oportunidades{
+	border: 2px solid #F8F8F8;
+  	width: 217px;
+  	height: 40px;
+  	padding-top: 7px;
+}
+.contenedor_oportunidades .badge{
+	background-color: #FF7F27;
+}
+.contenedor_oportunidades .contenedor_titulos{
+	padding-left: 0;
+}

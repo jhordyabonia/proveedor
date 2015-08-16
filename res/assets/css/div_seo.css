@@ -1,0 +1,43 @@
+.texto{
+	padding-left: 10px;
+}
+.fondo_color{
+	background: #F7F7F7!important;
+}
+.texto_venta{
+color: #7F7F7F;
+font-size: 20px;
+line-height: 41px;
+font-family: arial;
+margin-top: -7px;
+ 
+}
+
+.texto_venta2{
+color: #7F7F7F;
+font-size: 11px;
+line-height: 20px;
+font-family: arial;
+margin-top: -16px;
+}
+
+.texto_resultado{
+color: #7F7F7F;
+font-size: 12px;
+line-height: 20px;
+font-family: arial;
+padding-top: 18px;
+}
+
+.texto_resultado_2{
+color: #000000;
+font-size: 17px;
+font-weight: 600;
+line-height: 77px;
+font-family: arial
+}
+
+.btn_solicitud{
+padding-left: 100px;
+padding-bottom: 11px;
+}

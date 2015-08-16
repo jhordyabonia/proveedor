@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://sm.proveedor.com.co/';
+$config['base_url']	= 'http://192.168.33.10/';
 
 /*
 |--------------------------------------------------------------------------

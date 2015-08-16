@@ -1,0 +1,53 @@
+#content_general{
+	background: rgb(249, 249, 249);
+	height: auto;
+	max-width: 100%;
+	margin-bottom: 5px;
+}
+#sub_content_general
+{
+	max-width: 100%;
+}
+#texto_bienvenido{
+	font-size: 13px;
+	color: rgb(156, 156, 156);
+	/*margin-left: 13px;*/
+	margin-top: 12px;
+}
+.enlace_top{
+	color:black;
+	font-size:12px;
+	/*margin-left: -12px;*/
+}
+.contenedor_top{
+	border-right: 2px solid #D9D9D9;
+	height: 23px;
+}
+.contenedor_gral{
+	margin-top: 5px;
+	float: right;
+	/*margin-right: 6px;*/
+}
+.ingresar_ico{
+	/*padding-right: 3px;*/
+}
+
+@media (max-width: 991px) {
+	.contenedor_top{
+		border-right: 0;
+		height: 23px;
+	}
+	.bor_botoom{
+		background: #fff;
+		height: auto;
+		margin-bottom: 5px;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	#content_general{
+	background: #fff;
+	height: auto;
+	margin-bottom: 5px;
+}
+}
+
+

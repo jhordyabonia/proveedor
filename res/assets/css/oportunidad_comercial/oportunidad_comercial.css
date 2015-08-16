@@ -1,0 +1,395 @@
+.oportunidad_comercial{
+	border: 15px solid #f9f9f9;
+}
+.oportunidad_comercial .contenedor_imagen{
+	padding-right: 0;
+	padding-top: 20px;
+	padding-left: 0;
+}
+.oportunidad_comercial .background_imagen{
+	display: table;
+	border: 0;
+	border-radius: 3px;
+	position: relative;
+	width: 316px;  
+	height: 325px;
+	margin-top: -45px;
+	padding-top: 20px;
+}
+.oportunidad_comercial .center-vertical_imagen{
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.oportunidad_comercial .img_imagen{
+	max-width: 316px;
+	max-height: 160px;
+}
+.oportunidad_comercial .imagen{
+	border: 1px solid #F9F9F9;
+}
+.oportunidad_comercial .mini{
+	padding: 0;
+	width: 55px;
+}
+.oportunidad_comercial .miniaturas{
+	padding-left: 60px;
+}
+.oportunidad_comercial .texto_mini{
+	font-size: 9px;
+	color: #7F7F7F;
+}
+.oportunidad_comercial .imag{
+	width: 55px;
+	height: 55px;
+}
+.oportunidad_comercial .contenedor_descripciones{
+	padding-left: 0;
+	padding-right: 0;
+}
+.oportunidad_comercial .nom_solicitud{
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 20px;
+	border-bottom: 1px solid #F4F4F4;
+}
+.oportunidad_comercial .content_solicitud{
+	padding-top: 25px;
+}
+.oportunidad_comercial .cantidad_requerida{
+	font-weight: bold;
+}
+.oportunidad_comercial .max_precio{
+	font-weight: bold;
+}
+.oportunidad_comercial .forma_pago{
+	font-weight: bold;
+}
+.oportunidad_comercial .lugar_entrega{
+	font-weight: bold;
+}
+.oportunidad_comercial .fecha_publi{
+	font-weight: bold;
+}
+.oportunidad_comercial .cantidad{
+	color: #FF7E26;
+	font-weight: bold;
+	padding-top: 11px;
+}
+.oportunidad_comercial .icono_precio{
+	color: #FF7E26;
+	padding-top: 11px;
+}
+.oportunidad_comercial .precio_max{
+	color: #FF7E26;
+	padding-top: 1px;
+}
+.oportunidad_comercial .cant{
+	color:black;
+}
+.oportunidad_comercial .tipo_pago{
+	height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 0px;
+}
+.oportunidad_comercial .sitio{
+	padding-top: 15px;
+	font-size: 11px;
+}
+.oportunidad_comercial .fecha_p{
+	padding-top: 11px;
+}
+.oportunidad_comercial .contenedor_botones1{
+	padding-top: 30px;
+}
+.oportunidad_comercial .contactar{
+	width: 260px;
+	height: 50px;
+	text-align: center;
+	background: #FF7F27;
+	padding-top: 9px;
+	border-radius: 6px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+.oportunidad_comercial .contacto{
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+}
+.oportunidad_comercial .chatear{
+	width: 260px;
+	height: 50px;
+	text-align: center;
+	text-decoration: none;
+	background: #00A2E8;
+	padding-top: 9px;
+	border-radius: 6px;
+}
+.oportunidad_comercial .chat{
+	color: white;
+	font-size: 22px;
+	text-decoration: none;
+}
+.oportunidad_comercial .sobre{
+	font-size: 27px;
+}
+.oportunidad_comercial .globo{
+	font-size: 26px;
+}
+.oportunidad_comercial .contenedor_descrip_solicitud{
+	background: #f9f9f9;
+	width: 190px;
+	height: 40px;
+	text-align: center;
+	padding-top: 11px;
+	margin-top: 1px;
+}
+.oportunidad_comercial .nombre_empresa{
+	padding-left: 0;
+	padding-right: 0;
+	border-bottom: 1px solid #F4F4F4;
+}
+.oportunidad_comercial .nom_empresa{
+	font-size: 19px;
+	font-weight: bold;
+	padding-top: 20px;
+	color: #00A2E8;
+}
+.oportunidad_comercial .info_contacto{
+	padding-top: 15px;
+	padding-left: 0;
+	padding-right: 0;
+	border-bottom: 1px solid #F4F4F4;
+}
+.oportunidad_comercial .info{
+	color: #0066DD;
+	font-size: 15px;
+	margin-bottom: 4px;
+}
+.oportunidad_comercial .carnet{
+	color: black;
+	font-size: 14px;
+}
+.oportunidad_comercial .tipo_empresa{
+	font-size: 11px;
+	font-weight: bold;
+}
+.oportunidad_comercial .ubicacion{
+	font-size: 11px;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+.oportunidad_comercial .tipo{
+	font-weight: normal;
+}
+.oportunidad_comercial .ubica{
+	font-weight: normal;
+}
+.oportunidad_comercial .contenedor_catalogo{
+	padding-top: 15px;
+	padding-left: 0;
+	padding-right: 0;
+	border-bottom: 1px solid #F4F4F4;
+}
+.oportunidad_comercial .ico_catalogo{
+	font-size: 24px;
+	padding-right: 8px;
+	color: black;
+}
+.oportunidad_comercial .ico_solicitados{
+	font-size: 24px;
+	padding-right: 8px;
+	color: black;
+	margin-left: -2px;
+}
+.oportunidad_comercial .catalogo{
+	font-size: 13px;
+	color: #7F7F7F;
+}
+.oportunidad_comercial .productos{
+	font-size: 12px;
+}
+.oportunidad_comercial .llamada{
+	padding-top: 40px;
+	padding-left: 0;
+	padding-right: 0;
+}
+.oportunidad_comercial .llamar{
+	font-size: 18px;
+	text-decoration: none;
+	color: white;
+}
+.oportunidad_comercial .boton_llamada{
+	padding-left: 0;
+	padding-right: 0;
+	background: #00A2E8;
+	height: 40px;
+	text-align: center;
+	padding-top: 7px;
+	border-radius: 5px;
+}
+.oportunidad_comercial .ico_llamar{
+	font-size: 30px;
+	padding-top: 4px;
+}
+.oportunidad_comercial .contenedor_empresa{
+	border-left: 15px solid #f9f9f9;
+	padding-bottom: 40px;
+	padding-right: 0;
+}
+/*verificación*/
+.oportunidad_comercial .verificada{
+	margin-top: -10px;
+}
+.oportunidad_comercial .imagen_verificada{
+	width: 30px;
+  	max-width: 30px;
+  	margin-left: 30px;
+  	margin-top: 5px;
+}
+.oportunidad_comercial .texto_verificada{
+	font-size: 12px;
+  	color: #1D71B8;
+  	font-weight: bold;
+  	padding-left: 23px;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+}
+/*--------------------------------------*/
+.oportunidad_comercial .content_titulo_membresia_list{
+	width: initial;
+	margin-bottom: -12px;
+}
+.oportunidad_comercial .texto_platino_list{
+	font-size: 12px;
+	color: #1D71B8;
+	font-weight: bold;
+  	margin-top: 12px;
+  	padding-left: 5px;
+}
+.oportunidad_comercial .imagen_platino_list{
+    width: 50px;
+  	margin-left: 5px;
+  	max-width: 50px;
+  	margin-top: -6px;
+  	margin-bottom: 20px;
+}
+.oportunidad_comercial .texto_verificada_list{
+    font-size: 12px;
+    color: #1D71B8;
+    font-weight: bold;
+    float: right;
+    padding-left: 0;
+    margin-top: 10px;
+    padding-right: 109px;
+}
+.oportunidad_comercial .imagen_verificada_list{
+    width: 17%;
+    margin-left: 25px;
+    max-width: 16%;
+    margin-top: 1px;
+    margin-bottom: 25px;
+}
+.oportunidad_comercial .imagen_estandar_list{
+    width: 50px;
+  	max-width: 50px;
+  	margin-top: -5px;
+  	margin-bottom: 20px;
+  	margin-left: 5px;
+}
+.oportunidad_comercial .texto_membresiaEstandar_list{
+	font-size: 12px;
+	color: #7F7F7F;
+	font-weight: bold;
+	margin-top: 10px;
+}
+.contenedor_tabs{
+	padding-top: 40px;
+	padding-left: 0;
+	padding-right: 0;
+	border: 15px solid #f9f9f9;
+}
+.contenedor_tabs .pestanas{
+	padding-left: 60px;
+}
+.contenedor_tabs .content_pestanas{
+	padding-left: 35px;
+	padding-top: 27px;
+}
+.contenedor_tabs .texto{
+	padding-left: 10px;
+}
+.contenedor_tabs .texto2{
+	padding-left: 20px;
+}
+.contenedor_publica_producto{
+	padding-top: 200px;
+}
+.contenedor_publica_producto .publicar_prod{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	width: 270px !important;
+	padding-top: 10px;
+}
+.contenedor_publica_producto .clientes{
+	margin-bottom: 0;
+	font-weight: bold;
+	font-size: 17px;
+}
+.contenedor_publica_producto .publicar{
+	font-weight: bold;
+	font-size: 17px;
+	color: #FF7F27;
+}
+.contenedor_publica_producto .contenedor_publicar{
+	padding-top: 7px;
+}
+.contenedor_botones{
+	padding-top: 30px;
+	padding-left: 0!important;
+	padding-right: 0!important;
+	border: 15px solid #f9f9f9;
+	border-bottom: 145px solid #f9f9f9;
+	padding-bottom: 25px;
+}
+.contenedor_botones .contactar{
+	height: 50px;
+	text-align: center;
+	background: #FF7F27;
+	padding-top: 9px;
+	border-radius: 6px;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+.contenedor_botones .contacto{
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+}
+.contenedor_botones .chatear{
+	height: 50px;
+	text-align: center;
+	text-decoration: none;
+	background: #00A2E8;
+	padding-top: 9px;
+	border-radius: 6px;
+}
+.contenedor_botones .chat{
+	color: white;
+	font-size: 22px;
+	text-decoration: none;
+}
+.contenedor_botones .sobre{
+	font-size: 27px;
+}
+.contenedor_botones .globo{
+	font-size: 26px;
+}
+.nombre_empresa .style-glyphicon-briefcase{
+	font-size: 28px;
+	left: 31px;
+	margin-bottom: 22px;
+
+}

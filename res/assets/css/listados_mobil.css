@@ -1,0 +1,32 @@
+.listados_mobil .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	border: 0;
+	margin-right: 0;
+}
+.active{
+	border-bottom: 2px solid #fff;
+}
+
+.listados_mobil li:hover{
+	color: #890;
+}
+
+.nav-tabs{
+	border-bottom: 5px solid #00a2e8;
+}
+
+.listados_mobil .nav > li > a:hover, .nav > li > a:focus{
+	border-radius: 0;
+	margin-right: 0;
+}
+
+.icono_tab{
+	color: #ff7f27;
+	font-size: 22px;
+}
+
+.texto_tab{
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	color: #111;
+}

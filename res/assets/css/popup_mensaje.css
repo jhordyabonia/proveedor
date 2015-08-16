@@ -1,0 +1,90 @@
+.mensaje .popup_central{
+	 margin: 0px auto 30px;
+	 background: white;
+	 height: 455px;
+	 border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.mensaje .encabezado{
+	background: #1D71B8;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.mensaje .cerrar{
+	color: black;
+}
+.mensaje .icono_mensaje{
+	color: white;
+	margin-right: 15px;
+}
+.mensaje .input-group{
+	margin-bottom: 10px;
+}
+.mensaje .titulo_popup{
+	font-size: 32px;
+	color: white;
+	font-weight: bold;
+}
+.mensaje .label_modal{
+	display: flex;
+	color:#818181;
+}
+.mensaje .quien_envia{
+	margin-top: -20px;
+}
+.mensaje .boton_enviar{
+	float: center;
+	border-color: transparent;
+}
+.mensaje .boton_enviar{
+	background: #FF7F27;
+	color: white;
+	width: 159px;
+	height: 44px;
+	border-radius: 5px;
+	margin-top: 8px;
+	font-size: 18px;
+}
+.mensaje .clip_icono{
+	margin-right: 10px;
+	font-size: 18px;
+}
+.mensaje .clip{
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+.mensaje .caja_mensaje{
+	border: 1px solid #CCCCCC;
+	resize: none;
+	font-family: Arial;
+	border-radius: 4px;
+}
+.mensaje .label_modal_email{
+	font-weight: lighter;
+	display: flex;
+	color:#818181;
+	font-weight: bold;
+}
+.mensaje .fileUpload {
+	position: relative;
+	overflow: hidden;
+	background: #EEEEEE;
+	color: #818181;
+	border-color: #CCCCCC;
+}
+.mensaje .fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	float:left;
+}
+.mensaje #adjunto{
+	height: 34px;
+
+}

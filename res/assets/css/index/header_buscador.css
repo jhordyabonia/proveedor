@@ -1,0 +1,796 @@
+/* estilos css index: logo y buscador */
+.header_logo_buscador { margin: 0em 0 1em 0; }
+.categorias_buscador { margin-top: 5px; }
+
+.row_categorias { height: 52px; text-align: center; }
+.row_categorias .btn-group button { border: none; }
+.row_categorias .btn_categorias { padding: 0; }
+.div_row_categorias { padding-left: 0; padding-right: 0; }
+.div_row_index { padding-left: 0; padding-right: 0;text-align: center;margin-bottom: -18px;}
+
+.form_buscador *.form-control, .form_botones *, 
+.form_buscador .div_c_elem_buscador img, .form_buscador .btn_busqueda, 
+.row_categorias .btn-group button { 
+  height: 48px; 
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+#borde_lateral
+{
+  padding-right: 10px; padding-left: 10px;
+}
+.form_botones .btn_cotizacion_producto{ 
+  background-color: #00a2e8;  
+  width: 100%;  
+  height: 52px;  
+  border-radius: 3px;
+}
+.form_botones .btn_cotizacion_producto_md{ 
+  background-color: #00a2e8;  
+  width: 182px;  
+  height: 52px;  
+  border-radius: 3px;
+}
+.form_botones .btn_formulario_cotizaciones{ 
+  background-color: #ff8100;  
+  width: 100%;  
+  height: 52px;  
+  border-radius: 3px;
+}
+.form_botones .btn_ver_categorias{ 
+  background-color: #00a2e8;  
+  width: 100%;  
+  height: 52px;  
+  border-radius: 3px;
+}
+
+.form_botones .ico_cotizacion{font-size: 33px; float: left; padding-top: 2px; padding-left: 8px;}
+.form_botones .ico_producto {
+    font-size: 30px;
+    padding-bottom: 30px;
+    margin-right: -5px;
+    height: 0;
+    margin-left: 11px;
+}
+.form_botones .texto_ver_subcategorias{
+  font-size: 20px;
+  font-family: sans-serif;
+  line-height: 2em;
+  display: inline-block;
+  padding-left: 22px;
+  height: 0;
+  margin: 0;
+}
+.form_botones .texto_cotizacion{
+  font-size: 15px;
+  font-family: sans-serif;
+  line-height: 2em;
+  display: inline-block;
+  padding-left: 16px;
+  height: 0;
+  margin: 0;
+  font-weight: bold;
+}
+.form_botones .cont_pu_pro{
+  margin-top: 12px; 
+  padding: 0;
+}
+
+.form_botones .contenedor_regi_gratis{
+  margin-top: 12px; 
+  padding: 0;
+}
+.form_botones .contenedor_publicar_producto{ padding: 0; margin-top: 16px;}
+.form_botones .contenedor_publicar_cotizacion{ /*padding-left: 10px;*/}
+.form_botones .contenedor_ver_categorias{
+  padding: 11px 0px 0px 0px;
+}
+.div_c_elem_buscador_select { 
+  border-right: 2px solid #dddddd; 
+  text-align: center;
+  height: 48px;
+}
+
+.form_buscador { border: 2px solid #818181; border-radius: 4px; }
+.form_buscador .div_c_elem_buscador { padding: 0; }
+.form_buscador .input_busqueda { font-size: 16px; }
+
+.form_botones { text-align: center; padding:0;}
+.form_botones .col_botones { margin-right: 1em; }
+.form_botones img { height: auto; float: left; }
+.form_botones img.img1 { margin: 0 0em 0 0.7em; }
+.form_botones img.img2 { margin: 0 1em 0 0.5em; }
+.div_c_elem_buscador_select select { font-size: 18px; color: #6e6e6e; }
+.form_buscador select:hover { cursor: pointer; }
+.form_buscador .input-group, .form_buscador .div_c_elem_buscador .btn-group,
+.form_buscador .div_c_elem_buscador .btn-group button { 
+  width: 100%; 
+}
+.form_buscador .btn_busqueda { 
+  padding: 0; 
+  background: #ff8100;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+/* a partir de 992px MD */
+@media screen and (min-width: 992px) {
+  .div_c_elem_buscador_select { width: 20%; padding: 0; }
+  .div_c_elem_buscador_input  { width: 71%; padding: 0; }
+  .div_c_elem_buscador_submit { width: 9%; padding: 0; }
+}
+@media screen and (max-width: 1260px) {
+  .div_c_elem_buscador_select #select_buscador { font-size: 16px; }
+  .form_botones img { float: none; }
+  .form_botones img.img1, .form_botones img.img2 { margin: 0; }
+}
+@media screen and (max-width: 1136px) {
+  .div_c_elem_buscador_select #select_buscador { font-size: 13px; }
+  .form_botones img.img1, .form_botones img.img2 { margin: 0 0 0.3em 0; }
+}
+@media screen and (max-width: 991px) {
+  .form_botones img.img1, .form_botones img.img2 { margin: 0.3em 0 0 0; }
+}
+
+#divmostoc{ 
+  display:none;
+  margin-bottom: 15px;
+}
+#contenedor_subcategorias{
+  padding-bottom: 15px;
+}
+#mostrarocultar{
+  background: transparent;
+  margin-top: -23px;
+  padding-left: 25px;
+  outline: none;
+  box-shadow: none;
+}
+#mostrarocultar_index{
+  background: transparent;
+  padding-top: 4px;
+  outline: none;
+  box-shadow: none;
+  margin-bottom: 5px !important;
+}
+.cont_titulo_categorias_slide .ico_lista_slide{
+  font-size: 30px!important;
+}
+.titulo_categorias_slide{
+  text-align: center;
+  color: #FF7F27;
+  font-size: 38px;
+}
+.cont_titulo_categorias_slide .contenedor_select_categoria{
+  margin-bottom: 10px;
+  padding-left: 0;
+  text-align: center;
+}
+.cont_titulo_categorias_slide .select_categorias{
+  color: #FF7F27;
+  font-size: 28px;
+  font-weight: bold;
+  border:0;
+  -webkit-appearance:none;
+  padding-right: 15px;
+  background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right center;
+}
+.cont_titulo_categorias_slide .item_select_categoria{
+  font-size: 22px;
+  color: #7F7F7F;
+}
+.cont_titulo_categorias_slide{
+  padding-top: 10px;
+}
+.cont_categorias_slide{
+  padding-top: 2px;
+  padding-right: 0;
+}
+.enlace_categoria_slide{
+  text-decoration: none;
+  color: #7F7F7F;
+}
+.ico_flecha_slide{
+  padding-left: 10px;
+  font-size: 16px!important;
+  font-weight: bold!important;
+  color: #CFCECE;
+}
+
+#fuente_menu{
+  color: #818181;
+  font-size: 20px;
+  width: 20px;
+  padding-left: 8px;
+}
+.titulo_categ_boton{
+  font-size: 12px;
+  font-weight: bold;
+  color: #FF7F27;
+  padding-left: 9px;
+  padding-top: 10px;
+}
+
+.titulo_index_boton{
+  font-size: 12px;
+  font-weight: bold;
+  color: #FF7F27;
+  display: inline-block;
+  margin-left: -10px;
+}
+
+.img-res{
+  max-width: 70%;
+}
+
+#logo_buscar{
+  font-size: 21px;
+}
+
+#icono_cerrar{
+  float: right;
+  margin-top: -28px;
+  font-size: 23px;
+}
+#icono_flechita{
+  color: #818181;
+  font-size: 15px;
+  margin-top: 19px;
+}
+.caja_logo{
+  width: 318px;
+  max-width: 318px;
+}
+.caja_logo2{
+  padding: 0;
+  margin-top: -12px;
+  margin-bottom: 5px;
+
+}
+#contenedor-solicitudes{
+  text-align: center; 
+  margin-top: 40px;
+}
+.btn-solicitudes{
+  background-color: #ff8100;
+  color: #fff;
+  width: 636px;
+  height: 60px;
+}
+.btn-solicitudes:hover{
+  color: #fff;
+}
+.btn-text-soli{
+  font-size: 18px;
+  display: inline-block !important;
+}
+.sticono-soli{
+  font-size: 34px !important;
+  display: inline-block !important;
+  margin-right: 27px;
+  margin-top: 6px;
+}
+@media (max-width: 992px) {
+  .btn-solicitudes{
+  background-color: #ff8100;
+  color: #fff;
+  width: 100%;
+  height: 60px;
+}
+
+@media (max-width: 480px) {
+  .btn-solicitudes{
+  background-color: #ff8100;
+  color: #fff;
+  width: 100%;
+  height: auto;
+}
+.btn-text-soli{
+  font-size: 13px;
+  display: inline-block !important;
+}
+.sticono-soli{
+  font-size: 22px !important;
+  display: inline-block !important;
+  margin-right: 0px;
+  margin-top: 6px;
+}
+}
+
+@media (max-width: 991px) {
+    .style_cate_h2{
+    color: #ff8100 !important;
+    font-size: 24px !important;
+    text-align: center !important;
+    margin-bottom: -6px !important; 
+    font-weight: bold !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn-solicitudes{
+  background-color: #ff8100;
+  color: #fff;
+  width: 100%;
+  height: auto;
+}
+.btn-text-soli{
+  font-size: 11px;
+  display: inline-block !important;
+}
+.sticono-soli{
+  font-size: 22px !important;
+  display: inline-block !important;
+  margin-right: 0px;
+  margin-top: 6px;
+}
+}
+
+@media (max-width: 299px) {
+  .btn-solicitudes{
+  background-color: #ff8100;
+  color: #fff;
+  width: 100%;
+  height: auto;
+}
+.btn-text-soli{
+  font-size: 11px;
+  display: inline-block !important;
+}
+.sticono-soli{
+  font-size: 22px !important;
+  display: inline-block !important;
+  margin-right: 0px;
+  margin-top: 6px;
+}
+}
+
+
+
+
+
+
+/* Estilo Para El Material Desing*/
+/* form starting stylings ------------------------------- */
+input.input-style{
+  font-size: 16px;
+  padding: 10px 10px 5px 0px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:16px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:300px; }
+.bar:before, .bar:after {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1d71b8; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left: 85%;
+}
+.bar:after {
+  right: -47.5px;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:570px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.5s ease;
+  -moz-animation:inputHighlighter 0.5s ease;
+  animation:inputHighlighter 0.5s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+
+/*---------------------------------------------*/
+/* Select con Material Design*/
+select.input-style{
+  font-size: 16px;
+  padding: 10px 10px 5px 0px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+select:focus    { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:16px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:300px; }
+.bar:before, .bar:after {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1d71b8; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left: 35%;
+}
+.bar:after {
+  right: -49.5px;
+}
+
+/* active state */
+select:focus ~ .bar:before, select:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:570px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+select:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.5s ease;
+  -moz-animation:inputHighlighter 0.5s ease;
+  animation:inputHighlighter 0.5s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+
+/* BOTONES CON MATERIAL DESIGN*/
+/* Button */
+.button {
+display: inline-block;
+position: relative;
+width: 120px;
+height: 32px;
+line-height: 32px;
+border-radius: 2px;
+font-size: 0.9em;
+background-color: #fff;
+color: #646464;
+}
+
+.button > paper-ripple {
+border-radius: 2px;
+overflow: hidden;
+}
+
+.button.narrow{
+width: 60px;
+}
+
+.button.blue{
+background-color: #4285f4;
+color: #fff;
+}
+
+.button.raised{
+transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+transition-delay: 0.2s;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.button.raised:active{
+box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+transition-delay: 0s;
+}
+/* ASASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+/*---------------------------------------------*/
+/* texarea con Material Design*/
+.group        { 
+  position:relative; 
+}
+textarea.input-style{
+  font-size: 16px;
+  padding: 10px 10px 5px 0px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+textarea:focus    { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:16px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:300px; }
+.bar:before, .bar:after {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1d71b8; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left: 35%;
+}
+.bar:after {
+  right: -49.5px;
+}
+
+/* active state */
+textarea:focus ~ .bar:before, textarea:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:570px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+textarea:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.5s ease;
+  -moz-animation:inputHighlighter 0.5s ease;
+  animation:inputHighlighter 0.5s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#1d71b8; }
+  to  { width:0; background:transparent; }
+}
+
+.contenedor_categoria_xs{
+  color: #ff8100;
+}
+.icono_catelist_xs{
+  margin-right: 9px;
+}
+.icono_catechevron_xs{
+  margin-left: 9px;
+}
+.style_cate_h2{
+  font-size: 21px;
+  text-align: center;
+  margin-bottom: -4px;
+}
+.icono_flechita{
+  margin-top: -1px !important;
+  color: #ff8100;
+  font-size: 22px !important;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .style_cate_h2{
+  color: #ff8100;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: -6px; 
+  font-weight: bold;
+}}
+
+@media (min-width: 480px) {
+  .style_cate_h2{
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: -4px;
+  }
+}
+
+@media (max-width: 320px) {
+  .style_cate_h2{
+  color: #ff8100;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: -6px; 
+  font-weight: bold;
+}
+}
+
+@media (max-width: 299px) {
+  .icono_flechita{
+  margin-top: 12px;
+  color: #ff8100;
+  font-size: 22px !important;
+  margin-left: -6px !important;
+  cursor: pointer;
+
+  }
+}
+
+@media (max-width: 299px) {
+  .texto_cotizacion{
+    font-size: 13px !important;
+    font-family: sans-serif !important;
+    line-height: 2em !important;
+    display: inline-block !important;
+    padding-left: 16px !important;
+    height: 0 !important;
+    margin: 0 !important;
+  }
+  .texto_ver_subcategorias{
+    font-size: 16px !important;
+    font-family: sans-serif;
+    line-height: 2em;
+    display: inline-block;
+    padding-left: 22px;
+    height: 0;
+    margin: 0;
+  }
+  .form_botones .ico_producto{
+    font-size: 24px;
+    padding-bottom: 24px;
+    height: 0;
+  }
+}
+
+@media (max-width: 468px) {
+  .texto_cotizacion{
+    font-size: 16px;
+    font-family: sans-serif;
+    line-height: 2em;
+    display: inline-block;
+    padding-left: 16px;
+    height: 0;
+    margin: 0;
+  }
+  .texto_ver_subcategorias{
+    font-size: 16px !important;
+    font-family: sans-serif;
+    margin-top: 6px !important;
+    line-height: 2em;
+    display: inline-block;
+    padding-left: 22px;
+    height: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .div_c_elem_buscador_select { 
+    text-align: center;
+    border-right: 2px solid #ccc;
+    height: 22px;
+    margin-top: 13px;
+  }
+}
+
+.separador{  
+  position: absolute;
+  top: 12px;
+  right: 1px;
+  border-right: 2px solid #ccc;
+}
+
+.cont_pu_pro{
+  margin-top: 12px; 
+}
+
+.contenedor_regi_gratis{
+  margin-top: 12px;
+}
+
+.contenedor_regi_gratis .ico_gratis{
+    font-size: 30px;
+    margin-left: -17px;
+    margin-top: 5px;
+}
+
+.form_botones .ico_pub_pro {
+  font-size: 30px;
+  padding-bottom: 30px;
+  height: 0;
+  margin-right: -6px;
+}
+

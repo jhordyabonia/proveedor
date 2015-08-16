@@ -1,0 +1,499 @@
+/*Estilo del boton de solicitar ahora!*/
+.btn-solicitarAhora{
+  font-size: 15px;
+  background-color: #ff8100;
+  color: #fff !important;
+  width: 179px;
+  height: 54px;
+  line-height: 2.8;
+  margin-bottom: 20px;
+  font-weight: bold;
+
+}
+/* Estilo del boton formulario solicitudes */
+.btn-solicitar{
+	background-color: #ff8100;
+	text-decoration: none;
+	color: #fff;
+	font-size: 24px;
+	width: 100%;
+	margin-bottom: 9px;
+	border-radius: 0;
+}
+.btn-solicitar:hover{
+	color: #fff;
+}
+.boton_solicitudes{
+	text-align: center;
+  padding: 0px 15px 0px 15px;
+  margin-top: 10px;
+}
+.icono-solicitar{
+	font-size: 33px !important;
+	margin-top: 3px !important;
+  margin-right: 15px !important;
+}
+/* Contenido del texto con la palabra "requerido" */
+.contenido-requerido{
+	text-align: right;
+	width: 100%;
+	padding-right: 12px;
+	padding-top: 5px;
+}
+/* Estilo del formulario de solicitudes */
+.form-style{
+  margin: 10px 357px 80px 357px;
+  background-color: #fff;
+  width: 100%;
+}
+.boton-flotante{
+	color: #ff8100;
+	float: right;
+	font-size: 55px !important;
+	cursor: pointer;
+  padding-right: 143px;
+}
+.boton-flotante-mobil{
+	color: #ff8100;
+	font-size: 55px !important;
+	cursor: pointer;
+	margin-bottom: 12px;
+  margin-top: 20px;
+}
+/* Estilo del padding derecho al lado del asterisco obligatorio*/
+.style-right{
+padding-right:0;
+}
+/* Estilo de los iconos usados al aldo izquierdo del formulario*/
+.iconos-usados{
+	font-size: 18px !important;
+}
+/* Transparencia de fondo*/
+.transparencia{
+	border:0;
+	background-color: transparent;
+}
+/* Estilo del asterisco de requerido*/
+.style-aste{
+	display: inline-block;
+	color: red;
+}
+/* Estilo del texto con la palabra "requerido"*/
+.style-requerido{
+	display: inline-block;
+}
+/* Estilo del texto de validacion*/
+.style-text-vali{
+  color: red;
+  margin-left: 38px;
+}
+/* Estilo del icono de validacion ok*/
+.style-icon-vali{
+	color: green;
+	font-size: 30px !important;
+}
+/* Estilo del icono de validacion not*/
+.style-icon-novali{
+	color: red;
+	font-size: 30px !important;
+}
+/* Estilo del asterisco obligatorio*/
+.style-aste{
+	color: red;
+	font-size: 8px;
+}
+
+/*ESTILOS DE INPUT,SELECT,TEXTAREA EN MATERIAL DESING*/
+/* form starting stylings ------------------------------- */
+input.input-style{
+  font-size: 16px;
+  padding: 10px 10px 5px 0px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.formulario_solicitudes: label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:16px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1d71b8; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+	  left: 85%;
+}
+.bar:after {
+	right: -47.5px;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:570px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.5s ease;
+  -moz-animation:inputHighlighter 0.5s ease;
+  animation:inputHighlighter 0.5s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+
+/*---------------------------------------------*/
+/* Select con Material Design*/
+select.input-style{
+  font-size: 16px;
+  padding: 10px 10px 5px 0px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+}
+select:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.formulario_solicitudes: label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:16px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1d71b8; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+	  left: 35%;
+}
+.bar:after {
+	right: -49.5px;
+}
+
+/* active state */
+select:focus ~ .bar:before, select:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:570px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+select:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.5s ease;
+  -moz-animation:inputHighlighter 0.5s ease;
+  animation:inputHighlighter 0.5s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+
+/* BOTONES CON MATERIAL DESIGN*/
+/* Button */
+.button {
+display: inline-block;
+position: relative;
+width: 120px;
+height: 32px;
+line-height: 32px;
+border-radius: 2px;
+font-size: 0.9em;
+background-color: #fff;
+color: #646464;
+}
+
+.button > paper-ripple {
+border-radius: 2px;
+overflow: hidden;
+}
+
+.button.narrow{
+width: 60px;
+}
+
+.button.blue{
+background-color: #4285f4;
+color: #fff;
+}
+
+.button.raised{
+transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+transition-delay: 0.2s;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.button.raised:active{
+box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+transition-delay: 0s;
+}
+/* ASASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS*/
+/*---------------------------------------------*/
+/* texarea con Material Design*/
+textarea.input-style{
+    font-size: 16px;
+    padding: 10px 10px 5px 5px;
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    border: 1px solid #ccc;
+}
+textarea:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+.formulario_solicitudes: label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:16px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1d71b8; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+	  left: 35%;
+}
+.bar:after {
+	right: -49.5px;
+}
+
+/* active state */
+textarea:focus ~ .bar:before, textarea:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:570px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+textarea:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.5s ease;
+  -moz-animation:inputHighlighter 0.5s ease;
+  animation:inputHighlighter 0.5s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#1d71b8; }
+  to 	{ width:0; background:transparent; }
+}
+
+
+
+/* Responsive del boton formulario solicitudes */
+@media (max-width: 320px){
+	.btn-solicitar{
+		background-color: #ff8100;
+		text-decoration: none;
+		color: #fff;
+		font-size: 16px !important;
+	}
+	.icono-solicitar{
+		font-size: 33px;
+		margin-top: 3px;
+	}
+}
+
+@media (min-width: 320px){
+	.btn-solicitar{
+		background-color: #ff8100;
+		text-decoration: none;
+		color: #fff;
+		font-size: 16px;
+	}
+	.icono-solicitar{
+		font-size: 24px;
+		margin-top: 3px;
+	}
+}
+
+@media (max-width: 768px){
+	.btn-solicitar{
+		background-color: #ff8100;
+		text-decoration: none;
+		color: #fff;
+		font-size: 18px;
+	}
+	.icono-solicitar{
+		font-size: 25px !important;
+		margin-top: 3px;
+	}
+	.form-style{
+	  margin: 10px auto 80px auto;
+	  background-color: #fff;
+	  width: 100%;
+	}
+}
+
+@media (min-width: 768px){
+	.btn-solicitar{
+		background-color: #ff8100;
+		text-decoration: none;
+		color: #fff;
+		font-size: 24px;
+		width: 637px;
+	}
+
+	.form-style{
+	  margin: 10px auto 80px auto;
+	  background-color: #fff;
+	  width: 637px;
+	}
+}
+
+.texto_form_soli{
+  text-align: justify;
+  color: #FE3C00;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.texto2_form_soli{
+  text-align: justify;
+  font-size: 12px;
+  margin-top: -5px;
+}
+
+.cont_title_form{
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+.texto1_ceo{
+  text-align: justify;
+  font-weight: bold;
+  font-size: 12px;
+  padding-top: 15px;s
+}
+
+.texto2_ceo{
+  text-align: justify;
+  font-size: 12px;
+}
+
+.font-text {
+  color: #a9a9a9;
+}

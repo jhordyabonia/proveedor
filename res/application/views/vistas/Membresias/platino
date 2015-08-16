@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Div Empresa Platino</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/pagina.css">
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-12">
+			<div class="col-md-6" id="content_titulo_membresia">
+				<p class="texto_membresias">Empresa Platino</p>
+			</div>
+			<div class="col-md-6">
+				<img src="img/platino.png" id="imagen_membresia">
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

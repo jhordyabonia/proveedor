@@ -58,71 +58,127 @@ class Tablero_usuario extends CI_Controller {
 
 		$datos['nombre_membresia']=$datos['membresia']->nombre;
 		$datos['membresia']=$this->membresia->get_div_list($datos['empresa']->id);
-		
+    	$datos['oportunidades']=$this->oportunidades(FALSE,FALSE);
 		$datos['usuario']=$this->usuarios->get($iduser);
     	$datos['administrador']=FALSE;
+    	
     	if($datos['usuario']->permisos==1)
     	{$datos['administrador']=TRUE;}
 
-		$datos['titulo']="Administrar mis solicitudes - PROVEEDOR.com.co";
+		$datos['titulo']="Tablero de usuario - PROVEEDOR.com.co";
 		$this->load->view('template/head', $datos);
 		$this->load->view('template/javascript', $datos, FALSE);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
 		$this->load->view('tablero_usuario/tablero', $datos);
 		$this->load->view('template/footer', $datos, FALSE);
+
+		if($this->session->userdata('first_ligin')==1)
+			{
+		    	$this->load->view('popups/confirmacion/registro_completo');
+				$this->session->set_userdata('first_ligin',0);
+			};
 	}
 
-
-	public function oportunidades($categoria=6)
-	{		
-
+	public function oportunidades($categoria=FALSE,$print=TRUE)
+	{
 		$id_usuario=$this->session->userdata('id_usuario');
+		
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-		$solicitudes=$this->asistentes_proveedor->get_all();
+		if(!$categoria)
+		{
+			$solicitudes=$this->asistentes_proveedor->get_all();
+		}else
+		{			
+			$solicitudes=$this->asistentes_proveedor->get_all(array('categoria'=>$categoria));
+		}
 
-		$datos['total_oportunidades']=count($solicitudes);
+		$datos['total_oportunidades']=0;
 		$datos['numero_nuevas']=0;
 		$dotos['page_count'] = count($solicitudes)/25;
 		$datos['page']=($this->input->post('page')-1);	
-		$datos['datos'] = array();		    	
-		foreach ($solicitudes as $key => $solicitud)
-		{
-			$misma_categoria=FALSE;
-			foreach (explode('|',$datos['empresa']->categorias) as $value)
+		$datos['datos'] = array();	
+		if($solicitudes)
+		{	    	
+			foreach ($solicitudes as $key => $solicitud)
 			{
-				if($solicitud->categoria==$value)
+				if($solicitud->publicada==0)
+					{ continue;}
+				if(!$categoria)
 				{
-					$misma_categoria=TRUE;
-					break;
+					foreach ($this->categoria_empresa->get_all(array('nit_empresa'=>$datos['empresa']->nit)) as $value)
+					{
+						if($solicitud->categoria==$value->id_categoria)
+						{
+							$datos['datos'][]=$solicitud;
+							break;
+						}
+					}
+				}else {	$datos['datos'][]=$solicitud;}					
+				/*
+				if($key<($datos['page']*25))
+				{  continue; }
+				if($datos['page']>0)
+				{
+					if($key>=($datos['page']*50))	
+					{break;}
+				}	
+				else
+				{
+					if($key>=25)	
+					 {break;}
 				}
+				*/
 			}
-			/*
-			if($key<($datos['page']*25))
-			{  continue; }
-	  		if($datos['page']>0)
-			{
-				if($key>=($datos['page']*50))	
-				{break;}
-			}	
-			else
-			{
-				if($key>=25)	
-				 {break;}
-			}
-			*/
-			$solicitud->categoria=$this->categoria->get($solicitud->categoria)->nombre_categoria;
-			if($misma_categoria)
-			{	$datos['datos'][]=$solicitud;	}
 		}
+		$datos['total_oportunidades']=count($datos['datos']);
+
+		$datos['categorias']=$this->categoria->get_all();
+
+		if(!$categoria)
+		{	
+			$categoria=explode('|', $datos['empresa']->categorias);
+			$categoria=$categoria[1];
+			#echo "<PRE>";
+			#print_r($categoria);
+			#echo "</PRE>";
+			#return;
+		}
+
+    	$datos['categoria']=$this->categoria->get($categoria);
     	$datos['titulo']="Mis oportunidades comerciales -Proveedor.com.co ";
-		$datos['usuario']->usuario=$this->session->userdata('usuario');
-		$datos['empresa']=$this->empresa->get(array('usuario'=>$this->session->userdata('id_usuario')));
+		$datos['usuario']=$this->session->userdata('usuario');
+
+		$fecha="".date("Y m d");
+		$fecha = str_replace(" ", "-",$fecha);
+		$dia = substr($fecha,0,10);
+		foreach ($datos['datos'] as $key => $value)
+		{
+			if($dia==substr($value->fecha,0,10))
+			{$datos['numero_nuevas']+=1;}
+		}
+
+		#echo $dia.'<BR>';
+		#echo $fecha.'<BR>';
+		#echo substr($datos['datos'][0]->fecha,0,10).'<BR>';
+		#echo $datos['datos'][0]->fecha;
+		#return;
+
+		if(!$print)	return $datos;
+
+		$datos['usuario']=$this->usuarios->get($id_usuario);
+
+    	$datos['administrador']=FALSE;
+    	if($datos['usuario']->permisos==1)
+    	{$datos['administrador']=TRUE;}
+
+		$datos['titulo']="Oportunidades Comerciales - PROVEEDOR.com.co";
+
 		$this->load->view('template/head', $datos);
 		$this->load->view('template/javascript', FALSE);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
+		$dotos['page_count'] = 1;
 	    $this->load->view('tablero_usuario/solicitudes_externas', $datos); 
 		$this->load->view('template/footer', $datos, FALSE);
 	}
-
 }

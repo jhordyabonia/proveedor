@@ -1,0 +1,334 @@
+.container_mensaje .btn-primary {
+	color: #000;
+	background-color: transparent;
+	font-weight: bold;
+	border: 2px solid #ededed;
+}
+.container_mensaje .input-group{
+	float: right;
+}
+
+.container_mensaje .btn-group>.btn:hover, .btn-group-vertical>.btn:hover, .btn-group>.btn:focus, .btn-group-vertical>.btn:focus, .btn-group>.btn:active, .btn-group-vertical>.btn:active, .btn-group>.btn.active, .btn-group-vertical>.btn.active {
+	background: #EDEDED;
+	color: #1D71B8;
+	border-color: transparent;
+}
+.container_mensaje .badge{
+	color:#fff!important;
+	background-color: #FF7E26!important;
+}
+.container_mensaje .nav-tabs > li > a{
+	margin-right: 0px;
+}
+.container_mensaje .seleccion{
+	width: 150px;
+	height: 42px;
+	text-align: center;
+	background: #EDEDED;
+	line-height: 42px;
+}
+.container_mensaje .borrar{
+	width: 48px;
+	height: 42px;
+	border-radius: 0px;
+	border-color: transparent;
+	background: #EDEDED;
+}
+.container_mensaje .boton_borrar{
+	float: left;
+	padding-left: 20px;
+}
+.container_mensaje .lupa{
+	color:white!important;
+	font-size: 22px;
+}
+.container_mensaje .btn_buscar{
+	background: #36A9E1!important;
+	width: 64px;
+}
+.container_mensaje .input_buscador{
+	width: 315px;
+	height: 36px;
+}
+.container_mensaje .tarro_basura{
+	font-size: 18px;
+	font-weight: bold;
+}
+.container_mensaje .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	color: #1D71B8;
+	background-color: #ededed;
+	text-align: center;
+	border-radius: 0px;
+	border: 1px solid #ededed;
+	border-bottom-color: transparent;
+}
+.container_mensaje .tab_mensaje{
+	color: #000;
+	font-weight: bold;
+}
+.container_mensaje .nav-tabs > li{
+	width: 50%;
+}
+.container_mensaje .nav-tabs{
+	text-align: center;
+	border-bottom: 4px solid #ededed;
+}
+.container_mensaje .nuevos_mensajes{
+	border-radius: 0px;
+	height: 42px;
+}
+.container_mensaje .nuevo_msj{
+	border-radius: 0;
+	background: white;
+	border: 0;
+}
+.container_mensaje .btn-primary[disabled]{
+	background: white;
+}
+.container_mensaje .nav-tabs > li > a:hover{
+	border: 1px solid #ededed;
+}
+.container_mensaje .check{
+	width: 15px;
+}
+.container_mensaje .cliente{
+	width: 150px;
+}
+.container_mensaje .asunto{
+	width: 690px;
+}
+.container_mensaje .fecha{
+	width: 111px;
+	padding-top: 25px;
+}
+.container_mensaje .imagen_mensaje{
+	margin-top: 24px;
+}
+.container_mensaje .tabla_mensajes{
+	border-top: 2px solid #e6e6e6;
+}
+.container_mensaje .mensajes{
+	background: #ededed;
+	border-bottom: 2px solid #E6E6E6;
+}
+.container_mensaje .links_mensaje{
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+}
+.container_mensaje{
+	padding-right: 0px;
+	margin-top: 109px;
+	margin-bottom: 30px;
+}
+.container_mensaje .contenedor_tabs{
+	padding-right: 0px;
+}
+.container_mensaje #botones_mensajes{
+	padding-right: 0;
+}
+.leer_mensaje .devolver{
+	margin-left: 15px;
+	width: 45px;
+}
+.leer_mensaje .botones{
+	margin-bottom: 5px;
+}
+.leer_mensaje .regresar{
+	font-size: 17px;
+	color: #4D4D4D;
+}
+.leer_mensaje .leyendo_mensaje{
+	background: #ededed;
+}
+.leer_mensaje .fecha_mensaje{
+	padding-top: 15px;
+	padding-left: 40px;
+}
+.leer_mensaje .imagen_devolver{
+	width: 85%;
+}
+.leer_mensaje .borrar{
+	padding: 0;
+}
+.leer_mensaje .link_producto{
+	color: #FF7F27;
+	margin-left: 10px;
+}
+.leer_mensaje .texto_titulo{
+	font-weight: bold;
+}
+.leer_mensaje .titulo_responder{
+	font-weight: bold;
+	padding-top: 60px;
+}
+.leer_mensaje .contacto{
+	background: #ededed;
+	margin-top: -9px;
+}
+.leer_mensaje .telefono{
+	background: #ededed;
+	line-height: 1px;
+	padding-top: 5px;
+}
+.leer_mensaje .mensaje{
+	font-weight: bold;
+	padding-left: 45px;
+}
+.leer_mensaje .responder{
+	background: #ededed;
+}
+.leer_mensaje .cajon_mensaje{
+	border: 0px;
+	resize: none;
+	font-family: Arial;
+	border-radius: 0px;
+
+	margin-top: 17px;
+	width: 100%;
+	height: 100%;
+}
+.leer_mensaje .cajon_responder{
+	border: 0px;
+	resize: none;
+	font-family: Arial;
+	border-radius: 0px;
+	margin-top: 17px;
+	height: 100%;
+	width: 100%;
+}
+.leer_mensaje .texto_contacto{
+	margin-left: 8px;
+}
+.leer_mensaje .texto_responder{
+	width: 100px;
+}
+.leer_mensaje .fileUpload {
+	background: #36A9E1;
+	color: white;
+	border-color: transparent;
+	border-radius: 3px;
+	width: 160px;
+	height: 46px;
+	cursor: pointer;
+	}
+.leer_mensaje .fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	width: 130px;
+}
+.leer_mensaje .botones_adjuntar_enviar{
+	background: #ededed;
+	padding-bottom: 25px;
+	padding-top: 10px;
+}
+.leer_mensaje .caja_texto{
+	padding-top: 12px;
+	padding-bottom: 8px;
+	margin-left: 8px;
+}
+.leer_mensaje .clip{
+	font-family: sans-serif;
+	font-size: 14px;
+	color: white;
+}
+.leer_mensaje .clip_icono{
+	font-size: 25px;
+	color: white;
+}
+.leer_mensaje .clip_icono_descarga{
+	font-size: 25px;
+	color: white;
+	padding-right: 10px;
+}
+.leer_mensaje .sobre_icono{
+	font-size: 16px;
+}
+.leer_mensaje input[type=submit] {
+	padding: 5px 15px;
+	background: #FF7F27;
+	border: 0 none;
+	cursor: pointer;
+	border-radius: 3px;
+	color: white;
+	width: 160px;
+	margin-top: -7px;
+	height: 46px;
+}
+.leer_mensaje .btn_submit i {
+    position: absolute;
+    pointer-events: none;
+    color: white;
+	font-size: 23px;
+	margin-top: 3px;
+	margin-left: -50px;
+}
+.leer_mensaje #adjunto{
+	text-align: right;
+	padding-top: 12px;
+	height: 41px;
+}
+.leer_mensaje .mensaje_fecha{
+	background: #ededed;
+	padding-bottom: 8px;
+}
+.leer_mensaje .btn_download{
+	width: 235px;
+	height: 50px;
+	color: white;
+	margin-top: 0px;
+	text-align: left;
+	font-size: 15px;
+	padding-left: 10px;
+	background: #FF7F27;
+}
+.leer_mensaje .btn_descarga{
+	padding-left: 51px;
+}
+.leer_mensaje .form-control[disabled]{
+	cursor: default;
+	background-color: white;
+}
+.leer_mensaje .btn_adjunto{
+	padding-left: 12px;
+}
+.leer_mensaje .btn_enviar{
+	margin-left: -23px;
+}
+.leer_mensaje .archivo_adjunto{
+	background: #ededed;
+	height: 73px;
+  	padding-top: 10px;
+}
+.leer_mensaje .btn:hover, .btn:focus{
+	color: white;
+}
+.leer_mensaje .texto_adjunto{
+	text-align: right;
+	padding-top: 22px;
+  	padding-right: 0;
+}
+.leer_mensaje #botones_mensajes{
+	padding-right: 0;
+}
+.leer_mensaje .contenedor_botones_msj{
+	margin-bottom: 10px;
+}
+.leer_mensaje .img_miniatura_msj{
+	width: 50px;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 5px;
+}
+@media screen and (max-width: 992px){
+	.leer_mensaje .btn_adjunto{
+		padding-left: 65px;
+	}
+}

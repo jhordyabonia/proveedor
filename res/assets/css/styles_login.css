@@ -1,0 +1,194 @@
+.first-child
+    {
+      background-color: yellowgreen;
+    }
+.second-child
+  {
+    background-color: #E6537D;
+    color:black;
+  }
+.third-child
+  {
+    background-color: crimson;
+  }
+.fourth-child
+  {
+    background-color: lightseagreen;
+    color:black;
+  }
+.big-box
+  {
+    width: 50%;
+    height: 50%;
+    color:white;
+  }
+.big-box h2
+  {
+    text-align: center;
+    margin-top: 20%;
+    padding: 20px;
+    width: 100%;
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor:pointer;
+  }
+
+@media screen and (max-width: 46.5em) 
+  {
+    .big-box h2
+    {
+      font-size:16px;
+      padding-left:0px;
+      
+    }
+  }
+
+@media screen and (max-width: 20.5em) 
+  {
+    .big-box h2
+    {
+      font-size:12px;
+      padding-left:0px;
+      margin-top:30%;
+      }
+  }
+.modal-dialog {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin:0;
+  }
+.modal-content {
+    
+    max-width: 325px;
+    margin: 70px auto;
+    border-radius: 0;
+    color: #5A5A5A;
+
+  }
+.modal-title
+  {
+    font-size: 3em;
+    font-weight: 300;
+    margin: 0 0 20px 0;
+  }
+.modal-content-one
+  {
+    background-color:#e5e5e5;
+  }
+.modal-content-two
+  {
+    background-color:#FFFFFF;
+    border-radius: 5px;
+  }
+.modal-content-three
+  {
+    background-color:#ededed;
+  }
+.modal-content-four
+  {
+    background-color:#ededed;
+  }
+  
+.close
+  {
+    /*color:white ! important;*/
+    opacity:1.0;
+  }
+
+
+  /* PopUp Login */
+.icono_cerrar
+  {
+    color: rgb(90, 90, 90);
+  }
+
+.body_login
+  {
+    margin: -20px auto 0px; 
+    background: white; 
+    border-radius: 5px; 
+    max-width: 90%;
+  }
+
+.ig_name_user
+  {
+    margin-bottom: 10px; 
+    margin-top: 10px;
+  }
+
+.ig_pwd
+  {
+    margin: 0px auto 20px;
+  }
+
+.ig_rememberme
+  {
+    margin: -15px auto 20px;
+  }
+  
+.input_txt
+  {
+    height: 45px;
+  }
+
+.btn_login
+  {
+    height: 45px; width: 252px;
+  }
+
+
+  /* POPUP Mensaje confirmacion */
+
+.icon_conf
+  {
+    color: #58b957; 
+    font-size: 125px;  
+    margin: 0px 85px 0px; 
+  }
+
+.btn_hecho
+  {
+    font-size: 20px; 
+    width: 197px; 
+    margin: auto 50px;
+  }
+
+.btn_reg {
+  font-size: 20px;
+  width: 197px;
+  margin: auto 50px;
+  background-color: #FF7F27;
+}
+
+.icon_del
+  {
+    color: #db524b; 
+    font-size: 125px;  
+    margin: 0px 85px 0px; 
+  }
+
+.btn_conf
+  {
+    font-size: 20px; 
+    width: 130px; 
+    margin: auto 10px;
+  }
+
+.btn_cancel
+  {
+    font-size: 20px; 
+    width: 130px; 
+  }
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,195 @@
+/* Seccion para las pestañas de la pagina */
+	#contenedor_pesta{
+		background: #ededed;
+		margin-top: -35px;
+	}
+
+	.tab_active{
+		background: white;
+		text-align: center;
+		font-size: 17px;
+		font-weight: bold;
+		border-top: 3px solid #ff7f27;
+		line-height: 43px;
+	}
+
+	.tab_inactive{
+		text-align: center;
+		font-size: 17px;
+		font-weight: bold;
+		line-height: 43px;
+	}
+	a{
+		color: black;
+		text-decoration: none;
+		font-size: 13px;
+	}
+
+	a:hover, a:focus{
+		color: #ff7f27;
+		text-decoration: none;
+	}
+
+	#tab_buscqueda1{
+		margin: 5px auto -2px;
+	}
+	#input_buscador{
+		border: none;
+		height: 35px;
+		margin-bottom: 7px;
+	}
+	@media (min-width: 768px){
+		.navbar-form .form-control{
+			width: 220px;
+			font-size: 12px;
+		}
+	}
+	.navbar-form{
+		margin-bottom: 0px;
+	}
+	
+	#logo_buscar{
+		font-size: 22px;
+		top: 1;
+		margin-right: 0px;
+	}
+	#btn_buscar1{
+		margin-top: -7px;
+		border: 0px;
+		border-radius: 0px;
+		height: 35px;
+		background: #36a9e1;
+		color: #fff;
+		width: 54px;
+	}
+
+/* --------------------------------- */
+/* contenido principal de la pagina*/
+#contendor_total{
+	border-top: 1px solid #e3e3e3;
+	margin-top: 10px;
+	margin-bottom: 200px;
+}
+#contendor{
+	border-right: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+}
+#contenedor_botones{
+	margin-top: 43px;
+	margin-bottom: 43px;
+}
+.boton_empresa{
+	width: 242px;
+	height: 45px;
+	font-size: 18px;
+	color: #FFF;
+}
+#btn_contactar{
+	background: #ff7f27;
+	border-color: #ff7f27;
+	margin-right: 10px;
+	margin-left: 7px;
+}
+
+#btn_chat{
+	background: #3e8acc;
+	border-color: #3e8acc;
+}
+
+.contenedor_subtitulos{
+	background: #ededed;
+
+}
+.text_subtitle{
+	font-weight: bold;
+	margin-left: 37px;
+}
+.contenedor_descrip{
+	margin-top: 5px;
+}
+.text_descript{
+	margin-left: 37px;
+	font-size: 17px;
+	margin-bottom: 20px;
+	margin-top: 13px;
+	text-align: justify;
+}
+
+.info_respuesta{
+    line-height: 6px;
+}
+
+#lista_productos_principales{
+	margin-left: -50px;
+	font-size: 12px;
+	margin-top: 9px;
+}
+#content_foto{
+	background: #FFF;
+	border: 1px solid #e3e3e3;
+	height: 121px;
+	width: 126px;
+	border-radius: 15px 15px 15px 15px;
+	margin-top: 15px;
+	display: none;
+}
+#foto_agregar_proveedor{
+	width: 76%;
+	height: 117px;
+	margin-left: 12px;
+	display: none;
+}
+
+#titulo_empresa{
+	color:#36a9e1;
+	font-weight: bold;
+}
+
+#informacion_contacto{
+	color:#27348b;
+	font-weight: 600;
+	margin-left: 7px;
+	vertical-align: text-top;
+}
+#content_informacion_empresa{
+	margin-top: 8px;
+}
+.text_info_tilte{
+	font-weight: bold;
+	font-size: 13px;
+	color: black;
+}
+.content_info_resumida{
+	margin-bottom: 8px;
+}
+
+#btn_llamar{
+	background: #3e8acc;
+	border-color: #3e8acc;
+	margin-right: 10px;
+	margin-left: 7px;
+	margin-top: 22px;
+}
+
+.glyphicon{
+	position: relative;
+	top: 5px;
+	margin-right: 10px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	line-height: 0;
+	font-size: 23px;
+	-webkit-font-smoothing: antialiased;
+}
+p.count-productos {
+    margin-left: -25px;
+    margin-top: 2px;
+    font-size: 12px;
+    color: #428bca;
+}
+p.count-productos:hover {
+    text-decoration: underline;
+}
+/*-----------------------------------------------*/

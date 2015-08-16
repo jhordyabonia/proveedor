@@ -1,0 +1,22 @@
+#content_titulo_membresia{
+	width: initial;
+	line-height: 6;
+}
+
+#texto_membresiaEstandar{
+	font-family: arial;
+	font-size: 18px;
+	color:grey;
+	font-weight: bold;
+}
+
+.texto_membresias{
+	font-family: arial;
+	font-size: 18px;
+	color:orange;
+	font-weight: bold;
+}
+
+#imagen_membresia{
+    width: 20%;
+}

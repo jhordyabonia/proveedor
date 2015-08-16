@@ -1,0 +1,68 @@
+
+.pag_categorias_movil{
+	padding: 0;
+	margin-top: 12px;
+	margin-bottom: -10px;
+
+}
+
+.pag_categorias_movil .seccion-title{
+	background-color: #efeff4;
+	padding: 10px 15px 10px 15px;
+}
+
+.pag_categorias_movil .pag_title{
+	font-size: 16px;
+	color: gray;
+	margin: 0;
+}
+
+.pag_categorias_movil .seccion-body{
+	background-color: #fff;
+}
+
+.pag_categorias_movil .seccion-body ul{
+	list-style: none;
+	padding: 0;
+}
+
+.pag_categorias_movil .seccion-body .item_categoria{
+    display: block;
+    padding: 12px 15px;
+    border-bottom: 1px solid #DDD;
+    line-height: 24px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+}
+
+.ico_item-cate{
+    float: right;
+    color: gray;
+    font-size: 28px !important;
+    line-height: 25px !important;
+}
+
+.ico_cate{
+	padding-right: 5px;
+	color: gray;
+}
+
+@media (max-width: 364px) {
+	.pag_categorias_movil .seccion-body .item_categoria{
+	    display: block;
+	    padding: 12px 15px;
+	    border-bottom: 1px solid #DDD;
+	    line-height: 24px;
+	    font-size: 12px;
+	    color: #333;
+	    text-decoration: none;
+	}	
+}
+
+/* 	EStilos de la pagina Subcategoria para disposivo movil */
+.ico_subcate{
+	padding-right: 5px;
+	color: gray;
+	cursor: pointer;
+}

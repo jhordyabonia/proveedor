@@ -1,0 +1,424 @@
+.contenedor_tablero .contenedor_botones{
+	margin-top:100px;
+	margin-bottom: 25px;
+	padding: 0;
+}
+.contenedor_tablero .contenedor_empresa{
+	box-shadow: 1px 1px 5px #999;
+  	border-radius: 7px 7px 7px 7px;
+  	height:110px;
+}
+.contenedor_tablero .contenedor_servicio{
+	box-shadow: 1px 1px 5px #999;
+  	border-radius: 7px 7px 7px 7px;
+  	background-color: #1D71B8;
+  	height: 110px;
+}
+.contenedor_tablero .obtener_servicio{
+
+}
+.contenedor_tablero .contenedor_texto_servicio{
+	padding-left: 10px;
+}
+.contenedor_tablero .texto_obtener_servicio{
+	color: white;
+  	font-size: 18px;
+  	padding-top: 15px;
+    line-height: 1;
+}
+.contenedor_tablero .contenedor_icono_pulgar{
+	padding: 0;
+}
+.contenedor_tablero .ico_pulgar{
+	font-size: 30px;
+  	padding-top: 22px;
+  	color: white;
+}
+.contenedor_tablero .texto_mas_informacion{
+	float: right;
+  	color: white;
+  	font-size: 15px;
+  	font-weight: bold;
+  	text-decoration: underline;
+    margin-top: -15px;
+}
+.contenedor_tablero .texto_mas_informacion_anunciar{
+	color: white;
+  	font-size: 15px;
+  	font-weight: bold;
+  	text-decoration: underline;
+  	text-align: center;
+}
+.contenedor_tablero .contenedor_obtener_membresia{
+	margin-bottom: 15px;
+}
+.contenedor_tablero .img_membresia{
+	padding: 0;
+}
+.contenedor_tablero .membresia{
+	width: 50px;
+  float: right;
+  margin-top: 10px;
+
+}
+.contenedor_tablero .titulo_membresia{
+	padding-left: 9px;
+  	font-size: 15px;
+  	font-weight: bold;
+  	color: #00A2E8;
+  	margin-top: -10px;
+}
+.contenedor_tablero .actualizar_membresia{
+	padding-right: 0;
+}
+.contenedor_tablero .texto_actualizar{
+	float: right;
+  	color: #FF7F27;
+  	font-size: 18px;
+  	margin: 0;
+  	padding-top: 10px;
+}
+.contenedor_tablero .obtener_membresia{
+	box-shadow: 1px 1px 5px #999;
+  	border-radius: 7px 7px 7px 7px;
+  	background-color: #7F7F7F;
+  	height: 110px;
+}
+.contenedor_tablero .contenedor_icono_estrella{
+	padding: 0;
+  	padding-left: 5px;
+}
+.contenedor_tablero .ico_estrella{
+	font-size: 30px;
+  	padding-top: 25px;
+  	color: white;
+}
+.contenedor_tablero .contenedor_texto_obtener_membresia{
+	padding-top: 5px;
+}
+.contenedor_tablero .texto_obtener_membresia{
+	color: white;
+  	font-size: 16px;
+  	font-weight: bold;
+  	padding-top: 15px;
+}
+.contenedor_tablero .img_logo_empresa{
+	margin-bottom: 5px;
+  	max-height: 60px;
+  	margin-top: 8px;
+}
+.contenedor_tablero .nombre_empresa{
+	font-size: 22px;
+  	font-weight: bold;
+  	padding-top: 15px;
+  	text-align: center;
+}
+.contenedor_tablero .nom_empresa{
+	color: black;
+	text-decoration: none;
+}
+.contenedor_tablero .div_productos{
+
+}
+.contenedor_tablero .link_tablero_usuario{
+	text-decoration: none;
+}
+.contenedor_tablero .div_productos .imagen_estandar_list{
+	margin-bottom: 10px;
+}
+.contenedor_tablero .contenedor_logo{
+	height: 75px;
+	
+}
+.contenedor_tablero .titulo_empresa{
+	height: 75px;
+	padding: 0;
+}
+.contenedor_tablero .membresia_empresa{
+	height: 75px;
+}
+.contenedor_tablero .botones_publicar_solicitar{
+	margin-bottom:15px;
+}
+.contenedor_tablero .publicar{
+  	padding-right: 5px;
+  	padding-left: 0;
+}
+.contenedor_tablero .btn_publicar{
+	background:#FF7F27; 
+	height:415px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .ico_chevron{
+	color: white;
+  	font-size: 50px;
+  	padding-top: 75px;
+}
+.contenedor_tablero .ico_stop{
+	font-size: 110px;
+  	margin-left: -14px;
+  	margin-top: -25px;
+  	color: white;
+}
+.contenedor_tablero .centrar_icono{
+	text-align: center;
+}
+.contenedor_tablero .publicar_producto{
+  	color: white;
+  	font-size: 16px;
+  	text-align: center;
+  	font-weight: bold;
+  	padding-top: 45px;
+}
+.contenedor_tablero .solicitar{
+	padding-right: 0px;
+  	padding-left: 5px;
+}
+.contenedor_tablero .btn_solicitar{
+	background:#1D71B8; 
+	height:415px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .ico_file{
+	padding-top: 108px;
+  	font-size: 105px;
+  	color: white;
+  	margin-left: 5px;
+}
+.contenedor_tablero .solicitar_producto{
+	font-weight: bold;
+  	color: white;
+  	font-size: 16px;
+  	text-align: center;
+  	padding-top: 52px;
+}
+.contenedor_tablero .botones_mensajes_oportunidades_comerciales{
+	margin-bottom:15px;
+	padding-right: 0;
+	padding-left: 0;
+}
+.contenedor_tablero .mensajes{
+	padding-top: 15px;
+	padding-right: 0;
+	padding-left: 0;
+}
+.contenedor_tablero .btn_mensajes{
+	background:#22B14C; 
+	height:200px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .ico_sobre{
+	font-size: 70px;
+  	margin: 25px;
+  	color: white;
+}
+.contenedor_tablero .num_total_mensajes{
+	text-align: center;
+	color:white;
+	padding-top: 30px;
+  	font-size: 25px;
+  	font-weight: bold;
+}
+.contenedor_tablero .num_nuevos_mensajes{
+	text-align: center;
+	color:white;
+	font-size: 25px;
+  	font-weight: bold;
+  	padding-top: 10px;
+}
+.contenedor_tablero .texto_mensajes{
+	color: white;
+  	font-weight: bold;
+  	font-size: 22px;
+  	margin-left: 25px;
+}
+.contenedor_tablero .oportunidades_comerciales{
+	padding-right: 0;
+	padding-left: 0;
+}
+.contenedor_tablero .ico_check{
+	font-size: 51px;
+  	margin: 15px;
+  	color: white;
+}
+.contenedor_tablero .btn_oport_comerciales{
+	background:#FF7F27; 
+	height:200px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .texto_oport_comerciales{
+	color: white;
+  	font-weight: bold;
+  	font-size: 24px;
+  	margin-left: 15px;
+}
+.contenedor_tablero .texto_oport_comerciales2{
+	color: white;
+  	font-weight: bold;
+  	font-size: 20px;
+  	margin-left: 15px;
+  	line-height: 0;
+}
+.contenedor_tablero .num_total{
+	text-align: center;
+	color:white;
+	padding-top: 30px;
+  	font-size: 27px;
+  	font-weight: bold;
+}
+.contenedor_tablero .texto_total{
+	text-align: center;
+  	color: white;
+  	line-height: 0px;
+  	font-size: 12px;
+  	margin-top: -5px;
+}
+.contenedor_tablero .num_nuevos{
+	text-align: center;
+	color:white;
+	font-size: 25px;
+  	font-weight: bold;
+  	padding-top: 10px;
+}
+.contenedor_tablero .texto_nuevos{
+	text-align: center;
+  	color: white;
+  	line-height: 0;
+  	margin-top: -5px;
+  	font-size: 12px;
+}
+.contenedor_tablero .botones_anunciar_pagina_empresa{
+	margin-bottom:15px;
+}
+.contenedor_tablero .anunciar_pagina_empresa{
+	padding-right: 0;
+	padding-left: 0;
+}
+.contenedor_tablero .anunciar{
+	padding-right: 5px;
+	padding-left: 0;
+}
+.contenedor_tablero .btn_anunciar{
+	background:#1D71B8; 
+	height:200px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .ico_altavoz{
+	padding-top: 30px;
+  	font-size: 56px;
+  	margin-bottom: 10px;
+  	color: white;
+}
+.contenedor_tablero .texto_anunciar{
+	color: white;
+  	font-weight: bold;
+  	font-size: 18px;
+  	text-align: center;
+  	line-height: 1;
+}
+.contenedor_tablero .productos_publicados{
+	padding-top:15px;
+	padding-right: 5px;
+  	padding-left: 0;
+}
+.contenedor_tablero .btn_productos_publicados{
+	background:#95C11F; 
+	height:200px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .texto_productos_publicados{
+	color: white;
+  	font-weight: bold;
+  	font-size: 19px;
+  	text-align: center;
+  	margin-top: -15px;
+}
+.contenedor_tablero .cotizaciones{
+	padding-top:15px;
+	padding-right: 0px;
+  	padding-left: 5px;
+}
+.contenedor_tablero .productos_publicados_cotizaciones{
+	padding-right: 0;
+	padding-left: 0;
+}
+.contenedor_tablero .btn_cotizaciones{
+	background:#1D71B8;
+	height:200px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .ico_cotizaciones{
+	margin: 30px 15px;
+  	font-size: 60px;
+  	color: white;
+}
+.contenedor_tablero .texto_cotizaciones{
+	color: white;
+  	font-weight: bold;
+  	font-size: 18px;
+  	margin-left: 15px;
+  	padding-top: 9px;
+  	line-height: 1;
+}
+.contenedor_tablero .numero_cotizaciones{
+	padding-left: 25px;
+  	font-size: 20px;
+}
+.contenedor_tablero .ico_productos_publicados{
+	font-size: 60px;
+  	color: #fff;
+	margin: 25px 15px;
+}
+.contenedor_tablero .texto_prod_publicados{
+	color: white;
+  	font-weight: bold;
+  	font-size: 18px;
+  	margin-left: 15px;
+  	padding-top: 15px;
+  	line-height: 1;
+}
+.contenedor_tablero .numero_prod_publicados{
+	padding-left: 25px;
+  	font-size: 20px;
+}
+.contenedor_tablero .pagina_empresa{
+	padding-right: 0px;
+  	padding-left: 5px;
+}
+.contenedor_tablero .btn_pagina_empresa{
+	background:#22B14C; 
+	height:200px;
+	border-radius: 10px;
+  	box-shadow: 2px 2px 5px #999;
+  	cursor: pointer;
+}
+.contenedor_tablero .ico_portatil{
+	font-size: 79px;
+  	color: white;
+  	padding-top: 20px;
+}
+.contenedor_tablero .texto_pagina_empresa{
+	text-align: center;
+  	color: white;
+  	font-weight: bold;
+  	font-size: 19px;	
+}
+@media screen and (max-width: 1350px){
+	.contenedor_tablero .texto_mas_informacion{
+		margin-top: -15px;
+	}
+}

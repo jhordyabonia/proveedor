@@ -1,0 +1,43 @@
+.contenedor_header .img_logo_header{
+	width: 265px;
+  	padding-left: 15px;
+  	padding-top: 6px;
+}
+.contenedor_header #navbarCollapse{
+	background: white;
+  	border-bottom: 3px solid #00A2E8;
+  	font-size: 13px;
+  	font-weight: bold;
+}
+.contenedor_header .menu_collapse{
+	padding-left: 35px;
+	height: 65px;
+}
+.contenedor_header .item_collapse{
+	padding-top: 15px;
+}
+.contenedor_header .item_collapse_usuario{
+	padding-top: 15px;
+}
+.contenedor_header .item_collapse_editar_empresa{
+	padding-top: 15px;
+	margin-right: 35px;
+}
+.contenedor_header .nombre_empresa{
+	color: #FF7F27!important;
+}
+.contenedor_header li.item_collapse:hover{
+	border-bottom: 3px solid #FF7F27;
+}
+.contenedor_header .menu_collapse_derecha{
+	padding-left: 35px;
+}
+.indice_active{
+	border-bottom: 3px solid #FF7F27;	
+}
+.indice_active  > a{
+	color: #111 !important;
+}
+.ico_usuario{
+	font-size: 15px;
+}
