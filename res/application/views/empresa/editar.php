@@ -277,6 +277,7 @@
         <div class="col-md-3">
           <div class="input-group">
             <input style="border-radius: 5px;" type="text" class="form-control" required="true" name="nit" value="<?= $empresa->nit?>" >
+            <input  type="hidden" name="id" value="<?= $empresa->id?>" >
           </div>
         </div>
       </div>

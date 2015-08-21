@@ -108,6 +108,21 @@ function cambio_categoria(id) {
     }
 }
 
+function cargar_municipios(id) {
+    var popup = new XMLHttpRequest();
+    var url_popup = "<?=base_url()?>herramientas/municipios/" + id;
+    popup.open("GET", url_popup, true);
+    popup.addEventListener('load', show, false);
+    popup.send(null);
+
+    function show() {
+        div = document.getElementById('combo_m');
+        div.innerHTML = popup.response;
+        div = document.getElementById('municipio');
+        div.style.display='';
+    }
+}
+
 function cambio_categoria_simple(id) {
     var popup = new XMLHttpRequest();
     var url_popup = "<?=base_url()?>publicar_oferta/ver_subcatgorias/" + id;

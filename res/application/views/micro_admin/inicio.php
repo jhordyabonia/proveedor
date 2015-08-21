@@ -1,3 +1,7 @@
+<br>
+<br>
+<br>
+<br>
 <link rel="stylesheet" href="<?php echo css_url() ?>perfil_empresa/header.css">
 	<div class="col-md-12">
 		<div class="row">
@@ -64,6 +68,7 @@
 	        <!-- columna de tamaño 9 para la tabla un espacio -->
 	        <div class="col-xs-10 col-xs-push-0 table-responsive " >
 	         <CENTER>
+	         	<a href="<?=base_url()?>popup_categoria/crear"><h3>Crear popup</h3></a>
 	          <table class="table table-bordered table-hover ">
 	            <thead>
 

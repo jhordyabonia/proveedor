@@ -31,7 +31,7 @@ while ( $text.outerHeight() > containerHeight ) {
 					<p class="texto_solicitud">Cantidad: <span class="unidades"><?=decimal_points($solicitud->cantidad_requerida)?> <?=$solicitud->medida?></span></p>
 					<p class="texto_solicitud">Presupuesto límite: <span class="contenido"><?php echo decimal_points($solicitud->precio_maximo)." X ".decimal_points($solicitud->cantidad_requerida)." ".$solicitud->medida?> </span></p>
 					<p class="texto_solicitud">Lugar de entrega: <span class="contenido"><?php echo $usuario->ciudad," - ",$usuario->departamento ?></span></p>
-					<p class="descripcion_solicitud"><?=$descripcion?></p>
+					<p class="descripcion_solicitud"><?=$solicitud->descripcion?></p>
 				<!--	<p class="texto_solicitud">Vigente hasta: <span class="unidades"><?=$fecha_vigencia?></span></p>-->
 					<a href="#" class="informacion">más información ></a>
 				</div>
@@ -70,10 +70,12 @@ while ( $text.outerHeight() > containerHeight ) {
 				</button>
 			</div>
 			<div class="col-md-1 proveedor">
+				<!--
 				<button type="button" class="boton_proveedor btn btn-default" aria-label="Left Align">
   					<span class="fa fa-phone ico_proveedor" aria-hidden="true"></span>
   					<p class="texto_boton">Llamar al<br> Proveedor</p>
 				</button>
+				-->
 			</div>
 		</div>
 	</div>

@@ -17,7 +17,7 @@ class Listados extends CI_Controller {
 		$this->load->model('new/Producto_model','producto');
 		$this->load->model('new/Solicitud_model','solicitud');
 		$this->load->model('new/Dimension_model','dimension');
-		$this->load->model('Busqueda_model','busqueda');
+		#$this->load->model('Busqueda_model','busqueda');
 	}
 
 	public function news()
@@ -94,9 +94,10 @@ class Listados extends CI_Controller {
 
         return $busqueda;
     }
-	public function lista($p="XXXXXX",$div="productos")
+	public function lista($p="XXXXXX",$div="productos", $page=0)
 	{
 		$data['div']=$div;
+		$data['busqueda']=$p;
 		$data['id_usuario']= $this->session->userdata('id_usuario');
 
 		$data['titulo']="Resultados de busqueda";
@@ -135,38 +136,32 @@ class Listados extends CI_Controller {
 		$data['url_publicar_solicitud']=base_url()."publicar_oferta";
 		$this->load->view("template/head", $data);
 		$this->load->view("template/javascript");
-		$this->load->view("index_test/top_menu");
-		$this->load->view("index_test/header_buscador", $data);
+		$this->load->view("index/top_menu");
+		$this->load->view("index/header_buscador", $data);
 		$this->load->view('listados/div_header_seo', $data, FALSE);
 		$this->breadcrumb->add('"' . $data['nom_producto'] . '"', base_url() . '');
 
-		$data['page']=0; 
+		$data['page']=$page; 
 		$data['page_count']=0;
-		$data['page2']=0; 
 		$data['page_count2']=0;
-		$data['page3']=0; 
 		$data['page_count3']=0;
+
+		$data['div_solicitudes']=FALSE;
+		$data['div_productos']=FALSE;
+		$data['div_empresas']=FALSE;
 
 		if ($productos) 
 		{
-			$data['page']=($this->input->post('page')-1); 
 			$data['page_count'] = count($productos)/25;
 			foreach ($productos as $key => $producto)
-			 {
+			 {			 	
+			 	/*
+				*/
 			 	if($key<($data['page']*25))
 				{  continue; }
 
-				if(($data['page']>0))
-				{
-					if($key>=($data['page']*50))	
-					 {break;}
-				}	
-				else
-				{
-					if($key>=25)	
-					 {break;}
-				}
-				#continue;
+				if($key>=(($data['page']+1)*25))	
+				{break;}
 				$datos['producto']=$this->producto->get($producto->id);
 				$datos['empresa']=$this->empresa->get($datos['producto']->empresa);
 				$datos['producto']->medida=$this->dimension->get($datos['producto']->medida);
@@ -193,27 +188,21 @@ class Listados extends CI_Controller {
 				
 				unset($producto);
 			}
-		}else{	$data['div_productos']=FALSE;	}
+		}
 		if ($solicitudes) 
 		{
 			$solicitudes = clear_array($solicitudes); 
-			$data['page_count3'] = count($solicitudes)/25;
-			$data['page3']=($this->input->post('page3')-1);
-				 
+			$data['page_count3'] = count($solicitudes)/25;				 
 			foreach ($solicitudes as $key => $solicitud)
-			 {
-			 	if($key<($data['page3']*25))
+			 {		
+			 	/*	 	
+				*/
+			 	if($key<($data['page']*25))
 				{  continue; }
-				if(($data['page3']>0))
-				{
-					if($key>=($data['page3']*50))	
-				  	{break;}
-				}	
-				else
-				{
-					if($key>=25)	
-					{break;}
-				}
+
+				if($key>=(($data['page']+1)*25))	
+				{break;}
+
 				$datos['solicitud']=$this->solicitud->get($solicitud->id);
 				$datos['empresa']=$this->empresa->get($datos['solicitud']->empresa);
 				$datos['solicitud']->medida=$this->dimension->get($datos['solicitud']->medida);
@@ -232,7 +221,7 @@ class Listados extends CI_Controller {
 				
 				unset($solicitud);
 			}
-		}else{	$data['div_solicitudes']=FALSE;	}
+		}
 		
 		if ($proveedores)
 		{
@@ -248,22 +237,17 @@ class Listados extends CI_Controller {
 			#return;
 			
 			$data['page_count2'] = count($proveedores)/25;
-			$data['page2']=($this->input->post('page2')-1);
 			    	
 			foreach ($proveedores as $key => $proveedor)
 			 {
-				if($key<($data['page2']*25))
+				/*
+				*/
+			 	if($key<($data['page']*25))
 				{  continue; }
-	  			if($data['page2']>0)
-				{
-					if($key>=($data['page2']*50))	
-					{break;}
-				}	
-				else
-				{
-					if($key>=25)	
-					 {break;}
-				}
+
+				if($key>=(($data['page']+1)*25))	
+				{break;}
+
 			 	if(!$proveedor)
 			 	{	continue;	}
 				$out['empresa']=$this->empresa->get($proveedor->id);
@@ -275,8 +259,7 @@ class Listados extends CI_Controller {
 				$data['div_empresas'][$key]=$this->load->view('listados/div_empresas', $out, TRUE);
 				unset($proveedor);
 			 }
-		}else{	$data['div_empresas']=FALSE;	}
-
+		}
 
 		$data['div_categorias']=$this->load->view('listados/div_categorias', $data, TRUE);
 

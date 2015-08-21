@@ -49,6 +49,7 @@ class oferta_test extends CI_Controller {
 		$datos['solicitudes_cantidad'] = count($datos['solicitudes']);
 
 		$datos['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$datos['administrador']=$datos['usuario']->permisos;
 		$datos['titulo']="Administrar mis productos - PROVEEDOR.com.co";
 		$datos['empresa']=$empresa;
 		//Carga de las vistas
@@ -126,7 +127,7 @@ class oferta_test extends CI_Controller {
 		$data['datos_categoria'] = $this->obtener_datos_categoria($data['solicitud']->subcategoria);
 		$data['error'] = '';
 		$data['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));		
-		
+		$data['administrador']=$data['usuario']->permisos;
 		$data['empresa']=$this->empresa->get($data['solicitud']->empresa);
 		$data['titulo']="Editar una solicitud de producto o servicio - PROVEEDOR.com.co";
 		$this->load->view('template/head', $data);

@@ -22,7 +22,7 @@ class Publicar_oferta extends CI_Controller {
 	}
 
 //funcion para verificar que el producto pertenezca al usuario con sesion iniciada
-	public function verificar_logged($id_producto=NULL)
+	private  function verificar_logged($id_producto=NULL)
 	{
 		$id = $this->session->userdata('id_usuario');
 		if($id_producto==NULL)
@@ -69,24 +69,33 @@ class Publicar_oferta extends CI_Controller {
 		$this->load->view('template/head', $data);
 		$this->load->view('template/javascript', $data, FALSE);
 		$this->load->view('tablero_usuario/header', $data, FALSE);
+		$this->load->view('oferta/funcionalidades', FALSE);
 		$this->load->view('oferta/publicar', $data, FALSE);
 		$this->load->view('template/footer', $data, FALSE);	
 	}
 
-	function registrar() 
+	public function registrar($simple=FALSE) 
 	{
 		#crear metodo de verificacion
 
 		#if($this->validar())
 		{
-			$solicitud=$this->get_data_form();
-			#echo "<PRE>";
-			#print_r($solicitud);
-			#echo "</PRE>";
-			#return;
+			if($simple)
+			{$solicitud=$this->get_data_form_simple();}
+			else{$solicitud=$this->get_data_form();}
+			
+			/*
+			echo "<PRE>";
+			print_r($solicitud);
+			echo "</PRE>";
+			return;
+			*/
 
 			$id_registro=$this->solicitud->insert($solicitud);
-			$this->_images_form($id_registro);
+
+			if(!$simple)
+			{	$this->_images_form($id_registro);	}
+
 			$this->session->set_flashdata('oferta_registrada', 'Oferta registrada exitosamente!!');
 			redirect(base_url() . 'publicar_oferta', 'refresh');
 		}
@@ -94,7 +103,7 @@ class Publicar_oferta extends CI_Controller {
 		#{$this->index();}
 	}
 
-	function validar() {
+	private function validar() {
 		$this->form_validation->set_rules('nombre', 'nombre', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('categoria', 'categoria', 'trim|required');
 		$this->form_validation->set_rules('subcategoria', 'subcategoria', 'trim|required');
@@ -110,12 +119,23 @@ class Publicar_oferta extends CI_Controller {
 		return $this->form_validation->run();
 	}
 
-	function get_data_form() {
-		$data['nombre'] = $this->input->post('nombre');
+	private function obtener_id_subcategoria($in=1)
+	{
+		if(is_numeric($in))
+			{return $in;}
+		$out= $this->subcategoria->get(array("nom_subcategoria"=>$in));
+		
+		if($out)
+			{return $out->id_subcategoria;}
+
+		return 1;
+	}
+	private function get_data_form() {
+		$data['nombre'] = $this->input->post('nombre_producto_avanzado');
+		$data['subcategoria'] = $this->obtener_id_subcategoria($this->input->post('subcategoria'));
 		#$data['categoria'] = $this->input->post('categoria');
-		$data['subcategoria'] = $this->input->post('subcategoria');
-		$data['descripcion'] = $this->input->post('descripcion');
-		$data['palabras_clave'] = $this->a_string(json_decode($this->input->post('etiquetas'),TRUE));
+		$data['descripcion'] = $this->input->post('descripcion_avanzada');
+		$data['palabras_clave'] = $this->input->post('Pclave');
 		$data['cantidad_requerida'] = $this->input->post('cantidad');
 		$data['medida'] = $this->input->post('list_medida');
 		$data['precio_maximo'] = $this->input->post('precio');
@@ -126,6 +146,25 @@ class Publicar_oferta extends CI_Controller {
 		$id_usuario=$this->session->userdata('id_usuario');
 		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$data['empresa']=$data['empresa']->id;
+
+		return $data;	
+	}
+	private function get_data_form_simple() {
+		$data['nombre'] = $this->input->post('nombre_producto');
+		#$data['categoria'] = $this->input->post('categoria');
+		$data['subcategoria'] = $this->obtener_id_subcategoria($this->input->post('subcategorias_simples'));
+		$data['cantidad_requerida'] = $this->input->post('cantidad_requerida');
+		$data['descripcion'] = $this->input->post('descripcion');
+		$data['palabras_clave'] = $data['nombre'];
+		$data['medida'] = 1;
+		$data['precio_maximo'] = 'A convenir';
+		$data['departamento_entrega'] = 33;
+		$data['ciudad_entrega'] = 1133;
+		$data['formas_de_pago'] = 'A convenir';
+		$id_usuario=$this->session->userdata('id_usuario');
+		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
+		$data['empresa']=$data['empresa']->id;
+		$data['imagenes']='default.jpg';
 
 		return $data;	
 	}
@@ -150,7 +189,7 @@ class Publicar_oferta extends CI_Controller {
 		}
 		return $out;
 	}
-	function _images_form($id_registro) {
+	private function _images_form($id_registro) {
 		$name_array = "userfiles";
 		$imagenes="";
 		if ($_FILES[$name_array]) {

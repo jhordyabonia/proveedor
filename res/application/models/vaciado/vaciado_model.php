@@ -123,7 +123,7 @@ class Vaciado_model extends CI_Model {
 	 			'web'=>$registro->web,
 	 			'celular'=>$registro->celular,
 	 			'telefono'=>$registro->numero,
-	 			'permisos'=>$registro->id_contacto
+	 			'permisos'=>0
 	 			);
 	 		$bd_nueva->insert('usuarios',$data);
 	 		$tmp['id_usuario']=$bd_nueva->insert_id();

@@ -1,15 +1,18 @@
 <!-- page imports -->
 <link href="<?= base_url() ?>assets/css/publicar_oferta/publicar_producto_style.css"
   rel="stylesheet" type="text/css" >
-<script src="<?= base_url() ?>assets/js/publicar_producto/jquery.number.min.js"></script>
-<script src="<?= base_url() ?>assets/js/publicar_producto/bootstrap-filestyle.min.js"> </script>
-<link href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css"
-  rel="stylesheet" type="text/css" />
-<script src="<?= base_url() ?>assets/js/publicar_producto/jquery.tagsinput.js"></script>
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css"
-  rel="stylesheet" type="text/css" />
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-<script src="<?= base_url() ?>assets/js/publicar_oferta/publicar_producto_js.js"></script>
+
+    <script src="<?= base_url() ?>assets/js/publicar_producto/jquery.number.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/publicar_producto/jquery.validate.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/publicar_producto/bootstrap-filestyle.min.js"> </script>
+    <link href="<?php echo css_url().'jquery.tagsinput.min.css' ?>"
+      rel="stylesheet" type="text/css" />
+    <script src="<?= base_url() ?>assets/js/publicar_producto/jquery.tagsinput.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css"
+      rel="stylesheet" type="text/css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/publicar_producto/publicar_producto_js.js"></script>
+
 <script>
   jQuery(document).ready(function($) {
         $("#publicar_oferta").addClass('active');
@@ -79,7 +82,7 @@
 
             <h2 class="txt_soli_cot">Solicitar cotización de producto y/o servicio</h2>
             <!--no tocar-->
-            <?= form_open('publicar_oferta_simple'); ?>
+            <?= form_open('publicar_oferta/registrar/TRUE'); ?>
             <!-- Row de Categorias del Producto -->
             <div class="row" style ="margin-bottom:8px;">
               <div class="col-xs-12">
@@ -268,7 +271,7 @@
             <div class="col-md-12 seccion">
               <h4>Información Básica</h4>
             </div>
-            <?= form_open_multipart('publicar_oferta'); ?>
+            <?= form_open_multipart('publicar_oferta/registrar'); ?>
             <!--no tocar-->
             <!-- Row del Nombre del Porducto -->
             <div class="row" style ="margin-bottom:8px;padding-top: 62px;">
@@ -614,7 +617,7 @@
         <div class="row">
           <div class="col-md-12" style="padding:0;" style="padding:0;">
             <div class="col-md-3 col-sm-3 col-xs-6" style="padding-left: 0;padding-right: 15px;">
-              <select onclick="JavaScript:document.getElementById('municipio').style.display='';" class="form-control provincia inputbox" id="combo_d" name="departamento" required="true">
+              <select onchange="JavaScript:cargar_municipios(this.value);" class="form-control provincia inputbox" id="combo_d" name="departamento" required="true">
                 <option value="">Lugar de entrega</option>
                 <?php foreach ($dept as $fila) { ?>
                   <option value="<?= $fila->id_departamento ?>" 

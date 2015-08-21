@@ -78,10 +78,12 @@ while ( $text.outerHeight() > containerHeight ) {
 				</button>
 			</div>
 			<div class="col-md-1 proveedor">
+				<!--
 				<button type="button" class="boton_proveedor btn btn-default" aria-label="Left Align">
   					<span class="fa fa-phone ico_proveedor" aria-hidden="true"></span>
   					<p class="texto_boton">Llamar al<br> Proveedor</p>
 				</button>
+				-->
 			</div>
 		</div>
 	</div>

@@ -54,7 +54,7 @@ class Tablero_usuario extends CI_Controller {
 		$datos['count_contactos'] = 0;#$this->tablero_model->cantidad_usuarios($iduser);
 		$datos['count_ofertas'] = count($this->solicitud->get_all(array('empresa'=>$datos['empresa']->id)));
 		$datos['count_productos'] = count($this->producto->get_all(array('empresa'=>$datos['empresa']->id)));
-		$this->load->model('Membresia_model','membresia');		
+		#$this->load->model('Membresia_model','membresia');		
 
 		$datos['nombre_membresia']=$datos['membresia']->nombre;
 		$datos['membresia']=$this->membresia->get_div_list($datos['empresa']->id);
@@ -85,12 +85,13 @@ class Tablero_usuario extends CI_Controller {
 		
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-		if(!$categoria)
+		$solicitudes=FALSE;
+		if($categoria)
 		{
-			$solicitudes=$this->asistentes_proveedor->get_all();
+			$solicitudes=$this->asistentes_proveedor->get_all(array('categoria'=>$categoria));
 		}else
 		{			
-			$solicitudes=$this->asistentes_proveedor->get_all(array('categoria'=>$categoria));
+			$solicitudes=$this->asistentes_proveedor->get_all();
 		}
 
 		$datos['total_oportunidades']=0;
@@ -102,13 +103,13 @@ class Tablero_usuario extends CI_Controller {
 		{	    	
 			foreach ($solicitudes as $key => $solicitud)
 			{
-				if($solicitud->publicada==0)
+				if($solicitud->publicada!=0)
 					{ continue;}
 				if(!$categoria)
 				{
-					foreach ($this->categoria_empresa->get_all(array('nit_empresa'=>$datos['empresa']->nit)) as $value)
+					foreach (explode('|',$datos['empresa']->categorias) as $value)
 					{
-						if($solicitud->categoria==$value->id_categoria)
+						if($solicitud->categoria==intval($value))
 						{
 							$datos['datos'][]=$solicitud;
 							break;

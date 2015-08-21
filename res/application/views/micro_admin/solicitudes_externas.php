@@ -1,3 +1,7 @@
+<br>
+<br>
+<br>
+<br>
 <link rel="stylesheet" href="<?php echo css_url() ?>perfil_empresa/header.css">
 	<div class="col-md-12">
 		<div class="row">
@@ -68,6 +72,7 @@
 	            <thead>
 	              <tr>
 	                <th style="text-align: center;">Fecha</th>
+	                <th style="text-align: center;">Eliminar</th>
 	                <th style="text-align: center;">Producto o isumo solicitado</th>
 	                <th style="text-align: center;">Descripcion de la solicitud</th>
 	                <th style="text-align: center;">Catidad requerida</th>
@@ -88,41 +93,56 @@
 	                <?php foreach ($datos as $dato):  ?>
 	                  <tr>
 	                    <td width="20%" >                   
-	                         <input type="text" readonly value="<?=$dato->fecha?>">
-	                      </td> 
+	                       <?=$dato->fecha?>
+	                          </td> 
+	                    <td width="20%" >                   
+	                        <a href="<?=base_url()?>micro_admin/eliminar_solicitud_externa/<?=$dato->id?>">
+	                        	Eliminar
+	                        </a>
+	                          </td> 
 	                    <td width="20%" >                   
 	                         <input type="text" id="<?=$dato->id?>nombre" disabled="true" value="<?=$dato->solicitud?>">
 	                      </td> 
-	                    <td width="20%" >                   
-	                         <input type="text"  id="<?=$dato->id?>descripcion" disabled="true" value="<?=$dato->descripcion?>"/>
+	                    <td width="20%" >     
+	                    <textarea rows="2" cols="30"
+	                    id="<?=$dato->id?>descripcion" disabled="true" /><?=$dato->descripcion?>
+	                    </textarea>              
 	                      </td>
 	                    <td width="20%" > 
-	                        <input type="text"   id="<?=$dato->id?>cantidad" disabled="true" value="<?=$dato->cantidad_requerida?>"/>
+	                        <input type="text"  size="10"  id="<?=$dato->id?>cantidad" disabled="true" value="<?=$dato->cantidad_requerida?>"/>
 	                    </td>
 	                    <td width="20%" > 
-	                        <input type="text"   id="<?=$dato->id?>precio" disabled="true" value="<?=$dato->precio?>"/>
+	                        <input type="text"  size="5"  id="<?=$dato->id?>precio" disabled="true" value="<?=$dato->precio?>"/>
 	                    </td>	                      
 	                    <td width="15%" >
-	                    	<input type="text"   id="<?=$dato->id?>pago" disabled="true" value="<?=$dato->forma_de_pago?>"/>
+	                    	<input type="text"  size="5"  id="<?=$dato->id?>pago" disabled="true" value="<?=$dato->forma_de_pago?>"/>
 	                    </td>	                    
 	                    <td width="15%"> 
-	                     	<input type="text"   id="<?=$dato->id?>email" disabled="true" value="<?=$dato->email?>"/>
+	                     	<input type="text"  size="30"  id="<?=$dato->id?>email" disabled="true" value="<?=$dato->email?>"/>
 	                    </td>
 	                    <td width="15%"> 
-	                     	<input type="text"   id="<?=$dato->id?>nombres" disabled="true" value="<?=$dato->nombres?>"/>
+	                     	<input type="text"  size="30" id="<?=$dato->id?>nombres" disabled="true" value="<?=$dato->nombres?>"/>
 	                    </td>
 	                    <td width="15%"> 
-	                     	<input type="text"   id="<?=$dato->id?>telefono"  disabled="true" value="<?=$dato->telefono?>"/>
+	                     	<input type="text"  size="30" id="<?=$dato->id?>telefono"  disabled="true" value="<?=$dato->telefono?>"/>
 	                    </td>
 	                    <td width="15%"> 
-	                     	<input type="text"   id="<?=$dato->id?>nombre_empresa" disabled="true" value="<?=$dato->nombre_empresa?>"/>
+	                     	<input type="text"  size="15" id="<?=$dato->id?>nombre_empresa" disabled="true" value="<?=$dato->nombre_empresa?>"/>
 	                    </td>
 	                    <td width="15%"> 
-	                     	<input type="text"   id="<?=$dato->id?>ciudad"  disabled="true" value="<?=$dato->ciudad_entrega?>"/>
+	                     	<input type="text"  size="15" id="<?=$dato->id?>ciudad"  disabled="true" value="<?=$dato->ciudad_entrega?>"/>
+	                    	<input type="hidden"  id="<?=$dato->id?>id" value="<?=$dato->id?>"/>
 	                    	<input type="hidden"  id="<?=$dato->id?>id" value="<?=$dato->id?>"/>
 	                    </td>
-	                    <td width="8%"> 
-	                     	<?=$dato->categoria?>
+	                    <td width="8%" style="max-width:10"> 
+	                    	<select size="1" value="<?=$dato->categoria->id_categoria?>" id="<?=$dato->id?>categoria"  disabled="true">
+								<option value="<?=$dato->categoria->id_categoria?>?>"><?=$dato->categoria->nombre_categoria?></option>
+								<option value="37">______________________________________</option>
+								<?php foreach ($categorias as $key => $categoria):?>
+								<option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
+								<?php endforeach;?>
+							</select>
+	                     	
 	                    </td>
 	                    <td  bgcolor="#d3d3d3" style="border:gray 4px soil;" width="5%"> 
 	                    	<?php if(!$dato->publicada):?>
@@ -168,7 +188,14 @@
 <input type='hidden' name="telefono" id="telefono">	                
 <input type='hidden' name="nombre_empresa" id="nombre_empresa">	         
 <input type='hidden' name="ciudad" id="ciudad">	          
-<input type='hidden' name="id_solictud" id="id_solictud">	                
+<input type='hidden' name="categoria" id="categoria">
+<input type='hidden' name="id_solictud" id="id_solictud">	            
+
+<!--con este campo indico, al controlador de edicion, 
+desde que pagina se esta invocando, (appications/viwes/micro_admin/editor.php ó
+ appications/viwes/micro_admin/solcitudes_externas.php )-->
+<input type="hidden" id="editor" value="FALSE">
+
 <?= form_close() ?>
 
 

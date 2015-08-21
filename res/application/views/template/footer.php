@@ -58,7 +58,7 @@
 									<a href="<?=base_url()?>publicar_oferta"><p class="texto_links2">Publicar en Proveedor</p></a>
 								</div>
 								<div class="col-md-12">
-									<a href="mailto:soporte@proveedor.com.co?subject=quiero ser platino &"><p class="texto_links2">Hazte Platino en Proveedor</p></a>
+									<a href="http://platino.proveedor.com.co"><p class="texto_links2">Hazte Platino en Proveedor</p></a>
 								</div>
 							</div>
 						</div>
@@ -73,7 +73,7 @@
 						<div class="col-md-12">
 							<div class="row contenedor_row" >
 								<div class="col-md-12">
-									<a href="<?php echo base_url(); ?>condiciones"><p class="texto_links2">Ayuda</p></a>						 
+									<a href="http://www.blog.proveedor.com.co/como-funciona-proveedor-com-co-ayuda/"><p class="texto_links2">Ayuda</p></a>						 
 								</div>
 								<div class="col-md-12">
 									<a href="<?php echo base_url(); ?>condiciones"><p class="texto_links2">Quienes Somos</p></a>
@@ -141,7 +141,7 @@
 						</div>
 				</div>
 				<div class="col-md-12">
-					<p id="texto_Proveedor">Proveedor.com.co S.A.S. 2014 - Colombia - Todos los derechos reservados</p>
+					<p id="texto_Proveedor">Teléfono Fijo Bogotá 7038188 CEL 3195168590. Av 15 # 118 - 75 of 506 Bogotá - Colombia - Proveedor.com.co S.A.S. 2015 - Todos los derechos reservados. </p>
                 </div>
 				<div class="col-md-12" id="contenedor_politicas">
 					<div class="row" >

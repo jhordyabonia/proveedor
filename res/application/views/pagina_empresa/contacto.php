@@ -100,7 +100,11 @@
 										<h3 class="title_descripcion" id="title_sitioweb">Página Web</h3>
 									</div>
 									<div class="col-md-6 content_descripcion content_sitioweb" id="info_contacto">
-										<a href="http://<?=$web;?>" class="text_descript" id="sitio_web"><?=  $web; ?> </a>
+										<?php if($web!=str_replace('http:',"",$web)):?>
+											<a href="<?=$web;?>" class="text_descript" id="sitio_web"><?=$web; ?> </a>
+										<?php else:?>
+											<a href="http://<?=$web;?>" class="text_descript" id="sitio_web"><?=$web; ?> </a>
+										<?php endif;?>
 									</div>
 								</div>	
 							</div>

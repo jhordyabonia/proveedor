@@ -1,1 +1,0 @@
-<img src="<?= base_url()?>img/publicidad.png" width="100%" >

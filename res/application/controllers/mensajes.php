@@ -96,6 +96,7 @@ class Mensajes extends CI_Controller {
 
 	$datos['usuario']->usuario=$this->session->userdata('usuario');
 	$datos['id_usuario']=$this->session->userdata('id_usuario');
+	$datos['administrador']=FALSE;
 	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
 	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
 	$this->load->view('template/javascript', FALSE, FALSE);     
@@ -106,6 +107,7 @@ class Mensajes extends CI_Controller {
   public function leer($id)
   {
   	 $this->session->set_userdata('path_current',base_url()."mensajes/leer/".$id);
+	 $datos['administrador']=FALSE;
   	 if(!is_numeric($id))
   	 {
   		$this->usuario_noregistrado($id);

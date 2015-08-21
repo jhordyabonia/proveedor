@@ -11,7 +11,7 @@ class Vaciado extends CI_Controller {
 	function index()
 	{
 		
-		$this->load->view('index_test/banner_eventos',FALSE);
+		#$this->load->view('index_test/banner_eventos',FALSE);
 		echo "<table border='0'>";
 		echo "<tr><th>Cargando empresas...";
 		$empresas=$this->vaciado->empresas();

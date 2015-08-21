@@ -18,6 +18,7 @@ class Micro_admin extends CI_Controller
 		$this->load->model('new/Departamento_model','departamento'); 
 		$this->load->model('new/Municipio_model','municipio'); 
 		$this->load->model('new/Categoria_model','categoria'); 
+		$this->load->model('new/Tipo_empresa_model','tipo_empresa'); 
 		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('crypter_model','crypter');
 		$this->load->library(array('session', 'email','form_validation'));
@@ -42,6 +43,16 @@ class Micro_admin extends CI_Controller
     {    	
     	$this->verifyc_login();
 		$nueva['membresia']= $id_membresia;
+		$result=$this->empresa->update($nueva,$id_empresa);
+		if($result>=1)
+			{	echo "Exito!";	}
+		else
+			{	echo "Error!";	}
+    }
+    public function cambiar_verificacion($id_empresa,$verificada=0)
+    {    	
+    	$this->verifyc_login();
+		$nueva['legalizacion']= $verificada;
 		$result=$this->empresa->update($nueva,$id_empresa);
 		if($result>=1)
 			{	echo "Exito!";	}
@@ -127,6 +138,7 @@ class Micro_admin extends CI_Controller
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$datos['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$datos['administrador']=$datos['usuario']->permisos;
 		$this->load->view('template/head', $datos);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
 		$this->load->view('template/javascript', FALSE);
@@ -200,14 +212,17 @@ class Micro_admin extends CI_Controller
 
 		if($var)
 		{	return $datos['proveedores'];	}
-
+		
+		$datos['tipos_empresa']=$this->tipo_empresa->get_all();
+    	$datos['categorias']=$this->categoria->get_all();
+    	
     	$datos['titulo']="Proveedor Administrador- empresas";
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$datos['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$datos['administrador']=$datos['usuario']->permisos;
 		$this->load->view('template/head', $datos);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
-		$this->load->view('micro_admin/buscador', FALSE);
 		$this->load->view('template/javascript', FALSE);
 	    $this->load->view('micro_admin/buscador', FALSE);
 	    $this->load->view('micro_admin/empresas', $datos);
@@ -241,6 +256,7 @@ class Micro_admin extends CI_Controller
 			}
 			$producto=$this->producto->get($producto->id);
 			if(!$producto){ continue;	}
+			$producto->empresa=$this->empresa->get($producto->empresa);
 			$datos['productos'][]=$producto;
 			unset($producto);
 		}	
@@ -251,6 +267,7 @@ class Micro_admin extends CI_Controller
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
+		$datos['administrador']=FALSE;
 		$this->load->view('template/head', $datos);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
 		$this->load->view('micro_admin/buscador', FALSE);
@@ -293,6 +310,7 @@ class Micro_admin extends CI_Controller
     	$datos['titulo']="Proveedor Administrador- Solicitudes internas";
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
+		$datos['administrador']=FALSE;
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$this->load->view('template/head', $datos);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
@@ -326,7 +344,7 @@ class Micro_admin extends CI_Controller
 				 {break;}
 			}
 			*/
-			$solicitud->categoria=$this->categoria->get($solicitud->categoria)->nombre_categoria;
+			$solicitud->categoria=$this->categoria->get($solicitud->categoria);
 		
 			$datos['datos'][]=$solicitud;
 		}
@@ -335,7 +353,9 @@ class Micro_admin extends CI_Controller
 		$id_usuario=$this->session->userdata('id_usuario');
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
+		$datos['administrador']=FALSE;
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
+		$datos['categorias']=$this->categoria->get_all();
 		$this->load->view('template/head', $datos);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
 		$this->load->view('micro_admin/buscador', FALSE);
@@ -419,6 +439,11 @@ class Micro_admin extends CI_Controller
 		echo "<a href='JavaScript:windows.close();'>Cerrar</a>"; 
 		//redirect($_SERVER['HTTP_REFERER']);
     }
+    public function eliminar_solicitud_externa($id)
+	{		 
+		$this->asistentes_proveedor->delete($id);
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
     public function editar_solicitud_externa()
     {
@@ -432,6 +457,7 @@ class Micro_admin extends CI_Controller
 		$datos['apellidos'] = $this->input->post('apellidos');
 		$datos['telefono'] = $this->input->post('telefono');
 		$datos['nombre_empresa'] = $this->input->post('nombre_empresa');
+		$datos['categoria'] = $this->input->post('categoria');
 		$datos['ciudad_entrega'] = $this->input->post('ciudad');
 		$id= $this->input->post('id_solictud');
 
@@ -450,25 +476,52 @@ class Micro_admin extends CI_Controller
 		switch ($solicitud->categoria) 
 		{
 			case 39:
-				$id_user=355;
+				$empresa=355;
 				$subcategoria="Metalmecánica";
 				break;
 			case 6:
-				$id_user=127;
+				$empresa=127;
 				$subcategoria="Oxfords";
 				break;
 			case 33:
-				$id_user=224;
+				$empresa=224;
 				$subcategoria="Otros Servicios para Empresas y Outsourcing";
 				break;
+			default:
+				$empresa=11105;
+				$subcategoria=1;				
 		}
-		$solicitud->fecha_publicacion="".date("Y m d");
-		$this->solicitud->insert($solicitud);    	
+		if(!$solicitud)
+		{
+			echo "<CENTER><H3>Error, solicitud no encontrada, contacte la direción de tecnología</H3></CENTER>";
+		}
+		
+		$fecha_publicacion="".date("Y m d");
+		$solicitud_tmp=array('nombre'=>$solicitud->solicitud,
+							'subcategoria'=>$subcategoria,
+							'fecha_publicacion'=>"".date("Y m d"),
+							'empresa'=>$empresa,
+							'descripcion'=>$solicitud->descripcion,
+							'imagenes'=>'default.jpg',
+							'palabras_clave'=>$solicitud->solicitud,
+							'cantidad_requerida'=>$solicitud->cantidad_requerida,
+							'precio_maximo'=>$solicitud->precio,
+							'medida'=>$this->obtener_unidad($solicitud->cantidad_requerida),
+							'formas_de_pago'=>$solicitud->forma_de_pago,
+							'ciudad_entrega'=>$this->obtener_ciudad($solicitud->ciudad_entrega),
+							'departamento_entrega'=>$this->obtener_departamento($solicitud->ciudad_entrega),
+							);
+		$id_solictud=$this->solicitud->insert($solicitud_tmp);    	
+
 		$ciudad = $this->municipio->get(array("municipio" => $solicitud->ciudad_entrega));
 		$departamento = $this->departamento->get($ciudad->id_departamento);
-		$this->asistentes_proveedor->update(array('publicada'=>$this->oferta->id),$id);
+		$this->asistentes_proveedor->update(array('publicada'=>$id_solictud),$id);
 		$this->solicitudes_externas(TRUE);
     }
+    private  function obtener_departamento($input=""){ return 1;}
+    private  function obtener_ciudad($input=""){ return 1;}
+    private  function obtener_unidad($input=""){ return 1;}
+
     public function mensajes($var=FALSE)
     {    	
     	$this->verifyc_login();
@@ -507,6 +560,7 @@ class Micro_admin extends CI_Controller
 
     	$datos['titulo']="Proveedor Administrador- Mensajes";
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
+		$datos['administrador']=FALSE;
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['empresa']=$this->empresa->get(array('usuario'=> $id_usuario));
 		$this->load->view('template/head', $datos);

@@ -261,12 +261,12 @@ class Registro extends CI_Controller {
 	function verificar($dato="",$campo='usuario',$tabla='usuarios')
 	{
 		$dato=str_replace("ARROBA", '@', $dato);
-		$this->load->model('new/'.$tabla.'_model','bd');
-		$registro=$this->bd->get(array($campo=>$dato));		
+		$this->load->model('new/'.$tabla.'_model','tabla');
+		$registro=$this->tabla->get(array($campo=>$dato));		
 		
-		#if($registro)
-		#{	echo 1;	}
-		#else 
+		if($registro)
+		{	echo 1;	}
+		else 
 		if($registro==FALSE)		
 		{	echo 0;	}
 		else

@@ -1,3 +1,7 @@
+<br>
+<br>
+<br>
+<br>
 <link rel="stylesheet" href="<?php echo css_url() ?>perfil_empresa/header.css">
 	<div class="col-md-12">
 		<div class="row">
@@ -70,114 +74,191 @@
             <thead>
               <tr>
 				<th style="text-align: center;">Reestablecer<br>Contaseña</th>
-				<th style="text-align: center;">Nit</th>
-                <th style="text-align: center;">Nombre</th>
+				<th style="text-align: center;">Identificadores</th>
                 <th style="text-align: center;">Logo</th>
 				<th style="text-align: center;">Descripcion</th>
-				<th style="text-align: center;">Membresia</th>
-				<th style="text-align: center;">Nombre Contacto</th>
-				<th style="text-align: center;">usuario</th>
-				<th class="hidden-xs" style="text-align: center;">Email</th>
-				<th style="text-align: center;">Telefono</th>
+				<th style="text-align: center;">Tipo Empresa/<br>Categoria Prinsipal/<br>Membresia</th>
+				<th style="text-align: center;">Datos Usuario</th>
+				<th style="text-align: center;">Contacto</th>
 				<th style="text-align: center;">Direccion</th>
-				<th style="text-align: center;">Editar</th>
-				<th style="text-align: center;">Eliminar</th>
+				<th style="text-align: center;">Acciones</th>
               </tr>
             </thead>
               <tbody>  
-                <?php foreach ($proveedores as $datos):  ?>
+                <?php foreach ($proveedores as $proveedor):  ?>
                   <tr>
                     
                     <td width="5%" >                     	
-                       <a href="<?= base_url(); ?>/micro_admin/recuperar_clave/<?=$datos['usuario']->id?>" >
+                       <a href="<?= base_url(); ?>/micro_admin/recuperar_clave/<?=$proveedor['usuario']->id?>" >
                        Reestablecer<br>Contaseña
                        </a>
                     </td>
-                    <td width="10%" >                       
-                       <a href="<?= base_url(); ?>perfil/ver_empresa/<?=$datos['empresa']->id?>" >
-                         <h5 style="margin: 15% 10% ;">
-                          <?=$datos['empresa']->nit?>
-                          </h5>
-                        </a>
-                      </td><td width="10%" >                       
-                       <a href="<?= base_url(); ?>perfil/ver_empresa/<?=$datos['empresa']->id?>" >
-                         <h5 style="margin: 15% 10% ;">
-                          <?=$datos['empresa']->nombre?>
-                          </h5>
-                        </a>
-                      </td>
+                    <td width="10%" >
+	                    <center> 
+	                    	<b>Nit:</b>                      
+	                       <br><a href="<?= base_url(); ?>perfil/ver_empresa/<?=$proveedor['empresa']->id?>" >
+	                          <?=$proveedor['empresa']->nit?>
+	                       </a>
+	                       <br><b>Nombre:</b>
+	                       <br><input id="empresa_<?=$proveedor['empresa']->id?>nombre" disabled="true" value="<?=$proveedor['empresa']->nombre?>">
+	                    </center> 
+                     </td>
                       <td width="15%" > 
-						<img  class="center-block" src="<?=base_url()?>uploads/logos/<?=$datos['empresa']->logo?>" style="max-width:185px; max-height:100px">
+						<img  class="center-block" src="<?=base_url()?>uploads/logos/<?=$proveedor['empresa']->logo?>" style="max-width:155px; max-height:70px">
+					 	<input id="empresa_<?=$proveedor['empresa']->id?>logo_old" type="hidden" value="<?=$proveedor['empresa']->logo?>">
 					  </td>
                       <td width="15%" > 
 					    <div class="center-block" style="max-width: 220px; /* border-style: solid; */">
-							<?=$datos['empresa']->descripcion?> 
+					    	<textarea cols="15" rows="3" disabled="true" id="empresa_<?=$proveedor['empresa']->id?>descripcion" >
+					    		<?=$proveedor['empresa']->descripcion?>
+					    	</textarea>
 						</div>
-					  </td>
-					  <td width="10%" > 
-					    <div class="center-block" style=" max-width: 120px; /* border-style: solid; */">
-                      		<select value="<?=$datos['empresa']->membresia?>" 
-                      			onchange="JavaScript:cambiar_membresia('<?=$datos['empresa']->id?>',this.value)">
-                      			<?php if($datos['empresa']->membresia==1): ?> 
+					  </td>					  
+					  <td width="30%" > 
+					   	<center>
+					   		<b>Membresia:</b>
+                      		<br>
+                      		<select value="<?=$proveedor['empresa']->membresia?>" 
+                      			onchange="JavaScript:cambiar_membresia('<?=$proveedor['empresa']->id?>',this.value)">
+                      			<?php if($proveedor['empresa']->membresia==1): ?> 
 	                      			<option value="1">Estandard</option>
-	                      			<option value="2">Verificada</option>
+	                      			<option value="2">Oro</option>
 	                      			<option value="3">Platino</option>
-	                      		<?php elseif ($datos['empresa']->membresia==2): ?>	                      		
-	                      			<option value="2">Verificada</option>
+	                      		<?php elseif ($proveedor['empresa']->membresia==2): ?>	                      		
+	                      			<option value="2">Oro</option>
 	                      			<option value="1">Estandard</option>
 	                      			<option value="3">Platino</option>
 	                      		<?php else:?>	                      		
 	                      			<option value="3">Platino</option>
-	                      			<option value="2">Verificada</option>
+	                      			<option value="2">Oro</option>
 	                      			<option value="1">Estandard</option>
 	                      		<?php endif;?>
-                      		</select>                      		
+                      		</select>   
+                      		<br>
+                      		<b>Verificación:</b>
+                      		<br>
+                      		<select value="<?=$proveedor['empresa']->legalizacion?>" 
+                      			onchange="JavaScript:cambiar_verificacion('<?=$proveedor['empresa']->id?>',this.value)"> 
+	                      			<?php if($proveedor['empresa']->legalizacion==0): ?> 	                      		
+	                      			<option value="0">Sin Verificar</option> 
+	                      			<option value="1">Verificada</option>                  		
+	                      			 <?php else:?>	                      		
+	                      			<option value="1">Verificada</option>
+	                      			<option value="0">Sin Verificar</option>
+	                      		    <?php endif;?>        		
+                      		</select> 
+							<br>
+							<b>Tipo_empresa:</b>
+                      		<br>
+	                      		<select value="<?=$proveedor['empresa']->tipo?>"  disabled="true" id="empresa_<?=$proveedor['empresa']->id?>tipo_empresa">
+		                      			<?php foreach($tipos_empresa as $tipo): ?> 
+			                      			<?php if($proveedor['empresa']->tipo==$tipo->id_tipoempresa):?>
+				                      			<option selected value="<?=$tipo->id_tipoempresa?>"><?=$tipo->tipo?></option>
+				                      			<?php else:?>	                      			
+				                      			<option value="<?=$tipo->id_tipoempresa?>"><?=$tipo->tipo?></option>	                      			
+			                      			<?php endif;?>	                      			
+			                      		<?php endforeach;?>			                      	
+	                      		</select> 
+                      		<br>
+                      		<b>Categoria Principal:</b>
+                      		<br>
+	                      		<select value="6" disabled="true" id="empresa_<?=$proveedor['empresa']->id?>categoria"
+	                      			onchange="JavaScript:this.name='Calzado';"> 
+	                      		<option value="6">No definida</option>
+		                      			<?php foreach($categorias as $categoria): ?> 
+			                      			<option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>	                      			
+			                      		<?php endforeach;?>
+	                      		</select> 
+                      		</center>
                       	</div>
 				      </td>
-					  <td width="15%" > 
-						<?=$datos['usuario']->nombres?> 
-					  </td>
-					  <td width="15%" > 
-						<?=$datos['usuario']->usuario?> 
-					  </td>
-                    <td width="10%" > 
-                     <?=$datos['usuario']->email?>
-                    </td>
-                      </a>
-                    <td width="10%" > 
-                       <?= $datos['usuario']->indicativo?> -
-                        <?= $datos['usuario']->telefono?> -
-                        <?= $datos['usuario']->extension?>
-                         <br>cel: <?= $datos['usuario']->celular?> 
-                        </td>
+					  <td width="15%" >
+					  	<center>
+					  	 <b>Nombre:</b>
+							<br>
+							<input id="empresa_<?=$proveedor['empresa']->id?>nombres" disabled="true" value="<?=$proveedor['usuario']->nombres?>">
+							<br>
+						  <b>Usuario:</b>
+							<br>
+							<?=$proveedor['usuario']->nombres?> 
+							<br>
+						  <b>Email:</b>
+							<br>
+						  	<?=$proveedor['usuario']->email?>
+	                      </b>
+                      	</center>
+                      </td>
+                    <td width="20%" > 
+                    	<center>
+	                       <b>Indicativo:</b>
+	                       <br><input id="empresa_<?=$proveedor['empresa']->id?>indicativo" size="3" disabled="true" value="<?= $proveedor['usuario']->indicativo?>">
+	                       <br><b>Numero:</b>
+	                       <br><input id="empresa_<?=$proveedor['empresa']->id?>numero" disabled="true" value="<?= $proveedor['usuario']->telefono?>">
+	                       <br><b>Extensión:</b>
+	                       <br><input id="empresa_<?=$proveedor['empresa']->id?>extension" size="3" disabled="true" value="<?= $proveedor['usuario']->extension?>">
+	                       <br><b>Celular:</b>
+	                       <br><input id="empresa_<?=$proveedor['empresa']->id?>celular" size="15" disabled="true" value="<?= $proveedor['usuario']->celular?>">
+                     	</center>
+                     </td>
                       
                     <td width="10%" > 
-                      <?= $datos['usuario']->direccion ?> 
-                        
-                    </td>
-                    
-                    <td width="10%"> 
-                      <a href="<?=base_url()?>eliminar/empresa/<?=$datos['empresa']->id?>"> 
-                        <span class="glyphicon glyphicon-trash" style="font-size: 30px; margin: 20% 40%;"> 
-                      </a> 
+                      <input id="empresa_<?=$proveedor['empresa']->id?>direccion" disabled="true" value="<?= $proveedor['usuario']->direccion ?>">
                     </td>
 
 					<td width="10%"> 
-					   <a href="JavaScript:start(<?=$datos['empresa']->id?>,1);">  
-						 <i class="fa fa-envelope icono_mensaje" style="font-size: 30px; margin: 20% 40%;"> 
-						 </i> 
-						</a> 
-					</td>
+						<center>
+						 <br>
+					     	<a id="empresa_<?=$proveedor['empresa']->id?>" href="JavaScript:editar_empresa('empresa_<?=$proveedor['empresa']->id?>');">
+		                     	<span class="glyphicon glyphicon-pencil" style="font-size: 30px; margin: 20% 40%;"></span>
+	                    	</a>
+						 <br>
+						 <br>
+						 <br>
+						 <br>
+		                    <a href="<?=base_url()?>eliminar/empresa/<?=$proveedor['empresa']->id?>"> 
+		                        <span class="glyphicon glyphicon-trash" style="font-size: 30px; margin: 20% 40%;"></span>
+		                     </a> 
+						 <br>
+		                 </center>
+                    </td>
 
                   </tr>
+                  <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>id" value="<?=$proveedor['empresa']->id?>"/>
+                  <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>nit" value="<?=$proveedor['empresa']->nit?>"/>
+	              <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>web" value="<?=$proveedor['usuario']->web?>"/>
+	              <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>departamento" value="<?=$proveedor['usuario']->departamento?>"/>
+	              <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>ciudad" value="<?=$proveedor['usuario']->ciudad?>"/>
+	              <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>cargo" value="<?=$proveedor['usuario']->cargo?>"/>
+	              <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>id_categorias" value="1|"/>
+	              <input type="hidden"  id="empresa_<?=$proveedor['empresa']->id?>nombre_categorias" value="nom_catgoria|"/>
+	                    
                   <?php endforeach; ?>                
               </tbody>
           </table>
          </CENTER>
         </div>
 
-
-
+<?php $attribbs=array('id'=>"form",'target'=>"other",'autocomplete' => 'off','novalidate' => 'novalidate');?>
+<?=form_open_multipart('perfil/actualizar2/',$attribbs)?>
+<input type='hidden' name="nombre" id="nombre">	                
+<input type='hidden' name="nombres" id="nombres">	                
+<input type='hidden' name="descripcion" id="descripcion">	                
+<input type='hidden' name="tipo_empresa" id="tipo_empresa">	                
+<input type='hidden' name="logo_old" id="logo_old">	                
+<input type='hidden' name="cargo" id="cargo">	                
+<input type='hidden' name="direccion" id="direccion">	                
+<input type='hidden' name="departamento" id="departamento">	                
+<input type='hidden' name="ciudad" id="ciudad">	                
+<input type='hidden' name="web" id="web" >	         
+<input type='hidden' name="telefono" id="numero">	          
+<input type='hidden' name="indicativo" id="indicativo">	                
+<input type='hidden' name="extension" id="extension">	                
+<input type='hidden' name="celular" id="celular">	                
+<input type='hidden' name="nit" id="nit">	
+<input type='hidden' name="id" id="id">	
+<input type='hidden' name="id_categorias" id="nit">	
+<input type='hidden' name="nombre_categorias" id="nit">	
+<?= form_close() ?>
 
 
 
@@ -223,21 +304,38 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">
 
 <script type="text/javascript">
-      function cambiar_membresia(id_empresa,id_membresia)
+     function cambiar_membresia(id_empresa,id_membresia)
       {
-      		//console.log(" "+id_empresa+" "+id_membresia);
+          //console.log(" "+id_empresa+" "+id_membresia);
 
-      		var nav=new XMLHttpRequest();
-      		var url =  "<?=base_url()?>micro_admin/cambiar_membresia/"+id_empresa+"/"+id_membresia;
-		    nav.open("GET",url, true);
-			nav.addEventListener('load',show,false);
-			nav.send(null);
-			function show()
-			{
-					//cotizar=document.getElementById('cotizar');
-					console.log(nav.response);
-					//cotizar.innerHTML=popup.response;
-			}
-	       			
- 	   }
+          var nav=new XMLHttpRequest();
+          var url =  "<?=base_url()?>micro_admin/cambiar_membresia/"+id_empresa+"/"+id_membresia;
+	        nav.open("GET",url, true);
+	      nav.addEventListener('load',show,false);
+	      nav.send(null);
+	      function show()
+	      {
+	          //cotizar=document.getElementById('cotizar');
+	          console.log(nav.response);
+	          //cotizar.innerHTML=popup.response;
+	      }
+	              
+     } 
+     function cambiar_verificacion(id_empresa,id_membresia)
+      {
+          //console.log(" "+id_empresa+" "+id_membresia);
+
+          var nav=new XMLHttpRequest();
+          var url =  "<?=base_url()?>micro_admin/cambiar_verificacion/"+id_empresa+"/"+id_membresia;
+	        nav.open("GET",url, true);
+	      nav.addEventListener('load',show,false);
+	      nav.send(null);
+	      function show()
+	      {
+	          //cotizar=document.getElementById('cotizar');
+	          console.log(nav.response);
+	          //cotizar.innerHTML=popup.response;
+	      }
+              
+     }
 </script>

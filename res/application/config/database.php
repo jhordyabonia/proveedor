@@ -65,8 +65,8 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 $db['prueba']['hostname'] = "localhost"; 
-$db['prueba']['username'] = "iguana_iguana"; 
-$db['prueba']['password'] = "scriptmedia2014"; 
+$db['prueba']['username'] = "root"; 
+$db['prueba']['password'] = "root"; 
 $db['prueba']['database'] = "iguana_sm"; 
 $db['prueba']['dbdriver'] = "mysql"; 
 $db['prueba']['dbprefix'] = ""; 

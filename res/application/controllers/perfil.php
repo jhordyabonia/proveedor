@@ -307,6 +307,26 @@ class Perfil extends CI_Controller {
 		$this->usuarios->update($datos['usuario'],$empresa->usuario);
 		redirect('/tablero_usuario');
 	}
+	public function actualizar2()
+	{
+		$datos=$this->obterner_datos();
+		#$datos['id']=$this->input->post('id');
+		
+		$empresa=$this->empresa->get($this->input->post('id'));
+		/*
+		echo "<PRE>";
+		print_r($empresa);
+		echo "</PRE>";
+		return;
+		*/
+
+		if(!$this->verificar_logged($empresa->id))
+			{	return;	}
+
+		$this->empresa->update($datos['empresa'],$empresa->id);
+		$this->usuarios->update($datos['usuario'],$empresa->usuario);
+		redirect('/perfil/ver_empresa/'.$empresa->id);
+	}
 	public function existen_usuario_email($usuario, $email="")
 	{
 		$tmp = 0;
@@ -417,6 +437,7 @@ class Perfil extends CI_Controller {
 		}
 		$datos['empresa']->categoria=$tmp_categorias;
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
+		$datos['administrador']=$datos['datos_usuario']->permisos;
 		$datos['titulo'] = "Editar perfil empresa";
 
 		$this->load->view('template/head', $datos, FALSE);
@@ -428,12 +449,15 @@ class Perfil extends CI_Controller {
 	//funcion para verificar que el producto pertenezca al usuario con sesion iniciada
 	public function verificar_logged($id_empresa=0)
 	{
-		if($id_empresa=="1059985632-7"||($id_empresa=="90058523"||$id_empresa=="102223263921"))
-    	{	return TRUE;	}
+		#if($id_empresa=="1059985632-7"||($id_empresa=="90058523"||$id_empresa=="102223263921"))
+    	#{	return TRUE;	}
 
 		$id_logged = $this->session->userdata('id_usuario');
 		$id_empresa_editar = $this->empresa->get($id_empresa)->usuario;
-		
+	
+		if($this->usuarios->get($id_logged)->permisos==1)
+		{	return TRUE;	}
+
 		if($id_logged=='')
 		{	
 			redirect('/logueo');
@@ -526,41 +550,25 @@ class Perfil extends CI_Controller {
 				$dato=$this->departamento->get($departamento);
 				$datos['departamento']= $dato->nombre;
 			}
-		$datos['popup']=FALSE;
+		if($usuario->pais!=52)
+		{
+			$usuario->departamento="";
+			$usuario->ciudad= $this->pais->get($usuario->pais)->nombre;
+		}
+		
 		$nit=$empresa->nit;
-		if($nit=="102223263921"||$nit=="1059985632-7"||$nit=="13068269"||$nit=="10223263929"||$nit=="80240507-2")
-			{$datos['popup']=TRUE;}
-		$datos['id_empresa']=$id_empresa;
-		$datos['titulo']=$empresa->nombre;
-		$datos['div_membresia']=$this->membresia->get_div($id_empresa);
-		$datos['usuario']=$this->session->userdata('usuario');
-		$this->load->view('template/head', $datos, FALSE);
-		$this->load->view('template/javascript', $datos, FALSE);
-		$this->load->view('pagina_empresa/header', $datos, FALSE);
-		$this->load->view('pagina_empresa/contacto', $datos, FALSE);
-		$this->load->view('template/footer', $datos, FALSE);
-
-		if($this->session->flashdata('mensaje_enviado')=="DONE")
-			return;
 
 		$dat['categoria'] = 0;
-		if($nit=="10223263929")//Calzado
+		if($nit=="10223263929")//Calzado  
 		{	$dat['categoria'] = 39;	}
-		if($nit=="80240507-2")//Informatica
-		{	
-			$dat['categoria'] = 9;
-
-			$this->load->model('popups_textos_model', 'popups_textos');
-			$dat['datos']=$this->popups_textos->get(array('categoria'=>$dat['categoria']));
-			$dat['view'] = "asistentes_proveedor";		
-			$dat['id_popup'] = "asistentes_proveedor";	
-			$this->load->view('popups/asistentes_proveedor_servicios', $dat);
-			return;
-		}
+		if($nit=="10223263925")//Dotacion industrial.
+		{	$dat['categoria'] = 41;	}
 		elseif($nit=="102223263921")//Maquinaria industrial
 		{	$dat['categoria'] = 6;	}
 		elseif($nit=="1059985632-7")//Jhordy tester
-		{	$dat['categoria'] = 9; }
+		{	$dat['categoria'] = 37;	}
+		elseif($nit=="90058523")//Andres tester
+		{	$dat['categoria'] = 37;	}
 		elseif($nit=="13068269")//ILICH
 		{	
 			$dat['categoria'] = 33;	
@@ -570,20 +578,42 @@ class Perfil extends CI_Controller {
 			$dat['view'] = "asistentes_proveedor";		
 			$dat['id_popup'] = "asistentes_proveedor";	
 			$this->load->view('popups/asistentes_proveedor_servicios', $dat);
-			return;
+			#return;
 		}
-		if($dat['categoria']==0){return;}
+		if($dat['categoria']==0){$dat['categoria']=1;}
 		$this->load->model('popups_textos_model', 'popups_textos');
 		$dat['datos']=$this->popups_textos->get(array('categoria'=>$dat['categoria']));
 		$dat['view'] = "asistentes_proveedor";		
 		$dat['id_popup'] = "asistentes_proveedor";	
+		$titulos=array();
+		foreach (explode(',',$dat['datos']->titulos) as $key => $value) 
+		{
+			$dato_tmp=explode('|',$value);
+			if(count($dato_tmp)>1)
+			{
+				$titulos[$dato_tmp[0]]=$dato_tmp[1];
+			}else {$titulos[$value]=$value;	}
+		}
+		if($dat['categoria']==0)
+		{	$datos['popup']=FALSE;	}
+		else {$datos['popup']=TRUE; }
+		$dat['datos']->titulos=$titulos;
+        $dat['auto_launch_AP']=FALSE;
+		
+		$datos['id_empresa']=$id_empresa;
+		$datos['titulo']=$empresa->nombre;
+		$datos['div_membresia']=$this->membresia->get_div($id_empresa);
+		$datos['usuario']=$this->session->userdata('usuario');
+		$this->load->view('template/head', $datos, FALSE);
+		$this->load->view('template/javascript', $datos, FALSE);
+		$this->load->view('pagina_empresa/header', $datos, FALSE);
+		$this->load->view('pagina_empresa/contacto', $datos, FALSE);
+		$this->load->view('template/footer', $datos, FALSE);
 		$this->load->view('popups/asistentes_proveedor', $dat);	
 
-		//Destroy
-		$object->name="test";
-		$object->method="add_contacto";	
-		$obaject->state_in=false;
-		//ende Destroy
+		if($this->session->flashdata('mensaje_enviado')=="DONE")
+			return;
+		
 	}
 
 	/* Esta funcion es la encargada de agregar un contacto al usuario */

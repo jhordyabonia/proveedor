@@ -73,13 +73,15 @@ class Publicar_producto extends CI_Controller {
 		$this->load->view('template/footer', $data, FALSE);	
 	}
 
-	function registrar() 
+	function registrar($simple=FALSE) 
 	{
 		#crear metodo de verificacion
 
 		#if($this->validar())
 		{
-			$producto=$this->get_data_form();
+			if($simple)
+			{$producto=$this->get_data_form_simple();}
+			else{$producto=$this->get_data_form();}
 			/*
 			echo "<PRE>";
 			print_r($producto);
@@ -112,11 +114,48 @@ class Publicar_producto extends CI_Controller {
 		return $this->form_validation->run();
 	}
 
+	private function obtener_id_subcategoria($in=1)
+	{
+		if(is_numeric($in))
+			{return $in;}
+		$out= $this->subcategoria->get(array("nom_subcategoria"=>$in));
+		
+		if($out)
+			{return $out->id_subcategoria;}
+
+		return 1;
+	}
+	private function get_data_form_simple()
+	{		
+		$data['nombre'] = $this->input->post('nombre');
+		$data['sector'] = $this->input->post('categoria');
+		#$data['categoria'] = $this->input->post('categoria');
+		$data['subcategoria'] = $this->obtener_id_subcategoria($this->input->post('subcategorias_simple'));
+		$data['descripcion'] = $this->input->post('descripcion');
+		$data['precio_unidad'] = $this->input->post('precio');
+		$data['medida'] = $this->input->post('list_medidas');
+		$data['palabras_clave'] = $data['nombre'];
+		#$data['palabras_clave'] = $this->a_string($this->input->post('Pclave'));
+		$data['pedido_minimo'] = 'A convenir';
+		#$data['tiempo_entrega'] = $this->input->post('tiempo_entrega');
+		#$data['list_entrega'] = $this->input->post('list_entrega');
+		#$data['capacidad'] = $this->input->post('capacidad');
+		#$data['list_capacidad'] = $this->input->post('list_capacidad');
+		$data['tipo'] = $this->input->post('tipo');
+		$data['estado'] = 'nuevo';
+		$data['formas_de_pago'] = 'A convenir';
+		$id_usuario=$this->session->userdata('id_usuario');
+		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
+		$data['empresa']=$data['empresa']->id;
+		
+		return $data;				
+	}
+
 	function get_data_form() 
 	{
 		$data['nombre'] = $this->input->post('nombre_avanzado');
 		#$data['categoria'] = $this->input->post('categoria');
-		$data['subcategoria'] = $this->input->post('subcategoria');
+		$data['subcategoria'] = $this->obtener_id_subcategoria($this->input->post('subcategoria'));
 		$data['descripcion'] = $this->input->post('descripcion_avanzada');
 		$data['palabras_clave'] = $this->input->post('Pclave');
 		#$data['palabras_clave'] = $this->a_string($this->input->post('Pclave'));

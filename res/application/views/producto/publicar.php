@@ -98,7 +98,7 @@
               </h4>
             </div>
             
-          <?= form_open_multipart('publicar_producto_simple'); ?>
+          <?= form_open_multipart('publicar_producto/registrar/TRUE'); ?>
           <!-- Row del Nombre del Porducto -->
           <div class="row" style ="margin-bottom:8px;">
             <div class="col-xs-12">

@@ -79,8 +79,8 @@ class Producto extends CI_Controller
 				$datos['url_publicar_producto']= base_url(). "publicar_oferta";
 				$this->load->view('template/head', $datos, FALSE);
 				$this->load->view('template/javascript', FALSE, FALSE);
-				$this->load->view('index_test/top_menu',$datos);
-				$this->load->view('index_test/header_buscador',$datos);
+				$this->load->view('index/top_menu',$datos);
+				$this->load->view('index/header_buscador',$datos);
 				$this->load->view('producto/pagina_producto', $data);
 				$this->load->view('template/footer');
 			}else
@@ -88,7 +88,6 @@ class Producto extends CI_Controller
 				show_404();
 			}		
 	}
-
 	
 	function administrar() 
 	{
@@ -123,7 +122,6 @@ class Producto extends CI_Controller
 		$this->load->view('template/javascript', $datos, FALSE);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
 		$this->load->view('tablero_usuario/administrar_productos', $datos);
-
 	}
 	//funcion para verificar que el producto pertenezca al usuario con sesion iniciada
 	public function verificar_logged($id_producto=NULL)
@@ -156,7 +154,6 @@ class Producto extends CI_Controller
 		return FALSE;
 	}
 
-
 	//funcion para eliminar producto 
 	public function eliminar($id_producto) 
 	{
@@ -167,8 +164,6 @@ class Producto extends CI_Controller
 		$this->session->set_flashdata('producto_eliminado', 'Producto Eliminados de su cuenta de usuario');
 		redirect('/producto/administrar');
 	}
-
-
 
 	//funcion para editar
 	public function editar($id_producto=FALSE)
@@ -208,7 +203,7 @@ class Producto extends CI_Controller
 		}
 	}
 
-	function tipos_de_pago_actuales($producto)
+	private function tipos_de_pago_actuales($producto)
 	{			
 		$out['Giros nacionales']='Giros nacionales';
 		$out['Cheque']='Cheque';
@@ -236,7 +231,7 @@ class Producto extends CI_Controller
 		$out['subcategorias'] = $this->subcategoria->get_all(array('id_categoria'=>$out['subcategoria']->id_categoria)); 
 		return $out;
 	}
-	function subir_imagenes() 
+	private function subir_imagenes() 
 	{
 		if ($_FILES['userfiles']) 
 		{
@@ -263,6 +258,7 @@ class Producto extends CI_Controller
 		return $out;
 	}
 
+	//Este metodo, recibe los datos, enviado desde la pgina de edicin de producto.
 	public function index()
 	{
 		$this->form_validation->set_rules('nombre', 'nombre', 'trim|required|min_length[4]');

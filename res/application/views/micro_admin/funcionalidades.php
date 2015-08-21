@@ -112,7 +112,6 @@ function editar(id)
 {
   if(document.getElementById(id).innerHTML=="Guardar")
   {
-
     document.getElementById(""+id+"nombre").disabled=true;
     document.getElementById(""+id+"descripcion").disabled=true;
     document.getElementById(""+id+"pago").disabled=true;
@@ -123,9 +122,17 @@ function editar(id)
     document.getElementById(""+id+"telefono").disabled=true;
     document.getElementById(""+id+"cantidad").disabled=true;
     document.getElementById(""+id+"precio").disabled=true;
+    document.getElementById(""+id+"categoria").disabled=true;
 
     document.getElementById(id).innerHTML="Editar";
 
+    /*
+    if(document.getElementById('editor')=="TRUE")
+    {
+      document.getElementById('form').submit();
+      return;
+    }
+    */
     document.getElementById('solicitud').value=document.getElementById(""+id+"nombre").value;
     document.getElementById('descripcion').value=document.getElementById(""+id+"descripcion").value;
     document.getElementById('pago').value=document.getElementById(""+id+"pago").value;
@@ -136,6 +143,8 @@ function editar(id)
     document.getElementById('telefono').value=document.getElementById(""+id+"telefono").value;
     document.getElementById('cantidad_requerida').value=document.getElementById(""+id+"cantidad").value;
     document.getElementById('precio').value=document.getElementById(""+id+"precio").value;
+    document.getElementById('categoria').value=document.getElementById(""+id+"categoria").value;
+   // document.getElementById('nombe_categorias').value=document.getElementById(""+id+"categoria").name;
     document.getElementById('id_solictud').value=id;
 
     document.getElementById('form').submit();
@@ -152,8 +161,76 @@ function editar(id)
   document.getElementById(""+id+"telefono").disabled=false;
   document.getElementById(""+id+"cantidad").disabled=false;
   document.getElementById(""+id+"precio").disabled=false;
+  document.getElementById(""+id+"categoria").disabled=false;
   document.getElementById(id).innerHTML="Guardar";  
 }
+
+function editar_empresa(id)
+{
+  if(document.getElementById(id).innerHTML=="Guardar")
+  {
+    document.getElementById(""+id+"nombre").disabled=true;
+    document.getElementById(""+id+"nombres").disabled=true;
+    document.getElementById(""+id+"descripcion").disabled=true;
+    document.getElementById(""+id+"tipo_empresa").disabled=true;
+    document.getElementById(""+id+"numero").disabled=true;
+    document.getElementById(""+id+"indicativo").disabled=true;
+    document.getElementById(""+id+"extension").disabled=true;
+    document.getElementById(""+id+"celular").disabled=true;
+    document.getElementById(""+id+"direccion").disabled=true;
+    document.getElementById(""+id+"cargo").disabled=true;
+    document.getElementById(""+id+"departamento").disabled=true;
+    document.getElementById(""+id+"ciudad").disabled=true;
+    document.getElementById(""+id+"web").disabled=true;
+  /*
+    document.getElementById(""+id+"categoria").disabled=true;
+*/
+    document.getElementById(id).innerHTML="Editar";
+
+    document.getElementById('nombre').value=document.getElementById(""+id+"nombre").value;
+    document.getElementById('nombres').value=document.getElementById(""+id+"nombres").value;
+    document.getElementById('descripcion').value=document.getElementById(""+id+"descripcion").value;
+    document.getElementById('tipo_empresa').value=document.getElementById(""+id+"tipo_empresa").value;
+    document.getElementById('numero').value=document.getElementById(""+id+"numero").value;
+    document.getElementById('indicativo').value=document.getElementById(""+id+"indicativo").value;
+    document.getElementById('extension').value=document.getElementById(""+id+"extension").value;
+    document.getElementById('celular').value=document.getElementById(""+id+"celular").value;
+    document.getElementById('direccion').value=document.getElementById(""+id+"direccion").value;
+    document.getElementById('logo_old').value=document.getElementById(""+id+"logo_old").value;
+    //document.getElementById('categoria').value=document.getElementById(""+id+"categoria").value;
+    document.getElementById('nit').value=document.getElementById(""+id+"nit").value;
+    document.getElementById('id').value=document.getElementById(""+id+"id").value;
+    
+    document.getElementById('cargo').value=document.getElementById(""+id+"cargo").value;
+    document.getElementById('departamento').value=document.getElementById(""+id+"departamento").value;
+    document.getElementById('ciudad').value=document.getElementById(""+id+"ciudad").value;
+    document.getElementById('web').value=document.getElementById(""+id+"web").value;
+/*
+*/
+    document.getElementById('form').submit();
+    return;
+  }
+
+  document.getElementById(""+id+"nombre").disabled=false;
+  document.getElementById(""+id+"nombres").disabled=false;
+  document.getElementById(""+id+"descripcion").disabled=false;
+  document.getElementById(""+id+"tipo_empresa").disabled=false;
+  document.getElementById(""+id+"numero").disabled=false;
+  document.getElementById(""+id+"indicativo").disabled=false;
+  document.getElementById(""+id+"extension").disabled=false;
+  document.getElementById(""+id+"celular").disabled=false;
+  document.getElementById(""+id+"direccion").disabled=false;
+ /* 
+  document.getElementById(""+id+"categoria").disabled=false;
+  document.getElementById(""+id+"cargo").disabled=false;
+  document.getElementById(""+id+"departamento").disabled=false;
+  document.getElementById(""+id+"ciudad").disabled=false;
+  document.getElementById(""+id+"web").disabled=false;
+  */
+  document.getElementById(id).innerHTML="Guardar";  
+}
+
+
 </script>
   <div id='btn_contactar' data-toggle="modal" data-target="#popup"></div>
   <div id="cotizar">

@@ -80,7 +80,9 @@ class Inventarios extends CI_Controller {
         if($id_empresa==0)
         { $id_empresa = $this->input->post('id_empresa'); }
 
-        $datos['empresa']=$this->empresa->get($id_empresa);
+        $datos['empresa']=$this->empresa->get(array('nit'=>$id_empresa));
+        if(!$datos['empresa'])
+          {$datos['empresa']=$this->empresa->get($id_empresa);}
        
         $this->load->view('inventarios/verificar_empresa', $datos);
     }

@@ -42,7 +42,7 @@ class Index extends CI_Controller {
 		}
 
        	$datos->titulos=$titulos;
-       	#$data['formulario_captura']="";#$this->load->view('index_test/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
+       	#$data['formulario_captura']="";#$this->load->view('index/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
 		
 		$data['registro']=$this->session->userdata('registro')|FALSE;
 		$data['paso']=$this->session->userdata('paso')|0;
@@ -51,15 +51,15 @@ class Index extends CI_Controller {
 		
 		$this->load->view('template/head', $data, FALSE);
 		$this->load->view('template/javascript');
-		$this->load->view('index_test/top_menu',$data);
-		$this->load->view('index_test/header_buscador',$data);
-       	#$this->load->view('index_test/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
-		$this->load->view('index_test/banner', $data);
+		$this->load->view('index/top_menu',$data);
+		$this->load->view('index/header_buscador',$data);
+       	#$this->load->view('index/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
+		$this->load->view('index/banner', $data);
  
         
         #$this->load->view("listados/listados_mobil", $data);
-		$this->load->view('index_test/colaboradores', $data);
-		$this->load->view('index_test/ultimos_productos_empresas', $data);
+		$this->load->view('index/colaboradores', $data);
+		$this->load->view('index/ultimos_productos_empresas', $data);
 
 		$this->load->view('carrouseles/funcionalidades');
         $this->load->view('carrouseles/carousel_productos_destacados', $data);
@@ -69,11 +69,11 @@ class Index extends CI_Controller {
 		/*
         */
         
-		#$this->load->view('index_test/banner_eventos',FALSE);
-		$this->load->view('index_test/productos_destacados', $data);
+		#$this->load->view('index/banner_eventos',FALSE);
+		$this->load->view('index/productos_destacados', $data);
 		#$this->load->view('test/scroll', $data);
-		$this->load->view('index_test/productos_patrocinados', $data);
-		$this->load->view('index_test/empresas_patrocinadas',$data);
+		$this->load->view('index/productos_patrocinados', $data);
+		$this->load->view('index/empresas_patrocinadas',$data);
 		$this->load->view('template/footer');
 		$this->load->view('template/footer_empy');
 

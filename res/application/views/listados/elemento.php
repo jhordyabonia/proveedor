@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>listado.css">
 
 
-<div class="elemento" bgcolor="gray" style="background:#F7F7F7"  width="100%" height="100%">
+<div class="elemento hidden-xs hidden-sm visible-md visible-lg" bgcolor="gray" style="background:#F7F7F7;"  width="100%" height="100%">
+	<!--<div class="temp_error" style="background: #fff !important;padding: 28%;"></div>-->
 	<!-- Columna categorias -->
 <div class="col-md-12 color_fondo">
 	<div class="col-md-2 categorias">
@@ -67,39 +68,35 @@
 			    			echo $value; 			    			
 			    		}
 			    	}else echo  '<H3 align="left">La búsqueda "<b>'.$nom_producto.'</b>" no ha coincidido con ningún producto</H3>';
-		    	?>
-		    							<script type="text/javascript">
-											function pagination(page)
-											{
-												document.getElementById('page').value=page;
-												document.getElementById('form_page').submit();
-											}
-										</script>
-										<?php
-											$atributos = array(
-												'autocomplete' => 'off',
-												'id' => 'form_page',
-												'novalidate' => 'novalidate');
-										?>
-										<?= form_open_multipart('listados/lista/'.$nom_producto, $atributos); ?>
-											<input type="hidden" id="page" name="page" value="0">
-												<center>
+		    	?>		
+		    								<style type="text/css">
+			    								.pagina_actual  
+			    								{
+			    									background-color: lightgray !important;
+			    									color: white !important;
+			    								}
+		    								</style>
+		    	    							<center>
 													<nav>
 													  <ul class="pagination">
-														<?php if($page==-1){$page=0;} ?>
 														<? if($page>0): ?>
-															<li><a href="JavaScript:pagination(<?=$page-1?>);">&laquo; Anterior</a></li>
+															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/productos/<?=$page-1;?>">&laquo; Anterior </a></li>
 														<?php endif; ?>
 														<? for($i=0;$i<$page_count;$i++): ?>
-															<li><a href="JavaScript:pagination(<?=$i+1?>);"><?=$i+1?></a></li>
+															<li <?php if($page==$i){echo "class='pagina_actual'";}?>>
+																<?php if($page==$i):?>
+																	<span class="pagina_actual"><?=$i+1?></span>
+																<?php else: ?>
+																	<a href="<?=base_url()?>listados/lista/<?=$busqueda?>/productos/<?=$i?>"><?=$i+1?></a>
+																<?php endif;?>
+															</li>
 														<?endfor;?>
-														<? if($page+1<=$page_count): ?>
-															<li><a href="JavaScript:pagination(<?=$page+2?>);">Siguiente &raquo;</a></li>
+														<? if($page<intval($page_count)): ?>
+															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/productos/<?=$page+1?>">Siguiente &raquo;</a></li>
 													  	<?php endif; ?>
 													  </ul>
 													</nav>
 												</center>
-										<?= form_close() ?>
 		    </div>
 		    <div role="tabpanel" class="<?=$_div_proveedores?>" id="proveedores">
 		    	<?php if($div_empresas)
@@ -109,39 +106,28 @@
 			    				echo $value;
 			    			}
 			    	}else echo '<H3 align="left">La búsqueda "<b>'.$nom_producto.'</b>" no ha coincidido con ningúna empresa</H3>';
-		    	?>
-										<script type="text/javascript">
-											function pagination2(page)
-											{
-												document.getElementById('page2').value=page;
-												document.getElementById('form_page2').submit();
-											}
-										</script>
-										<?php
-											$atributos = array(
-												'autocomplete' => 'off',
-												'id' => 'form_page2',
-												'novalidate' => 'novalidate');
-										?>
-										<?= form_open_multipart('listados/lista/'.$nom_producto."/proveedores", $atributos); ?>
-											<input type="hidden" id="page2" name="page2" value="0">
-												<center>
+		    	?>					
+		    									<center>
 													<nav>
 													  <ul class="pagination">
-														<?php if($page2==-1){$page2=0;} ?>
-														<? if($page2>0): ?>
-															<li><a href="JavaScript:pagination2(<?=$page2-1?>);">&laquo; Anterior</a></li>
+														<? if($page>0): ?>
+															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/proveedores/<?=$page-1;?>">&laquo; Anterior </a></li>
 														<?php endif; ?>
 														<? for($i=0;$i<$page_count2;$i++): ?>
-															<li><a href="JavaScript:pagination2(<?=$i+1?>);"><?=$i+1?></a></li>
+															<li>
+																<?php if($page==$i):?>
+																	<span class="pagina_actual"><?=$i+1?></span>
+																<?php else: ?>
+																	<a href="<?=base_url()?>listados/lista/<?=$busqueda?>/proveedores/<?=$i?>"><?=$i+1?></a>
+																<?php endif;?>	
+															</li>
 														<?endfor;?>
-														<? if($page2+1<=$page_count2): ?>
-															<li><a href="JavaScript:pagination2(<?=$page2+2?>);">Siguiente &raquo;</a></li>
+														<? if($page<intval($page_count2)): ?>
+															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/proveedores/<?=$page+1?>">Siguiente &raquo;</a></li>
 													  	<?php endif; ?>
 													  </ul>
 													</nav>
 												</center>
-											<?= form_close() ?>
 		    </div>
 		    <div role="tabpanel" class="<?=$_div_solicitudes?>" id="solicitudes">
 
@@ -153,38 +139,27 @@
 			    			}
 			    	}else  echo '<H3 align="left">La búsqueda "<b>'.$nom_producto.'</b>" no ha coincidido con ningúna solicitud</H3>';
 		    	?>
-		    							<script type="text/javascript">
-											function pagination3(page)
-											{
-												document.getElementById('page3').value=page;
-												document.getElementById('form_page3').submit();
-											}
-										</script>
-										<?php
-											$atributos = array(
-												'autocomplete' => 'off',
-												'id' => 'form_page3',
-												'novalidate' => 'novalidate');
-										?>
-										<?= form_open_multipart('listados/lista/'.$nom_producto."/solicitudes", $atributos); ?>
-											<input type="hidden" id="page3" name="page3" value="0">
-												<center>
+		    								<center>
 													<nav>
 													  <ul class="pagination">
-														<?php if($page3==-1){$page3=0;} ?>
-														<? if($page3>0): ?>
-															<li><a href="JavaScript:pagination3(<?=$page3-1?>);">&laquo; Anterior</a></li>
+														<? if($page>0): ?>
+															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/solicitudes/<?=$page-1;?>">&laquo; Anterior </a></li>
 														<?php endif; ?>
 														<? for($i=0;$i<$page_count3;$i++): ?>
-															<li><a href="JavaScript:pagination3(<?=$i+1?>);"><?=$i+1?></a></li>
+															<li>
+															<?php if($page==$i):?>
+																<span class="pagina_actual"><?=$i+1?></span>
+															<?php else: ?>
+																<a href="<?=base_url()?>listados/lista/<?=$busqueda?>/solicitudes/<?=$i?>"><?=$i+1?></a>
+															<?php endif;?>
+															</li>
 														<?endfor;?>
-														<? if($page3+1<=$page_count3): ?>
-															<li><a href="JavaScript:pagination3(<?=$page3+2?>);">Siguiente &raquo;</a></li>
+														<? if($page<intval($page_count3)): ?>
+															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/solicitudes/<?=$page+1?>">Siguiente &raquo;</a></li>
 													  	<?php endif; ?>
 													  </ul>
 													</nav>
-												</center>
-										<?= form_close() ?>		    	
+												</center>	
 		    </div>
 		  </div>
 
@@ -193,6 +168,7 @@
 
 </div>
 </div>
+
 <?php  
   $reffer= "none";		
   if($this->session->flashdata('reffer')) 
@@ -250,4 +226,3 @@
   <div id='btn_contactar' data-toggle="modal" data-target="#popup"></div>
   <div id="cotizar">
     </div>
-

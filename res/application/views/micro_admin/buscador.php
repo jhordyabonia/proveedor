@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="<?php echo css_url() ?>perfil_empresa/header.css">
+<br>
+<br>
+<br>
+<br>
+<CENTER>
+  <link rel="stylesheet" href="<?php echo css_url() ?>perfil_empresa/header.css">
  <div class="col-md-11 col-sm-11 col-xs-12">
             <div class="row">
               <div class="col-md-8 col-sm-12 col-xs-12">
@@ -25,3 +30,4 @@
                  <?= form_close() ?>
                 </div>
               </div>
+</CENTER>

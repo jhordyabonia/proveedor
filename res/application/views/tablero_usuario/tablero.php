@@ -13,7 +13,7 @@
 					<?php endif;?>
 				<div class="col-md-6 titulo_empresa">
 					<p class="nombre_empresa">
-						<a href="<?=base_url()?>perfil/ver_empresa/0/<?=$empresa->nit?>" 
+						<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" 
 							class="nom_empresa link_tablero_usuario">
 							<?=$empresa->nombre?>
 						</a>

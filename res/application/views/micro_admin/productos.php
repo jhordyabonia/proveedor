@@ -1,3 +1,7 @@
+<br>
+<br>
+<br>
+<br>
 <link rel="stylesheet" href="<?php echo css_url() ?>perfil_empresa/header.css">
 	<div class="col-md-12">
 		<div class="row">
@@ -64,8 +68,14 @@
 	        
 
         <!-- columna de tamaño 9 para la tabla un espacio -->
-        <div class="col-xs-10 col-xs-push-0 table-responsive " >
-         <CENTER>
+        <div class="col-xs-10 col-xs-push-0 table-responsive " > <CENTER>
+        	<a rol="button" href="<?=base_url()?>inventarios">
+        		<h2>
+        			Carga masiva
+	        		<i class="fa fa-shield fa-flip-vertical" > 
+						</i> 
+				</h2>
+        	</a>
           <table class="table table-bordered table-hover ">
             <thead>
               <tr>
@@ -100,7 +110,7 @@
 						<?=$producto->precio_unidad?> 
 				      </td>
 					  <td width="15%" > 
-						<?=$empresa->nombre?> 
+						<?=$producto->empresa->nombre?> 
 					  </td>
                     <td width="10%" > 
                      <a href="<?= base_url(); ?>producto/ver/<?=$producto->id?>/0" >

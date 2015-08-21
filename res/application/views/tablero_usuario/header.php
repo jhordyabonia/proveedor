@@ -28,7 +28,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right menu_collapse_derecha">
                 <li class="item_collapse_usuario">
-                    <a href="<?=base_url()?>perfil/ver_empresa/0/<?=$empresa->nit?>" class="nombre_empresa">
+                    <a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="nombre_empresa">
                         <span class="glyphicon glyphicon-user ico_usuario"></span>
                         <?=$usuario->usuario?>
                     </a>

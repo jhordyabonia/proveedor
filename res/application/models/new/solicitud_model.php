@@ -90,7 +90,7 @@ class Solicitud_model extends CI_Model {
         {
            $this->db->join('subcategoria',"subcategoria.id_subcategoria = solicitud.subcategoria"); 
            $this->db->join('categoria',"categoria.id_categoria = subcategoria.id_categoria ");
-           $this->db->where(array('categoria'=>$categoria));
+           $this->db->where(array('categoria.id_categoria'=>$categoria));
         }
         
         $this->db->order_by('empresa.membresia',"acend");

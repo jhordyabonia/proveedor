@@ -75,46 +75,23 @@ class Membresia_model extends CI_Model {
     public function get_div($id_empresa='')
     {
         $this->load->model('new/empresa_new_model','empresa');
-        $membresia=$this->empresa->get($id_empresa)->membresia;
-        switch ($membresia) {
-            case '1':
-                $data=$this->get(1);
-                $div = $this->load->view('membresia/estandar', $data, TRUE);
-                return $div;
-                break;
-            case '2':
-                $data=$this->get(2);
-                $div = $this->load->view('membresia/verificada', $data, TRUE);
-                return $div;
-                break;
-            case '3':
-                $data=$this->get(3);
-                $div = $this->load->view('membresia/platino', $data, TRUE);
-                return $div;
-                break;
-        }
+        $empresa=$this->empresa->get($id_empresa);
+        $membresia=$empresa->membresia;
+        $data['membresia']=$this->get($membresia);
+        $data['verificada']=$empresa->legalizacion;
+        $div = $this->load->view('membresia/membresia', $data, TRUE);
+        return $div;
+               
     } 
     public function get_div_list($id_empresa='')
     {
-        $this->load->model('new/Empresa_model','empresa');
-        $membresia=$this->empresa->get($id_empresa)->membresia;
-        switch ($membresia) {
-            case '1':
-                $data=$this->get(1);
-                $div = $this->load->view('membresia/estandar_list', $data, TRUE);
-                return $div;
-                break;
-            case '2':
-                $data=$this->get(2);
-                $div = $this->load->view('membresia/verificada_list', $data, TRUE);
-                return $div;
-                break;
-            case '3':
-                $data=$this->get(3);
-                $div = $this->load->view('membresia/platino_list', $data, TRUE);
-                return $div;
-                break;
-        }
+        $this->load->model('new/empresa_new_model','empresa');
+        $empresa=$this->empresa->get($id_empresa);
+        $membresia=$empresa->membresia;
+        $data['membresia']=$this->get($membresia);
+        $data['verificada']=$empresa->legalizacion;
+        $div = $this->load->view('membresia/membresia_list', $data, TRUE);
+        return $div;
     }  
 }
         
