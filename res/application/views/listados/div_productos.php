@@ -14,8 +14,8 @@ while ( $text.outerHeight() > containerHeight ) {
 		<div class="col-md-3 row imagen_producto">
 			<div class="background_imagen" >
 				<div class="center-vertical_imagen">
-					<a href="<?=base_url()?>/producto/ver/<?=$producto->id?>">
-						<img src="<?=base_url()?>/uploads/<?=$producto->imagenes?>; ?>" class="img_imagen img-responsive">
+					<a href="<?=base_url()?>producto/ver/<?=$producto->id?>">
+						<img src="<?=base_url()?>uploads/<?=$producto->imagenes?>" class="img_imagen img-responsive">
 					</a>
 				</div>
 			</div>
@@ -24,7 +24,7 @@ while ( $text.outerHeight() > containerHeight ) {
 		<div class="col-md-7 nombre_producto">
 			<!-- row de nombre producto -->
 			<div class="row enlace">
-				<a href="<?=base_url()?>/producto/ver/<?=$producto->id?>" class="enlace_producto"><?php echo $producto->nombre ?></a>
+				<a href="<?=base_url()?>producto/ver/<?=$producto->id?>" class="enlace_producto"><?php echo $producto->nombre ?></a>
 			</div>
 			<!-- row de info producto y emrpesa -->
 			<div class="row">

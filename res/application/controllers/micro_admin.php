@@ -10,6 +10,7 @@ class Micro_admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('new/Producto_model', 'producto');
+		$this->load->model('new/Busquedas_model', 'busqueda');
 		$this->load->model('new/Solicitud_model', 'solicitud');
 		$this->load->model('new/Usuarios_model', 'usuarios');
 		$this->load->model('new/Empresa_model', 'empresa');
@@ -39,6 +40,18 @@ class Micro_admin extends CI_Controller
     {
     	$this->inicio();
     } 
+    public function busquedas_frecuentes()
+    {
+    	$busquedas = $this->busqueda->get_all();
+
+    	echo "<table><tr><th>Busqueda<th>Resultados<th>Fecha<tr>";
+    	foreach ($busquedas as $key => $value)
+    	{
+    		echo "<tr><td>".$value->busqueda."<td>".$value->resultados."<td>".$value->fecha;
+    	}
+    	echo "</table>";
+
+    }
     public function cambiar_membresia($id_empresa,$id_membresia=1)
     {    	
     	$this->verifyc_login();

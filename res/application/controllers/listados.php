@@ -17,6 +17,7 @@ class Listados extends CI_Controller {
 		$this->load->model('new/Producto_model','producto');
 		$this->load->model('new/Solicitud_model','solicitud');
 		$this->load->model('new/Dimension_model','dimension');
+		$this->load->model('new/Busquedas_model','busquedas');
 		#$this->load->model('Busqueda_model','busqueda');
 	}
 
@@ -53,6 +54,19 @@ class Listados extends CI_Controller {
  		//$this->lista();
 	}
 
+	public function test($busqueda,$tipo_buqueda='Simple')
+	{
+		$print= $this->analisis_busqueda($busqueda,$tipo_buqueda);
+		if($tipo_buqueda=='Simple')
+		{
+		}else
+		{
+			echo "<PRE>";
+			print_r($print);
+			echo "</PRE>";
+		}
+	}
+
     public function analisis_busqueda($busqueda,$tipo_buqueda='Simple')
     {
         //implementar analicis de la cadena, conlas erramientas de strign.
@@ -73,14 +87,14 @@ class Listados extends CI_Controller {
                 $end_value=substr($value,-2);
                 if($end_value=="es"||$end_value=="ES")
                 {
-                    $out[]=str_replace($end_value,"",$value); 
+                    $out[]=substr($value,0,-2); 
                 }      
                 else
                 {
                     $end_value=substr($value,-1);
                     if($end_value=="s"||$end_value=="S")
                     {
-                        $out[]=str_replace($end_value,"",$value); 
+                        $out[]=substr($value,0,-1); 
                     }
                     else
                     {                        
@@ -100,35 +114,35 @@ class Listados extends CI_Controller {
 		$data['busqueda']=$p;
 		$data['id_usuario']= $this->session->userdata('id_usuario');
 
-		$data['titulo']="Resultados de busqueda";
 		$data['url_publicar_solicitud']="";
 		$data['url_publicar_producto']="";
 		
 		$this->breadcrumb->add('Inicio', base_url());
 		$this->breadcrumb->add('Productos', base_url() . '');
 
-		$p=$this->analisis_busqueda($p);
-
 		if($p=="XXXXXX")
 		{
 			$data['nom_producto']="Sin dato";
 		}else
 		{
-			$data['nom_producto']=$p;
+			$data['nom_producto']='<b>'.$p.'</b>';
 		}
 		if($p=="default")
 		{	
 			$p="";
 			//$data['nom_producto']="Ver todo";
 		}		
+		$data['titulo']=$this->analisis_busqueda($p);;
+		$p=$this->analisis_busqueda($p,"Compuesta");
 
-		$productos=$this->producto->buscar($p);
+
+		$productos=$this->producto->buscar($p,"Compuesta");
 		#foreach ($this->analisis_busqueda($p,'Compuesta') as  $value) 
 		#{
 		#	$productos[]=$this->producto->buscar($value);
 		#}
-		$solicitudes=$this->solicitud->buscar($p);
-		$proveedores=$this->empresa->buscar($p);
+		$solicitudes=$this->solicitud->buscar($p,"Compuesta");
+		$proveedores=$this->empresa->buscar($p,"Compuesta");
 
 		$data['categorias']=$this->categoria->get_all();
 				
@@ -162,7 +176,10 @@ class Listados extends CI_Controller {
 
 				if($key>=(($data['page']+1)*25))	
 				{break;}
+
 				$datos['producto']=$this->producto->get($producto->id);
+				$img_prinsipal=explode(',',$datos['producto']->imagenes);
+				$datos['producto']->imagenes=$img_prinsipal[0];
 				$datos['empresa']=$this->empresa->get($datos['producto']->empresa);
 				$datos['producto']->medida=$this->dimension->get($datos['producto']->medida);
 				if($datos['producto']->pedido_minimo!=1)
@@ -183,7 +200,11 @@ class Listados extends CI_Controller {
 			 	#if($datos['empresa']->membresia==3)
 				#{$proveedores=array_merge($proveedores,array($datos['producto']->empresa));}
 				#else{$proveedores[]=$datos['producto']->empresa;}
-				$producto->div_membresia=$this->membresia->get_div_list($datos['producto']->empresa);
+				$datos['producto']->div_membresia=$this->membresia->get_div_list($datos['producto']->empresa);
+				
+				#echo @$producto->div_membresia;
+				#return;
+
 				$data['div_productos'][$key]=$this->load->view('listados/div_productos',$datos, TRUE);
 				
 				unset($producto);
@@ -204,6 +225,8 @@ class Listados extends CI_Controller {
 				{break;}
 
 				$datos['solicitud']=$this->solicitud->get($solicitud->id);
+				$img_prinsipal=explode(',',$datos['solicitud']->imagenes);
+				$datos['solicitud']->imagenes=$img_prinsipal[0];
 				$datos['empresa']=$this->empresa->get($datos['solicitud']->empresa);
 				$datos['solicitud']->medida=$this->dimension->get($datos['solicitud']->medida);
 				if($datos['solicitud']->cantidad_requerida!=1)
@@ -216,7 +239,7 @@ class Listados extends CI_Controller {
 				#if($this->empresa->get($datos['solicitud']->empresa)->membresia==3)
 				#{$proveedores=array_merge($proveedores,array($datos['solicitud']->id));}
 				#else{$proveedores[]=$datos['solicitud']->empresa;}
-				$solicitud->div_membresia=$this->membresia->get_div_list($datos['solicitud']->empresa);
+				$datos['solicitud']->div_membresia=$this->membresia->get_div_list($datos['solicitud']->empresa);
 				$data['div_solicitudes'][$key]=$this->load->view('listados/div_solicitudes', $datos, TRUE);
 				
 				unset($solicitud);
@@ -263,6 +286,8 @@ class Listados extends CI_Controller {
 
 		$data['div_categorias']=$this->load->view('listados/div_categorias', $data, TRUE);
 
+		$resultados= "Productos:".($data['page_count']*25).",Solicitudes:".($data['page_count3']*25).",Proveedores:".($data['page_count2']*25);
+		$this->busquedas->insert(array('busqueda'=>$data['busqueda'],'resultados'=>$resultados));
 		$this->load->view("listados/elemento", $data);
 		$this->load->view("listados/div_footer_seo", $data);
 		$this->load->view("listados/div_footer_seo_2", $data);

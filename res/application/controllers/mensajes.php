@@ -108,6 +108,7 @@ class Mensajes extends CI_Controller {
   {
   	 $this->session->set_userdata('path_current',base_url()."mensajes/leer/".$id);
 	 $datos['administrador']=FALSE;
+  	 /*
   	 if(!is_numeric($id))
   	 {
   		$this->usuario_noregistrado($id);
@@ -118,7 +119,7 @@ class Mensajes extends CI_Controller {
 	   show_404();
 	   return;
 	 }
-  	
+  	*/
 	$id_user=$this->session->userdata('id_usuario');
 	$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 0));
 	$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 1));
@@ -225,6 +226,7 @@ class Mensajes extends CI_Controller {
   public function test_encrypt($number)
   {
   	$result =$this->crypter->encrypt($number);
+  	echo '<br>'.$result.'<br>';
   	echo $this->crypter->decrypt($result);
   }
   private function usuario_noregistrado($id)

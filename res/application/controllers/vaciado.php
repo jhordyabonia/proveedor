@@ -25,6 +25,12 @@ class Vaciado extends CI_Controller {
 		echo "<tr><th>Cargando solicitudes...";
 		$this->vaciado->oferta();
 		echo "<td>Hecho!";
+		echo "<tr><th>Cargando remitentes...";
+		$this->vaciado->remitentes();
+		echo "<td>Hecho!";
+		echo "<tr><th>Cargando mensajes...";
+		$this->vaciado->mensajes();
+		echo "<td>Hecho!";
 
 		echo "<tr><th>Vinculando empresas...";
 		$this->vaciado->linking($usuarios,"empresa","usuario");
@@ -36,8 +42,11 @@ class Vaciado extends CI_Controller {
 		$this->vaciado->linking($empresas,"solicitud","empresa");
 		echo "<td>Hecho!";
 		echo "</table>";
-
-
+		echo "<tr><th>Vinculando mensajes...";
+		$this->vaciado->linking($empresas,"mensajes","destinatario");
+		echo "<td>Hecho!";
+		/*
+		*/
 		echo "<h4>Vinculos..</h4>";
 
 		echo "<PRE>";
@@ -54,6 +63,11 @@ class Vaciado extends CI_Controller {
 	{
 		$this->vaciado->halt();
 		echo "Deleted all!!";
+	}
+
+	public function to_string($tabla,$where, $select='*')
+	{
+		echo $this->vaciado->to_string($tabla,$where, $select);
 	}
 
 

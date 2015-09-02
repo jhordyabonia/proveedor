@@ -77,12 +77,26 @@ class Producto_model extends CI_Model {
         $this->db->select('producto.id');
         $this->db->from(self::TABLE_NAME);
         $this->db->join('empresa',"empresa.id = producto.empresa");
-        $this->db->or_like('palabras_clave', $palabra, 'both'); 
-        $this->db->or_like('empresa.nombre', $palabra, 'both'); 
-        $this->db->or_like('empresa.descripcion', $palabra, 'both'); 
-        $this->db->or_like('empresa.productos_principales', $palabra, 'both'); 
-        $this->db->or_like('producto.nombre', $palabra, 'both'); 
-        $this->db->or_like('producto.descripcion', $palabra, 'both'); 
+        if(is_array($palabra))
+        {
+            foreach ($palabra as $key => $value)
+            {
+                $this->db->or_like('palabras_clave', $value, 'both'); 
+                #$this->db->or_like('empresa.nombre', $value, 'both'); 
+                #$this->db->or_like('empresa.descripcion', $value, 'both'); 
+                #$this->db->or_like('empresa.productos_principales', $value, 'both'); 
+                $this->db->or_like('producto.nombre', $value, 'both'); 
+                $this->db->or_like('producto.descripcion', $value, 'both'); 
+            }
+        }else
+        {
+            $this->db->or_like('palabras_clave', $palabra, 'both'); 
+            #$this->db->or_like('empresa.nombre', $palabra, 'both'); 
+            #$this->db->or_like('empresa.descripcion', $palabra, 'both'); 
+            #$this->db->or_like('empresa.productos_principales', $palabra, 'both'); 
+            $this->db->or_like('producto.nombre', $palabra, 'both'); 
+            $this->db->or_like('producto.descripcion', $palabra, 'both'); 
+        }
 
         $this->load->model('new/Subcategoria_model','subcategoria');
         if($categoria!=0)
@@ -92,7 +106,7 @@ class Producto_model extends CI_Model {
            $this->db->where(array('categoria.id_categoria'=>$categoria));
         }
         
-        $this->db->order_by('empresa.membresia',"acend");
+        $this->db->order_by('empresa.membresia',"desc");
         $result = $this->db->get()->result();
         if ($result)
         {   return $result; }
@@ -139,7 +153,7 @@ class Producto_model extends CI_Model {
                 $data_empresa->logo = "default.jpg";
             }
             $producto->nombre_empresa=$data_empresa->nombre;
-            $producto->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->nit;
+            $producto->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->id;
             $producto->logo_empresa=base_url()."uploads/logos/".$data_empresa->logo;
             $data_empresa=NULL;
         }

@@ -77,10 +77,22 @@ class Empresa_model extends CI_Model {
     {
         $this->db->select('id');
         $this->db->from(self::TABLE_NAME);
-        $this->db->or_like('nombre', $palabra, 'both'); 
-        $this->db->or_like('descripcion', $palabra, 'both'); 
-        $this->db->or_like('productos_principales', $palabra, 'both');
-        $this->db->or_like('productos_de_interes', $palabra, 'both');
+        if(is_array($palabra))
+        {
+            foreach ($palabra as $key => $value)
+            {
+                $this->db->or_like('nombre', $value, 'both'); 
+                $this->db->or_like('descripcion', $value, 'both'); 
+                $this->db->or_like('productos_principales', $value, 'both');
+                $this->db->or_like('productos_de_interes', $value, 'both');
+            }
+        }else
+        {            
+                $this->db->or_like('nombre', $palabra, 'both'); 
+                $this->db->or_like('descripcion', $palabra, 'both'); 
+                $this->db->or_like('productos_principales', $palabra, 'both');
+                $this->db->or_like('productos_de_interes', $palabra, 'both');
+        }
 
         if($categoria!=0)
         {

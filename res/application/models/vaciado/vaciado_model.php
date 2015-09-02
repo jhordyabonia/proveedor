@@ -8,7 +8,7 @@ class Vaciado_model extends CI_Model {
 
 	}
 
-	private function to_string($tabla,$where, $select='*')
+	public function to_string($tabla,$where, $select='*')
 	{
 			$bd_vieja = $this->load->database('prueba', TRUE);
 
@@ -36,8 +36,10 @@ class Vaciado_model extends CI_Model {
 		{
 			$bd_nueva->update($tabla,array($where=>$value['id_usuario']),array($where=>$value['id_contacto']*-1));
 		}
-		if($tabla!="empresa")
+		if($tabla!="empresa"&&$tabla!="mensajes")
 		{	$bd_nueva->query("DELETE FROM $tabla WHERE `empresa`< 0");	}
+		#else if($tabla=="mensajes")
+		#{	$bd_nueva->query("DELETE FROM $tabla WHERE `mensajes`< 0");	}
 	 	#{$bd_nueva->delete($tabla,array('empresa'=>'<0'));}
 	}
 
@@ -48,6 +50,8 @@ class Vaciado_model extends CI_Model {
 		$bd_nueva->query("DELETE FROM `solicitud` WHERE 1");
 		$bd_nueva->query("DELETE FROM `empresa` WHERE 1");
 		$bd_nueva->query("DELETE FROM `usuarios` WHERE 1");
+		$bd_nueva->query("DELETE FROM `mensajes` WHERE 1");
+		$bd_nueva->query("DELETE FROM `remitente` WHERE 1");
 	}
 
 	 public function empresas()
@@ -62,6 +66,8 @@ class Vaciado_model extends CI_Model {
 		 	$empresa->producto_empresa=$this->to_string('producto_empresa',array('nit_empresa'=>$empresa->nit),'nombre_producto');
 		 	$empresa->producto_interes=$this->to_string('producto_interes',array('nit_empresa'=>$empresa->nit),'nombre_producto');
 		 	$empresa->id_categoria=$this->to_string('categoria_empresa',array('nit_empresa'=>$empresa->nit),'id_categoria');
+	 		$logo=$this->to_string('empresa',array('nit'=>$empresa->nit),'logo');
+	 		$empresa->logo=$logo;
 		 	if(intval($empresa->tipo_empresa)==0)
 		 	{	$empresa->tipo_empresa=1;	}
 
@@ -94,6 +100,36 @@ class Vaciado_model extends CI_Model {
 	 	}
 	 	$this->load->database('default', TRUE); 
 	 	return $out;
+	}
+
+	public function remitentes()
+	{
+		$bd_vieja = $this->load->database('prueba', TRUE); 
+	 	$bd_vieja->select('*');	 
+	 	$bd_vieja->from('remitente');
+
+	 	$bd_vieja=$bd_vieja->get()->result();
+
+		$bd_nueva = $this->load->database('default', TRUE);
+	 	foreach ($bd_vieja as $key => $registro)
+	 	{	 		
+	 		$bd_nueva->insert('remitente',$registro);	 		
+	 	}
+	}
+
+	public function mensajes()
+	{
+		$bd_vieja = $this->load->database('prueba', TRUE); 
+	 	$bd_vieja->select('*');	 
+	 	$bd_vieja->from('mensajes');
+
+	 	$bd_vieja=$bd_vieja->get()->result();
+
+		$bd_nueva = $this->load->database('default', TRUE);
+	 	foreach ($bd_vieja as $key => $registro)
+	 	{	 		
+	 		$bd_nueva->insert('mensajes',$registro);	 		
+	 	}
 	}
 
 	 public function usuarios()

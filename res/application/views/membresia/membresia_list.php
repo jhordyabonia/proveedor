@@ -1,8 +1,10 @@
 <div class="col-md-12 content_titulo_membresia_list">
-	<p class="texto_verificada_list"><?=$membresia->nombe?></p>
-	<!--<span class="glyphicon glyphicon-briefcase style-glyphicon-briefcase"></span>-->
-	<img  class="imagen_verificada_list"
-	src="<?php echo img_url();?>membresia/<?=$membresia->logo?>">
+	<div class="col-md-3">
+		<img class="imagen_platino_list" src="<?php echo img_url();?>membresia/<?=$membresia->logo?>"> 
+	</div>
+	<div class="col-md-9">
+		<p class="texto_platino_list"><?=$membresia->nombre?></p>
+	</div>
 </div>
 
 <?php if($verificada!=0): ?>

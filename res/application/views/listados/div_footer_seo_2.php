@@ -10,7 +10,9 @@
      <div class="col-md-12 fondo_color">
           <div class="col-md-4"></div>
           <div class="col-md-4">
-               <img src=" <?php echo img_url() ?>index/btn_solicitar_producto.png" class="btn_solicitud" >
+               <a href="<?=base_url()?>publicar_oferta">
+                    <img src=" <?php echo img_url() ?>index/btn_solicitar_producto.png" class="btn_solicitud" >
+               </a>
           </div>
           <div class="col-md-4"></div> 
      </div>

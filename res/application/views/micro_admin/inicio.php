@@ -69,6 +69,7 @@
 	        <div class="col-xs-10 col-xs-push-0 table-responsive " >
 	         <CENTER>
 	         	<a href="<?=base_url()?>popup_categoria/crear"><h3>Crear popup</h3></a>
+	         	<a href="<?=base_url()?>micro_admin/busquedas_frecuentes"><h4>Terminos de busqueda frecuentes</h4></a>
 	          <table class="table table-bordered table-hover ">
 	            <thead>
 

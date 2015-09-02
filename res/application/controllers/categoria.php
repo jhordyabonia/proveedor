@@ -268,6 +268,7 @@ class Categoria extends CI_Controller {
         $datos->titulos=$titulos;
         $dat=array('categoria'=>$categoria,'datos'=>$datos);
         $this->load->view('index/formulario_solicitudes', $dat);
+        $this->load->view("listados/banner_publicidad");
 
         $dat['auto_launch_AP']=TRUE;
         $dat['view'] = "asistentes_proveedor_popup";      

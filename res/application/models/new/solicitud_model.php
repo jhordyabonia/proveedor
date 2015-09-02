@@ -78,12 +78,26 @@ class Solicitud_model extends CI_Model {
         $this->db->select('solicitud.id');
         $this->db->from(self::TABLE_NAME);
         $this->db->join('empresa',"empresa.id = solicitud.empresa");
-        $this->db->or_like('palabras_clave', $palabra, 'both'); 
-        $this->db->or_like('empresa.nombre', $palabra, 'both'); 
-        $this->db->or_like('empresa.descripcion', $palabra, 'both'); 
-        $this->db->or_like('empresa.productos_de_interes', $palabra, 'both'); 
-        $this->db->or_like('solicitud.nombre', $palabra, 'both'); 
-        $this->db->or_like('solicitud.descripcion', $palabra, 'both'); 
+        if(is_array($palabra))
+        {
+            foreach ($palabra as $key => $value)
+            {
+                $this->db->or_like('palabras_clave', $value, 'both'); 
+                #$this->db->or_like('empresa.nombre', $value, 'both'); 
+                #$this->db->or_like('empresa.descripcion', $value, 'both'); 
+                $this->db->or_like('empresa.productos_de_interes', $value, 'both'); 
+                $this->db->or_like('solicitud.nombre', $value, 'both'); 
+                $this->db->or_like('solicitud.descripcion', $value, 'both'); 
+            }
+        }else
+        {
+            $this->db->or_like('palabras_clave', $palabra, 'both'); 
+            #$this->db->or_like('empresa.nombre', $palabra, 'both'); 
+            #$this->db->or_like('empresa.descripcion', $palabra, 'both'); 
+            $this->db->or_like('empresa.productos_de_interes', $palabra, 'both'); 
+            $this->db->or_like('solicitud.nombre', $palabra, 'both'); 
+            $this->db->or_like('solicitud.descripcion', $palabra, 'both'); 
+        }
 
         $this->load->model('new/Subcategoria_model','subcategoria');
         if($categoria!=0)
@@ -123,7 +137,7 @@ class Solicitud_model extends CI_Model {
         foreach ($list as $solicitud)
         {
             $img=explode(',',$solicitud->imagenes);
-            if ($img)
+            if ($img[0])
              {  $solicitud->imagen=base_url()."uploads/".$img[0];   }
             else{   $solicitud->imagen=base_url()."uploads/default.jpg"; }
 
@@ -140,7 +154,7 @@ class Solicitud_model extends CI_Model {
                 $data_empresa->logo = "default.jpg";
             }
             $solicitud->nombre_empresa=$data_empresa->nombre;
-            $solicitud->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->nit;
+            $solicitud->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->id;
             $solicitud->logo_empresa=base_url()."uploads/logos/".$data_empresa->logo;
             $data_empresa=NULL;
         }

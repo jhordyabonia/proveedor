@@ -175,6 +175,11 @@ class Popup extends CI_Controller
     public function mensaje($id_popup='mensaje', $id_producto=FALSE)
     { 
 	    $datos=$this->obtener_datos($id_producto);
+
+	    echo "<PRE>";
+	    print_r($datos);
+	    echo "</PRE>";
+	    return;
 		if($datos)
 		{
 			$this->enviar($datos);			

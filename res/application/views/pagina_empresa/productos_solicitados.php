@@ -159,7 +159,8 @@
 														<div class="col-md-12">
 															<div class="content_foto_producto">
 																<a href="<?php echo base_url().'oportunidad_comercial/ver/'.$oferta->id ?>">
-																	<img src="<?=base_url()?>uploads/<?=$oferta->imagenes ?>" class="img-responsive img_producto">
+																	<?php $imagenes=explode(',',$oferta->imagenes);?>
+																	<img class="img_imagen" src="<?=base_url()?>uploads/<?=$imagenes[0]?>">
 																	<!--<img src="<?=base_url()?>uploads/ma6new_11.jpg" class="img-responsive img_producto">-->
 																</a>
 															</div>
