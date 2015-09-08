@@ -52,6 +52,7 @@ class Index extends CI_Controller {
 		$this->load->view('template/head', $data, FALSE);
 		$this->load->view('template/javascript');
 		$this->load->view('index/top_menu',$data);
+		$this->load->view('registro/funcionalidades_',$data);
 		$this->load->view('index/header_buscador',$data);
        	#$this->load->view('index/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
 		$this->load->view('index/banner', $data);

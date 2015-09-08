@@ -102,7 +102,7 @@
 			</div>
 		</div>
 		<div class="col-md-12 contenedor_botones1">
-			<div class="col-md-6 contactar" data-toggle="modal" id='popup_launch' data-target="#popup">
+			<div class="col-md-6 contactar" data-toggle="modal" id='popup_launch' data-target="#popup_mensajes">
 				<a  rol="button" href="JavaScript:;" class="contacto"><i class="fa fa-envelope sobre"></i> Contactar Comprador</a>
 			</div>
 			<!-- <div class="col-md-6 chatear">
@@ -304,7 +304,7 @@
        function start()
          {
             var popup=new XMLHttpRequest();
-            var url_popup="<?=base_url()?>popup/contactar/<?=$solicitud->id?>/2";
+            var url_popup="<?=base_url()?>mensajes/lanzar_popup/2";
             var msj_enviado = "<?=$this->session->flashdata('mensaje_enviado')?>"=="DONE";
             if (msj_enviado)
             { url_popup="<?=base_url()?>popup/confirmar_mensaje"; }
@@ -334,7 +334,8 @@
                     document.getElementById('btn_contactar').click();
                     <?=$this->session->set_flashdata('reffer',FALSE)?>
                   }               
-                }           
+                }  
+                document.getElementById('id_objeto').value="<?=$solicitud->id?>" ;     
               }
           }         
   </script>

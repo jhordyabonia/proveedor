@@ -11,7 +11,7 @@ while ( $text.outerHeight() > containerHeight ) {
 <div class="row div_proveedores">
 	<div class="col-md-12 nombre_emp">
 		<div class="col-md-7">
-			<p class="nombre_empresa"><a href="<?=base_url()?>perfil/productos_solicitados/<?=$empresa->id?>" ><?=$empresa->nombre?></a></p>
+			<p class="nombre_empresa"><a href="<?=base_url()?>perfil/perfil_empresa/<?=$empresa->id?>" ><?=$empresa->nombre?></a></p>
 		</div>
 		<div class="col-md-4 hidden-xs">
 			<?php echo @$empresa->div_membresia ?>
@@ -19,7 +19,7 @@ while ( $text.outerHeight() > containerHeight ) {
 	</div>
 	<div class="col-md-12 hidden-xs enlaces_empresa">
 		<div class="col-md-2 catalogo">
-			<a href="<?=base_url()?>perfil/productos_solicitados/<?=$empresa->id?>" class="perfil">Ver catálogo</a>
+			<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="perfil">Ver catálogo</a>
 		</div>
 		<div class="col-md-2 prod_solicitados">
 			<a href="<?=base_url()?>perfil/productos_solicitados/<?=$empresa->id?>" class="perfil">Productos Solicitados</a>
@@ -33,7 +33,7 @@ while ( $text.outerHeight() > containerHeight ) {
 	</div>
 	<div class="col-md-12 visible-xs hidden-sm hidden-md hidden-lg enlaces_empresa">
 		<div class="col-md-2 catalogo2">
-			<a href="<?=base_url()?>perfil/productos_solicitados/<?=$empresa->id?>" class="perfil">Ver catálogo</a>
+			<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="perfil">Ver catálogo</a>
 		</div>
 		<div class="col-md-2 prod_solicitados2">
 			<a href="<?=base_url()?>perfil/productos_solicitados/<?=$empresa->id?>" class="perfil">Productos Solicitados</a>
@@ -47,16 +47,15 @@ while ( $text.outerHeight() > containerHeight ) {
 	</div>
 	<div class="col-md-12 div_resultado_proveedor">
 		<!-- Foto del producto -->
-		<!--
 		<?php $key=0;?>
 		<?php if($empresa->productos):?>
 			<?php foreach ($empresa->productos as $key => $producto):?>
-			  <?php if($key>2){continue;}?>
+			  <?php if($key>2){break;}?>
 				<div class="col-md-2 hidden-xs imagen_producto">
 					<div class="background_imagen" >
 						<div class="center-vertical_imagen">
 						<a href="<?=base_url()?>producto/ver/<?=$producto->id?>">
-							<img src="<?=$producto->imagen?>" class="img_imagen img-responsive">
+							<img src="<?=$producto->imagenes?>" class="img_imagen img-responsive">
 						</a>
 						</div>
 					</div>
@@ -85,7 +84,6 @@ while ( $text.outerHeight() > containerHeight ) {
 				</div>
 			<?php endfor;?>
 		<?php endif; ?>
-	-->
 		<!-- Informacion del la empresa -->
 		<div class="col-md-4 hidden-xs info_vendedor">
 			<p class="tipo_empresa">Tipo de Empresa: <span class="tipo"><?=$empresa->tipo ?></span></p>
@@ -95,7 +93,7 @@ while ( $text.outerHeight() > containerHeight ) {
 				<?php foreach (explode(',',$empresa->productos_principales) as $key => $producto):?>
 					<p class="productos_ppales"><?=$producto;?></p>
 				<?php endforeach;?>
-				<a href="<?=base_url()?>perfil/productos_solicitados/<?=$empresa->id?>" class="perfil2">ver mas productos ></a>
+				<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="perfil2">ver mas productos ></a>
 			<?php endif;?>
 		</div>
 		<!-- informacion de contacto -->

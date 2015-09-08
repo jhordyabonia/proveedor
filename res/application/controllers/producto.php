@@ -66,6 +66,7 @@ class Producto extends CI_Controller
 				//Jhordy:: paso la insignia del tipo de membresia
 				//$nit=$this->producto->getId_empresa($this->iduser);
 				$datos['categorias']=$this->categoria->get_all();
+				$datos['registro']=FALSE;
 				$datos['membresia'] = $this->membresia->get($data['empresa']->membresia);
 				$datos['otros_pro'] = $this->producto->get_all(array('empresa' => $data['empresa']->id));
 				$datos_imagenes['img_principal'] = $data['producto']->imagenes[0];

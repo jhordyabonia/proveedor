@@ -8,11 +8,13 @@
           <div class="col-md-4"></div>
      </div>
      <div class="col-md-12 fondo_color">
-          <div class="col-md-4"></div>
+          <div class="col-md-3"></div>
           <div class="col-md-4">
-               <a href="<?=base_url()?>publicar_oferta">
-                    <img src=" <?php echo img_url() ?>index/btn_solicitar_producto.png" class="btn_solicitud" >
-               </a>
+               <link href="<?php echo css_url().'index/formulario_solicitudes.css' ?>" rel="stylesheet">
+               <a class="btn btn-solicitar" href="<?=base_url()?>publicar_oferta" style="    margin-bottom:100px">
+                         <i class="fa fa-file-text icono-solicitar"></i> 
+                         SOLICITAR COTIZACIÓN <br>
+                    </a>
           </div>
           <div class="col-md-4"></div> 
      </div>

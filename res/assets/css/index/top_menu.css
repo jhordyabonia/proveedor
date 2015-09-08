@@ -11,7 +11,7 @@
 #texto_bienvenido{
 	font-size: 13px;
 	color: rgb(156, 156, 156);
-	/*margin-left: 13px;*/
+	margin-left:  20px !important;
 	margin-top: 12px;
 }
 .enlace_top{

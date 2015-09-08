@@ -58,6 +58,7 @@ class Oportunidad_comercial extends CI_Controller {
             }
             $data['numero_productos']=count($this->producto->get_all(array('empresa'=>$data['empresa']->id)));
             $data['numero_ofertas']=count($this->solicitud->get_all(array('empresa'=>$data['empresa']->id))); 
+            $data['registro']=FALSE;
                     
             $data['empresa']->membresia= $data['empresa']->membresia;
             $data['empresa']->tipo= $this->tipo_empresa->get($data['empresa']->tipo)->tipo;

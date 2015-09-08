@@ -101,15 +101,15 @@
                 <div class="row form_buscador">                 
                  <?= form_open(base_url() . 'listados/validar') ?> 
                   <div class="col-md-3 col-sm-3 col-xs-12 div_c_elem_buscador_select hidden-xs">
-                    <select class="form-control" name="selec1" id="selec">
-                      <option value="productos" selected>Productos</option>
+                    <select class="form-control" name="selec1" id="selec" value="<?=set_value('selec1')?>">
+                      <option value="productos" <?=set_select('selec1',  set_value('selec1') );?> >Productos</option>
                       <option value="solicitudes">Oportunidades</option>
                       <option value="proveedores">Empresas</option>
                     </select>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-9 div_c_elem_buscador_input">
                     <div class="input-group">
-                      <input type="text" class="form-control input_busqueda" name="busqueda"
+                      <input type="text" class="form-control input_busqueda" name="busqueda" value="<?=set_value('busqueda')?>"
                         placeholder="Buscar productos, proveedores y productos solicitados">
                     </div>
                   </div>

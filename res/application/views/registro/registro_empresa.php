@@ -17,7 +17,7 @@
 		            	Registrar Empresa
 		            </h4>
 		          </div>
-		          <?= form_open_multipart('registro/registrar/3/'.$this->uri->segment(4)) ?> 
+		          <?= form_open_multipart('registro/registrar/3/'.$this->uri->segment(4),array('name'=>'registro')) ?> 
 				<div class="modal-body text-center popup_central_paso3" id="content_paso3">
 					<p class="style-p">Información de la Empresa</p>
 					<div class="input-group">
@@ -25,8 +25,8 @@
 			                	<i class="fa fa-building-o iconos-font"></i>
 			                </span>
 			                <input id="name" name="nombre_empresa" value="<?php echo set_value('nombre_empresa'); ?>" 
-							onchange="JavaScript:verificar_largo(this,6)" onclick="JavaScript:limpiar(this)"
-							class="input-style" placeholder="Nombre de la empresa" required type="text"
+							onchange="JavaScript:verificar_largo(this,6);verificar_caracteres(this,'[SYM].:')" onclick="JavaScript:limpiar(this)"
+							class="input-style" placeholder="Nombre de la empresa" ondblclick="necessary" type="text"
 							title="<?=form_error('nombre_empresa', '','')?>" rel='tooltip' data-placement='right'>
 							<!-- <span class="bar"></span> -->
 			                <span class="input-group-addon new-input-group margen-input-veri">
@@ -55,8 +55,9 @@
 						<span class="input-group-addon new-input-group">
 							<i class="fa fa-newspaper-o iconos-font"></i>
 			            </span>
-						<input id="nit" name="nit"  value="<?php echo set_value('nit'); ?>" onclick="JavaScript:limpiar(this)" onchange="JavaScript:verificar_attime(this);"
-						class="input-style" type="text" placeholder="Nit de la empresa / CC del comerciante" required pattern="[0-9._-]+"
+						<input id="nit" name="nit"  value="<?php echo set_value('nit'); ?>" onclick="JavaScript:limpiar(this)"
+						onchange="JavaScript:verificar_attime(this); verificar_caracteres(this,'áéíóúñ[ALPHA][SYM]|-')"
+						class="input-style" type="text" placeholder="Nit de la empresa / CC del comerciante" ondblclick="necessary"
 						title="El Nit solo debe contener caracteres numéricos y/o los caracteres '-,_' " rel='tooltip' data-placement='right'>
 						<span class="input-group-addon new-input-group margen-input-veri">
 							<i id='err_nit'>
@@ -85,8 +86,8 @@
 						<span class="input-group-addon new-input-group">
 							<span class="glyphicon glyphicon-tags iconos-font"></span>
 			            </span> 
-						<select id="tipo_empresa" name="tipo"  value="<?php echo set_value('tipo'); ?>"
-							class="input-style font-text" id="select" required onclick="JavaScript:limpiar(this)" 
+						<select id="tipo_empresa" name="tipo"  value="<?php echo set_value('tipo'); ?>" onchange="JavaScript:verificar(this);"
+							class="input-style font-text" id="select" ondblclick="necessary" onclick="JavaScript:limpiar(this)" 
 							rel='tooltip' data-placement='right'>
 						<option value="0">Tipo de empresa</option>
 						<?php foreach ($lista as $item) : ?>
@@ -121,7 +122,8 @@
 							<i class="fa fa-file-text iconos-font"></i>
 			            </span>
 						<textarea id="descripcion" name="descripcion" rows="3" cols="50" value="<?php echo set_value('descripcion'); ?>"
-						class="input-style" type="textarea" placeholder="Descripcion de la empresa" required
+						class="input-style" type="textarea" placeholder="Descripcion de la empresa" ondblclick="necessary"
+						onchange="JavaScript:verificar_largo(this,15);verificar_largo_max(this,500);"
 						onclick="JavaScript:limpiar(this)" rel='tooltip' data-placement='right'></textarea>
 						<span class="input-group-addon new-input-group margen-input-veri">
 							<i id='err_descripcion'>
@@ -144,60 +146,49 @@
 						</span>
 						<span class="style-text-validation" id="msj_err_descripcion"><?=form_error('descripcion', '','');?></span>
 					</div>
-
-					<!-- <div class="input-group"> 
-						<span class="input-group-addon new-input-group">
-							<i class="fa fa-list-ul iconos-font"></i>
-			            </span>
-						<select name="categorias"  value="<?=set_value('categorias'); ?>"
-							class="input-style font-text" id="select" required title="<?=form_error('categorias', '','')?>" 
-							rel='tooltip' data-placement='right'>
-							<option value="38">Sector de la empresa</option>
-							<?php foreach ($categorias as $row): ?> 
-							<option value="<?=$row->id_categoria?>" <?=set_select('categorias', $row->id_categoria); ?> ><?=$row->nombre_categoria; ?></option>
-							<?php endforeach; ?>
-						</select>
-						<span class="input-group-addon new-input-group margen-input-veri">
-							<?php if(form_error('categorias', '','')!='')
-							   	{
-							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
-							   	}
-						   	 ?>
-						</span>
-						<span class="input-group-addon new-input-group margen-input-aste">
-							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
-						</span>
-					</div> -->
+					
 					<!-- Segundo Select con checkbox de prueba -->
 					<div class="input-group"> 
 						<span class="input-group-addon new-input-group">
 							<i class="fa fa-cubes iconos-font"></i>
 						</span>
-						<input id="sectores" class="input-style" type="text" placeholder="Selecciona los sectores (Maximo 5)"
-						onclick="JavaScript:mostrar_categorias()" rel='tooltip' data-placement='right' required>
+						<input id="sectores" name="sectores" class="input-style"  placeholder="Selecciona los sectores (Maximo 5)"
+						onclick="JavaScript:mostrar_categorias();" rel='tooltip' data-placement='right' ondblclick="necessary">
 						<span class="input-group-addon new-input-group margen-input-veri"
 						style="padding-right: 26px !important;">
 							<a href="JavaScript:mostrar_categorias()">								
-								<span class="glyphicon glyphicon-chevron-down"></span>
-								<!--
-								<ul class="list-inline">
-					                <li><i class="fa fa-list-ul" id="fuente_menu"></i></li>
-					                <li><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" id="icono_flechita"></span></li>
-				             	</ul>
-				             	-->
+								<span class="glyphicon glyphicon-chevron-down"></span>								
 							</a>
-
+						<i id='err_sectores'>								
+							<?php if(form_error('categorias', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						   	</i>
+						<span class="input-group-addon new-input-group" style="display: none;">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
 						</span>
 						<span class="input-group-addon new-input-group" style="display: none;">
 							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
 						</span>
 					</div>
+					<!-- Campo De Validación -->
+					<div class="input-group" style="margin: 0;display: none;" id="parent_msj_err_sectores">
+						<span class="input-group-addon new-input-group" style="color: transparent;">
+							<span class="glyphicon glyphicon-user iconos-gly"></span>
+						</span>
+						<span class="style-text-validation" id="msj_err_sectores"><?=form_error('categorias', '','');?></span>
+					</div>
+
 					<div class="input-group"> 
 						<span class="input-group-addon new-input-group">
 							<i class="fa fa-cubes iconos-font"></i>
 						</span>
 						<input id="prod_prin" name="prod1"  value="<?php echo set_value('prod1'); ?>"
 						class="input-style" type="text" placeholder="Productos principales(separados por comas)"
+						onchange="JavaScript:verificar(this);"
 						onclick="JavaScript:limpiar(this)" rel='tooltip' data-placement='right'>
 						<span class="input-group-addon new-input-group margen-input-veri"
 						style="padding-right: 26px !important;">
@@ -218,7 +209,7 @@
 						<span class="input-group-addon new-input-group">
 							<i class="fa fa-truck iconos-font"></i>
 						</span>
-						<input id="prod_int" name="prod_int4"  value="<?php echo set_value('prod_int4'); ?>" 
+						<input id="prod_int" name="prod_int4"  value="<?php echo set_value('prod_int4'); ?>" onchange="JavaScript:verificar(this);"
 						class="input-style" type="text" placeholder="Productos requeridos(separados por comas)">
 						<span class="input-group-addon new-input-group margen-input-veri"
 						style="padding-right: 26px !important;">
@@ -250,8 +241,14 @@
 						<div>
 							<div class="alineacion-inlineblock style-default">
 		 						<p style="line-height: 1;margin-top: 2px;">
-		 							<img  id="logo" style="display:none; max-width:70px; max-height:50px" src="<?=base_url()?>uploads/default.jpg">
-		 							<!--<div id="txt_alt">Subir logo<br>de empresa</div>-->
+		 							<img  id="logo" alt="Solo se permiten imagenes de en formato JPG y PNG" style="display:none; max-width:70px; max-height:50px" src="<?=base_url()?>uploads/default.jpg">
+		 							<i id='err_logo' class="style-text-validation" style="display:none">
+										<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>
+										<br>
+										Solo se permiten imagenes de en formato JPG y PNG
+										<br>
+									</i>
+							<!--<div id="txt_alt">Subir logo<br>de empresa</div>-->
 		 							<!-- <img  id="logo" style="max-width:70px; max-height:50px" src="<?=base_url()?>assets/img/administrar_productos/icono_prod_publicados.png"> -->
 		 						</p>
 		 						<a href="JavaScript:delete_logo();" id="eliminar_img" style="display:none" class="btn btn-danger">Eliminar Imagen</a>
@@ -277,15 +274,37 @@
 						</div>
 					</div>
 					<div class="group " style="margin-top: 12px;">
-						<input type='checkbox' name='radio' required>
+						<input type='checkbox' name='radio' id='radio' value="" onclick="JavaScript:verificar(this);this.value=1" ondblclick="necessary">
 						<label class="label-radiosbutton" style="font-size: 13px;"s for="comprar">Acepto los Terminos y Condiciones de uso</label>
 						<span class="glyphicon glyphicon-asterisk left-aste-acepto"></span>
+						<span class="input-group-addon new-input-group margen-input-veri"
+						style="padding-right: 26px !important; display:none">
+							<i id='err_radio'>
+								<?php if(form_error('radio', '','')!='')
+							   	{
+							   		echo '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+							   	}
+						   	 ?>
+						   	</i>
+						</span>
+						<div style="display:none">
+					</div>
+						<span class="input-group-addon new-input-group" style="display: none;">
+							<span class="glyphicon glyphicon-asterisk style-icon-aste"></span>
+						</span>
+					</div>
+						<!-- Campo De Validación -->
+					<div class="input-group" style="margin: 0;display: none;" id="parent_msj_err_radio">
+						<span class="input-group-addon new-input-group" style="color: transparent;">
+							<span class="glyphicon glyphicon-user iconos-gly"></span>
+						</span>
+						<span class="style-text-validation" id="msj_err_radio"><?=form_error('radio', '','');?></span>
 					</div>
 					<div class=" col-md-12 col-lg-12 col-sm-12 col-xs-12 style-pasos3">
 						<p for="pasos">Paso 3 de 3</p>
 					</div>
 	            	<div class="group">
-	                	<button type="submit" class="btn center-block boton_enviar">Listo!</button>
+	                	<input type="button" value="Listo!" onclick="JavaScript:validar();"  class="center-block boton_enviar">
 	              	</div> 					 
 	        	</div>
         	<?= form_close() ?>
@@ -302,7 +321,7 @@
 	</div>
 	   	<?php foreach ($categorias as $row): ?> 
 			<li class="lista_categoria">
-	       		<input class="checkbox_categoria" onclick="JavaScript:marcar_categoria(this.value)" type="checkbox" value="<?=$row->id_categoria?>" style="float:left;margin-right:6px;"/>
+	       		<input class="checkbox_categoria" onclick="JavaScript:marcar_categoria(this.value)" type="checkbox" value="<?=$row->id_categoria?>" id="<?=$row->id_categoria?>" style="float:left;margin-right:6px;"/>
 	       		<!--<input class="checkbox_categoria" onclick="JavaScript:marcar_categoria(this.value)" type="checkbox" value="<?=$row->nombre_categoria; ?>" style="float:left;margin-right:6px;"/>-->
 		   			<span class="titulo_categoria"><?=$row->nombre_categoria; ?></span>
 	   		</li>

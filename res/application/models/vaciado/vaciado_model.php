@@ -87,6 +87,7 @@ class Vaciado_model extends CI_Model {
 	 			'descripcion'=>$registro->descripcion,
 	 			'logo'=>$registro->logo|"default.jpg",
 	 			'membresia'=>$registro->id_membresia|1,
+	 			'legalizacion'=>$registro->verificada|0,
 	 			'productos_principales'=>$registro->producto_empresa,
 	 			'productos_de_interes'=>$registro->producto_interes,
 	 			'categorias'=>$registro->id_categoria,
@@ -154,8 +155,8 @@ class Vaciado_model extends CI_Model {
 	 			'nombres'=>$registro->nombres,
 	 			'cargo'=>$registro->rol_usuario,
 	 			'pais'=>$registro->pais,
-	 			'departamento'=>$registro->departamento|1,
-	 			'ciudad'=>$registro->ciudad|1,
+	 			'departamento'=>$registro->departamento,
+	 			'ciudad'=>$registro->ciudad,
 	 			'web'=>$registro->web,
 	 			'celular'=>$registro->celular,
 	 			'telefono'=>$registro->numero,
@@ -210,7 +211,7 @@ class Vaciado_model extends CI_Model {
 	 			'precio_unidad'=>$registro->precio_unidad,
 	 			'pedido_minimo'=>$registro->pedido_min,
 	 			'medida'=>$registro->medida|1,
-	 			'fecha_publicacion	'=>$registro->fecha_publicacion	
+	 			'fecha_publicacion'=>$registro->fecha_publicacion	
 	 			);
 	 		$bd_nueva->insert('producto',$data);
 	 	}
@@ -261,7 +262,7 @@ class Vaciado_model extends CI_Model {
 	 			'departamento_entrega'=>$registro->dpto_entrega|33,
 	 			'precio_maximo'=>$registro->precio,
 	 			'medida'=>$registro->medida|1,
-	 			'fecha_publicacion	'=>$registro->fecha_publicacion	
+	 			'fecha_publicacion'=>$registro->fecha_publicacion	
 	 			);
 	 		$bd_nueva->insert('solicitud',$data);
 	 	}

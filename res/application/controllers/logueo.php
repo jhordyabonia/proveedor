@@ -61,18 +61,28 @@ switch ($this->session->userdata('rol_usuario')) {
                 $this->index();
             }else
             {
-                $username = $this->input->post('usuario');
-                $password = md5($this->input->post('password'));
-                $this->login($username, $password);               
+                $this->login();               
             }
         }else
         { 
             redirect(base_url().'logueo');
         }
     }
-
-        public function login($usuario, $clave)
+        public function popup($reffer="")
         {
+            #$datos['id_popup']=$id_popup;
+            #$datos['reffer']=$reffer;
+            #$datos['error']=$error;
+            $this->load->view('template/head', array('titulo' => "Contactar --proveedor.com.co"), FALSE);
+            $this->load->view('template/javascript', FALSE, FALSE);
+            $this->load->view('popups/login',array('reffer'=>$reffer));
+            $this->load->view('popups/launcher', array('popup'=>'popup_login'));
+            $this->session->set_flashdata('reffer', $reffer);
+        }
+        public function login($reffer="tablero_usuario")
+        {
+                $usuario = $this->input->post('usuario');
+                $clave = md5($this->input->post('password'));
                 $check_user = $this->usuarios->get(array('usuario'=>$usuario,'password'=>$clave));
                 
                 if(!$check_user)
@@ -94,7 +104,8 @@ switch ($this->session->userdata('rol_usuario')) {
                     $path_redirect = $this->session->userdata('path_current');
 
                     if($path_redirect) {   redirect($path_redirect); }
-                    else { redirect(base_url()."tablero_usuario");}
+                    else if($reffer=="false"){ redirect($_SERVER['HTTP_REFERER']);}
+                    else { redirect(base_url().$reffer);}
                 }else{  redirect(base_url().'logueo');  }
         }
 
@@ -109,7 +120,7 @@ switch ($this->session->userdata('rol_usuario')) {
 
 	public function logout()    {
         $this->session->sess_destroy();
-        redirect(base_url());
+         redirect($_SERVER['HTTP_REFERER']);
     }
 
 

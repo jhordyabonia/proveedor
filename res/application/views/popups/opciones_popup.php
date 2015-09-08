@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/styles_login.css"> 
-          <div class="modal fade" id="<?=$id_popup?>" tabindex="-1" role="dialog" 
+          <div class="modal fade" id="popup_opciones" tabindex="-1" role="dialog" 
                 aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content modal-content-one">
@@ -18,7 +18,7 @@
                   <h4 class="text-center"> 
                     <b> Enviar mensaje como usuario registrado </b>
                   </h4>
-                   <button data-toggle="modal" id="#<?=$id_login?>" data-target="#<?=$id_login?>"type="button" class="btn btn-primary btn_hecho" data-dismiss="modal">
+                   <button data-toggle="modal" data-target="#popup_login" type="button" class="btn btn-primary btn_hecho" data-dismiss="modal">
                       Ingresar
                   </button>
                   <!--/Boton d iniciar sesion -->
@@ -38,7 +38,7 @@
                   
                   <!-- Boton continuar -->
                   <h4 class="text-center"> Enviar mensaje sin ingresar  </h4>
-                  <button data-toggle="modal" data-target="#<?=$id_mensaje?>" type="button" class="btn btn-default btn_hecho" data-dismiss="modal">
+                  <button data-toggle="modal" data-target="#popup_mensajes" type="button" class="btn btn-default btn_hecho" data-dismiss="modal">
                       Continuar
                   </button>
                   <!-- /Boton continuar -->
@@ -47,16 +47,4 @@
               </div>
             </div>
           </div>
-  <script type="text/javascript">
-       document.onload= start();
-       var x="<?=$this->session->flashdata('reffer')?>";
-       function start()
-         {
-          if("<?=$err_login?>"=="Error")
-          {
-            alert("Err found!");
-            //document.getElementById('#<?=$id_login?>').click();
-          }              
-        }
-  </script>
-
+  

@@ -213,32 +213,20 @@ class Popup extends CI_Controller
     	echo '> '.$destinatarios;    	
     	$this->mensaje("popup",$destinatarios);
     }
-	public function contactar($id_producto=FALSE)
+
+	public function contactar($tipo=1)
 	{	
-	 	$iduser = $this->session->userdata('id_usuario');
-
-	 	if(!$iduser)
-	 	{
-	 		$err_login=FALSE;
-	 		if($err_login)
-    		{	
-    			$this->login("popup",'mensaje',TRUE);
-    			return;
-       		}
-
-	 		$datos['err_login'] = $this->session->flashdata('usuario_incorrecto');
-			$datos['id_popup']='popup';
-			$datos['id_login']='login';
-			$datos['id_mensaje']='mensaje';
-			$this->load->view('template/head', FALSE, FALSE);
-			$this->load->view('template/javascript', FALSE, FALSE);   
-		    $this->load->view('popups/opciones_popup', $datos);
-	    	$this->login($datos['id_login']);
-	    	$this->mensaje($datos['id_mensaje'],$id_producto);	    	
-	 	}
-	 	else
-	 	{	$this->mensaje("popup",$id_producto);	}
-	}
+        $this->load->view('template/head', array('titulo' => "Contactar --proveedor.com.co"));
+        $this->load->view('template/javascript');
+	 	$this->load->view('popups/opciones_popup');
+        $this->load->view('popups/launcher', array('popup'=>'popup_opciones'));
+	 	$this->load->view('popups/login');
+	 	$datos['nombre_usuario'] = FALSE;
+		$datos['email'] = "";
+		$datos['telefono'] = "";
+		$datos['abilitado'] = "";    	
+    	$this->load->view('popups/mensaje', $datos);
+    }
 
 	public function login($id_popup='login',$reffer=FALSE,$error=FALSE)
 	{		

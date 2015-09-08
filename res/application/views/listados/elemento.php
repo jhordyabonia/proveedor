@@ -43,7 +43,7 @@
 		  <ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="<?=$active_div_productos?>" >
 		    	<a href="#productos" aria-controls="home" role="tab" data-toggle="tab">
-		    	Productos
+		    		Productos
 		    	</a>
 		    </li>
 		    <li role="presentation" class="<?=$active_div_solicitudes?>">
@@ -176,12 +176,13 @@
   ?>
 <script type="text/javascript">
      reffer= "<?=$reffer?>";
-       document.onload= start(0,0);
        function start(id,tipo)
-         {
+         {         	
+            cotizar=document.getElementById('cotizar');
+            cotizar.innerHTML="";
 
          	if(id!=0&&tipo!=0)
-          	{  var url_popup="<?=base_url()?>popup/contactar/"+id+"/"+tipo;	}
+          	{  var url_popup="<?=base_url()?>mensajes/lanzar_popup/"+tipo;	}
           	else
           	{
 	            var msj_enviado = "<?=$this->session->flashdata('mensaje_enviado')?>"=="DONE";
@@ -201,28 +202,29 @@
                 cotizar=document.getElementById('cotizar');
                 console.log(popup.response);
                 cotizar.innerHTML=popup.response;
+		        document.getElementById('id_objeto').value=id;
+		        document.getElementById('btn_contactar').click();          
 
                 if (msj_enviado)
                 {   document.getElementById('confimacion_msj_enviado').click(); }
                 else
                 { 
                   error_login ="<?=$this->session->flashdata('session')?>";
-                          mensaje = "<?=$this->session->flashdata('reffer')?>";
-                          if(error_login!="Done"&&mensaje=="mensaje")
-                          {
-                            document.getElementById('#login').click();
-                          }else
-                          if(mensaje=="mensaje")
-                          {
-		                    document.getElementById('btn_contactar').click();
-		                    <?=$this->session->set_flashdata('reffer',FALSE)?>
-		                  }               
+                  mensaje = "<?=$this->session->flashdata('reffer')?>";
+                  if(error_login!="Done"&&mensaje=="mensaje")
+                  {
+                    document.getElementById('#login').click();
+                  }else
+                  if(mensaje=="mensaje")
+                  {
+		          	document.getElementById('btn_contactar').click();
+		          	<?=$this->session->set_flashdata('reffer',FALSE)?>
+		          }   
                 } 
 
-		        document.getElementById('btn_contactar').click();          
               }
           }         
   </script>
-  <div id='btn_contactar' data-toggle="modal" data-target="#popup"></div>
+  <a id='btn_contactar' data-toggle="modal" data-target="#popup_mensajes"></a>
   <div id="cotizar">
     </div>

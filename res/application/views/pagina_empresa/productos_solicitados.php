@@ -1,3 +1,4 @@
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">
 <?php
 	   	//En estas variables se guarda el id de usuario del proveedor y el nit, son capturados de la url
 	    $seg3 = $this->uri->segment(3);
@@ -78,7 +79,7 @@
 										<div class="row">
 
 											<div class="col-md-12 ">
-												<button type="button" data-toggle="modal" data-target="#popup" class="btn btn-default boton_empresa" id="btn_contactar">
+												<button type="button" data-toggle="modal" data-target="#popup_mensajes" class="btn btn-default boton_empresa" id="btn_contactar">
 													<span aria-hidden="true">
 														<img src="<?= base_url() ?>assets/img/perfil_empresa/contactar_proveedor.png" height="25" width="25" alt="">
 													</span>
@@ -192,7 +193,7 @@
 									</div>
 									<div class="col-md-12" id="content_btn_paginador">
 										<center>
-											<button data-toggle="modal" data-target="#popup" type="button" class="btn btn-default boton_empresa" id="btn_contactar">
+											<button data-toggle="modal" data-target="#popup_mensajes" type="button" class="btn btn-default boton_empresa" id="btn_contactar">
 			  									<span aria-hidden="true"><img src="<?= base_url() ?>assets/img/perfil_empresa/contactar_proveedor.png" height="25" width="25" alt=""></span> Contactar Comprador
 											</button>
 											<!-- <button type="button" class="btn btn-default boton_empresa" id="btn_chat">
@@ -247,54 +248,3 @@
 		</div>
 	</div>
 
-
-<!-- funcionalidad de msj en popup -->
-	<?php 
-		$nit = $this->uri->segment(4); 
-		$reffer= "none";
-	  if($this->session->flashdata('reffer')) 
-	  	{	$reffer=$this->session->flashdata('reffer');	}
-	  ?>
-	<script type="text/javascript">
- 	   reffer= "<?=$reffer?>";
-	     document.onload= start();
-	     function start()
-	       {
-		       	var popup=new XMLHttpRequest();
-		       	var url_popup="<?=base_url()?>popup/contactar/<?=$id_empresa?>/3";
-				var msj_enviado = "<?=$this->session->flashdata('mensaje_enviado')?>"=="DONE";
-				if (msj_enviado)
-				{	url_popup="<?=base_url()?>popup/confirmar_mensaje";	}
-
-				popup.open("GET", url_popup, true);
-				popup.addEventListener('load',show,false);
-				popup.send(null);
-
-				function show()
-					{
-						cotizar=document.getElementById('cotizar');
-						console.log(popup.response);
-						cotizar.innerHTML=popup.response;
-
-	       				if (msj_enviado)
-						{  	document.getElementById('confimacion_msj_enviado').click();	}
-						else
-						{ 
-							error_login ="<?=$this->session->flashdata('session')?>";
-			                mensaje = "<?=$this->session->flashdata('reffer')?>";
-			                if(error_login!="Done"&&mensaje=="mensaje")
-			                {
-			                  document.getElementById('#login').click();
-			                }else
-			                if(mensaje=="mensaje")
-			                {
-								document.getElementById('btn_contactar').click();
-								<?=$this->session->set_flashdata('reffer',FALSE)?>
-							}								
-						}  					
-					}
-			}
-	</script>
-  <div id="cotizar">
-		</div>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">

@@ -26,6 +26,82 @@ class Listados extends CI_Controller {
 		$this->load->view('news/news');
 	}
 
+	// Metodo temporal, en reemplazo de un diccionario real
+	
+
+	public function porcentaje_de_coincidencia($palabra1="",$palabra2="")
+	{
+		$porcentaje_de_coincidencia=100;
+
+		if(strlen($palabra1)<strlen($palabra2))
+		{$palabra_mayor=$palabra2;$palabra_menor=$palabra1;}
+		else{$palabra_menor=$palabra2;$palabra_mayor=$palabra1;}
+
+		$diferencia=strlen($palabra_mayor)-strlen($palabra_menor);
+		$porcentaje_de_coincidencia-=(strlen($palabra_mayor)/100)*$diferencia;
+		if($diferencia!=0)
+		{	$palabra_menor=$palabra_menor.substr($palabra_mayor,-$diferencia);	}
+		
+		$array_palabra_menor=str_split($palabra_menor);
+		$array_palabra_mayor=str_split($palabra_mayor);
+
+		for($a=0;$a<strlen($palabra_menor);$a++)
+		{ 
+			if($array_palabra_menor[$a]==$array_palabra_mayor[$a])				
+				{continue;}
+			
+			$porcentaje_de_coincidencia-=strlen($palabra_mayor)/100;
+		}
+		if(strlen($palabra1)==strlen($palabra2))
+		{
+			for($a=strlen($palabra_menor)-1;$a>=0;$a--)
+			{ 
+				if($array_palabra_menor[$a]==$array_palabra_mayor[$a])				
+					{continue;}
+			
+				$porcentaje_de_coincidencia-=strlen($palabra_mayor)/100;
+			}
+		}
+	
+		return $porcentaje_de_coincidencia;
+	} 
+
+	public function sugerencias($palabra)
+	{
+
+		$this->load->model('new/Diccionario_model','diccionario');
+		$palabra_segmentada;
+		for($key=1;strlen($palabra)>$key;$key++) 
+		{
+			$palabra_segmentada[]=substr($palabra,0,-$key);
+		}
+		
+		$sugerencia="";
+		$porcentaje_de_coincidencia=0;
+		foreach ($palabra_segmentada as $key => $value) 
+		{
+			#if((strlen($value)<strlen($palabra)/1.5)&&$porcentaje_de_coincidencia!=0)
+			#	{break;}
+
+			$results=$this->diccionario->like($value);
+
+			if($results)
+			{
+				foreach ($results as $key => $sugerencias)
+				{
+					$tmp=$this->porcentaje_de_coincidencia($palabra,$sugerencias->palabra);
+					#echo "<br>".$tmp." : ".$sugerencias->palabra;
+					if($tmp>=$porcentaje_de_coincidencia)
+					{
+						$porcentaje_de_coincidencia=$tmp;
+						$sugerencia=$sugerencias->palabra;
+					}
+				}
+			}
+		}
+		echo "<title>".$sugerencia."</title>";
+		echo $sugerencia;
+	}
 	public function validar($buscador=FALSE)
 	{
 		/*
@@ -108,10 +184,10 @@ class Listados extends CI_Controller {
 
         return $busqueda;
     }
-	public function lista($p="XXXXXX",$div="productos", $page=0)
+	public function lista($p="XXXXXX",$div="productos", $page=0, $filtro=0,$tipo_filtro=0)
 	{
 		$data['div']=$div;
-		$data['busqueda']=$p;
+		$data['busqueda']=$this->analisis_busqueda($p);
 		$data['id_usuario']= $this->session->userdata('id_usuario');
 
 		$data['url_publicar_solicitud']="";
@@ -132,17 +208,36 @@ class Listados extends CI_Controller {
 			$p="";
 			//$data['nom_producto']="Ver todo";
 		}		
-		$data['titulo']=$this->analisis_busqueda($p);;
+		$data['titulo']=$data['busqueda'];
 		$p=$this->analisis_busqueda($p,"Compuesta");
 
 
 		$productos=$this->producto->buscar($p,"Compuesta");
-		#foreach ($this->analisis_busqueda($p,'Compuesta') as  $value) 
-		#{
-		#	$productos[]=$this->producto->buscar($value);
-		#}
 		$solicitudes=$this->solicitud->buscar($p,"Compuesta");
 		$proveedores=$this->empresa->buscar($p,"Compuesta");
+
+		$filtros['total_porCategoria']=clear_array($this->total_porCategoria($productos));
+		$filtros['total_porSubCategoria']=clear_array($this->total_porSubCategoria($productos));
+		$filtros['p']=$data['titulo'];
+		$filtros['div']=$div;
+		$filtros['page']=$page;
+
+		$data['div_categorias']=$this->load->view('listados/div_categorias', $filtros, TRUE);
+
+		if($filtro!=0)
+		{
+			switch ($tipo_filtro) 
+			{
+				case 0:
+						$productos=clear_array($this->filtrarProductos_categoria($productos,$filtro)); 
+					break;
+				
+				default:
+						$productos=clear_array($this->filtrarProductos_SubCategoria($productos,$filtro));
+					break;
+			}
+			
+		}
 
 		$data['categorias']=$this->categoria->get_all();
 				
@@ -167,10 +262,12 @@ class Listados extends CI_Controller {
 		if ($productos) 
 		{
 			$data['page_count'] = count($productos)/25;
+			if($page>$data['page_count'])
+			{
+				$data['page']=0;
+			}
 			foreach ($productos as $key => $producto)
 			 {			 	
-			 	/*
-				*/
 			 	if($key<($data['page']*25))
 				{  continue; }
 
@@ -188,23 +285,12 @@ class Listados extends CI_Controller {
 				
 				$tmp=$this->tipo_empresa->get($datos['empresa']->tipo);
 				$datos['empresa']->tipo=$tmp->tipo;
-				#ECHO "<pre>";
-				#print_r($tmp);
-				#ECHO "</pre>";
-				#return;
-
+			
 				$datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
 				$datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
 				$datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
 				if(!$producto){ continue;	}
-			 	#if($datos['empresa']->membresia==3)
-				#{$proveedores=array_merge($proveedores,array($datos['producto']->empresa));}
-				#else{$proveedores[]=$datos['producto']->empresa;}
-				$datos['producto']->div_membresia=$this->membresia->get_div_list($datos['producto']->empresa);
-				
-				#echo @$producto->div_membresia;
-				#return;
-
+			 	$datos['producto']->div_membresia=$this->membresia->get_div_list($datos['producto']->empresa);
 				$data['div_productos'][$key]=$this->load->view('listados/div_productos',$datos, TRUE);
 				
 				unset($producto);
@@ -213,11 +299,14 @@ class Listados extends CI_Controller {
 		if ($solicitudes) 
 		{
 			$solicitudes = clear_array($solicitudes); 
-			$data['page_count3'] = count($solicitudes)/25;				 
+			$data['page_count3'] = count($solicitudes)/25;	
+			$data['page']=$page;
+			if($page>$data['page_count3'])
+			{
+				$data['page']=0;
+			}			 
 			foreach ($solicitudes as $key => $solicitud)
-			 {		
-			 	/*	 	
-				*/
+			 {
 			 	if($key<($data['page']*25))
 				{  continue; }
 
@@ -236,9 +325,6 @@ class Listados extends CI_Controller {
 				$datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
 				$datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
 				$datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
-				#if($this->empresa->get($datos['solicitud']->empresa)->membresia==3)
-				#{$proveedores=array_merge($proveedores,array($datos['solicitud']->id));}
-				#else{$proveedores[]=$datos['solicitud']->empresa;}
 				$datos['solicitud']->div_membresia=$this->membresia->get_div_list($datos['solicitud']->empresa);
 				$data['div_solicitudes'][$key]=$this->load->view('listados/div_solicitudes', $datos, TRUE);
 				
@@ -254,17 +340,14 @@ class Listados extends CI_Controller {
 				$proveedores = array_reverse($proveedores);
 			}
 
-			#echo "<PRE>";
-			#print_r($proveedores);
-			#echo "</PRE>";
-			#return;
-			
 			$data['page_count2'] = count($proveedores)/25;
-			    	
+			$data['page']=$page;
+			if($page>$data['page_count2'])
+			{
+				$data['page']=0;
+			}  	
 			foreach ($proveedores as $key => $proveedor)
 			 {
-				/*
-				*/
 			 	if($key<($data['page']*25))
 				{  continue; }
 
@@ -275,6 +358,7 @@ class Listados extends CI_Controller {
 			 	{	continue;	}
 				$out['empresa']=$this->empresa->get($proveedor->id);
 				$out['empresa']->tipo=$this->tipo_empresa->get($out['empresa']->tipo)->tipo;
+				$out['empresa']->productos=$this->producto->get_all(array('empresa'=>$proveedor->id));
 				$datos['usuario']=$this->usuarios->get($out['empresa']->usuario);
 				$datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
 				$datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
@@ -283,8 +367,9 @@ class Listados extends CI_Controller {
 				unset($proveedor);
 			 }
 		}
+		$data['page']=$page;
+			
 
-		$data['div_categorias']=$this->load->view('listados/div_categorias', $data, TRUE);
 
 		$resultados= "Productos:".($data['page_count']*25).",Solicitudes:".($data['page_count3']*25).",Proveedores:".($data['page_count2']*25);
 		$this->busquedas->insert(array('busqueda'=>$data['busqueda'],'resultados'=>$resultados));
@@ -293,6 +378,98 @@ class Listados extends CI_Controller {
 		$this->load->view("listados/div_footer_seo_2", $data);
 		$this->load->view("template/footer");
 	}
+
+
+	//Jhordy:: funcion extrae unicamente los productos pertenecientes  la categoria $id_seleccion
+	private function filtrarProductos_categoria($productos,$id_seleccion){
+		$out=array();
+		foreach ($productos as $value) 
+		{
+			$subcategoria_tmp=$this->subcategoria->get($value->subcategoria);
+			$id_categoria=$subcategoria_tmp->id_categoria;
+
+			if($id_categoria==$id_seleccion) 
+			{ 
+				$out[]=$value;
+			}
+		}
+		return $out;
+	}
+
+	//Jhordy:: funcion extrae unicamente los productos pertenecientes  la subcategoria $id_seleccion
+	private function filtrarProductos_SubCategoria($productos,$id_seleccion){
+		$out=array();
+		foreach ($productos as $value) 
+		{
+			if($value->subcategoria==$id_seleccion) 
+			{ 
+				$out[]=$value;
+			}
+		}
+		return $out;
+	}
+	//Jhordy:: Esta funcion retorna el numero de productos de cada categoria
+	private function total_porCategoria($productos){
+		$out = array();		
+		if($productos==NULL)
+		{	return $out;	}
+		foreach ($productos as $datos)
+		{
+				$id_subcategoria=$datos->subcategoria;
+				$subcategoria_tmp=$this->subcategoria->get($id_subcategoria);
+				$aux['id_categoria']=$subcategoria_tmp->id_categoria;
+				$aux['cantidad']=$this->productos_porCategoria($aux['id_categoria'],$productos);	
+				$aux['nombre']=$this->categoria->get($aux['id_categoria'])->nombre_categoria;	
+				$out[]=$aux;	
+		}		
+		return $out;
+	}
+	//Jhordy:: Esta funcion retorna la cantidad de productos de una categoria especifica
+	private function productos_porCategoria($id_categoria,$productos){
+			$total=0;
+			if($productos)
+			  {
+				  foreach ($productos as $registro)
+				  {
+						$id_tmp=$registro->subcategoria;
+						$subcategoria_tmp=$this->subcategoria->get($id_tmp);
+						if($subcategoria_tmp->id_categoria==$id_categoria)
+						{	$total++;	}
+				 }
+			   } 
+			return $total;
+	}
+	//Jhordy:: Esta funcion retorna las subcategorias de cada producto  u ofertas
+	private function total_porSubCategoria($productos){
+		$out = array();
+		if($productos==NULL)
+		{	return $out;	}
+		foreach ($productos as $datos)
+		{
+				$id=$datos->subcategoria;
+				$subcategoria_tmp=$this->subcategoria->get($id);
+				$aux['cantidad']=$this->productos_porSubCategoria($id,$productos);	
+				$aux['id_categoria']=$subcategoria_tmp->id_categoria;		
+				$aux['id_subCategoria']=$id;	
+				$aux['nombre']=$subcategoria_tmp->nom_subcategoria;	
+				$out[]=$aux;	
+		}		
+		return $out;
+	}	
+	//Jhordy:: Esta funcion retorna la catidad de productos u ofertas en una subcategoria
+	private function productos_porSubCategoria($id_subcategoria,$productos){
+			$total=0;
+			if($productos)
+			  {
+				  foreach ($productos as $registro)
+				  {
+						if($registro->subcategoria==$id_subcategoria)
+						{	$total++;	}
+				 }
+			   } 
+			return $total;
+	}
+
 }
 
 

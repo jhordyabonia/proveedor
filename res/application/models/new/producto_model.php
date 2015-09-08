@@ -74,7 +74,7 @@ class Producto_model extends CI_Model {
     }
     public function buscar($palabra = "",$categoria=0)
     {
-        $this->db->select('producto.id');
+        $this->db->select('producto.id,producto.subcategoria');
         $this->db->from(self::TABLE_NAME);
         $this->db->join('empresa',"empresa.id = producto.empresa");
         if(is_array($palabra))
@@ -107,6 +107,9 @@ class Producto_model extends CI_Model {
         }
         
         $this->db->order_by('empresa.membresia',"desc");
+        $this->db->order_by('empresa.legalizacion',"desc");
+        $this->db->order_by('producto.fecha_publicacion',"desc");
+        
         $result = $this->db->get()->result();
         if ($result)
         {   return $result; }
@@ -150,7 +153,7 @@ class Producto_model extends CI_Model {
             {
                 $data_empresa->nombre="Nombre de empresa no provisto";
                 $data_empresa->nit = "404";
-                $data_empresa->logo = "default.jpg";
+                $data_empresa->logo = "default.png";
             }
             $producto->nombre_empresa=$data_empresa->nombre;
             $producto->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->id;

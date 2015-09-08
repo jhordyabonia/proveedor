@@ -107,7 +107,9 @@ class Solicitud_model extends CI_Model {
            $this->db->where(array('categoria.id_categoria'=>$categoria));
         }
         
-        $this->db->order_by('empresa.membresia',"acend");
+        $this->db->order_by('empresa.membresia',"desc");
+        $this->db->order_by('empresa.legalizacion',"desc");
+        $this->db->order_by('solicitud.fecha_publicacion',"desc");
         $result = $this->db->get()->result();
         if ($result)
         {   return $result; }

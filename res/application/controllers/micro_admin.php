@@ -189,7 +189,7 @@ class Micro_admin extends CI_Controller
     }
     public function empresas($var=FALSE,$criterio="")
     {
-		$proveedores=$this->empresa->buscar($criterio);
+		$proveedores=$this->empresa->buscar2($criterio);
 	
     	$this->verifyc_login();
 

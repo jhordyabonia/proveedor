@@ -5,7 +5,7 @@
 	    	<div id="sub_content_general" class="row">
 	    		<div class="col-md-7">
 	    			<div class="row hidden-xs hidden-sm">
-						<p id="texto_bienvenido">Bienvenido al portal de intercambios comerciales de las empresas en Colombia!</p>
+						<p id="texto_bienvenido" style="padding:">Bienvenido al portal de intercambios comerciales de las empresas en Colombia!</p>
 	    			</div>
 	    		</div>
 	    		<div class="col-xs-12 col-md-5 bor_botoom">
@@ -13,30 +13,31 @@
 						<ul class="list-inline contenedor_gral">
 							<li class="active">
 								<ul class="list-inline contenedor_top">
-									<? if($id_usuario):?>
+									<?php if($id_usuario):?>
 										<a class="enlace_top" href="<?=base_url()?>logueo/logout">
 											<li><span class="ingresar_ico glyphicon glyphicon-user"></span></li>
 											<li>Salir</li>
 										</a>
-									<? else: ?>
+									<?php else: ?>
 										<li><span class="ingresar_ico glyphicon glyphicon-user"></span></li>
-										<li><a class="enlace_top" href="<?=base_url()?>logueo">Ingresar</a></li>
-									<? endif; ?>
+										<li><a id="launch_login" class="enlace_top"  href="JavaScript:login();"
+											class="enlace_top enlace_registro cursor-mano  hidden-xs hidden-sm visible-md visible-lg" style="color:#111;">Ingresar</a></li>
+									<?php endif; ?>
 								</ul>
 							</li>
 							<li>
 								<ul class="list-inline contenedor_top hidden-xs hidden-sm visible-md visible-lg">
 									<li><img src="<?php echo base_url()?>assets/img/index/registro.png"  style="width: 23px;margin-left: -12px;"></li>
-									<? if($id_usuario):?>
+									<?php if($id_usuario):?>
 										<li><a class="enlace_top  hidden-xs hidden-sm visible-md visible-lg" href="<?=base_url()?>tablero_usuario">Tablero de usuario</a></li>										
-									<? else: ?>
+									<?php else: ?>
 										<li>
 											<a id="launch_registro" data-toggle="modal" href="JavaScript:launch();"
 											class="enlace_top enlace_registro cursor-mano  hidden-xs hidden-sm visible-md visible-lg" style="color:#111;">
 												Registro Gratis
 											</a>
 										</li>								
-									<? endif; ?>
+									<?php endif; ?>
 								</ul>
 							</li>
 							<!--
@@ -59,28 +60,47 @@
 	    		
 	    	</div>
 	    </div>
-<script type="text/javascript">                    
-                    //window.onload=launch();
+<script type="text/javascript">               
+				    function login()
+			       {
+				       	var popup=new XMLHttpRequest();
+				       	var url_popup="<?=base_url()?>logueo/popup/tablero_usuario";
+
+						popup.open("GET", url_popup, true);
+						popup.addEventListener('load',show,false);
+						popup.send(null);
+
+						function show()
+						{
+							cotizar=document.getElementById('div_login');
+							console.log(popup.response);
+							cotizar.innerHTML=popup.response;
+							document.getElementById('launch_login').href="JavaScript:document.getElementById('auto_launch').click();";
+							document.getElementById('auto_launch').click();
+						}
+					}
                     function launch()
                     {
                         var popup=new XMLHttpRequest();
-                        
-                        var url_popup="<?=base_url()?>registro/registrar/<?=$paso?>/<?=$id_registro?>/1";	
+                                              
+                        var url_popup="<?=base_url()?>registro/get";	
                         //alert(url_popup);                        		
                         popup.open("GET", url_popup, true);
                         popup.addEventListener('load',show,false);
                         popup.send(null);
                         function show()
                           {
-                            div=document.getElementById('registro');
+	                        div=document.getElementById('registro');
                             div.innerHTML=popup.response;
                             document.getElementById('popup_launch').click();
-                            console.log(popup.response);
+                            //console.log(popup.response);
+							document.getElementById('launch_registro').href="JavaScript:iniciar_registro();";
                           }
                     }   
                     <?php if($registro):?>  
 					document.getElementById('launch_registro').click();
-                    <?php endif;?>  
+                    <?php endif;?>                     
                                    
    </script>
+<div id="div_login" ></div>
 <div id="registro" ></div>
