@@ -34,59 +34,6 @@
                 <li><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" id="icono_flechita"></span></li>
               </ul>     
             </button>
-            <!--<div class="row row_categorias">
-              <div class="btn-group">
-                
-                <div class="mockup-content">
-                  <div class="morph-button morph-button-modal morph-button-modal-1 morph-button-fixed">
-                    <button type="button" id="mostrarocultar">
-                      <ul class="list-inline">
-                        <li><i class="fa fa-list-ul" id="fuente_menu"></i></li>
-                        <li><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" id="icono_flechita"></span></li>
-                      </ul>     
-                    </button>
-                    <!-- <div class="morph-content">
-                      <div>
-                        <div class="content-style-text">
-                          <div class="col-md-12">
-                            <span class="glyphicon glyphicon-remove" id="icono_cerrar"></span>
-                          </div>
-                          <h2>Categorias</h2>
-                          <div class="col-md-12">
-                            <div class="row">
-                              <div class="col-md-3">
-                                <div class="row">
-                                  <div class="col-md-12">Categoria 1</div>
-                                  <div class="col-md-12">a</div>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="row">
-                                  <div class="col-md-12">Categoria 2</div>
-                                  <div class="col-md-12">b</div>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="row">
-                                  <div class="col-md-12">Categoria 3</div>
-                                  <div class="col-md-12">c</div>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="row">
-                                  <div class="col-md-12">Categoria 4</div>
-                                  <div class="col-md-12">d</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                  </div>
-                </div>
-              </div>
-            </div>-->
           </div>
 
           <div class="col-md-11 col-sm-11 col-xs-12 caja_logo2 visible-xs hidden-sm hidden-md hidden-lg">
@@ -147,6 +94,7 @@
     <?php endforeach;?>
   </div>
 </div>
+</div>
 <!-- Funcionalidad de mostrar ocultar categorias-->
   <script type="text/javascript">
   $(document).ready(function() {
@@ -155,77 +103,3 @@
   });
   });
   </script>
-<!-- -->
-
-<!--<script type="text/javascript">
-  $('.dropdown-menu div').click(function(e) {
-    e.stopPropagation();
-  });
-  $(document).ready(function() {
-    $('.selectpicker').selectpicker();
-  });
-</script>-->
-<!-- 
-<script>
-      (function() { 
-        var docElem = window.document.documentElement, didScroll, scrollPosition;
-
-        // trick to prevent scrolling when opening/closing button
-        function noScrollFn() {
-          window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
-        }
-
-        function noScroll() {
-          window.removeEventListener( 'scroll', scrollHandler );
-          window.addEventListener( 'scroll', noScrollFn );
-        }
-
-        function scrollFn() {
-          window.addEventListener( 'scroll', scrollHandler );
-        }
-
-        function canScroll() {
-          window.removeEventListener( 'scroll', noScrollFn );
-          scrollFn();
-        }
-
-        function scrollHandler() {
-          if( !didScroll ) {
-            didScroll = true;
-            setTimeout( function() { scrollPage(); }, 60 );
-          }
-        };
-
-        function scrollPage() {
-          scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
-          didScroll = false;
-        };
-
-        scrollFn();
-
-        var UIBtnn = new UIMorphingButton( document.querySelector( '.morph-button' ), {
-          closeEl : '.glyphicon-remove',
-          onBeforeOpen : function() {
-            // don't allow to scroll
-            noScroll();
-          },
-          onAfterOpen : function() {
-            // can scroll again
-            canScroll();
-          },
-          onBeforeClose : function() {
-            // don't allow to scroll
-            noScroll();
-          },
-          onAfterClose : function() {
-            // can scroll again
-            canScroll();
-          }
-        } );
-
-        document.getElementById( 'terms' ).addEventListener( 'change', function() {
-          UIBtnn.toggle();
-        } );
-      })();
-    </script>
- -->

@@ -1,7 +1,8 @@
 <?php 
   $tipo= $this->uri->segment(3);
+
 ?>
-<?=form_open_multipart('mensajes/enviar/'.$tipo);  ?>
+<?=form_open_multipart('mensajes/enviar/'.$tipo,array('id'=>'form_mensaje'));  ?>
 <script type="text/javascript">
    function adjunto()
       {
@@ -13,7 +14,11 @@
 
     <link rel="stylesheet" href="<?php echo css_url()?>popup_mensaje.css">
     <div class="mensaje">
+      <?php if ($nombre_usuario):?>
         <div class="modal fade" id="popup_mensajes" tabindex="-1" role="dialog" aria-hidden="true" >
+        <?php else:?>
+        <div class="modal fade" id="popup_mensajes_vacio" tabindex="-1" role="dialog" aria-hidden="true" >
+        <?php endif;?>
 		      <div class="modal-dialog">
 		          <div class="modal-header encabezado">
 		            <button type="button" class="close" data-dismiss="modal" >
@@ -69,7 +74,7 @@
                     </div>
                   </div>
                   <div class="col-md-12 input-group enviar">
-                    <button type="submit" class="btn btn-default center-block boton_enviar">Enviar Mensaje</button>
+                    <input type="button" class="btn btn-default center-block boton_enviar" value="Enviar Mensaje" onclick="JavaScript:document.getElementById('form_mensaje').submit();">
                   </div>
                   <br>
                 </div>                

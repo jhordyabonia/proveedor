@@ -193,3 +193,27 @@ p.count-productos:hover {
     text-decoration: underline;
 }
 /*-----------------------------------------------*/
+
+
+/* Estilo de banner de adsense de perfil empresa */
+.content_banner_verEmpres{
+    padding-top: 7px;
+	background-color: whitesmoke;
+	margin: 10px 0;
+	height: 116px;
+}
+.verEmpresa_adsense{
+	width: 728px;
+	height: 90px;
+	margin: 0 auto;
+	margin-bottom: 14px !important;
+	background-color: #fff;
+	text-align: center; 
+}
+.title_banner_verEmprea{
+	margin-left: 23.1%;
+	font-size: 9px;
+	margin-bottom: 0;
+	margin-top: 3px;
+	padding-top: 3px;
+}

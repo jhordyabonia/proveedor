@@ -494,5 +494,45 @@
                             {document.getElementById('municipio').value=0;}
                             fails=0;  stack_err="cambio_departamento: "+id;
                           }
-                    }                                     
+                    }        
+                     function launch(obj)
+                    {
+                        var popup=new XMLHttpRequest();
+                                              
+                        var url_popup="<?=base_url()?>registro/get";    
+                        //alert(url_popup);                             
+                        popup.open("GET", url_popup, true);
+                        popup.addEventListener('load',show,false);
+                        popup.send(null);
+                        function show()
+                          {
+                            div=document.getElementById('registro');
+                            div.innerHTML=popup.response;
+                            document.getElementById('popup_launch').click();
+                            //console.log(popup.response);
+                            obj.href="JavaScript:iniciar_registro();";
+                          }
+                    }      
+                    function login(obj,reffer)
+                   {
+                        var popup=new XMLHttpRequest();
+                        var url_popup="<?=base_url()?>logueo/popup/"+reffer;
+
+                        popup.open("GET", url_popup, true);
+                        popup.addEventListener('load',show,false);
+                        popup.send(null);
+
+                        function show()
+                        {
+                            cotizar=document.getElementById('div_login');
+                            console.log(popup.response);
+                            cotizar.innerHTML=popup.response;
+                            obj.href="JavaScript:document.getElementById('auto_launch').click();";
+                            document.getElementById('auto_launch').click();
+                        }
+                    }
+                                             
    </script>
+
+<div id="div_login" ></div>
+<div id="registro" ></div>

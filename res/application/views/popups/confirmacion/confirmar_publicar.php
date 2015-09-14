@@ -1,9 +1,10 @@
+<div class="login">
 <?=form_open_multipart(base_url().'micro_admin/publicar_solicitud/'.$id_producto);  ?>
 <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>styles_login.css">
            <div class="modal fade" id="<?=$id_popup?>" tabindex="-1" role="dialog" 
                 aria-labelledby="myModalLabel" aria-hidden="true" >
              <div class="modal-dialog">
-              <div class="modal-content modal-content-three">
+              <div class="modal-content modal-content-login modal-content-three">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">
@@ -26,7 +27,7 @@
                       Cancelar
                   </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body border">
                 </div>
 
               </div>
@@ -34,4 +35,5 @@
           </div>
         </div>
 <?= form_close() ?>
+</div>
  

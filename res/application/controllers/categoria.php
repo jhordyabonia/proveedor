@@ -109,13 +109,15 @@ class Categoria extends CI_Controller {
         $data['empresas']=$this->empresa_model->obtener_ultimos(5);
  
         $solo_captura=FALSE;
+        
+        /*
         if((count($data['productos_destacados_1']) +count($data['productos_destacados_2'])+count($data['productos_destacados_3'])) < 4
             ||count($data['productos']) < 4
             ||count($data['solicitudes']) < 4
             ||count($data['empresas']) < 4)
         {
             $solo_captura=TRUE;
-        }
+        }*/
 //add's categorias
         $data['nom_producto']=$data['categoria']->nombre_categoria;
 
@@ -273,7 +275,7 @@ class Categoria extends CI_Controller {
         $dat['auto_launch_AP']=TRUE;
         $dat['view'] = "asistentes_proveedor_popup";      
         $dat['id_popup'] = "asistentes_proveedor_popup";             
-        $this->load->view('popups/asistentes_proveedor', $dat);
+        #$this->load->view('popups/asistentes_proveedor', $dat);
 
         if(!$solo_captura)
         {

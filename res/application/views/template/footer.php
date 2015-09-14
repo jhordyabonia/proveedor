@@ -12,6 +12,29 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/footer.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <footer class="footer-social">
+<div class="conten_publidad">
+	<div class="conten_footer_adsense">
+		<span>
+			<p class="public_title"><!--PUBLICIDAD--></p>
+		</span>
+		<div class="banner_footer_adsense">
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Banner 1 -->
+<ins class="adsbygoogle"
+    style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-3580504543906349"
+    data-ad-slot="2010236362"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+		</div>
+	</div>
+</div>
 <div id="contenedor"> 
 	<div class="row footer">
 		<div class= "col-md-12 margen_footer">

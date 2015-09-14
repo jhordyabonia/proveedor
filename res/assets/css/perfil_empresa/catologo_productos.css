@@ -210,8 +210,9 @@
 .categorias_div{
 	border-bottom: 1px solid #f1f1f1;
 	padding: 0;
-	padding-bottom: 11px;
-	margin: -7px 0;
+	padding-bottom: 11px;	
+    margin-top: -7px;
+    margin-left: 15px;
 }
 /*Seccion Productos*/
 .content_producto{
@@ -268,4 +269,28 @@
 
 .col-md-12.no-solicitudes {
     padding-bottom: 400px;
+}
+
+/* Estilo de banner de adsense de perfil empres */
+.content_banner_verEmpres{
+    padding-top: 6px;
+    background-color: whitesmoke;
+	margin: 10px 0;
+	height: 116px;
+}
+.verEmpresa_adsense{
+    /*padding-top: 10px;*/
+	width: 728px;
+	height: 90px;
+	margin: 0 auto;
+	margin-bottom: 14px !important;
+	background-color: #fff;
+	text-align: center; 
+}
+.title_banner_verEmprea{
+	margin-left: 17.6%;
+	font-size: 9px;
+	margin-bottom: 0;
+	margin-top: 3px;
+	padding-top: 3px;
 }

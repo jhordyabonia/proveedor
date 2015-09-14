@@ -4,7 +4,7 @@
     $('#carouselInicio').carousel({interval: 3000});
   });
 </script>
-<div class="row" style="margin: 201px 0px 0px;">
+<div class="row" id="banner" >
   <!-- Seccion de Carousel -->
   <div class="row" id="foto_principal">
     <!-- Carousel-->
@@ -25,9 +25,6 @@
             </div>
           <?php endforeach ?>
         </div>
-        <!-- Controls -->
-        <!--<a class="left carousel-control" href="#carouselInicio" data-slide="prev" style="z-index:1;"></a>
-        <a class="right carousel-control" href="#carouselInicio" data-slide="next" style="z-index:1;"></a> -->
     </div> 
   </div>
 </div>

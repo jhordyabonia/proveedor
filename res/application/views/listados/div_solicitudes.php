@@ -14,7 +14,9 @@ while ( $text.outerHeight() > containerHeight ) {
 		<div class="col-md-3 row imagen_producto">
 			<div class="background_imagen" >
 				<div class="center-vertical_imagen">
-					<img src="<?=base_url()?>uploads/<?=$solicitud->imagenes?>" class="img_imagen img-responsive">
+					<a href="<?=base_url()?>oportunidad_comercial/ver/<?=$solicitud->id?>" >
+						<img src="<?=base_url()?>uploads/<?=$solicitud->imagenes?>" class="img_imagen img-responsive">
+					</a>
 				</div>
 			</div>
 		</div>

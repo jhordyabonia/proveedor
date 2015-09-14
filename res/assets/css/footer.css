@@ -212,3 +212,25 @@ border-radius: 4px;
 margin-top: 10px;
  }
 
+
+
+/* Estilos del Banner de Adsense en el footer*/
+.conten_footer_adsense{
+    height: auto;
+}
+.banner_footer_adsense
+{  
+    padding-top: 10px;
+    width: 728px;
+    height: 90px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    /*background-color: whitesmoke;*/
+}
+.titulo_footer_publi{
+    font-size: 9px;
+    margin-left: 23.1%;
+    margin-top: 45px;
+    margin-bottom: 1px;
+    color: #111 !important;
+}

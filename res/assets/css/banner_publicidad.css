@@ -1,0 +1,16 @@
+.banner_publicidad{
+   background-color: whitesmoke;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 15px;
+    margin: 0 0 0 0;
+    height: 116px;
+}
+
+.title{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 25px;
+}

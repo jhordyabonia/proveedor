@@ -7,10 +7,9 @@ class Vaciado extends CI_Controller {
 
 		$this->load->model('vaciado/Vaciado_model','vaciado');
 	}
-
-	function index()
+	private function vaciar()
 	{
-		
+
 		#$this->load->view('index_test/banner_eventos',FALSE);
 		echo "<table border='0'>";
 		echo "<tr><th>Cargando empresas...";
@@ -57,9 +56,39 @@ class Vaciado extends CI_Controller {
 		";
 		print_r($usuarios);
 		echo "</PRE>";
+	
+	}
+	function index()
+	{
+		if(md5($this->input->post('pass'))==md5("3154513799JJ"))
+		{
+			$this->vaciar();
+		}
+		else
+		{
+			echo '<form action="'.base_url().'vaciado" method="post">
+			<input type="password" name="pass"> 
+			<input type="submit">
+			</form>';
+		}
 	}
 
 	public function halt()
+	{
+		if(md5($this->input->post('pass'))==md5("3154513799JJ"))
+		{
+			$this->halt1();
+		}
+		else
+		{
+			echo '<form action="'.base_url().'vaciado/halt" method="post">
+			<input type="password" name="pass"> 
+			<input type="submit">
+			</form>';
+		}
+		
+	}
+	private function halt1()
 	{
 		$this->vaciado->halt();
 		echo "Deleted all!!";

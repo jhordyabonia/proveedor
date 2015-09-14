@@ -1,17 +1,19 @@
- <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>styles_login.css">
+ 
+<div class="login">
+      <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>styles_login.css">
     <?=form_open_multipart('logueo/login/'.$reffer) ?>
            <div class="modal fade" id="popup_login" tabindex="-1" role="dialog" 
                 aria-labelledby="myModalLabel" aria-hidden="true" >
               <div class="modal-dialog">
-                <div class="modal-content modal-content-two">
-                  <div class="modal-header" style="border-bottom: none;">
+                <div class="modal-content modal-content-login borders">
+                  <div class="modal-header borders" style="border-bottom: none;">
                     <button type="button" class="close" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove icono_cerrar" aria-hidden="true"></span>
                     <span class="sr-only">Close</span></button>
                     <img class="center-block" src="<?php echo img_url()?>logo3_beta.png">
                   </div>
                   
-                  <div class="modal-body text-center body_login">
+                  <div class="modal-body text-center body_login borders">
                       <div id="error">
                         <b color="red"><?=$this->session->flashdata('usuario_incorrecto');?></b>
                       </div>
@@ -49,3 +51,4 @@
             </div>
             </div>
     <?= form_close() ?>
+  </div>

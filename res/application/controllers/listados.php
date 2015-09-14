@@ -14,10 +14,12 @@ class Listados extends CI_Controller {
 		$this->load->model('new/Tipo_empresa_model','tipo_empresa');
 		$this->load->model('new/Membresia_model','membresia');
 		$this->load->model('new/Categoria_model','categoria');
+		$this->load->model('new/Subcategoria_model','subcategoria');
 		$this->load->model('new/Producto_model','producto');
 		$this->load->model('new/Solicitud_model','solicitud');
 		$this->load->model('new/Dimension_model','dimension');
 		$this->load->model('new/Busquedas_model','busquedas');
+		$cache_buequeda="default";
 		#$this->load->model('Busqueda_model','busqueda');
 	}
 
@@ -124,9 +126,10 @@ class Listados extends CI_Controller {
  		}
  		*/
  	    $busqueda = $this->input->post('busqueda');
+ 	     	    
  	    $selec1 = $this->input->post('selec1');
  		//$this->lista($buscador);
- 		$this->lista($busqueda,$selec1);
+ 		redirect(base_url()."listados/lista/".$busqueda.'/'.$selec1);
  		//$this->lista();
 	}
 
@@ -190,6 +193,9 @@ class Listados extends CI_Controller {
 		$data['busqueda']=$this->analisis_busqueda($p);
 		$data['id_usuario']= $this->session->userdata('id_usuario');
 
+		$data['filtro']=$filtro;
+		$data['tipo_filtro']= $tipo_filtro;
+
 		$data['url_publicar_solicitud']="";
 		$data['url_publicar_producto']="";
 		
@@ -201,7 +207,7 @@ class Listados extends CI_Controller {
 			$data['nom_producto']="Sin dato";
 		}else
 		{
-			$data['nom_producto']='<b>'.$p.'</b>';
+			$data['nom_producto']=$data['busqueda'];
 		}
 		if($p=="default")
 		{	
@@ -211,33 +217,36 @@ class Listados extends CI_Controller {
 		$data['titulo']=$data['busqueda'];
 		$p=$this->analisis_busqueda($p,"Compuesta");
 
-
 		$productos=$this->producto->buscar($p,"Compuesta");
 		$solicitudes=$this->solicitud->buscar($p,"Compuesta");
 		$proveedores=$this->empresa->buscar($p,"Compuesta");
-
-		$filtros['total_porCategoria']=clear_array($this->total_porCategoria($productos));
-		$filtros['total_porSubCategoria']=clear_array($this->total_porSubCategoria($productos));
-		$filtros['p']=$data['titulo'];
-		$filtros['div']=$div;
-		$filtros['page']=$page;
-
-		$data['div_categorias']=$this->load->view('listados/div_categorias', $filtros, TRUE);
+		#$proveedores=array_merge($proveedors,$this->empresa->buscar2($p,"Compuesta"));
+		#$proveedores=clear_array($proveedores);
 
 		if($filtro!=0)
 		{
 			switch ($tipo_filtro) 
 			{
 				case 0:
-						$productos=clear_array($this->filtrarProductos_categoria($productos,$filtro)); 
+						$filtrado=$this->filtro_categoria($productos,$filtro); 
 					break;
 				
 				default:
-						$productos=clear_array($this->filtrarProductos_SubCategoria($productos,$filtro));
-					break;
+						$filtrado=$this->filtro_categoria($productos,0,$filtro); 
+						break;
 			}
-			
+			$productos=$filtrado['productos'];
+		}else
+		{
+			$filtrado=$this->filtro_categoria($productos);
 		}
+		$filtros['filtros']=$filtrado['categorias'];
+		$filtros['p']=$data['titulo'];
+		$filtros['div']=$div;
+		$filtros['page']=$page;
+
+		#$data['div_categorias']="";
+		$data['div_categorias']=$this->load->view('listados/div_categorias', $filtros, TRUE);
 
 		$data['categorias']=$this->categoria->get_all();
 				
@@ -245,9 +254,9 @@ class Listados extends CI_Controller {
 		$data['url_publicar_solicitud']=base_url()."publicar_oferta";
 		$this->load->view("template/head", $data);
 		$this->load->view("template/javascript");
+		$this->load->view('registro/funcionalidades_');
 		$this->load->view("index/top_menu");
 		$this->load->view("index/header_buscador", $data);
-		$this->load->view('listados/div_header_seo', $data, FALSE);
 		$this->breadcrumb->add('"' . $data['nom_producto'] . '"', base_url() . '');
 
 		$data['page']=$page; 
@@ -356,120 +365,109 @@ class Listados extends CI_Controller {
 
 			 	if(!$proveedor)
 			 	{	continue;	}
-				$out['empresa']=$this->empresa->get($proveedor->id);
-				$out['empresa']->tipo=$this->tipo_empresa->get($out['empresa']->tipo)->tipo;
-				$out['empresa']->productos=$this->producto->get_all(array('empresa'=>$proveedor->id));
-				$datos['usuario']=$this->usuarios->get($out['empresa']->usuario);
+				$datos['empresa']=$this->empresa->get($proveedor->id);
+				$datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+				$datos['empresa']->productos=$this->producto->get_all(array('empresa'=>$proveedor->id));
+				$datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
 				$datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
 				$datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
-				$out['empresa']->div_membresia= $this->membresia->get_div_list($out['empresa']->id);
-				$data['div_empresas'][$key]=$this->load->view('listados/div_empresas', $out, TRUE);
+				$datos['empresa']->div_membresia= $this->membresia->get_div_list($datos['empresa']->id);
+				$data['div_empresas'][$key]=$this->load->view('listados/div_empresas', $datos, TRUE);
 				unset($proveedor);
 			 }
 		}
-		$data['page']=$page;
-			
+		$data['page']=$page;		
 
 
 		$resultados= "Productos:".($data['page_count']*25).",Solicitudes:".($data['page_count3']*25).",Proveedores:".($data['page_count2']*25);
 		$this->busquedas->insert(array('busqueda'=>$data['busqueda'],'resultados'=>$resultados));
+		$this->load->view('listados/div_header_seo', $data, FALSE);
 		$this->load->view("listados/elemento", $data);
 		$this->load->view("listados/div_footer_seo", $data);
 		$this->load->view("listados/div_footer_seo_2", $data);
 		$this->load->view("template/footer");
 	}
-
-
-	//Jhordy:: funcion extrae unicamente los productos pertenecientes  la categoria $id_seleccion
-	private function filtrarProductos_categoria($productos,$id_seleccion){
+	
+	private function filtro_categoria($productos=0,$id_categoria=0,$id_subcategoria=0)
+	{		
 		$out=array();
-		foreach ($productos as $value) 
+		foreach ($productos as $key => $value) 
 		{
-			$subcategoria_tmp=$this->subcategoria->get($value->subcategoria);
-			$id_categoria=$subcategoria_tmp->id_categoria;
-
-			if($id_categoria==$id_seleccion) 
-			{ 
-				$out[]=$value;
-			}
+			$subcategoria=$this->subcategoria->get($value->subcategoria);
+		 	$categoria=$this->categoria->get($subcategoria->id_categoria);
+		 	$out['categorias'][$categoria->nombre_categoria]['id']=$categoria->id_categoria;
+		 	$out['categorias'][$categoria->nombre_categoria]['cantidad']+=1;
+		 	$out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['cantidad']+=1;
+		 	$out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['id']=$value->subcategoria;
+			if($id_subcategoria==$value->subcategoria)
+			{	$out['productos'][]=$value;	}
+			elseif($id_categoria==$categoria->id_categoria) 
+			{	$out['productos'][]=$value;	}
 		}
 		return $out;
 	}
 
-	//Jhordy:: funcion extrae unicamente los productos pertenecientes  la subcategoria $id_seleccion
-	private function filtrarProductos_SubCategoria($productos,$id_seleccion){
-		$out=array();
-		foreach ($productos as $value) 
+
+	/**
+	  *La funcion fltarar, hace un conteo del los objetos en el pararametro filtro.
+	  *Y extrae los valores correspondientes a los criterios dados
+	  *según los datos epecificados con el prarametro filtro.
+	  *los fitros recibidos, deberan tener la sgt estructura:
+	  *['nombre']; Nombre que recibira el fitro
+	  *['tabla']; tabla a la que se recurrira  para buscar el dato de comparacion
+	  *['campo_s']; identificador, o enlace con el indice ['tabla']
+	  *['campo_t']; identificador de ['tabla']
+	  *['valor']; criterio para generar el filtro; 
+	  *['tag']; etiqueta para los contadores. 
+	  *retorna un areglo de la forma array('valores'=>array(),'objetos'=>array());
+	  *donde valores es el conteo y clasificacion de objetos y objetos, son los valores filtrados.
+	  * ejemplo de uso:
+	    *$usuarios= $this->usuarios->get_all();
+		*$filtros[1]['nombre']='departamentos';
+		*$filtros[1]['tabla']='departamento';
+		*$filtros[1]['campo_s']='departamento';
+		*$filtros[1]['campo_t']='id_departamento';
+		*$filtros[1]['valor']=30;
+		*$filtros[1]['tag']='nombre';
+		*$out=$this->filtrr($usuarios,$filtros);
+		*El anterior ejemplo da el numero exacto de usuarios por cada departamento ('valores'=>array())
+		*Y ademas retorna los usuarios del tepartamento 30, que para el caso son los
+		*usuarios del Valle del cauca.('objetos'=>array())
+	**/
+
+	public function jhordy()
+	{
+		$productos= $this->producto->get_all();
+		$filtros[0]['nombre']='subcategorias';
+		$filtros[0]['tabla']='subcategoria';
+		$filtros[0]['campo_s']='subcategoria';
+		$filtros[0]['campo_t']='id_subcategoria';
+		$filtros[0]['valor']=0;
+		$filtros[0]['tag']='nom_subcategoria';
+		$out=$this->filtrar($productos,$filtros);
+		echo "start<PRE>";
+		print_r($out);
+		echo "</PRE>end";
+	}
+	public function filtrar($stack,$filtros)
+	{		
+		$out=array('valores'=>array(),'objetos'=>array());
+		foreach ($stack as $key => $value) 
 		{
-			if($value->subcategoria==$id_seleccion) 
-			{ 
-				$out[]=$value;
+			foreach ($filtros as $key => $filtro) 
+			{
+				$tmp = $this->$filtro['tabla']->get($value->$filtro['campo_s']);
+				#if(!$tmp){continue;}
+				$out['valores'][$filtro['nombre']][$tmp->$filtro['tag']]+=1;
+				if($tmp->$filtro['campo_t']==$filtro['valor'])
+				{
+					$out['objetos'][$filtro['nombre']][]=$value;
+				}
+				unset($tmp);
 			}
 		}
 		return $out;
 	}
-	//Jhordy:: Esta funcion retorna el numero de productos de cada categoria
-	private function total_porCategoria($productos){
-		$out = array();		
-		if($productos==NULL)
-		{	return $out;	}
-		foreach ($productos as $datos)
-		{
-				$id_subcategoria=$datos->subcategoria;
-				$subcategoria_tmp=$this->subcategoria->get($id_subcategoria);
-				$aux['id_categoria']=$subcategoria_tmp->id_categoria;
-				$aux['cantidad']=$this->productos_porCategoria($aux['id_categoria'],$productos);	
-				$aux['nombre']=$this->categoria->get($aux['id_categoria'])->nombre_categoria;	
-				$out[]=$aux;	
-		}		
-		return $out;
-	}
-	//Jhordy:: Esta funcion retorna la cantidad de productos de una categoria especifica
-	private function productos_porCategoria($id_categoria,$productos){
-			$total=0;
-			if($productos)
-			  {
-				  foreach ($productos as $registro)
-				  {
-						$id_tmp=$registro->subcategoria;
-						$subcategoria_tmp=$this->subcategoria->get($id_tmp);
-						if($subcategoria_tmp->id_categoria==$id_categoria)
-						{	$total++;	}
-				 }
-			   } 
-			return $total;
-	}
-	//Jhordy:: Esta funcion retorna las subcategorias de cada producto  u ofertas
-	private function total_porSubCategoria($productos){
-		$out = array();
-		if($productos==NULL)
-		{	return $out;	}
-		foreach ($productos as $datos)
-		{
-				$id=$datos->subcategoria;
-				$subcategoria_tmp=$this->subcategoria->get($id);
-				$aux['cantidad']=$this->productos_porSubCategoria($id,$productos);	
-				$aux['id_categoria']=$subcategoria_tmp->id_categoria;		
-				$aux['id_subCategoria']=$id;	
-				$aux['nombre']=$subcategoria_tmp->nom_subcategoria;	
-				$out[]=$aux;	
-		}		
-		return $out;
-	}	
-	//Jhordy:: Esta funcion retorna la catidad de productos u ofertas en una subcategoria
-	private function productos_porSubCategoria($id_subcategoria,$productos){
-			$total=0;
-			if($productos)
-			  {
-				  foreach ($productos as $registro)
-				  {
-						if($registro->subcategoria==$id_subcategoria)
-						{	$total++;	}
-				 }
-			   } 
-			return $total;
-	}
-
 }
 
 

@@ -375,9 +375,11 @@
                       <span class="col-md-10 col-xs-12" style="text-align: center;  font-size: 15px;
                         line-height: 1;margin-top: 7px;margin-bottom: 12px;">Agreagar Imágenes <br> (máximo 5)</span>
                     </span>
-                    <input type="file" class="filestyle" id="btn_archivos" name="userfiles[]" multiple
-                      data-size="lg" data-input="false" data-icon="false" data-badge="false"
-                      onchange="JavaScript:oculta_eliminar();" onload="JavaScript:oculta_eliminar();" >
+                        <div style="display:none">
+                          <input type="file" class="filestyle" id="btn_archivos" name="userfiles[]" multiple
+                            data-size="lg" data-input="false" data-icon="false" data-badge="false" 
+                            onchange="JavaScript:oculta_eliminar();" onload="JavaScript:oculta_eliminar();" >
+                        </div>
                   </div>
                 </div>
                
@@ -625,10 +627,12 @@
                       <span class="col-md-2 glyphicon glyphicon-picture icono-plus"></span>
                       <span class="col-md-10" style="text-align: center;  font-size: 15px;
                         line-height: 1;margin-top: 7px;">Agreagar Imágenes (máximo 5)</span>
-                    </span>
-                     <input type="file" class="filestyle" id="btn_archivos2" name="userfiles[]" multiple
-                      data-size="lg" data-input="false" data-icon="false" data-badge="false"
-                      onchange="JavaScript:oculta_eliminar2();" onload="JavaScript:oculta_eliminar2();">
+                    </span>                    
+                        <div style="display:none">
+                           <input type="file" class="filestyle" id="btn_archivos2" name="userfiles[]" multiple
+                            data-size="lg" data-input="false" data-icon="false" data-badge="false"
+                            onchange="JavaScript:oculta_eliminar2();" onload="JavaScript:oculta_eliminar2();">
+                        </div>
                   </div>
                 </div>
                
@@ -904,7 +908,7 @@
             </div>
 
             <!-- empresa o sector al que le interesa ... -->
-            <div class="row" style="margin-bottom: 16px;">
+            <div class="row" style="margin-bottom: 16px; display:none">
               <div class="col-md-3 col-sm-3">
                 <h5>Empresa o sector al que le interesa el producto</h5>
               </div>

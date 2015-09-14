@@ -1,8 +1,9 @@
+<div class="login">
 <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>styles_login.css">
       <div class="modal fade" id="<?=$id_popup?>" tabindex="-1" role="dialog" 
                 aria-labelledby="myModalLabel" aria-hidden="true" >
         <div class="modal-dialog">
-          <div class="modal-content modal-content-one">
+          <div class="modal-content modal-content-login modal-content-one">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">
                 <span aria-hidden="true">
@@ -28,3 +29,4 @@
         </div>
       </div>
     </div>
+</div>

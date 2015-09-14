@@ -70,6 +70,7 @@ class Oportunidad_comercial extends CI_Controller {
             $data['id_usuario']= $this->session->userdata('id_usuario');
             $this->load->view('template/head', $data, FALSE);
             $this->load->view('template/javascript', FALSE, FALSE);
+            $this->load->view('registro/funcionalidades_',$data);
             $this->load->view('index/top_menu',$data);
             $this->load->view('index/header_buscador',$data);
         	$this->load->view('oferta/oportunidad_comercial',$data);

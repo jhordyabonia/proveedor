@@ -1,9 +1,10 @@
+<div class="login">
 <a data-toggle="modal" id='popup_launch' data-target="#first_ligin" class="enlace_registro cursor-mano" hhref="JavaScript:;">
 </a><link rel="stylesheet" type="text/css" href="<?php echo css_url()?>styles_login.css">
            <div class="modal fade" id="first_ligin" tabindex="-1" role="dialog" 
                 aria-labelledby="myModalLabel" aria-hidden="true" >
            <div class="modal-dialog">
-              <div class="modal-content modal-content-one">
+              <div class="modal-content modal-content-login modal-content-one">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">
@@ -36,7 +37,7 @@
               </div>
             </div>
           </div>
-
+</div>
 <SCRIPT TYPE="text/javascript">
 window.onload=fun();
 function fun()

@@ -405,9 +405,10 @@ class Mensajes extends CI_Controller {
 			$datos['telefono'] =" ".$tmp->indicativo."-".$tmp->telefono."-".$tmp->extension."- CEL.: ".$tmp->celular;
 			$datos['abilitado'] = "readonly";
 		}
-		#$this->load->view('template/head', FALSE, FALSE);
-		#$this->load->view('template/javascript', FALSE, FALSE);    	
-    	$this->load->view('popups/mensaje', $datos);
+    	else	
+    	{	$this->load->view('popups/opciones_popup', $datos);	}  
+    	
+    	$this->load->view('popups/mensaje', $datos);	
   }
 
   private function obtener_datos($tipo)

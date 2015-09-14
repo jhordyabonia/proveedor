@@ -70,10 +70,11 @@ class Perfil extends CI_Controller {
 		$datos['titulo'] = $empresa->nombre;
 		$datos['div_membresia']=$this->membresia->get_div($id_empresa);
 		$datos['usuario']=$this->session->userdata('usuario');
+		$this->load->view('template/javascript', $datos, FALSE);
 		$this->load->view('template/head', $datos, FALSE);
+		$this->load->view('registro/funcionalidades_');
 		$this->load->view('pagina_empresa/header', $datos, FALSE);
 		$this->load->view('pagina_empresa/catalogo_productos', $datos, FALSE);
-		$this->load->view('template/javascript', $datos, FALSE);
 		$this->load->view('template/footer', $datos, FALSE);
 	}
 
@@ -232,9 +233,10 @@ class Perfil extends CI_Controller {
 		$datos['usuario']=$this->session->userdata('usuario');
 		$datos['id_empresa']=$id_empresa;
 		$this->load->view('template/head', $datos, FALSE);
+		$this->load->view('template/javascript', $datos, FALSE);
+		$this->load->view('registro/funcionalidades_');
 		$this->load->view('pagina_empresa/header', $datos, FALSE);
 		$this->load->view('pagina_empresa/perfil_empresa', $datos, FALSE);
-		$this->load->view('template/javascript', $datos, FALSE);
 		$this->load->view('template/footer', $datos, FALSE);
 	}
 
@@ -516,6 +518,7 @@ class Perfil extends CI_Controller {
 		$datos['usuario']=$this->session->userdata('usuario');
 		$this->load->view('template/head', $datos, FALSE);
 		$this->load->view('template/javascript', $datos, FALSE);
+		$this->load->view('registro/funcionalidades_');
 		$this->load->view('pagina_empresa/header', $datos, FALSE);
 		$this->load->view('pagina_empresa/productos_solicitados', $datos, FALSE);
 		$this->load->view('template/footer', $datos, FALSE);
@@ -606,6 +609,7 @@ class Perfil extends CI_Controller {
 		$datos['usuario']=$this->session->userdata('usuario');
 		$this->load->view('template/head', $datos, FALSE);
 		$this->load->view('template/javascript', $datos, FALSE);
+		$this->load->view('registro/funcionalidades_');
 		$this->load->view('pagina_empresa/header', $datos, FALSE);
 		$this->load->view('pagina_empresa/contacto', $datos, FALSE);
 		$this->load->view('template/footer', $datos, FALSE);

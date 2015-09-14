@@ -13,6 +13,10 @@
 	background: #ECECEC;
 	margin: 0;
 }
+#banner{
+	background: #000;
+	z-index: -1;
+}
 
 /*Secciond e colaboradores y boton de registro*/
 /*colaboradores(colabor)*/

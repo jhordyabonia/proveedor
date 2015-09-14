@@ -130,7 +130,7 @@ class Publicar_producto extends CI_Controller {
 		$data['nombre'] = $this->input->post('nombre');
 		$data['sector'] = $this->input->post('categoria');
 		#$data['categoria'] = $this->input->post('categoria');
-		$data['subcategoria'] = $this->obtener_id_subcategoria($this->input->post('subcategorias_simple'));
+		$data['subcategoria'] = $this->obtener_id_subcategoria($this->input->post('subcategorias_simples'));
 		$data['descripcion'] = $this->input->post('descripcion');
 		$data['precio_unidad'] = $this->input->post('precio');
 		$data['medida'] = $this->input->post('list_medidas');

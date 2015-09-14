@@ -1,3 +1,7 @@
+.element {
+background: #F7F7F7;
+margin-top: 10px;
+}
 .elemento .color_fondo{
 	background: #F7F7F7!important;
 	padding-left: 0;

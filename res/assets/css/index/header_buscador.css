@@ -156,6 +156,7 @@
 }
 .cont_titulo_categorias_slide .ico_lista_slide{
   font-size: 30px!important;
+  z-index: 1 !important;
 }
 .titulo_categorias_slide{
   text-align: center;
@@ -187,15 +188,20 @@
   padding-top: 2px;
   padding-right: 0;
 }
-.enlace_categoria_slide{
+#divmostoc .enlace_categoria_slide{
   text-decoration: none;
-  color: #7F7F7F;
+  color: #000;
+}
+#div_subcategorias .enlace_categoria_slide{
+  text-decoration: none;
+  color: #000;
+  padding-left: 30px;
 }
 .ico_flecha_slide{
   padding-left: 10px;
   font-size: 16px!important;
   font-weight: bold!important;
-  color: #CFCECE;
+  color: #FF7F27;
 }
 
 #fuente_menu{

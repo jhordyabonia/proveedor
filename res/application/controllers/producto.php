@@ -80,6 +80,7 @@ class Producto extends CI_Controller
 				$datos['url_publicar_producto']= base_url(). "publicar_oferta";
 				$this->load->view('template/head', $datos, FALSE);
 				$this->load->view('template/javascript', FALSE, FALSE);
+				$this->load->view('registro/funcionalidades_',$data);
 				$this->load->view('index/top_menu',$datos);
 				$this->load->view('index/header_buscador',$datos);
 				$this->load->view('producto/pagina_producto', $data);

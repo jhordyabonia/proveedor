@@ -11,7 +11,7 @@ while ( $text.outerHeight() > containerHeight ) {
 <div class="row div_proveedores">
 	<div class="col-md-12 nombre_emp">
 		<div class="col-md-7">
-			<p class="nombre_empresa"><a href="<?=base_url()?>perfil/perfil_empresa/<?=$empresa->id?>" ><?=$empresa->nombre?></a></p>
+			<a href="<?=base_url()?>perfil/perfil_empresa/<?=$empresa->id?>" ><p class="nombre_empresa"><?=$empresa->nombre?></p></a>
 		</div>
 		<div class="col-md-4 hidden-xs">
 			<?php echo @$empresa->div_membresia ?>
@@ -55,7 +55,8 @@ while ( $text.outerHeight() > containerHeight ) {
 					<div class="background_imagen" >
 						<div class="center-vertical_imagen">
 						<a href="<?=base_url()?>producto/ver/<?=$producto->id?>">
-							<img src="<?=$producto->imagenes?>" class="img_imagen img-responsive">
+							<?php $producto->imagenes=explode(',',$producto->imagenes);?>
+							<img src="<?=base_url()?>uploads/<?=$producto->imagenes[0]?>" class="img_imagen img-responsive">
 						</a>
 						</div>
 					</div>
@@ -87,7 +88,7 @@ while ( $text.outerHeight() > containerHeight ) {
 		<!-- Informacion del la empresa -->
 		<div class="col-md-4 hidden-xs info_vendedor">
 			<p class="tipo_empresa">Tipo de Empresa: <span class="tipo"><?=$empresa->tipo ?></span></p>
-			<p class="ubicacion">Ubicación: <span class="ubica"><?php echo $usuario->ciudad." - ".$empresa->departamento; ?></span></p>
+			<p class="ubicacion">Ubicación: <span class="ubica"><?php echo $usuario->ciudad," - ",$usuario->departamento; ?></span></p>
 			<?php if( $empresa->productos_principales):?>
 				<p class="prod_ppales">Productos Principales:</p>
 				<?php foreach (explode(',',$empresa->productos_principales) as $key => $producto):?>

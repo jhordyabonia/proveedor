@@ -28,7 +28,7 @@
 											</p>
 										</a>									
 									<? else: ?>
-										<a data-toggle="modal" id='launch_login' href="JavaScript:login();">
+										<a data-toggle="modal" id='launch_login' href="JavaScript:login(this,'false');">
 											<p class="text_header">
 												Ingresar
 											</p>
@@ -180,27 +180,6 @@
 					//login();
 			}
 
-			function login()
-	       {
-		       	var popup=new XMLHttpRequest();
-		       	var url_popup="<?=base_url()?>logueo/popup/false";
-
-				popup.open("GET", url_popup, true);
-				popup.addEventListener('load',show,false);
-				popup.send(null);
-
-				function show()
-				{
-					cotizar=document.getElementById('div_login');
-					console.log(popup.response);
-					cotizar.innerHTML=popup.response;
-					document.getElementById('launch_login').href="JavaScript:document.getElementById('auto_launch').click();";
-					document.getElementById('auto_launch').click();
-						
-				}
-			}
 	</script>
   <div id="cotizar">
-		</div>
-  <div id="div_login">
 		</div>
