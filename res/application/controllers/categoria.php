@@ -50,13 +50,13 @@ class Categoria extends CI_Controller {
         $datos['id_usuario']= $this->session->userdata('id_usuario');
         $this->load->view('template/head', $datos, FALSE);
         $this->load->view('template/javascript', FALSE, FALSE);
-        $this->load->view('index_test/top_menu',$datos);
+        $this->load->view('index/top_menu',$datos);
         $datos['url_registro']=base_url()."registro/registro_usuario";
         $datos['url_publicar_producto']=base_url()."publicar_producto";
         $datos['url_publicar_solicitud']=base_url()."publicar_oferta";        
         $data['url_publicar_producto']=base_url()."publicar_producto";
         $data['url_publicar_solicitud']=base_url()."publicar_oferta";
-        $this->load->view('index_test/header_buscador',$data);
+        $this->load->view('index/header_buscador',$data);
         $datos['datos']->titulos=$titulos;
         $this->load->view('template/head', array('titulo'=>"Categorias --proveedor.com.co"));
         $this->load->view('template/javascript', FALSE);

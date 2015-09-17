@@ -79,73 +79,63 @@ class Tablero_usuario extends CI_Controller {
 	}
 
 	public function oportunidades($categoria=FALSE,$print=TRUE)
-	{
+	{	
+
 		$id_usuario=$this->session->userdata('id_usuario');
 		
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
-		$datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-		$solicitudes=FALSE;
-		if($categoria)
+		$categorias_empresa=explode(',',$datos['empresa']->categorias);
+		$datos['membresia']=$datos['empresa']->membresia;
+		$datos['datos']=array();
+		if(!$categoria)
 		{
-			$solicitudes=$this->asistentes_proveedor->get_all(array('categoria'=>$categoria));
+			$solicitudes=$this->asistentes_proveedor->get_all();
 		}else
 		{			
-			$solicitudes=$this->asistentes_proveedor->get_all();
+			$solicitudes=$this->asistentes_proveedor->get_all(array('categoria'=>$categoria));
 		}
 
 		$datos['total_oportunidades']=0;
 		$datos['numero_nuevas']=0;
 		$dotos['page_count'] = count($solicitudes)/25;
-		$datos['page']=($this->input->post('page')-1);	
-		$datos['datos'] = array();	
-		if($solicitudes)
-		{	    	
-			foreach ($solicitudes as $key => $solicitud)
+		#$datos['page']=($this->input->post('page')-1);	
+		#$datos['datos'] = array();		    	
+		foreach ($solicitudes as $key => $solicitud)
+		{
+			if($solicitud->publicada==0)
+				{ continue;}
+			if(!$categoria)
 			{
-				if($solicitud->publicada!=0)
-					{ continue;}
-				if(!$categoria)
+				foreach ($categorias_empresa as $value)
 				{
-					foreach (explode('|',$datos['empresa']->categorias) as $value)
+					if($solicitud->categoria==$value)
 					{
-						if($solicitud->categoria==intval($value))
-						{
-							$datos['datos'][]=$solicitud;
-							break;
-						}
+						$datos['datos'][]=$solicitud;
+						break;
 					}
-				}else {	$datos['datos'][]=$solicitud;}					
-				/*
-				if($key<($datos['page']*25))
-				{  continue; }
-				if($datos['page']>0)
-				{
-					if($key>=($datos['page']*50))	
-					{break;}
-				}	
-				else
-				{
-					if($key>=25)	
-					 {break;}
 				}
-				*/
+			}else {	$datos['datos'][]=$solicitud;}					
+			/*
+			if($key<($datos['page']*25))
+			{  continue; }
+			if($datos['page']>0)
+			{
+				if($key>=($datos['page']*50))	
+				{break;}
+			}	
+			else
+			{
+				if($key>=25)	
+				 {break;}
 			}
+			*/
 		}
 		$datos['total_oportunidades']=count($datos['datos']);
 
 		$datos['categorias']=$this->categoria->get_all();
-
-		if(!$categoria)
-		{	
-			$categoria=explode('|', $datos['empresa']->categorias);
-			$categoria=$categoria[1];
-			#echo "<PRE>";
-			#print_r($categoria);
-			#echo "</PRE>";
-			#return;
-		}
-
-    	$datos['categoria']=$this->categoria->get($categoria);
+		if($categoria)
+		{		$datos['categoria']=$this->categoria->get($categoria);	}
+		else{	$datos['categoria']=$this->categoria->get($categorias_empresa[0]);	}
     	$datos['titulo']="Mis oportunidades comerciales -Proveedor.com.co ";
 		$datos['usuario']=$this->session->userdata('usuario');
 
@@ -166,18 +156,15 @@ class Tablero_usuario extends CI_Controller {
 
 		if(!$print)	return $datos;
 
+		$datos['nit']=$this->session->userdata('empresa');
 		$datos['usuario']=$this->usuarios->get($id_usuario);
-
-    	$datos['administrador']=FALSE;
-    	if($datos['usuario']->permisos==1)
-    	{$datos['administrador']=TRUE;}
-
+		$datos['administrador']=$datos['usuario']->permisos;
 		$datos['titulo']="Oportunidades Comerciales - PROVEEDOR.com.co";
 
 		$this->load->view('template/head', $datos);
 		$this->load->view('template/javascript', FALSE);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
-		$dotos['page_count'] = 1;
+		#$dotos['page_count'] = 1;
 	    $this->load->view('tablero_usuario/solicitudes_externas', $datos); 
 		$this->load->view('template/footer', $datos, FALSE);
 	}
