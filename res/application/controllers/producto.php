@@ -249,6 +249,7 @@ class Producto extends CI_Controller
 					'error' => $_FILES['userfiles']['error'][$i],
 					'size' => $_FILES['userfiles']['size'][$i]
 				);
+				if($_FILES[$name_array]['name'][$i]==""){continue;}
 				if ($this->u->imagen()) 
 				{
 					$out .= $this->u->nombre_archivo.',';

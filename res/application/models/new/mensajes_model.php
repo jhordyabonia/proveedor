@@ -33,6 +33,7 @@ class Mensajes_model extends CI_Model {
     public function get_all($where = NULL) {
         $this->db->select('*');
         $this->db->from(self::TABLE_NAME);
+        $this->db->order_by("id","desc");
         if ($where !== NULL) {
             if (is_array($where)) {
                 foreach ($where as $field=>$value) {

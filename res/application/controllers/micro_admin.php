@@ -26,6 +26,90 @@ class Micro_admin extends CI_Controller
 	}
 
 
+	public function agregar_subcategoria()
+	{
+		$this->verifyc_login();
+    	$dat['titulo']="Administrador";
+		$dat['nit']=$this->session->userdata('empresa');
+		$dat['usuario']=$this->session->userdata('usuario');
+
+		$this->load->view('template/head', $dat);
+		$this->load->view('tablero_usuario/header', $dat, FALSE);
+		$this->load->view('template/javascript', FALSE);
+
+		$datos['nom_subcategoria']=$this->input->post('nom_subcategoria');
+		$datos['id_categoria']=$this->input->post('id_categoria');
+		if($datos['nom_subcategoria']!=""&&
+			$datos['id_categoria']!="")
+		{
+			/*
+			echo "<PRE>";
+			print_r($datos);
+			echo "</PRE>";
+			*/
+			if($this->subcategoria->insert($datos))
+			{
+				echo "<center><br><br><br><br><br><br>Hecho!<br>Registro completo!";
+			}
+			else
+			{
+				echo "<center><br><br><br><br><br><br>Error!<br>Registro no realizado.";
+				
+			}
+			echo "<br><a href='".base_url()."micro_admin/agregar_subcategoria'>Nuevo registro</a>";
+			echo "<br><a href='".base_url()."micro_admin/'>Micro_admin</a>";
+		}
+		else
+		{
+			echo '<br><br><br><br><br><center><form action="'.base_url().'micro_admin/agregar_subcategoria" method="post">
+			Nombre Subcategoria<input type="text" name="nom_subcategoria"><br>Categoria <select name="id_categoria">';
+			foreach ($this->categoria->get_all() as $key => $value) 
+			{
+				echo "<option value='".$value->id_categoria."''>".$value->nombre_categoria."</option>";
+			}
+			echo '</select><br><input type="submit">
+			</form>';
+		}
+	}
+	public function agregar_categoria()
+	{
+		$this->verifyc_login();
+    	$dat['titulo']="Administrador";
+		$dat['nit']=$this->session->userdata('empresa');
+		$dat['usuario']=$this->session->userdata('usuario');
+
+		$this->load->view('template/head', $dat);
+		$this->load->view('tablero_usuario/header', $dat, FALSE);
+		$this->load->view('template/javascript', FALSE);
+
+		$datos['nombre_categoria']=$this->input->post('nombre_categoria');
+		if($datos['nombre_categoria']!="")
+		{
+			/*
+			echo "<PRE>";
+			print_r($datos);
+			echo "</PRE>";
+			*/
+			if($this->categoria->insert($datos))
+			{
+				echo "<center><br><br><br><br><br><br>Hecho!<br>Registro completo!";
+			}
+			else
+			{
+				echo "<center><br><br><br><br><br><br>Error!<br>Registro no realizado.";
+				
+			}
+			echo "<br><a href='".base_url()."micro_admin/agregar_categoria'>Nuevo registro</a>";
+			echo "<br><a href='".base_url()."micro_admin/'>Micro_admin</a>";
+		}
+		else
+		{
+			echo '<br><br><br><br><br><center><form action="'.base_url().'micro_admin/agregar_categoria" method="post">
+			Nombre Categoria<input type="text" name="nombre_categoria"><input type="submit">
+			</form>';
+		}
+	}
+
 	
     private function verifyc_login()
     {

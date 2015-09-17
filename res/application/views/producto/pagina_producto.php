@@ -28,6 +28,7 @@
 		<div class="col-md-12">			
 			<?php if($producto->imagenes):?>
 				<?php foreach($producto->imagenes as $key => $value):?>
+				<?php if($value==""){continue;}?>						
 					<div class="col-md-4 mini">
 						<a href="JavaScript:mostrar_imagen('imagen_<?=$key?>')"><img  id="imagen_<?=$key?>" src="<?=base_url()?>uploads/<?=$value?>" class="imag"></a>
 					</div>

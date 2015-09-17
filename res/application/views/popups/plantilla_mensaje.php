@@ -165,7 +165,7 @@
                                           <!-- Title -->
                                           <tr>
                                              <td style="font-family: Helvetica, arial, sans-serif; font-size: 23px; font-weight:bold; color: #333333; text-align:center;line-height: 24px;">
-                                                Sr(a). <?=$nombre_ususario?> - <?=$nombre_empresa?>  
+                                                Sr(a). <?=$nombre_usuario?> - <?=$nombre_empresa?>  
                                              </td>
                                           </tr>
                                           <!-- End of Title -->
@@ -228,7 +228,8 @@
                                                       <tr>
                                                          <td align="center" class="devicewidth">
                                                             <a href="<?=$url?>">
-                                                               <img src="<?=base_url()?>uploads/<?=$imagen?>" style="/* display:block;*/ border:none; outline:none; text-decoration:none; max-width:250px;" class="colimg2">
+                                                               <?php $imagen=explode(',',$imagen);?>
+                                                               <img src="<?=base_url()?>uploads/<?=$imagen[0]?>" style="/* display:block;*/ border:none; outline:none; text-decoration:none; max-width:250px;" class="colimg2">
                                                             </a>
                                                          </td>
                                                       </tr>
@@ -240,7 +241,7 @@
                                                       <!-- title -->
                                                       <tr>
                                                          <td style="font-family: Helvetica, arial, sans-serif; font-size: 18px; font-weight:bold; color: #333333; text-align:center;line-height: 24px;">
-                                                            <a href="<?=$url?>">
+                                                            <a href="<?=$url_mensaje?>">
                                                                <?php if($nombre_producto){ echo $nombre_producto;}?>
                                                             </a>
                                                          </td>
@@ -314,7 +315,7 @@
                               <tr>
                                  <td align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 13px;color: #ffffff">
                                      <h2 style="margin-bottom: 0px; margin-top: 5px;"> 
-                                     Proveedor.com.co S.A.S. 2014 </h2>
+                                     Proveedor.com.co S.A.S. 2015 </h2>
                                      <br> 
                                     <!-- Para dejar de recibir estos correos,   <a href="#" style="color: #0033FF"> haz clic aqui. </a> -->
                                  </td>

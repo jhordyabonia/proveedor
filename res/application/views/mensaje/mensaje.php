@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/mensajes/mensajes.css">
-<?=form_open_multipart('popup/mensaje/none/'.$mensaje->id_producto_oferta_nit);  ?>
+<?=form_open_multipart('mensajes/enviar/'.$mensaje->id_tipo);  ?>
 <div class="container_mensaje leer_mensaje">
 	<div class="col-md-2">
 		<div class="row">
+			<a href="<?=base_url() ?>/mensajes">
 			<img src="<?=base_url() ?>assets/img/mensajes/icono_mensaje.png" class="img-responsive imagen_mensaje">
+			</a>
 		</div>
 	</div>
 	<div class="col-md-10 contenedor_tabs">
@@ -35,15 +37,30 @@
 				<div role="tabpanel" class="tab-pane fade active table-responsive in" id="recibidos">
 					<div class="col-md-12 leyendo_mensaje">
 						
-							<p class="texto_titulo">Producto cotizado: 
-								<?if ($mensaje->url): ?>
+							<p class="texto_titulo">Producto cotizado: 				
 									<img src="<?=$mensaje->image?>" class="img_miniatura_msj">
 									<a href="<?=$mensaje->url?>" class="link_producto">
 										<?=$mensaje->nom_objeto?>
 									</a>
-								<? endif; ?>
 							</p>
-						
+					</div>
+					<div class="col-md-12 contacto">
+						<div class="col-md-1 row">
+							<p class="texto_titulo"></p>
+							<p class="texto_titulo">Ubicación: </p>
+						</div>
+						<div class="col-md-10">
+							<p class="texto_titulo"></p>
+							<p class="texto_contacto">								
+								<?php if($mensaje->ubicacion):?>
+									<?=$mensaje->ubicacion->departamento?>
+									- <?=$mensaje->ubicacion->ciudad?>
+									- <?=$mensaje->ubicacion->direccion?>
+								<?php endif;?>
+							</p>
+						</div>
+						<!--
+					-->
 					</div>
 					<div class="col-md-12 contacto">
 						<div class="col-md-1 row">
@@ -70,22 +87,6 @@
 							</p>
 						</div>
 					</div>
-					<div class="col-md-12 telefono">
-						<div class="col-md-1 row">
-							<p class="texto_titulo"></p>
-							<p class="texto_titulo">Ubicación: </p>
-						</div>
-						<div class="col-md-10">
-							<p class="texto_titulo"></p>
-							<p class="texto_contacto">								
-								<?php if($mensaje->ubicacion):?>
-									<?=$mensaje->ubicacion->departamento?>
-									- <?=$mensaje->ubicacion->ciudad?>
-									- <?=$mensaje->ubicacion->direccion?>
-								<?php endif;?>
-							</p>
-						</div>
-					</div>
 					
 					<div class="col-md-12 mensaje_fecha">
 						<div class="col-md-10 row mensaje">
@@ -108,7 +109,8 @@
 					<? endif; ?>
 					</div>
 					
-					<input type="hidden" value="<?=$mensaje->tipo?>" name="tipo">
+					<input type="hidden" value="<?=$mensaje->id_objeto?>" name="id_objeto">
+					<input type="hidden" name="tipo" value="<?=$mensaje->tipo?>">                  
 					<input type="hidden" value="Proveedor.com.co - ¡Ha recibido un respuesta a su mensaje!" name="asunto">
 					<input type="hidden" value="<?=$mensaje->remitente->correo?>" name="email">
 					<input type="hidden" value="<?=$mensaje->remitente->telefono?>" name="telefono">

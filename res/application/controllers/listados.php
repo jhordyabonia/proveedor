@@ -429,7 +429,7 @@ class Listados extends CI_Controller {
 		*$filtros[1]['campo_t']='id_departamento';
 		*$filtros[1]['valor']=30;
 		*$filtros[1]['tag']='nombre';
-		*$out=$this->filtrr($usuarios,$filtros);
+		*$out=$this->filtrar($usuarios,$filtros);
 		*El anterior ejemplo da el numero exacto de usuarios por cada departamento ('valores'=>array())
 		*Y ademas retorna los usuarios del tepartamento 30, que para el caso son los
 		*usuarios del Valle del cauca.('objetos'=>array())
@@ -437,14 +437,20 @@ class Listados extends CI_Controller {
 
 	public function jhordy()
 	{
-		$productos= $this->producto->get_all();
-		$filtros[0]['nombre']='subcategorias';
-		$filtros[0]['tabla']='subcategoria';
-		$filtros[0]['campo_s']='subcategoria';
-		$filtros[0]['campo_t']='id_subcategoria';
-		$filtros[0]['valor']=0;
-		$filtros[0]['tag']='nom_subcategoria';
-		$out=$this->filtrar($productos,$filtros);
+		$usuarios= $this->usuarios->get_all();
+		$filtros[0]['nombre']='departamentos';
+		$filtros[0]['tabla']='departamento';
+		$filtros[0]['campo_s']='departamento';
+		$filtros[0]['campo_t']='id_departamento';
+		$filtros[0]['valor']=10;
+		$filtros[0]['tag']='nombre';
+		$filtros[1]['nombre']='municipios';
+		$filtros[1]['tabla']='municipio';
+		$filtros[1]['campo_s']='ciudad';
+		$filtros[1]['campo_t']='id_municipio';
+		$filtros[1]['valor']=0;
+		$filtros[1]['tag']='municipio';
+		$out=$this->filtrar($usuarios,$filtros);
 		echo "start<PRE>";
 		print_r($out);
 		echo "</PRE>end";

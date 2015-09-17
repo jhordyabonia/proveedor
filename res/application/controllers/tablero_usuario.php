@@ -14,7 +14,6 @@ class Tablero_usuario extends CI_Controller {
 		$this->load->model('new/Producto_model','producto');
 		$this->load->model('new/Solicitud_model','solicitud');
 		$this->load->model('new/Membresia_model','membresia');
-		$this->load->model('new/Remitente_model','remitente');
 		$this->load->model('new/Empresa_model','empresa');
 		$this->load->model('new/Usuarios_model','usuarios');
 		$this->load->model('new/Categoria_model','categoria');
@@ -30,7 +29,7 @@ class Tablero_usuario extends CI_Controller {
 		$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $iduser, 'estado' => 0));
 		$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $iduser, 'estado' => 1));
 		$remitente = $this->usuarios->get($iduser)->email;
-		$remitente = $this->remitente->get(array('correo' => $remitente));
+		$remitente = $this->usuarios->get(array('email' => $remitente));
 		
 		$datos['enviados']=FALSE;
 		if($remitente)

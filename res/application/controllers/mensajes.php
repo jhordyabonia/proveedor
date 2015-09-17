@@ -108,7 +108,6 @@ class Mensajes extends CI_Controller {
   {
   	 $this->session->set_userdata('path_current',base_url()."mensajes/leer/".$id);
 	 $datos['administrador']=FALSE;
-  	 /*
   	 if(!is_numeric($id))
   	 {
   		$this->usuario_noregistrado($id);
@@ -119,6 +118,7 @@ class Mensajes extends CI_Controller {
 	   show_404();
 	   return;
 	 }
+  	 /*
   	*/
 	$id_user=$this->session->userdata('id_usuario');
 	$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 0));
@@ -137,32 +137,157 @@ class Mensajes extends CI_Controller {
 
 	switch ($datos['mensaje']->tipo) 
 	{
+		case '1':
+			$objeto = $this->producto->get($id_tmp);
+			$datos['mensaje']->url=base_url()."producto/ver/".$objeto->id;
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$image= explode(',', $objeto->imagenes);
+			if($image[0]!="")
+			{$datos['mensaje']->image=base_url()."uploads/".$image[0];}
+			elseif($image[1]!=""){$datos['mensaje']->image=base_url()."uploads/".$image[1];}
+			else{$datos['mensaje']->image=base_url()."uploads/default.jpg";}
+			
+			break;
+		case '2':
+			$datos['mensaje']->datos=0;
+			$objeto=$this->solicitud->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->id;
+			$image= explode(',', $objeto->imagenes);
+			if($image[0]!="")
+			{$datos['mensaje']->image=base_url()."uploads/".$image[0];}
+			elseif($image[1]!=""){$datos['mensaje']->image=base_url()."uploads/".$image[1];}
+			else{$datos['mensaje']->image=base_url()."uploads/default.jpg";}
+			break;
+		case '3':
+			$datos['mensaje']->datos=0;
+			$objeto=$this->empresa->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$objeto->id;
+			if(!$objeto->logo){$objeto->logo="default.png";}
+			$datos['mensaje']->image=base_url()."uploads/logos/".$objeto->logo;
+			break;		
+	}
+	
+	if(!$datos['mensaje']->image)
+	{
+		$datos['mensaje']->image=base_url()."uploads/default.jpg";
+	}
+	
+	$usuario = $this->usuarios->get($datos['mensaje']->destinatario);
+	//$contacto = $this->contacto->get($datos['mensaje']->destinatario);
+	if(!$usuario)
+	{
+		$remitente_tmp=$this->remitente->get($datos['mensaje']->destinatario);
+		if($remitente_tmp)
+		{
+			$participante1->telefono = $remitente_tmp->telefono;
+			$participante1->correo = $remitente_tmp->correo;
+			$participante1->nombres = $remitente_tmp->nombres;
+			$participante1->id_contacto = $remitente_tmp->id;
+		}else
+		{
+			$participante1->telefono = FALSE;
+			$participante1->correo = FALSE;
+			$participante1->nombres = "Usuario no registrado";
+			$participante1->id_contacto = 0;
+		}
+	}else
+	{
+		$participante1->id_contacto = $usuario->id;
+		$participante1->nombres = $usuario->nombres;
+		$participante1->correo = $usuario->email;
+		$participante1->telefono = $usuario->telefono;
+	}
+	$participante2 = $this->remitente->get(array('id' => $datos['mensaje']->remitente ));
+	$participante2->id_contacto = 0;//$participante2->id;
+	$user = $this->usuarios->get(array('email' => $participante2->correo));
+	if($user)
+	{	$participante2->id_contacto =$user->id; }
+	else{	$participante2->id_contacto =$participante2->id; }
+
+	if($id_user!=$datos['mensaje']->destinatario)
+	{
+		$datos['mensaje']->ubicacion->direccion=$usuario->direccion; 
+		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($usuario->ciudad)->municipio;
+		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($usuario->departamento)->nombre;
+	
+		$datos['mensaje']->destinatario = $participante1;
+		$datos['mensaje']->remitente = $participante2;
+	}else
+	{
+		$datos['mensaje']->ubicacion->direccion=$user->direccion; 
+		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($user->ciudad)->municipio;
+		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($user->departamento)->nombre;
+		
+		$datos['mensaje']->remitente = $participante1;
+		$datos['mensaje']->destinatario =$participante2;
+		$this->mensajes->update(array('estado' => 1),$id);
+	}
+
+	#echo "<PRE>";
+	#print_r($datos);
+	#echo "</PRE>";
+	#return;
+ 
+	$datos['usuario']->usuario=$this->session->userdata('usuario');
+	$datos['id_usuario']=$this->session->userdata('id_usuario');
+	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
+	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
+	$this->load->view('template/javascript', FALSE, FALSE);  
+	$this->load->view('tablero_usuario/header', $datos, FALSE);   
+	$this->load->view('mensaje/mensaje', $datos);
+	$this->load->view('template/footer_empy');
+  }
+
+  public function test_encrypt($number)
+  {
+  	$result =$this->crypter->encrypt($number);
+  	echo '<br>'.$result.'<br>';
+  	echo $this->crypter->decrypt($result);
+  }
+  private function usuario_noregistrado($id)
+  {  	
+  	$id=$this->crypter->decrypt($id);
+
+	$datos['mensaje'] =$this->mensajes->get($id); 
+	if(!$datos['mensaje'] ) 
+	return; 
+	
+	$datos['mensaje']->url=FALSE;
+	$datos['mensaje']->image=FALSE;
+	$id_tmp=$datos['mensaje']->id_objeto;
+	switch ($datos['mensaje']->tipo) 
+	{
 		case 1:
-			$producto=$this->producto->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$producto->nombre;
-			$datos['mensaje']->url=base_url()."producto/ver/".$id_tmp;
-			$datos['mensaje']->image=base_url()."uploads/".$producto->imagenes;
+			$datos['mensaje']->datos=0;
+			$objeto = $this->producto->get($id_tmp);
+			$datos['mensaje']->url=base_url()."producto/ver/".$objeto->id;
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$image= explode(',', $objeto->imagenes);
+			$datos['mensaje']->image=base_url()."uploads/".$image[0];
 			break;
 		case 2:
 			$datos['mensaje']->datos=0;
-			$solicitud=$this->solicitud->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$solicitud->nombre;
-			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$id_tmp;
-			$datos['mensaje']->image=base_url()."uploads/".$solicitud->imagenes;
+			$objeto=$this->solicitud->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->id;
+			$image= explode(',', $objeto->imagenes);
+			$datos['mensaje']->image=base_url()."uploads/".$image[0];
 			break;
 		case 3:
 			$datos['mensaje']->datos=0;
-			$tmp=$this->empresa->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$tmp->nombre;
-			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$id_tmp;
-			$datos['mensaje']->image=base_url()."uploads/logos/".$tmp->logo;
+			$objeto=$this->empresa->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$objeto->id;
+			$datos['mensaje']->image=base_url()."uploads/logos/".$objeto->logo;
 			break;		
 	}
 	if(!$datos['mensaje']->image)
 	{
 		$datos['mensaje']->image=base_url()."uploads/default.jpg";
 	}
-	
+		
 	$usuario = $this->usuarios->get($datos['mensaje']->destinatario);
 	//$contacto = $this->contacto->get($datos['mensaje']->destinatario);
 	if(!$usuario)
@@ -193,6 +318,7 @@ class Mensajes extends CI_Controller {
 	$user = $this->usuarios->get(array('email' => $participante2->correo));
 	if($user)
 	{	$participante2->id_contacto =$user->id; }
+	else{	$participante2->id_contacto =$participante2->id; }
 
 	if($id_user!=$datos['mensaje']->destinatario)
 	{
@@ -200,116 +326,23 @@ class Mensajes extends CI_Controller {
 		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($user->ciudad)->municipio;
 		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($user->departamento)->nombre;
 	
-		$datos['mensaje']->destinatario = $participante1;
-		$datos['mensaje']->remitente = $participante2;
+		$datos['mensaje']->destinatario = $participante2;
+		$datos['mensaje']->remitente = $participante1;
 	}else
 	{
 		$datos['mensaje']->ubicacion->direccion=$usuario->direccion; 
 		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($usuario->ciudad)->municipio;
 		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($usuario->departamento)->nombre;
 		
-		$datos['mensaje']->remitente = $participante1;
-		$datos['mensaje']->destinatario =$participante2;
-		$this->mensajes->update(array('estado' => 1),$id);
-	}
- 
-	$datos['usuario']->usuario=$this->session->userdata('usuario');
-	$datos['id_usuario']=$this->session->userdata('id_usuario');
-	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
-	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
-	$this->load->view('template/javascript', FALSE, FALSE);  
-	$this->load->view('tablero_usuario/header', $datos, FALSE);   
-	$this->load->view('mensaje/mensaje', $datos);
-	$this->load->view('template/footer_empy');
-  }
-
-  public function test_encrypt($number)
-  {
-  	$result =$this->crypter->encrypt($number);
-  	echo '<br>'.$result.'<br>';
-  	echo $this->crypter->decrypt($result);
-  }
-  private function usuario_noregistrado($id)
-  {  	
-  	$id=$this->crypter->decrypt($id);
-	$datos['mensaje'] =$this->mensajes->get($id); 
-	if(!$datos['mensaje'] ) 
-	return; 
-	
-	$datos['mensaje']->url=FALSE;
-	$datos['mensaje']->image=FALSE;
-	$id_tmp=$datos['mensaje']->id_objeto;
-
-	switch ($datos['mensaje']->tipo) 
-	{case 1:
-			$datos['mensaje']->nom_objeto=$this->productoJ->get($id_tmp)->nom_producto;
-			$datos['mensaje']->url=base_url()."producto/ver/".$id_tmp;
-			$datos['mensaje']->image=base_url()."uploads/".$this->productoJ->ver_ultima_imgproducto($id_tmp)->nombre_img;
-			break;
-		case 2:
-			$datos['mensaje']->datos=0;
-			$tmp=$this->oferta->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$tmp['nom_producto'];
-			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$id_tmp;
-			$datos['mensaje']->image=base_url()."uploads/".$this->oferta->ver_ultima_imgoferta($id_tmp)->nombre_img;
-			break;
-		case 3:
-			$datos['mensaje']->datos=0;
-			$tmp=$this->empresa->get_empresa($id_tmp);
-			$datos['mensaje']->nom_objeto=$tmp['nombre'];
-			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/0/".$id_tmp;
-			$datos['mensaje']->image=base_url()."uploads/".$tmp['logo'];
-			break;		
-	}
-	if(!$datos['mensaje']->image)
-	{
-		$datos['mensaje']->image=base_url()."uploads/default.jpg";
-	}
-	
-	$contacto = $this->contacto->get($datos['mensaje']->destinatario);
-	if(!$contacto)
-	{
-		$participante1->telefono = FALSE;
-		$participante1->correo = "contacto@proveedor.com.co";
-		$participante1->nombres = "Usuario no registrado";
-		$participante1->id_contacto = 0;
-	}else
-	{
-		$participante1->id_contacto = $contacto->id_contacto;
-		$participante1->nombres = $contacto->nombres;
-		$participante1->correo = $this->usuario->get($contacto->id_user)->email;
-		$participante1->telefono =$this->telefono->get($datos['mensaje']->destinatario);
-	}
-	$participante2 = $this->remitente->get(array('id' => $datos['mensaje']->remitente ));
-	$participante2->id_contacto = 0;//$participante2->id;
-	$user = $this->usuario->get(array('email' => $participante2->correo));
-	if($user)
-	{	$participante2->id_contacto = $this->contacto->get(array('id_user' => $user->id_usuario))->id_contacto; }
-
-	if($id_contacto!=$datos['mensaje']->destinatario)
-	{
-		$datos['mensaje']->ubicacion = $this->contacto->get($datos['mensaje']->destinatario);
-		if(is_numeric($datos['mensaje']->ubicacion->ciudad))
-		{
-			$tmp =$this->municipio->get($datos['mensaje']->ubicacion->ciudad);
-			$datos['mensaje']->ubicacion->ciudad =$tmp['municipio'];
-			$datos['mensaje']->ubicacion->departamento =$this->departamento->get($datos['mensaje']->ubicacion->departamento)->nombre;
-		}
-		$datos['mensaje']->destinatario = $participante1;
 		$datos['mensaje']->remitente = $participante2;
-	}else
-	{
-		$datos['mensaje']->ubicacion = $this->contacto->get($participante2->id_contacto);
-		if(is_numeric($datos['mensaje']->ubicacion->ciudad))
-		{
-			$tmp =$this->municipio->get($datos['mensaje']->ubicacion->ciudad);
-			$datos['mensaje']->ubicacion->ciudad =$tmp['municipio'];
-			$datos['mensaje']->ubicacion->departamento =$this->departamento->get($datos['mensaje']->ubicacion->departamento)->nombre;
-		}
-		$datos['mensaje']->remitente = $participante1;
-		$datos['mensaje']->destinatario =$participante2;
+		$datos['mensaje']->destinatario =$participante1;
 		$this->mensajes->update(array('estado' => 1),$id);
 	}
+
+	#echo "<PRE>";
+	#print_r($datos);
+	#echo "</PRE>";
+	#return;
 	$datos['usuario']=$this->session->userdata('usuario');
 	$datos['nit']=$this->session->userdata('empresa');
 	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
@@ -320,9 +353,10 @@ class Mensajes extends CI_Controller {
   
   public function eliminar()
   {
-  	return;
+  	#return;
     $mensajes_enviados =$this->input->post('enviados_seleccionados');
     $mensajes_recibidos =$this->input->post('recibidos_seleccionados');
+
     $key=0;
     if($mensajes_enviados)
     {
@@ -354,7 +388,7 @@ class Mensajes extends CI_Controller {
 	}
 
 	$this->session->set_flashdata('correos_eliminados', $key.' Correos eliminados!!');
-	redirect($_SERVER['HTTP_REFERER']);             
+	redirect($_SERVER['HTTP_REFERER']); 
   }
 
   private function veryficar_logged($id_mensaje=FALSE)
@@ -426,6 +460,7 @@ class Mensajes extends CI_Controller {
 		{
 			$tipo=0;
 		}
+		$datos['mensaje']['tipo'] = $this->input->post('tipo');
 		switch ($tipo)
 		 {
 			case '1': //desde pagina de producto
@@ -435,11 +470,15 @@ class Mensajes extends CI_Controller {
 				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Alguien esta interesado en su producto!";
 			 	$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
-			 	$datos['plantilla']['nombre_ususario'] = $usuario->nombres;
-			 	$datos['plantilla']['nombre_empresa'] =$empresa->nombre;				
+			 	$datos['plantilla']['nombre_usuario'] = $usuario->nombres;
+			 	$datos['plantilla']['nombre_empresa'] = $empresa->nombre;				
 				$datos['plantilla']['asunto'] = "!Una empresa se ha interesado en su producto!";
 				$datos['plantilla']['url'] =  base_url()."producto/ver/".$id_objeto;
-				$datos['plantilla']['imagen'] = $producto->imagenes;
+				$imagenes=explode(',',$producto->imagenes);
+				if($imagenes[0]!="")
+				{	$datos['plantilla']['imagen'] = $imagenes[0];	}
+				elseif($imagenes[1]!=""){	$datos['plantilla']['imagen'] = $imagenes[1];	}
+				else{	$datos['plantilla']['imagen'] = "default.jpg";	}
 				$datos['plantilla']['nombre_producto'] = $producto->nombre;
 				break;
 			case '2': //desde pagina de solicitud
@@ -449,23 +488,28 @@ class Mensajes extends CI_Controller {
 				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Ha recibido una cotización!";
 			 	$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
-			 	$datos['plantilla']['nombre_ususario'] = $usuario->nombres;
+			 	$datos['plantilla']['nombre_usuario'] = $usuario->nombres;
 				$datos['plantilla']['nombre_empresa'] =$empresa->nombre;
-				$datos['plantilla']['asunto'] = "!Ha recibido una cotización para el producto que solicitó!";
+				$datos['plantilla']['asunto'] = "!Ha recibido una cotización!";
 				$datos['plantilla']['url'] =  base_url()."oportunidad_comercial/ver/".$id_objeto;
-				$datos['plantilla']['imagen'] = $solicitud->imagenes;
+				$imagenes=explode(',',$producto->imagenes);
+				if($imagenes[0]!="")
+				{	$datos['plantilla']['imagen'] = $imagenes[0];	}
+				elseif($imagenes[1]!=""){	$datos['plantilla']['imagen'] = $imagenes[1];	}
+				else{	$datos['plantilla']['imagen'] = "default.jpg";	}
 				$datos['plantilla']['nombre_producto'] = $solicitud->nombre;
 				break;
 			case '3': //desde pefil de empresa
 				$empresa= $this->empresa->get($id_objeto);
 				$usuario= $this->usuarios->get($empresa->usuario);
-				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Tiene un mensaje para su empresa! ";
+				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Tiene una mensaje para su empresa! ";
 				$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
-			 	$datos['plantilla']['nombre_ususario'] = $usuario->nombres;
+			 	$datos['plantilla']['nombre_usuario'] = $usuario->nombres;
 			 	$datos['plantilla']['nombre_empresa'] =$empresa->nombre;				
 				$datos['plantilla']['asunto'] = "!Ha recibido un mensaje para su empresa!";
 				$datos['plantilla']['url'] =  base_url()."perfil/perfil_empresa/".$id_objeto;
+				if($empresa->logo==""&&$empresa->logo=="0"){$empresa->logo="default.png";}
 				$datos['plantilla']['imagen'] = "logos/".$empresa->logo;
 				$datos['plantilla']['nombre_producto'] = $empresa->nombre;
 				break;
@@ -483,7 +527,9 @@ class Mensajes extends CI_Controller {
 		 }
 		if($this->input->post('respuesta')=='si')
 			{
-			 	$datos['plantilla']['nombre_ususario'] = $this->input->post('nombres_destinatario');	
+				$datos['plantilla']['nombre_empresa']="Proveedor";
+			 	$datos['plantilla']['nombre_usuario']=$datos['remitente']['nombres'];
+			 	#$datos['plantilla']['nombre_ususario'] = $this->input->post('nombres_destinatario');	
 				$datos['detinatario_email'] = $this->input->post('correo_destinatario');	 
 				$datos['mensaje']['destinatario'] = $this->input->post('destinatario');
 				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Ha recibido un respuesta a su mensaje!";
@@ -502,15 +548,6 @@ class Mensajes extends CI_Controller {
   public function enviar($tipo=1)
 	{
 		$datos=$this->obtener_datos($tipo);
-
-		#echo "<PRE>";
-		#print_r($datos);
-		#echo "<PRE>";
-		#return ;
-
-		if($datos['plantilla']['nombre_empresa'])
-			{$datos['plantilla']['nombre_empresa']="";}
-
 	  	$remitente =$this->remitente->get(array('correo' =>$datos['remitente']['correo']));
 		if($remitente)
 		{ 
@@ -530,11 +567,8 @@ class Mensajes extends CI_Controller {
 		{	$id_mensaje=$this->crypter->encrypt($id_mensaje);	}
 		$datos['plantilla']['url_mensaje'] = base_url()."mensajes/leer/".$id_mensaje;
 		$datos['datos_a_enviar']=$this->load->view('popups/plantilla_mensaje', $datos['plantilla'],TRUE);
-   		
-   		//echo $datos['datos_a_enviar'];
-   		//return;
-
-		$config['protocol'] = 'sendmail';
+  
+  		$config['protocol'] = 'sendmail';
 		$config['mailpath'] = '/usr/sbin/sendmail';
 		$config['charset'] = 'utf-8';
 		$config['mailtype'] = 'html';

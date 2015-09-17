@@ -3,15 +3,6 @@
 
 ?>
 <?=form_open_multipart('mensajes/enviar/'.$tipo,array('id'=>'form_mensaje'));  ?>
-<script type="text/javascript">
-   function adjunto()
-      {
-        var paths = document.getElementById('userfile').files;
-        console.log("2");
-        document.getElementById('adjunto').innerHTML=paths[0]['name'];             
-      }
-</script>
-
     <link rel="stylesheet" href="<?php echo css_url()?>popup_mensaje.css">
     <div class="mensaje">
       <?php if ($nombre_usuario):?>
@@ -51,7 +42,7 @@
                     <span class="input-group-addon">
                       <span class="fa fa-phone" aria-hidden="true"></span>
                     </span>
-                    <input type="text" class="form-control" placeholder="Ingrese un numero celular o fijo al que quiera ser contactado" name="tel" value="<?=$telefono?>" <?=$abilitado?> >
+                    <input type="text"  name="telefono" class="form-control" placeholder="Ingrese un numero celular o fijo al que quiera ser contactado" name="tel" value="<?=$telefono?>" <?=$abilitado?> >
                   </div>
                   <div class="input-group">
                     <!--
@@ -62,13 +53,13 @@
                  </div> 
                   <label for="mensaje" class="label_modal">Mensaje:</label>
                   <div class="col-xs-12 input-group">
-                    <textarea class="form-control caja_mensaje" name="mensaje"></textarea>
+                    <textarea class="form-control caja_mensaje" rows="4"name="mensaje"></textarea>
                   </div>
                   <div class="col-md-12 row">
                     <div class="col-md-4 fileUpload btn btn-primary">
                       <span class="fa fa-paperclip clip_icono" aria-hidden="true"/>
                       <span class="clip">Adjuntar un archivo</span>
-                      <input type="file" class="upload"  onchange="JavaScript:adjunto();" id="userfile" name="userfile"  data-badge="false">
+                      <input type="file" class="upload"  onchange="JavaScript:var paths = document.getElementById('userfile').files;document.getElementById('adjunto').innerHTML=paths[0]['name'];" id="userfile" name="userfile"  data-badge="false">
                     </div>
                     <div id="adjunto" class="col-md-8">
                     </div>

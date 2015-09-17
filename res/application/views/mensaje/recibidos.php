@@ -3,12 +3,12 @@
 	{
 	   for (i=0;i<document.formulario_de_envio.elements.length;i++)
 	      if(document.formulario_de_envio.elements[i].type == "checkbox")
-	         document.formulario_de_envio.elements[i].checked=1;
+	        { document.formulario_de_envio.elements[i].checked=true;	}
 	} 
 </script>
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/mensajes/mensajes.css">
 <script src="<?= base_url() ?>assets/js/mensajes/mensajes.js"></script>
-<?php $data['id']='formulario_de_envio';?>
+<?php $data['name']='formulario_de_envio';?>
 <?=form_open_multipart('mensajes/eliminar',$data);  ?>
 <div class="container-fluid container_mensaje">
 	<div class="col-md-2">
@@ -18,14 +18,17 @@
 	</div>
 	<div class="col-md-10">
 		<div class="col-md-12 row">
-			<div id="botones_mensajes" class="col-md-4 btn-group">
+			<div id="botones_mensajes" class="col-md-3 btn-group">
 				<div class="btn-group" role="group">
-					<label class="seleccion" >
-						<input type="checkbox" class="seleccionar" onclick="JavaScript:seleccionar_todo();"> Seleccionar todo
-					</label>
+						<!-- Reactivar al implementar nuevas funciones-->
+							<label class="seleccion" >
+						<!--
+								<input type="checkbox" class="seleccionar" onclick="JavaScript:seleccionar_todo();"> Seleccionar todo
+						-->
+							</label>
 				</div>
 				<div class="btn-group boton_borrar" role="group">
-					<button disabled class="btn btn-default borrar">
+					<button class="btn btn-default borrar" type="submit">
 						<i class="glyphicon glyphicon-trash tarro_basura"></i> 
 					</button>	
 				</div>

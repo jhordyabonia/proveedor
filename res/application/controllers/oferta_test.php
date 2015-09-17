@@ -222,6 +222,7 @@ class oferta_test extends CI_Controller {
 					'error' => $_FILES[$name_array]['error'][$i],
 					'size' => $_FILES[$name_array]['size'][$i]
 				);
+				if($_FILES[$name_array]['name'][$i]==""){continue;}
 				if ($this->u->imagen()) {
 					$imagenes.= $this->u->nombre_archivo;
 				}else

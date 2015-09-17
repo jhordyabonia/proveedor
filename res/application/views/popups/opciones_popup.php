@@ -39,16 +39,7 @@
                   
                   <!-- Boton continuar -->
                   <h4 class="text-center"> Enviar mensaje sin ingresar  </h4>
-                  <a id="throw" data-toggle="modal" data-target="#popup_mensajes_vacio"></a>
-                  <script type="text/javascript">
-                    function throw_mensaje()
-                    {
-                      document.getElementById('div_login').innerHTML="";
-                      document.getElementById('registro').innerHTML="";
-                      document.getElementById('throw').click();
-                    }
-                  </script>
-                  <button type="button" onclick="JavaScript:throw_mensaje();" class="btn btn-default btn_hecho" data-dismiss="modal">
+                  <button type="button" data-toggle="modal" data-target="#popup_mensajes_vacio" class="btn btn-default btn_hecho" data-dismiss="modal">
                       Continuar
                   </button>
                   <!-- /Boton continuar -->

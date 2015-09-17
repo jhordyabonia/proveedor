@@ -31,13 +31,27 @@
 				<div role="tabpanel" class="tab-pane fade active table-responsive in" id="recibidos">
 					<div class="col-md-12 leyendo_mensaje">
 						<div class="col-md-10 row producto_cotizado">
-							<p class="texto_titulo">Producto cotizado: 
-								<?if ($mensaje->url): ?>
-									<img src="<?=$mensaje->image?>" width="50" heiht="50">
+							<p class="texto_titulo">Producto cotizado: 				
+									<img src="<?=$mensaje->image?>" class="img_miniatura_msj">
 									<a href="<?=$mensaje->url?>" class="link_producto">
 										<?=$mensaje->nom_objeto?>
 									</a>
-								<? endif; ?>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-12 telefono">
+						<div class="col-md-1 row">
+							<p class="texto_titulo"></p>
+							<p class="texto_titulo">Ubicación: </p>
+						</div>
+						<div class="col-md-10">
+							<p class="texto_titulo"></p>
+							<p class="texto_contacto">								
+								<?php if($mensaje->ubicacion):?>
+									<?=$mensaje->ubicacion->departamento?>
+									- <?=$mensaje->ubicacion->ciudad?>
+									- <?=$mensaje->ubicacion->direccion?>
+								<?php endif;?>
 							</p>
 						</div>
 					</div>
@@ -62,22 +76,6 @@
 									<b>Celular:</b> <?=$mensaje->destinatario->telefono['celular']?>
 								<?php else: ?>
 									<?=$mensaje->destinatario->telefono?>
-								<?php endif;?>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-12 telefono">
-						<div class="col-md-1 row">
-							<p class="texto_titulo"></p>
-							<p class="texto_titulo">Ubicación: </p>
-						</div>
-						<div class="col-md-10">
-							<p class="texto_titulo"></p>
-							<p class="texto_contacto">								
-								<?php if($mensaje->ubicacion):?>
-									<?=$mensaje->ubicacion->departamento?>
-									- <?=$mensaje->ubicacion->ciudad?>
-									- <?=$mensaje->ubicacion->direccion?>
 								<?php endif;?>
 							</p>
 						</div>

@@ -168,7 +168,7 @@ class Empresa_model extends CI_Model {
         $this->db->from(self::TABLE_NAME);
         if($categoria!=0)
         {
-            $this->db->where(array("categoria"=>$categoria));
+            $this->db->where(array("categoria"=>$categoria,'registro'=>1));
         }
         $this->db->order_by("id", $order);
         $this->db->limit($limit);

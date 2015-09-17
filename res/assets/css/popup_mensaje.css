@@ -70,7 +70,7 @@
 	position: relative;
 	overflow: hidden;
 	background: #EEEEEE;
-	color: #818181;
+	color: #FF7F27;
 	border-color: #CCCCCC;
 }
 .mensaje .fileUpload input.upload {
@@ -86,5 +86,6 @@
 }
 .mensaje #adjunto{
 	height: 34px;
+	color: blue;
 
 }
