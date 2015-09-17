@@ -88,6 +88,13 @@ class Producto_model extends CI_Model {
                 $this->db->or_like('producto.nombre', $value, 'both'); 
                 $this->db->or_like('producto.descripcion', $value, 'both'); 
             }
+        }
+        elseif($categoria!=0)
+        {
+           $this->load->model('new/Subcategoria_model','subcategoria');
+           $this->db->join('subcategoria',"subcategoria.id_subcategoria = producto.subcategoria"); 
+           $this->db->join('categoria',"categoria.id_categoria = subcategoria.id_categoria ");
+           $this->db->where(array('categoria.id_categoria'=>$categoria));
         }else
         {
             $this->db->or_like('palabras_clave', $palabra, 'both'); 
@@ -98,13 +105,7 @@ class Producto_model extends CI_Model {
             $this->db->or_like('producto.descripcion', $palabra, 'both'); 
         }
 
-        $this->load->model('new/Subcategoria_model','subcategoria');
-        if($categoria!=0)
-        {
-           $this->db->join('subcategoria',"subcategoria.id_subcategoria = producto.subcategoria"); 
-           $this->db->join('categoria',"categoria.id_categoria = subcategoria.id_categoria ");
-           $this->db->where(array('categoria.id_categoria'=>$categoria));
-        }
+       
         
         $this->db->order_by('empresa.membresia',"desc");
         $this->db->order_by('empresa.legalizacion',"desc");

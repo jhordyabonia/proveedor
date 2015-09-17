@@ -138,9 +138,9 @@ class Empresa_model extends CI_Model {
                 $this->db->or_like('productos_principales', $palabra, 'both');
                 $this->db->or_like('productos_de_interes', $palabra, 'both');                
                 //En productos
-                $this->db->or_like('producto.palabras_clave', $value, 'both');
-                $this->db->or_like('producto.nombre', $value, 'both'); 
-                $this->db->or_like('producto.descripcion', $value, 'both'); 
+                $this->db->or_like('producto.palabras_clave', $palabra, 'both');
+                $this->db->or_like('producto.nombre', $palabra, 'both'); 
+                $this->db->or_like('producto.descripcion', $palabra, 'both'); 
                 //En solicitudes
                 #$this->db->or_like('solicitud.palabras_clave', $value, 'both');   
                 #$this->db->or_like('solicitud.nombre', $value, 'both'); 
@@ -149,7 +149,8 @@ class Empresa_model extends CI_Model {
 
         if($categoria!=0)
         {
-           $this->db->where(array('categoria'=>$categoria));
+            $this->db->like('empresa.categorias', ','.$categoria.',', 'both'); 
+           #$this->db->where(array('categoria'=>$categoria));
         }
         
         $this->db->order_by('empresa.membresia',"desc");

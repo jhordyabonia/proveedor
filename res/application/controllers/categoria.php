@@ -4,25 +4,20 @@ class Categoria extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $auto_launch;
-        #$this->load->model('Busqueda_model','buscador');
-
-
-        $this->load->model('new/Usuarios_model','usuarios');
-        $this->load->model('new/Departamento_model','departamento');
-        $this->load->model('new/Tipo_empresa_model','tipo_empresa');
-        $this->load->model('new/Dimension_model','dimension');
-        $this->load->model('new/Municipio_model','municipio');
-
-        $this->load->model('new/Membresia_model', 'membresia_model');
-        $this->load->model('new/Empresa_model', 'empresa_model');
-        $this->load->model('new/Producto_model', 'producto');
-        $this->load->model('new/Solicitud_model', 'solicitud');
-        $this->load->model('new/Categoria_model', 'categoria_model');
-        $this->load->model('new/Subcategoria_model', 'subcategoria');
-        $this->load->model('popups_textos_model', 'popups_textos');
+        $this->load->library('breadcrumb');
         $this->load->model('banner_model');
-
+        $this->load->model('new/Usuarios_model','usuarios');
+        $this->load->model('new/Municipio_model','municipio');
+        $this->load->model('new/Departamento_model','departamento');
+        $this->load->model('new/Empresa_model','empresa');
+        $this->load->model('new/Tipo_empresa_model','tipo_empresa');
+        $this->load->model('new/Membresia_model','membresia');
+        $this->load->model('new/Categoria_model','categoria');
+        $this->load->model('new/Subcategoria_model','subcategoria');
+        $this->load->model('new/Producto_model','producto');
+        $this->load->model('new/Solicitud_model','solicitud');
+        $this->load->model('new/Dimension_model','dimension');
+        $this->load->model('new/Busquedas_model','busquedas');
     }    
     public function index()
     {
@@ -31,6 +26,9 @@ class Categoria extends CI_Controller {
 
     public function captura($categoria=6)
     {
+        $this->load->model('popups_textos_model', 'popups_textos');
+        $this->load->model('new/Subcategoria_model', 'subcategoria');
+        $this->load->model('new/Categoria_model', 'categoria');
 
         $datos['id_popup']="asistentes_proveedor";
         $datos['categorias']=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
@@ -52,16 +50,14 @@ class Categoria extends CI_Controller {
         $datos['id_usuario']= $this->session->userdata('id_usuario');
         $this->load->view('template/head', $datos, FALSE);
         $this->load->view('template/javascript', FALSE, FALSE);
-        $this->load->view('index/top_menu',$datos);
+        $this->load->view('index_test/top_menu',$datos);
         $datos['url_registro']=base_url()."registro/registro_usuario";
         $datos['url_publicar_producto']=base_url()."publicar_producto";
         $datos['url_publicar_solicitud']=base_url()."publicar_oferta";        
         $data['url_publicar_producto']=base_url()."publicar_producto";
         $data['url_publicar_solicitud']=base_url()."publicar_oferta";
-        $this->load->view('index/header_buscador',$data);
+        $this->load->view('index_test/header_buscador',$data);
         $datos['datos']->titulos=$titulos;
-        #$datos['auto_launch']=TRUE;
-        $datos['auto_launch_AP']=TRUE;
         $this->load->view('template/head', array('titulo'=>"Categorias --proveedor.com.co"));
         $this->load->view('template/javascript', FALSE);
         $this->load->view('popups/asistentes_proveedor', $datos); 
@@ -75,23 +71,27 @@ class Categoria extends CI_Controller {
         
         return;
     }
-    public function ver($in=37, $in2=0, $div="productos", $page=0)
+    public function ver($in=37, $in2=0, $div="productos", $page=0,$filtro=0,$tipo_filtro=0)
     {   
         $data['div']=$div;
+        $subcategoria=$in2;
         $data['id_usuario']= $this->session->userdata('id_usuario');
-        $this->load->library('breadcrumb');
+        
         $tmp=FALSE;
         if ($in==0)
         {
             $tmp=$this->subcategoria->get($in2);
             $in=$tmp->id_categoria;
+            $data['categoria']->id_categoria=$tmp->id_subcategoria;
+            $data['categoria']->nombre_categoria=$tmp->nom_subcategoria;
+        }
+        else
+        {
+            $data['categoria']=$this->categoria->get($in);
         }
         $categoria=$in;
-        if($categoria<0)
-            {$categoria*=-1;}
 
-        $data['categoria']=$this->categoria_model->get($categoria);
-        $data['categorias']=$this->categoria_model->get_all();
+        $data['categorias']=$this->categoria->get_all();
         $data['subcategorias']=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
         
         $data['titulo']=$data['categoria']->nombre_categoria;
@@ -106,53 +106,79 @@ class Categoria extends CI_Controller {
         $data['productos_patrocinados']=$this->producto->obtener_ultimos(2);
         $data['productos']=$this->producto->obtener_ultimos(5,"RANDOM",$categoria);
         $data['solicitudes']=$this->solicitud->obtener_ultimos(5,$categoria);
-        $data['empresas']=$this->empresa_model->obtener_ultimos(5);
+        $data['empresas']=$this->empresa->obtener_ultimos(5);
  
         $solo_captura=FALSE;
-        
         /*
-        if((count($data['productos_destacados_1']) +count($data['productos_destacados_2'])+count($data['productos_destacados_3'])) < 4
-            ||count($data['productos']) < 4
-            ||count($data['solicitudes']) < 4
-            ||count($data['empresas']) < 4)
+        if((count($data['productos_destacados_1'])+count($data['productos_destacados_2'])+count($data['productos_destacados_3'])) < 2
+            ||count($data['productos']) < 2
+            ||count($data['solicitudes']) < 2
+            ||count($data['empresas']) < 2)
         {
             $solo_captura=TRUE;
-        }*/
+        }
+        */
 //add's categorias
-        $data['nom_producto']=$data['categoria']->nombre_categoria;
+        $data['nom_producto']="";
+        $data['div']="";
 
-        $productos=$this->producto->buscar("",$categoria);
-        $solicitudes=$this->solicitud->buscar("",$categoria);
+        $productos=$this->producto->buscar("",$categoria,$subcategoria);
+        $solicitudes=$this->solicitud->buscar("",$categoria,$subcategoria);
         $proveedores=$this->empresa->buscar("LGHAHAHAHAHAHT");
                 
         $data['url_publicar_producto']=base_url()."publicar_producto";
         $data['url_publicar_solicitud']=base_url()."publicar_oferta";
         $this->breadcrumb->add('"' . $data['nom_producto'] . '"', base_url() . '');
-       
-        $data['page']=$page;
+
+        $data['page']=0; 
         $data['page_count']=0;
         $data['page_count2']=0;
         $data['page_count3']=0;
 
+        if($filtro!=0)
+        {
+            switch ($tipo_filtro) 
+            {
+                case 0:
+                        $filtrado=$this->filtro_categoria($productos,$filtro); 
+                    break;
+                
+                default:
+                        $filtrado=$this->filtro_categoria($productos,0,$filtro); 
+                        break;
+            }
+            $productos=$filtrado['productos'];
+        }else
+        {
+            $filtrado=$this->filtro_categoria($productos);
+        }
+        $filtros['filtros']=$filtrado['categorias'];
+        $filtros['p']=$data['titulo'];
+        $filtros['div']=$div;
+        $filtros['page']=$page;
+
+        $data['div_categorias']="";
+        #$data['div_categorias']=$this->load->view('listados/div_categorias', $filtros, TRUE);
+
+
         if ($productos) 
         {
-            $productos = clear_array($productos);
             $data['page_count'] = count($productos)/25;
-            if($data['page']>$data['page_count'])
+            if($page>$data['page_count'])
             {
-                $data['page']=$data['page_count'];
+                $data['page']=0;
             }
             foreach ($productos as $key => $producto)
-             {
-                /*
+             {              
                 if($key<($data['page']*25))
                 {  continue; }
 
                 if($key>=(($data['page']+1)*25))    
                 {break;}
-                */
-                
+
                 $datos['producto']=$this->producto->get($producto->id);
+                $img_prinsipal=explode(',',$datos['producto']->imagenes);
+                $datos['producto']->imagenes=$img_prinsipal[0];
                 $datos['empresa']=$this->empresa->get($datos['producto']->empresa);
                 $datos['producto']->medida=$this->dimension->get($datos['producto']->medida);
                 if($datos['producto']->pedido_minimo!=1)
@@ -161,35 +187,37 @@ class Categoria extends CI_Controller {
                 
                 $tmp=$this->tipo_empresa->get($datos['empresa']->tipo);
                 $datos['empresa']->tipo=$tmp->tipo;
+            
                 $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
                 $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
                 $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
                 if(!$producto){ continue;   }
-                $producto->div_membresia=$this->membresia_model->get_div_list($datos['producto']->empresa);
+                $datos['producto']->div_membresia=$this->membresia->get_div_list($datos['producto']->empresa);
                 $data['div_productos'][$key]=$this->load->view('listados/div_productos',$datos, TRUE);
                 
                 unset($producto);
             }
-        }else{  $data['div_productos']=FALSE;   }
-        $tmp=0;
+        }
         if ($solicitudes) 
         {
             $solicitudes = clear_array($solicitudes); 
-            $data['page_count3'] = count($solicitudes)/25;
-            if($data['page']>$data['page_count3'])
+            $data['page_count3'] = count($solicitudes)/25;  
+            $data['page']=$page;
+            if($page>$data['page_count3'])
             {
-                $data['page']=$data['page_count3'];
-            }
+                $data['page']=0;
+            }            
             foreach ($solicitudes as $key => $solicitud)
              {
-                /*
                 if($key<($data['page']*25))
                 {  continue; }
 
                 if($key>=(($data['page']+1)*25))    
                 {break;}
-                */
+
                 $datos['solicitud']=$this->solicitud->get($solicitud->id);
+                $img_prinsipal=explode(',',$datos['solicitud']->imagenes);
+                $datos['solicitud']->imagenes=$img_prinsipal[0];
                 $datos['empresa']=$this->empresa->get($datos['solicitud']->empresa);
                 $datos['solicitud']->medida=$this->dimension->get($datos['solicitud']->medida);
                 if($datos['solicitud']->cantidad_requerida!=1)
@@ -199,47 +227,49 @@ class Categoria extends CI_Controller {
                 $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
                 $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
                 $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
-                $solicitud->div_membresia=$this->membresia_model->get_div_list($datos['solicitud']->empresa);
+                $datos['solicitud']->div_membresia=$this->membresia->get_div_list($datos['solicitud']->empresa);
                 $data['div_solicitudes'][$key]=$this->load->view('listados/div_solicitudes', $datos, TRUE);
                 
                 unset($solicitud);
             }
-        }else{  $data['div_solicitudes']=FALSE; }
+        }
         
         if ($proveedores)
         {
             $proveedores = clear_array($proveedores);
-            $proveedores = array_reverse($proveedores);
-            
-            $data['page_count2'] = count($proveedores)/25;
-            if($data['page']>$data['page_count2'])
+            if($p=="")
             {
-                $data['page']=$data['page_count2'];
+                $proveedores = array_reverse($proveedores);
             }
+
+            $data['page_count2'] = count($proveedores)/25;
+            $data['page']=$page;
+            if($page>$data['page_count2'])
+            {
+                $data['page']=0;
+            }   
             foreach ($proveedores as $key => $proveedor)
              {
-                /*
                 if($key<($data['page']*25))
                 {  continue; }
 
                 if($key>=(($data['page']+1)*25))    
                 {break;}
-                */
+
                 if(!$proveedor)
                 {   continue;   }
-                $out['empresa']=$this->empresa->get($proveedor->id);
-                $out['empresa']->tipo=$this->tipo_empresa->get($out['empresa']->tipo)->tipo;
-                $datos['usuario']=$this->usuarios->get($out['empresa']->usuario);
+                $datos['empresa']=$this->empresa->get($proveedor->id);
+                $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+                $datos['empresa']->productos=$this->producto->get_all(array('empresa'=>$proveedor->id));
+                $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
                 $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
                 $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
-                $out['empresa']->div_membresia= $this->membresia_model->get_div_list($out['empresa']->id);
-                $data['div_empresas'][$key]=$this->load->view('listados/div_empresas', $out, TRUE);
+                $datos['empresa']->div_membresia= $this->membresia->get_div_list($datos['empresa']->id);
+                $data['div_empresas'][$key]=$this->load->view('listados/div_empresas', $datos, TRUE);
                 unset($proveedor);
              }
-        }else{  $data['div_empresas']=FALSE;    }
-
-
-        $data['div_categorias']=$this->load->view('listados/div_categorias', $data, TRUE);
+        }
+        $data['page']=$page;        
 
 //add's categorias
 
@@ -251,8 +281,8 @@ class Categoria extends CI_Controller {
         $this->load->view('template/javascript');
         $this->load->view('index/top_menu',$data);
         $this->load->view('index/header_buscador_categorias',$data);
-        #$this->load->view('index/banner', $data);
-        #$this->load->view('index/ultimos_productos_empresas', $data);
+        #$this->load->view('index_test/banner', $data);
+        #$this->load->view('index_test/ultimos_productos_empresas', $data);
 
         
         $this->load->model('popups_textos_model', 'popups_textos');
@@ -268,32 +298,28 @@ class Categoria extends CI_Controller {
             }else {$titulos[$value]=$value; }
         }
         $datos->titulos=$titulos;
-        $dat=array('categoria'=>$categoria,'datos'=>$datos);
-        $this->load->view('index/formulario_solicitudes', $dat);
-        $this->load->view("listados/banner_publicidad");
+        $this->load->view('index/formulario_solicitudes', array('categoria'=>$in,'datos'=>$datos));
+        $this->load->view("index/banner_adsense", $data);
 
-        $dat['auto_launch_AP']=TRUE;
+        $dat['auto_launch_AP']=FALSE;
         $dat['view'] = "asistentes_proveedor_popup";      
+        $dat['categoria'] = $categoria;      
         $dat['id_popup'] = "asistentes_proveedor_popup";             
-        #$this->load->view('popups/asistentes_proveedor', $dat);
+        $this->load->view('popups/asistentes_proveedor', $dat);
 
+        
         if(!$solo_captura)
         {
-            #$this->load->view('index/productos_destacados', $data);
-            #$this->load->view('test/carousel_productos_destacados', $data);
-            #$this->load->view('test/carousel_oportunidades_comerciales', $data);
-            #$this->load->view('test/carousel_empresas_registradas', $data);
-            #$this->load->view('index/productos_patrocinados', $data);
-            #$this->load->view('index/empresas_patrocinadas',$data);
-            $data['busqueda']='';
-            $this->load->view("listados/div_footer_seo", $data);
-            $this->load->view("listados/elemento_categorias", $data); //original, descomentar
-            $this->load->view("listados/div_footer_seo", $data);
-            $this->load->view("listados/div_footer_seo_2", $data);
-            #$this->load->view("listados/listados_mobil", $data);
+            if($subcategoria==0)
+            { $this->load->view('index/productos_destacados', $data);  }
+            $this->load->view('carrouseles/carousel_productos_destacados', $data);
+            $this->load->view('carrouseles/carousel_oportunidades_comerciales', $data);
+            $this->load->view('carrouseles/carousel_empresas_registradas', $data);
+            #$this->load->view('index_test/productos_patrocinados', $data);
+            #$this->load->view('index_test/empresas_patrocinadas',$data);
+            $this->load->view("listados/elemento", $data); //add's categorias
+           # $this->load->view("listados/listados_mobil", $data);
         }
-/*
-*/
         $this->load->view('template/footer');
         $this->load->view('template/footer_empy');
     }
@@ -302,5 +328,24 @@ class Categoria extends CI_Controller {
     {
         $this->session->set_flashdata('auto_launch_AP', 1);
         redirect(base_url().'categoria/ver/'.$in);
+    }
+
+    private function filtro_categoria($productos=0,$id_categoria=0,$id_subcategoria=0)
+    {       
+        $out=array();
+        foreach ($productos as $key => $value) 
+        {
+            $subcategoria=$this->subcategoria->get($value->subcategoria);
+            $categoria=$this->categoria->get($subcategoria->id_categoria);
+            $out['categorias'][$categoria->nombre_categoria]['id']=$categoria->id_categoria;
+            $out['categorias'][$categoria->nombre_categoria]['cantidad']+=1;
+            $out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['cantidad']+=1;
+            $out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['id']=$value->subcategoria;
+            if($id_subcategoria==$value->subcategoria)
+            {   $out['productos'][]=$value; }
+            elseif($id_categoria==$categoria->id_categoria) 
+            {   $out['productos'][]=$value; }
+        }
+        return $out;
     }
 }
