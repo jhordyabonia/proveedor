@@ -7,10 +7,12 @@ class Mensajes extends CI_Controller {
 		$this->load->model('new/Remitente_model','remitente');
 		$this->load->model('new/Usuarios_model','usuarios');
 		$this->load->model('new/Empresa_model','empresa');
+		$this->load->model('new/Categoria_model','categoria');
 		$this->load->model('new/Producto_model','producto');
 		$this->load->model('new/Solicitud_model','solicitud');
 		$this->load->model('new/Departamento_model','departamento');
 		$this->load->model('new/Municipio_model','municipio');
+		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('crypter_model','crypter');
 		$this->load->library('session');
 	}
@@ -22,8 +24,7 @@ class Mensajes extends CI_Controller {
   	 if(!is_numeric($id_mensaje))
   	 {
   		$id_mensaje=$this->crypter->decrypt($id_mensaje);
-	 }else
-	 if(!$this->veryficar_logged($id_mensaje))
+	 }elseif(!$this->veryficar_logged($id_mensaje))
 	 { 
 	   show_404();
 	   return;
@@ -166,6 +167,13 @@ class Mensajes extends CI_Controller {
 			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$objeto->id;
 			if(!$objeto->logo){$objeto->logo="default.png";}
 			$datos['mensaje']->image=base_url()."uploads/logos/".$objeto->logo;
+			break;	
+		default:
+			$datos['mensaje']->datos=0;
+			$objeto=$this->asistentes_proveedor->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->publicada;
+			$datos['mensaje']->image=base_url()."uploads/default.jpg";
 			break;		
 	}
 	
@@ -281,6 +289,13 @@ class Mensajes extends CI_Controller {
 			$datos['mensaje']->nom_objeto=$objeto->nombre;
 			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$objeto->id;
 			$datos['mensaje']->image=base_url()."uploads/logos/".$objeto->logo;
+			break;
+		default:
+			$datos['mensaje']->datos=0;
+			$objeto=$this->asistentes_proveedor->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->publicada;
+			$datos['mensaje']->image=base_url()."uploads/default.jpg";
 			break;		
 	}
 	if(!$datos['mensaje']->image)
@@ -345,9 +360,22 @@ class Mensajes extends CI_Controller {
 	#return;
 	$datos['usuario']=$this->session->userdata('usuario');
 	$datos['nit']=$this->session->userdata('empresa');
-	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
-	$this->load->view('template/javascript', FALSE, FALSE);    
+    $this->load->view('template/head', array('titulo'=>"Mensajes --proveedor.com.co"));
+
+    $this->load->view('template/javascript');
+    $this->load->view('index/top_menu',$datos);        
+    $data['url_publicar_producto']=base_url()."publicar_producto";
+    $data['url_publicar_solicitud']=base_url()."publicar_oferta";
+
+    $data['categorias']=$this->categoria->get_all();
+    $this->load->view('index/header_buscador',$data);
+	$this->load->view('index/banner_adsense');
+    $datos['datos']->titulos=$titulos;
+    $this->load->view('template/javascript', FALSE); 
+ 
+    
 	$this->load->view('mensaje/usuario_noregistrado/mensaje', $datos);
+    $this->load->view("template/footer");
   }
 
   
@@ -470,8 +498,8 @@ class Mensajes extends CI_Controller {
 				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Alguien esta interesado en su producto!";
 			 	$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
-			 	$datos['plantilla']['nombre_usuario'] = $usuario->nombres;
-			 	$datos['plantilla']['nombre_empresa'] = $empresa->nombre;				
+			 	$datos['plantilla']['nombre_usuario'] = "Sr(a) ".$usuario->nombres;
+			 	$datos['plantilla']['nombre_empresa'] = " - ".$empresa->nombre;				
 				$datos['plantilla']['asunto'] = "!Una empresa se ha interesado en su producto!";
 				$datos['plantilla']['url'] =  base_url()."producto/ver/".$id_objeto;
 				$imagenes=explode(',',$producto->imagenes);
@@ -488,8 +516,8 @@ class Mensajes extends CI_Controller {
 				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Ha recibido una cotización!";
 			 	$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
-			 	$datos['plantilla']['nombre_usuario'] = $usuario->nombres;
-				$datos['plantilla']['nombre_empresa'] =$empresa->nombre;
+			 	$datos['plantilla']['nombre_usuario'] = "Sr(a) ".$usuario->nombres;
+				$datos['plantilla']['nombre_empresa'] =" - ".$empresa->nombre;
 				$datos['plantilla']['asunto'] = "!Ha recibido una cotización!";
 				$datos['plantilla']['url'] =  base_url()."oportunidad_comercial/ver/".$id_objeto;
 				$imagenes=explode(',',$producto->imagenes);
@@ -505,13 +533,45 @@ class Mensajes extends CI_Controller {
 				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Tiene una mensaje para su empresa! ";
 				$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
-			 	$datos['plantilla']['nombre_usuario'] = $usuario->nombres;
-			 	$datos['plantilla']['nombre_empresa'] =$empresa->nombre;				
+			 	$datos['plantilla']['nombre_usuario'] = "Sr(a) ".$usuario->nombres;
+			 	$datos['plantilla']['nombre_empresa'] =" - ".$empresa->nombre;				
 				$datos['plantilla']['asunto'] = "!Ha recibido un mensaje para su empresa!";
 				$datos['plantilla']['url'] =  base_url()."perfil/perfil_empresa/".$id_objeto;
 				if($empresa->logo==""&&$empresa->logo=="0"){$empresa->logo="default.png";}
 				$datos['plantilla']['imagen'] = "logos/".$empresa->logo;
 				$datos['plantilla']['nombre_producto'] = $empresa->nombre;
+				break;
+			case '4': //desde pagina de panel de oportunidades comerciales
+				$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
+				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Ha recibido una cotización!";
+				$oportunidad=$solicitudes=$this->asistentes_proveedor->get($id_objeto);
+			 	$datos['mensaje']['destinatario']= 0;
+			 	$datos['detinatario_email']=$oportunidad->email;
+			 	$datos['plantilla']['nombre_ususario'] = "Sr(a) ".$oportunidad->nombres;
+				$datos['plantilla']['nombre_empresa'] =" - ".$oportunidad->nombre_empresa;
+				$datos['plantilla']['asunto'] = "!Ha recibido respuesta a su cotización!";
+				$datos['plantilla']['url'] =  base_url()."oportunidad_comercial/ver_/".$oportunidad->publicada;
+				$datos['plantilla']['imagen'] = "default.jpg";
+				$datos['plantilla']['nombre_producto'] = $oportunidad->solicitud;
+				break;
+			case '5': //desde pagina de panel de oportunidades comerciales, envio multiple
+				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Ha recibido una cotización!";
+				$datos['plantilla']['asunto'] = "!Ha recibido respuesta a su cotización!";
+				$datos['plantilla']['imagen'] = "default.jpg";
+				foreach (explode(',',$id_objeto) as $key => $value)
+				{					
+					$oportunidad=$solicitudes=$this->asistentes_proveedor->get($value);
+				 	$datos['mensaje']['destinatario'][]= 0;
+				 	$datos['detinatario_email'][]=$oportunidad->email;
+				 	if($oportunidad->nombres!="0")
+				 	{ $datos['plantilla']['nombre_ususario'][] = "Sr(a) ".$oportunidad->nombres; }
+				 	else{ $datos['plantilla']['nombre_ususario'][] = " ";}
+					if($oportunidad->nombre_empresa!="0")
+					{ $datos['plantilla']['nombre_empresa'][] = " - ".$oportunidad->nombre_empresa; }
+					else{	$datos['plantilla']['nombre_empresa'][] =" ";	}
+					$datos['plantilla']['url'][] =  base_url()."oportunidad_comercial/ver/".$oportunidad->publicada;
+					$datos['plantilla']['nombre_producto'][] = $oportunidad->solicitud;
+				}
 				break;
 			/*
 			default: //mensaje standar entre ususarios
@@ -527,8 +587,8 @@ class Mensajes extends CI_Controller {
 		 }
 		if($this->input->post('respuesta')=='si')
 			{
-				$datos['plantilla']['nombre_empresa']="Proveedor";
-			 	$datos['plantilla']['nombre_usuario']=$datos['remitente']['nombres'];
+				$datos['plantilla']['nombre_empresa']="-Proveedor";
+			 	$datos['plantilla']['nombre_usuario']="Sr(a) ".$datos['remitente']['nombres'];
 			 	#$datos['plantilla']['nombre_ususario'] = $this->input->post('nombres_destinatario');	
 				$datos['detinatario_email'] = $this->input->post('correo_destinatario');	 
 				$datos['mensaje']['destinatario'] = $this->input->post('destinatario');
@@ -545,9 +605,95 @@ class Mensajes extends CI_Controller {
 
 		return $adjunto;
 	}
+
+  private function enviar_multiple($datos)
+	{
+	  	$remitente =$this->remitente->get(array('correo' =>$datos['remitente']['correo']));
+		if($remitente)
+		{ 
+			$datos['mensaje']['remitente'] = $remitente->id;
+			$this->remitente->update($datos['remitente'],$remitente->id);
+		}
+		else {$datos['mensaje']['remitente'] = $this->remitente->insert($datos['remitente']);}
+		
+		$destinatarios=$datos['mensaje']['destinatario'];
+		$email=$datos['detinatario_email'];
+		$nombres=$datos['plantilla']['nombre_ususario'];
+		$nombre_empresa=$datos['plantilla']['nombre_empresa'];
+		$nombre_producto=$datos['plantilla']['nombre_producto'];
+		$url=$datos['plantilla']['url'];
+
+		$adjunto_msj = $this->load_file();
+					
+		#echo "<PRE>";
+		for($i=1;$i<count($destinatarios);$i++)
+		{
+			
+			$datos['plantilla']['url']=$url[$i];
+			$datos['detinatario_email']=$email[$i];			
+			$datos['plantilla']['nombre_ususario']=$nombres[$i];			
+			$datos['mensaje']['destinatario']=$destinatarios[$i];
+			$datos['plantilla']['nombre_empresa']=$nombre_empresa[$i];			
+			$datos['plantilla']['nombre_producto']=$nombre_producto[$i];
+
+			$destinatario =$this->remitente->get(array('correo' =>$datos['detinatario_email']));
+			if($destinatario)
+			{ 
+				$datos['mensaje']['destinatario'] = $destinatario->id;
+			}
+			else 
+			{
+				$detinatario_tmp['correo']=$datos['detinatario_email'];
+				$detinatario_tmp['nombres']=$datos['nombre_ususario'];
+				$detinatario_tmp['telefono']="ninguno -Correo: ".$datos['detinatario_email'];
+				$datos['mensaje']['remitente'] = $this->remitente->insert($datos['remitente']);
+			}
+		
+
+			$datos['mensaje']['adjunto'] = $adjunto_msj;
+			$datos['plantilla']['adjunto'] = FALSE;
+			if($datos['mensaje']['adjunto'])
+			{	$datos['plantilla']['adjunto'] =TRUE;	}
+			$id_mensaje=$this->mensajes->insert($datos['mensaje']);
+
+		  	$usrtmp= $this->usuarios->get(array("email"=>$datos['detinatario_email']));
+		  	if(!$usrtmp)		
+			{	$id_mensaje=$this->crypter->encrypt($id_mensaje);	}
+			$datos['plantilla']['url_mensaje'] = base_url()."mensajes/leer/".$id_mensaje;
+			$datos['datos_a_enviar']=$this->load->view('popups/plantilla_mensaje', $datos['plantilla'],TRUE);
+	  		
+	  		#echo  @$datos['datos_a_enviar'];
+	  		#return;
+	  		$config['protocol'] = 'sendmail';
+			$config['mailpath'] = '/usr/sbin/sendmail';
+			$config['charset'] = 'utf-8';
+			$config['mailtype'] = 'html';
+			$config['wordwrap'] = TRUE;
+			$this->email->initialize($config);
+			$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+			$this->email->to($datos['detinatario_email']);
+			$this->email->subject($datos['mensaje']['asunto']);
+			$this->email->message($datos['datos_a_enviar']);
+			$this->session->set_flashdata('mensaje_enviado', FALSE);
+
+			$this->email->send();
+		}
+
+		#print_r($datos);
+		#echo "</PRE>";
+		#return;
+		$this->session->set_flashdata('mensaje_enviado', "DONE"); // comenta esta linea para funcionamiento en el servidor
+				
+		redirect($_SERVER['HTTP_REFERER']);//comenta esta linea, para pruebas locales, el msj no se enviará		
+	} 
   public function enviar($tipo=1)
 	{
 		$datos=$this->obtener_datos($tipo);
+		if($tipo==5)
+		{
+			$this->enviar_multiple($datos);
+			return;
+		}
 	  	$remitente =$this->remitente->get(array('correo' =>$datos['remitente']['correo']));
 		if($remitente)
 		{ 

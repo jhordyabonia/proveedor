@@ -158,7 +158,7 @@
 							<?php echo $count_msj ?>
 						</p>
 						<p class="texto_nuevos">
-							NUEVAS
+							NUEVOS
 						</p>
 					</div>
 				</div>
@@ -178,7 +178,7 @@
 				</div>
 				<div class="col-md-6 pagina_empresa">
 					<div class="col-md-12 btn_pagina_empresa">
-						<a href="<?=base_url()?>perfil/ver_empresa/0/<?=$empresa->nit?>" class="link_tablero_usuario">
+						<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="link_tablero_usuario">
 							<p class="centrar_icono"><i class="fa fa-laptop ico_portatil"></i></p>
 							<p class="texto_pagina_empresa">Visitar Página de Empresa</p>
 						</a>

@@ -124,7 +124,7 @@ class Categoria extends CI_Controller {
 
         $productos=$this->producto->buscar("",$categoria,$subcategoria);
         $solicitudes=$this->solicitud->buscar("",$categoria,$subcategoria);
-        $proveedores=$this->empresa->buscar("LGHAHAHAHAHAHT");
+        $proveedores=$this->empresa->buscar("",$categoria);
                 
         $data['url_publicar_producto']=base_url()."publicar_producto";
         $data['url_publicar_solicitud']=base_url()."publicar_oferta";
@@ -281,6 +281,7 @@ class Categoria extends CI_Controller {
         $this->load->view('template/javascript');
         $this->load->view('index/top_menu',$data);
         $this->load->view('index/header_buscador_categorias',$data);
+        $this->load->view('index/banner_adsense');
         #$this->load->view('index_test/banner', $data);
         #$this->load->view('index_test/ultimos_productos_empresas', $data);
 
@@ -299,7 +300,7 @@ class Categoria extends CI_Controller {
         }
         $datos->titulos=$titulos;
         $this->load->view('index/formulario_solicitudes', array('categoria'=>$in,'datos'=>$datos));
-        $this->load->view("index/banner_adsense", $data);
+        #$this->load->view("index/banner_adsense", $data);
 
         $dat['auto_launch_AP']=FALSE;
         $dat['view'] = "asistentes_proveedor_popup";      

@@ -31,6 +31,6 @@
 </script>
 <!-- Estart SDK funciones de facebook-->
 
-<div class="container-fluid"> <!-- div.container-fluid aplica a todo  -->
+<div class="container-fluid" style="padding-right: 0;padding-left: 0px;"> <!-- div.container-fluid aplica a todo  -->
   <div class="row"> <!-- div.row aplica a todo -->
 <!-- fin head.php --><script type="text/javascript" src="http://cdn.broadstreetads.com/init.js"></script>

@@ -1,6 +1,8 @@
 .element {
-background: #F7F7F7;
-margin-top: 10px;
+	background: #F7F7F7;
+	margin-top: 10px!important;
+	margin-left: 2px!important;
+	padding-top: 10px!important;
 }
 .elemento .color_fondo{
 	background: #F7F7F7!important;
@@ -30,8 +32,16 @@ margin-top: 10px;
 	background: white;
 }
 
+
+#text_title_categoria {
+    font-size: 20px;
+    color: orange!important;
+    padding-left: 50px;
+    margin: 0 0 10px;
+}
+
 .elemento .categorias{
-	/*height: 800px;*/
+	min-height: 600px;
 	padding-left: 0;
 	padding-right: 0;
 	padding-top: 45px;
@@ -75,6 +85,18 @@ margin-top: 10px;
 }
 .elemento .contenedor_tabs{
 	line-height: 1em;
+}
+.div_productos
+{
+	margin-left: 2px;
+}
+.div_solicitudes
+{
+	margin-left: 2px;
+}
+.div_proveedores
+{
+	margin-left: 2px;
 }
 .div_productos .enlace_producto{
 	font-size: 19px;

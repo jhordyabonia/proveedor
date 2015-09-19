@@ -105,6 +105,25 @@ function ocultar_categorias()
           		</div>
 
 			  <?php endif;?>
+			  <?php if($datos->campos!=str_replace('empresa', "",$datos->campos)):?>
+          		<div class="input-group ">
+	                <span class="input-group-addon transparencia">
+	                  <i class="fa fa-user iconos-usados"></i>
+	                </span>
+			        <input type="text" name="nombre_empresa" class="input-style" placeholder="<?=$datos->titulos['empresa']?>">
+	                <span class="input-group-addon transparencia style-right">
+	                  <!--<i class="fa fa-times-circle style-icon-novali"></i>-->
+	                </span>
+	                <span class="input-group-addon transparencia">
+	                	<!--<span class="glyphicon glyphicon-asterisk style-aste"></span>-->
+	                </span>
+                </div>
+                <!-- Campo De Validación -->
+          		<div class="input-group">
+	                <p class="style-text-vali"><!--Validación Corresondiente--></p>
+          		</div>
+
+			  <?php endif;?>
 			  <?php if($datos->campos!=str_replace('email', "",$datos->campos)):?>
           		<div class="input-group ">
 	                <span class="input-group-addon transparencia">

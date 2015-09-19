@@ -398,6 +398,7 @@ class Micro_admin extends CI_Controller
 				}
 			}
 			$solicitud=$this->solicitud->get($solicitud->id);
+			$solicitud->empresa=$this->empresa->get($solicitud->empresa);
 			$datos['solicitudes'][]=$solicitud;
 			unset($solicitud);
 		}

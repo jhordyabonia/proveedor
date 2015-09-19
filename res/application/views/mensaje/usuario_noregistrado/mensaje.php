@@ -1,45 +1,22 @@
+<body style="background-color:whitesmoke!important">
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/mensajes/mensajes.css">
-<?=form_open_multipart('popup/mensaje/none/'.$mensaje->id_producto_oferta_nit);  ?>
-<div class="container_mensaje leer_mensaje">
-	<div class="col-md-2">
-		<div class="row">
-			<img src="<?=base_url() ?>assets/img/mensajes/icono_mensaje.png" class="img-responsive imagen_mensaje">
-		</div>
-	</div>
-	<div class="col-md-10 contenedor_tabs">
-		<div class="col-md-12 row">
-			<div id="botones_mensajes" class="col-md-3 row btn-group botones">
-				<div class="btn-group devolver" role="group">
-					<a href="<?=base_url() ?>/mensajes">
-						<img align="left" src="<?=base_url() ?>assets/img/mensajes/devolver.png" class="imagen_devolver">
-						</a>	
-				</div>
-				<div class="boton_borrar" role="group">
-					<button class="btn btn-default borrar">
-						<i class="glyphicon glyphicon-trash tarro_basura"></i>						
-					</button>
-				</div>
-			</div>
-			<div class="col-md-9">
-				<div class="row">
-				</div>
-			</div>	
-		</div>
+<?=form_open_multipart('mensajes/enviar/'.$mensaje->id_tipo);  ?>
+<div class="container_mensaje leer_mensaje" style="background-color:whitesmoke!important">
+	<div class="col-md-12 contenedor_tabs" style="margin-top:-100px;">
 		<div class="col-md-12" role="tabpanel">
 		   <!-- Tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active table-responsive in" id="recibidos">
 					<div class="col-md-12 leyendo_mensaje">
-						<div class="col-md-10 row producto_cotizado">
+						
 							<p class="texto_titulo">Producto cotizado: 				
 									<img src="<?=$mensaje->image?>" class="img_miniatura_msj">
 									<a href="<?=$mensaje->url?>" class="link_producto">
 										<?=$mensaje->nom_objeto?>
 									</a>
 							</p>
-						</div>
 					</div>
-					<div class="col-md-12 telefono">
+					<div class="col-md-12 contacto">
 						<div class="col-md-1 row">
 							<p class="texto_titulo"></p>
 							<p class="texto_titulo">Ubicación: </p>
@@ -54,6 +31,8 @@
 								<?php endif;?>
 							</p>
 						</div>
+						<!--
+					-->
 					</div>
 					<div class="col-md-12 contacto">
 						<div class="col-md-1 row">
@@ -82,13 +61,12 @@
 					</div>
 					
 					<div class="col-md-12 mensaje_fecha">
-						<div class="col-md-1 row texto_responder">
-							<p class="titulo_responder">Mensaje</p>
-							<p><?=$mensaje->fecha?></p>
-						</div>
 						<div class="col-md-10 row mensaje">
 							<textarea disabled rows="8" class="form-control cajon_mensaje" name="mensaje"><?=$mensaje->mensaje?></textarea>
-						</div>					
+						</div>	
+						<div class="col-md-2 fecha">
+							<p><?=$mensaje->fecha?></p>
+						</div>				
 					</div>
 					<div class="col-md-12 archivo_adjunto">
 					<? if($mensaje->adjunto):?>
@@ -103,8 +81,9 @@
 					<? endif; ?>
 					</div>
 					
-					<input type="hidden" value="<?=$mensaje->tipo?>" name="tipo">
-					<input type="hidden" value="RE:<?=$mensaje->asunto?>" name="asunto">
+					<input type="hidden" value="<?=$mensaje->id_objeto?>" name="id_objeto">
+					<input type="hidden" name="tipo" value="<?=$mensaje->tipo?>">                  
+					<input type="hidden" value="Proveedor.com.co - ¡Ha recibido un respuesta a su mensaje!" name="asunto">
 					<input type="hidden" value="<?=$mensaje->remitente->correo?>" name="email">
 					<input type="hidden" value="<?=$mensaje->remitente->telefono?>" name="telefono">
 					<input type="hidden" value="<?=$mensaje->remitente->nombres?>" name="remitente">
@@ -119,7 +98,7 @@
 							<p class="titulo_responder">Responder</p>
 						</div>
 						<div class="col-md-10 caja_texto">
-							<textarea class="form-control cajon_responder" cols="3" name="mensaje"></textarea>
+							<textarea rows="8" class="form-control cajon_responder" name="mensaje"></textarea>
 						</div>
 					</div>
 					<div class="col-md-12 botones_adjuntar_enviar">
@@ -132,24 +111,25 @@
 				             document.getElementById('adjunto').innerHTML=paths[0]['name'];             
 				            }
 				          </script>
-
-						<div class="col-md-3 btn_adjunto">				
-		                    <div class="col-md-4 fileUpload btn btn_adjuntar">
-		                    	<span class="fa fa-paperclip clip_icono" aria-hidden="true"/>
-		                    	<span class="clip">Adjuntar archivo</span>
-		                    	<input type="file" class="upload" onchange="JavaScript:adjunto();" id="userfile" name="userfile" data-badge="false">
-		                    </div>
-						</div>
-						<div class="col-md-3 btn_enviar">
-							<div class="col-md-4 btn btn_submit row">
-								<i class="fa fa-envelope"></i>
-    								<input type="submit" class="form-control submit">
-		                    	<!-- <span class="fa fa-envelope sobre_icono" aria-hidden="true">
-		                    		<input type="submit" class="submit">
-		                    	</span> -->
-		                    	<!-- <input type="submit" class="submit"> -->
-		                    </div>
-						</div>								
+				        <div class="col-md-6">
+				        	<div class="col-md-6 btn_adjunto">				
+			                    <div class="col-md-4 fileUpload btn btn_adjuntar">
+			                    	<span class="fa fa-paperclip clip_icono" aria-hidden="true"/>
+			                    	<span class="clip">Adjuntar archivo</span>
+			                    	<input type="file" class="upload" onchange="JavaScript:adjunto();" id="userfile" name="userfile" data-badge="false">
+			                    </div>
+							</div>
+							<div class="col-md-6 btn_enviar">
+								<div class=" btn btn_submit row">
+									<i class="fa fa-envelope"></i>
+	    								<input type="submit" class="form-control submit" value="Enviar">
+			                    	<!-- <span class="fa fa-envelope sobre_icono" aria-hidden="true">
+			                    		<input type="submit" class="submit">
+			                    	</span> -->
+			                    	<!-- <input type="submit" class="submit"> -->
+			                    </div>
+							</div>	
+				        </div>						
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="enviados">
@@ -160,6 +140,7 @@
 	</div>
 </div>
 <?= form_close() ?> 
+</body>
 <script type="text/javascript">
 	     document.onload= start();
 	     function start()

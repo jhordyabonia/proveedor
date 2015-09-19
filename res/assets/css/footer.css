@@ -216,13 +216,12 @@ margin-top: 10px;
 
 /* Estilos del Banner de Adsense en el footer*/
 .conten_footer_adsense{
-    height: auto;
+    /*height: auto;*/
 }
 .banner_footer_adsense
 {  
     padding-top: 10px;
-    width: 728px;
-    height: 90px;
+    max-width: 728px!important;
     margin: 0 auto;
     margin-bottom: 50px;
     /*background-color: whitesmoke;*/

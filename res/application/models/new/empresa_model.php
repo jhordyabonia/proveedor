@@ -93,11 +93,6 @@ class Empresa_model extends CI_Model {
                 $this->db->or_like('productos_principales', $palabra, 'both');
                 $this->db->or_like('productos_de_interes', $palabra, 'both');
         }
-
-        if($categoria!=0)
-        {
-           $this->db->where(array('categoria'=>$categoria));
-        }
         
         $this->db->order_by('empresa.membresia',"desc");
         $this->db->order_by('empresa.legalizacion',"desc");
@@ -131,6 +126,10 @@ class Empresa_model extends CI_Model {
                 #$this->db->or_like('solicitud.nombre', $value, 'both'); 
                 #$this->db->or_like('solicitud.descripcion', $value, 'both'); 
             }
+        }elseif($categoria!=0)
+        {
+            $this->db->like('empresa.categorias', '|'.$categoria.'|', 'both'); 
+           #$this->db->where(array('categoria'=>$categoria));
         }else
         {            
                 $this->db->or_like('empresa.nombre', $palabra, 'both'); 
@@ -146,12 +145,6 @@ class Empresa_model extends CI_Model {
                 #$this->db->or_like('solicitud.nombre', $value, 'both'); 
                 #$this->db->or_like('solicitud.descripcion', $value, 'both'); 
         }
-
-        if($categoria!=0)
-        {
-            $this->db->like('empresa.categorias', ','.$categoria.',', 'both'); 
-           #$this->db->where(array('categoria'=>$categoria));
-        }
         
         $this->db->order_by('empresa.membresia',"desc");
         $this->db->order_by('empresa.legalizacion',"desc");
@@ -159,7 +152,7 @@ class Empresa_model extends CI_Model {
         if ($result)
         {   return $result; }
         else 
-        {   return false;   }
+        {   return $this->buscar2($palabra,$categoria);   }
     }
 
 

@@ -84,7 +84,7 @@ class Tablero_usuario extends CI_Controller {
 		$id_usuario=$this->session->userdata('id_usuario');
 		
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
-		$categorias_empresa=explode(',',$datos['empresa']->categorias);
+		$categorias_empresa=explode('|',$datos['empresa']->categorias);
 		$datos['membresia']=$datos['empresa']->membresia;
 		$datos['datos']=array();
 		if(!$categoria)
@@ -135,7 +135,15 @@ class Tablero_usuario extends CI_Controller {
 		$datos['categorias']=$this->categoria->get_all();
 		if($categoria)
 		{		$datos['categoria']=$this->categoria->get($categoria);	}
-		else{	$datos['categoria']=$this->categoria->get($categorias_empresa[0]);	}
+		else
+		{	if($categorias_empresa[0]!="")
+			{	$datos['categoria']=$this->categoria->get($categorias_empresa[0]);	}
+			elseif($categorias_empresa[1]!="")
+			{	$datos['categoria']=$this->categoria->get($categorias_empresa[1]);	}
+			else
+			{	$datos['categoria']=$this->categoria->get(41);	}
+
+		}
     	$datos['titulo']="Mis oportunidades comerciales -Proveedor.com.co ";
 		$datos['usuario']=$this->session->userdata('usuario');
 

@@ -8,7 +8,7 @@
   ga('send', 'pageview');
 
 </script><script type='text/javascript'>(function () { var done = false;var script = document.createElement('script');script.async = true;script.type = 'text/javascript';script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';document.getElementsByTagName('HEAD').item(0).appendChild(script);script.onreadystatechange = script.onload = function (e) {if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {var w = new PCWidget({ c: 'b213225e-cbd8-4e45-8469-19b5d80cfbf6', f: true });done = true;}};})();</script></div> <!-- cierre div.row -->
-</div> <!-- cierre container-fluid -->
+</div>  <!-- cierre container-fluid -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/footer.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <footer class="footer-social">
@@ -19,13 +19,13 @@
 		</span>
 		<div class="banner_footer_adsense">
 
-
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Banner 1 -->
+<!-- Prov-Adsense1-Adap -->
 <ins class="adsbygoogle"
-    style="display:inline-block;width:728px;height:90px"
+    style="display:block"
     data-ad-client="ca-pub-3580504543906349"
-    data-ad-slot="2010236362"></ins>
+    data-ad-slot="1436656768"
+    data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>

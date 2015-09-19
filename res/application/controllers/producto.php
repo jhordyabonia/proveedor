@@ -83,6 +83,7 @@ class Producto extends CI_Controller
 				$this->load->view('registro/funcionalidades_',$data);
 				$this->load->view('index/top_menu',$datos);
 				$this->load->view('index/header_buscador',$datos);
+				$this->load->view('producto/producto_banner_adsense');
 				$this->load->view('producto/pagina_producto', $data);
 				$this->load->view('template/footer');
 			}else

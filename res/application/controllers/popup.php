@@ -13,6 +13,7 @@ class Popup extends CI_Controller
 
 		$this->load->model('new/Empresa_model','empresa');
 		$this->load->model('new/Mensajes_model','mensaje');
+		$this->load->model('new/Remitente_model','remitente');
 		$this->load->model('new/Solicitud_model', 'solicitud');
 		$this->load->model('new/Producto_model', 'producto');
 		$this->load->model('new/Remitente_model', "remitente");
@@ -54,6 +55,24 @@ class Popup extends CI_Controller
 		$this->load->model('categoria_model','categoria');
 		$nombre_categoria=$this->categoria->get($datos['categoria'])->nombre_categoria;
 		$this->asistentes_proveedor->insert($datos);
+
+		$remitente =$this->remitente->get(array('correo' =>$datos['email']));
+		if($remitente)
+		{ 
+			#$remitente['correo']=$datos['email'];
+			$remitente['nombres']=$datos['nombres'];
+			$remitente['telefono']=$datos['telefono'];
+			$this->remitente->update($remitente,$remitente->id);
+		}
+		else 
+		{
+			$remitente['correo']=$datos['email'];
+			$remitente['nombres']=$datos['nombres'];
+			$remitente['telefono']=$datos['telefono'];
+			$this->remitente->insert($remitente);
+		}
+		
+
 		$mensaje="El sr.<B>".$datos['nombres']."</B><BR>";
 		$mensaje.="Ha registrado la siguiente solicitud. ".$datos['solicitud'];
 		$mensaje.="<BR>Su email es: <b>".$datos['email']."</b>";

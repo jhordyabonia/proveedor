@@ -280,8 +280,7 @@
 }
 .verEmpresa_adsense{
     /*padding-top: 10px;*/
-	width: 728px;
-	height: 90px;
+	max-width: 728px!important;
 	margin: 0 auto;
 	margin-bottom: 14px !important;
 	background-color: #fff;

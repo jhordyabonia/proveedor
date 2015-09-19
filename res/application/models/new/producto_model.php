@@ -72,7 +72,7 @@ class Producto_model extends CI_Model {
         $this->db->delete(self::TABLE_NAME, $where);
         return $this->db->affected_rows();
     }
-    public function buscar($palabra = "",$categoria=0)
+    public function buscar($palabra = "",$categoria=0,$subcategoria=0)
     {
         $this->db->select('producto.id,producto.subcategoria');
         $this->db->from(self::TABLE_NAME);
@@ -91,10 +91,10 @@ class Producto_model extends CI_Model {
         }
         elseif($categoria!=0)
         {
-           $this->load->model('new/Subcategoria_model','subcategoria');
-           $this->db->join('subcategoria',"subcategoria.id_subcategoria = producto.subcategoria"); 
-           $this->db->join('categoria',"categoria.id_categoria = subcategoria.id_categoria ");
-           $this->db->where(array('categoria.id_categoria'=>$categoria));
+            $this->db->join('subcategoria', 'producto.subcategoria = subcategoria.id_subcategoria ');
+                if($subcategoria!=0)
+                {    $this->db->where(array("subcategoria.id_subcategoria"=>$subcategoria));    }
+                else {  $this->db->where(array("subcategoria.id_categoria"=>$categoria));   }
         }else
         {
             $this->db->or_like('palabras_clave', $palabra, 'both'); 
@@ -122,16 +122,14 @@ class Producto_model extends CI_Model {
     {
         $this->load->model('new/Dimension_model','dimension');
         $this->load->model('new/Empresa_model','empresa');
-        $this->load->model('new/Subcategoria_model','subcategoria');
-        $categorias=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
+        #$this->load->model('new/Subcategoria_model','subcategoria');
+        #$categorias=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
         $this->db->select('*');
         $this->db->from(self::TABLE_NAME);
-        if($categoria!=0)
-        {   
-            foreach ($categorias as $key => $value) 
-            {
-                $this->db->where(array("subcategoria"=>$value->id_subcategoria));
-            }
+        $this->db->join('subcategoria', 'producto.subcategoria = subcategoria.id_subcategoria ');     
+       if($categoria!=0)
+        {
+            $this->db->where(array("subcategoria.id_categoria"=>$categoria));
         }
         $this->db->order_by("id", $order);
         $this->db->limit($limit);

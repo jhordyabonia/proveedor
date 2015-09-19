@@ -151,8 +151,7 @@
 	height: 116px;
 }
 .verEmpresa_adsense{
-	width: 728px;
-	height: 90px;
+	max-width: 728px!important;
 	margin: 0 auto;
 	margin-bottom: 14px !important;
 	text-align: center; 

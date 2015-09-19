@@ -50,7 +50,7 @@ class Popup_categoria extends CI_Controller
 
 		$datos['categoria']=$this->input->post('categoria');
 		$datos['texto_titulo']=$this->input->post('texto_titulo');
-        $datos['texto_body']=$this->input->post('texto_body');
+        $datos['texto_head']=$this->input->post('texto_head');
         $datos['texto_body']=$this->input->post('texto_body');
 
 		$datos['campos']="";

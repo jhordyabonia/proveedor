@@ -34,56 +34,56 @@ document.oncontextmenu=inhabilitar
 
 // --><!--Funcionalidad de mensajes-->
      reffer= "<?=$reffer?>";
-       document.onload= start(0,0);
-       function start(id,tipo)
-         {
-         	if(id==-1&&document.getElementById('destinatarios').value=="")
-         		{ 
-         			alert("!Debe selecionar, almenos un destinatario!");
-         			return;
-         		}
-         	if(id!=0&&tipo!=0)
-          	{  var url_popup="<?=base_url()?>popup/contactar/"+id+"/"+tipo;	}
-          	else
-          	{
-	            var msj_enviado = "<?=$this->session->flashdata('mensaje_enviado')?>"=="DONE";
-	            if (msj_enviado)
-	            { url_popup="<?=base_url()?>popup/confirmar_mensaje"; }
-	        	else{return;}
-	    	}
+       //document.onload= start(0);
+       function start(id_objeto)
+	       {
+		       	var popup=new XMLHttpRequest();
+		       	if(id_objeto<0)
+		       	{	var url_popup="<?=base_url()?>mensajes/lanzar_popup/5";	}
+		       else
+		       	{	var url_popup="<?=base_url()?>mensajes/lanzar_popup/4";	}
 
-            var popup=new XMLHttpRequest();
+				var msj_enviado = "<?=$this->session->flashdata('mensaje_enviado')?>"=="DONE";
+				if (msj_enviado)
+				{	url_popup="<?=base_url()?>popup/confirmar_mensaje";	}
 
-            popup.open("GET", url_popup, true);
-            popup.addEventListener('load',show,false);
-            popup.send(null);
+				popup.open("GET", url_popup, true);
+				popup.addEventListener('load',show,false);
+				popup.send(null);
 
-            function show()
-              {
-                cotizar=document.getElementById('cotizar');
-                console.log(popup.response);
-                cotizar.innerHTML=popup.response;
+				function show()
+					{
+						cotizar=document.getElementById('cotizar');
+						console.log(popup.response);
+						cotizar.innerHTML=popup.response;
 
-                if (msj_enviado)
-                {   document.getElementById('confimacion_msj_enviado').click(); }
-                else
-                { 
-                  error_login ="<?=$this->session->flashdata('session')?>";
-                          mensaje = "<?=$this->session->flashdata('reffer')?>";
-                          if(error_login!="Done"&&mensaje=="mensaje")
-                          {
-                            document.getElementById('#login').click();
-                          }else
-                          if(mensaje=="mensaje")
-                          {
-		                    document.getElementById('btn_contactar').click();
-		                    <?=$this->session->set_flashdata('reffer',FALSE)?>
-		                  }               
-                } 
-
-		        document.getElementById('btn_contactar').click();          
-              }
-          }   
+	       				if (msj_enviado)
+						{  	document.getElementById('confimacion_msj_enviado').click();	}
+						else
+						{ 
+							error_login ="<?=$this->session->flashdata('session')?>";
+			                mensaje = "<?=$this->session->flashdata('reffer')?>";
+			                if(error_login!="Done"&&mensaje=="mensaje")
+			                {
+			                  document.getElementById('#login').click();
+			                }else
+			                if(mensaje=="mensaje")
+			                {
+								document.getElementById('btn_contactar').click();
+								<?=$this->session->set_flashdata('reffer',FALSE)?>
+							}								
+						}  		
+						if(id_objeto<0)
+						{
+							document.getElementById('id_objeto').value=document.getElementById('destinatarios').value;
+						}else
+						{
+							document.getElementById('id_objeto').value=id_objeto ;
+						}
+						document.getElementById('btn_contactar').click();
+					}
+					//login();
+			} 
   </script>
 <link rel="stylesheet" href="<?php echo css_url() ?>/solicitudes_tablero_usuario.css">
 		
@@ -114,7 +114,11 @@ document.oncontextmenu=inhabilitar
 		<div class="contactar" >
 			<form action="<?=base_url()?>popup/envio_multiple/" method="post" name="envio">
 				<input type="hidden" id="destinatarios" name="destinatarios" value="">
-				<a  href="JavaScript:start(-1,5);"  rol="button" class="contacto"><i class="fa fa-envelope sobre"></i> Enviar Múltiples Cotizaciones</a>
+				<?php if($empresa->membresia==3):?>		                     	
+					<a  href="JavaScript:start(-1);"  rol="button" class="contacto"><i class="fa fa-envelope sobre"></i> Enviar Múltiples Cotizaciones</a>
+	            <?php else:?>		                     	
+					<a data-toggle="modal" data-target="#popup_info"rol="button" class="contacto"><i class="fa fa-envelope sobre"></i> Enviar Múltiples Cotizaciones</a>
+	            <?php endif;?>
 				<!--<a  href="JavaScript:envio.submit();"  rol="button" class="contacto"><i class="fa fa-envelope sobre"></i> Enviar Multiples Cotizaciones</a>-->
 			</form>
 		</div>
@@ -160,7 +164,7 @@ document.oncontextmenu=inhabilitar
 		                    </table>
 	                    </td>                      
 	                    <td width="20%" class="centrado"> 
-	                    	<?php if($membresia->id==3):?>
+	                    	<?php if($empresa->membresia==3):?>
 	                    	<table>
 		                     	<tr><th class="label_dato">Nombre:<th class="dato"> <?=$dato->nombres?>
 		                     	<tr><th class="label_dato">Email:<th class="dato"> <?=$dato->email?>
@@ -188,8 +192,8 @@ document.oncontextmenu=inhabilitar
 		                 	<?php endif;?>
 	                    </td>
 	                     <td width="5%" class="centrado"> 
-	                    	<?php if($membresia->id==3):?>
-		                     	<a href="JavaScript:start(<?=$dato->id?>,4)" >
+	                    	<?php if($empresa->membresia==3):?>
+		                     	<a href="JavaScript:start(<?=$dato->id?>)" >
 		                     	<i class="fa fa-envelope sobre"></i><br>							
 		                     		Enviar Cotización</a>
 	                    	<?php else:?>
@@ -230,7 +234,7 @@ document.oncontextmenu=inhabilitar
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">
 
 
-  <div id='btn_contactar' data-toggle="modal" data-target="#popup"></div>
+  <div id='btn_contactar' data-toggle="modal" data-target="#popup_mensajes"></div>
   <div id="cotizar">
     </div>
 <br>

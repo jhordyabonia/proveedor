@@ -101,7 +101,7 @@
 												<?=$solicitud->precio_maximo?> 
 										</td>
 										<td width="15%" > 
-												<?=$empresa->nombre?> 
+												<?=$solicitud->empresa->nombre?> 
 										</td>
 										<td width="15%" > 
 										 <a href="<?= base_url(); ?>oportunidad_comercial/ver/<?=$solicitud->id?>" >

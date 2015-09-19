@@ -2,11 +2,11 @@
 	background-color: whitesmoke;
     padding-top: 10px;
 	margin: 25px 0 0 0;
+	margin: 15px;
 	height: 116px;
 }
 .publi_adsense{
-	max-max-width: 728px;
-    height: 90px;
+	max-width: 728px!important;
     margin: 0 auto;
     margin-bottom: 14px !important;
     background-color: #fff;
@@ -26,8 +26,7 @@
 	height: 116px;
 }
 .listados_adsense{
-	max-width: 728px;
-    height: 90px;
+	max-width: 728px!important;
     margin: 0 auto;
     margin-bottom: 14px !important;
     background-color: #fff;
@@ -50,8 +49,7 @@
 	height: 116px;
 }
 .productos_adsense{
-	max-width: 728px;
-    height: 90px;
+	max-width: 728px!important;
     margin: 0 auto;
     margin-bottom: 14px !important;
     background-color: #fff;
@@ -73,8 +71,7 @@
 	height: 116px;
 }
 .oportunidad_adsense{
-	max-width: 728px;
-    height: 90px;
+	max-width: 728px!important;
     margin: 0 auto;
     margin-bottom: 14px !important;
     background-color: #fff;

@@ -203,7 +203,7 @@ p.count-productos:hover {
 	height: 116px;
 }
 .verEmpresa_adsense{
-	width: 728px;
+	max-width: 728px!important;
 	height: 90px;
 	margin: 0 auto;
 	margin-bottom: 14px !important;

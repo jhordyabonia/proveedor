@@ -165,7 +165,7 @@
                                           <!-- Title -->
                                           <tr>
                                              <td style="font-family: Helvetica, arial, sans-serif; font-size: 23px; font-weight:bold; color: #333333; text-align:center;line-height: 24px;">
-                                                Sr(a). <?=$nombre_usuario?> - <?=$nombre_empresa?>  
+                                                <?=$nombre_usuario?> <?=$nombre_empresa?>  
                                              </td>
                                           </tr>
                                           <!-- End of Title -->

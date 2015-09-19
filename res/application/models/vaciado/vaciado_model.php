@@ -8,7 +8,7 @@ class Vaciado_model extends CI_Model {
 
 	}
 
-	public function to_string($tabla,$where, $select='*')
+	public function to_string($tabla,$where, $select='*', $separador=",")
 	{
 			$bd_vieja = $this->load->database('prueba', TRUE);
 
@@ -24,7 +24,7 @@ class Vaciado_model extends CI_Model {
 	 		if($result_tmp)
 	 		{
 	 			foreach($result_tmp->result() as $value)
-	 			{	$out.= $value->$select.","; }
+	 			{	$out.= $value->$select.$separador; }
 	 		}
 	 		return $out;
 	 }
@@ -38,9 +38,9 @@ class Vaciado_model extends CI_Model {
 		}
 		if($tabla!="empresa"&&$tabla!="mensajes")
 		{	$bd_nueva->query("DELETE FROM $tabla WHERE `empresa`< 0");	}
-		#else if($tabla=="mensajes")
-		#{	$bd_nueva->query("DELETE FROM $tabla WHERE `mensajes`< 0");	}
-	 	#{$bd_nueva->delete($tabla,array('empresa'=>'<0'));}
+		else if($tabla=="mensajes")
+		{	$bd_nueva->update($tabla,array($where=>$value['id_contacto']),array($where=>$value['id_usuario']));	}
+		
 	}
 
 	public function halt()
@@ -65,7 +65,7 @@ class Vaciado_model extends CI_Model {
 	 	{
 		 	$empresa->producto_empresa=$this->to_string('producto_empresa',array('nit_empresa'=>$empresa->nit),'nombre_producto');
 		 	$empresa->producto_interes=$this->to_string('producto_interes',array('nit_empresa'=>$empresa->nit),'nombre_producto');
-		 	$empresa->id_categoria=$this->to_string('categoria_empresa',array('nit_empresa'=>$empresa->nit),'id_categoria');
+		 	$empresa->id_categoria=$this->to_string('categoria_empresa',array('nit_empresa'=>$empresa->nit),'id_categoria','|');
 	 		$logo=$this->to_string('empresa',array('nit'=>$empresa->nit),'logo');
 	 		$empresa->logo=$logo;
 		 	if(intval($empresa->tipo_empresa)==0)

@@ -433,11 +433,11 @@ class Perfil extends CI_Controller {
 		$datos['tipos_empresa'] = $this->tipo_empresa->get_all();
 		
 		$tmp_categorias;
-		foreach (explode(',',$datos['empresa']->categorias) as $key => $value) 
+		foreach (explode('|',$datos['empresa']->categorias) as $key => $value) 
 		{
 			$tmp_categorias[]=$this->categoria->get($value);
 		}
-		$datos['empresa']->categoria=$tmp_categorias;
+		$datos['empresa']->categorias=$tmp_categorias;
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
 		$datos['administrador']=$datos['datos_usuario']->permisos;
 		$datos['titulo'] = "Editar perfil empresa";
