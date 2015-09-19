@@ -51,8 +51,14 @@ class Tablero_usuario extends CI_Controller {
 		$datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
 		$datos['count_contactos'] = 0;#$this->tablero_model->cantidad_usuarios($iduser);
-		$datos['count_ofertas'] = count($this->solicitud->get_all(array('empresa'=>$datos['empresa']->id)));
-		$datos['count_productos'] = count($this->producto->get_all(array('empresa'=>$datos['empresa']->id)));
+		$count_ofertas=$this->solicitud->get_all(array('empresa'=>$datos['empresa']->id));
+		if($count_ofertas)
+		{	$datos['count_ofertas'] = count($count_ofertas);	}
+		else {$datos['count_ofertas'] =0;	}
+		$count_productos=$this->producto->get_all(array('empresa'=>$datos['empresa']->id));
+		if($count_productos)
+		{	$datos['count_productos'] = count($count_productos);	}
+		else { $datos['count_productos'] =0;	}
 		#$this->load->model('Membresia_model','membresia');		
 
 		$datos['nombre_membresia']=$datos['membresia']->nombre;

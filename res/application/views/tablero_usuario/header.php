@@ -19,7 +19,7 @@
                 <li class="indice_active item_collapse"><a href="<?=base_url()?>tablero_usuario">INICIO</a></li>
                 <li class="item_collapse"><a href="<?=base_url()?>tablero_usuario/oportunidades">OPORTUNIDADES</a></li>
                 <li class="item_collapse"><a href="<?=base_url()?>mensajes">MENSAJES</a></li>
-                <li class="item_collapse"><a href="#">CONTACTOS</a></li>
+                <!--<li class="item_collapse"><a href="#">CONTACTOS</a></li>-->
                 <li class="item_collapse"><a href="<?=base_url()?>producto/administrar">PRODUCTOS</a></li>
                 <li class="item_collapse"><a href="<?=base_url()?>oferta_test/administrar">SOLICITUDES</a></li>
                 <?php if($administrador):?>

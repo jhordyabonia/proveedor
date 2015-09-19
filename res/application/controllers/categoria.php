@@ -237,11 +237,7 @@ class Categoria extends CI_Controller {
         if ($proveedores)
         {
             $proveedores = clear_array($proveedores);
-            if($p=="")
-            {
-                $proveedores = array_reverse($proveedores);
-            }
-
+            
             $data['page_count2'] = count($proveedores)/25;
             $data['page']=$page;
             if($page>$data['page_count2'])
