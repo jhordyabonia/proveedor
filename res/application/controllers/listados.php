@@ -163,6 +163,12 @@ class Listados extends CI_Controller {
             $out = explode(' ',$busqueda);
             foreach ($out as $key => $value) #construlccion del singular
             {
+            	if($value=="y"||$value=="o"||$value=="con"||$value=="sin")
+            		{continue;}
+
+            	if($value=="Y"||$value=="O"||$value=="CON"||$value=="SIN")
+            		{continue;}
+
                 $end_value=substr($value,-2);
                 if($end_value=="es"||$end_value=="ES")
                 {

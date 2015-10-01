@@ -28,14 +28,16 @@ class Registro extends CI_Controller {
 
 	/////funcion para llamar la pagina index
 	function index() {
-		$this->session->set_userdata('paso',0);
-		$this->session->set_userdata('registro',TRUE);
-		$this->session->set_userdata('id_registro',0);
+		$this->session->set_userdata('registro','TRUE');
 		redirect(base_url()); 
 		#$this->load->view('registro/registro_usuario', array('error' => ' '));
 		//$data = array('captcha' => $this->captcha());
 		//$this->session->set_userdata('captcha', $this->rand);
 		//$this->load->view('vistas/registro_usuario',$datos);
+	}
+
+	function registrar() {
+		$this->index();
 	}
 	
 

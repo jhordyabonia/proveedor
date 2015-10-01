@@ -35,12 +35,10 @@ class Vaciado_model extends CI_Model {
 		foreach ($mach as $key => $value)
 		{
 			$bd_nueva->update($tabla,array($where=>$value['id_usuario']),array($where=>$value['id_contacto']*-1));
-		}
+		}		
 		if($tabla!="empresa"&&$tabla!="mensajes")
 		{	$bd_nueva->query("DELETE FROM $tabla WHERE `empresa`< 0");	}
-		else if($tabla=="mensajes")
-		{	$bd_nueva->update($tabla,array($where=>$value['id_contacto']),array($where=>$value['id_usuario']));	}
-		
+			
 	}
 
 	public function halt()

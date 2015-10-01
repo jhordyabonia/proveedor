@@ -44,15 +44,12 @@ class Index extends CI_Controller {
        	$datos->titulos=$titulos;
        	#$data['formulario_captura']="";#$this->load->view('index/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
 		
-		$data['registro']=$this->session->userdata('registro')|FALSE;
-		$data['paso']=$this->session->userdata('paso')|0;
-		$data['id_registro']=$this->session->userdata('id_registro')|0;
-		$this->load->view('registro/funcionalidades',FALSE);
+		$data['registro']=$this->session->userdata('registro');
 		
-		$this->load->view('template/head', $data, FALSE);
+		$this->load->view('template/head', array('titulo'=>"PROVEEDOR.com.co"));
 		$this->load->view('template/javascript');
+		$this->load->view('registro/funcionalidades_');
 		$this->load->view('index/top_menu',$data);
-		$this->load->view('registro/funcionalidades_',$data);
 		$this->load->view('index/header_buscador',$data);
        	#$this->load->view('index/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
 		$this->load->view('index/banner', $data); 
@@ -78,6 +75,6 @@ class Index extends CI_Controller {
 		$this->load->view('template/footer');
 		$this->load->view('template/footer_empy');
 
-		$this->session->set_userdata('registro',FALSE);
+		$this->session->set_userdata('registro','');
 	}
 }

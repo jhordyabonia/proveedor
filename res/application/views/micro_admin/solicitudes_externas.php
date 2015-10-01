@@ -162,7 +162,9 @@
 	                    	 </a>
 	                    </td>
 	                     <td width="5%"> 
-	                     	<a target="other" href="<?=base_url()?>micro_admin/enviar_a_platino/<?=$dato->id?>" >Enviar</a>
+	                     	<a target="other" href="<?=base_url()?>micro_admin/envio_automatico/<?=$dato->id?>" >Enviar</a>
+	                    		<br>
+	                     	<a target="other" href="<?=base_url()?>micro_admin/test_envio/1/1/<?=$dato->id?>" >Envío selectivo</a>
 	                    </td>
 	                  </tr>	
 	                  <?php endforeach; ?>                

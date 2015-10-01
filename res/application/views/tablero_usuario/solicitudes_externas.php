@@ -93,11 +93,13 @@ document.oncontextmenu=inhabilitar
 		<!-- <p class="nombre_categoria"><?=$categoria->nombre_categoria?></p> -->
 		<div class="col-md-12 contenedor_select_categoria">
 			<select onchange="JavaScript:location.href='<?=base_url()?>tablero_usuario/oportunidades/'+this.value;" class="select_categorias">
-				<option value="<?=$categoria->id_categoria?>" class="item_select_categoria"><?=$categoria->nombre_categoria?></option>
-				<option value="41" class="item_select_categoria">Seguridad Industrial, Calzado y Dotación</option>
-				<option value="6" class="item_select_categoria">Calzado</option>
-				<option value="6" class="item_select_categoria">__________________________________________</option>
-				<option value="6" class="item_select_categoria"></option>
+				<?php if($categoria->id_categoria==41||$categoria->id_categoria==6):?>
+				<?php else:?>
+					<option value="<?=$categoria->id_categoria?>" class="item_select_categoria"><?=$categoria->nombre_categoria?></option>
+				<?php endif;?>
+				<option value="41" class="item_select_categoria" <?php if($categoria->id_categoria==41){echo "selected";}?> >Seguridad Industrial, Calzado y Dotación</option>
+				<option value="6" class="item_select_categoria" <?php if($categoria->id_categoria==6){echo "selected";}?> >Calzado</option>
+				<optgroup label=""></optgroup>
 				<?php foreach ($categorias as $key => $value):?>
 				<option value="<?=$value->id_categoria?>" class="item_select_categoria"><?=$value->nombre_categoria?></option>
 				<?php endforeach;?>

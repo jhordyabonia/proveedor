@@ -8,48 +8,38 @@ class Eliminar extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model("producto_model");
-		$this->load->model("oferta_model");
-		$this->load->model('empresak_model');
+		$this->load->model("new/producto_model",'producto');
+		$this->load->model("new/Solicitud_model",'solicitud');
+		$this->load->model('new/Empresa_model','empresa');
+		$this->load->model('new/Usuarios_model','usuarios');
 
 	}
 
 	public function producto($id='')
 	{
-		$this->producto_model->eliminar($id);
+		$this->producto->eliminar($id);
 	}
-	public function oferta($id='')
+	private function solicitud($id='')
 	{
-		$this->oferta_model->eliminar($id);
+		$this->solicitud->eliminar($id);
 	}
-	public function empresa($nit=FALSE)
+	public function empresa($id=FALSE)
 	{
 		$this->verifyc_login();
-		if ($nit) 
+		if ($id) 
 		{
-			$this->load->model('producto_interes_model');
-			$this->load->model('producto_empresa_model');
-			$this->load->model('categoriaempresa_model');
-			$this->load->model('membresia_empresa_model');
-			$this->load->model('contactok_model');
-			$this->load->model('usuario_model');
-			$this->producto_interes_model->delete($nit);
-			$this->producto_empresa_model->delete($nit);
-			$this->categoriaempresa_model->delete($nit);
-			$this->membresia_empresa_model->delete($nit);
-			$id_contacto=$this->empresak_model->get($nit)->id_contacto;
-			$id_usuario=$this->contactok_model->get($id_contacto)->id_user;
-			$this->empresak_model->delete($nit);
-			$this->contactok_model->delete($id_contacto);
-			$this->usuario_model->delete($id_usuario);
+			$id_usuario=$this->empresa->get($id)->usuario;
+			$this->empresa->delete($id);
+			$this->usuarios->get($id_usuario);
 		}
 
     	redirect($_SERVER['HTTP_REFERER']);
 	}
 	private function verifyc_login()
     {
-    	$nit = $this->session->userdata('empresa');
-    	if($nit=="1059985632-7"||($nit=="90058523"||$nit=="102223263921"))
+    	$id_usuario=$this->session->userdata('id_usuario');
+    	$usuario=$this->usuarios->get($id_usuario);
+    	if($usuario->permisos==1)
     	{	return;	}
 
     	redirect(base_url());

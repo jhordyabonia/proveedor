@@ -19,6 +19,12 @@ class Perfil extends CI_Controller {
 
 	public function ver_empresa($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	{		
+		if($id_empresa==0)
+		{
+			$empresa= $this->empresa->get(array('nit'=>$id_seleccion));
+			redirect('perfil/ver_empresa/'.$empresa->id);
+		}
+
 		$empresa= $this->empresa->get($id_empresa);
 		
 		$id_user=$empresa->usuario;
@@ -191,9 +197,15 @@ class Perfil extends CI_Controller {
 	}
 
 //con esta funcion se llama a la vista de la segunda pestaÃ±a de la vista perfil empresa
-	public function perfil_empresa($id_empresa){
+	public function perfil_empresa($id_empresa,$id_seleccion=0){
 		// echo 'es_ '.$id_contacto;
+		if($id_empresa==0)
+		{
+			$empresa= $this->empresa->get(array('nit'=>$id_seleccion));
+			redirect('perfil/perfil_empresa/'.$empresa->id);
+		}
 		$empresa=$this->empresa->get($id_empresa);
+
 		$usuario=$this->usuarios->get($empresa->usuario);
 		$datos['des_empresa'] = $empresa->descripcion;
 		$datos['contacto'] = $usuario->celular;  //para traer la informacion  del campo contacto
@@ -478,6 +490,11 @@ class Perfil extends CI_Controller {
 	}
 	public function productos_solicitados($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	 {	
+	 	if($id_empresa==0)
+		{
+			$empresa= $this->empresa->get(array('nit'=>$id_seleccion));
+			redirect('perfil/productos_solicitados/'.$empresa->id);
+		}
 		$empresa= $this->empresa->get($id_empresa);
 		$id_user=$empresa->usuario;
 		
@@ -526,7 +543,13 @@ class Perfil extends CI_Controller {
 	
 	public function contacto_empresa($id_empresa)
 	{
+
 		$empresa=$this->empresa->get($id_empresa);
+		if(!$empresa)
+		{
+			$empresa= $this->empresa->get(array('nit'=>$id_empresa));
+			redirect('perfil/contacto_empresa/'.$empresa->id);
+		}
 		$usuario=$this->usuarios->get($empresa->usuario);
 
 		$datos['celular'] = $usuario->celular;  //para traer la informacion  del campo contacto

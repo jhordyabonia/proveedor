@@ -19,12 +19,218 @@ class Micro_admin extends CI_Controller
 		$this->load->model('new/Departamento_model','departamento'); 
 		$this->load->model('new/Municipio_model','municipio'); 
 		$this->load->model('new/Categoria_model','categoria'); 
+		$this->load->model('new/Plantilla_model','plantilla'); 
+		$this->load->model('new/Evento_model','evento'); 
 		$this->load->model('new/Tipo_empresa_model','tipo_empresa'); 
 		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('crypter_model','crypter');
 		$this->load->library(array('session', 'email','form_validation'));
+		$this->load->helper('file');
 	}
 
+	public function guadar_plantilla()
+	{
+		$this->verifyc_login();
+		
+		$plantilla=$this->input->post('editor');
+		$nombre_plantilla=$this->input->post('nombre_plantilla');
+		$evento_plantilla=$this->input->post('evento_plantilla');
+		
+		$plantilla=str_replace("::0", "?", $plantilla);
+		$plantilla=str_replace("::1", "$", $plantilla);
+		$plantilla=str_replace("&lt;", "<", $plantilla);
+		$plantilla=str_replace("&gt;", ">", $plantilla);
+		if(write_file(APPPATH.'/views/plantillas/'.$nombre_plantilla.".php", $plantilla))
+		{
+			$tmp=$this->plantilla->get(array('nombre'=>$nombre_plantilla));
+			if($tmp==FALSE)
+			{
+				$tmp=$this->plantilla->insert(array('nombre'=>$nombre_plantilla,'evento'=>$evento_plantilla));
+				echo "Guardado de plantilla ".$nombre_plantilla." exitosa!!";
+			}else 
+			{
+				$tmp=$tmp->id;
+				echo "Plantilla ".$nombre_plantilla." actualizada!!";
+			}
+			$this->evento->update(array('plantilla'=>$tmp),$tmp);
+		}else {echo "Error durante el guardado de plantlla ".$nombre_plantilla;}
+	}
+
+    function enviar($id_solictud)
+    {
+    	$this->verifyc_login();
+		
+		if($id_solictud==0)
+    	{show_404();}
+
+    	$solicitud=$this->asistentes_proveedor->get($id_solictud);
+		$data['solicitud'] = $solicitud;
+
+    	$data['solicitud']=$this->asistentes_proveedor->get($id_solictud);
+
+    	if(!$data['solicitud'])
+    	{show_404();}
+
+		$data['solicitud']->categoria=$this->categoria->get($solicitud->categoria)->nombre_categoria;
+		$data['solicitud']->nombre_categoria=$data['solicitud']->categoria;
+		$id_plantilla=$this->evento->get(1)->plantilla;
+		$plantilla=$this->plantilla->get($id_plantilla);
+
+		$css='
+			<style type="text/css">.tag
+			{
+				text-decoration: none;
+				background-color:inherit;
+				color:inherit;
+			}
+			p
+			{
+				background-color:inherit;
+				color:inherit;
+			}
+			</style>';
+		$mensaje =$this->load->view('plantillas/'.$plantilla->nombre,$data, TRUE);
+
+		
+    	$destinatarios = $this->input->post('mensaje');
+    	$destinatarios =str_replace("value=",' ',$destinatarios);
+    	$destinatarios =str_replace("\">",' ',$destinatarios);
+    	$destinatarios =str_replace("\"",' ',$destinatarios);
+    	$destinatarios = explode(' ', $destinatarios);
+
+    	// Configuracion de correo.
+    	
+		$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+    	$count=0;
+    	foreach (clear_array($destinatarios) as  $value) 
+		 {
+		 	if($value==NULL){continue;}
+		 	$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		 	$this->email->to($value);
+		 	$this->email->subject("Tienes una nueva oportunidad comercial");
+		 	$this->email->message($css.$mensaje);
+		 	if ($this->email->send())
+		 	{$count++;}
+		 }
+
+		echo "<H3>Se enviaron ".$count." mensajes, sactisfactoriamente</H3>";
+		echo "<br><a href='".$_SERVER['HTTP_REFERER']."Volver'</a>";    
+    }
+    public function envio_automatico($id_solictud=0)
+    {
+    	$this->verifyc_login();
+		
+    	if($id_solictud==0)
+    	{show_404();}
+
+    	$data['solicitud']=$this->asistentes_proveedor->get($id_solictud);
+
+    	if(!$data['solicitud'])
+    	{show_404();}
+
+		$data['solicitud']->nombre_categoria=$this->categoria->get($data['solicitud']->categoria)->nombre_categoria;
+
+		$evento=$this->evento->get(1);
+    	$plantilla=$this->plantilla->get($evento->plantilla);
+
+		$empresas_categoria=$this->empresa->buscar2("",$data['solicitud']->categoria);
+		$destinatarios=NULL;
+		foreach (clear_array($empresas_categoria) as $key => $value) 
+		{
+			$empresa=$this->empresa->get(array('id'=>$value->id,'membresia'=>3));
+			if($empresa)
+				{
+					$usuario_tmp=$this->usuarios->get($empresa->usuario);
+					$destinatarios[]=$usuario_tmp->email;
+				}
+		} 
+		$css='
+			<style type="text/css">.tag
+			{
+				text-decoration: none;
+				background-color:inherit;
+				color:inherit;
+			}
+			p
+			{
+				background-color:inherit;
+				/*color:inherit;*/
+			}
+			</style>';
+    	$mensaje =$this->load->view('plantillas/'.$plantilla->nombre,$data, TRUE);
+
+    	$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+    	$count=0;
+    	foreach (clear_array($destinatarios) as  $value) 
+		 {
+		 	if($value==NULL){continue;}
+		 	$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		 	$this->email->to($value);
+		 	$this->email->subject("Tienes una nueva oportunidad comercial");
+		 	$this->email->message($css.$mensaje);
+		 	if ($this->email->send())
+		 	{$count++;}
+		 }
+
+		echo "<H3>Se enviaron ".$count." mensajes, sactisfactoriamente</H3>";
+		echo "<br><a href='".$_SERVER['HTTP_REFERER']."Volver'</a>";    
+    } 
+	public function test_envio($id_evento=1,$id_plantilla=1,$id_solictud=1)
+	{
+		$this->verifyc_login();
+		$data['solicitud']=$this->asistentes_proveedor->get($id_solictud);
+		$plantilla=$this->plantilla->get($id_plantilla);
+		$evento=$this->evento->get($id_evento);
+
+		$empresas_categoria=$this->empresa->buscar2("",$data['solicitud']->categoria);
+		if(!$empresas_categoria)
+			{$empresas_categoria=array();}
+		$destinatarios=NULL;
+		$nombres_destinatarios=NULL;
+		foreach (clear_array($empresas_categoria) as $key => $value) 
+		{
+			$empresa=$this->empresa->get(array('id'=>$value->id,'membresia'=>3));
+			if($empresa)
+				{
+					$usuario_tmp=$this->usuarios->get($empresa->usuario);
+					$destinatarios[]=$usuario_tmp->email;
+					$nombres_destinatarios[]=$usuario_tmp->nombres;
+				}
+			$empresa=NULL;
+		} 
+		$data['plantillas']=$this->plantilla->get_all(array('evento'=>$id_evento));
+		$data['id_plantilla']=$id_plantilla;
+		$data['eventos']=$this->evento->get_all();
+		$data['evento']=$evento;
+		$data['plantilla']=$plantilla;
+		$data['titulo']="Administrador";
+		$id_usuario=$this->session->userdata('id_usuario');
+		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
+		$data['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$data['administrador']=$data['usuario']->permisos;
+		$data['solicitud']->nombre_categoria=$this->categoria->get($data['solicitud']->categoria)->nombre_categoria;
+		$data['destinatarios']=$destinatarios;		
+		$data['nombres_destinatarios']=$nombres_destinatarios;
+		$this->load->view('template/head', $data,FALSE);
+		$this->load->view('template/javascript', FALSE);
+		$this->load->view('tablero_usuario/header', $data, FALSE);
+		#$this->load->view('micro_admin/editor/tinymce/editor/index', $data, FALSE);
+		$this->load->view('plantillas/evento',$data);
+		if($plantilla)
+		{	$data['mensaje']=$this->load->view('plantillas/'.$plantilla->nombre, $data, TRUE);}
+		else {	$data['mensaje']="";	}
+		$this->load->view('micro_admin/editor/index', $data, FALSE);
+	}
 
 	public function agregar_subcategoria()
 	{

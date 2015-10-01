@@ -99,7 +99,7 @@
 									<a href="http://www.blog.proveedor.com.co/como-funciona-proveedor-com-co-ayuda/"><p class="texto_links2">Ayuda</p></a>						 
 								</div>
 								<div class="col-md-12">
-									<a href="<?php echo base_url(); ?>condiciones"><p class="texto_links2">Quienes Somos</p></a>
+									<a href="http://oro.proveedor.com.co/#quienessomos"><p class="texto_links2">Quienes Somos</p></a>
 								</div>
 								<div class="col-md-12">
 									<a href="mailto:soporte@proveedor.com.co?subject=Contacto &"><p class="texto_links2">Contacta con nosotros</p></a>

@@ -86,6 +86,13 @@ class Empresa_model extends CI_Model {
                 $this->db->or_like('productos_principales', $value, 'both');
                 $this->db->or_like('productos_de_interes', $value, 'both');
             }
+        }elseif($categoria!=0)
+        {
+            $this->db->like('empresa.categorias', $categoria, 'both'); # %|*|%
+            #$this->db->like('empresa.categorias', '|'.$categoria.'|', 'both'); # %|*|%
+            #$this->db->like('empresa.categorias', $categoria.'|', 'after'); # *|%
+            #$this->db->like('empresa.categorias', '|'.$categoria, 'before'); # %|*
+            #$this->db->where(array('categoria'=>$categoria));
         }else
         {            
                 $this->db->or_like('nombre', $palabra, 'both'); 
@@ -128,8 +135,11 @@ class Empresa_model extends CI_Model {
             }
         }elseif($categoria!=0)
         {
-            $this->db->like('empresa.categorias', '|'.$categoria.'|', 'both'); 
-           #$this->db->where(array('categoria'=>$categoria));
+            $this->db->like('empresa.categorias', $categoria, 'both'); # %|*|%
+            #$this->db->like('empresa.categorias', '|'.$categoria.'|', 'both'); # %|*|%
+            #$this->db->like('empresa.categorias', $categoria.'|', 'after'); # *|%
+            #$this->db->like('empresa.categorias', '|'.$categoria, 'before'); # %|*
+            #$this->db->where(array('categoria'=>$categoria));
         }else
         {            
                 $this->db->or_like('empresa.nombre', $palabra, 'both'); 

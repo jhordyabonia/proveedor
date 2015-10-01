@@ -6,17 +6,16 @@
 			<p class="public_title"><!--PUBLICIDAD--></p>
 		</span>
 		<div class="publi_adsense">
-
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Banner 1 -->
+<!-- Prov-Adsense1-Adap -->
 <ins class="adsbygoogle"
-    style="display:inline-block;width:728px;height:90px"
+    style="display:block"
     data-ad-client="ca-pub-3580504543906349"
-    data-ad-slot="2010236362"></ins>
+    data-ad-slot="1436656768"
+    data-ad-format="auto"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
 
 		</div>
 	</div>

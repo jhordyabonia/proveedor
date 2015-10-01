@@ -1,11 +1,12 @@
  <!-- Brand and toggle get grouped for better mobile display -->
+
 	    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/index/top_menu.css">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div id="content_general"  onload="launch();">
 	    	<div id="sub_content_general" class="row">
 	    		<div class="col-md-7">
 	    			<div class="row hidden-xs hidden-sm">
-						<p id="texto_bienvenido" style="padding:">Bienvenido al portal de intercambios comerciales de las empresas en Colombia!</p>
+						<p id="texto_bienvenido" style="padding-left:15px">Bienvenido al portal de intercambios comerciales de las empresas en Colombia!</p>
 	    			</div>
 	    		</div>
 	    		<div class="col-xs-12 col-md-5 bor_botoom">
@@ -62,8 +63,9 @@
 	    </div>
 <script type="text/javascript">              
 				   
-                    <?php if($registro):?>  
-					document.getElementById('launch_registro').click();
+                    <?php if($registro!=""):?>
+                    launch(document.getElementById('launch_registro'));  
+					//document.getElementById('launch_registro').click();
                     <?php endif;?>                     
                                    
    </script>
