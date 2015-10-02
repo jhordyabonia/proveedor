@@ -137,21 +137,21 @@
       </div>
 
     <div class="col-md-12 cont_titulo_categorias_slide hidden-xs hidden-sm visible-md visible-lg">
-      <div class="col-md-12 contenedor_select_categoria" style="display:none;" id="select">
-        <p class="titulo_categorias_slide"><i class="fa fa-list ico_lista_slide"></i>
+      <div class="col-md-12 contenedor_select_categoria hidden-xs hidden-sm" style="display:none;" id="select">
+        <p class="titulo_categorias_slide hidden-xs hidden-sm"><i class="fa fa-list ico_lista_slide"></i>
         <select onchange="JavaScript:location.href='<?=base_url()?>categoria/ver/'+this.value;" class="select_categorias">
-          <option value="<?=$categoria->id_categoria?>" class="item_select_categoria"><?=$categoria->nombre_categoria?></option>
+          <option value="<?=$categoria->id_categoria?>" class="item_select_categoria hidden-xs hidden-sm"><?=$categoria->nombre_categoria?></option>
           <?php foreach ($categorias as $key => $value):?>
-          <option value="<?=$value->id_categoria?>" class="item_select_categoria"><?=$value->nombre_categoria?></option>
+          <option value="<?=$value->id_categoria?>" class="item_select_categoria hidden-xs hidden-sm"><?=$value->nombre_categoria?></option>
           <?php endforeach;?>
         </select>
       </p>
     </div>
     </div>
-    <div  id="div_subcategorias">
+    <div  id="div_subcategorias" class="hidden-xs hidden-sm">
       <?php foreach ($subcategorias as $key => $value):?>
       <div class="col-md-3 cont_categorias_slide">
-        <a href="<?=base_url()?>categoria/ver/0/<?=$value->id_subcategoria?>" class="enlace_categoria_slide"><?=$value->nom_subcategoria?><i class="fa fa-angle-right ico_flecha_slide"></i></a><br>
+        <a href="<?=base_url()?>categoria/ver/0/<?=$value->id_subcategoria?>" class="enlace_categoria_slide hidden-xs hidden-sm"><?=$value->nom_subcategoria?><i class="fa fa-angle-right ico_flecha_slide"></i></a><br>
       </div>
       <?php endforeach;?>
     </div>

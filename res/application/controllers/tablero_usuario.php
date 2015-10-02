@@ -104,6 +104,8 @@ class Tablero_usuario extends CI_Controller {
 					{continue;}
 
 				$datos['categoria']=$this->categoria->get($categorias_empresa[$i]);	
+				if($datos['categoria']!=FALSE)
+					break;
 			}
 		}
 

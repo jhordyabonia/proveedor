@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>banner_publicidad.css">
 
 
-<div class="elemento hidden-xs hidden-sm visible-md visible-lg" bgcolor="gray" style="background:#F7F7F7;"  width="100%" height="100%">
+<div class="elemento" bgcolor="gray" style="background:#F7F7F7;"  width="100%" height="100%">
 	<!--<div class="temp_error" style="background: #fff !important;padding: 28%;"></div>-->
 	<!-- Columna categorias -->
 <div class="col-md-12 color_fondo">
@@ -63,7 +63,7 @@
 		  <div class="tab-content">
 		    <div role="tabpanel" class="<?=$_div_productos?>" id="productos">
 		    	<div class="row">
-					<div class="contenedor_banner col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
+					<div class="contenedor_banner hidden-xs col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
 						<div class="banner_publicidad">
 							<script type="text/javascript">broadstreet.zone(45614);</script> 
 						</div>
@@ -108,7 +108,7 @@
 		    </div>
 		    <div role="tabpanel" class="<?=$_div_proveedores?>" id="proveedores">
 		    	<div class="row">
-					<div class="contenedor_banner col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
+					<div class="contenedor_banner hidden-xs col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
 						<div class="banner_publicidad">
 							<script type="text/javascript">broadstreet.zone(45614);</script> 
 						</div>
@@ -146,7 +146,7 @@
 		    </div>
 		    <div role="tabpanel" class="<?=$_div_solicitudes?>" id="solicitudes">
 		    	<div class="row">
-					<div class="contenedor_banner col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
+					<div class="contenedor_banner hidden-xs col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
 						<div class="banner_publicidad">
 							<script type="text/javascript">broadstreet.zone(45614);</script> 
 						</div>

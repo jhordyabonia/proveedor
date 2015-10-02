@@ -162,11 +162,11 @@
                       		<br>
                       		<b>Categoria Principal:</b>
                       		<br>
-	                      		<select value="6" disabled="true" id="empresa_<?=$proveedor['empresa']->id?>categoria"
-	                      			onchange="JavaScript:this.name='Calzado';"> 
+	                      		<select value="6" id="empresa_<?=$proveedor['empresa']->id?>categoria"	                      			
+                      			onchange="JavaScript:cambiar_categoria('<?=$proveedor['empresa']->id?>',this.value)"> 
 	                      		<option value="6">No definida</option>
 		                      			<?php foreach($categorias as $categoria): ?> 
-			                      			<option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>	                      			
+			                      			<option value="<?=$categoria->id_categoria?>" <?php if($proveedor['empresa']->categoria==$categoria->id_categoria){echo "selected";}?> ><?=$categoria->nombre_categoria?></option>	                      			
 			                      		<?php endforeach;?>
 	                      		</select> 
                       		</center>
@@ -310,6 +310,23 @@
 
           var nav=new XMLHttpRequest();
           var url =  "<?=base_url()?>micro_admin/cambiar_membresia/"+id_empresa+"/"+id_membresia;
+	        nav.open("GET",url, true);
+	      nav.addEventListener('load',show,false);
+	      nav.send(null);
+	      function show()
+	      {
+	          //cotizar=document.getElementById('cotizar');
+	          console.log(nav.response);
+	          //cotizar.innerHTML=popup.response;
+	      }
+	              
+     } 
+     function cambiar_categoria(id_empresa,id_membresia)
+      {
+          //console.log(" "+id_empresa+" "+id_membresia);
+
+          var nav=new XMLHttpRequest();
+          var url =  "<?=base_url()?>micro_admin/cambiar_categoria/"+id_empresa+"/"+id_membresia;
 	        nav.open("GET",url, true);
 	      nav.addEventListener('load',show,false);
 	      nav.send(null);

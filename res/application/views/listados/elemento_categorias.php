@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>listado.css">
 
 
-<div class="elemento hidden-xs hidden-sm visible-md visible-lg" bgcolor="gray" style="background:#F7F7F7;"  width="100%" height="100%">
+<div class="elemento visible-md visible-lg" bgcolor="gray" style="background:#F7F7F7;"  width="100%" height="100%">
 	<!--<div class="temp_error" style="background: #fff !important;padding: 28%;"></div>-->
 	<!-- Columna categorias -->
 <div class="col-md-12 color_fondo">

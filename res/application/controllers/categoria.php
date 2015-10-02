@@ -309,6 +309,7 @@ class Categoria extends CI_Controller {
         {
             if($subcategoria==0)
             { $this->load->view('index/productos_destacados', $data);  }
+            $this->load->view('carrouseles/funcionalidades', $data);
             $this->load->view('carrouseles/carousel_productos_destacados', $data);
             $this->load->view('carrouseles/carousel_oportunidades_comerciales', $data);
             $this->load->view('carrouseles/carousel_empresas_registradas', $data);

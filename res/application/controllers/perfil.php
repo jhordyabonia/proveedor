@@ -447,6 +447,7 @@ class Perfil extends CI_Controller {
 		$tmp_categorias;
 		foreach (explode('|',$datos['empresa']->categorias) as $key => $value) 
 		{
+			if($value==""){continue;}
 			$tmp_categorias[]=$this->categoria->get($value);
 		}
 		$datos['empresa']->categorias=$tmp_categorias;

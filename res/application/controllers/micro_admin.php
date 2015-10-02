@@ -352,6 +352,26 @@ class Micro_admin extends CI_Controller
 		else
 			{	echo "Error!";	}
     }
+    public function cambiar_categoria($id_empresa,$id_categoria=1)
+    {    	
+    	$this->verifyc_login();
+		$empresa=$this->empresa->get($id_empresa);
+		$categoria="";
+		$primera=0;
+		foreach (explode("|",$empresa->categorias) as  $value)
+		{
+			if($value==""){continue;}
+			$primera++;
+			if($primera==1){continue;}
+			$categoria.=$value."|";
+		}
+		$nueva['categorias']= $id_categoria."|".$categoria;
+		$result=$this->empresa->update($nueva,$id_empresa);
+		if($result>=1)
+			{	echo "Exito!";	}
+		else
+			{	echo "Error!";	}
+    }
     public function cambiar_verificacion($id_empresa,$verificada=0)
     {    	
     	$this->verifyc_login();
@@ -507,6 +527,15 @@ class Micro_admin extends CI_Controller
 		 	if(!$proveedor)
 		 	{	continue;	}
 			$out['empresa']=$this->empresa->get($proveedor->id);
+			$tmp_categoria = 0;
+			foreach (explode('|',$out['empresa']->categorias) as $key => $value) 
+			{
+				if($value!="")
+					$tmp_categoria=$value;
+				if($tmp_categoria!=0)
+					break;
+			}
+			$out['empresa']->categoria=$tmp_categoria;
 			$out['usuario']=$this->usuarios->get($out['empresa']->usuario);
 			if($var){$datos['proveedores'][]=$out['empresa'];}
 			else{	$datos['proveedores'][]=$out;	}
@@ -800,10 +829,8 @@ class Micro_admin extends CI_Controller
 			echo "<CENTER><H3>Error, solicitud no encontrada, contacte la direción de tecnología</H3></CENTER>";
 		}
 		
-		$fecha_publicacion="".date("Y m d");
 		$solicitud_tmp=array('nombre'=>$solicitud->solicitud,
 							'subcategoria'=>$subcategoria,
-							'fecha_publicacion'=>"".date("Y m d"),
 							'empresa'=>$empresa,
 							'descripcion'=>$solicitud->descripcion,
 							'imagenes'=>'default.jpg',

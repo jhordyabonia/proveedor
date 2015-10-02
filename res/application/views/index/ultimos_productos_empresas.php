@@ -6,26 +6,26 @@
   <div class="col-md-12 contenedor_general">
     <div class="row seccionTresElem">
       <div class="row hidden-xs">
-        <div class="col-md-4 col-sm-4">
+        <div class="col-md-4 col-sm-4 hidden-xs hidden-sm" >
             <ul class="nav nav-tabs ult_prod_publi">
               <li role="presentation" class="active"> 
                 <p class="txtTab2" onclick="JavaScript:location.href='<?=base_url()?>listados/lista/default/productos'"> Últimos productos publicados </p></li>
             </ul>
           </div>
-          <div class="col-md-4 col-sm-4">
+          <div class="col-md-4 col-sm-4 hidden-xs hidden-sm">
             <ul class="nav nav-tabs ult_prod_soli">
               <li role="presentation" class="active"> 
                 <p class="txtTab1"> Últimos productos solicitados </p></li>
             </ul>
           </div>
-          <div class="col-md-4 col-sm-4">
+          <div class="col-md-4 col-sm-4 hidden-xs hidden-sm">
             <ul class="nav nav-tabs ult_emp_reg">
               <li role="presentation" class="active"> 
                 <p class="txtTab3" > Últimas empresas registradas </p></li>
             </ul>
           </div>
       </div>
-      <div class="row hidden-sm hidden-md hidden-lg">
+      <div class="row hidden-sm hidden-md hidden-lg hidden-xs hidden-sm">
         <ul class="nav nav-tabs" id="ultimosTabs">
           <li class="active"> <a href="#sol"> 
             <p class="txtTab1"> Últimos productos solicitados </p> </a> </li>
@@ -35,7 +35,7 @@
             <p class="txtTab3"> Últimas empresas registradas </p> </a> </li>
         </ul>
       </div>
-      <div class="row" style="margin: 0;">
+      <div class="row hidden-xs hidden-sm" style="margin: 0;">
         <div class="tab-content">
           <!-- <div class="col-md-12 col-sm-12 hidden-xs contene_boton">
             <div class="col-md-4 col-sm-4 contene_boton2">

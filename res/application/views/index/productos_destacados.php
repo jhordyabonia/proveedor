@@ -4,7 +4,7 @@
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
-<div class="content_destacados">
+<div class="content_destacados" class="hidden-sm hidden-md hidden-lg">
   <!--Pestaña-->
   <div class="col-md-12 contenedor_pestana">
     <div class="row">
