@@ -395,7 +395,7 @@ color:white;
 	</button>
 
 	Plantilla
-	<select name="plantilla" onclick="get_focus(false)" onchange="location.href='<?=base_url()?>micro_admin/test_envio/<?=$evento->id?>/'+this.value+'/<?=$solicitud->id?>'" >
+	<select name="plantilla" onclick="get_focus(false)" onchange="location.href='<?=base_url()?>micro_admin/test_envio/<?=$evento->id?>/'+this.value+'/<?=$id_preview?>'" >
 		<option value="0"></option>
 		<option value="0">Crear plantilla</option>
 		<?php foreach ($plantillas as $key => $value):?>
@@ -547,7 +547,10 @@ color:white;
 							<br>
 							<br>Lista de sestinatarios
 							<p >
-							 Aqui, se encuentran, precargados todos los correos de empresas platino de de la categoria: <?=$solicitud->nombre_categoria?>. Basta, tocar un correo de la lista, para eliminarlo de la lista.<br><br><br>
+							<?php if ($evento->id==1):?>Aqui, se encuentran, precargados todos los correos de empresas platino de de la categoria: <?=$solicitud->nombre_categoria?>. Basta, tocar un correo de la lista, para eliminarlo de la lista.<br><br><br>
+							<?php elseif ($evento->id==2):?>Aqui, se encuentra, precargado el correo de la ultima empresa registrada, tocar un correo de la lista, para eliminarlo de la lista.<br><br><br>
+							<?php else:?>Aqui, se encuentra, precargado el correo de la ultima empresa registrada, tocar un correo de la lista, para eliminarlo de la lista.<br><br><br>
+							<?php endif;?>
 							<select size="10" id="destinatarios" onchange="JavaScript:eliminar_destinatrio(this.value);" style="width: 260px;">
 								<?php foreach ($destinatarios as $key => $value)
 									{
@@ -555,8 +558,11 @@ color:white;
 									}
 								?>
 						</select>
-						<br>			
-						Empresas platino; <?=$solicitud->nombre_categoria?>	
+						<br>	
+						<?php if ($evento->id==1):?>Empresas platino; <?=$solicitud->nombre_categoria?>	
+						<?php elseif ($evento->id==2):?>	Otros correos
+						<?php else:?>	Otros correos
+						<?php endif;?>
 						<select id="nombres_destinatarios" name="destinatarios[]" onchange="JavaScript:agregar_destinatrio(this.value)" onclick="get_focus(false)" style="width: 260px;">
 								<option value="--">Agragar destinatario</option>
 								<?php foreach ($nombres_destinatarios as $key => $value):?>
@@ -567,7 +573,7 @@ color:white;
 
 
 <?php $attribbs=array('id'=>"formulario_mensaje",'novalidate' => 'novalidate');?>
-<?=form_open_multipart('micro_admin/enviar/'.$solicitud->id,$attribbs)?>
+<?=form_open_multipart('micro_admin/enviar/'.$id_preview,$attribbs)?>
 <input type="hidden" name="mensaje" id="mensaje">
 <?= form_close() ?>
 <script type="text/javascript">

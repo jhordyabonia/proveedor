@@ -4,16 +4,35 @@
 	margin-left: 2px!important;
 	padding-top: 10px!important;
 }
+.element .badge{
+	color:#fff!important;
+	background-color: orange!important;
+}
 .elemento .color_fondo{
 	background: #F7F7F7!important;
 	padding-left: 0;
   	padding-right: 0;
 }
+
+@media (max-width: 450px){
+	
 .elemento .div_resultado{
 	border-bottom: 15px solid #F7F7F7;
   	border-right: 15px solid #F7F7F7;
 	background: white;
-	height: 265px;
+	max-height: 335px!important;
+}
+}
+
+@media (min-width: 600px){
+
+.elemento .div_resultado{
+	border-bottom: 15px solid #F7F7F7;
+  	border-right: 15px solid #F7F7F7;
+	background: white;
+	min-height: 235px;
+	max-height: 270px;
+}
 }
 .elemento .div_resultado_proveedor{
 	border-bottom: 10px solid #F7F7F7;
@@ -40,13 +59,6 @@
     margin: 0 0 10px;
 }
 
-.elemento .categorias{
-	min-height: 600px;
-	padding-left: 0;
-	padding-right: 0;
-	padding-top: 45px;
-	background: white;
-}
 .elemento .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
 	color: #7F7F7F;
 	cursor: default;
@@ -85,6 +97,30 @@
 }
 .elemento .contenedor_tabs{
 	line-height: 1em;
+}
+
+@media (max-width: 320px){	
+	.div_categorias
+	{
+		padding-left: 0px !important;
+		padding-right:15px !important;
+	}
+}
+
+@media (min-width: 720px){
+	.div_categorias
+	{
+		padding-left: 0px !important;
+		padding-right:15px !important;
+	}
+
+	.elemento .categorias{
+		min-height: 600px;
+		padding-left: 0;
+		padding-right: 0;
+		padding-top: 45px;
+		background: white;
+	}
 }
 .div_productos
 {
@@ -318,6 +354,7 @@
 	vertical-align: middle;
 }
 .div_productos .img_imagen{
+	display: center;
 	max-width: 175px;
 	max-height: 155px;
 }

@@ -124,7 +124,7 @@
 
       <div class="col-md-4 col-sm-12 col-xs-12 form_botones">
         <div class="col-md-6 col-sm-12 col-xs-12 contenedor_publicar_producto hidden-md hidden-lg visible-xs visible-sm">
-            <button class="btn btn-primary btn_formulario_cotizaciones"><i class="fa fa-file-text ico_producto"></i><p class="texto_cotizacion">SOLICITAR COTIZACIÓN</p></button>
+            <button class="btn btn-primary btn_formulario_cotizaciones" data-toggle="modal" data-target="#asistentes_proveedor_popup"><i class="fa fa-file-text ico_producto"></i><p class="texto_cotizacion">SOLICITAR COTIZACIÓN</p></button>
         </div>
 
         <div class="col-md-6 col-sm-12 col-xs-12 contenedor_ver_categorias hidden-md hidden-lg visible-xs visible-sm">

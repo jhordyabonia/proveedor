@@ -20,7 +20,9 @@
 		                </div>
 		            </li>
 		        <?php endforeach;?>
-		        <li><div class="item"></div></li>
+		        <li>
+		        	<div class="item"></div>
+		    	</li>
 				</ul>				
 			</div>
 			<div class="fondo_btn_todos">

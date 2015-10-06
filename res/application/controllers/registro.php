@@ -24,6 +24,8 @@ class Registro extends CI_Controller {
 		$this->load->model('new/Municipio_model','municipio');
 		$this->load->model('new/Departamento_model','departamento');
 		$this->load->model('new/Categoria_model','categoria');
+		$this->load->model('new/Evento_model','evento');
+		$this->load->model('new/Plantilla_model','plantilla');
 	}
 
 	/////funcion para llamar la pagina index
@@ -100,6 +102,27 @@ class Registro extends CI_Controller {
 	}
 
 
+	function bienvenida($datos)
+	{		
+		$evento=$this->evento->get(2);
+		$plantilla=$this->plantilla->get($evento->plantilla);
+		$mensaje=$this->load->view('plantillas/'.$plantilla->nombre, $datos,TRUE);
+
+		$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+		$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		$this->email->to($datos['email']);
+		$this->email->subject("Se ha registrado una nueva empresa");
+		$this->email->message($mensaje);
+		$this->email->send();
+
+		//echo @$mensaje;
+	}
+
 	function reportar_registro($datos)
 	{
 		$mensaje="<B>Nuevo registro!!!</B><BR>";
@@ -111,6 +134,7 @@ class Registro extends CI_Controller {
 		$mensaje.="<TR><th align='left'>Email:<td align='left'><I>".$datos['email']."</I>";
 		$mensaje.="<TR><th align='left'>Telefono:<td align='left'><I>".$datos['telefono']."</I>";
 		$mensaje.="</TABLE>";
+		
 		$config['protocol'] = 'sendmail';
 		$config['mailpath'] = '/usr/sbin/sendmail';
 		$config['charset'] = 'utf-8';
@@ -123,7 +147,6 @@ class Registro extends CI_Controller {
 		$this->email->message($mensaje);
 		$this->email->send();
 	}
-
 
 	function insert()
 	{
@@ -149,9 +172,12 @@ class Registro extends CI_Controller {
 		//Datos de Empresa
 		$datos_empresa['categorias']=$this->input->post('categorias');
 		$categorias_tmp="38|";
+		$bienvenida=false;
 		foreach ($datos_empresa['categorias'] as $key => $value)
 		{
 			$categorias_tmp.='|'.$value;
+			if($value=='42')
+				$bienvenida=true;
 		}
 		$datos_empresa['categorias']=$categorias_tmp;
 		$datos_empresa['nit'] = $this->input->post('nit');
@@ -178,6 +204,8 @@ class Registro extends CI_Controller {
 
 		#$this->crear_cuenta($id_unic);
 		$this->reportar_registro(array_merge($datos_empresa,$datos_usuario));
+		if($bienvenida)
+		{$this->bienvenida(array_merge($datos_empresa,$datos_usuario));}
 			
 		$this->load->model('new/usuarios_model','usuarios');
 		#$this->load->model('logueo_model');

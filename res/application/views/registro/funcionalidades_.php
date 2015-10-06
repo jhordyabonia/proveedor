@@ -9,7 +9,7 @@
                     var prod_prin;
                     var prod_int;
                     var categorias= Array();
-                    categorias[0]=42;
+                    categorias[0]=38;
                     paso=1; 
                     function iniciar_registro()
                     {

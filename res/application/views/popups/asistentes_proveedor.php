@@ -103,7 +103,7 @@
 
                  <?php if($datos->campos!=str_replace('email',"",$datos->campos)):?>
 
-                  <label for="email" class="label_modal_email"><?=$datos->titulos['email']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="email" class="label_modal_email hidden-xs hidden-sm"><?=$datos->titulos['email']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
 
                   <div class="input-group">
 
@@ -113,7 +113,7 @@
 
                     </span>
 
-                    <input type="email" class="form-control tam_caja" placeholder="" name="email" value="" required>
+                    <input type="email" class="form-control tam_caja" placeholder="<?=$datos->titulos['email']?>" name="email" value="" required>
 
                   <input type="hidden" name="tipo" value="">
 
@@ -123,7 +123,7 @@
 
                  <?php if($datos->campos!=str_replace('nombre', "",$datos->campos)):?>
 
-                 <label for="Producto" class="label_modal"><?=$datos->titulos['nombre']?>:<span class="fa fa-asterisk asterisk_label"></span></label><br>
+                 <label for="Producto" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['nombre']?>:<span class="fa fa-asterisk asterisk_label"></span></label><br>
 
                   <div class="input-group producto_insumo">
 
@@ -133,7 +133,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control tam_caja" placeholder="" name="solicitud" value="" required>
+                    <input type="text" class="form-control tam_caja" placeholder="<?=$datos->titulos['nombre']?>" name="solicitud" value="" required>
 
                   </div> 
 
@@ -141,7 +141,7 @@
 
                  <?php if($datos->campos!=str_replace('cantidad',"",$datos->campos)):?>
 
-                  <label for="cantidad" class="label_modal"><?=$datos->titulos['cantidad']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="cantidad" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['cantidad']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
 
                   <div class="input-group">
 
@@ -151,7 +151,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control texto_cantidad tam_caja" placeholder="" name="cantidad_requerida" value="" required>
+                    <input type="text" class="form-control texto_cantidad tam_caja" placeholder="<?=$datos->titulos['cantidad']?>" name="cantidad_requerida" value="" required>
 
                   </div>
 
@@ -159,11 +159,11 @@
 
                  <?php if($datos->campos!=str_replace('descripción',"",$datos->campos)):?>
 
-                  <label for="mensaje" class="label_modal"><?=$datos->titulos['descripción']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="mensaje" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['descripción']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
 
                   <div class="col-xs-12 input-group">
 
-                    <textarea class="form-control caja_mensaje" name="descripcion" rows="4" required></textarea>
+                    <textarea class="form-control caja_mensaje" placeholder="<?=$datos->titulos['descripción']?>" name="descripcion" rows="4" required></textarea>
 
                   </div>
 
@@ -171,7 +171,7 @@
 
                  <?php if($datos->campos!=str_replace('precio',"",$datos->campos)):?>
 
-                  <label for="precio" class="label_modal"><?=$datos->titulos['precio']?>:</label>
+                  <label for="precio" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['precio']?>:</label>
 
                   <div class="input-group">
 
@@ -181,7 +181,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control texto_precio tam_caja" placeholder="" name="precio" value="">
+                    <input type="text" class="form-control texto_precio tam_caja" placeholder="<?=$datos->titulos['precio']?>" name="precio" value="">
 
                   <input type="hidden" name="tipo" value="">
 
@@ -191,7 +191,7 @@
 
                  <?php if($datos->campos!=str_replace('pago',"",$datos->campos)):?>
 
-                  <label for="forma_pago" class="label_modal"><?=$datos->titulos['pago']?>:</label>
+                  <label for="forma_pago" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['pago']?>:</label>
 
                   <div class="input-group">
 
@@ -203,7 +203,7 @@
 
                     <select name="pago" class="form-control formas_de_pago">
 
-                      <option selected value="No seleccionado"> Elige una opción </option>
+                      <option selected value="No seleccionado"> <?=$datos->titulos['pago']?></option>
 
                       <option value="Transferencia bancaria">Transferencia bancaria</option>
 
@@ -225,7 +225,7 @@
 
                  <?php if($datos->campos!=str_replace('empresa',"",$datos->campos)):?>
 
-                  <label for="empresa" class="label_modal"><?=$datos->titulos['empresa']?>:</label>
+                  <label for="empresa" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['empresa']?>:</label>
 
                   <div class="input-group">
 
@@ -235,7 +235,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control texto_empresa tam_caja" placeholder="" name="nombre_empresa" value="">
+                    <input type="text" class="form-control texto_empresa tam_caja" placeholder="<?=$datos->titulos['empresa']?>" name="nombre_empresa" value="">
 
                   <input type="hidden" name="tipo" value="">
 
@@ -245,7 +245,7 @@
 
                  <?php if($datos->campos!=str_replace('contacto',"",$datos->campos)):?>
 
-                  <label for="empresa" class="label_modal"><?=$datos->titulos['contacto']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="empresa" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['contacto']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
 
                   <div class="input-group">
 
@@ -255,7 +255,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control tam_caja" placeholder="" name="nombres" value="" required>
+                    <input type="text" class="form-control tam_caja" placeholder="<?=$datos->titulos['contacto']?>" name="nombres" value="" required>
 
                   <input type="hidden" name="tipo" value="">
 
@@ -265,7 +265,7 @@
 
                  <?php if($datos->campos!=str_replace('teléfono', "",$datos->campos)):?>
 
-                  <label for="empresa" class="label_modal"><?=$datos->titulos['teléfono']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="empresa" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['teléfono']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
 
                   <div class="input-group">
 
@@ -275,7 +275,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control tam_caja" placeholder="" name="telefono" value="" required>
+                    <input type="text" class="form-control tam_caja" placeholder="<?=$datos->titulos['teléfono']?>" name="telefono" value="" required>
 
                   <input type="hidden" name="tipo" value="">
 
@@ -285,7 +285,7 @@
 
                  <?php if($datos->campos!=str_replace('ciudad', "",$datos->campos)):?>
 
-                  <label for="empresa" class="label_modal"><?=$datos->titulos['ciudad']?><span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="empresa" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['ciudad']?><span class="fa fa-asterisk asterisk_label"></span></label>
 
                   <div class="input-group">
 
@@ -295,7 +295,7 @@
 
                     </span>
 
-                    <input type="text" class="form-control texto_ciudad tam_caja" placeholder="" name="ciudad_entrega" value="" required>
+                    <input type="text" class="form-control texto_ciudad tam_caja" placeholder="<?=$datos->titulos['ciudad']?>" name="ciudad_entrega" value="" required>
 
                   <input type="hidden" name="tipo" value="">
 

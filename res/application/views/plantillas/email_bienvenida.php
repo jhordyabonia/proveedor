@@ -2,7 +2,7 @@
   <table style="max-width: 300px;  margin: auto; border-radius: 7px; text-align: center;">
     <tr>
       <td>
-        <img style="max-width: 600px;" src="<?php echo img_url() ?>header-email-platino.png" alt="">
+        <img style="max-width: 600px;" src="<?php echo img_url() ?>header-email.png" alt="">
       </td>
     </tr>
     <tr>

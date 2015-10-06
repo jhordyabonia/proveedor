@@ -404,6 +404,7 @@ textarea:focus ~ .highlight {
 
 
 /* Responsive del boton formulario solicitudes */
+
 @media (max-width: 320px){
 	.btn-solicitar{
 		background-color: #ff8100;

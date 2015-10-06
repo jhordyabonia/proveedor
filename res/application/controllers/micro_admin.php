@@ -185,42 +185,102 @@ class Micro_admin extends CI_Controller
 		echo "<H3>Se enviaron ".$count." mensajes, sactisfactoriamente</H3>";
 		echo "<br><a href='".$_SERVER['HTTP_REFERER']."Volver'</a>";    
     } 
-	public function test_envio($id_evento=1,$id_plantilla=1,$id_solictud=1)
+
+    public function obtener_datos_plantilla($id_evento=1,$id_preview=NULL)
+	{
+		$out= array();
+		switch ($id_evento) 
+		{
+			case 1://solicitud
+				$out['solicitud']=$this->asistentes_proveedor->get($id_preview);
+				$out['solicitud']->nombre_categoria=$this->categoria->get($out['solicitud']->categoria)->nombre_categoria;
+		
+				$empresas_categoria=$this->empresa->buscar2("",$out['solicitud']->categoria);
+				if(!$empresas_categoria)
+					{$empresas_categoria=array();}
+				$destinatarios=NULL;
+				$nombres_destinatarios=NULL;
+				foreach (clear_array($empresas_categoria) as $key => $value) 
+				{
+					$empresa=$this->empresa->get(array('id'=>$value->id,'membresia'=>3));
+					if($empresa)
+						{
+							$usuario_tmp=$this->usuarios->get($empresa->usuario);
+							$destinatarios[]=$usuario_tmp->email;
+							$nombres_destinatarios[]=$usuario_tmp->nombres;
+						}
+					$empresa=NULL;
+				} 
+
+				$out['destinatarios']=$destinatarios;		
+				$out['nombres_destinatarios']=$nombres_destinatarios;
+				break;
+			case 2://usuario-empresa
+				if($id_preview==NULL)
+				{$empresa=$this->empresa->get(10026);}
+				else{$empresa=$this->empresa->get($id_preview);}
+				$usuario=$this->usuarios->get($empresa->usuario);
+				$out['nit']=$empresa->nit;
+				$out['nombre']=$empresa->nombre;
+				$out['nombres']=$usuario->nombres;
+				$out['email']=$usuario->email;
+				$out['telefono']=$usuario->telefono;				
+
+				$out['destinatarios'][]=$out['email'];		
+				$out['nombres_destinatarios'][]=$out['nombres'];
+				break;			
+			case 4://solicitud
+				$out['solicitud']=$this->asistentes_proveedor->get($id_preview);
+				$out['solicitud']->nombre_categoria=$this->categoria->get($out['solicitud']->categoria)->nombre_categoria;
+		
+				$empresas_categoria=$this->empresa->buscar2("",$out['solicitud']->categoria);
+				if(!$empresas_categoria)
+					{$empresas_categoria=array();}
+				$destinatarios=NULL;
+				$nombres_destinatarios=NULL;
+				foreach (clear_array($empresas_categoria) as $key => $value) 
+				{
+					$empresa=$this->empresa->get(array('id'=>$value->id,'membresia'=>3));
+					if($empresa)
+						{
+							$usuario_tmp=$this->usuarios->get($empresa->usuario);
+							$destinatarios[]=$usuario_tmp->email;
+							$nombres_destinatarios[]=$usuario_tmp->nombres;
+						}
+					$empresa=NULL;
+				} 
+
+				$out['destinatarios']=$destinatarios;		
+				$out['nombres_destinatarios']=$nombres_destinatarios;
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+		return $out;
+
+	}
+	public function test_envio($id_evento=1,$id_plantilla=1,$id_preview=NULL)
 	{
 		$this->verifyc_login();
-		$data['solicitud']=$this->asistentes_proveedor->get($id_solictud);
+		$data=$this->obtener_datos_plantilla($id_evento,$id_preview);
 		$plantilla=$this->plantilla->get($id_plantilla);
 		$evento=$this->evento->get($id_evento);
+		if($evento->id!=$plantilla->evento)
+		$plantilla=$this->plantilla->get($evento->plantilla);
 
-		$empresas_categoria=$this->empresa->buscar2("",$data['solicitud']->categoria);
-		if(!$empresas_categoria)
-			{$empresas_categoria=array();}
-		$destinatarios=NULL;
-		$nombres_destinatarios=NULL;
-		foreach (clear_array($empresas_categoria) as $key => $value) 
-		{
-			$empresa=$this->empresa->get(array('id'=>$value->id,'membresia'=>3));
-			if($empresa)
-				{
-					$usuario_tmp=$this->usuarios->get($empresa->usuario);
-					$destinatarios[]=$usuario_tmp->email;
-					$nombres_destinatarios[]=$usuario_tmp->nombres;
-				}
-			$empresa=NULL;
-		} 
 		$data['plantillas']=$this->plantilla->get_all(array('evento'=>$id_evento));
 		$data['id_plantilla']=$id_plantilla;
 		$data['eventos']=$this->evento->get_all();
 		$data['evento']=$evento;
 		$data['plantilla']=$plantilla;
+		$data['id_preview']=$id_preview;
 		$data['titulo']="Administrador";
 		$id_usuario=$this->session->userdata('id_usuario');
 		$data['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
 		$data['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
 		$data['administrador']=$data['usuario']->permisos;
-		$data['solicitud']->nombre_categoria=$this->categoria->get($data['solicitud']->categoria)->nombre_categoria;
-		$data['destinatarios']=$destinatarios;		
-		$data['nombres_destinatarios']=$nombres_destinatarios;
 		$this->load->view('template/head', $data,FALSE);
 		$this->load->view('template/javascript', FALSE);
 		$this->load->view('tablero_usuario/header', $data, FALSE);

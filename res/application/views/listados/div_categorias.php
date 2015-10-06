@@ -3,7 +3,7 @@
 <!-- Menu lateral de categorias-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">
 
-						<div class="row" style="padding-left: 0px !important;padding-right:15px !important;">
+						<div class="row div_categorias">
 							<div class="col-md-12">
 								<div class="row">
 									<div class="col-md-12 content_title">

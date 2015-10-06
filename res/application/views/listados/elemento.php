@@ -44,17 +44,17 @@
 		  <ul class="nav nav-tabs" role="tablist">
 		    <li role="presentation" class="<?=$active_div_productos?>" >
 		    	<a href="#productos" onclick="JavaScript:cambiar_seo('productos')" aria-controls="home" role="tab" data-toggle="tab">
-		    		Productos
+		    		Productos <span class="badge"><?=$page_count*25?></span>
 		    	</a>
 		    </li>
 		    <li role="presentation" class="<?=$active_div_solicitudes?>">
 		    	<a href="#solicitudes" onclick="JavaScript:cambiar_seo('solicitudes')" aria-controls="solicitudes" role="tab" data-toggle="tab">
-		    		Solicitudes
+		    		Solicitudes <span class="badge"><?=$page_count3*25?></span>
 		    	</a>
 		    </li>
 		    <li role="presentation" class="<?=$active_div_proveedores?>">
 		    	<a href="#proveedores" onclick="JavaScript:cambiar_seo('proveedores')" aria-controls="proveedores" role="tab" data-toggle="tab">
-		    		Proveedores
+		    		Proveedores <span class="badge"><?=$page_count2*25?></span>
 		    	</a>
 		    </li>
 		  </ul>
