@@ -71,7 +71,11 @@ class Categoria extends CI_Controller {
         
         return;
     }
-    public function ver($in=37, $in2=0, $div="productos", $page=0,$filtro=0,$tipo_filtro=0)
+    public function ver_sub($in2=0, $div="productos", $page=0,$filtro=0,$tipo_filtro=0)
+    {
+        $this->ver(0,$div,$page,$filtro,$tipo_filtro,$in2);
+    }
+    public function ver($in=37, $div="productos", $page=0,$filtro=0,$tipo_filtro=0, $in2=0)
     {   
         $data['div']=$div;
         $subcategoria=$in2;
@@ -91,6 +95,11 @@ class Categoria extends CI_Controller {
         }
         $categoria=$in;
 
+        $data['tipo_filtro']=$tipo_filtro;
+        $data['filtro']=$filtro;
+        $data['page']=$page;
+        $data['div']=$div;
+
         $data['categorias']=$this->categoria->get_all();
         $data['subcategorias']=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
         
@@ -109,19 +118,7 @@ class Categoria extends CI_Controller {
         $data['empresas']=$this->empresa->obtener_ultimos(5);
  
         $solo_captura=FALSE;
-        /*
-        if((count($data['productos_destacados_1'])+count($data['productos_destacados_2'])+count($data['productos_destacados_3'])) < 2
-            ||count($data['productos']) < 2
-            ||count($data['solicitudes']) < 2
-            ||count($data['empresas']) < 2)
-        {
-            $solo_captura=TRUE;
-        }
-        */
-//add's categorias
-        $data['nom_producto']="";
-        $data['div']="";
-
+        
         $productos=$this->producto->buscar("",$categoria,$subcategoria);
         $solicitudes=$this->solicitud->buscar("",$categoria,$subcategoria);
         $proveedores=$this->empresa->buscar("",$categoria);
@@ -130,7 +127,6 @@ class Categoria extends CI_Controller {
         $data['url_publicar_solicitud']=base_url()."publicar_oferta";
         $this->breadcrumb->add('"' . $data['nom_producto'] . '"', base_url() . '');
 
-        $data['page']=0; 
         $data['page_count']=0;
         $data['page_count2']=0;
         $data['page_count3']=0;

@@ -130,6 +130,8 @@ class Producto extends CI_Controller
 	public function verificar_logged($id_producto=NULL)
 	{
 		$id = $this->session->userdata('id_usuario');
+		if($this->session->userdata('permisos')==1)
+			{return TRUE;}
 		if($id_producto==NULL)
 		{
 			if(!$id=='')
@@ -298,6 +300,7 @@ class Producto extends CI_Controller
 		}
 
 		$datos=$this->obtener_datos_form();
+		$datos['empresa']=$this->producto->get($datos['id'])->empresa;
 		/*
 		echo "<PRE>";
 		print_r($datos);

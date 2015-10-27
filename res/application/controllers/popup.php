@@ -45,7 +45,6 @@ class Popup extends CI_Controller
 		$datos['forma_de_pago'] = $this->input->post('pago');
 		$datos['email'] = $this->input->post('email');
 		$datos['nombres'] = $this->input->post('nombres');
-		$datos['apellidos'] = $this->input->post('apellidos');
 		$datos['telefono'] = $this->input->post('telefono');
 		$datos['nombre_empresa'] = $this->input->post('nombre_empresa');
 		$datos['ciudad_entrega'] = $this->input->post('ciudad_entrega');
@@ -54,7 +53,7 @@ class Popup extends CI_Controller
 		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('categoria_model','categoria');
 		$nombre_categoria=$this->categoria->get($datos['categoria'])->nombre_categoria;
-		$this->asistentes_proveedor->insert($datos);
+		$id_solicitud=$this->asistentes_proveedor->insert($datos);
 
 		$remitente =$this->remitente->get(array('correo' =>$datos['email']));
 		if($remitente)
@@ -106,8 +105,8 @@ class Popup extends CI_Controller
 		{
 			$this->session->set_flashdata('mensaje_enviado', "DONE");
 		}
-		$this->session->set_flashdata('mensaje_enviado', "DONE");
-		redirect($_SERVER['HTTP_REFERER']);
+		#$this->session->set_flashdata('mensaje_enviado', "DONE");
+		redirect(base_url()."registro/registro_automatico/".$id_solicitud);
     }
     
     public function auto_launch($view,$launcher=FALSE)

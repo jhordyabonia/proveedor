@@ -1,0 +1,137 @@
+.contenido_contactenos{
+	width: 100%;
+    height: 69px;
+    border-bottom: 5px solid #ccc;
+    margin-top: 33px;
+}
+
+.item_contactenos > li{
+	display: inline-block;
+}
+
+.texto_contacto{
+	color: #111 !important;
+	font-size: 20px;
+}
+
+.item_contactenos{
+	list-style: none;
+    padding: 0;
+    padding-left: 4px;
+    padding-right: 7px;
+    margin-top: 13px;
+}
+.contenido_info_contacto{ 
+	width: 100%;
+	height: auto;
+	background-color: whitesmoke;
+	margin-right: 0;
+    margin-left: 0;
+}
+.info_contacto{
+    width: 862px;
+    height: auto;
+    background-color: #fff;
+    margin-left: 4px;
+    margin-bottom: 28px;
+    margin-top: 7px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 22px;
+}
+.title_info{
+    background-color: whitesmoke;
+    height: 44px;
+    padding-left: 17px;
+}
+.title_info > span, .title_info > p{
+	display: inline-block;
+}
+.title_texto_info{
+    margin-bottom: 0;
+    background-color: whitesmoke;
+    height: 44px;
+    line-height: 2;
+    font-size: 21px;	
+}
+.icono_info{
+	font-size: 16px;
+	color: orange;
+}
+.text_info{
+	padding-left: 17px;
+	font-size: 17px;
+}
+.conten_into{
+	margin-top: 11px;
+}
+.texto_tag{
+	width: 100%;
+	height: 108px;
+}
+.etiquetas_tag{
+    width: 100%;
+    height: 153px;
+    border: 23px solid whitesmoke;
+    line-height: 1;
+    padding-top: 38px;
+    padding-left: 15px;
+    color: #ff7f27;
+    font-size: 16px;
+}
+.text-tag{
+    padding-top: 81px;
+    font-size: 19px;
+    padding-left: 35px;
+    font-weight: bold;
+}
+.texto-tag{
+    margin: 0;
+}
+.item_redes_sociales > li{
+    display: inline-block;
+}
+.item_redes_sociales{
+    padding-left: 8px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    padding-right: 28px;
+}
+.icon_redes_sociales{
+    font-size: 20px !important;
+    color: #999999;
+}
+.nombre_redes{
+    color: #111;
+    font-size: 16px !important;
+}
+.nombre_redes:hover{
+    color: #111;
+    text-decoration: none;
+}
+
+.boton-solicitar-cotizacion{
+    margin-top: 20px;
+    margin-bottom: 21px;
+    padding-left: 20px;
+    padding-right: 45px;
+}
+.btn-cot-soli{
+    width: 100%;
+    height: 59px;
+    background-color: #ff8100;
+    color: #fff;
+}
+.btn-cot-soli:hover, .enlace_soli_cot:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.icono_button_soli{
+    font-size: 29px !important;
+}
+.enlace_soli_cot{
+    color: #fff;
+    font-size: 20px;
+    padding-left: 29px;
+}

@@ -1,0 +1,434 @@
+.nuestra_empresa{
+    width: 100%;
+    height: 83px;
+    background-color: #fff;
+    border-bottom: 5px solid #ccc;
+    padding-left: 92px;
+}
+.membresias_proveedor{
+    width: 100%;
+    height: 84px;
+    background-color: #fff;
+    border-bottom: 5px solid #ccc;
+    padding-left: 92px;
+}
+.container_info_membresias{
+    background-color: whitesmoke;
+    padding: 25px 139px;
+}
+.texto-nuestra_empresa, .texto-nuestra_empresa:hover{
+    font-size: 22px;
+    color: #111;
+    text-decoration: none;
+}
+.list-title{
+    list-style: none;
+    padding-left: 0;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 87px;
+    margin-bottom: 0;
+}
+.list-title-membresia{
+    list-style: none;
+    padding-left: 0;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 41px;
+    margin-bottom: 0;
+}
+.info_nuestra_empresa {
+    background-color: whitesmoke;
+    padding: 25px 139px;
+}
+.container_nues_empresa {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.container_membresia{
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.img_membresia{
+    width: 70px;
+    display: inline-block;
+}
+.texto-membresia{
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 17px;
+    position: relative;
+    top: 2px;
+    left: 6px;
+}
+li #icmem{
+    color: #ff7f27;
+    font-size: 28px;
+}
+.aviso_legal{
+    font-size: 18px;
+    color: #ff7f27;
+    display: inline-block;
+}
+.ico_aviso{
+    margin-right: 6px;
+}
+.img_veri{
+    width: 41px;
+    padding-top: 25px;
+    display: inline-block;    
+}
+.aportado{
+    font-size: 17px;
+    position: relative;
+    top: -19px;
+    left: 25px;
+    margin-bottom: -5px;
+}
+.texto_descrip_mem{
+    font-size: 17px;
+    color: #111;
+}
+.texto_nom_empre {
+    font-size: 33px;
+    padding-left: 12px;
+    padding-top: 25px;
+    display: inline-block;
+}
+.texto-verificada{
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 17px;
+    position: relative;
+    top: 11px;
+    left: 12px;    
+}
+.container_mision, .container_vision{
+    
+    border-bottom: 1px solid #ccc;
+}
+.container_aviso_legal{
+    padding: 15px;
+}
+.conten_info {
+    padding-left: 25px;
+}
+.inline-block {
+    display: inline-block;
+}
+.tipo_empresa {
+    position: relative;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    left: -11px;
+    width: 177px;
+}
+.titulo-info{
+    background-color: whitesmoke;
+    height: 44px;
+    padding-left: 17px;    
+}
+.itm-title{
+    margin-bottom: 0;
+    background-color: whitesmoke;
+    height: 44px;
+    line-height: 2;
+    font-size: 20px;    
+}
+.itm-cont{
+    padding-left: 17px;
+    font-size: 15px;
+}
+.info .tipo_empresa .style_empresa {
+    width: 56px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+.info .tipo_empresa .inline-block {
+    display: inline-block;
+}
+.title-mision{
+    width: 100%;
+    height: 84px;
+    background-color: #fff;
+    border-bottom: 5px solid #ccc;
+    padding-left: 92px;
+}
+.list-title-mision{
+    list-style: none;
+    padding-left: 1px;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 75px;
+    margin-bottom: 0;
+}
+.texto-mision{
+    font-size: 22px;
+    color: #111;
+    text-decoration: none;
+}
+.texto-mision:hover{
+    font-size: 22px;
+    color: #111;
+    text-decoration: none;
+}
+.title-mi{
+    font-size: 22px;
+    color: orange;
+}
+.texto_mision{
+    font-size: 16px;
+    padding-right: 12%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.img_sonrisa{
+    position: relative;
+    top: -9px;
+    left: 43px;
+}
+.conten_mision{
+    background-color: whitesmoke;
+    padding: 25px 139px;
+}
+.contactenos{
+
+}
+.title-contactenos{
+    width: 100%;
+    height: 84px;
+    background-color: #fff;
+    border-bottom: 5px solid #ccc;
+    padding-left: 92px;
+}
+.list-title-contactenos{
+    list-style: none;
+    padding-left: 1px;
+    padding-top: 24px;
+    margin-left: 16px;
+    margin-right: 75px;
+    margin-bottom: 0;
+}
+.conten_contac{
+    background-color: whitesmoke;
+    padding: 25px 139px;
+}
+.info_contactenos{    
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px 50px 15px 15px;
+}
+.texto-contactenos, .texto-contactenos:hover{
+    font-size: 22px;
+    color: #111;
+    text-decoration: none;
+}
+.contenedor-mision{
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.style-info {
+    display: inline-block;
+    margin-left: 37px;
+}
+.verificacion {
+    position: relative;
+    border: 1px solid #ccc;
+    left: -11px;
+    width: 177px;
+}
+.info .verificacion .style_verificacion {
+    width: 35px;
+    display: inline-block;
+    margin-right: 17px;
+    margin-left: 20px;
+    margin-top: 12px;
+    margin-bottom: 7px;
+}
+.info .verificacion .inline-block {
+    display: inline-block;
+}
+.boton_descargar {
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+.ico_descar {
+    display: inline-block;
+    color: #ff7f27;
+    font-size: 25px;
+    position: relative;
+    top: 8px;
+}
+.texto_des_cata {
+    margin-bottom: 0;
+    display: inline-block;
+    font-size: 20px;
+    position: relative;
+    top: 5px;
+    color: #ff7f27;
+    margin-left: 5px;
+}
+.texto1 {
+    font-weight: bold;
+    color: #7f7f7f;
+    font-size: 15px;
+}
+.text02 {
+    font-weight: normal;
+    color: #ff7f27;
+    text-decoration: none;
+    font-size: 16px;
+}
+.texto_descripcion {
+    text-align: justify;
+    font-size: 16px;
+}
+.botones_contac {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    display: inline-block;
+}
+.llamar_empresa {
+    background-color: #ff7f27;
+    color: #fff;
+    width: 243px;
+    height: 45px;
+    margin-right: 10px;
+}
+.icon_compartir {
+    display: inline-block;
+    font-size: 22px;
+}
+.texto_contacto {
+    display: inline-block;
+    margin-bottom: 0;
+    position: relative;
+    top: -3px;
+    font-size: 17px;
+}
+.contactar_empresa {
+    background-color: #ff7f27;
+    color: #fff;
+    width: 243px;
+    height: 45px;
+}
+.redes_compartir {
+    margin-top: -13px;
+    margin-bottom: 20px;
+}
+.style-sonisa {
+    position: relative;
+    top: 37px;
+    left: 10px;
+}
+.redes_compartir > p, .redes_compartir > ul {
+    display: inline-block;
+    padding: 0;
+    padding-right: 4px;
+}
+.redes_compartir > p, .redes_compartir > ul {
+    display: inline-block;
+    padding: 0;
+    padding-right: 4px;
+}
+.list_redes {
+    list-style: none;
+}
+.list_redes > li {
+    display: inline-block;
+    padding-right: 6px;
+}
+.icono_redes {
+    font-size: 22px !important;
+    color: #999999;
+}
+.tipo_emp{
+    width: 66px;
+    position: relative;
+    top: 19px;
+    left: 20px;
+}
+.veri{
+    width: 38px;
+    position: relative;
+    top: 9px;
+    left: -13px;
+}
+.item_redes_soci > li{
+    display: inline-block;
+}
+.btn-solicitar-coti{
+    width: 637px;
+    height: 59px;
+    background-color: #ff7f27;
+    padding-top: 12px;
+
+}
+.icono-soli{
+    display: inline-block !important;
+    color: #fff;
+    font-size: 25px !important;
+    margin-right: 20px;
+}
+.texto_sol{
+    display: inline-block;
+    font-size: 19px;
+    font-weight: bold;
+    color: #fff;
+}
+.item_redes_soci{
+    padding-left: 8px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    padding-right: 28px;
+    list-style: none;    
+}
+.nom_redes{
+    color: #111;
+    font-size: 16px !important;    
+}
+.ico-redes{
+    font-size: 20px !important;
+    color: #999999;
+}
+.conten_solicitud{
+    text-align: center;
+}
+.conten_tag{
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+}
+.title-tag{
+    font-size: 22px;
+    padding-top: 37px;
+    padding-left: 130px;    
+}
+.cont-tags{
+    width: 100%;
+    height: 143px;
+    background-color: whitesmoke;
+    padding: 24px 143px;
+}
+.tags{
+    width: 100%;
+    height: 96px;
+    background-color: #fff;
+    padding: 26px 10px;
+}
+.texto_tag{
+    margin-bottom: 0;
+    color: orange;
+    font-size: 17px;
+    line-height: 1;
+}

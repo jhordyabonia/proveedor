@@ -7,7 +7,11 @@
 					<?php if(count($solicitud->imagenes)>0):?>
 						<a href="JavaScript:slider();" >
 						 <!--<img id="display" src="<?=base_url()?>uploads/Fileteadora_Industral_790.000_.jpg" class=" img_imagen img-responsive">-->
-						 <img id="display" src="<?=base_url()?>uploads/$solicitud->imagenes[0]?>" class=" img_imagen img-responsive">
+					<?php if(is_null($solicitud->imagenes[0])):?>
+						 <img id="display" src="<?=base_url()?>uploads/<?=$solicitud->imagenes[1]?>" class=" img_imagen img-responsive">
+					<?php else:?>
+						 <img id="display" src="<?=base_url()?>uploads/<?=$solicitud->imagenes[0]?>" class=" img_imagen img-responsive">
+					<?php endif;?>
 						</a>
 					<?php endif;?>
 				</div>

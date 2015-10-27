@@ -17,20 +17,36 @@ class Eliminar extends CI_Controller
 
 	public function producto($id='')
 	{
-		$this->producto->eliminar($id);
+		$this->producto->delete($id);
 	}
 	private function solicitud($id='')
 	{
-		$this->solicitud->eliminar($id);
+		$this->solicitud->delete($id);
 	}
 	public function empresa($id=FALSE)
 	{
 		$this->verifyc_login();
+		$productos=$this->producto->get_all(array('empresa'=>$id));
+		if($productos)
+		{
+			foreach ($productos as $key => $producto) 
+			{
+				$this->producto->delete($producto->id);
+			}
+		}
+		$solicitudes=$this->solicitud->get_all(array('empresa'=>$id));
+		if($solicitudes)
+		{
+			foreach ($solicitudes as $key => $solicitud) 
+			{
+				$this->solicitud->delete($solicitud->id);
+			}
+		}
 		if ($id) 
 		{
 			$id_usuario=$this->empresa->get($id)->usuario;
 			$this->empresa->delete($id);
-			$this->usuarios->get($id_usuario);
+			$this->usuarios->delete($id_usuario);
 		}
 
     	redirect($_SERVER['HTTP_REFERER']);

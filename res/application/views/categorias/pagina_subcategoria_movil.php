@@ -16,7 +16,7 @@
 			<ul>
 				<?php foreach ($subcategorias as $key => $subcategoria):?>
 					<li>
-						<a class="item_categoria" href="<?=base_url()?>categoria/ver/0/<?=$subcategoria->id_subcategoria?>"><?=$subcategoria->nom_subcategoria?>
+						<a class="item_categoria" href="<?=base_url()?>categoria/ver_sub/<?=$subcategoria->id_subcategoria?>"><?=$subcategoria->nom_subcategoria?>
 							<i class="fa fa-angle-right ico_item-cate"></i> 
 						</a>
 					</li>

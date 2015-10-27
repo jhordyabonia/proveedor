@@ -79,6 +79,11 @@ switch ($this->session->userdata('rol_usuario')) {
             $this->load->view('popups/launcher', array('popup'=>'popup_login'));
             $this->session->set_flashdata('reffer', $reffer);
         }
+        public function activar_cuenta($id)
+        {
+            $this->session->set_userdata('path_current',base_url()."tablero_usuario/activar_solicitud/".$id);
+            $this->index();
+        }
         public function login($reffer="tablero_usuario")
         {
                 $usuario = $this->input->post('usuario');
@@ -96,7 +101,8 @@ switch ($this->session->userdata('rol_usuario')) {
                     'is_logued_in'  =>    TRUE,
                     'id_usuario'    =>    $check_user->id,
                     'usuario'      =>    $check_user->usuario,
-                    'email'         =>    $check_user->email
+                    'email'         =>    $check_user->email,
+                    'permisos'      =>  $check_user->permisos
                     );        
                     $this->session->set_userdata($data);
                    // $this->index();

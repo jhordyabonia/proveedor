@@ -19,6 +19,7 @@ class Micro_admin extends CI_Controller
 		$this->load->model('new/Departamento_model','departamento'); 
 		$this->load->model('new/Municipio_model','municipio'); 
 		$this->load->model('new/Categoria_model','categoria'); 
+		$this->load->model('new/Subcategoria_model','subcategoria'); 
 		$this->load->model('new/Plantilla_model','plantilla'); 
 		$this->load->model('new/Evento_model','evento'); 
 		$this->load->model('new/Tipo_empresa_model','tipo_empresa'); 
@@ -55,6 +56,25 @@ class Micro_admin extends CI_Controller
 			$this->evento->update(array('plantilla'=>$tmp),$tmp);
 		}else {echo "Error durante el guardado de plantlla ".$nombre_plantilla;}
 	}
+
+	function envio_err()
+	{		
+		$mensaje=$this->load->view('plantillas/test', FALSE,TRUE);
+		/*$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+		$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		#$this->email->to('jeigl7@gmail.com');
+		$this->email->to('info@ombia.co');
+		$this->email->subject("Bienvenido a Proveedor.com.co");
+		$this->email->message($mensaje);
+		$this->email->send();*/
+		echo @$mensaje;
+	}
+
 
     function enviar($id_solictud)
     {
@@ -847,7 +867,6 @@ class Micro_admin extends CI_Controller
 		$datos['forma_de_pago'] = $this->input->post('pago');
 		$datos['email'] = $this->input->post('email');
 		$datos['nombres'] = $this->input->post('nombres');
-		$datos['apellidos'] = $this->input->post('apellidos');
 		$datos['telefono'] = $this->input->post('telefono');
 		$datos['nombre_empresa'] = $this->input->post('nombre_empresa');
 		$datos['categoria'] = $this->input->post('categoria');
@@ -934,7 +953,8 @@ class Micro_admin extends CI_Controller
 		  	if($usuario)
 		  	{	$mensajes[$key]->destinatario=$usuario->nombres;	}
 		  
-			if($key<($datos['page']*25))
+		  	/*
+			if($key<($datos['page']*75))
 			{  continue; }
 	  		if($datos['page']>0)
 			{
@@ -946,6 +966,7 @@ class Micro_admin extends CI_Controller
 				if($key>=25)	
 				 {break;}
 			}
+			*/
 			$datos['datos'][]=$mensaje;
 		}
 

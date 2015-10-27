@@ -26,6 +26,10 @@ class Registro extends CI_Controller {
 		$this->load->model('new/Categoria_model','categoria');
 		$this->load->model('new/Evento_model','evento');
 		$this->load->model('new/Plantilla_model','plantilla');
+		$this->load->model('new/Empresa_model','empresa');
+		$this->load->model('new/Usuarios_model','usuarios');
+		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
+		$this->load->model('crypter_model','crypter');
 	}
 
 	/////funcion para llamar la pagina index
@@ -42,6 +46,75 @@ class Registro extends CI_Controller {
 		$this->index();
 	}
 	
+	function registro_automatico($id)
+	{
+		$source=$this->asistentes_proveedor->get($id);
+		if($source->empresa!=0)
+			redirect($_SERVER['HTTP_REFERER']);
+
+		$registro=$this->usuarios->get(array('email'=>$source->email));		
+		
+		if($registro!=FALSE)
+			redirect($_SERVER['HTTP_REFERER']);
+
+		$datos_usuario['usuario'] = "proveedor".substr($this->crypter->encrypt(rand(5,25)), 7);
+		$password=$this->crypter->encrypt(rand(10,50));
+		$datos_usuario['email'] = $source->email;
+		$datos_usuario['password'] = md5($password);
+		$datos_usuario['rol'] = '';	
+		$datos_usuario['nombres']= $source->nombres;
+		$datos_usuario['cargo'] = '';
+		$datos_usuario['direccion'] = '';
+		$datos_usuario['departamento'] = 33;
+		$datos_usuario['ciudad'] = 1113;
+		$datos_usuario['web'] = '';
+		$datos_usuario['celular'] = '';
+		$datos_usuario['pais'] = 52;	
+		$datos_usuario['telefono'] = $source->telefono;
+		//Datos de Empresa
+		$datos_empresa['categorias']=$source->categoria.'|';
+		$datos_empresa['nit'] = '';
+		$datos_empresa['nombre'] =$source->nombre_empresa;
+		$datos_empresa['tipo'] = 1;
+		$datos_empresa['logo'] = "default.jpg";		
+		$datos_empresa['descripcion'] = "Empresa interesada en ".$this->categoria->get(38)->nombre_categoria;
+		$datos_empresa['productos_principales'] = '';
+		$datos_empresa['productos_de_interes'] = '';	
+		$id_registro=$this->usuarios->insert($datos_usuario);
+						
+		$datos_empresa['usuario'] = $id_registro;
+		$id_unic=$this->empresa->insert($datos_empresa);		
+		$this->asistentes_proveedor->update(array('empresa'=>$id_unic),$id);
+
+		#$this->crear_cuenta($id_unic);
+		#$this->reportar_registro(array_merge($datos_empresa,$datos_usuario));
+
+		$mensaje="<div style='max-width: 600px;'> <img style='max-width: 600px;' src='".img_url()."header-email.png' alt=''>
+		<br>Hola ".$source->nombres.", bienvenido(a) a <a href='".base_url()."'> Proveedor.com.co</a><br><br>"."
+
+		Hemos recibido correctamente tu solicitud. Recuerda a <a href='".base_url()."logueo/activar_cuenta/".$id."'>ACTIVAR TU CUENTA</a> para continuar.	
+		Ingresa a <a href='".base_url()."logueo/activar_cuenta/".$id."'>este enlace</a>,  copia  el nombre de usuario y contraseña para activar y publicar la solicitud de cotización, te recomendamos estar pendiente de tu correo y teléfono móvil dónde recibirás notificaciones.
+		<br><br>Nombre de usuario: <b>".$source->email."</b><br>Contraseña: <b>".$password."</b><br> Atentamente, <br><a href='".base_url()."'>Equipo proveedor Proveedor.com.co</a><br>
+		<br><img style='max-width: 600px;' src='".img_url()."footer-email-platino.png' alt=''></div>";
+
+
+		$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+		$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		$this->email->to($source->email);
+		$this->email->subject("Bienvenido a Proveedor.com.co");
+		$this->email->message($mensaje);
+		$this->email->send();
+
+		#echo @$mensaje;
+		#$this->bienvenida(array_merge($datos_empresa,$datos_usuario));
+		
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	function validacion()
 	{
@@ -116,7 +189,8 @@ class Registro extends CI_Controller {
 		$this->email->initialize($config);
 		$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
 		$this->email->to($datos['email']);
-		$this->email->subject("Se ha registrado una nueva empresa");
+		$this->email->cc('jeigl7@gmail.com,andresdulce@gmail.com');
+		$this->email->subject("Bienvenido a Proveedor.com.co");
 		$this->email->message($mensaje);
 		$this->email->send();
 
@@ -172,12 +246,9 @@ class Registro extends CI_Controller {
 		//Datos de Empresa
 		$datos_empresa['categorias']=$this->input->post('categorias');
 		$categorias_tmp="38|";
-		$bienvenida=false;
 		foreach ($datos_empresa['categorias'] as $key => $value)
 		{
 			$categorias_tmp.='|'.$value;
-			if($value=='42')
-				$bienvenida=true;
 		}
 		$datos_empresa['categorias']=$categorias_tmp;
 		$datos_empresa['nit'] = $this->input->post('nit');
@@ -188,7 +259,6 @@ class Registro extends CI_Controller {
 		$datos_empresa['productos_principales'] = $this->input->post('prod1');
 		$datos_empresa['productos_de_interes'] = $this->input->post('prod_int4');				
 		//$data['fecha'] = "".date("Y m d");;			
-		$this->load->model('new/Usuarios_model','usuarios');
 		$id_registro=$this->usuarios->insert($datos_usuario);
 						
 		$datos_empresa['usuario'] = $id_registro;
@@ -199,13 +269,11 @@ class Registro extends CI_Controller {
 		echo "</PRE>";
 		return;
 		*/
-		$this->load->model('new/Empresa_model','empresa');
 		$id_unic=$this->empresa->insert($datos_empresa);
 
 		#$this->crear_cuenta($id_unic);
 		$this->reportar_registro(array_merge($datos_empresa,$datos_usuario));
-		if($bienvenida)
-		{$this->bienvenida(array_merge($datos_empresa,$datos_usuario));}
+		$this->bienvenida(array_merge($datos_empresa,$datos_usuario));
 			
 		$this->load->model('new/usuarios_model','usuarios');
 		#$this->load->model('logueo_model');

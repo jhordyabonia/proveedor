@@ -151,7 +151,7 @@
     <div  id="div_subcategorias" class="hidden-xs hidden-sm">
       <?php foreach ($subcategorias as $key => $value):?>
       <div class="col-md-3 cont_categorias_slide">
-        <a href="<?=base_url()?>categoria/ver/0/<?=$value->id_subcategoria?>" class="enlace_categoria_slide hidden-xs hidden-sm"><?=$value->nom_subcategoria?><i class="fa fa-angle-right ico_flecha_slide"></i></a><br>
+        <a href="<?=base_url()?>categoria/ver_sub/<?=$value->id_subcategoria?>" class="enlace_categoria_slide hidden-xs hidden-sm"><?=$value->nom_subcategoria?><i class="fa fa-angle-right ico_flecha_slide"></i></a><br>
       </div>
       <?php endforeach;?>
     </div>

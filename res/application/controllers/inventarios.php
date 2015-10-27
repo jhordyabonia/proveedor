@@ -19,7 +19,9 @@ class Inventarios extends CI_Controller {
         // inicializamos la librería      
         $this->load->model('new/Empresa_model','empresa');
         $this->load->model('new/Producto_model','producto');
+        $this->load->model('new/Subcategoria_model','subcategoria');
         $this->load->model('new/Usuarios_model','usuarios');
+        $this->load->model('u_model','u');
         $this->load->library('excelNew');
     }
     // end: construc
@@ -43,9 +45,17 @@ class Inventarios extends CI_Controller {
     *
     *upload
     */
+
+    function subcategoria($subcategoria)
+    {
+     $out=$this->subcategoria->get(array('nom_subcategoria'=>$subcategoria));
+     if($out)
+     { return $out->id_subcategoria;}
+     return 4000;
+    }
+
     function cargar()
     {
-
         //Configuramos los parametros para subir el archivo al servidor.        
         $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/');        
         $config['allowed_types'] = 'xlsx|xls|ods';
@@ -69,11 +79,18 @@ class Inventarios extends CI_Controller {
         
        //Asignamos el arreglo resultante de la funcion de la libreria y lo pasamos a la vista.
         $data['id_empresa'] = $this->input->post('id_empresa');
-        $data['excel'] = $excel;
+        $data['excel'] = $excel[1];
 
+        /*
+        echo "<PRE>";
+        print_r( $data['excel']);
+        echo "</PRE>";
+        return;
+        */
         $data['namefile']=$data['url_full'];
+        $this->load->view("template/head", $data);
         $this->load->view('inventarios/cargar',$data);
-        $this->load->view('inventarios/ver', $data);  
+        $this->load->view('inventarios/ver_', $data);  
 }
     public function verificar_empresa($id_empresa=0)
     {      
@@ -86,65 +103,57 @@ class Inventarios extends CI_Controller {
        
         $this->load->view('inventarios/verificar_empresa', $datos);
     }
-    public function registrar($id_empresa=0)
+    public function registrar_($id_empresa=0)
     { 
+        $this->load->view("template/head", array('title'=>''));
+   
+       $nombres=$this->input->post('nombre');
+       $medidas=$this->input->post('medida');
+       $precios=$this->input->post('precio');
+       $descripciones=$this->input->post('descripcion');
+       $subcategorias=$this->input->post('subcategoria');
+       $pedidos_minimos=$this->input->post('pedido_minimo');
+       $formas_de_pago=$this->input->post('formas_de_pago');
 
-          if($id_empresa!=0)
-          { $id_empresa = $this->input->post('id_empresa'); }
+       $productos=array();
+       for($i=1;$i<count($nombres);$i++)
+       { 
+          if($nombres[$i]==NULL)
+            { continue; }
+         $productos[$i]['nombre']=$nombres[$i];
+         $productos[$i]['descripcion']=$descripciones[$i]|$nombres[$i];
+         $productos[$i]['medida']=$medidas[$i]|1;
+         $productos[$i]['precio_unidad']=$precios[$i]|0;
+         $productos[$i]['subcategoria']=$this->subcategoria($subcategorias[$i]);
+         $productos[$i]['pedido_minimo']=$pedidos_minimos[$i]|1;
+         $productos[$i]['formas_de_pago']=$formas_de_pago[$i]|"A conenir";
+         $productos[$i]['empresa']=$id_empresa;
+       }
 
-          realpath(APPPATH.'../uploads/inventarios/'); 
-          $url_full = $this->input->post('url_full');
-
-
-          //$empresa=$this->empresa_model->get_empresa_data($id_empresa);
-          $out['empresa']=$this->empresa->get($id_empresa);
-          $out['usuario'] = $this->usuarios->get($out['empresa']->usuario);
-      
-          $excel = $this->excelnew->read_file($url_full);
-          $productos=array();  
-          for ($i=1;$i<$excel->number_rows;$i++) 
-          {
-            $productos[$i]['nombre']=$excel->values[$i][1];
-            $productos[$i]['descripcion']=$excel->values[$i][2];
-            $productos[$i]['precio_unidad']=$excel->values[$i][3];
-            $productos[$i]['subcategoria']=$excel->values[$i][4];
-            $productos[$i]['inventario']=$excel->values[$i][5];
-            $productos[$i]['pedido_minimo']=$excel->values[$i][5];
-            $productos[$i]['medidas']=$excel->values[$i][5];
-            $productos[$i]['tipo_pago']=$excel->values[$i][5];
-          }
-          echo "<PRE>";
-          //echo $id_empresa;
-          //print_r($productos);
-          echo "</PRE>";
-
-          $i=0;
-          $test=$this->input->post('imagenes_1');
-          for ($i=1;$i<$excel->number_rows;$i++) 
-          {
-            echo "<br>Imagen $i ".$test;
-            /*
-            $this->producto->insert($productos[$i]);        
-            $this->producto_model->negociacion($this->producto_model->id, $productos[$i]['pedido_min'], $productos[$i]['capacidad'], $productos[$i]['precio'], $productos[$i]['medidas']);
-            //$this->_images_form();
-            $this->producto_model->palabras($this->producto_model->id, $productos[$i]['nombre']);        
-            $this->producto_model->tipo_pago($this->producto_model->id, $productos[$i]['tipo_pago']);
-            */
-          }
-          echo "<h3>Se registraron ".$i." productos, con exito!!</h3>";
-          echo "<h4>Empresa: ".$out['empresa']->nombre;
-          echo "<P>Nit: ".$id_empresa;
-          echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
+       $test=$this->input->post('imagenes_1');
+       foreach ($productos as $key => $producto) 
+       {
+         $id=$this->producto->insert($producto); 
+         $this->load_image($id,$key); 
+         echo "<PRE>";
+         print_r($producto);
+         echo "</PRE>";
+        }
+          
+       #return;
+       echo "<center><h3>Se registraron ".$key." productos, con exito!!</h3>";
+       $out['empresa']=$this->empresa->get($id_empresa);
+       echo "<h4>Empresa: ".$out['empresa']->nombre;
+       echo "<P>Nit: ".$id_empresa;
+       echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
     }
 
-
-  function _images_form($id_registro,$id_tmp) 
+  function load_image($id_registro,$i) 
   {
-    $name_array = "imagenes_"+$id_tmp;
-    $imagenes="";
-    if ($_FILES[$name_array]) {
-      $numero_archivos = count($_FILES[$name_array]['name']);
-      for ($i = 0; $i < $numero_archivos; $i++) {
+    $name_array = "img";
+    $imagenes="default.jpg";
+    if ($_FILES[$name_array]) 
+    {
         $_FILES['userfile'] = array(
           'name' => $_FILES[$name_array]['name'][$i],
           'type' => $_FILES[$name_array]['type'][$i],
@@ -153,21 +162,12 @@ class Inventarios extends CI_Controller {
           'size' => $_FILES[$name_array]['size'][$i]
         );
         if ($this->u->imagen()) {
-          $imagenes.= $this->u->nombre_archivo;
-        }else
-        {
-          $imagenes.= 'default.jpg';
+          $imagenes= $this->u->nombre_archivo;
         }
       }
-    }else
-    {
-      $imagenes.= 'default.jpg';
-    }
 
     $this->producto->update(array('imagenes'=> $imagenes),$id_registro);
   }
-
-
     /**
      * 
      * setExcel

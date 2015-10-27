@@ -84,6 +84,76 @@ class Tablero_usuario extends CI_Controller {
 			};
 	}
 
+	public function activar_solicitud($id)
+	{
+  	 	$this->session->set_userdata('path_current',base_url()."tablero_usuario/activar_solicitud/".$id);
+		$this->index();
+
+		$source=$this->asistentes_proveedor->get($id);
+
+    	if(!$this->verificar_logged($source->empresa))
+    		{return;}
+
+        $this->load->model('popups_textos_model', 'popups_textos');
+        $datos=$this->popups_textos->get(array('categoria'=>$source->categoria));
+        if($datos==FALSE){$datos=$this->popups_textos->get(array('categoria'=>0));}
+        $titulos=array();
+        foreach (explode(',',$datos->titulos) as $key => $value) 
+        {
+            $dato_tmp=explode('|',$value);
+            if(count($dato_tmp)>1)
+            {
+                $titulos[$dato_tmp[0]]=$dato_tmp[1];
+            }else {$titulos[$value]=$value; }
+        }
+        $datos->titulos=$titulos;
+        
+        $dat['auto_launch_AP']=TRUE;
+        $dat['datos']=$datos;
+        $dat['solicitud']=$source;
+        $dat['view'] = "asistentes_proveedor_popup";      
+        $dat['categoria'] = $this->categoria->get($source->categoria);      
+        $dat['id_popup'] = "asistentes_proveedor_popup";             
+        $this->load->view('popups/asistentes_proveedor_editar', $dat);
+	}
+
+ 	function verificar_logged($id_empresa_solictud)
+ 	{
+ 		$usuario= $this->session->userdata('id_usuario');
+ 		$empresa = $this->empresa->get(array('usuario'=>$usuario))->id;
+ 		if($empresa==$id_empresa_solictud)
+ 			{return TRUE;}
+ 		return FALSE;
+ 	}
+ 	public function editar_solicitud_externa($id=20)
+    {
+		$source=$this->asistentes_proveedor->get($id);
+
+    	if(!$this->verificar_logged($source->empresa))
+    		{
+    			redirect(base_url()."tablero_usuario");
+    			return;
+    		}
+
+    	$datos['solicitud'] = $this->input->post('solicitud');
+		$datos['descripcion'] = $this->input->post('descripcion');
+		$datos['cantidad_requerida'] = $this->input->post('cantidad_requerida');
+		$datos['precio'] = $this->input->post('precio');
+		$datos['forma_de_pago'] = $this->input->post('pago');
+		#$datos['email'] = $this->input->post('email');
+		$datos['nombres'] = $this->input->post('nombres');
+		$datos['telefono'] = $this->input->post('telefono');
+		$datos['nombre_empresa'] = $this->input->post('nombre_empresa');
+		$datos['categoria'] = $this->input->post('categoria');
+		$datos['ciudad_entrega'] = $this->input->post('ciudad');
+
+
+		$this->asistentes_proveedor->update($datos,$source->id);
+		#echo "<PRE>";
+		#print_r($datos);
+		$this->session->set_userdata('first_ligin',1);
+		redirect(base_url()."tablero_usuario"); 
+    }
 	public function oportunidades($categoria=FALSE,$print=TRUE)
 	{	
 

@@ -16,6 +16,12 @@
 
 		  <!-- Nav tabs -->
 		  <?php 
+
+		  	$controlador = $this->uri->segment(1); #controlador
+		  	$metodo = $this->uri->segment(2); #metodo
+		  	$arg1 = $this->uri->segment(3); #arg1
+			$arg2 = $this->uri->segment(4); #arg2
+
 		  	$_div_productos = "tab-pane active";
 			$_div_solicitudes = "tab-pane fade";
 		  	$_div_proveedores = "tab-pane fade";
@@ -88,19 +94,19 @@
 													<nav>
 													  <ul class="pagination">
 														<? if($page>0): ?>
-															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/productos/<?=$page-1;?>/<?=$filtro?>/<?=$tipo_filtro?>">&laquo; Anterior </a></li>
+															<li><a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/productos/<?=$page-1;?>/<?=$filtro?>/<?=$tipo_filtro?>">&laquo; Anterior </a></li>
 														<?php endif; ?>
 														<? for($i=0;$i<$page_count;$i++): ?>
 															<li <?php if($page==$i){echo "class='pagina_actual'";}?>>
 																<?php if($page==$i):?>
 																	<span class="pagina_actual"><?=$i+1?></span>
 																<?php else: ?>
-																	<a href="<?=base_url()?>listados/lista/<?=$busqueda?>/productos/<?=$i?>/<?=$filtro?>/<?=$tipo_filtro?>"><?=$i+1?></a>
+																	<a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/productos/<?=$i?>/<?=$filtro?>/<?=$tipo_filtro?>"><?=$i+1?></a>
 																<?php endif;?>
 															</li>
 														<?endfor;?>
 														<? if($page<intval($page_count)): ?>
-															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/productos/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>">Siguiente &raquo;</a></li>
+															<li><a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/productos/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>">Siguiente &raquo;</a></li>
 													  	<?php endif; ?>
 													  </ul>
 													</nav>
@@ -126,19 +132,19 @@
 													<nav>
 													  <ul class="pagination">
 														<? if($page>0): ?>
-															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/proveedores/<?=$page-1;?>/<?=$filtro?>/<?=$tipo_filtro?>">&laquo; Anterior </a></li>
+															<li><a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/proveedores/<?=$page-1;?>/<?=$filtro?>/<?=$tipo_filtro?>">&laquo; Anterior </a></li>
 														<?php endif; ?>
 														<? for($i=0;$i<$page_count2;$i++): ?>
 															<li>
 																<?php if($page==$i):?>
 																	<span class="pagina_actual"><?=$i+1?></span>
 																<?php else: ?>
-																	<a href="<?=base_url()?>listados/lista/<?=$busqueda?>/proveedores/<?=$i?>/<?=$filtro?>/<?=$tipo_filtro?>"><?=$i+1?></a>
+																	<a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/proveedores/<?=$i?>/<?=$filtro?>/<?=$tipo_filtro?>"><?=$i+1?></a>
 																<?php endif;?>	
 															</li>
 														<?endfor;?>
 														<? if($page<intval($page_count2)): ?>
-															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/proveedores/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>">Siguiente &raquo;</a></li>
+															<li><a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/proveedores/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>">Siguiente &raquo;</a></li>
 													  	<?php endif; ?>
 													  </ul>
 													</nav>
@@ -165,19 +171,19 @@
 													<nav>
 													  <ul class="pagination">
 														<? if($page>0): ?>
-															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/solicitudes/<?=$page-1;?>/<?=$filtro?>/<?=$tipo_filtro?>">&laquo; Anterior </a></li>
+															<li><a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/solicitudes/<?=$page-1;?>/<?=$filtro?>/<?=$tipo_filtro?>">&laquo; Anterior </a></li>
 														<?php endif; ?>
 														<? for($i=0;$i<$page_count3;$i++): ?>
 															<li>
 															<?php if($page==$i):?>
 																<span class="pagina_actual"><?=$i+1?></span>
 															<?php else: ?>
-																<a href="<?=base_url()?>listados/lista/<?=$busqueda?>/solicitudes/<?=$i?>/<?=$filtro?>/<?=$tipo_filtro?>"><?=$i+1?></a>
+																<a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/solicitudes/<?=$i?>/<?=$filtro?>/<?=$tipo_filtro?>"><?=$i+1?></a>
 															<?php endif;?>
 															</li>
 														<?endfor;?>
 														<? if($page<intval($page_count3)): ?>
-															<li><a href="<?=base_url()?>listados/lista/<?=$busqueda?>/solicitudes/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>">Siguiente &raquo;</a></li>
+															<li><a href="<?=base_url().$controlador.'/'.$metodo.'/'.$arg1?>/solicitudes/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>">Siguiente &raquo;</a></li>
 													  	<?php endif; ?>
 													  </ul>
 													</nav>

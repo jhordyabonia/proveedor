@@ -5,7 +5,8 @@ class ExcelNew
 	{
 		require_once 'Classes/PHPExcel.php';
 		$objPHPExcel = PHPExcel_IOFactory::load(APPPATH.'../uploads/inventarios/'.$filename);
-		$data;	
+		$out=array();	
+		$data=NULL;
 		foreach ($objPHPExcel->getWorksheetIterator() as $worksheet) 
 		{
 			$worksheetTitle     = $worksheet->getTitle();
@@ -16,21 +17,23 @@ class ExcelNew
 			$data->titlesheet=$worksheetTitle;
 			$data->number_columns=0;
 			$data->number_rows=0;
-			for ($row = 1; $row <= $highestRow; ++ $row)
+			for ($row = 4; $row <= $highestRow; ++ $row)
 			 {
-				for ($col = 0; $col < $highestColumnIndex; ++ $col)
+				for ($col = 1; $col < $highestColumnIndex; ++ $col)
 				 {
 					$cell = $worksheet->getCellByColumnAndRow($col, $row);
 					$val = $cell->getValue();
 					$dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
-					$data->values[$col][$row]=$val;
-					$data->type[$col][$row]=$dataType ;
+					$data->values[$row-4][$col-1]=$val;
+					$data->type[$row-4][$col-1]=$dataType ;
 					if($row==0)
 				 	{	$data->number_columns++;	}
 				 }
 				 $data->number_rows++;
 			 }
+			$out[]=$data;
+			unset($data);
 		}
-		return $data;
+		return $out;
 	}
 }
