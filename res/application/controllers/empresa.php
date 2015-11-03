@@ -28,9 +28,18 @@ class Empresa extends CI_Controller
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
    
-    $filtrado=$this->filtro_categoria($datos['productos']);
-    $productos=$filtrado['productos'];
-   
+    #$filtrado=$this->filtro_categoria($datos['productos']);
+    #$productos=$filtrado['productos'];
+    $datos['destacados']=array();
+    foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value)
+    {
+      $datos['destacados'][]=$this->producto->get($value);
+    }
+
+    $tmp=explode('|',$datos['empresa']->imagenes);
+    $datos['titulos']=explode(',',$tmp[0]);
+    $datos['imagenes']=explode(',',$tmp[1]);
+
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 

@@ -15,40 +15,40 @@
 				<h3 class="text-item">General</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-perfil fa fa-building-o"></i>
-					<a class="text-subitem">Perfil de empresa</a>
+					<a href="<?=base_url()?>config_empresa/perfil_empresa" class="text-subitem">Perfil de empresa</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-contacto fa fa-phone"></i>
-					<a class="text-subitem">Contacto</a>
+					<a href="<?=base_url()?>config_empresa/contacto" class="text-subitem">Contacto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-usuario fa fa-child"></i>
-					<a class="text-subitem">Usuario</a>
+					<a href="<?=base_url()?>config_empresa/usuario" class="text-subitem">Usuario</a>
 				</div>
 				<h3 class="text-item-dos">Configurar Web</h3>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-home"></span>
-					<a class="text-subitem">Inicio</a>
+					<a href="<?=base_url()?>config_empresa/inicio" class="text-subitem">Inicio</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-					<a class="text-subitem">Productos Principales</a>
+					<a href="<?=base_url()?>config_empresa/productos_principales" class="text-subitem">Productos Principales</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-briefcase"></span>
-					<a class="text-subitem">Nosotros</a>
+					<a href="<?=base_url()?>config_empresa/nosotros" class="text-subitem">Nosotros</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="ico-config-style2 fa fa-file-text"></i>
-					<a class="text-subitem">Cotizaciones requeridas</a>
+					<a href="<?=base_url()?>config_empresa/cotizaciones" class="text-subitem">Cotizaciones requeridas</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -67,36 +67,56 @@
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img">Subir imágen 1</a>
+									<a href="JavaScript:document.getElementById('banner1').click()" class="text-up-img">Subir imágen 1</a>
+									<div style="display:none" >
+								  		<input type="file" id="banner1" name="banners[]"  onchange="JavaScript:load_new_logo(1)">/>
+									</div>
 								</div>
 								<div class="subido-img">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/subido-img.png">
+									<img id="img1" class="imge-subido banner_preview" src="<?php echo base_url()?>assets/img/subido-img.png">
 									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:document.getElementById('img1').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img">Subir imágen 1</a>
+									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 1</a>
+									<div style="display:none" >
+								  		<input type="file" id="banner2" name="banners[]"  onchange="JavaScript:load_new_logo(2)">/>
+									</div>
 								</div>
 								<div class="subido-img">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/subido-img.png">
+									<img id="img2" class="imge-subido banner_preview" src="<?php echo base_url()?>assets/img/subido-img.png">
 									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:document.getElementById('img2').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
 							</div>
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img">Subir imágen 1</a>
+									<a href="JavaScript:document.getElementById('banner3').click()" class="text-up-img">Subir imágen 1</a>
+									<div style="display:none" >
+								  		<input type="file" id="banner3" name="banners[]"  onchange="JavaScript:load_new_logo(3)">/>
+									</div>
 								</div>
 								<div class="subido-img">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/subido-img.png">
+									<img id="img3" class="imge-subido banner_preview" src="<?php echo base_url()?>assets/img/subido-img.png">
 									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:document.getElementById('img3').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
+
+							<script type="text/javascript">
+								function load_new_logo(id)
+			                    {
+			                        var paths = document.getElementById('banner'+id).files;
+			                        var navegador = window.URL || window.webkitURL;
+			                        var url = navegador.createObjectURL(paths[0]);
+			                        document.getElementById('img'+id).src=url; 		                        
+	                    		}
+                   			</script>
+
 
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
@@ -118,43 +138,53 @@
 							
 						<?=form_open_multipart(base_url().'editar_empresa/videos')?>
 							<!-- Campo 1 -->
-							<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
-							  <span class="fiel-tramspa padi2 input-group-addon">
-							  	1
-							  </span>
-							  <input type="text" class="form-control" name="videos[]" placeholder="Introdusca dirección del video" style="border-radius: 0;">
+							
+							<div id="videos">
+								<?php foreach (explode(',',$empresa->videos) as $key => $video):?>
+									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
+									  <span class="fiel-tramspa padi2 input-group-addon">
+									  	<?=$key+1?>
+									  </span>
+									  <input type="text" class="form-control" name="videos[]" value="<?=$video?>" placeholder="Introdusca dirección del video" style="border-radius: 0;">
+									</div>
+								<?php endforeach;?>
 							</div>
-							<!-- Campo 1 -->
-							<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
-							  <span class="fiel-tramspa padi2 input-group-addon">
-							  	2
-							  </span>
-							  <input type="text" class="form-control" name="videos[]" placeholder="Introdusca dirección del video" style="border-radius: 0;">
-							</div>
-							<!-- Campo 1 -->
-							<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
-							  <span class="fiel-tramspa padi2 input-group-addon">
-							  	3
-							  </span>
-							  <input type="text" class="form-control" name="videos[]" placeholder="Introdusca dirección del video" style="border-radius: 0;">
-							</div>
-							<!-- Campo 1 -->
-							<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
-							  <span class="fiel-tramspa padi2 input-group-addon">
-							  	4
-							  </span>
-							  <input type="text" class="form-control" name="videos[]" placeholder="Introdusca dirección del video" style="border-radius: 0;">
-							</div>
-							<!-- Campo 1 -->
-							<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
-							  <span class="fiel-tramspa padi2 input-group-addon">
-							  	5
-							  </span>
-							  <input type="text" class="form-control" name="videos[]" placeholder="Introdusca dirección del video" style="border-radius: 0;">
-							</div>
-							<!-- Campo 1 -->
 							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
-							  <a class="agregar-mas-videos"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
+								<script type="text/javascript">
+									videos=<?=count(explode(',',$empresa->videos))?>;
+									
+									videos_archivos=new Array();
+									function salvar_videos()
+									{
+										tmp_videos=document.getElementsByName('videos[]');
+										for(i=0;i<tmp_videos.length;i++)
+										{
+											imagenes_titulos[i]=tmp_videos[i].value;
+										}
+									}
+									function fijar_videos()
+									{
+										tmp_videos=document.getElementsByName('videos[]');
+										for(i=0;i<tmp_videos.length-1;i++)
+										{
+											tmp_videos[i].value=imagenes_titulos[i];
+										}
+									}
+									function agregar_video()
+									{
+										salvar_videos();
+										if(videos>=20){alert('Limite exedido.');return;}
+										DOM='<div class="input-group padig col-xs-12 col-md-5 col-lg-5">';
+										DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
+										DOM+=++videos;
+										DOM+='</span>';
+										DOM+='<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca dirección del video" style="border-radius: 0;">';
+										DOM+='</div>';
+										document.getElementById('videos').innerHTML+=DOM;
+										fijar_videos();
+									}
+								</script>
+							  <a class="agregar-mas-videos" href="JavaScript:agregar_video()"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
 							</div>
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
@@ -175,108 +205,105 @@
 							
 						<?=form_open_multipart(base_url().'editar_empresa/imagenes')?>
 							<!-- Campo 1 -->
-							<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
-								<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
-								  <span class="fiel-tramspa padi2 input-group-addon">
-								  	1
-								  </span>
-								  <input type="text" class="form-control" name="imagenes[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">
+							<script type="text/javascript">
+									imagenes=<?=count($titulos)?>;
+									imagenes_titulos=new Array();
+									imagenes_archivos=new Array();
+									function salvar_imagenes()
+									{
+										tmp_titulos=document.getElementsByName('imagenes_titulos[]');
+										for(i=0;i<tmp_titulos.length;i++)
+										{
+											imagenes_titulos[i]=tmp_titulos[i].value;
+										}
+										tmp_titulos=document.getElementsByName('imagenes[]');
+										for(i=0;i<tmp_titulos.length;i++)
+										{
+											imagenes_archivos[i]=tmp_titulos[i].files;
+										}
+										/*
+										*/
+										console.log(imagenes_titulos);
+									}
+									function fijar_imagenes()
+									{
+										tmp_titulos=document.getElementsByName('imagenes_titulos[]');
+										for(i=0;i<tmp_titulos.length-1;i++)
+										{
+											tmp_titulos[i].value=imagenes_titulos[i];
+										}
+										tmp_titulos=document.getElementsByName('imagenes[]');
+										for(i=0;i<tmp_titulos.length;i++)
+										{
+											tmp_titulos[i].files=imagenes_archivos[i];
+										}
+									/*
+									*/
+									}
+									function agregar_images()
+									{
+										salvar_imagenes();
+										if(imagenes>=20){alert('Limite exedido.');return;}
+										
+										imagenes++;
+										DOM='<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">';
+										DOM+='<div class="input-group padig col-xs-12 col-md-12 col-lg-12">';
+										DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
+										DOM+=imagenes;
+										DOM+='</span>';
+										DOM+='<input type="text" class="form-control" value="" name="imagenes_titulos[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">';
+										DOM+='</div></div><div class="img-banner"><div class="subir-img2">';
+										DOM+='<span class="ico-up glyphicon glyphicon-open"></span>';
+										DOM+='<a href="JavaScript:document.getElementById('+"'banner"+(imagenes+4)+"'"+').click()" class="text-up-img">Subir imágen '+imagenes+'</a>';
+										DOM+='<div style="display:none" >';
+										DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+')">/>';
+										DOM+='</div></div><div class="subido-img2">';
+										DOM+='<img id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/default.jpg">';
+										DOM+='<p class="name-file">Nombre del archivo.PNG</p>';
+										DOM+='<a href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/default.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
+										DOM+='</div></div>';
+										document.getElementById('imagenes').innerHTML+=DOM;
+										fijar_imagenes();
+									}
+									function eliminar_img(input,key)
+									{
+										document.getElementById('eliminados').value+=input+',';
+										document.getElementById('img'+key).src="<?=base_url()?>uploads/default.jpg";
+										//console.log(input);
+									}
+								</script>
+								<input type='hidden' value="" name='eliminados' id='eliminados'>
+								<div id="imagenes">
+									<?php foreach($titulos as $key => $titulo):?>
+										<?php if( $key>count($imagenes)){break;}?>
+										<?php if( $titulo==''){break;}?>
+										<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
+											<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
+											  <span class="fiel-tramspa padi2 input-group-addon">
+											  	<?=$key+1?>
+											  </span>
+											  <input type="text" class="form-control" value="<?=$titulo?>" name="imagenes_titulos[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">
+											</div>
+										</div>							
+										<div class="img-banner">
+											<div class="subir-img2">
+												<span class="ico-up glyphicon glyphicon-open"></span>
+												<a href="JavaScript:document.getElementById('banner<?=$key+4?>').click()" class="text-up-img">Subir imágen <?=$key+1?></a>
+												<div style="display:none" >
+											  		<input type="file" id="banner<?=$key+4?>" name="imagenes[]"  onchange="JavaScript:load_new_logo(<?=$key+4?>)">/>
+												</div>
+											</div>
+											<div class="subido-img2">
+												<img id="img<?=$key+4?>" class="imge-subido img_preview" src="<?php echo base_url()?>uploads/imagenes/<?=$imagenes[$key]?>">
+												<p class="name-file">Nombre del archivo.PNG</p>
+												<a href="JavaScript:eliminar_img('<?=$imagenes[$key]?>',<?=$key+4?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+											</div>
+										</div>
+									<?php endforeach;?>
 								</div>
-							</div>							
-							<div class="img-banner">
-								<div class="subir-img2">
-									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img2">Subir imágen</a>
-								</div>
-								<div class="subido-img2">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/img-logo-em-ejemplo.png">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
-								</div>
-							</div>
-							<!-- Campo 2 -->
-							<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
-								<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
-								  <span class="fiel-tramspa padi2 input-group-addon">
-								  	2
-								  </span>
-								  <input type="text" class="form-control" name="imagenes[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">
-								</div>
-							</div>							
-							<div class="img-banner">
-								<div class="subir-img2">
-									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img2">Subir imágen</a>
-								</div>
-								<div class="subido-img2">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/img-logo-em-ejemplo.png">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
-								</div>
-							</div>
-							<!-- Campo 3 -->
-							<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
-								<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
-								  <span class="fiel-tramspa padi2 input-group-addon">
-								  	3
-								  </span>
-								  <input type="text" class="form-control" name="imagenes[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">
-								</div>
-							</div>							
-							<div class="img-banner">
-								<div class="subir-img2">
-									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img2">Subir imágen</a>
-								</div>
-								<div class="subido-img2">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/img-logo-em-ejemplo.png">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
-								</div>
-							</div>
-							<!-- Campo 4 -->
-							<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
-								<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
-								  <span class="fiel-tramspa padi2 input-group-addon">
-								  	4
-								  </span>
-								  <input type="text" class="form-control" name="imagenes[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">
-								</div>
-							</div>							
-							<div class="img-banner">
-								<div class="subir-img2">
-									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img2">Subir imágen</a>
-								</div>
-								<div class="subido-img2">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/img-logo-em-ejemplo.png">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
-								</div>
-							</div>
-							<!-- Campo 5 -->
-							<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
-								<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
-								  <span class="fiel-tramspa padi2 input-group-addon">
-								  	5
-								  </span>
-								  <input type="text" class="form-control" name="imagenes[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">
-								</div>
-							</div>							
-							<div class="img-banner">
-								<div class="subir-img2">
-									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a class="text-up-img2">Subir imágen</a>
-								</div>
-								<div class="subido-img2">
-									<img class="imge-subido" src="<?php echo base_url()?>assets/img/img-logo-em-ejemplo.png">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
-								</div>
-							</div>
 							<!-- Campo 1 -->
 							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
-							  <a class="agregar-mas-videos2"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
+							  <a class="agregar-mas-videos2" href="JavaScript:agregar_images();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
 							</div>
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">

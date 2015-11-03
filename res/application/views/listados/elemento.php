@@ -55,7 +55,7 @@
 		    </li>
 		    <li role="presentation" class="<?=$active_div_solicitudes?>">
 		    	<a href="#solicitudes" onclick="JavaScript:cambiar_seo('solicitudes')" aria-controls="solicitudes" role="tab" data-toggle="tab">
-		    		Solicitudes <span class="badge"><?=$page_count3*25?></span>
+		    		Compradores <span class="badge"><?=$page_count3*25?></span>
 		    	</a>
 		    </li>
 		    <li role="presentation" class="<?=$active_div_proveedores?>">

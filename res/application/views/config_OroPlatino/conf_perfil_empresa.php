@@ -15,40 +15,40 @@
 				<h3 class="text-item">General</h3>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-perfil fa fa-building-o"></i>
-					<a class="text-subitem">Perfil de empresa</a>
+					<a href="<?=base_url()?>config_empresa/perfil_empresa" class="text-subitem">Perfil de empresa</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-contacto fa fa-phone"></i>
-					<a class="text-subitem">Contacto</a>
+					<a href="<?=base_url()?>config_empresa/contacto" class="text-subitem">Contacto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-usuario fa fa-child"></i>
-					<a class="text-subitem">Usuario</a>
+					<a href="<?=base_url()?>config_empresa/usuario" class="text-subitem">Usuario</a>
 				</div>
 				<h3 class="text-item-dos">Configurar Web</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-home"></span>
-					<a class="text-subitem">Inicio</a>
+					<a href="<?=base_url()?>config_empresa/inicio" class="text-subitem">Inicio</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-					<a class="text-subitem">Productos Principales</a>
+					<a href="<?=base_url()?>config_empresa/productos_principales" class="text-subitem">Productos Principales</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-briefcase"></span>
-					<a class="text-subitem">Nosotros</a>
+					<a href="<?=base_url()?>config_empresa/nosotros" class="text-subitem">Nosotros</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="ico-config-style2 fa fa-file-text"></i>
-					<a class="text-subitem">Cotizaciones requeridas</a>
+					<a href="<?=base_url()?>config_empresa/cotizaciones" class="text-subitem">Cotizaciones requeridas</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -72,7 +72,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-building-o"></i>
 							  </span>
-							  <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Empresa">
+							  <input type="text" class="form-control" name="nombre" value="<?=$empresa->nombre?>" placeholder="Nombre de la Empresa">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
@@ -82,7 +82,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
-							  <input type="text" class="form-control" name="nit" placeholder="Nit de la Empresa o C.C. del Comercial">
+							  <input type="text" class="form-control" name="nit" value="<?=$empresa->nit?>"placeholder="Nit de la Empresa o C.C. del Comercial">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
@@ -93,9 +93,10 @@
 							  	<span class="ico-gene glyphicon glyphicon-tags"></span>
 							  </span>
 							  <select class="form-control" name="tipo">
-								  <option selected>Tipo de Empresa</option>
-								  <option>Colombia</option>
-								  <option>EE.UUU</option>
+								  <option>Tipo de Empresa</option>
+								  <?php foreach($tipos_empresa as $key=> $tipo):?>
+								 	 <option <?php if($empresa->tipo==$tipo->id_tipoempresa){echo 'selected';}?> value="<?=$tipo->id_tipoempresa?>"><?=$tipo->tipo?></option>
+								  <?php endforeach;?>
 								</select>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -108,8 +109,9 @@
 							  </span>
 							  <select class="form-control" name="categoria">
 								  <option selected>Seleccionar sector de la Empresa</option>
-								  <option>Colombia</option>
-								  <option>EE.UUU</option>
+								  <?php foreach($categorias as $key=> $categoria):?>
+								 	 <option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
+								  <?php endforeach;?>
 								</select>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -120,7 +122,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene3 glyphicon glyphicon-pencil"></span>
 							  </span>
-							  <textarea rows="9" class="form-control" name="descripcion" placeholder="Descripción de la Empresa"></textarea>
+							  <textarea rows="9" class="form-control" name="descripcion" placeholder="Descripción de la Empresa"><?=$empresa->descripcion?></textarea>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido3 glyphicon glyphicon-asterisk"></span>
 							  </span>
@@ -130,7 +132,7 @@
 							  <span class="fiel-tramspa input-group-addon" style="padding-right: 9px;">
 							  	<i class="ico-gene4 fa fa-cubes"></i>
 							  </span>
-							  <input type="text" class="form-control" name="prod_princ" placeholder="Productos Principales (separados por comas)">
+							  <input type="text" class="form-control" name="prod_princ" value="<?=$empresa->productos_principales?>" placeholder="Productos Principales (separados por comas)">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
@@ -140,7 +142,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-shopping-cart"></i>
 							  </span>
-							  <input type="text" class="form-control" name="prod_req" placeholder="Productos Requeridos (separados por comas)">
+							  <input type="text" class="form-control" name="prod_req" value="<?=$empresa->productos_de_interes?>" placeholder="Productos Requeridos (separados por comas)">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
@@ -152,16 +154,25 @@
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
 							  			<p class="text-subir-img">Subir logotipo de Empresa</p>
 							  			<div style="display:none" >
-							  				<input type="file" id="logo" name="logo"/>
+							  				<input type="file" id="logo" name="logo[]" onchange="JavaScript:load_new_logo()"/>
 							  			</div>
 							  		</a>
 							  	</div>
 							</div>
 							<!-- Campo 6 -->
+							<script type="text/javascript">
+								function load_new_logo()
+			                    {
+			                        var paths = document.getElementById('logo').files;
+			                        var navegador = window.URL || window.webkitURL;
+			                        var url = navegador.createObjectURL(paths[0]);
+			                        document.getElementById('img_logo').src=url; 		                        
+	                    		}
+                   			</script>
 							<div class="input-group inline-block col-xs-12 col-md-5 col-lg-5">
 								<div class="adjuntar-archivo">
 							  		<div class="container-logo-empresa inline-block">
-							  			<img src="<?php echo base_url()?>assets/img/img-logo-em-ejemplo.png">
+							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
 							  		</div>
 							  		<div class="nombre-img-empres">
 							  			<p class="nombre-archivo-logo">Nombre del archivo.PNG</p>

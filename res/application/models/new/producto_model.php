@@ -139,7 +139,15 @@ class Producto_model extends CI_Model {
         {
             $img=explode(',',$producto->imagenes);
             if ($img)
-             {  $producto->imagen=base_url()."uploads/".$img[0];   }
+             {
+                $producto->imagen=base_url()."uploads/default.jpg";
+                foreach ($img as $key => $i)
+                 {
+                    if($i==''){continue;}
+                    $producto->imagen=base_url()."uploads/".$i;
+                    if($i!=''){break;}
+                  }  
+             }
             else{   $producto->imagen=base_url()."uploads/default.jpg"; }
 
             $dimension=$this->dimension->get($producto->medida);

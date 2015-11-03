@@ -15,6 +15,7 @@ class Perfil extends CI_Controller {
 		$this->load->model('new/Departamento_model','departamento');
 		$this->load->model('new/Categoria_model','categoria');
 		$this->load->model('new/Subcategoria_model','subcategoria');
+        #$this->load->view('registro/funcionalidades_');
 	}
 
 	public function ver_empresa($id_empresa, $id_seleccion=0, $tipo_seleccion=0)

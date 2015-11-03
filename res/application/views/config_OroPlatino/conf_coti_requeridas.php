@@ -15,40 +15,40 @@
 				<h3 class="text-item">General</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-perfil fa fa-building-o"></i>
-					<a class="text-subitem">Perfil de empresa</a>
+					<a href="<?=base_url()?>config_empresa/perfil_empresa" class="text-subitem">Perfil de empresa</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-contacto fa fa-phone"></i>
-					<a class="text-subitem">Contacto</a>
+					<a href="<?=base_url()?>config_empresa/contacto" class="text-subitem">Contacto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-usuario fa fa-child"></i>
-					<a class="text-subitem">Usuario</a>
+					<a href="<?=base_url()?>config_empresa/usuario" class="text-subitem">Usuario</a>
 				</div>
 				<h3 class="text-item-dos">Configurar Web</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-home"></span>
-					<a class="text-subitem">Inicio</a>
+					<a href="<?=base_url()?>config_empresa/inicio" class="text-subitem">Inicio</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto"  class="text-subitem">Catalogo de Productos</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-					<a class="text-subitem">Productos Principales</a>
+					<a href="<?=base_url()?>config_empresa/productos_principales" class="text-subitem">Productos Principales</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-briefcase"></span>
-					<a class="text-subitem">Nosotros</a>
+					<a href="<?=base_url()?>config_empresa/nosotros" class="text-subitem">Nosotros</a>
 				</div>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="ico-config-style2 fa fa-file-text"></i>
-					<a class="text-subitem">Cotizaciones requeridas</a>
+					<a href="<?=base_url()?>config_empresa/cotizaciones" class="text-subitem">Cotizaciones requeridas</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">

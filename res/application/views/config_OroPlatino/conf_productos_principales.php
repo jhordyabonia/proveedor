@@ -28,7 +28,7 @@ function agregar(id)
 	DOM+='	<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar('+size+');">Bajar</a>';
 	DOM+='</div>';
 	DOM+='<div class="img-nom-remove" id="img'+(size+1)+'">';
-	DOM+='	<img src="'+imagen+'">';
+	DOM+='	<img class="img_mini_preview_producto" src="'+imagen+'">';
 	DOM+='</div>';
 	DOM+='<div class="nom-prod" >';
 	DOM+='	<p class="nom-produc" id="nom'+size+'">'+nombre+'</p>';
@@ -117,40 +117,40 @@ function submit()
 				<h3 class="text-item">General</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-perfil fa fa-building-o"></i>
-					<a class="text-subitem">Perfil de empresa</a>
+					<a href="<?=base_url()?>config_empresa/perfil_empresa" class="text-subitem">Perfil de empresa</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-contacto fa fa-phone"></i>
-					<a class="text-subitem">Contacto</a>
+					<a href="<?=base_url()?>config_empresa/contacto" class="text-subitem">Contacto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-usuario fa fa-child"></i>
-					<a class="text-subitem">Usuario</a>
+					<a href="<?=base_url()?>config_empresa/usuario" class="text-subitem">Usuario</a>
 				</div>
 				<h3 class="text-item-dos">Configurar Web</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-home"></span>
-					<a class="text-subitem">Inicio</a>
+					<a href="<?=base_url()?>config_empresa/inicio" class="text-subitem">Inicio</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
 				</div>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-					<a class="text-subitem">Productos Principales</a>
+					<a href="<?=base_url()?>config_empresa/productos_principales" class="text-subitem">Productos Principales</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-briefcase"></span>
-					<a class="text-subitem">Nosotros</a>
+					<a href="<?=base_url()?>config_empresa/nosotros" class="text-subitem">Nosotros</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="ico-config-style2 fa fa-file-text"></i>
-					<a class="text-subitem">Cotizaciones requeridas</a>
+					<a href="<?=base_url()?>config_empresa/cotizaciones" class="text-subitem">Cotizaciones requeridas</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -189,7 +189,7 @@ function submit()
 											<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar(<?=$key?>);">Bajar</a>
 										</div>
 										<div class="img-nom-remove" id="img<?=$key?>">
-											<img src="<?base_url()?>uploads/<?=$producto->imagenes?>">
+											<img class="img_mini_preview_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
 										</div>
 										<div class="nom-prod">
 											<p class="nom-produc" id="nom<?=$key?>"><?=$producto->nombre?></p>
@@ -199,20 +199,23 @@ function submit()
 								<?php endforeach;?>
 							</div>
 							<!-- Campo 7 -->
-
-							<?=form_open_multipart(base_url().'editar_empresa/destacados',array('name'=>'form'))?>
-								<input type="hidden" name="destacados" id="destacados">
-								<div class="input-group col-xs-12 col-md-6 col-lg-8">
-									<a href="JavaScript:submit();" class="btn btn-guardar-propri">
-										<i class="ico-circle fa fa-floppy-o"></i>
-										<p class="text-publicarPro">Guardar</p> 
-									</a>
-								</div>
-	    					<?=form_close()?>
+							<div class="row">
+								<?=form_open_multipart(base_url().'editar_empresa/destacados',array('name'=>'form'))?>
+									<input type="hidden" name="destacados" id="destacados">
+									<div class="input-group col-xs-12 col-md-6 col-lg-8">
+										<center>
+											<a href="JavaScript:submit();" class="btn btn-guardar-propri">
+												<i class="ico-circle fa fa-floppy-o"></i>
+												<p class="text-publicarPro">Guardar</p> 
+											</a>
+										</center>
+									</div>
+		    					<?=form_close()?>
+							</div>
 						</div>
 					</div>
 					<div class="catalogo-public">
-						<h3 class="text-pro-pub-ca">Productos Publicados (48)</h3>	
+						<h3 class="text-pro-pub-ca">Productos Publicados (<?=count($productos)?>)</h3>	
 						<p class="text-select">Seleccione uno o varios productos como "Principales".</p>
 						<ul class="list-item-pro-pri">
 							<li class="item-cata inline-block" style="margin-right: 40px;">
@@ -229,7 +232,7 @@ function submit()
 						<?php foreach($productos as $producto):?>
 							<div class="padding-bottom col-lg-6">
 								<div class="imagen-prin inline-block">
-									<img class="img-responsive" id="imagen_producto_<?=$producto->id?>" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
+									<img class="img-responsive img_preview_producto" id="imagen_producto_<?=$producto->id?>" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
 								</div>
 								<div class="info-pro-pri inline-block">
 									<p class="txt_nomproducto" id="nombre_producto_<?=$producto->id?>"><?=$producto->nombre?></p>
@@ -238,7 +241,7 @@ function submit()
 									<p class="txt_desc"><?=$producto->descripcion?></p>
 									<button class="btn btn-selecc-princi">
 										<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-										<p class="selec-pri-txt inline-block" id="producto_<?=$producto->id?>"><a href="JavaScript:agregar(<?=$producto->id?>);">Seleccionar como Principal</a></p>
+										<p class="selec-pri-txt inline-block" id="producto_<?=$producto->id?>"><a class="select_button" href="JavaScript:agregar(<?=$producto->id?>);">Seleccionar como Principal</a></p>
 									</button>
 								</div>
 							</div>

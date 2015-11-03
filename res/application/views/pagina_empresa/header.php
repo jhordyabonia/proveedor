@@ -48,7 +48,7 @@
 											<p class="text_header">Tablero usuario</p>
 										</a>
 									<? else: ?>
-										<a href="<?php echo base_url() ?>registro/registro_usuario">
+										<a id="launch_registro" data-toggle="modal" href="JavaScript:launch(this);">
 											<p class="text_header">Registro Gratis</p>
 										</a>
 									<? endif; ?>

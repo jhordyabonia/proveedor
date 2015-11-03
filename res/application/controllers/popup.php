@@ -24,6 +24,14 @@ class Popup extends CI_Controller
 		#$this->load->model('email_model','e');
 		$this->load->library(array('session', 'form_validation', 'email', "breadcrumb"));
 	}
+
+	private function load_file_cap()
+	{	
+		$this->load->model('email_model', "adjunto");
+		$adjunto= $this->adjunto->archivo_adjunto("adjunto");	
+
+		return $adjunto;
+	}
 	public function asistentes_proveedor($argv=FALSE)
     {
     	if(!$argv)
@@ -50,9 +58,12 @@ class Popup extends CI_Controller
 		$datos['ciudad_entrega'] = $this->input->post('ciudad_entrega');
 		$datos['categoria'] = $this->input->post('categoria');
 
+
 		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('categoria_model','categoria');
+		$this->load->model('email_model', "adjunto");
 		$nombre_categoria=$this->categoria->get($datos['categoria'])->nombre_categoria;
+		$datos['adjunto'] = $this->adjunto->archivo_adjunto("adjunto");
 		$id_solicitud=$this->asistentes_proveedor->insert($datos);
 
 		$remitente =$this->remitente->get(array('correo' =>$datos['email']));

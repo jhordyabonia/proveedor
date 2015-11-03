@@ -15,40 +15,40 @@
 				<h3 class="text-item">General</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-perfil fa fa-building-o"></i>
-					<a class="text-subitem">Perfil de empresa</a>
+					<a href="<?=base_url()?>config_empresa/perfil_empresa" class="text-subitem">Perfil de empresa</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-contacto fa fa-phone"></i>
-					<a class="text-subitem">Contacto</a>
+					<a href="<?=base_url()?>config_empresa/contacto" class="text-subitem">Contacto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="icon-usuario fa fa-child"></i>
-					<a class="text-subitem">Usuario</a>
+					<a href="<?=base_url()?>config_empresa/usuario" class="text-subitem">Usuario</a>
 				</div>
 				<h3 class="text-item-dos">Configurar Web</h3>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-home"></span>
-					<a class="text-subitem">Inicio</a>
+					<a href="<?=base_url()?>config_empresa/inicio" class="text-subitem">Inicio</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-					<a class="text-subitem">Productos Principales</a>
+					<a href="<?=base_url()?>config_empresa/productos_principales" class="text-subitem">Productos Principales</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-briefcase"></span>
-					<a class="text-subitem">Nosotros</a>
+					<a href="<?=base_url()?>config_empresa/nosotros" class="text-subitem">Nosotros</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<i class="ico-config-style2 fa fa-file-text"></i>
-					<a class="text-subitem">Cotizaciones requeridas</a>
+					<a href="<?=base_url()?>config_empresa/cotizaciones" class="text-subitem">Cotizaciones requeridas</a>
 				</div>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -133,54 +133,23 @@
 						</div>
 					</div>
 					<div class="catalogo-public">
-						<h3 class="text-cata-publi">Catalogos Publicados (4)</h3>	
+						<h3 class="text-cata-publi">Catalogos Publicados (<?=count($catalogos)?>)</h3>	
 						<div class="conten-item-catapu row">
-							<div class="col-lg-6">
-								<div class="img-pdf-up">
-									<img class="img-pdf" src="<?php echo base_url()?>assets/img/pdf.png">
+							<?php foreach($catalogos as $key => $catalogo):?>
+								<div class="col-lg-6">
+									<div class="img-pdf-up">
+										<img class="img-pdf" src="<?php echo base_url()?>assets/img/pdf.png">
+									</div>
+									<div class="text-pdf">
+										<p class="nom_cata"><?=$catalogo->nombre?></p>
+										<p class="cate_catalo"><?=$catalogo->categoria?></p>
+										<p class="desc_catalo"><?=$catalogo->descripcion?></p>
+										<p class="pala_clave_catalo"><?=$catalogo->palabras_clave?></p>
+										<p class="nomArchivo-catalo"><a href="<?=base_url()?>uploads/catalogos/<?=$catalogo->catalogo?>" ><?=$catalogo->catalogo?></p></a>
+										<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
+									</div>
 								</div>
-								<div class="text-pdf">
-									<p class="nom_cata">Nombre del catálogo</p>
-									<p class="cate_catalo">Categoria del catalogo</p>
-									<p class="desc_catalo">Descripción completa del catálogo...</p>
-									<p class="pala_clave_catalo">Palabras claves, palabra, clave</p>
-									<p class="nomArchivo-catalo">Nombre del archivo.PDF</p>
-									<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<img class="img-pdf" src="<?php echo base_url()?>assets/img/pdf.png">
-								<div class="text-pdf">
-									<p class="nom_cata">Nombre del catálogo</p>
-									<p class="cate_catalo">Categoria del catalogo</p>
-									<p class="desc_catalo">Descripción completa del catálogo...</p>
-									<p class="pala_clave_catalo">Palabras claves, palabra, clave</p>
-									<p class="nomArchivo-catalo">Nombre del archivo.PDF</p>
-									<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<img class="img-pdf" src="<?php echo base_url()?>assets/img/pdf.png">
-								<div class="text-pdf">
-									<p class="nom_cata">Nombre del catálogo</p>
-									<p class="cate_catalo">Categoria del catalogo</p>
-									<p class="desc_catalo">Descripción completa del catálogo...</p>
-									<p class="pala_clave_catalo">Palabras claves, palabra, clave</p>
-									<p class="nomArchivo-catalo">Nombre del archivo.PDF</p>
-									<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<img class="img-pdf" src="<?php echo base_url()?>assets/img/pdf.png">
-								<div class="text-pdf">
-									<p class="nom_cata">Nombre del catálogo</p>
-									<p class="cate_catalo">Categoria del catalogo</p>
-									<p class="desc_catalo">Descripción completa del catálogo...</p>
-									<p class="pala_clave_catalo">Palabras claves, palabra, clave</p>
-									<p class="nomArchivo-catalo">Nombre del archivo.PDF</p>
-									<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
-								</div>
-							</div>
+							<?php endforeach;?>
 						</div>
 						<!-- Paginador de catalogos -->
 						<div class="contentidoo-paginador">

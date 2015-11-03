@@ -271,6 +271,7 @@ class Categoria extends CI_Controller {
 
         $this->load->view('template/head', $data, FALSE);
         $this->load->view('template/javascript');
+        $this->load->view('registro/funcionalidades_');
         $this->load->view('index/top_menu',$data);
         $this->load->view('index/header_buscador_categorias',$data);
         $this->load->view('index/banner_adsense');

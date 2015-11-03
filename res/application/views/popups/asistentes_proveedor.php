@@ -168,7 +168,21 @@
                   </div>
 
                 <?php endif;?>
+                 <!--Adjunto-->
+                  <center>                          
+                  </center>
+                    <label for="precio" class="label_modal hidden-xs hidden-sm"  onclick="document.getElementById('userfile').click();"></label>
+                    <div class="input-group">
+                      <span class="input-group-addon"  onclick="document.getElementById('userfile').click();" style="font-family:Arial; border-radius: 6px;">
+                        <span class="fa fa-paperclip clip_icono" aria-hidden="true" > Adjuntar Archivo </span>
+                      </span>
+                      <div class="" id="adjunto" unable onclick="document.getElementById('userfile').click();"></div>
+                      <div style='display:none'>
+                         <input type="file" class="upload"  onchange="JavaScript:var paths = document.getElementById('userfile').files;document.getElementById('adjunto').innerHTML=paths[0]['name'];" id="userfile" name="userfile"  data-badge="false">
+                      </div>
 
+                    </div>
+                  <!--Adjunto-->
                  <?php if($datos->campos!=str_replace('precio',"",$datos->campos)):?>
 
                   <label for="precio" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['precio']?>:</label>
@@ -187,7 +201,7 @@
 
                   </div>
 
-                <?php endif;?>
+                <?php endif;?> 
 
                  <?php if($datos->campos!=str_replace('pago',"",$datos->campos)):?>
 
@@ -283,6 +297,7 @@
 
                 <?php endif;?>
 
+
                  <?php if($datos->campos!=str_replace('ciudad', "",$datos->campos)):?>
 
                   <label for="empresa" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['ciudad']?><span class="fa fa-asterisk asterisk_label"></span></label>
@@ -302,7 +317,7 @@
                   </div>
 
                 <?php endif;?>
-
+              
                   <div class="col-md-12 input-group enviar">
 
                     <button type="submit" class="btn btn-default center-block boton_enviar">SOLICITAR</button>

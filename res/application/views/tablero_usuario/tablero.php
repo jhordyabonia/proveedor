@@ -39,12 +39,13 @@
 				<!-- SOLO MOSTRAR SI SE TIENE MEMBRESIA ESTANDAR -->
 				<div class="col-md-12 actualizar_membresia">
 					<?php if($nombre_membresia!="Empresa Platino"):?> 
+					<!--
 					<a href="http://clientes.proveedor.com.co/#precio" class="link_tablero_usuario">
 						<p class="texto_actualizar">
 								<span class="glyphicon glyphicon-circle-arrow-up"></span> 
 								ACTUALIZAR A PLATINO  
 						</p>
-					</a>
+					</a>-->
 					<?php elseif($administrador):?>
 					<a href="micro_admin" class="link_tablero_usuario">
 						<p class="texto_actualizar">

@@ -13,9 +13,10 @@
 			<div class="background_imagen">
 				<div class="center-vertical_imagen">
 					<?php if($producto->imagenes):?>
+					<?php $imagen=""; foreach($producto->imagenes as $value){$imagen=$value;if($imagen!=''){break;}}?>
 						<a href="JavaScript:slider();" >
 							 <!--<img src="<?=base_url()?>uploads/Fileteadora_Industral_790.000_.jpg" class=" img_imagen img-responsive">-->
-							 <img id="display" src="<?=base_url()?>uploads/<?=$producto->imagenes[0]?>" class=" img_imagen img-responsive"> 
+							 <img id="display" src="<?=base_url()?>uploads/<?=$imagen?>" class=" img_imagen img-responsive"> 
 						</a>
 					<?php endif;?>
 				</div>

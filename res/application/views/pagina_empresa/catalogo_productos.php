@@ -172,8 +172,8 @@
 													<div class="background_imagen" >
 														<div class="center-vertical_imagen">
 															<a href="<?php echo base_url() ?>producto/ver/<?php echo $producto->id ?>">
-																<?php $imagenes=explode(',',$producto->imagenes);?>
-																<img class="img_imagen" src="<?=base_url()?>uploads/<?=$imagenes[0]?>">
+																<?php $imagen=""; foreach(explode(',',$producto->imagenes) as $value){if($imagen!=''){break;} $imagen=$value;}?>
+																<img class="img_imagen" src="<?=base_url()?>uploads/<?=$imagen?>">
 															</a>
 														</div>
 														</div>

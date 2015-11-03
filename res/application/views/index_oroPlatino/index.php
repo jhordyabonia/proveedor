@@ -4,7 +4,44 @@
 
 <div class="imagen_principal">
 	<div class="container_imagen">
-		<img class="banners img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>"></div>
+
+	<!--<link rel="stylesheet" href="<?php echo base_url()?>assets/css/index/index.css">-->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#carouselInicio').carousel({interval: 3000});
+  });
+</script>
+<div class="row" id="banner" >
+  <!-- Seccion de Carousel -->
+  <div class="row" id="foto_principal">
+    <!-- Carousel-->
+    <div id="carouselInicio" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <?php foreach (explode(',', $empresa->banners) as $i => $banner): ?>
+            <li data-target="#carouselInicio" data-slide-to="<?=$i;?>" 
+              class="<?php if($i==0){ echo 'active';} ?>"></li>
+          <?php endforeach ?>
+        </ol>
+        <div class="carousel-inner" >
+          <?php foreach (explode(',', $empresa->banners)  as $i => $banner): ?>
+            <div class="item <?php if($i==0){ echo 'active';} ?>">
+            	<center>
+                	<img src="<?php echo base_url().'uploads/banners/'.$banner?>" class="img-responsive banner">
+            	</center>
+             </div>
+          <?php endforeach ?>
+        </div>
+    </div> 
+  </div>
+</div>
+
+
+
+	<!--	<img class="banners img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>">-->
+
+
+	</div>
 </div>
 <div class="producto_principales">
 	<div class="title_productosPrincipales">
@@ -80,8 +117,8 @@
 				</div>
 				<div class="texto_nuestra_empresa">
 					<p class="texto1">Tipo de Empresa: <a class="text02"><?=$empresa->tipo?></a> </p>
-					<p class="texto1">Productos Principales: <a class="text02"><?=$empresa->producto_principales?></a></p>
-					<p class="texto_descripcion"><?=$empresa->texto_descripcion?></p>
+					<p class="texto1">Productos Principales: <a class="text02"><?=$empresa->productos_principales?></a></p>
+					<p class="texto_descripcion"><?=$empresa->descripcion?></p>
 				</div>
 				<div class="botones_contac">
 					<button class="btn llamar_empresa">
@@ -125,6 +162,7 @@
 	<div class="contenido_videos col-md-12">
 		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
 		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
+		<?php if($value==''){continue;}?>
 			<ul class="item_video">
 				<li>
 					<ul class="item_video">
@@ -157,16 +195,17 @@
 	</div>
 	<div class="contenedor_galeria col-md-12">
 		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
-		<?php foreach (explode(',',$empresa->imagenes) as $key => $value):?>
+		<?php foreach ($imagenes as $key => $value):?>
+		 <?php if($value==''){continue;}?>
 			<ul class="item_galeria">
 				<li>
 					<ul class="item_galeria">
 						<div class="item-galeria">
 							<div class="galeria">
-								<img class="img_galeria img-responsive" src="<?=base_url()?>uploads/empresa/<?=$value?>">
+								<img class="img_galeria img-responsive" src="<?=base_url()?>uploads/imagenes/<?=$value?>">
 							</div>
 							<div class="titulo_galeria">
-								<p>Imagen <?=$key?></p>
+								<p><?=$titulos[$key]?></p>
 							</div>
 						</div>
 					</ul>
@@ -207,7 +246,7 @@
 				</div>
 				<div class="conten_into">
 					<p class="text_info">Celular: <?=$usuario->celular?></p>
-					<p class="text_info">PBX: <?=$usuario->indicativo?> <?=$usuario->telefono?> Extencion: <?=$usuario->extencion?></p>
+					<p class="text_info">PBX: <?=$usuario->indicativo?> <?=$usuario->telefono?> Extensión: <?=$usuario->extension?></p>
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-home"></span>

@@ -4,136 +4,159 @@ class Editar_empresa extends CI_Controller {
 	function __construct()
        {
 		parent::__construct();
-		$this->load->model('new/Empresa_model', "empresa");
-              $this->load->model('new/Usuarios_model', "usuarios");
-		$this->load->model('new/Catalogo_model', "catalogo");		
+    $this->load->model('new/Producto_model', "producto");
+    $this->load->model('new/Usuarios_model', "usuario");
+    $this->load->model('new/Empresa_model', "empresa");
+    $this->load->model('new/Catalogo_model', "catalogo");   
+		$this->load->model('new/Archivos_empresa_model', "archivos_empresa");		
+
+    $this->id=$this->session->userdata('id_usuario');
+    if($this->id=='')
+      {redirect(base_url());}
+    $usuario=$this->usuario->get($this->id);
+    $empresa=$this->empresa->get(array('usuario'=>$this->id));
 	}
 
-         public function destacados()
-         {
-              $empresa['destacados']=$this->input->post('destacados');
-              echo "<PRE>";
-              print_r($empresa);
-              echo "</PRE>";
-         }
+    public function destacados()
+    {
+             $datos['productos_destacados']=$this->input->post('destacados');
+             #echo "<PRE>";
+             #print_r($datos);
+             #echo "</PRE>";
+             $this->empresa->update($datos,array('usuario'=>$this->id));
+             redirect($_SERVER['HTTP_REFERER']);
+    }
 	  public function contacto()
 	  {
-              $contacto['nombres']=$this->input->post('nombres');
-              $contacto['cargo']=$this->input->post('cargo');
-              $contacto['direccion']=$this->input->post('direccion');
-              $contacto['pais']=$this->input->post('pais');
-              $contacto['celular']=$this->input->post('celular');
-              $contacto['telefono']=$this->input->post('telefono');
-              $contacto['web']=$this->input->post('web');
-              $contacto['facebook']=$this->input->post('facebook');
-              $contacto['twitter']=$this->input->post('twitter');
-              $contacto['linkedin']=$this->input->post('linkedin');
-              echo "<PRE>";
-              print_r($contacto);
-              echo "</PRE>";
+              $datos['nombres']=$this->input->post('nombres');
+              $datos['cargo']=$this->input->post('cargo');
+              $datos['direccion']=$this->input->post('direccion');
+              $datos['pais']=$this->input->post('pais');
+              $datos['departamento']=$this->input->post('provincia');
+              $datos['ciudad']=$this->input->post('municipio');
+              $datos['celular']=$this->input->post('celular');
+              $datos['telefono']=$this->input->post('telefono');
+              $datos['web']=$this->input->post('web');
+              $datos['facebook']=$this->input->post('facebook');
+              $datos['twitter']=$this->input->post('twitter');
+              $datos['linkedin']=$this->input->post('linkedin');
+              #echo "<PRE>";
+              #print_r($datos);
+              #echo "</PRE>";
 
-              $usuario=$this->session->userdata('id_usuario');
-              $this->usuarios->update($contacto,$usuario);
-
+              $this->usuario->update($datos,$this->id);
+              redirect($_SERVER['HTTP_REFERER']);
 	  }
 	  public function catalogos()
 	  {
-              $catalogo['nombre']=$this->input->post('nombre');
-              $catalogo['categoria']=$this->input->post('categoria');
-              $catalogo['descripcion']=$this->input->post('descripcion');
-              $catalogo['catalogo']=$this->input->post('catalogo');
-              $catalogo['palabras_clave']=$this->input->post('palabras_clave');
-              echo "<PRE>";
-              print_r($catalogo);
-              echo "</PRE>";
+              $datos['nombre']=$this->input->post('nombre');
+              $datos['categoria']=$this->input->post('categoria');
+              $datos['descripcion']=$this->input->post('descripcion');
+              $datos['catalogo']=$this->input->post('catalogo');
+              $datos['palabras_clave']=$this->input->post('palabras_clave');
+              #echo "<PRE>";
+              #print_r($datos);
+              #echo "</PRE>";
 
-              $usuario=$this->session->userdata('id_usuario');
-              $catalogo['empresa']=$this->empresa->get(array('usuario'=>$usuario))->id;
-              $this->catalogo->insert($catalogo);
+              $datos['empresa']=$this->empresa->get(array('usuario'=>$this->id))->id;
+              $this->catalogo->insert($datos);
+              redirect($_SERVER['HTTP_REFERER']);
 	  }
 	  public function usuario()
 	  {
-              $usuario['usuario']=$this->input->post('usuario');
-              $usuario['email']=$this->input->post('email');
-              $usuario['password']=md5($this->input->post('password'));
+              $datos['usuario']=$this->input->post('usuario');
+              $datos['email']=$this->input->post('email');
+              $datos['password']=md5($this->input->post('password'));
               #$usuario['password2']=$this->input->post('password2');
-              echo "<PRE>";
-              print_r($usuario);
-              echo "</PRE>";
+              #echo "<PRE>";
+              #print_r($datos);
+              #echo "</PRE>";
 
-              $id=$this->session->userdata('id_usuario');
-              $this->usuarios->update($usuario,23514);
+              $this->usuarios->update($usuario,$this->id);
+              redirect($_SERVER['HTTP_REFERER']);
 	  }
 	  public function perfil()
 	  {
-              $perfil['nombre']=$this->input->post('nombre');
-              $perfil['nit']=$this->input->post('nit');
-              $perfil['tipo']=$this->input->post('tipo');
-              $perfil['categorias']=$this->input->post('categoria');
-              $perfil['descripcion']=$this->input->post('descripcion');
-              $perfil['productos_principales']=$this->input->post('prod_princ');
-              $perfil['productos_de_interes']=$this->input->post('prod_req');
-              $perfil['logo']=$this->input->post('logo');
+              $datos['nombre']=$this->input->post('nombre');
+              $datos['nit']=$this->input->post('nit');
+              $datos['tipo']=$this->input->post('tipo');
+              $datos['categorias']=$this->input->post('categoria');
+              $datos['descripcion']=$this->input->post('descripcion');
+              $datos['productos_principales']=$this->input->post('prod_princ');
+              $datos['productos_de_interes']=$this->input->post('prod_req');
+              $logo=$this->archivos_empresa->archivo_adjunto('logo','logos/');
+              $logo=substr($logo,0,strlen($logo)-1);
+              if(strpos($logo, '.')>0){$datos['logo']=$logo;}
               #$perfil['radio']=$this->input->post('radio');
-              echo "<PRE>";
-              print_r($perfil);
-              echo "</PRE>";
+              #echo "<PRE>";
+              #print_r($datos);
+              #echo "</PRE>";
 
-              $usuario=$this->session->userdata('id_usuario');
-              $this->empresa->update($perfil,array('usuario'=>$usuario));
+              $this->empresa->update($datos,array('usuario'=>$this->id));
+              redirect($_SERVER['HTTP_REFERER']);
 	  }  
 	  public function nosotros()
 	  {
-              $nosotros['descripcion']=$this->input->post('nosotros');
-              $nosotros['mision']=$this->input->post('mision');
-              $nosotros['vision']=$this->input->post('vision');
-              echo "<PRE>";
-              print_r($nosotros);
-              echo "</PRE>";
+              $datos['descripcion']=$this->input->post('nosotros');
+              $datos['mision']=$this->input->post('mision');
+              $datos['vision']=$this->input->post('vision');
+              #echo "<PRE>";
+              #print_r($datos);
+              #echo "</PRE>";
 
-              $usuario=$this->session->userdata('id_usuario');
-              $this->empresa->update($nosotros,array('usuario'=>$usuario));
+              $this->empresa->update($datos,array('usuario'=>$this->id));
+              redirect($_SERVER['HTTP_REFERER']);
 	  } 
 	  public function banners()
-	  {
-              echo "<PRE>";
-              print_r($this->input->post('banners'));
-              echo "</PRE>";
-              $banners="";
-              foreach ($this->input->post('banners') as $key => $value)
-              {
-                    $banners.=$value.",";
-              }
-
-              $usuario=$this->session->userdata('id_usuario');
-              $this->empresa->update(array('banners'=>$banners),array('usuario'=>$usuario));
+	  {        
+              $banners=$this->archivos_empresa->archivo_adjunto('banners','banners/');
+              
+              $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
+              redirect($_SERVER['HTTP_REFERER']);
 	  }
 	   public function videos()
 	  {            
-              echo "<PRE>";
-              print_r($this->input->post('videos'));
-              echo "</PRE>";
-              $videos="";
-              foreach ($this->input->post('banners') as $key => $value)
+              $datos="";
+              foreach ($this->input->post('videos') as $key => $value)
               {
-                    $videos.=$value.",";
+                    if($value=='')
+                    { continue; }
+                    if(strpos($value, 'embed')>0)
+                    {
+                      $datos.=$value.',';
+                      continue;
+                    }
+                    $video=explode('watch?v=', $value);
+                    $video=explode('&', $video[1]);
+                    $datos.="https://www.youtube.com/embed/".$video[0].",";
               }
-
               $usuario=$this->session->userdata('id_usuario');
-              $this->empresa->update(array('videos'=>$videos),array('usuario'=>$usuario));
+              $this->empresa->update(array('videos'=>$datos),array('usuario'=>$usuario));
+              redirect($_SERVER['HTTP_REFERER']);
 	  }
 	   public function imagenes()
 	  {
-              echo "<PRE>";
-              print_r($this->input->post('imagenes'));
-              echo "</PRE>";
-              $imagenes="";
-              foreach ($this->input->post('imagenes') as $key => $value)
+              $datos="";
+              foreach ($this->input->post('imagenes_titulos') as $key => $imagen)
               {
-                    $imagenes.=$value.",";
+                 $datos.=$imagen.",";
               }
+              $archivos=$this->archivos_empresa->archivo_adjunto('imagenes','imagenes/');
+              $eliminados=$this->input->post('eliminados');
+              $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->imagenes;
+              $archivos_actuales=explode('|',$archivos_actuales);
+              $archivos_actuales=$archivos_actuales[1];
+              foreach (explode(',', $eliminados) as $key => $value)
+              {
+                $archivos_actuales=str_replace($value, '', $archivos_actuales);
+              }
+              $datos.='|'.$archivos_actuales.$archivos;
 
-              $usuario=$this->session->userdata('id_usuario');
-              $this->empresa->update(array('imagenes'=>$imagenes),array('usuario'=>$usuario));
+              #echo "<PRE>";
+              #print_r($eliminados);
+              #echo "</PRE>";
+
+              $this->empresa->update(array('imagenes'=>$datos),array('usuario'=>$this->id));
+              redirect($_SERVER['HTTP_REFERER']);
 	  }
 	}

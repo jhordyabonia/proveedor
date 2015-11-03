@@ -1,3 +1,42 @@
+/*.imge-subido
+{   
+    max-height: 39px;
+    max-width: 130px;
+}*/
+
+.select_button {
+    color: #fff;
+    text-decoration: none;
+}
+a{
+    color: #000;
+    text-decoration: none;
+}
+.img_mini_preview_producto
+{
+    max-width: 51px;
+    max-height: 29px;
+}
+.img_preview_producto
+{
+    max-width: 103px;
+    max-height: 58px;
+}
+.banner_preview
+{
+  max-height: 40px;
+  max-width: 127px;
+}
+.img_preview
+{
+  max-height: 40px;
+  max-width: 127px;
+}
+.logo
+{
+    max-height: 120px;
+    max-width: 110px;
+}
 .active-config{
     color: #FF7F27;
     font-weight: bold;
@@ -591,6 +630,10 @@
 .nom-produc{
     margin-bottom: 0;
     font-size: 13px;
+    max-width:138px;
+    -webkit-line-clamp:1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .nom_cata{
     font-weight: bold;

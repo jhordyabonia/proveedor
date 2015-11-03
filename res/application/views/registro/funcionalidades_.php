@@ -1,4 +1,5 @@
 <script type="text/javascript">
+                    var active_validation=true;
                     var stack_err="";
                     var fails=1;
                     var content_paso3;
@@ -457,8 +458,11 @@
                            document.getElementById('ubicacion2').style.display='';
                            document.getElementById('provincia').style.display='';
                            document.getElementById('municipio').style.display='';
-                           document.getElementById('required_municipio').style.display='';
-                           document.getElementById('required_provincia').style.display='';
+                            if(active_validation)
+                            {
+                               document.getElementById('required_municipio').style.display='';
+                               document.getElementById('required_provincia').style.display='';
+                            }
                            cambio_departamento(0); 
                            return;
                         }
@@ -467,8 +471,11 @@
                         document.getElementById('ubicacion2').style.display='none';
                         document.getElementById('provincia').style.display='none';
                         document.getElementById('municipio').style.display='none';
-                        document.getElementById('required_municipio').style.display='none';
-                        document.getElementById('required_provincia').style.display='none';
+                        if(active_validation)
+                        {
+                            document.getElementById('required_municipio').style.display='none';
+                            document.getElementById('required_provincia').style.display='none';
+                        }
                                             
                         document.getElementById('provincia').value=33;
                         cambio_departamento(33);
