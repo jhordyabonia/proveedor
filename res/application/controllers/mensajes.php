@@ -689,6 +689,9 @@ class Mensajes extends CI_Controller {
   public function enviar($tipo=1)
 	{
 		$datos=$this->obtener_datos($tipo);
+		if(is_null($datos['mensaje']['destinatario']))
+		$datos['mensaje']['destinatario']=32890;
+
 		if($tipo==5)
 		{
 			$this->enviar_multiple($datos);

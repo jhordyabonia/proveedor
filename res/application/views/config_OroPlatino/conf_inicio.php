@@ -58,6 +58,7 @@
 				</h3>
 
 			<?=form_open_multipart(base_url().'editar_empresa/banners')?>
+			<?php $banners=explode(',', $empresa->banners);?>
 				<div class="content-config-inicio">
 					<div class="titles">
 						<h3 class="text-title-up">1. Subir imagenes centrales (Banners)</h3>
@@ -73,7 +74,7 @@
 									</div>
 								</div>
 								<div class="subido-img">
-									<img id="img1" class="imge-subido banner_preview" src="<?php echo base_url()?>assets/img/subido-img.png">
+									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?=$banners[0]?>">
 									<p class="name-file">Nombre del archivo.PNG</p>
 									<a href="JavaScript:document.getElementById('img1').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
@@ -87,7 +88,7 @@
 									</div>
 								</div>
 								<div class="subido-img">
-									<img id="img2" class="imge-subido banner_preview" src="<?php echo base_url()?>assets/img/subido-img.png">
+									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?=$banners[1]?>">
 									<p class="name-file">Nombre del archivo.PNG</p>
 									<a href="JavaScript:document.getElementById('img2').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
@@ -101,7 +102,7 @@
 									</div>
 								</div>
 								<div class="subido-img">
-									<img id="img3" class="imge-subido banner_preview" src="<?php echo base_url()?>assets/img/subido-img.png">
+									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?=$banners[2]?>">
 									<p class="name-file">Nombre del archivo.PNG</p>
 									<a href="JavaScript:document.getElementById('img3').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>

@@ -748,6 +748,7 @@
 	        	</div>
         	</div>
         	<!-- Google Code for registro empresa Conversion Page -->
+        	<!-- comentado, de manera temporal, para revision de caida de promedios de registro por dia
 			<script type="text/javascript">
 			/* <![CDATA[ */
 			var google_conversion_id = 959040203;
@@ -765,6 +766,7 @@
 			<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/959040203/?label=kcfaCP73t1oQy5WnyQM&amp;guid=ON&amp;script=0"/>
 			</div>
 			</noscript>
+				 comentado, de manera temporal, para revision de caida de promedios de registro por dia -->
         </form>
 </div>
 <!--paso3-->

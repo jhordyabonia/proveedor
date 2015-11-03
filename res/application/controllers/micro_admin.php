@@ -888,19 +888,19 @@ class Micro_admin extends CI_Controller
 		switch ($solicitud->categoria) 
 		{
 			case 39:
-				$empresa=355;
+				$empresa=10026;
 				$subcategoria="Metalmecánica";
 				break;
 			case 6:
-				$empresa=127;
+				$empresa=10026;
 				$subcategoria="Oxfords";
 				break;
 			case 33:
-				$empresa=224;
+				$empresa=10026;
 				$subcategoria="Otros Servicios para Empresas y Outsourcing";
 				break;
 			default:
-				$empresa=11105;
+				$empresa=10026;
 				$subcategoria=1;				
 		}
 		if(!$solicitud)
