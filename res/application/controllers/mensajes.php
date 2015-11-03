@@ -690,7 +690,10 @@ class Mensajes extends CI_Controller {
 	{
 		$datos=$this->obtener_datos($tipo);
 		if(is_null($datos['mensaje']['destinatario']))
-		$datos['mensaje']['destinatario']=32890;
+		{
+			$datos['mensaje']['destinatario']=32890;
+			$datos['detinatario_email']=$this->usuarios->get(32890)->email;
+		}
 
 		if($tipo==5)
 		{

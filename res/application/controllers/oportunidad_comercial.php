@@ -32,6 +32,8 @@ class Oportunidad_comercial extends CI_Controller {
             $data['solicitud']->medida = $this->dimension->get($data['solicitud']->medida)->nombre;
             $data['categoria'] = $this->categoria->get($data['solicitud']->subcategoria->id_categoria);
             $data['empresa'] = $this->empresa->get($data['solicitud']->empresa);
+            if(!$data['empresa'])
+            {$data['empresa'] = $this->empresa->get(10026);}           
             $data['usuario'] = $this->usuarios->get($data['empresa']->usuario);
             $data['usuario']->ciudad = $this->municipio->get($data['usuario']->ciudad)->municipio;
             $data['usuario']->departamento = $this->departamento->get($data['usuario']->departamento)->nombre;

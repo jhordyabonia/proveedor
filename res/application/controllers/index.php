@@ -8,8 +8,8 @@ class Index extends CI_Controller {
 		$this->load->model('new/Producto_model','producto');
 		$this->load->model('new/Solicitud_model', 'solicitud');
 		$this->load->model('new/Empresa_model', 'empresa');
-		$this->load->model('banner_model');
 		$this->load->model('new/Categoria_model','categoria');
+		$this->load->model('banner_model');
 	}
 	
 	public function index()

@@ -42,9 +42,11 @@ class Registro extends CI_Controller {
 		//$this->load->view('vistas/registro_usuario',$datos);
 	}
 
-	function registrar() {
-		$this->index();
-	}
+	function registrar() 
+	{	$this->index(); }
+	
+	function registro_usuario() 
+	{	$this->index(); }
 	
 	function registro_automatico($id)
 	{
