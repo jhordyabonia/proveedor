@@ -25,7 +25,7 @@
         </ol>
         <div class="carousel-inner" >
           <?php foreach (explode(',', $empresa->banners)  as $i => $banner): ?>
-            <div class="item <?php if($i==0){ echo 'active';} ?>">
+            <div class="item anti-active <?php if($i==0){ echo 'active';} ?>">
             	<center>
                 	<img src="<?php echo base_url().'uploads/banners/'.$banner?>" class="img-responsive banner">
             	</center>
@@ -63,7 +63,7 @@
 				<li>
 					<ul class="item_proPri">
 						<div class="item-proPrin">
-							<div class="cont-img"><img class="style_empresa img-responsive" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div>
+							<div class="cont-img"><img class="style_empresa char-img img-responsive" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div>
 							<div class="textos-img">
 								<p class="texto-1"><?=$producto->nombre?></p>
 								<p class="texto-2">$<?=$producto->precio_unidad?></p>
@@ -76,7 +76,7 @@
 			</ul>
 		<?php endforeach;?>
 		<span class="ico_flecha_right glyphicon glyphicon-chevron-right"></span>
-		<div class="vercatalogo">
+		<div class="vercatalogo col-md-12 col-lg-12">
 			<span class="glyphicon glyphicon-th-list"></span>
 			<a class="texto_vercatalogo" href="">Ver Catalogo > </a>
 		</div>
@@ -308,7 +308,7 @@
 		</div>
 	</div>
 </div>
-<div class="contenido_tag col-md-12" style="background-color: #fff;">
+<div class="contenido_tag col-md-12" style="background-color: #fff;padding: 0;">
 	<div class="texto_tag">
 		<p class="text-tag">Tags</p>
 	</div>

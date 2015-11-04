@@ -334,6 +334,7 @@ a{
     border-bottom: 1px solid #ccc;
     height: 734px;
     background-color: #fff;
+    width: 20%; 
 }
 .conten-item1{
     border-top: 3px solid #FF7F27;
@@ -342,6 +343,7 @@ a{
     border-bottom: 1px solid #ccc;
     height: 826px;
     background-color: #fff;
+    width: 20%; 
 }
 .conten-item2{
     border-top: 3px solid #FF7F27;
@@ -350,6 +352,7 @@ a{
     border-bottom: 1px solid #ccc;
     height: 664px;
     background-color: #fff;
+    width: 20%; 
 }
 .conten-item3{
     border-top: 3px solid #FF7F27;
@@ -358,6 +361,7 @@ a{
     border-bottom: 1px solid #ccc;
     height: 1250px;
     background-color: #fff;
+    width: 20%; 
 }
 .conten-item4{
     border-top: 3px solid #FF7F27;
@@ -366,6 +370,7 @@ a{
     border-bottom: 1px solid #ccc;
     height: 971px;
     background-color: #fff;
+    width: 20%; 
 }
 .conten-item5{
     border-top: 3px solid #FF7F27;
@@ -373,7 +378,8 @@ a{
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     height: 530px;
-    background-color: #fff;   
+    background-color: #fff; 
+    width: 20%;   
 }
 .conten-item6{
     border-top: 3px solid #FF7F27;
@@ -381,7 +387,8 @@ a{
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     height: 1378px;
-    background-color: #fff;   
+    background-color: #fff;  
+    width: 20%; 
 }
 .conten-item-prin{
     padding-top: 20px;

@@ -12,19 +12,15 @@
 ?>
 <div class="conten_header_catalogo">
 	<div class="col-md-12">
-		<div class="row"></div>
 		<div class="col-md-10">
 			<div class="conten_img">
-				<!--<img class="banners style-img-emp  img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>"></div>-->
+				<!--<img class="banners style-img-emp  img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>"></div>-->				
 				<center>
 				<img class="img-responsive logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
 				<p class="txt_nom_empre"><?=$empresa->nombre?></p>
-				<img src="<?=base_url()?>assets/img/sonrisaprecio.png">
+				<img class="img-responsive sonri-img" src="<?=base_url()?>assets/img/sonrisaproveedor.png">				
 				</center>
-				<div class="row">
-				</div>
 			</div>
-			
 		</div>
 		<div class="col-md-2">
 			<div class="info">

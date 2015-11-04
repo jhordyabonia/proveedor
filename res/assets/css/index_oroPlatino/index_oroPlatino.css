@@ -21,10 +21,13 @@
     display: inline-block;
 }
 .cont-img{
-    /*border: 1px solid #ccc;*/
     margin: 15px;
+    max-width: 180px;
+}
+.char-img{
     width: auto;
-    height: 160px;
+    height: 183px;
+    margin: 0 auto;
 }
 .textos-img{
     margin: 10px;
@@ -162,12 +165,12 @@ iframe
 }
 .item-proPrin{
     width: 215px;
-    height: 320px;
+    height: 305px;
     background-color: #fff;
     border: 1px solid #ccc;
 }
 .item-video{
-    width: 294;
+    width: 294px;
     height: 248px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -466,7 +469,7 @@ iframe
 }
 .titulo_video{
     position: relative;
-    top: -12px;
+    top: -62px;
     text-align: center;
     font-size: 15px;
 }
@@ -491,14 +494,13 @@ iframe
     display: inline-block;
 }
 .vercatalogo{
-    float: right;
-    margin-right: 44px;
-    margin-top: 13px;
+    text-align: right;
+    padding-right: 45px;
     color: #ff7f27;
 }
 .video{
     width: auto;
-    height: auto;
+    height: 250px;
     margin: 26px 8px 4px 11px;
     position: relative;
     top: -17px;
