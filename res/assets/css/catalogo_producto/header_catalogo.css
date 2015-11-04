@@ -46,6 +46,12 @@ width: 480px;
 	text-decoration: none !important;
 }
 
+.enlaces_header2{
+	color: #111;
+	font-size: 15px;
+	text-decoration: none !important;
+}
+
 .color-text{
 	color: #ff7f27 !important;
 	font-weight: bold;
@@ -59,7 +65,7 @@ width: 480px;
 .list_item{
 	list-style: none;
     margin-top: 5px;
-    padding-left: 46px;
+    padding-left: 25px;
     padding-right: 19px;
     line-height: 41px;
     margin-bottom: 0;
@@ -74,6 +80,8 @@ width: 480px;
 }
 .list_item > li{
 	display: inline-block;
+	position: relative;
+	top: 1px;
 }
 
 .active{
@@ -89,7 +97,7 @@ width: 480px;
 	padding-right: 7px;
 }
 .icon_style_des{
-	font-size: 28px !important;
+	font-size: 23px !important;
 	color: #ff7f27;
 }
 .icono_redes{

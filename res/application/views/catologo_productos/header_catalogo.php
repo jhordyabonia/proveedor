@@ -87,7 +87,7 @@
 				<li>
 					<ul class=" list_item">
 						<span class="icon_style_des glyphicon glyphicon-download-alt"></span>
-						<a class="enlaces_header color-text" href="">DESCARGAR CATÁLOGO</a>
+						<a class="enlaces_header2 color-text" href="">DESCARGAR CATÁLOGO</a>
 					</ul>
 				</li>
 			</ul>
