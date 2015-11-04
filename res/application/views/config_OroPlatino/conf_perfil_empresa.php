@@ -73,21 +73,38 @@
 							  	<i class="ico-gene2 fa fa-building-o"></i>
 							  </span>
 							  <input type="text" class="form-control" name="nombre" value="<?=$empresa->nombre?>" placeholder="Nombre de la Empresa">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-times-circle validacion_error"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 2 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
 							  <input type="text" class="form-control" name="nit" value="<?=$empresa->nit?>"placeholder="Nit de la Empresa o C.C. del Comercial">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
-							<!-- Campo 4 -->
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+							<!-- Campo 3 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-tags"></span>
@@ -98,9 +115,17 @@
 								 	 <option <?php if($empresa->tipo==$tipo->id_tipoempresa){echo 'selected';}?> value="<?=$tipo->id_tipoempresa?>"><?=$tipo->tipo?></option>
 								  <?php endforeach;?>
 								</select>
+								<span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-times-circle validacion_error"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
+							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
 							</div>
 							<!-- Campo 4 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
@@ -113,39 +138,72 @@
 								 	 <option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
 								  <?php endforeach;?>
 								</select>
+								<span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-10">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene3 glyphicon glyphicon-pencil"></span>
 							  </span>
 							  <textarea rows="9" class="form-control" name="descripcion" placeholder="Descripción de la Empresa"><?=$empresa->descripcion?></textarea>
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success_ta"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido3 glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-7 col-lg-7">
 							  <span class="fiel-tramspa input-group-addon" style="padding-right: 9px;">
 							  	<i class="ico-gene4 fa fa-cubes"></i>
 							  </span>
 							  <input type="text" class="form-control" name="prod_princ" value="<?=$empresa->productos_principales?>" placeholder="Productos Principales (separados por comas)">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 6 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-7 col-lg-7">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-shopping-cart"></i>
 							  </span>
 							  <input type="text" class="form-control" name="prod_req" value="<?=$empresa->productos_de_interes?>" placeholder="Productos Requeridos (separados por comas)">
+							  c
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
+							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
 							</div>
 							<!-- Campo 6 -->
 							<div class="input-group style-padding7 inline-block col-xs-12 col-md-6 col-lg-6">
@@ -183,6 +241,10 @@
 							  		</div>
 							  	</div>
 							</div>
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
 							<!-- Campo 4 -->
 							<div class="input-group style-padding8 col-xs-12 col-md-8 col-lg-8">
 							  	<div class="conte-radios">
@@ -206,6 +268,11 @@
 									  </label>
 									</div>
 								</div>
+							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
 							</div>
 							<!-- Campo 7 -->
 							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">

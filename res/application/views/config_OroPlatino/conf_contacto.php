@@ -73,30 +73,57 @@
 							  	<span class="ico-gene glyphicon glyphicon-user"></span>
 							  </span>
 							  <input type="text" class="form-control" name="nombres" value="<?=$usuario->nombres?>" placeholder="Nombre del contacto">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-times-circle validacion_error"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 2 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
 							  <input type="text" class="form-control" name="cargo" value="<?=$usuario->cargo?>" placeholder="Cargo/Funcion en la empresa">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-times-circle validacion_error"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 3 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-map-marker"></span>
 							  </span>
 							  <input type="text" class="form-control" name="direccion" value="<?=$usuario->direccion?>" placeholder="Direccion de la empresa">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 4.0 -->
 							<script type="text/javascript">
 								active_validation=false;;
@@ -119,10 +146,19 @@
 							         		</option>
 							        	<?php endforeach;?>   
 								</select>
+								<span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 4.1 -->
 							<div  id="ubicacion" class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -138,10 +174,19 @@
 							         	</option>
 							        	<?php  endforeach; ?>    
 								</select>
+								<span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 4.2 -->
 							<div id="ubicacion2" class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -157,70 +202,133 @@
 										         	</option>
 									        	<?php  endforeach; ?>      
 								</select>
+								<span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-phone"></span>
 							  </span>
 							  <input type="text" class="form-control" name="celular" value="<?=$usuario->celular?>" placeholder="Telefono celular">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 6 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-phone"></i>
 							  </span>
 							  <input type="text" class="form-control" name="telefono" value="<?=$usuario->telefono?>" placeholder="Telefono fijo y/o PBX">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 7 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-laptop"></i>
 							  </span>
 							  <input type="text" class="form-control" name="web" value="<?=$usuario->web?>" placeholder="Pagina Web">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 8 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-facebook-square"></i>
 							  </span>
 							  <input type="text" class="form-control" name="facebook" value="<?=$usuario->facebook?>" placeholder="Pagina de facebook">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 9 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-twitter"></i>
 							  </span>
 							  <input type="text" class="form-control" name="twitter" value="<?=$usuario->twitter?>" placeholder="Pagina de twitter">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 10 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-linkedin-square"></i>
 							  </span>
 							  <input type="text" class="form-control" name="linkedin" value="<?=$usuario->linkedin?>" placeholder="Pagina de likedin">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 7 -->
 							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
 								<button class="btn btn-guardar" type="submit">
