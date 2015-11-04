@@ -83,31 +83,58 @@
 								  <option>item-categoria</option>
 								  <option>item-categoria</option>
 								</select>
+								<span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-times-circle validacion_error"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 1 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-pencil"></span>
 							  </span>
 							  <input type="text" class="form-control" name="nombre" placeholder="Nombre del productos o servicio requerido">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 3 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
 							  </span>
 							  <textarea class="form-control" rows="5" name="descripcion" placeholder="Descripcion del producto o servicio requerido"></textarea>
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i class="fa fa-check-circle validacion_success_ta2"></i>
+							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido2 glyphicon glyphicon-asterisk"></span>
 							  </span>
 							  <span class="palabras-maxima"><strong>5000</strong> palabras maimo</span>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group  inline-block style-padding3 col-xs-12 col-md-6 col-lg-4">
 							  	<input type="text" class="form-control" name="cantidad" placeholder="Cantidad requerida">
@@ -121,12 +148,17 @@
 									  <option>item-unidad</option>
 									  <option>item-unidad</option>
 									</select>
-								</div>
-								
+								</div>								
 							</div>
 							<div class="input-group inline-block style-padding5 col-xs-12 col-md-1 col-lg-1">
-								<p>Opcional</p>
+								<p>(Opcional)</p>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 6 -->
 							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
 								<div class="adjuntar-archivo">
@@ -136,6 +168,12 @@
 							  		</a>
 							  	</div>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 7 -->
 							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
 								<button class="btn btn-cotizacion-req">

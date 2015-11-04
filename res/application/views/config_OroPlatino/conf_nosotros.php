@@ -69,6 +69,10 @@
 							<textarea class="form-control" rows="7" name="nosotros" value="" placeholder="Ingrese la descripción de la empresa" style="border-radius: 0;resize: none;"><?=$empresa->descripcion?></textarea>
 							<div class="conten-pala-but">
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
+								<!-- Campo validacion -->
+								<div class="input-group content_validacion5 col-xs-12 col-md-7 col-lg-7">
+								  <p class="text_errors">Campo Requerido</p>
+								</div>
 								<button class="btn btn-guardar2">
 									<i class="ico-circle fa fa-floppy-o"></i>
 									<p class="text-publicarPro">Guardar</p> 
@@ -78,6 +82,10 @@
 							<textarea class="form-control" rows="7" name="mision" value="" placeholder="Ingrese la Misión de la empresa" style="border-radius: 0;resize: none;"><?=$empresa->mision?></textarea>
 							<div class="conten-pala-but">
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
+								<!-- Campo validacion -->
+								<div class="input-group content_validacion5 col-xs-12 col-md-7 col-lg-7">
+								  <p class="text_errors">Campo Requerido</p>
+								</div>
 								<button class="btn btn-guardar2">
 									<i class="ico-circle fa fa-floppy-o"></i>
 									<p class="text-publicarPro">Guardar</p> 
@@ -87,6 +95,10 @@
 							<textarea class="form-control" rows="7" name="vision" value="" placeholder="Ingrese la Visión de la empresa" style="border-radius: 0;resize: none;"><?=$empresa->vision?></textarea>
 							<div class="conten-pala-but" style="margin-bottom: 20px;">
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
+								<!-- Campo validacion -->
+								<div class="input-group content_validacion5 col-xs-12 col-md-7 col-lg-7">
+								  <p class="text_errors">Campo Requerido</p>
+								</div>
 								<button class="btn btn-guardar2">
 									<i class="ico-circle fa fa-floppy-o"></i>
 									<p class="text-publicarPro">Guardar</p> 

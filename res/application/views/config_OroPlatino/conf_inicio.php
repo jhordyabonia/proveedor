@@ -117,7 +117,11 @@
 			                        document.getElementById('img'+id).src=url; 		                        
 	                    		}
                    			</script>
-
+							
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion3 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
 
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
@@ -187,6 +191,12 @@
 								</script>
 							  <a class="agregar-mas-videos" href="JavaScript:agregar_video()"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion3 col-xs-12 col-md-12 col-lg-12">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
 								<button class="btn btn-guardar-inicio" type="submit">
@@ -306,6 +316,12 @@
 							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
 							  <a class="agregar-mas-videos2" href="JavaScript:agregar_images();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
 							</div>
+
+							<!-- Campo validacion -->
+							<div class="input-group content_validacion4 col-xs-12 col-md-12 col-lg-12">
+							  <p class="text_errors">Campo Requerido</p>
+							</div>
+
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
 								<button class="btn btn-guardar-inicio2">
