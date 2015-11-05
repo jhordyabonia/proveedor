@@ -5,9 +5,11 @@
    left: 63px;
 }
 .txt_nom_empre{
-   margin-bottom: 0;
-   font-size: 33px;
-   text-align: center;
+	margin-top: 19px;
+   	margin-bottom: 0;
+   	font-size: 37px;
+   	text-align: center;
+   	line-height: 1;
 }
 /*
 y remplaza este fragmento por el que ya esta 
@@ -46,6 +48,12 @@ width: 480px;
 	text-decoration: none !important;
 }
 
+.enlaces_header2{
+	color: #111;
+	font-size: 15px;
+	text-decoration: none !important;
+}
+
 .color-text{
 	color: #ff7f27 !important;
 	font-weight: bold;
@@ -57,11 +65,11 @@ width: 480px;
 	text-decoration: none !important;
 }
 .list_item{
-	list-style: none;
+    list-style: none;
     margin-top: 5px;
-    padding-left: 46px;
+    padding-left: 25px;
     padding-right: 19px;
-    line-height: 41px;
+    line-height: 32px;
     margin-bottom: 0;
 }
 .list_redes{
@@ -74,6 +82,8 @@ width: 480px;
 }
 .list_item > li{
 	display: inline-block;
+	position: relative;
+	top: 1px;
 }
 
 .active{
@@ -84,12 +94,16 @@ width: 480px;
 	color: #ff7f27;
 	border-bottom: 5px solid #ff7f27;
 }
+.anti-active{
+	color: transparent;
+	border-bottom: 0 !important;
+}
 .icon_style{
 	font-size: 18px !important;
 	padding-right: 7px;
 }
 .icon_style_des{
-	font-size: 28px !important;
+	font-size: 23px !important;
 	color: #ff7f27;
 }
 .icono_redes{
@@ -97,15 +111,17 @@ width: 480px;
 	color: #999999;
 }
 .conten_img{
-	width: 480px;
+    width: 50%;
     height: 190px;
-    margin: 18px auto;
+    margin: 30px 10px 20px 378px;
 }
 .info .tipo_empresa .style_empresa{
 	width: 56px;
-    display: inline-block;
-    margin-right: 0px;
-    margin-left: 0px;
+	display: inline-block;
+    margin-right: 10px;
+    margin-left: 8px;
+    margin-top: 1px;
+    margin-bottom: 2px;
 }
 .info .verificacion .style_verificacion{
     width: 35px;
@@ -117,6 +133,10 @@ width: 480px;
 }
 .info .tipo_empresa .inline-block{display: inline-block;}
 .info .verificacion .inline-block{display: inline-block;}
+
+.sonri-img{
+    margin-top: 3px;
+}
 
 .tipo_empresa {
 	position: relative;

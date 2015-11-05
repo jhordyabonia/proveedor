@@ -13,6 +13,11 @@
 	color: #111 !important;
 	font-size: 20px;
 }
+.logo
+{
+    width: 25%;
+    height: 50%;
+}
 
 .item_contactenos{
 	list-style: none;
