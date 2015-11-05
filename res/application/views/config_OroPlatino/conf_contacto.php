@@ -72,9 +72,11 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-user"></span>
 							  </span>
-							  <input type="text" class="form-control" name="nombres" value="<?=$usuario->nombres?>" placeholder="Nombre del contacto">
+							  <input type="text" class="form-control" name="nombres" ondblclick="necessary"
+							  onchange="JavaScript:verificar_largo(this,5); verificar_caracteres(this,'=')"
+							   value="<?=$usuario->nombres?>" placeholder="Nombre del contacto">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id="err_nombres"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -82,8 +84,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_nombres" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_nombres"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -91,18 +93,20 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
-							  <input type="text" class="form-control" name="cargo" value="<?=$usuario->cargo?>" placeholder="Cargo/Funcion en la empresa">
+							  <input type="text" class="form-control" name="cargo"
+							  onchange="JavaScript:verificar_largo(this,2);" 
+							  value="<?=$usuario->cargo?>" placeholder="Cargo/Funcion en la empresa">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id="err_cargo"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_cargo" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_cargo"></p>
 							</div>
 
 							<!-- Campo 3 -->
@@ -110,9 +114,11 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-map-marker"></span>
 							  </span>
-							  <input type="text" class="form-control" name="direccion" value="<?=$usuario->direccion?>" placeholder="Direccion de la empresa">
+							  <input type="text" class="form-control" name="direccion"
+							  onchange="JavaScript:verificar_largo(this,5);"
+							   value="<?=$usuario->direccion?>" placeholder="Direccion de la empresa">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_direccion"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -120,8 +126,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_direccion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_direccion"></p>
 							</div>
 
 							<!-- Campo 4.0 -->
@@ -133,7 +139,7 @@
 							  	<i class="ico-gene fa fa-globe"></i>
 							  </span>
 							  <select class="form-control" name="pais" id="pais" onchange="JavaScript:cambio_pais();verificar(this);"
-							   onload="JavaScript:cambio_pais();" value="52">
+							   onload="JavaScript:cambio_pais();" ondblclick="necessary" value="52">
 								  	<option value="0">Selecciona tu pais</option>
 									<option value="52" selcted>Colombia</option>
 									<optgroup label=""></optgroup>
@@ -147,16 +153,16 @@
 							        	<?php endforeach;?>   
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_pais"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_pais" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_pais"></p>
 							</div>
 
 							<!-- Campo 4.1 -->
@@ -164,7 +170,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-globe"></i>
 							  </span>
-							  <select class="form-control" name="provincia" id="provincia" 
+							  <select class="form-control" name="provincia" id="provincia" ondblclick="necessary" 
 								 onchange="JavaScript:cambio_departamento(this.value); verificar(this);">
 								  	<option value="">Selecciona tu departamento</option>
 									<optgroup label=""></optgroup>
@@ -175,16 +181,16 @@
 							        	<?php  endforeach; ?>    
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_provincia"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_provincia" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_provincia"></p>
 							</div>
 
 							<!-- Campo 4.2 -->
@@ -193,7 +199,7 @@
 							  	<i class="ico-gene fa fa-globe"></i>
 							  </span>
 							  <select class="form-control" name="municipio" id="municipio" value="<?=set_value('municipio'); ?>"
-								 onchange="JavaScript:verificar(this);">
+								 onchange="JavaScript:verificar(this);" ondblclick="necessary" >
 								  	<option value="0">Selecciona tu municipio</option>
 											<optgroup label=""></optgroup>
 									        	<?php  foreach($municipios as $municipio):?>
@@ -203,16 +209,16 @@
 									        	<?php  endforeach; ?>      
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_municipio"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_municipio" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_municipio"></p>
 							</div>
 
 							<!-- Campo 5 -->
@@ -220,9 +226,11 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-phone"></span>
 							  </span>
-							  <input type="text" class="form-control" name="celular" value="<?=$usuario->celular?>" placeholder="Telefono celular">
+							  <input type="text" class="form-control" name="celular" ondblclick="necessary"
+							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-')"
+							  value="<?=$usuario->celular?>" placeholder="Telefono celular">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_celular"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -230,8 +238,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_celular" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_celular"></p>
 							</div>
 
 							<!-- Campo 6 -->
@@ -239,18 +247,20 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-phone"></i>
 							  </span>
-							  <input type="text" class="form-control" name="telefono" value="<?=$usuario->telefono?>" placeholder="Telefono fijo y/o PBX">
+							  <input type="text" class="form-control" name="telefono"
+							  onchange="JavaScript:verificar(this);"
+							   value="<?=$usuario->telefono?>" placeholder="Telefono fijo y/o PBX">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_telefono"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_telefono" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_telefono"></p>
 							</div>
 
 							<!-- Campo 7 -->
@@ -258,18 +268,20 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-laptop"></i>
 							  </span>
-							  <input type="text" class="form-control" name="web" value="<?=$usuario->web?>" placeholder="Pagina Web">
+							  <input type="text" class="form-control" name="web" 
+							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
+							  value="<?=$usuario->web?>" placeholder="Pagina Web">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_web"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_web" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_web"></p>
 							</div>
 
 							<!-- Campo 8 -->
@@ -277,18 +289,19 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-facebook-square"></i>
 							  </span>
-							  <input type="text" class="form-control" name="facebook" value="<?=$usuario->facebook?>" placeholder="Pagina de facebook">
+							  <input type="text" class="form-control" name="facebook"
+							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
+							   value="<?=$usuario->facebook?>" placeholder="Pagina de facebook">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_facebook"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_facebook" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_facebook"></p>
 							</div>
 
 							<!-- Campo 9 -->
@@ -296,18 +309,20 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-twitter"></i>
 							  </span>
-							  <input type="text" class="form-control" name="twitter" value="<?=$usuario->twitter?>" placeholder="Pagina de twitter">
+							  <input type="text" class="form-control" name="twitter"
+							  onchange="JavaScript:verificar_caracteres(this,'[SPACE] ( ) ? ¿ =');"
+							   value="<?=$usuario->twitter?>" placeholder="Pagina de twitter">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_twitter"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_twitter" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_twitter"></p>
 							</div>
 
 							<!-- Campo 10 -->
@@ -315,18 +330,20 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-linkedin-square"></i>
 							  </span>
-							  <input type="text" class="form-control" name="linkedin" value="<?=$usuario->linkedin?>" placeholder="Pagina de likedin">
+							  <input type="text" class="form-control" name="linkedin"
+							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
+							   value="<?=$usuario->linkedin?>" placeholder="Pagina de likedin">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_linkedin"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  	
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_linkedin" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_linkedin"></p>
 							</div>
 
 							<!-- Campo 7 -->

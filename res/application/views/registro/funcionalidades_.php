@@ -149,7 +149,7 @@
                     {
                         var div=document.getElementById('err_'+obj.name);
                         if(div!=null)
-                        {div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';}
+                        {div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';}
 
                         var div_msj=document.getElementById('msj_err_'+obj.name);
                         if(div_msj!=null)
@@ -193,7 +193,7 @@
                                 {return false;}
                             if(!necessary)
                                 {return true;}
-                            div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+                            div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                             document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                             
                              var msj_err="Campo requerido";
@@ -206,7 +206,7 @@
                             if(obj.value==''||(obj.type=="select-one"&&obj.value=='0')||(obj.name=="radio"&&!obj.checked))
                             {                                 
                                 err="<i style='font-size:12px;font-family:Arial:'>"+msj_err+"</i><br>";
-                                div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                                div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                                 if(div_msj.innerHTML.indexOf(err)==-1)
                                 {    div_msj.innerHTML=err;  }
                                 document.getElementById('parent_msj_err_'+obj.name).style.display='';
@@ -296,7 +296,7 @@
 
                         var div=document.getElementById('err_'+obj.name);
                         var div_msj=document.getElementById('msj_err_'+obj.name);
-                        div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+                        div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                         document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                         if(max!=0)
                         {   
@@ -306,7 +306,7 @@
                                { msj_err="La contreseña tiene caracteres no permitidos (caracteres con tilde)."}
                                                            
                             err="<i style='font-size:12px;font-family:Arial:'>"+msj_err;
-                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                             {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj.name).style.display='';
@@ -332,13 +332,13 @@
                             var div_msj=document.getElementById('msj_err_'+obj.name);
                             if(div_msj.innerHTML.indexOf("<bd></bd>")!=-1||div_msj.innerHTML=="")
                             {
-                                div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"><bd></bd></span>';
+                                div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"><bd></bd></span>';
                                 fails=0;
                                 document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                                 if(popup.response!="0")
                                 {
                                     err="<i style='font-size:12px;font-family:Arial:'>El "+obj.name+": "+obj.value+" Ya se encuentra registrado!<bd></bd></i><br>";
-                                    div.innerHTML='<span name="err" class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                                    div.innerHTML='<span name="err" class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                                     if(div_msj.innerHTML.indexOf(err)==-1)
                                     {    div_msj.innerHTML=err;  } 
                                     document.getElementById('parent_msj_err_'+obj.name).style.display='';
@@ -356,7 +356,7 @@
                             fails=0;
                         var div=document.getElementById('err_'+obj.name);
                         var div_msj=document.getElementById('msj_err_'+obj.name);
-                        div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+                        div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                         document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                         if(obj.value.length<max)
                         {         
@@ -365,7 +365,7 @@
                                { msj_err="La contraseña"}
                                          
                             err="<i style='font-size:12px;font-family:Arial:'>"+msj_err+" debe contener, por lo menos "+max+" caracteres</i><br>";
-                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                             {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj.name).style.display='';
@@ -378,12 +378,12 @@
                         //fails=0;
                         var div=document.getElementById('err_'+obj.name);
                         var div_msj=document.getElementById('msj_err_'+obj.name);
-                        //div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+                        //div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                         //document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                         if(obj.value.length>max)
                         {                                 
                             err="<i style='font-size:12px;font-family:Arial:'>El "+obj.name+" debe contener, máximo "+max+" caracteres</i><br>";
-                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                             {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj.name).style.display='';
@@ -397,13 +397,13 @@
                         if(obj.value.indexOf("@")!=-1&&obj.value.indexOf(".")!=-1)
                             {  
                                fails=0;
-                               div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+                               div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                                document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                             }
                             else
                             { 
                                err="<i style='font-size:12px;font-family:Arial:'>El formato de "+obj.name+"  no es correcto. Ej.usuario@dominio.com</i><br>";
-                               div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                               div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                                div_msj.innerHTML=err; 
                                document.getElementById('parent_msj_err_'+obj.name).style.display='';
                                fails=1; stack_err="formato: "+obj.name;
@@ -420,13 +420,13 @@
                         if(obj1.value==obj2.value)
                         {                        
                             fails=0;
-                            div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+                            div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                             document.getElementById('parent_msj_err_'+obj1.name).style.display='none';
                         }
                         else
                         { 
                             err="<i style='font-size:12px;font-family:Arial:'>Las contraseñas no coinciden</i><br>";
-                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';  
+                            div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                                {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj1.name).style.display='';

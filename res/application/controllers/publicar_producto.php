@@ -92,7 +92,7 @@ class Publicar_producto extends CI_Controller {
 			$id_registro=$this->producto->insert($producto);
 			$this->_images_form($id_registro);
 			$this->session->set_flashdata('producto_registrado', 'Producto registrado exitosamente!!');
-			redirect(base_url() . 'publicar_producto', 'refresh');
+			 redirect($_SERVER['HTTP_REFERER']);
 		}
 		#else
 		#{$this->index();}

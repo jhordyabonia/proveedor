@@ -72,9 +72,12 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-user"></span>
 							  </span>
-							  <input type="text" class="form-control" name="usuario" value="<?=$usuario->usuario?>" placeholder="papichulo22">
+							  <input type="text" class="form-control" name="usuario"
+							  onchange="JavaScript:eliminar_espacios(this);verificar_attime(this);verificar_largo(this,5);verificar_caracteres(this,'[SYM]');"
+							onclick="JavaScript:limpiar(this);" ondblclick="necessary"  
+							 value="<?=$usuario->usuario?>" placeholder="papichulo22">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_success"></i>
+							  	<i id="err_usuario"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -82,8 +85,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_usuario" style="display:none" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_usuario"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -91,9 +94,11 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-at"></i>
 							  </span>
-							  <input type="text" class="form-control" name="email" value="<?=$usuario->email?>" placeholder="usuario@gmail.com">
+							  <input type="text" class="form-control" name="email"
+							  onchange="JavaScript:verificar_formato(this);verificar_attime(this)" onclick="JavaScript:limpiar(this);"
+							  value="<?=$usuario->email?>" placeholder="usuario@gmail.com">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_success"></i>
+							  	<i id="err_email"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -101,8 +106,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_email" style="display:none" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_email"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -110,9 +115,12 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input type="text" class="form-control" name="password" placeholder="**********">
+							  <input type="password" class="form-control" name="password"
+							  onclick="JavaScript:limpiar(this);"
+								onchange="JavaScript:verificar_igualdad(document.getElementById('password2'),this);verificar_largo(this,6);verificar_caracteres(this,' áéíóúñ');" 
+								class="input-style"  placeholder="**********">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id="err_password"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -120,8 +128,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_password" style="display:none" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_password"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -129,9 +137,11 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input type="text" class="form-control" name="password2" placeholder="**********">
+							  <input type="password" class="form-control" name="password2" placeholder="**********"
+							  onclick="JavaScript:limpiar(this);"  ondblclick="necessary"
+				  				onchange="JavaScript:verificar_igualdad(this,document.getElementById('password'))">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id="err_password2"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -139,8 +149,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_password2" style="display:none" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_password2"></p>
 							</div>
 
 							<!-- Campo 7 -->

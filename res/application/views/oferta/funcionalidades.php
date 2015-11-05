@@ -20,10 +20,10 @@ function verificar_attime(obj) {
         var div = document.getElementById('err_' + obj.name);
         var div_msj = document.getElementById('msj_err_' + obj.name);
         if (popup.response == "0") {
-            div.innerHTML = '<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+            div.innerHTML = '<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
         } else {
             err = "<i style='font-size:12px;font-family:Arial:'>El " + obj.name + ": " + obj.value + " Ya se encuentra registrado!</i><br>";
-            div.innerHTML = '<span name="err" class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+            div.innerHTML = '<span name="err" class="glyphicon glyphicon-remove-sign boton-verificar-ok validacion_error"></span>';
             if (div_msj.innerHTML.indexOf(err) == -1) {
                 div_msj.innerHTML += err;
             }
@@ -38,10 +38,10 @@ function verificar_largo(obj, max) {
     var div = document.getElementById('err_' + obj.name);
     var div_msj = document.getElementById('msj_err_' + obj.name);
     if (obj.value.length >= max) {
-        div.innerHTML = '<span class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+        div.innerHTML = '<span class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
     } else {
         err = "<i style='font-size:12px;font-family:Arial:'>El campo " + obj.name + " debe tener, minímo " + max + " caracteres</i><br>";
-        div.innerHTML = '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+        div.innerHTML = '<span class="glyphicon glyphicon-remove-sign boton-verificar-ok validacion_error"></span>';
         if (div_msj.innerHTML.indexOf(err) == -1) {
             div_msj.innerHTML += err;
         }
@@ -52,10 +52,10 @@ function verificar_formato(obj) {
     var div = document.getElementById('err_' + obj.name);
     var div_msj = document.getElementById('msj_err_' + obj.name);
     if (obj.value.indexOf("@") != -1 && obj.value.indexOf(".") != -1) {
-        div.innerHTML = '<span class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+        div.innerHTML = '<span class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
     } else {
         err = "<i style='font-size:12px;font-family:Arial:'>El " + obj.name + " no tiene le formato debido. ejem: usuario@dominio.com</i><br>";
-        div.innerHTML = '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+        div.innerHTML = '<span class="glyphicon glyphicon-remove-sign boton-verificar-ok validacion_error"></span>';
         if (div_msj.innerHTML.indexOf(err) == -1) {
             div_msj.innerHTML += err;
         }
@@ -71,10 +71,10 @@ function verificar_igualdad(obj1, obj2) {
     }
 
     if (obj1.value == obj2.value) {
-        div.innerHTML = '<span class="glyphicon glyphicon-ok-sign boton-verificar-ok"></span>';
+        div.innerHTML = '<span class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
     } else {
         err = "<i style='font-size:12px;font-family:Arial:'>El " + obj1.name + " no coincide con " + obj2.name + " </i><br>";
-        div.innerHTML = '<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>';
+        div.innerHTML = '<span class="glyphicon glyphicon-remove-sign boton-verificar-ok validacion_error"></span>';
         if (div_msj.innerHTML.indexOf(err) == -1) {
             div_msj.innerHTML += err;
         }

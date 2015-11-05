@@ -72,9 +72,12 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-building-o"></i>
 							  </span>
-							  <input type="text" class="form-control" name="nombre" value="<?=$empresa->nombre?>" placeholder="Nombre de la Empresa">
+							  <input type="text" class="form-control" id="nomnbre" name="nombre" ondblclick="necessary" 
+							  onchange="JavaScript:verificar_largo(this,3);verificar_caracteres(this,'[SYM].:|&')"
+							   onclick="JavaScript:limpiar(this)"
+							   value="<?=$empresa->nombre?>" placeholder="Nombre de la Empresa">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id='err_nombre' ></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -82,8 +85,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_nombre"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_nombre"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -91,9 +94,11 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
-							  <input type="text" class="form-control" name="nit" value="<?=$empresa->nit?>"placeholder="Nit de la Empresa o C.C. del Comercial">
+							  <input type="text" class="form-control" id="nit" name="nit" ondblclick="necessary"
+							  onchange="JavaScript:eliminar_espacios(this);verificar_attime(this); verificar_caracteres(this,' áéíóúñ [ALPHA][SYM]|-')"
+							  value="<?=$empresa->nit?>"placeholder="Nit de la Empresa o C.C. del Comercial">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_nit"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -101,22 +106,23 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_nit"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_nit"></p>
 							</div>
 							<!-- Campo 3 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-tags"></span>
 							  </span>
-							  <select class="form-control" name="tipo">
+							  <select class="form-control" id="tipo_empresa" id="tipo_empresa"
+							  onchange="JavaScript:verificar(this);" name="tipo">
 								  <option>Tipo de Empresa</option>
 								  <?php foreach($tipos_empresa as $key=> $tipo):?>
 								 	 <option <?php if($empresa->tipo==$tipo->id_tipoempresa){echo 'selected';}?> value="<?=$tipo->id_tipoempresa?>"><?=$tipo->tipo?></option>
 								  <?php endforeach;?>
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id='err_tipo' ></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -124,8 +130,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_tipo"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_tipo"></p>
 							</div>
 							<!-- Campo 4 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
@@ -139,7 +145,7 @@
 								  <?php endforeach;?>
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_categoria"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -147,8 +153,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_categoria"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_categoria"></p>
 							</div>
 
 							<!-- Campo 5 -->
@@ -156,9 +162,12 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene3 glyphicon glyphicon-pencil"></span>
 							  </span>
-							  <textarea rows="9" class="form-control" name="descripcion" placeholder="Descripción de la Empresa"><?=$empresa->descripcion?></textarea>
+							  <textarea rows="9" class="form-control" name="descripcion" 
+							  ondblclick="necessary" onclick="JavaScript:limpiar(this)"
+							  onchange="JavaScript:verificar_largo(this,15);verificar_largo_max(this,500);"
+							  placeholder="Descripción de la Empresa"><?=$empresa->descripcion?></textarea>
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success_ta"></i>
+							  	<i id="err_descripcion"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido3 glyphicon glyphicon-asterisk"></span>
@@ -166,8 +175,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_descripcion"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_descripcion"></p>
 							</div>
 
 							<!-- Campo 5 -->
@@ -175,18 +184,19 @@
 							  <span class="fiel-tramspa input-group-addon" style="padding-right: 9px;">
 							  	<i class="ico-gene4 fa fa-cubes"></i>
 							  </span>
-							  <input type="text" class="form-control" name="prod_princ" value="<?=$empresa->productos_principales?>" placeholder="Productos Principales (separados por comas)">
+							  <input type="text" class="form-control" name="prod_princ" 
+							  onchange="JavaScript:verificar(this);" onclick="JavaScript:limpiar(this)"  value="<?=$empresa->productos_principales?>" 
+							  placeholder="Productos Principales (separados por comas)">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_prod_prin"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_prod_prin"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_prod_prin"></p>
 							</div>
 
 							<!-- Campo 6 -->
@@ -194,16 +204,17 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-shopping-cart"></i>
 							  </span>
-							  <input type="text" class="form-control" name="prod_req" value="<?=$empresa->productos_de_interes?>" placeholder="Productos Requeridos (separados por comas)">
-							  c
+							  <input type="text" class="form-control" name="prod_int4"
+							  onchange="JavaScript:verificar(this);" onclick="JavaScript:limpiar(this)"  value="<?=$empresa->productos_de_interes?>"
+							   placeholder="Productos Requeridos (separados por comas)">
+							  
 							  <span class="fiel-tramspa input-group-addon">
-							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_prod_int4"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_prod_int4"></p>
 							</div>
 							<!-- Campo 6 -->
 							<div class="input-group style-padding7 inline-block col-xs-12 col-md-6 col-lg-6">
@@ -242,8 +253,8 @@
 							  	</div>
 							</div>
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_"></p>
 							</div>
 							<!-- Campo 4 -->
 							<div class="input-group style-padding8 col-xs-12 col-md-8 col-lg-8">
@@ -271,8 +282,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_"></p>
 							</div>
 							<!-- Campo 7 -->
 							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">

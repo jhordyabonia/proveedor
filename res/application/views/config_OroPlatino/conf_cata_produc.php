@@ -60,11 +60,11 @@
 					<div class="titles">
 						<h3 class="text-title-pub">Publicar Producto o Servicio</h3>
 						<ul class="list-item-cata">
-							<li class="item-cata">
+							<li class="item-cata" onclick="location.href='<?=base_url()?>publicar_producto'">
 								<span class="glyphicon glyphicon-open"></span>
 								Publicacion Completa
 							</li>
-							<li class="item-cata">
+							<li class="item-cata" onclick="location.href='<?=base_url()?>producto/administrar'">
 								<span class="glyphicon glyphicon-th"></span>
 								Administrar Productos
 							</li>
@@ -81,9 +81,12 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-pencil"></span>
 							  </span>
-							  <input type="text" class="form-control" name="nombre" placeholder="Nombre del productos o servicio">
+							  <input type="text" class="form-control" name="nombre"
+                  				 onclick="JavaScript:limpiar(this)"  required
+                  				 onchange="JavaScript:verificar_largo(this,5);" 
+                  				 value="<?php echo set_value('nombre'); ?>" placeholder="Nombre del productos o servicio">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id='err_nombre' ></i></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -91,8 +94,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_nombre"  class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_nombre"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -100,15 +103,17 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-list"></span>
 							  </span>
-							  <select class="form-control" name="subcategoria">
-								  <option selected>Selecciones una categoria</option>
-								  <option>item-categoria</option>
-								  <option>item-categoria</option>
-								  <option>item-categoria</option>
-								  <option>item-categoria</option>
-								</select>
+							 <select class="form-control" required name="categoria" 
+							 onchange="JavaScript:cambio_categoria_simple(this.value); document.getElementById('div_subcategoria').style.display='';"
+							  required value="<?=set_value('categoria'); ?>"
+                  				 onclick="JavaScript:limpiar(this)" >
+								  <option value="1">Selecciones la categoria del producto o servicio requerido</option>
+							  	  <?php foreach($categorias as $categoria):?>
+								  	<option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
+								  <?php endforeach;?>
+							</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+							  	<i id='err_categoria' ></i></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -116,8 +121,28 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_categoria" style="display:none"  class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_categoria"></p>
+							</div>
+							<!-- Row de Sub-Categorias del Producto -->
+					            <div id="div_subcategoria" style="display:none" class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
+								  <span class="fiel-tramspa input-group-addon">
+								  	<span class="ico-gene glyphicon glyphicon-list"></span>
+								  </span>
+								  <select class="form-control new-br" name="subcategorias_simples" id="subcategorias_simples">
+					                      <option value="" selected>Seleccione una sub-categoria del producto</option>       
+					                    </select>
+					                   <span class="fiel-tramspa input-group-addon conten-ico-vali">
+							  	<i id='err_subcategorias_simples' ></i>
+							  </span>
+							  <span class="fiel-tramspa input-group-addon">
+							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  </span>
+							</div>
+
+							<!-- Campo validacion -->
+							<div id="parent_msj_err_subcategorias_simples"  class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_subcategorias_simples"></p>
 							</div>
 
 							<!-- Campo 3 -->
@@ -125,9 +150,13 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
 							  </span>
-							  <textarea class="form-control" rows="5" name="descripcion" placeholder="Descripcion del producto o servicio"></textarea>
+							  <textarea class="form-control" rows="5"							  
+                  				 onclick="JavaScript:limpiar(this)" required
+                  				 onchange="JavaScript:verificar_largo(this,10);" 
+                  				 name="descripcion" 
+                  				 placeholder="Descripcion del producto o servicio"></textarea>
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error_ta2"></i>
+							  	<i id='err_descripcion' ></i></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido2 glyphicon glyphicon-asterisk"></span>
@@ -136,8 +165,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_descripcion" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_descripcion"></p>
 							</div>
 
 							<!-- Campo 4 -->
@@ -145,7 +174,7 @@
 							  	<div class="conte-radios">
 								  	<div class="radio inline-block">
 									  <label>
-									    <input type="radio" name="precio" id="optionsRadios1" value="1">
+									    <input type="radio"  name="precio" id="optionsRadios1" value="1">
 									    Precio unitario
 									  </label>
 									</div>
@@ -159,8 +188,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_precio" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_precio"></p>
 							</div>
 
 							<!-- Campo 5 -->
@@ -173,37 +202,53 @@
 							  		por
 							  	</span>
 							  	<div class="input-group">
-								    <select class="form-control" name="medida">
-									  <option selected>Unidad (und)</option>
-									  <option>item-unidad</option>
-									  <option>item-unidad</option>
-									  <option>item-unidad</option>
-									  <option>item-unidad</option>
+								    <select class="form-control" name="list_medidas">
+									  <option value="1">Unidad (und)</option>
+								    	<?php foreach ($unidades as $key => $unidad):?>
+										  <option <?=$unidad->id_dimension?> ><?=$unidad->nombre?></option>
+										<?php endforeach;?>
 									</select>
 								</div>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  	<i id="err_list_medidas"> </i></i>
 							  </span>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7" style="padding-top: 15px;">
-							  <p class="text_errors">Campo Requerido</p>
+							<div id="parent_msj_err_list_medidas" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7" style="padding-top: 15px;">
+							  <p class="text_errors" id="msj_err_list_medidas"></p>
 							</div>
 
 							<!-- Campo 6 -->
 							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
-								<div class="subir-imagenes">
-							  		<a class="enlace-ssubir-imagenes">
+								<div class="subir-imagenes" >
+							  		<a href="JavaScript:document.getElementById('btn_archivos2').click()" class="enlace-ssubir-imagenes">
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
 							  			<p class="text-subir-img">Subir imagenes del producto</p>
 							  		</a>
-							  	</div>
+							  	</div>   
+							  	<div style="display:none">
+		                          <input type="file" class="filestyle" id="btn_archivos2" name="userfiles[]" multiple
+		                            data-size="lg" data-input="false" data-icon="false" data-badge="false" 
+		                            onchange="JavaScript:oculta_eliminar();" onload="JavaScript:oculta_eliminar();" >
+		                        </div>
 							</div>
 
+				            <div class="row" style="margin-top:-14px;" >
+				              <div class="col-md-12 col-xs-12" style="padding: 0;">
+				                <div class="col-md-6 col-xs-12">
+				                  <div style="display:none" class="btn-group btn-group-lg vcenter" id="eliminar1" >
+				                      <button style="display:none" type="button" id="btn_delete" class="btn btn-default">
+				                        <span class="glyphicon glyphicon-remove"></span>
+				                        Eliminar Imagen
+				                      </button>
+				                  </div>
+				                </div>
+				              </div>
+				              </div>
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							<div  id="parent_msj_err_imagenes" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_imagenes"></p>
 							</div>
 
 							<!-- Campo 7 -->
@@ -222,3 +267,33 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+
+       document.onload=ready();
+       function ready()
+         {
+            var popup=new XMLHttpRequest();
+            var url_popup="<?=base_url()?>popup/confirmar_producto/";
+            popup.open("GET", url_popup, true);
+            popup.addEventListener('load',show,false);
+            popup.send(null);
+            function show()
+              {
+                ready=document.getElementById('ready');
+                ready.innerHTML=popup.response;
+                console.log(popup.response);
+                <?php if($this->session->flashdata('producto_registrado')):?>
+                  document.getElementById('launch_popup_ready').click();
+                <?php endif; ?>
+              }
+       }
+  </script>
+  
+  <div data-toggle="modal" data-target="#confirmar_producto" id="launch_popup_ready">
+    </div>
+  <div id="ready" onload="JavaScript:ready();">
+    </div>
+    <!--
+    -->

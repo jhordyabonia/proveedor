@@ -6,6 +6,7 @@ class Config_empresa extends CI_Controller {
   function __construct(){
     parent::__construct();
     $this->load->model('new/Producto_model', "producto");
+    $this->load->model('new/Dimension_model', "dimension");
     $this->load->model('new/Usuarios_model', "usuario");
     $this->load->model('new/Empresa_model', "empresa");
     $this->load->model('new/Catalogo_model', "catalogo"); 
@@ -38,10 +39,14 @@ class Config_empresa extends CI_Controller {
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
   function cotizaciones(){
+    $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
+    $this->datos['categorias']=$this->categoria->get_all();
+    $this->datos['unidades']=$this->dimension->get_all();
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_coti_requeridas',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('oferta/funcionalidades');
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
   function contacto(){
@@ -68,6 +73,7 @@ class Config_empresa extends CI_Controller {
     $this->load->view('config_OroPlatino/conf_usuario',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('registro/funcionalidades_');
   }
 
   ##LLama la vista que mostrara la parte del footer en las vistas
@@ -88,15 +94,18 @@ class Config_empresa extends CI_Controller {
     $this->load->view('config_OroPlatino/conf_perfil_empresa',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('registro/funcionalidades_');
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
   function publicar_producto(){
     $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
     $this->datos['categorias']=$this->categoria->get_all();
+    $this->datos['unidades']=$this->dimension->get_all();
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_cata_produc',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('producto/funcionalidades');
   }
 
   ##LLama la vista que mostrara la parte del footer en las vistas

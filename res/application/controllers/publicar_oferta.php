@@ -97,7 +97,7 @@ class Publicar_oferta extends CI_Controller {
 			{	$this->_images_form($id_registro);	}
 
 			$this->session->set_flashdata('oferta_registrada', 'Oferta registrada exitosamente!!');
-			redirect(base_url() . 'publicar_oferta', 'refresh');
+			 redirect($_SERVER['HTTP_REFERER']);
 		}
 		#else
 		#{$this->index();}
