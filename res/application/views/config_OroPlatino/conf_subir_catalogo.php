@@ -82,7 +82,7 @@
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -107,7 +107,7 @@
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 3 -->
@@ -127,7 +127,7 @@
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 1 -->
@@ -146,7 +146,7 @@
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 6 -->
@@ -161,7 +161,7 @@
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 7 -->

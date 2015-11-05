@@ -4,7 +4,7 @@
 <div class="conten_top_catalogo">
 	<div class="conten_top">
 		<div class="col-md-3">
-			<a href="">
+			<a href="<?=base_url()?>">
 				<img class="img-responsive" src="<?=base_url()?>assets/img/imagen_empresa/captura1.png" style="margin-top:-1px;">
 			</a>
 		</div>
@@ -47,7 +47,7 @@
 								Tablero Usuario
 							</a>
 						<?php else:?>
-						<a class="enlaces" href="JavaScript:launch();">
+						<a id="launch_registro" class="enlaces" href="JavaScript:launch();">
 								Registro Gratis
 							</a>
 						<?php endif?>
@@ -57,3 +57,62 @@
 		</div>		
 	</div>
 </div>
+
+
+	
+<!-- funcionalidad de msj en popup -->
+	<?php 
+		$nit = $this->uri->segment(4); 
+		$reffer= "none";
+	  if($this->session->flashdata('reffer')) 
+	  	{	$reffer=$this->session->flashdata('reffer');	}
+	  ?>
+	<script type="text/javascript">
+ 	   reffer= "<?=$reffer?>";
+	     document.onload= start();
+	     function start()
+	       {
+		       	var popup=new XMLHttpRequest();
+		       	var url_popup="<?=base_url()?>mensajes/lanzar_popup/3";
+				var msj_enviado = "<?=$this->session->flashdata('mensaje_enviado')?>"=="DONE";
+				if (msj_enviado)
+				{	url_popup="<?=base_url()?>popup/confirmar_mensaje";	}
+
+				popup.open("GET", url_popup, true);
+				popup.addEventListener('load',show,false);
+				popup.send(null);
+
+				function show()
+					{
+
+						cotizar=document.getElementById('div_login');
+						cotizar.innerHTML="";
+
+						cotizar=document.getElementById('cotizar');
+						console.log(popup.response);
+						cotizar.innerHTML=popup.response;
+
+	       				if (msj_enviado)
+						{  	document.getElementById('confimacion_msj_enviado').click();	}
+						else
+						{ 
+							error_login ="<?=$this->session->flashdata('session')?>";
+			                mensaje = "<?=$this->session->flashdata('reffer')?>";
+			                if(error_login!="Done"&&mensaje=="mensaje")
+			                {
+			                  document.getElementById('#login').click();
+			                }else
+			                if(mensaje=="mensaje")
+			                {
+								document.getElementById('btn_contactar').click();
+								<?=$this->session->set_flashdata('reffer',FALSE)?>
+							}								
+						}  		
+						document.getElementById('id_objeto').value="<?=$this->uri->segment(3)?>" ;
+					}
+					//login();
+			}
+
+	</script>
+  <div id="cotizar">
+		</div>

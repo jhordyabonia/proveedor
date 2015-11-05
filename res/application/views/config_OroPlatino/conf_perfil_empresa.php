@@ -73,7 +73,7 @@
 							  	<i class="ico-gene2 fa fa-building-o"></i>
 							  </span>
 							  <input type="text" class="form-control" id="nomnbre" name="nombre" ondblclick="necessary" 
-							  onchange="JavaScript:verificar_largo(this,3);verificar_caracteres(this,'[SYM].:|&')"
+							  onchange="JavaScript:verificar_largo(this,3);verificar_caracteres(this,'[SYM].:|&.')"
 							   onclick="JavaScript:limpiar(this)"
 							   value="<?=$empresa->nombre?>" placeholder="Nombre de la Empresa">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -141,7 +141,7 @@
 							  <select class="form-control" name="categoria">
 								  <option selected>Seleccionar sector de la Empresa</option>
 								  <?php foreach($categorias as $key=> $categoria):?>
-								 	 <option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
+								 	 <option <?php foreach(explode('|',$empresa->categorias) as $value){if($categoria->id_categoria==$value){echo "selected";break;}}?> value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
 								  <?php endforeach;?>
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -223,14 +223,14 @@
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
 							  			<p class="text-subir-img">Subir logotipo de Empresa</p>
 							  			<div style="display:none" >
-							  				<input type="file" id="logo" name="logo[]" onchange="JavaScript:load_new_logo()"/>
+							  				<input type="file" id="logo" name="logo[]" onchange="JavaScript:load_new_logo2()"/>
 							  			</div>
 							  		</a>
 							  	</div>
 							</div>
 							<!-- Campo 6 -->
 							<script type="text/javascript">
-								function load_new_logo()
+								function load_new_logo2()
 			                    {
 			                        var paths = document.getElementById('logo').files;
 			                        var navegador = window.URL || window.webkitURL;
@@ -244,10 +244,12 @@
 							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
 							  		</div>
 							  		<div class="nombre-img-empres">
-							  			<p class="nombre-archivo-logo">Nombre del archivo.PNG</p>
+							  			<p class="nombre-archivo-logo"></p>
 							  			<div class="conten-borrar">
+								  			<!--
 								  			<i class="ico-remove fa fa-times-circle"></i>
 								  			<a class="enalce-remove" href="">Borrar</a>
+								  			-->
 							  			</div>
 							  		</div>
 							  	</div>
@@ -262,19 +264,19 @@
 							  		<h3 class="que-quiero">Que quieres hacer en Proveedor?</h3>
 								  	<div class="radio inline-block">
 									  <label>
-									    <input type="radio" name="radio" id="optionsRadios1" value="comprar">
+									    <input type="radio" name="radio" id="optionsRadios1" <?php if($usuario->rol=="comprar"){echo "checked";}?> value="comprar">
 									    Comprar
 									  </label>
 									</div>
 									<div class="radio inline-block">
 									  <label>
-									    <input type="radio" name="radio" id="optionsRadios2" value="vender">
+									    <input type="radio" name="radio" id="optionsRadios2" <?php if($usuario->rol=="vender"){echo "checked";}?> value="vender">
 									    Vender
 									  </label>
 									</div>
 									<div class="radio inline-block">
 									  <label>
-									    <input type="radio" name="radio" id="optionsRadios2" value="ambas">
+									    <input type="radio" name="radio" id="optionsRadios2"  <?php if($usuario->rol=="ambas"){echo "checked";}?>  value="ambas">
 									    Ambas
 									  </label>
 									</div>

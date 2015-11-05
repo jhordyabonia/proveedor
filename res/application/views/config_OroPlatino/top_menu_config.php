@@ -10,26 +10,26 @@
 					<img class="img-style img-responsive" src="<?php echo base_url()?>assets/img/index/logo_proveedor.png">
 				</li>
 				<li class="list-menu">
-					<a class="item-list" href="">INICIO</a>
+					<a class="item-list" href="<?=base_url()?>tablero_usuario">INICIO</a>
 				</li>
 				<li class="list-menu">
-					<a class="item-list" href="">OPORTUNIDADES</a>
+					<a class="item-list" href="<?=base_url()?>tablero_usuario/oportunidades">OPORTUNIDADES</a>
 				</li>
 				<li class="list-menu">
-					<a class="item-list" href="">MENSAJES</a>
+					<a class="item-list" href="<?=base_url()?>mensajes">MENSAJES</a>
 				</li>
 				<li class="list-menu">
-					<a class="item-list" href="">CONTACTOS</a>
+					<!--<a class="item-list" href="<?=base_url()?>">CONTACTOS</a>-->
 				</li>
 				<li class="list-menu">
-					<a class="item-list" href="">PRODUCTOS</a>
+					<a class="item-list" href="<?=base_url()?>producto/administrar">PRODUCTOS</a>
 				</li>
 				<li class="list-menu padding-style">
 					<span class="ico-user glyphicon glyphicon-user"></span>
-					<a class="nom_username" href="">newtester</a>
+					<a class="nom_username" href="<?=base_url()?>empresa/inicio/<?=$empresa->id?>"><?=$usuario->usuario?></a>
 				</li>
 				<li class="list-menu">
-					<a class="salir" href="">salir</a>
+					<a class="salir" href="<?=base_url()?>logueo/logout">salir</a>
 				</li>
 				<li class="list-menu">
 					<a class="icostyle-config active"><i class="fa fa-cog"></i></a>

@@ -74,9 +74,9 @@
 									</div>
 								</div>
 								<div class="subido-img">
-									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?=$banners[0]?>">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a href="JavaScript:document.getElementById('img1').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[0]==''){ echo '11.jpg';}else{echo $banners[0];} ?>">
+									<p class="name-file"></p>
+									<a href="JavaScript:document.getElementById('img1').src='<?=base_url()?>uploads/banners/11.jpg';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 							<div class="img-banner">
@@ -88,9 +88,9 @@
 									</div>
 								</div>
 								<div class="subido-img">
-									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?=$banners[1]?>">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a href="JavaScript:document.getElementById('img2').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
+									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[1]==''){ echo '11.jpg';}else{echo $banners[1];} ?>">
+									<p class="name-file"></p>
+									<a href="JavaScript:document.getElementById('img2').src='<?=base_url()?>uploads/banners/11.jpg';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
 							</div>
 							<div class="img-banner">
@@ -102,9 +102,9 @@
 									</div>
 								</div>
 								<div class="subido-img">
-									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?=$banners[2]?>">
-									<p class="name-file">Nombre del archivo.PNG</p>
-									<a href="JavaScript:document.getElementById('img3').src=0;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[2]==''){ echo '11.jpg';}else{echo $banners[2];} ?>">
+									<p class="name-file"></p>
+									<a href="JavaScript:document.getElementById('img3').src='<?=base_url()?>uploads/banners/11.jpg';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 
@@ -120,7 +120,7 @@
 							
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion3 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 7 -->
@@ -194,7 +194,7 @@
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion3 col-xs-12 col-md-12 col-lg-12">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 7 -->
@@ -270,7 +270,7 @@
 										DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+')">/>';
 										DOM+='</div></div><div class="subido-img2">';
 										DOM+='<img id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/default.jpg">';
-										DOM+='<p class="name-file">Nombre del archivo.PNG</p>';
+										DOM+='<p class="name-file"></p>';
 										DOM+='<a href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/default.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
 										DOM+='</div></div>';
 										document.getElementById('imagenes').innerHTML+=DOM;
@@ -306,7 +306,7 @@
 											</div>
 											<div class="subido-img2">
 												<img id="img<?=$key+4?>" class="imge-subido img_preview" src="<?php echo base_url()?>uploads/imagenes/<?=$imagenes[$key]?>">
-												<p class="name-file">Nombre del archivo.PNG</p>
+												<p class="name-file"></p>
 												<a href="JavaScript:eliminar_img('<?=$imagenes[$key]?>',<?=$key+4?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 											</div>
 										</div>
@@ -314,12 +314,12 @@
 								</div>
 							<!-- Campo 1 -->
 							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
-							  <a class="agregar-mas-videos2" href="JavaScript:agregar_images();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
+							  <a class="agregar-mas-videos2" href="JavaScript:agregar_images();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más imagenes</a>
 							</div>
 
 							<!-- Campo validacion -->
 							<div class="input-group content_validacion4 col-xs-12 col-md-12 col-lg-12">
-							  <p class="text_errors">Campo Requerido</p>
+							  <p class="text_errors"></p>
 							</div>
 
 							<!-- Campo 7 -->

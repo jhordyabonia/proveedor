@@ -71,7 +71,7 @@
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
 								<!-- Campo validacion -->
 								<div class="input-group content_validacion5 col-xs-12 col-md-7 col-lg-7">
-								  <p class="text_errors">Campo Requerido</p>
+								  <p class="text_errors"></p>
 								</div>
 								<button class="btn btn-guardar2">
 									<i class="ico-circle fa fa-floppy-o"></i>
@@ -84,7 +84,7 @@
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
 								<!-- Campo validacion -->
 								<div class="input-group content_validacion5 col-xs-12 col-md-7 col-lg-7">
-								  <p class="text_errors">Campo Requerido</p>
+								  <p class="text_errors"></p>
 								</div>
 								<button class="btn btn-guardar2">
 									<i class="ico-circle fa fa-floppy-o"></i>
@@ -97,7 +97,7 @@
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
 								<!-- Campo validacion -->
 								<div class="input-group content_validacion5 col-xs-12 col-md-7 col-lg-7">
-								  <p class="text_errors">Campo Requerido</p>
+								  <p class="text_errors"></p>
 								</div>
 								<button class="btn btn-guardar2">
 									<i class="ico-circle fa fa-floppy-o"></i>

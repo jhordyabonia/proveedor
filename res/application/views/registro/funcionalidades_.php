@@ -300,7 +300,7 @@
                         document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                         if(max!=0)
                         {   
-                             var msj_err="El "+obj.name+" ti;ene caracteres no permitidos "+print
+                             var msj_err="El "+obj.name+" tiene caracteres no permitidos "+print
 
                             if(obj.name=="password")
                                { msj_err="La contreseña tiene caracteres no permitidos (caracteres con tilde)."}

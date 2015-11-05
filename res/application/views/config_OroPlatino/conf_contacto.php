@@ -226,7 +226,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-phone"></span>
 							  </span>
-							  <input type="text" class="form-control" name="celular" ondblclick="necessary"
+							  <input type="text" class="form-control" name="celular" id="celular" ondblclick="necessary"
 							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-')"
 							  value="<?=$usuario->celular?>" placeholder="Telefono celular">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -247,7 +247,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-phone"></i>
 							  </span>
-							  <input type="text" class="form-control" name="telefono"
+							  <input type="text" class="form-control" name="telefono" id="telefono"
 							  onchange="JavaScript:verificar(this);"
 							   value="<?=$usuario->telefono?>" placeholder="Telefono fijo y/o PBX">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -268,7 +268,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-laptop"></i>
 							  </span>
-							  <input type="text" class="form-control" name="web" 
+							  <input type="text" class="form-control" name="web" id="web" 
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
 							  value="<?=$usuario->web?>" placeholder="Pagina Web">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">

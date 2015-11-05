@@ -20,7 +20,7 @@ class Empresa extends CI_Controller
     $this->load->model('new/Dimension_model','dimension');
     $this->load->model('new/Subcategoria_model','subcategoria');
     $this->load->model('Asistentes_proveedor_model','asistentes_proveedor');
-  }  
+  } 
   function inicio($id)
   {
     $datos['empresa']= $this->empresa->get($id); 
@@ -44,7 +44,9 @@ class Empresa extends CI_Controller
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
     $this->load->view('template/head');
-    $this->load->view('catologo_productos/top_menu_catalogo',$datos);
+    $this->load->view('template/javascript');
+    $this->load->view('registro/funcionalidades_');
+    $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
     $this->load->view('catologo_productos/header_catalogo',$datos);
     $this->load->view('index_oroPlatino/index.php',$datos);
     $this->load->view('template/footer');
@@ -65,9 +67,10 @@ class Empresa extends CI_Controller
     $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
     $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
 
-
     $this->load->view('template/head');
-    $this->load->view('catologo_productos/top_menu_catalogo',$datos);
+    $this->load->view('template/javascript');    
+    $this->load->view('registro/funcionalidades_');
+    $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
     $this->load->view('catologo_productos/header_catalogo',$datos);
     $this->load->view('contacto/contacto',$datos);
     $this->load->view('template/footer');
@@ -80,7 +83,8 @@ class Empresa extends CI_Controller
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;  
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
-    $datos['oportunidades'] = $this->asistentes_proveedor->get_all();
+    #$datos['oportunidades'] = $this->asistentes_proveedor->get_all();
+    $datos['oportunidades'] = $this->solicitud->get_all(array('empresa'=>$id));
 
     $filtro=38;
     $tipo_filtro=0;
@@ -108,7 +112,9 @@ class Empresa extends CI_Controller
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
     $this->load->view('template/head');
-    $this->load->view('catologo_productos/top_menu_catalogo',$datos);
+    $this->load->view('template/javascript');
+    $this->load->view('registro/funcionalidades_');
+    $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
     $this->load->view('catologo_productos/header_catalogo',$datos);
     $this->load->view('cotizaciones_requeridas/cotizaciones_requeridas');
     $this->load->view('template/footer');
@@ -150,7 +156,9 @@ class Empresa extends CI_Controller
     #$datos['usuario']=$this->session->userdata('usuario');
 
     $this->load->view('template/head');
-    $this->load->view('catologo_productos/top_menu_catalogo',$datos);
+    $this->load->view('template/javascript');
+    $this->load->view('registro/funcionalidades_');
+    $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
     $this->load->view('catologo_productos/header_catalogo',$datos);
     $this->load->view('catologo_productos/produc_prin_catalogo',$datos);
     $this->load->view('template/footer');
@@ -172,7 +180,9 @@ class Empresa extends CI_Controller
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
     $this->load->view('template/head');
-    $this->load->view('catologo_productos/top_menu_catalogo',$datos);
+    $this->load->view('template/javascript');
+    $this->load->view('registro/funcionalidades_');
+    $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
     $this->load->view('catologo_productos/header_catalogo',$datos);
     $this->load->view('nosotros/nosotros');
     $this->load->view('template/footer');

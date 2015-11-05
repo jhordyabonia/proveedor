@@ -72,7 +72,7 @@ class Editar_empresa extends CI_Controller {
               #print_r($datos);
               #echo "</PRE>";
 
-              $this->usuarios->update($usuario,$this->id);
+              $this->usuario->update($usuario,$this->id);
               redirect($_SERVER['HTTP_REFERER']);
 	  }
 	  public function perfil()
@@ -80,10 +80,11 @@ class Editar_empresa extends CI_Controller {
               $datos['nombre']=$this->input->post('nombre');
               $datos['nit']=$this->input->post('nit');
               $datos['tipo']=$this->input->post('tipo');
-              $datos['categorias']=$this->input->post('categoria');
+              $datos['categorias']=$this->input->post('categoria').'|';
               $datos['descripcion']=$this->input->post('descripcion');
+              $datos_usuario['rol']=$this->input->post('radio');
               $datos['productos_principales']=$this->input->post('prod_princ');
-              $datos['productos_de_interes']=$this->input->post('prod_req');
+              $datos['productos_de_interes']=$this->input->post('prod_int4');
               $logo=$this->archivos_empresa->archivo_adjunto('logo','logos/');
               $logo=substr($logo,0,strlen($logo)-1);
               if(strpos($logo, '.')>0){$datos['logo']=$logo;}
@@ -92,6 +93,7 @@ class Editar_empresa extends CI_Controller {
               #print_r($datos);
               #echo "</PRE>";
 
+              $this->usuario->update($datos_usuario,$this->id);
               $this->empresa->update($datos,array('usuario'=>$this->id));
               redirect($_SERVER['HTTP_REFERER']);
 	  }  

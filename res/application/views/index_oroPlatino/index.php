@@ -19,12 +19,14 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <?php foreach (explode(',', $empresa->banners) as $i => $banner): ?>
+          <?php if($banner==""){break;}?>
             <li data-target="#carouselInicio" data-slide-to="<?=$i;?>" 
               class="<?php if($i==0){ echo 'active';} ?>"></li>
           <?php endforeach ?>
         </ol>
         <div class="carousel-inner" >
           <?php foreach (explode(',', $empresa->banners)  as $i => $banner): ?>
+          <?php if($banner==""){break;}?>
             <div class="item anti-active <?php if($i==0){ echo 'active';} ?>">
             	<center>
                 	<img src="<?php echo base_url().'uploads/banners/'.$banner?>" class="img-responsive banner">
@@ -81,7 +83,7 @@
 			<a class="texto_vercatalogo" href="">Ver Catalogo > </a>
 		</div>
 	</div>
-	<div class="conten_btn_soli_coti col-md-12">
+	<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
 		<button class="btn btn_soli">
 			<i class="icono-soli fa fa-file-text"></i>
 			<p class="texto-soli">SOLICITAR COTIZACION</p>
@@ -125,7 +127,7 @@
 						<span class="icon_compartir glyphicon glyphicon-earphone"></span>
 						<p class="texto_contacto">Llamar a la Empresa</p>
 					</button>
-					<button class="btn contactar_empresa">
+					<button class="btn contactar_empresa" data-toggle="modal" data-target="#popup_mensajes">
 						<span class="icon_compartir glyphicon glyphicon-envelope"></span>
 						<p class="texto_contacto">Contactar Empresa</p>
 					</button>
@@ -215,7 +217,7 @@
 		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 	</div>	
 </div>
-<div class="conten_btn_soli_coti col-md-12">
+<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
 	<button class="btn btn_soli">
 		<i class="icono-soli fa fa-file-text"></i>
 		<p class="texto-soli">SOLICITAR COTIZACION</p>

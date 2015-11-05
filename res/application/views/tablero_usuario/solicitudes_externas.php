@@ -239,8 +239,3 @@ document.oncontextmenu=inhabilitar
   <div id='btn_contactar' data-toggle="modal" data-target="#popup_mensajes"></div>
   <div id="cotizar">
     </div>
-<br>
-<br>
-<br>
-<br>
-<br>

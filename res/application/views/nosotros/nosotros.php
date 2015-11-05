@@ -51,7 +51,7 @@
 						<span class="icon_compartir glyphicon glyphicon-earphone"></span>
 						<p class="texto_contacto">Llamar a la Empresa</p>
 					</button>
-					<button class="btn contactar_empresa">
+					<button class="btn contactar_empresa" data-toggle="modal" data-target="#popup_mensajes">
 						<span class="icon_compartir glyphicon glyphicon-envelope"></span>
 						<p class="texto_contacto">Contactar Empresa</p>
 					</button>
@@ -219,7 +219,7 @@
 						</ul>
 					</li>
 				</ul>
-				<div class="conten_solicitud">
+				<div class="conten_solicitud" data-toggle="modal" data-target="#popup_mensajes">
 					<button class="btn btn-solicitar-coti">
 						<i class="icono-soli fa fa-file-text"></i>
 						<p class="texto_sol">SOLCITAR COTIZACION</p>

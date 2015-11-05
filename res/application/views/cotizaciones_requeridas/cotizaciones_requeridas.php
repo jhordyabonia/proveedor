@@ -98,13 +98,13 @@
 						</div>
 						<div class="texto_conten col-md-3">
 							<p class="texto_1">Se Requiere: </p>
-							<p class="texto_requerido"><?=$oportunidad->solicitud?></p>
+							<p class="texto_requerido"><?=$oportunidad->nombre?></p>
 						</div>
 						<div class="texto_conten col-md-4">
 							<p class="texto_descripcion"><?=$oportunidad->descripcion?></p>
-							<a class="texto_vermas" href="">Ver mas</a>
+							<a class="texto_vermas"  data-toggle="modal" data-target="#popup_info" >Ver mas</a>
 						</div>
-						<div class="conten_button col-md-2">
+						<div class="conten_button col-md-2" data-toggle="modal" data-target="#popup_info">
 							<button class="btn btn-enviarCoti">
 								<i class="ico_enviarCoti fa fa-file-text"></i>
 								<p class="btn_enviarCoti">ENVIAR COTIZACION</p>
@@ -132,4 +132,26 @@
 	    </li>
 	  </ul>
 	</div>
+</div>
+
+<div class="modal" id="popup_info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" >
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-two">
+            <div class="modal-header header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+        	<div class="modal-body contenido_popup">
+            	<p class="contenedor_candado"><span class="glyphicon glyphicon-lock ico_candado"></span></p>
+            	<p class="contenido_exclusivo">Contenido exclusivo para</p>
+            	<p class="empresas_platino">Empresas Platino</p>
+            	<div class="background_img col-md-push-4">
+            		
+					<div class="center-vertical_img">
+						<img src="http://proveedor.com.co/assets/img/membresia/logo_mem_platino.png" class="img-responsive img_platino">
+					</div>
+				</div>
+            	<button class="btn btn-primary btn_acceder" onclick="JavaScript:location.href='http://clientes.proveedor.com.co/';">ACCEDER AHORA!</button>
+        	</div>
+        </div>
+    </div>
 </div>
