@@ -67,6 +67,10 @@
 								en los campos y haga click en "Guardar".</p>
 
 						<?=form_open_multipart(base_url().'editar_empresa/perfil')?>
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Nombre de la Empresa</label>
+							</div>
+
 							<!-- Campo 1 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -89,6 +93,10 @@
 							  <p class="text_errors" id="msj_err_nombre"></p>
 							</div>
 
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Nit de la Empresa o C.C. del Comercial</label>
+							</div>
+
 							<!-- Campo 2 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -109,6 +117,11 @@
 							<div id="parent_msj_err_nit"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_nit"></p>
 							</div>
+
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Tipo de Empresa</label>
+							</div>
+
 							<!-- Campo 3 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -133,6 +146,11 @@
 							<div id="parent_msj_err_tipo"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_tipo"></p>
 							</div>
+
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Sector de la Empresa</label>
+							</div>
+
 							<!-- Campo 4 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -157,6 +175,10 @@
 							  <p class="text_errors" id="msj_err_categoria"></p>
 							</div>
 
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Descripción de la Empresa</label>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-10">
 							  <span class="fiel-tramspa input-group-addon">
@@ -179,6 +201,10 @@
 							  <p class="text_errors" id="msj_err_descripcion"></p>
 							</div>
 
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Productos Principales (separados por comas)</label>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group style-padding6 col-xs-12 col-md-7 col-lg-7">
 							  <span class="fiel-tramspa input-group-addon" style="padding-right: 9px;">
@@ -197,6 +223,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_prod_prin"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_prod_prin"></p>
+							</div>
+
+							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Productos Requeridos (separados por comas)</label>
 							</div>
 
 							<!-- Campo 6 -->

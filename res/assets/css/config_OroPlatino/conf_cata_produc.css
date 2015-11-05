@@ -3,7 +3,15 @@
     max-height: 39px;
     max-width: 130px;
 }*/
-
+.pad-left{
+    padding-left: 76px !important;
+}
+.pad-left2{
+    padding-left: 62px !important;
+}
+.pad-left3{
+    padding-left: 78px !important;
+}
 .select_button {
     color: #fff;
     text-decoration: none;

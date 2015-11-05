@@ -231,7 +231,7 @@
 </div>
 
 <div class="conten_tag col-md-12">
-	<p class="title-tag">Tags</p>
+	<p class="title-tag">Etiquetas</p>
 </div>
 <div class="cont-tags col-md-12">
 	<div class="tags">

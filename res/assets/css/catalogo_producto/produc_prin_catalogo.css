@@ -156,8 +156,8 @@ a
 .imagen_producto{
     width: 100%;
     height: 155px;    
-    /*border: 1px solid #ccc;*/
     margin-top: 15px;
+    text-align: center;
 }
 .contexto_producto{
     width: 100%;
