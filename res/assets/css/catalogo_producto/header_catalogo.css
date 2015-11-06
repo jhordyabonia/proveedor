@@ -66,7 +66,7 @@ width: 480px;
 }
 .list_item{
     list-style: none;
-    margin-top: 5px;
+    margin-top: 9px;
     padding-left: 25px;
     padding-right: 19px;
     line-height: 32px;
@@ -111,9 +111,9 @@ width: 480px;
 	color: #999999;
 }
 .conten_img{
-    width: 50%;
+    width: 60%;
     height: 190px;
-    margin: 30px 10px 20px 378px;
+    margin: 17px 10px 20px 310px;
 }
 .info .tipo_empresa .style_empresa{
 	width: 56px;
@@ -223,7 +223,7 @@ width: 480px;
 	.list_item{
 		list-style: none;
 	    margin-top: 5px;
-	    padding-left: 31px;
+	    padding-left: 21px;
 	    padding-right: 19px;
 	    line-height: 41px;
 	    margin-bottom: 0;
