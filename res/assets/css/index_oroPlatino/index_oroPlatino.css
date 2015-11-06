@@ -151,8 +151,8 @@
 }
 .logo
 {
-    width: 25%;
-    height: 50%;
+    width: 340px;
+    max-height: 110px;
 }
 iframe
 {
@@ -275,7 +275,7 @@ iframe
 .logo_empresa_2{
     width: 100%;
     background-color: #fff;
-    height: 486px;
+    height: 463px;
     margin-top: 20px;
 }
 .nombre_redes {
@@ -283,9 +283,11 @@ iframe
     font-size: 16px !important;
 }
 .con_logo{
-    position: relative;
-    top: 165px;
-    left: 56px;
+    margin: 0 auto;
+    width: 100%;
+    max-height: 100%;
+    padding-top: 105px;
+    padding-right: 20px;
 }
 .item_redes_sociales {
     padding-left: 8px;
@@ -378,7 +380,7 @@ iframe
 }
 .logo_nuestra{
     position: relative;
-    top: -62px;
+    top: 55px;
 }
 .texto_contac{
     color: #111 !important;

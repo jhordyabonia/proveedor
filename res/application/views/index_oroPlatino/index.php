@@ -90,6 +90,42 @@
 		</button>
 	</div>
 </div>
+
+<div class="videos_empresa">
+	<div class="title_videos col-md-12">
+		<div class="col-md-3">
+			<ul class="list-title-videos">
+				<li>
+					<ul class=" active list-title">
+						<a class="texto-nuestra_empresa">Videos de Empresa</a>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="contenido_videos col-md-12">
+		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
+		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
+		<?php if($value==''){continue;}?>
+			<ul class="item_video">
+				<li>
+					<ul class="item_video">
+						<div class="item-video">
+							<div class="video">
+								<iframe   class="img_video img-responsive" src="<?=$value?>"></iframe>
+							</div>
+							<div class="titulo_video">
+								<p>Video <?=$key?></p>
+							</div>
+						</div>
+					</ul>
+				</li>
+			</ul>
+		<?php endforeach;?>
+		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
+	</div>
+</div>
+
 <div class="contenedor_nuestraempresa">
 	<div class="nuestra_empresa col-md-12">
 		<div class="col-md-3">
@@ -149,40 +185,7 @@
 		</div>
 	</div>
 </div>
-<div class="videos_empresa">
-	<div class="title_videos col-md-12">
-		<div class="col-md-3">
-			<ul class="list-title-videos">
-				<li>
-					<ul class=" active list-title">
-						<a class="texto-nuestra_empresa">Videos de Empresa</a>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="contenido_videos col-md-12">
-		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
-		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
-		<?php if($value==''){continue;}?>
-			<ul class="item_video">
-				<li>
-					<ul class="item_video">
-						<div class="item-video">
-							<div class="video">
-								<iframe   class="img_video img-responsive" src="<?=$value?>"></iframe>
-							</div>
-							<div class="titulo_video">
-								<p>Video <?=$key?></p>
-							</div>
-						</div>
-					</ul>
-				</li>
-			</ul>
-		<?php endforeach;?>
-		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
-	</div>
-</div>
+
 <div class="contenido_galeria">
 	<div class="galeria_imagenes col-md-12">
 		<div class="col-md-3">
