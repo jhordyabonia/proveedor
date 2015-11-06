@@ -161,7 +161,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido2 glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <span class="palabras-maxima"><strong>5000</strong> palabras maimo</span>
+							  <span class="palabras-maxima"><strong>5000</strong> palabras máximo</span>
 							</div>
 
 							<!-- Campo validacion -->
@@ -174,13 +174,13 @@
 							  	<div class="conte-radios">
 								  	<div class="radio inline-block">
 									  <label>
-									    <input type="radio"  name="precio" id="optionsRadios1" value="1">
+									    <input type="radio"  name="precio" id="optionsRadios1" checked value="1" onclick="document.getElementById('div_precio').style.display=''">
 									    Precio unitario
 									  </label>
 									</div>
 									<div class="radio inline-block">
 									  <label>
-									    <input type="radio" name="precio" id="optionsRadios2" value="0">
+									    <input type="radio" name="precio" id="optionsRadios2" value="0" onclick="document.getElementById('div_precio').style.display='none'">
 									    Precio a convenir
 									  </label>
 									</div>
@@ -193,7 +193,7 @@
 							</div>
 
 							<!-- Campo 5 -->
-							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
+							<div id="div_precio" class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
 							  	<span class="input-group-addon">
 							  		$
 							  	</span>

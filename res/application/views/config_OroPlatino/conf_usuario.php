@@ -120,7 +120,7 @@
 							</div>
 
 							<div class="input-group pad-left3 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Contraseña</label>
+							  <label for="">Contraseña Actual</label>
 							</div>
 
 							<!-- Campo 2 -->
@@ -128,10 +128,27 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input type="password" class="form-control" name="password"
-							  onclick="JavaScript:limpiar(this);"
+							  <input type="password" class="form-control" name="password_old"
+							 	class="input-style"  placeholder="Contraseña actual">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">							  	
+							  </span>
+							  <span class="fiel-tramspa input-group-addon">
+							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+							  </span>
+							</div>
+
+							<div class="input-group pad-left3 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Nueva Contraseña</label>
+							</div>
+							<!-- Campo 2 -->
+							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8">
+							  <span class="fiel-tramspa input-group-addon">
+							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
+							  </span>
+							  <input type="password" class="form-control" id="password" name="password" onclick="JavaScript:limpiar(this);"
 								onchange="JavaScript:verificar_igualdad(document.getElementById('password2'),this);verificar_largo(this,6);verificar_caracteres(this,' áéíóúñ');" 
-								class="input-style"  placeholder="Contraseña">
+								class="input-style"  placeholder="Nueva contraseña">
+
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_password"></i>
 							  </span>
@@ -154,8 +171,9 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input type="password" class="form-control" name="password2" placeholder="Confirmar Contraseña"
-							  onclick="JavaScript:limpiar(this);"  ondblclick="necessary"
+
+							  <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirmar nueva contraseña"
+								onclick="JavaScript:limpiar(this);"  ondblclick="necessary"
 				  				onchange="JavaScript:verificar_igualdad(this,document.getElementById('password'))">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_password2"></i>

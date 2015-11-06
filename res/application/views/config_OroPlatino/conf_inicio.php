@@ -73,10 +73,10 @@
 								  		<input type="file" id="banner1" name="banners[]"  onchange="JavaScript:load_new_logo(1)">/>
 									</div>
 								</div>
-								<div class="subido-img">
+								<div id="div_img1" class="subido-img">
 									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[0]==''){ echo '11.jpg';}else{echo $banners[0];} ?>">
 									<p class="name-file"></p>
-									<a href="JavaScript:document.getElementById('img1').src='<?=base_url()?>uploads/banners/11.jpg';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:document.getElementById('div_img1').style.display='none';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 							<div class="img-banner">
@@ -87,24 +87,24 @@
 								  		<input type="file" id="banner2" name="banners[]"  onchange="JavaScript:load_new_logo(2)">/>
 									</div>
 								</div>
-								<div class="subido-img">
+								<div id="div_img2" class="subido-img">
 									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[1]==''){ echo '11.jpg';}else{echo $banners[1];} ?>">
 									<p class="name-file"></p>
-									<a href="JavaScript:document.getElementById('img2').src='<?=base_url()?>uploads/banners/11.jpg';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
+									<a href="JavaScript:document.getElementById('div_img2').style.display='none';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
 							</div>
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a href="JavaScript:document.getElementById('banner3').click()" class="text-up-img">Subir imágen 1</a>
+									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 1</a>
 									<div style="display:none" >
 								  		<input type="file" id="banner3" name="banners[]"  onchange="JavaScript:load_new_logo(3)">/>
 									</div>
 								</div>
-								<div class="subido-img">
+								<div id="div_img3" class="subido-img">
 									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[2]==''){ echo '11.jpg';}else{echo $banners[2];} ?>">
 									<p class="name-file"></p>
-									<a href="JavaScript:document.getElementById('img3').src='<?=base_url()?>uploads/banners/11.jpg';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:document.getElementById('div_img3').style.diaplay='none';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 
@@ -177,16 +177,19 @@
 									}
 									function agregar_video()
 									{
-										salvar_videos();
-										if(videos>=20){alert('Limite exedido.');return;}
-										DOM='<div class="input-group padig col-xs-12 col-md-5 col-lg-5">';
-										DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
-										DOM+=++videos;
-										DOM+='</span>';
-										DOM+='<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca dirección del video" style="border-radius: 0;">';
-										DOM+='</div>';
-										document.getElementById('videos').innerHTML+=DOM;
-										fijar_videos();
+										for(i=0;i<5;i++)
+										{
+											salvar_videos();
+											if(videos>=20){alert('Limite exedido.');return;}
+											DOM='<div class="input-group padig col-xs-12 col-md-5 col-lg-5">';
+											DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
+											DOM+=++videos;
+											DOM+='</span>';
+											DOM+='<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca dirección del video" style="border-radius: 0;">';
+											DOM+='</div>';
+											document.getElementById('videos').innerHTML+=DOM;
+											fijar_videos();
+										}
 									}
 								</script>
 							  <a class="agregar-mas-videos" href="JavaScript:agregar_video()"><i class="ico-mas fa fa-plus-circle"></i> Agregar más videos</a>
@@ -239,7 +242,7 @@
 									function fijar_imagenes()
 									{
 										tmp_titulos=document.getElementsByName('imagenes_titulos[]');
-										for(i=0;i<tmp_titulos.length-1;i++)
+										for(var i=0;i<tmp_titulos.length-1;i++)
 										{
 											tmp_titulos[i].value=imagenes_titulos[i];
 										}
@@ -253,28 +256,31 @@
 									}
 									function agregar_images()
 									{
-										salvar_imagenes();
-										if(imagenes>=20){alert('Limite exedido.');return;}
-										
-										imagenes++;
-										DOM='<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">';
-										DOM+='<div class="input-group padig col-xs-12 col-md-12 col-lg-12">';
-										DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
-										DOM+=imagenes;
-										DOM+='</span>';
-										DOM+='<input type="text" class="form-control" value="" name="imagenes_titulos[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">';
-										DOM+='</div></div><div class="img-banner"><div class="subir-img2">';
-										DOM+='<span class="ico-up glyphicon glyphicon-open"></span>';
-										DOM+='<a href="JavaScript:document.getElementById('+"'banner"+(imagenes+4)+"'"+').click()" class="text-up-img">Subir imágen '+imagenes+'</a>';
-										DOM+='<div style="display:none" >';
-										DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+')">/>';
-										DOM+='</div></div><div class="subido-img2">';
-										DOM+='<img id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/default.jpg">';
-										DOM+='<p class="name-file"></p>';
-										DOM+='<a href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/default.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
-										DOM+='</div></div>';
-										document.getElementById('imagenes').innerHTML+=DOM;
-										fijar_imagenes();
+										for(var i=0; i<5; i++)
+										{
+											salvar_imagenes();
+											if(imagenes>=20){alert('Limite exedido.');return;}
+											
+											imagenes++;
+											DOM='<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">';
+											DOM+='<div class="input-group padig col-xs-12 col-md-12 col-lg-12">';
+											DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
+											DOM+=imagenes;
+											DOM+='</span>';
+											DOM+='<input type="text" class="form-control" value="" name="imagenes_titulos[]" placeholder="Titulo de la imágen" style="border-radius: 0;height: 29px;">';
+											DOM+='</div></div><div class="img-banner"><div class="subir-img2">';
+											DOM+='<span class="ico-up glyphicon glyphicon-open"></span>';
+											DOM+='<a href="JavaScript:document.getElementById('+"'banner"+(imagenes+4)+"'"+').click()" class="text-up-img">Subir imágen '+imagenes+'</a>';
+											DOM+='<div style="display:none" >';
+											DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+')">/>';
+											DOM+='</div></div><div class="subido-img2">';
+											DOM+='<img id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/default.jpg">';
+											DOM+='<p class="name-file"></p>';
+											DOM+='<a href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/default.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
+											DOM+='</div></div>';
+											document.getElementById('imagenes').innerHTML+=DOM;
+											fijar_imagenes();
+										}
 									}
 									function eliminar_img(input,key)
 									{

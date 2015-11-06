@@ -27,6 +27,9 @@ class Perfil extends CI_Controller {
 		}
 
 		$empresa= $this->empresa->get($id_empresa);
+
+		if(!$empresa)
+			{redirect('registro/registrar');}
 		
 		$id_user=$empresa->usuario;
 		$datos['logo_empresa'] = $empresa->logo;
@@ -206,6 +209,9 @@ class Perfil extends CI_Controller {
 			redirect('perfil/perfil_empresa/'.$empresa->id);
 		}
 		$empresa=$this->empresa->get($id_empresa);
+
+		if(!$empresa)
+			{redirect('registro/registrar');}
 
 		$usuario=$this->usuarios->get($empresa->usuario);
 		$datos['des_empresa'] = $empresa->descripcion;
@@ -498,6 +504,10 @@ class Perfil extends CI_Controller {
 			redirect('perfil/productos_solicitados/'.$empresa->id);
 		}
 		$empresa= $this->empresa->get($id_empresa);
+
+		if(!$empresa)
+			{redirect('registro/registrar');}
+
 		$id_user=$empresa->usuario;
 		
 		$datos['logo_empresa'] = $empresa->logo;
@@ -552,6 +562,10 @@ class Perfil extends CI_Controller {
 			$empresa= $this->empresa->get(array('nit'=>$id_empresa));
 			redirect('perfil/contacto_empresa/'.$empresa->id);
 		}
+
+		if(!$empresa)
+			{redirect('registro/registrar');}
+		
 		$usuario=$this->usuarios->get($empresa->usuario);
 
 		$datos['celular'] = $usuario->celular;  //para traer la informacion  del campo contacto

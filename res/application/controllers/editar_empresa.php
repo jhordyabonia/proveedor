@@ -52,11 +52,13 @@ class Editar_empresa extends CI_Controller {
               $datos['nombre']=$this->input->post('nombre');
               $datos['categoria']=$this->input->post('categoria');
               $datos['descripcion']=$this->input->post('descripcion');
-              $datos['catalogo']=$this->input->post('catalogo');
+              $datos['catalogo']=$this->archivos_empresa->archivo_adjunto('catalogo','catalogo/');
               $datos['palabras_clave']=$this->input->post('palabras_clave');
+              
               #echo "<PRE>";
-              #print_r($datos);
+              #print_r($_FILES);
               #echo "</PRE>";
+              #return;
 
               $datos['empresa']=$this->empresa->get(array('usuario'=>$this->id))->id;
               $this->catalogo->insert($datos);
@@ -72,7 +74,9 @@ class Editar_empresa extends CI_Controller {
               #print_r($datos);
               #echo "</PRE>";
 
-              $this->usuario->update($usuario,$this->id);
+              $actual['id']=$this->id;
+              $actual['password']=md5($this->input->post('password_old'));
+              $this->usuario->update($datos,$actual);
               redirect($_SERVER['HTTP_REFERER']);
 	  }
 	  public function perfil()
@@ -144,6 +148,7 @@ class Editar_empresa extends CI_Controller {
                  $datos.=$imagen.",";
               }
               $archivos=$this->archivos_empresa->archivo_adjunto('imagenes','imagenes/');
+              /*
               $eliminados=$this->input->post('eliminados');
               $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->imagenes;
               $archivos_actuales=explode('|',$archivos_actuales);
@@ -152,12 +157,13 @@ class Editar_empresa extends CI_Controller {
               {
                 $archivos_actuales=str_replace($value, '', $archivos_actuales);
               }
-              $datos.='|'.$archivos_actuales.$archivos;
 
-              #echo "<PRE>";
-              #print_r($eliminados);
-              #echo "</PRE>";
-
+              echo "<PRE>";
+              print_r($datos);
+              echo "</PRE>";
+              return;
+              */
+              $datos.='|'.$archivos;
               $this->empresa->update(array('imagenes'=>$datos),array('usuario'=>$this->id));
               redirect($_SERVER['HTTP_REFERER']);
 	  }

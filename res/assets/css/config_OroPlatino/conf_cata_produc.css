@@ -445,8 +445,8 @@ a{
     cursor: pointer;
 }
 .fiel-tramspa{
-	background-color: transparent;
-	border: transparent;
+	background-color: transparent !important;
+	border: transparent !important;
 }
 .formulario-cata{
 	width: 100%;
