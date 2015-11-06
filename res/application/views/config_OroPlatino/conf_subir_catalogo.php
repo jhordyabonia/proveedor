@@ -65,15 +65,18 @@
 							<p class="text-requerido"><span class="ico-requerido glyphicon glyphicon-asterisk"></span>Requerido</p>
 							<p class="text-subir-cata">Publique los catalogos de productos y/o servicios que ofrece la empresa.</p>
 							
-						<?= form_open('editar_empresa/catalogos'); ?>
+						<?= form_open_multipart('editar_empresa/catalogos'); ?>
             				<!-- Campo 1 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-file-pdf-o"></i>
 							  </span>
-							  <input type="text" class="form-control" name="nombre" placeholder="Nombre del Catalogo">
-							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+							  <input type="text" class="form-control" name="nombre" 
+							   onchange="JavaScript:verificar_largo(this,5);"
+							onclick="JavaScript:limpiar(this);" 
+							placeholder="Nombre del Catalogo">
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">							  	
+									<i id="err_nombre"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -81,8 +84,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors"></p>
+							<div id="parent_msj_err_nombre" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_nombre"></p>
 							</div>
 
 							<!-- Campo 2 -->
@@ -90,15 +93,16 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-list"></span>
 							  </span>
-							  <select class="form-control" name="categoria">
+							  <select class="form-control" name="categoria"							  
+							   onchange="JavaScript:verificar(this);"
+							onclick="JavaScript:limpiar(this);" >
 								  <option selected>Selecciones una categoria</option>
-								  <option>item-categoria</option>
-								  <option>item-categoria</option>
-								  <option>item-categoria</option>
-								  <option>item-categoria</option>
+								      <?php foreach($categorias as $categoria):?>
+									  	<option value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
+									  <?php endforeach;?>
 								</select>
 								<span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-check-circle validacion_success"></i>
+									<i id="err_"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
@@ -106,8 +110,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors"></p>
+							<div id="parent_msj_err_categoria" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_categoria"></p>
 							</div>
 
 							<!-- Campo 3 -->
@@ -115,9 +119,12 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
 							  </span>
-							  <textarea class="form-control" rows="5" name="descripcion" placeholder="Descripcion del Catálogo"></textarea>
-							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error_ta2"></i>
+							  <textarea class="form-control" rows="5" name="descripcion"
+							   onchange="JavaScript:verificar_largo(this,10);"
+							onclick="JavaScript:limpiar(this);" 
+							 placeholder="Descripcion del Catálogo"></textarea>
+							  <span class="fiel-tramspa input-group-addon conten-ico-vali">  	
+									<i id="err_descripcion"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido2 glyphicon glyphicon-asterisk"></span>
@@ -126,8 +133,8 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors"></p>
+							<div id="parent_msj_err_descripcion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_descripcion"></p>
 							</div>
 
 							<!-- Campo 1 -->
@@ -135,33 +142,39 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-pencil"></span>
 							  </span>
-							  <input type="text" class="form-control" name="palabras_clave" placeholder="Palabras claves separadas por comas (,)">
+							  <input type="text" class="form-control" name="palabras_clave"							  
+							   onchange="JavaScript:verificar_largo(this,5);"
+							onclick="JavaScript:limpiar(this);"  placeholder="Palabras claves separadas por comas (,)">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
-							  	<i class="fa fa-times-circle validacion_error"></i>
+									<i id="err_palabras_clave"></i>
 							  </span>
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
 
-							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors"></p>
+							<!-- Campo validacion -->							
+							<div id="parent_msj_err_palabras_clave" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_palabras_clave"></p>
 							</div>
 
 							<!-- Campo 6 -->
 							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
-								<div class="subir-imagenes-cata">
+								<div class="subir-imagenes-cata" onclick="document.getElementById('catalogo').click()">
 							  		<a class="enlace-ssubir-imagenes">
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
-							  			<p class="text-subir-img">Subir catalogo <p class="agregarpdf">(Agregar archivo PDF o DOC)</p></p>
+							  			<p class="text-subir-img">Subir catalogo <p class="agregarpdf" id="adjunto">(Agregar archivo PDF o DOC)</p></p>
 							  		</a>
+							  		<div style="display:none">
+							  			<input type="file"  id="catalogo" name="catalogo[]"
+							  			onchange="JavaScript:var paths = document.getElementById('catalogo').files;document.getElementById('adjunto').innerHTML=paths[0]['name'];" >
+							  		</div>
 							  	</div>
 							</div>
 
 							<!-- Campo validacion -->
-							<div class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
-							  <p class="text_errors"></p>
+							<div id="parent_msj_err_catalogo" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							  <p class="text_errors" id="msj_err_catalogo"></p>
 							</div>
 
 							<!-- Campo 7 -->

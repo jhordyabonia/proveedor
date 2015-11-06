@@ -32,6 +32,8 @@ class Config_empresa extends CI_Controller {
     $this->datos['titulos']=explode(',',$tmp[0]);
     $this->datos['imagenes']=explode(',',$tmp[1]);
 
+    $this->load->view('template/head',array('titulo'=>"Configuración de Inicio"));
+    $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_inicio',$this->datos);
     $this->load->view('template/footer',$this->datos);
@@ -46,6 +48,7 @@ class Config_empresa extends CI_Controller {
     $this->load->view('config_OroPlatino/conf_coti_requeridas',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('template/javascript',$this->datos);
     $this->load->view('oferta/funcionalidades');
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
@@ -58,6 +61,7 @@ class Config_empresa extends CI_Controller {
     $this->load->view('config_OroPlatino/conf_contacto',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('template/javascript',$this->datos);
   }
 
   ##LLama la vista que mostrara la parte del footer en las vistas
@@ -66,6 +70,7 @@ class Config_empresa extends CI_Controller {
     $this->load->view('config_OroPlatino/conf_nosotros',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('template/javascript',$this->datos);
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
   function usuario(){
@@ -74,15 +79,19 @@ class Config_empresa extends CI_Controller {
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
     $this->load->view('registro/funcionalidades_');
+    $this->load->view('template/javascript',$this->datos);
   }
 
   ##LLama la vista que mostrara la parte del footer en las vistas
   function catalogo(){
     $this->datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$this->datos['empresa']->id));
+    $this->datos['categorias']=$this->categoria->get_all();
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_subir_catalogo',$this->datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('template/javascript',$this->datos);
+    $this->load->view('registro/funcionalidades_');
   }
 
 
@@ -95,6 +104,7 @@ class Config_empresa extends CI_Controller {
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
     $this->load->view('registro/funcionalidades_');
+    $this->load->view('template/javascript',$this->datos);
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
   function publicar_producto(){
@@ -106,6 +116,7 @@ class Config_empresa extends CI_Controller {
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
     $this->load->view('producto/funcionalidades');
+    $this->load->view('template/javascript',$this->datos);
   }
 
   ##LLama la vista que mostrara la parte del footer en las vistas
@@ -123,5 +134,6 @@ class Config_empresa extends CI_Controller {
     $this->load->view('config_OroPlatino/conf_productos_principales',$datos);
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+    $this->load->view('template/javascript',$this->datos);
   }
   }
