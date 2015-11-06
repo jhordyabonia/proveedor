@@ -67,6 +67,11 @@
 								en los campos y haga click en "Guardar".</p>
 
 						<?=form_open_multipart(base_url().'editar_empresa/contacto')?>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Nombre del contacto</label>
+							</div>
+
 							<!-- Campo 1 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -86,6 +91,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_nombres" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_nombres"></p>
+							</div>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Cargo/Funcion en la empresa</label>
 							</div>
 
 							<!-- Campo 2 -->
@@ -109,6 +118,10 @@
 							  <p class="text_errors" id="msj_err_cargo"></p>
 							</div>
 
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Direccion de la empresa</label>
+							</div>
+
 							<!-- Campo 3 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -128,6 +141,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_direccion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_direccion"></p>
+							</div>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Selecciona tu pais</label>
 							</div>
 
 							<!-- Campo 4.0 -->
@@ -165,6 +182,10 @@
 							  <p class="text_errors" id="msj_err_pais"></p>
 							</div>
 
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Selecciona tu departamento</label>
+							</div>
+
 							<!-- Campo 4.1 -->
 							<div  id="ubicacion" class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -191,6 +212,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_provincia" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_provincia"></p>
+							</div>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Selecciona tu municipio</label>
 							</div>
 
 							<!-- Campo 4.2 -->
@@ -221,6 +246,10 @@
 							  <p class="text_errors" id="msj_err_municipio"></p>
 							</div>
 
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Telefono celular</label>
+							</div>
+
 							<!-- Campo 5 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -240,6 +269,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_celular" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_celular"></p>
+							</div>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Telefono fijo y/o PBX</label>
 							</div>
 
 							<!-- Campo 6 -->
@@ -263,6 +296,10 @@
 							  <p class="text_errors" id="msj_err_telefono"></p>
 							</div>
 
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Pagina Web</label>
+							</div>
+
 							<!-- Campo 7 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -282,6 +319,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_web" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_web"></p>
+							</div>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Pagina de faceboo</label>
 							</div>
 
 							<!-- Campo 8 -->
@@ -304,6 +345,10 @@
 							  <p class="text_errors" id="msj_err_facebook"></p>
 							</div>
 
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Pagina de twitter</label>
+							</div>
+
 							<!-- Campo 9 -->
 							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
 							  <span class="fiel-tramspa input-group-addon">
@@ -323,6 +368,10 @@
 							<!-- Campo validacion -->
 							<div id="parent_msj_err_twitter" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_twitter"></p>
+							</div>
+
+							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							  <label for="">Pagina de likedin</label>
 							</div>
 
 							<!-- Campo 10 -->

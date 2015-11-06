@@ -312,7 +312,7 @@
 </div>
 <div class="contenido_tag col-md-12" style="background-color: #fff;padding: 0;">
 	<div class="texto_tag">
-		<p class="text-tag">Tags</p>
+		<p class="text-tag">Etiquetas</p>
 	</div>
 	<div class="etiquetas_tag">
 		<p class="texto-tag">Fabricante</p>

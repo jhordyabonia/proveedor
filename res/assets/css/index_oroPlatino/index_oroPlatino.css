@@ -176,8 +176,8 @@ iframe
     border: 1px solid #ccc;
 }
 .item-galeria{
-    width: 294;
-    height: 262px;
+    width: 294px;
+    height: 236px;
     background-color: #fff;
     border: 1px solid #ccc;
 }
@@ -317,11 +317,11 @@ iframe
     top: 0px;
 }
 .img_galeria{
-    
-    max-width: 250px;
-    max-height: 250px;
+    width: auto;
+    height: 170px;
     position: relative;
     top: 0px;
+    margin: 0 auto;
 }
 .nuestra_empresa{
     width: 100%;
@@ -475,7 +475,7 @@ iframe
 }
 .titulo_galeria{
     position: relative;
-    top: -8px;
+    top: -3px;
     text-align: center;
     font-size: 15px;
 }
@@ -506,11 +506,11 @@ iframe
     top: -17px;
 }
 .galeria{
-    width: auto;
-    height: auto;
+    max-width: 269px;
+    max-height: 170px;
     margin: 26px 8px 4px 11px;
     position: relative;
-    top: -17px;
+    top: -15px;
 }
 .title_info > p, .title_info > span {
     display: inline-block;
