@@ -36,7 +36,7 @@
                 <li class="dropdown item_collapse_editar_empresa">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog ico_editar_em"></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="<?=base_url()?>config_empresa/inicio" class="editar_empresa">Editar perfil de empresa</a></li>
+                            <li><a href="<?=base_url()?>config_empresa/perfil_empresa" class="editar_empresa">Editar perfil de empresa</a></li>
                             <li><a href="<?=base_url()?>logueo/logout" class="editar_empresa">Cerrar sesión</a></li>
                         </ul>
                 </li>

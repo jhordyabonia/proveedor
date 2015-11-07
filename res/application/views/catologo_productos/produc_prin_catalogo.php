@@ -81,17 +81,33 @@
 	</div>
 	<div class="content_item_produc col-md-10">
 		<div class="contenedor_productos_item">
-		<?php foreach($productos as $key=>$producto):?>
+		<?php foreach($destacados as $key=>$producto):?>
+		<?php if(!$producto){continue;}?>
 			<div class="item_procud">
-				<div class="imagen_producto"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
-							<p class="nombre_producto"><?=$producto->nombre?></p>
+							<a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
-						<p class="texto_precio"><?=$producto->precio_unidad?></p>
-						<p class="unidades"><?=$producto->pedido_minimo?> <?=$producto->medida?></p>
-						<p class="pedido">pedido minimo</p>
+						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+					</div>
+				</div>
+				<input type="checkbox" class="checkbox">
+			</div>
+		<?php endforeach;?>
+		<?php foreach($productos as $key=>$producto):?>
+		<?php if(!$producto){continue;}?>
+			<div class="item_procud">
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="contexto_producto">
+					<div class="textos">
+						<div class="info_producto">
+							<a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
+						</div>
+						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
 					</div>
 				</div>
 				<input type="checkbox" class="checkbox">

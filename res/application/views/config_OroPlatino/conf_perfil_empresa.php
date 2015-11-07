@@ -94,7 +94,7 @@
 							</div>
 
 							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Nit de la Empresa o C.C. del Comercial</label>
+							  <label for="">Nit de la Empresa o C.C. del Comerciante</label>
 							</div>
 
 							<!-- Campo 2 -->

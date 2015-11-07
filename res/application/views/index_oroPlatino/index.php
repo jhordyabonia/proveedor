@@ -8,7 +8,7 @@
 	<!--<link rel="stylesheet" href="<?php echo base_url()?>assets/css/index/index.css">-->
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#carouselInicio').carousel({interval: 3000});
+    $('#carouselInicio').carousel({interval: 5000});
   });
 </script>
 <div class="row" id="banner" >
@@ -59,28 +59,45 @@
 	</div>
 	<div class="container_productos_principales col-md-12">
 		<span class="ico_flecha_left glyphicon glyphicon-chevron-left"></span>
-		<?php foreach($productos as $key => $producto):?>
-		<?php if($key>4){break;}?>
-			<ul class="item_proPri">
-				<li>
-					<ul class="item_proPri">
-						<div class="item-proPrin">
-							<div class="cont-img"><img class="style_empresa char-img img-responsive" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div>
-							<div class="textos-img">
-								<p class="texto-1"><?=$producto->nombre?></p>
-								<p class="texto-2">$<?=$producto->precio_unidad?></p>
-								<p class="texto-3"><?=$producto->pedido_minimo?> <?=$producto->medida?></p>
-								<p class="texto-4">pedido minimo</p>
-							</div>
+		<div class="contenedor_productos_item">
+		<?php foreach($destacados as $key=>$producto):?>
+		<?php if(!$producto){continue;}?>
+			<div class="item_procud">
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="contexto_producto">
+					<div class="textos">
+						<div class="info_producto">
+							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
-					</ul>
-				</li>
-			</ul>
+						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+					</div>
+				</div>
+				<!--<input type="checkbox" class="checkbox">-->
+			</div>
 		<?php endforeach;?>
+		<?php foreach($productos as $key=>$producto):?>
+		<?php if(!$producto){continue;}?>
+			<div class="item_procud">
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="contexto_producto">
+					<div class="textos">
+						<div class="info_producto">
+							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
+						</div>
+						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+					</div>
+				</div>
+				<input type="checkbox" class="checkbox">
+			</div>
+		<?php endforeach;?>
+			<!---->
+	
 		<span class="ico_flecha_right glyphicon glyphicon-chevron-right"></span>
 		<div class="vercatalogo col-md-12 col-lg-12">
 			<span class="glyphicon glyphicon-th-list"></span>
-			<a class="texto_vercatalogo" href="">Ver Catalogo > </a>
+			<a class="texto_vercatalogo" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Ver Catalogo > </a>
 		</div>
 	</div>
 	<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
@@ -150,18 +167,19 @@
 					s
 					<div class="boton_descargar inline-block">
 						<span class="ico_descar glyphicon glyphicon-download-alt"></span>
-						<p class="texto_des_cata">Descargar Catalogo</p>
+						<a href="<?=base_url()?>empresa/descargar_catalogo/<?$empresa->id?>"><p class="texto_des_cata">Descargar Catalogo</p></a>
 					</div>
 				</div>
 				<div class="texto_nuestra_empresa">
 					<p class="texto1">Tipo de Empresa: <a class="text02"><?=$empresa->tipo?></a> </p>
 					<p class="texto1">Productos Principales: <a class="text02"><?=$empresa->productos_principales?></a></p>
 					<p class="texto_descripcion"><?=$empresa->descripcion?></p>
+					<p id="telefonos" style="display:none;font-size:21px;"><b>Telefono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
 				</div>
 				<div class="botones_contac">
-					<button class="btn llamar_empresa">
+					<button class="btn llamar_empresa" onclick="if(document.getElementById('telefonos').style.display==''){document.getElementById('telefonos').style.display='none'}else{document.getElementById('telefonos').style.display='';}">
 						<span class="icon_compartir glyphicon glyphicon-earphone"></span>
-						<p class="texto_contacto">Llamar a la Empresa</p>
+						<p class="texto_contacto" >Llamar a la Empresa</p>
 					</button>
 					<button class="btn contactar_empresa" data-toggle="modal" data-target="#popup_mensajes">
 						<span class="icon_compartir glyphicon glyphicon-envelope"></span>

@@ -170,7 +170,7 @@
 			<div class="col-md-12 anunciar_pagina_empresa">
 				<div class="col-md-6 anunciar">
 					<div class="col-md-12 btn_anunciar">
-						<a href="http://clientes.proveedor.com.co/#precio" class="link_tablero_usuario">
+						<a href="<?=base_url()?>config_empresa/inicio/"  class="link_tablero_usuario">
 							<p class="centrar_icono marg-top"><i class="fa fa-laptop sty-ico-confi"></i> <i class="fa fa-cog sty-ico-confi"></i></p>
 							<p class="texto_pagina_empresa">Configurar pagina de Empresa</p>
 						</a>

@@ -120,12 +120,19 @@ class Editar_empresa extends CI_Controller {
               $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->banners;
               foreach (explode(',', $eliminados) as $key => $value)
               {
-                $archivos_actuales=str_replace($value, '', $archivos_actuales);
+                if($value==''){continue;}
+                $archivos_actuales=str_replace($value.',', '', $archivos_actuales);
                 $archivos_actuales=str_replace(',,', ',', $archivos_actuales);
               }
-              $banners=$archivos_actuales.',';
+              if(substr($archivos_actuales,strlen($archivos_actuales)-1)==',')
+                {$banners=substr($archivos_actuales,1);}
+
               $banners.=$this->archivos_empresa->archivo_adjunto('banners','banners/');
 
+              #echo "<PRE>";
+              #print_r($banners);
+              #echo "</PRE>";
+              #return;
               $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
               redirect($_SERVER['HTTP_REFERER']);
 	  }

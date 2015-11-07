@@ -70,10 +70,10 @@
 									<span class="ico-up glyphicon glyphicon-open"></span>
 									<a href="JavaScript:document.getElementById('banner1').click()" class="text-up-img">Subir imágen 1</a>
 									<div style="display:none" >
-								  		<input type="file" id="banner1" name="banners[]"  onchange="JavaScript:load_new_logo(1)">/>
+								  		<input type="file" id="banner1" name="banners[]"  onchange="JavaScript:load_new_logo(1);mostrar_div('div_img1','<?=$banners[0]?>')">/>
 									</div>
 								</div>
-								<div id="div_img1" class="subido-img">
+								<div id="div_img1" class="subido-img" style="display:<?php if($banners[0]==''){ echo 'none';}?>">
 									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[0]==''){ echo '11.jpg';}else{echo $banners[0];} ?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img1','<?=$banners[0]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
@@ -84,10 +84,10 @@
 									<span class="ico-up glyphicon glyphicon-open"></span>
 									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 2</a>
 									<div style="display:none" >
-								  		<input type="file" id="banner2" name="banners[]"  onchange="JavaScript:load_new_logo(2)">/>
+								  		<input type="file" id="banner2" name="banners[]"  onchange="JavaScript:load_new_logo(2);mostrar_div('div_img2','<?=$banners[1]?>')">/>
 									</div>
 								</div>
-								<div id="div_img2" class="subido-img">
+								<div id="div_img2" class="subido-img" style="display:<?php if($banners[1]==''){ echo 'none';}?>">
 									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[1]==''){ echo '11.jpg';}else{echo $banners[1];} ?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img2','<?=$banners[1]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
@@ -96,12 +96,12 @@
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 3</a>
+									<a href="JavaScript:document.getElementById('banner3').click()" class="text-up-img">Subir imágen 3</a>
 									<div style="display:none" >
-								  		<input type="file" id="banner3" name="banners[]"  onchange="JavaScript:load_new_logo(3)">/>
+								  		<input type="file" id="banner3" name="banners[]"  onchange="JavaScript:load_new_logo(3);mostrar_div('div_img3','<?=$banners[2]?>')">/>
 									</div>
 								</div>
-								<div id="div_img3" class="subido-img">
+								<div id="div_img3" class="subido-img" style="display:<?php if($banners[2]==''){ echo 'none';}?>">
 									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[2]==''){ echo '11.jpg';}else{echo $banners[2];} ?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img3','<?=$banners[2]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
@@ -112,7 +112,13 @@
 								function ocultar_div(id,img)
 								{
 									document.getElementById(id).style.display='none';
-									document.getElementById(banners_eliminados).value+=img+',';
+									document.getElementById('banners_eliminados').value+=img+',';
+									console.log(id);
+								}
+								function mostrar_div(id,img)
+								{
+									document.getElementById(id).style.display='';
+									document.getElementById('banners_eliminados').value+=img+',';
 									console.log(id);
 								}
 								function load_new_logo(id)
@@ -129,7 +135,7 @@
 							  <p class="text_errors"></p>
 							</div>
 
-							<input type="none" name="banners_eliminados" id="banners_eliminados">
+							<input type="hidden" name="banners_eliminados" id="banners_eliminados">
 
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
@@ -280,7 +286,7 @@
 											DOM+='<a href="JavaScript:document.getElementById('+"'banner"+(imagenes+4)+"'"+').click()" class="text-up-img">Subir imágen '+imagenes+'</a>';
 											DOM+='<div style="display:none" >';
 											DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+')">/>';
-											DOM+='</div></div><div class="subido-img2">';
+											DOM+='</div></div><div  id="div_img'+(imagenes+4)+'"  class="subido-img2">';
 											DOM+='<img id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/default.jpg">';
 											DOM+='<p class="name-file"></p>';
 											DOM+='<a href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/default.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
@@ -293,9 +299,16 @@
 									function eliminar_img(input,key)
 									{
 										document.getElementById('eliminados').value+=input+',';
-										document.getElementById('img'+key).src="<?=base_url()?>uploads/default.jpg";
+										document.getElementById('div_img'+key).style.display='none';
 										//console.log(input);
 									}
+									/*
+									function eliminar_img(input,key)
+									{
+										document.getElementById('eliminados').value+=input+',';
+										document.getElementById('div_img'+key).style.display='none';
+										//console.log(input);
+									}*/
 								</script>
 								<input type='hidden' value="" name='eliminados' id='eliminados'>
 								<div id="imagenes">
@@ -319,7 +332,7 @@
 											  		<input type="file" id="banner<?=$key+4?>" name="imagenes[]"  onchange="JavaScript:load_new_logo(<?=$key+4?>)">/>
 												</div>
 											</div>
-											<div class="subido-img2">
+											<div id="div_img<?=$key+4?>" class="subido-img2">
 												<img id="img<?=$key+4?>" class="imge-subido img_preview" src="<?php echo base_url()?>uploads/imagenes/<?=$imagenes[$key]?>">
 												<p class="name-file"></p>
 												<a href="JavaScript:eliminar_img('<?=$imagenes[$key]?>',<?=$key+4?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
