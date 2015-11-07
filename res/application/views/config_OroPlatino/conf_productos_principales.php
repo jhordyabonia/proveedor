@@ -8,11 +8,12 @@ function set_stack()
 {
 	out=Array(20);
 	<?php foreach(explode(',',$empresa->productos_destacados) as $key => $value):?>
+		<?php if($value==NULL){continue;}?>
 		out[<?=$key?>]=<?=$value?>;
 	<?php endforeach;?>
 	return out;
 }
-size=<?=count($destacados)?>;
+size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>;
 function agregar(id)
 {
 	if(size>=20)
@@ -180,9 +181,10 @@ function submit()
 						<div class="conten-selected">
 							<div id="canvas">
 								<?php foreach($destacados as $key => $producto):?>
+									<?php if(!$producto){continue;}?>
 									<div class="conten-item-prin col-lg-4" id="destacado_<?=$key?>">
 										<div class="content-numero">
-											<p class="numero"><?=$key+1?></p>
+											<p class="numero"><?=$key?></p>
 										</div>
 										<div class="subir_bajar">
 											<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir(<?=$key?>);">Subir</a><br>
@@ -248,7 +250,9 @@ function submit()
 						<?php endforeach;?>					</div>
 						<!-- Paginador de catalogos -->
 						<div class="contentidoo-paginador">
-						  <ul class="pagination">						   
+						  <ul class="pagination">	
+
+						  <!--					   
 						    <li><a href="#">1</a></li>
 						    <li><a href="#">2</a></li>
 						    <li><a href="#">3</a></li>
@@ -257,6 +261,7 @@ function submit()
 						        <span aria-hidden="true">siguiente</span>
 						      </a>
 						    </li>
+						-->
 						  </ul>
 						</div>
 					</div>

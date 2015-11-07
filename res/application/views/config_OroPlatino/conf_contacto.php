@@ -77,7 +77,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-user"></span>
 							  </span>
-							  <input type="text" class="form-control" name="nombres" ondblclick="necessary"
+							  <input required type="text" class="form-control" name="nombres" ondblclick="necessary"
 							  onchange="JavaScript:verificar_largo(this,5); verificar_caracteres(this,'=')"
 							   value="<?=$usuario->nombres?>" placeholder="Nombre del contacto">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -102,7 +102,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
-							  <input type="text" class="form-control" name="cargo"
+							  <input required type="text" class="form-control" name="cargo"
 							  onchange="JavaScript:verificar_largo(this,2);" 
 							  value="<?=$usuario->cargo?>" placeholder="Cargo/Funcion en la empresa">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -127,7 +127,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-map-marker"></span>
 							  </span>
-							  <input type="text" class="form-control" name="direccion"
+							  <input required type="text" class="form-control" name="direccion"
 							  onchange="JavaScript:verificar_largo(this,5);"
 							   value="<?=$usuario->direccion?>" placeholder="Direccion de la empresa">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -155,7 +155,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-globe"></i>
 							  </span>
-							  <select class="form-control" name="pais" id="pais" onchange="JavaScript:cambio_pais();verificar(this);"
+							  <select required class="form-control" name="pais" id="pais" onchange="JavaScript:cambio_pais();verificar(this);"
 							   onload="JavaScript:cambio_pais();" ondblclick="necessary" value="52">
 								  	<option value="0">Selecciona tu pais</option>
 									<option value="52" selcted>Colombia</option>
@@ -191,7 +191,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-globe"></i>
 							  </span>
-							  <select class="form-control" name="provincia" id="provincia" ondblclick="necessary" 
+							  <select required class="form-control" name="provincia" id="provincia" ondblclick="necessary" 
 								 onchange="JavaScript:cambio_departamento(this.value); verificar(this);">
 								  	<option value="">Selecciona tu departamento</option>
 									<optgroup label=""></optgroup>
@@ -223,7 +223,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-globe"></i>
 							  </span>
-							  <select class="form-control" name="municipio" id="municipio" value="<?=set_value('municipio'); ?>"
+							  <select required class="form-control" name="municipio" id="municipio" value="<?=set_value('municipio'); ?>"
 								 onchange="JavaScript:verificar(this);" ondblclick="necessary" >
 								  	<option value="0">Selecciona tu municipio</option>
 											<optgroup label=""></optgroup>
@@ -255,7 +255,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-phone"></span>
 							  </span>
-							  <input type="text" class="form-control" name="celular" id="celular" ondblclick="necessary"
+							  <input required type="text" class="form-control" name="celular" id="celular" ondblclick="necessary"
 							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-')"
 							  value="<?=$usuario->celular?>" placeholder="Telefono celular">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">

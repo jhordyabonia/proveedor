@@ -76,7 +76,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-building-o"></i>
 							  </span>
-							  <input type="text" class="form-control" id="nomnbre" name="nombre" ondblclick="necessary" 
+							  <input required type="text" class="form-control" id="nomnbre" name="nombre" ondblclick="necessary" 
 							  onchange="JavaScript:verificar_largo(this,3);verificar_caracteres(this,'[SYM].:|&.')"
 							   onclick="JavaScript:limpiar(this)"
 							   value="<?=$empresa->nombre?>" placeholder="Nombre de la Empresa">
@@ -102,7 +102,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-list-alt"></i>
 							  </span>
-							  <input type="text" class="form-control" id="nit" name="nit" ondblclick="necessary"
+							  <input required type="text" class="form-control" id="nit" name="nit" ondblclick="necessary"
 							  onchange="JavaScript:eliminar_espacios(this);verificar_attime(this); verificar_caracteres(this,' áéíóúñ [ALPHA][SYM]|-')"
 							  value="<?=$empresa->nit?>"placeholder="Nit de la Empresa o C.C. del Comercial">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -127,7 +127,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-tags"></span>
 							  </span>
-							  <select class="form-control" id="tipo_empresa" id="tipo_empresa"
+							  <select required class="form-control" id="tipo_empresa" id="tipo_empresa"
 							  onchange="JavaScript:verificar(this);" name="tipo">
 								  <option>Tipo de Empresa</option>
 								  <?php foreach($tipos_empresa as $key=> $tipo):?>
@@ -156,7 +156,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-list"></span>
 							  </span>
-							  <select class="form-control" name="categoria">
+							  <select required class="form-control" name="categoria">
 								  <option selected>Seleccionar sector de la Empresa</option>
 								  <?php foreach($categorias as $key=> $categoria):?>
 								 	 <option <?php foreach(explode('|',$empresa->categorias) as $value){if($categoria->id_categoria==$value){echo "selected";break;}}?> value="<?=$categoria->id_categoria?>"><?=$categoria->nombre_categoria?></option>
@@ -184,7 +184,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene3 glyphicon glyphicon-pencil"></span>
 							  </span>
-							  <textarea rows="9" class="form-control" name="descripcion" 
+							  <textarea required rows="9" class="form-control" name="descripcion" 
 							  ondblclick="necessary" onclick="JavaScript:limpiar(this)"
 							  onchange="JavaScript:verificar_largo(this,15);verificar_largo_max(this,500);"
 							  placeholder="Descripción de la Empresa"><?=$empresa->descripcion?></textarea>

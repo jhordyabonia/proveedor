@@ -111,6 +111,7 @@
 	<div class="col-md-2"></div>
 	<div class="text-align col-md-10">
 		<ul class="pagination">
+			<!--
 	    <li><a href="#">1</a></li>
 	    <li><a href="#">2</a></li>
 	    <li><a href="#">3</a></li>
@@ -121,6 +122,7 @@
 	        <span aria-hidden="true">Siguiente &raquo;</span>
 	      </a>
 	    </li>
+	-->
 	  </ul>
 	</div>
 </div>

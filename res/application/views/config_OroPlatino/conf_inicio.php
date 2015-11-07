@@ -76,13 +76,13 @@
 								<div id="div_img1" class="subido-img">
 									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[0]==''){ echo '11.jpg';}else{echo $banners[0];} ?>">
 									<p class="name-file"></p>
-									<a href="JavaScript:document.getElementById('div_img1').style.display='none';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:ocultar_div('div_img1','<?=$banners[0]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 1</a>
+									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 2</a>
 									<div style="display:none" >
 								  		<input type="file" id="banner2" name="banners[]"  onchange="JavaScript:load_new_logo(2)">/>
 									</div>
@@ -90,13 +90,13 @@
 								<div id="div_img2" class="subido-img">
 									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[1]==''){ echo '11.jpg';}else{echo $banners[1];} ?>">
 									<p class="name-file"></p>
-									<a href="JavaScript:document.getElementById('div_img2').style.display='none';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
+									<a href="JavaScript:ocultar_div('div_img2','<?=$banners[1]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
 							</div>
 							<div class="img-banner">
 								<div class="subir-img">
 									<span class="ico-up glyphicon glyphicon-open"></span>
-									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 1</a>
+									<a href="JavaScript:document.getElementById('banner2').click()" class="text-up-img">Subir imágen 3</a>
 									<div style="display:none" >
 								  		<input type="file" id="banner3" name="banners[]"  onchange="JavaScript:load_new_logo(3)">/>
 									</div>
@@ -104,11 +104,17 @@
 								<div id="div_img3" class="subido-img">
 									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/banners/<?php if($banners[2]==''){ echo '11.jpg';}else{echo $banners[2];} ?>">
 									<p class="name-file"></p>
-									<a href="JavaScript:document.getElementById('div_img3').style.diaplay='none';" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a href="JavaScript:ocultar_div('div_img3','<?=$banners[2]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 
 							<script type="text/javascript">
+								function ocultar_div(id,img)
+								{
+									document.getElementById(id).style.display='none';
+									document.getElementById(banners_eliminados).value+=img+',';
+									console.log(id);
+								}
 								function load_new_logo(id)
 			                    {
 			                        var paths = document.getElementById('banner'+id).files;
@@ -122,6 +128,8 @@
 							<div class="input-group content_validacion3 col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors"></p>
 							</div>
+
+							<input type="none" name="banners_eliminados" id="banners_eliminados">
 
 							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
@@ -177,7 +185,7 @@
 									}
 									function agregar_video()
 									{
-										for(i=0;i<5;i++)
+										for(var i=0;i<5;i++)
 										{
 											salvar_videos();
 											if(videos>=20){alert('Limite exedido.');return;}
@@ -261,7 +269,6 @@
 											salvar_imagenes();
 											if(imagenes>=20){alert('Limite exedido.');return;}
 											
-											imagenes++;
 											DOM='<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">';
 											DOM+='<div class="input-group padig col-xs-12 col-md-12 col-lg-12">';
 											DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
@@ -280,6 +287,7 @@
 											DOM+='</div></div>';
 											document.getElementById('imagenes').innerHTML+=DOM;
 											fijar_imagenes();
+											imagenes++;
 										}
 									}
 									function eliminar_img(input,key)
@@ -293,7 +301,8 @@
 								<div id="imagenes">
 									<?php foreach($titulos as $key => $titulo):?>
 										<?php if( $key>count($imagenes)){break;}?>
-										<?php if( $titulo==''){break;}?>
+										<?php if( $titulo==''||$titulo==','){break;}?>
+										<?php if( $imagenes[$key]==NULL){continue;}?>
 										<div class="col-xs-12 col-md-5 col-lg-5" style="padding-left: 22px;">
 											<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
 											  <span class="fiel-tramspa padi2 input-group-addon">

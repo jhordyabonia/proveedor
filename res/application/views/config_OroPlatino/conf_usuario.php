@@ -77,7 +77,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-user"></span>
 							  </span>
-							  <input type="text" class="form-control" name="usuario"
+							  <input required type="text" class="form-control" name="usuario"
 							  onchange="JavaScript:eliminar_espacios(this);verificar_attime(this);verificar_largo(this,5);verificar_caracteres(this,'[SYM]');"
 							onclick="JavaScript:limpiar(this);" ondblclick="necessary"  
 							 value="<?=$usuario->usuario?>" placeholder="Nombre de usuario">
@@ -103,7 +103,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene2 fa fa-at"></i>
 							  </span>
-							  <input type="text" class="form-control" name="email"
+							  <input required type="text" class="form-control" name="email"
 							  onchange="JavaScript:verificar_formato(this);verificar_attime(this)" onclick="JavaScript:limpiar(this);"
 							  value="<?=$usuario->email?>" placeholder="Email">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -128,7 +128,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input type="password" class="form-control" name="password_old"
+							  <input required type="password" class="form-control" name="password_old"
 							 	class="input-style"  placeholder="Contraseña actual">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">							  	
 							  </span>
@@ -145,7 +145,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input type="password" class="form-control" id="password" name="password" onclick="JavaScript:limpiar(this);"
+							  <input required type="password" class="form-control" id="password" name="password" onclick="JavaScript:limpiar(this);"
 								onchange="JavaScript:verificar_igualdad(document.getElementById('password2'),this);verificar_largo(this,6);verificar_caracteres(this,' áéíóúñ');" 
 								class="input-style"  placeholder="Nueva contraseña">
 
@@ -172,7 +172,7 @@
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
 
-							  <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirmar nueva contraseña"
+							  <input required type="password" class="form-control" name="password2" id="password2" placeholder="Confirmar nueva contraseña"
 								onclick="JavaScript:limpiar(this);"  ondblclick="necessary"
 				  				onchange="JavaScript:verificar_igualdad(this,document.getElementById('password'))">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">

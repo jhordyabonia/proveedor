@@ -20,7 +20,9 @@ class Perfil extends CI_Controller {
 
 	public function ver_empresa($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	{		
-		if($id_empresa==0)
+		if($id_empresa==10263||$id_empresa==10264)
+		{redirect('perfil/ver_empresa/10560');}
+		if($id_empresa<1000)
 		{
 			$empresa= $this->empresa->get(array('nit'=>$id_seleccion));
 			redirect('perfil/ver_empresa/'.$empresa->id);
@@ -203,7 +205,10 @@ class Perfil extends CI_Controller {
 //con esta funcion se llama a la vista de la segunda pestaÃ±a de la vista perfil empresa
 	public function perfil_empresa($id_empresa,$id_seleccion=0){
 		// echo 'es_ '.$id_contacto;
-		if($id_empresa==0)
+
+		if($id_empresa==10263||$id_empresa==10264)
+		{redirect('perfil/ver_empresa/10560');}
+		if($id_empresa<1000)
 		{
 			$empresa= $this->empresa->get(array('nit'=>$id_seleccion));
 			redirect('perfil/perfil_empresa/'.$empresa->id);
@@ -498,7 +503,10 @@ class Perfil extends CI_Controller {
 	}
 	public function productos_solicitados($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	 {	
-	 	if($id_empresa==0)
+
+		if($id_empresa==10263||$id_empresa==10264)
+		{redirect('perfil/ver_empresa/10560');}
+	 	if($id_empresa<1000)
 		{
 			$empresa= $this->empresa->get(array('nit'=>$id_seleccion));
 			redirect('perfil/productos_solicitados/'.$empresa->id);
@@ -556,6 +564,9 @@ class Perfil extends CI_Controller {
 	public function contacto_empresa($id_empresa)
 	{
 
+		if($id_empresa==10263||$id_empresa==10264)
+		{redirect('perfil/ver_empresa/10560');}
+	
 		$empresa=$this->empresa->get($id_empresa);
 		if(!$empresa)
 		{

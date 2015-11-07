@@ -200,7 +200,7 @@
 										<p class="cate_catalo"><?=$catalogo->categoria?></p>
 										<p class="desc_catalo"><?=$catalogo->descripcion?></p>
 										<p class="pala_clave_catalo"><?=$catalogo->palabras_clave?></p>
-										<p class="nomArchivo-catalo"><a href="<?=base_url()?>uploads/catalogos/<?=$catalogo->catalogo?>" ><?=$catalogo->catalogo?></p></a>
+										<p class="nomArchivo-catalo"><a href="<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>" ><?=$catalogo->catalogo?></p></a>
 										<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
 									</div>
 								</div>

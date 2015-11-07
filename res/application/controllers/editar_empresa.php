@@ -53,6 +53,7 @@ class Editar_empresa extends CI_Controller {
               $datos['categoria']=$this->input->post('categoria');
               $datos['descripcion']=$this->input->post('descripcion');
               $datos['catalogo']=$this->archivos_empresa->archivo_adjunto('catalogo','catalogo/');
+              $datos['catalogo']=str_replace(',', '', $datos['catalogo']);
               $datos['palabras_clave']=$this->input->post('palabras_clave');
               
               #echo "<PRE>";
@@ -115,8 +116,16 @@ class Editar_empresa extends CI_Controller {
 	  } 
 	  public function banners()
 	  {        
-              $banners=$this->archivos_empresa->archivo_adjunto('banners','banners/');
-              
+              $eliminados=$this->input->post('banners_eliminados');
+              $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->banners;
+              foreach (explode(',', $eliminados) as $key => $value)
+              {
+                $archivos_actuales=str_replace($value, '', $archivos_actuales);
+                $archivos_actuales=str_replace(',,', ',', $archivos_actuales);
+              }
+              $banners=$archivos_actuales.',';
+              $banners.=$this->archivos_empresa->archivo_adjunto('banners','banners/');
+
               $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
               redirect($_SERVER['HTTP_REFERER']);
 	  }
@@ -145,10 +154,10 @@ class Editar_empresa extends CI_Controller {
               $datos="";
               foreach ($this->input->post('imagenes_titulos') as $key => $imagen)
               {
+                if($imagen==''){$imagen="Imagen";}
                  $datos.=$imagen.",";
               }
               $archivos=$this->archivos_empresa->archivo_adjunto('imagenes','imagenes/');
-              /*
               $eliminados=$this->input->post('eliminados');
               $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->imagenes;
               $archivos_actuales=explode('|',$archivos_actuales);
@@ -156,14 +165,16 @@ class Editar_empresa extends CI_Controller {
               foreach (explode(',', $eliminados) as $key => $value)
               {
                 $archivos_actuales=str_replace($value, '', $archivos_actuales);
+                $archivos_actuales=str_replace(',,', ',', $archivos_actuales);
               }
 
+              /*
               echo "<PRE>";
-              print_r($datos);
+              print_r($archivos_actuales);
               echo "</PRE>";
               return;
               */
-              $datos.='|'.$archivos;
+              $datos.='|'.$archivos_actuales.$archivos;
               $this->empresa->update(array('imagenes'=>$datos),array('usuario'=>$this->id));
               redirect($_SERVER['HTTP_REFERER']);
 	  }

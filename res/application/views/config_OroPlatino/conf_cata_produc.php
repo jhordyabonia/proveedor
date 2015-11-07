@@ -220,17 +220,29 @@
 							</div>
 
 							<!-- Campo 6 -->
+							<script type="text/javascript">
+								function load_new_logo2()
+			                    {
+			                        var paths = document.getElementById('btn_archivos2').files;
+			                        var navegador = window.URL || window.webkitURL;
+			                        var url = navegador.createObjectURL(paths[0]);
+			                        document.getElementById('img_logo').src=url; 		                        
+	                    		}
+                   			</script>
 							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
 								<div class="subir-imagenes" >
 							  		<a href="JavaScript:document.getElementById('btn_archivos2').click()" class="enlace-ssubir-imagenes">
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
 							  			<p class="text-subir-img">Subir imagenes del producto</p>
 							  		</a>
+							  		<div class="container-logo-empresa inline-block">
+							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/logos/default.png">
+							  		</div>
 							  	</div>   
 							  	<div style="display:none">
 		                          <input type="file" class="filestyle" id="btn_archivos2" name="userfiles[]" multiple
 		                            data-size="lg" data-input="false" data-icon="false" data-badge="false" 
-		                            onchange="JavaScript:oculta_eliminar();" onload="JavaScript:oculta_eliminar();" >
+		                            onchange="JavaScript:load_new_logo2();">
 		                        </div>
 							</div>
 

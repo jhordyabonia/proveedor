@@ -17,6 +17,7 @@ class Empresa extends CI_Controller
     $this->load->model('new/Departamento_model','departamento');
     $this->load->model('new/Pais_model','pais');
     $this->load->model('new/Categoria_model','categoria');
+    $this->load->model('new/Catalogo_model','catalogo');
     $this->load->model('new/Dimension_model','dimension');
     $this->load->model('new/Subcategoria_model','subcategoria');
     $this->load->model('Asistentes_proveedor_model','asistentes_proveedor');
@@ -185,6 +186,52 @@ class Empresa extends CI_Controller
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
     $this->load->view('catologo_productos/header_catalogo',$datos);
     $this->load->view('nosotros/nosotros');
+    $this->load->view('template/footer');
+    $this->load->view('template/footer_empy');
+  }
+  function descargar_catalogo($id)
+  {
+    $datos['empresa']= $this->empresa->get($id);    
+    $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+    $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
+    $datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$id));
+
+    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
+    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
+    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
+    $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
+
+    $filtro=38;
+    $tipo_filtro=0;
+
+    if($filtro!=0)
+    {
+      switch ($tipo_filtro) 
+      {
+        case 0:
+            $filtrado=$this->filtro_categoria($datos['productos'],$filtro); 
+          break;
+        
+        default:
+            $filtrado=$this->filtro_categoria($datos['productos'],0,$filtro); 
+            break;
+      }
+    }else
+    {
+      $filtrado=$this->filtro_categoria($datos['productos']);
+    }
+    $productos=$filtrado['productos'];
+    $datos['filtros']=$filtrado['categorias'];
+    $datos['page']=0;//$page;
+    
+    $datos['titulo'] = $datos['empresa']->nombre;
+    $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
+    $this->load->view('template/head');
+    $this->load->view('template/javascript');
+    $this->load->view('registro/funcionalidades_');
+    $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
+    $this->load->view('catologo_productos/header_catalogo',$datos);  
+    $this->load->view('descargar_catalogo/descargar_catalogo',$datos);
     $this->load->view('template/footer');
     $this->load->view('template/footer_empy');
   }
