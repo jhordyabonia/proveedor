@@ -417,6 +417,14 @@
   	font-weight: bold;
   	font-size: 19px;	
 }
+.marg-top{
+  margin-top: 51px;
+}
+.sty-ico-confi{
+    font-size: 50px !important;
+    color: #fff;
+    margin-right: 5px;
+}
 @media screen and (max-width: 1350px){
 	.contenedor_tablero .texto_mas_informacion{
 		margin-top: -15px;

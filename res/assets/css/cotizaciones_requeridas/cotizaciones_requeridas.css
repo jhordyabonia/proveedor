@@ -67,6 +67,9 @@
   padding-bottom: 29px;
   background-color: #fff;
 }
+.enla-color{
+	color: #111 !important;
+}
 .text-align{
   text-align: center;
 }

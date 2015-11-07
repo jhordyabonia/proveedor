@@ -5,11 +5,11 @@
    left: 63px;
 }
 .txt_nom_empre{
-	margin-top: 19px;
+	margin-top: 15px;
    	margin-bottom: 0;
    	font-size: 37px;
    	text-align: center;
-   	line-height: 1;
+   	line-height: .8;
 }
 /*
 y remplaza este fragmento por el que ya esta 
@@ -22,7 +22,7 @@ width: 480px;
 */
 .conten_header_catalogo{
 	width: 100%;
-	height: 231px;
+	height: 245px;
 }
 .conten_header_item{
 	width: 100%;
@@ -135,7 +135,7 @@ width: 480px;
 .info .verificacion .inline-block{display: inline-block;}
 
 .sonri-img{
-    margin-top: 3px;
+    margin-top: 6px;
 }
 
 .tipo_empresa {

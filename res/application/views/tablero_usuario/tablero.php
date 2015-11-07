@@ -171,10 +171,10 @@
 				<div class="col-md-6 anunciar">
 					<div class="col-md-12 btn_anunciar">
 						<a href="http://clientes.proveedor.com.co/#precio" class="link_tablero_usuario">
-							<p class="centrar_icono"><span class="glyphicon glyphicon-bullhorn ico_altavoz"></span></p>
-							<p class="texto_anunciar">Anuncie en Proveedor.com.co</p>
+							<p class="centrar_icono marg-top"><i class="fa fa-laptop sty-ico-confi"></i> <i class="fa fa-cog sty-ico-confi"></i></p>
+							<p class="texto_pagina_empresa">Configurar pagina de Empresa</p>
 						</a>
-						<a href="<?=base_url()?>" class="link_tablero_usuario"><p class="texto_mas_informacion_anunciar">Más Información</p></a>
+						<!--<a href="<?=base_url()?>" class="link_tablero_usuario"><p class="texto_mas_informacion_anunciar">Más Información</p></a>-->
 					</div>
 				</div>
 				<div class="col-md-6 pagina_empresa">

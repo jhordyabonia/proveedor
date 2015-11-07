@@ -24,6 +24,9 @@
 				<li class="list-menu">
 					<a class="item-list" href="<?=base_url()?>producto/administrar">PRODUCTOS</a>
 				</li>
+				<li class="list-menu">
+					<a class="item-list" href="#">SOLICITUDES</a>
+				</li>
 				<li class="list-menu padding-style">
 					<span class="ico-user glyphicon glyphicon-user"></span>
 					<a class="nom_username" href="<?=base_url()?>empresa/inicio/<?=$empresa->id?>"><?=$usuario->usuario?></a>
