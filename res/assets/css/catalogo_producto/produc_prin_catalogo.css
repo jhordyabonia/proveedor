@@ -3,6 +3,10 @@ a
 {
   color: black;
 }
+.img-pdf2{
+  max-width: 100%;
+  max-height: 155px;
+}
 .text_pro_pri{
   padding-left: 22px;
 }
@@ -36,6 +40,10 @@ a
 	color: #fff;
 }
 /**/
+.solicitar_cotizacion2{
+  padding: 0;
+    text-align: center;
+}
 .text-coti{
 	font-size: 16px !important;
     position: relative;
@@ -49,7 +57,7 @@ a
 	background-color: whitesmoke;
 	height: auto;
 }
-.conten_categorias{
+.conten_categorias, .conten_categorias2{
 	  width: 220px;
     height: auto;
     border: 1px solid #ccc;
@@ -127,7 +135,7 @@ a
 	margin-top: 25px;
 	margin-bottom: 30px;
 }
-.contenedor_productos_item > .item_procud{
+.contenedor_productos_item > .item_procud,.contenedor_productos_item > .item_procud2{
 	display: inline-block;
 }
 .item_procud{
@@ -141,6 +149,18 @@ a
   margin-bottom: 22px;
   padding-left: 15px;
   padding-right: 15px;
+}
+.item_procud2{
+    position: relative;
+    top: 0;
+    width: 235px;
+    height: 280px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-right: 22px;
+    margin-bottom: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .content_item_produc{
     padding-left: 25px;
@@ -259,12 +279,29 @@ a
     background-color: #fff;
 }
 
+.textos2{
+    font-weight: bold;
+    font-size: 17px !important;
+}
+
 @media (max-width: 1280px) {
   .item_procud{
     position: relative;
     top: 0;
     width: 210px;
     height: 305px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-right: 22px;
+    margin-bottom: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .item_procud2{
+    position: relative;
+    top: 0;
+    width: 235px;
+    height: 280px;
     background-color: #fff;
     border: 1px solid #ccc;
     margin-right: 22px;

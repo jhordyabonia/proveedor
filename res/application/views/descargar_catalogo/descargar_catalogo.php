@@ -82,7 +82,9 @@
 		<div class="contenedor_productos_item">
 			<?php foreach ($catalogos as $key => $catalogo):?>
 			<div class="item_procud2">
-				<div class="imagen_producto"></div>
+				<div class="imagen_producto">
+					<img class="img-pdf2" src="http://192.168.33.10/assets/img/pdf.png">
+				</div>
 				<div class="contexto_producto">
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
@@ -96,7 +98,7 @@
 		<?php endforeach;?>
 		</div>
 		</div>
-		<div class="solicitar_cotizacion2 col-md-10">
+		<div class="solicitar_cotizacion2 col-md-12">
 			<button class="btn_solicitar_cotizacion">
 					<i class="icono_solicitar fa fa-file-text"></i>
 					<a class="enlace_solicitar" href="">SOLICITAR COTIZACION</a>
