@@ -3,6 +3,9 @@ a
 {
   color: black;
 }
+.text_pro_pri{
+  padding-left: 22px;
+}
 .encabezado_pro_pri{
 	margin-top: 16px;
 	margin-bottom: 17px;
@@ -31,11 +34,6 @@ a
 .btn_solicitar_cotizacion:hover, .btn:hover{
 	background-color: #ff8100;
 	color: #fff;
-}
-.logo
-{
-    width: 25%;
-    height: 50%;
 }
 /**/
 .text-coti{
@@ -290,5 +288,8 @@ a
     margin-top: 16px;
     margin-bottom: 17px;
     padding-left: 50px;
+  }
+  .text_pro_pri{
+    padding-left: 47px;
   }
 }

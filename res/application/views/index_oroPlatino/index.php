@@ -89,7 +89,9 @@
 						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
 					</div>
 				</div>
-				<input type="checkbox" class="checkbox">
+				<div class="mini-logo">
+					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+				</div>
 			</div>
 		<?php endforeach;?>
 			<!---->
@@ -148,7 +150,7 @@
 		<div class="col-md-3">
 			<ul class="list-title">
 				<li>
-					<ul class=" active list-title">
+					<ul class=" active list-title-nuestra">
 						<a class="texto-nuestra_empresa">Nuestra Empresa</a>
 					</ul>
 				</li>
