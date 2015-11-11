@@ -51,11 +51,17 @@ width: 480px;
 }
 
 .enlaces_header2{
-	color: #111;
+	color: #ff7f27;
 	font-size: 15px;
 	text-decoration: none !important;
+	font-weight: bold;
 }
-
+.enlaces_header2:hover{
+	color: #ff7f27;
+	font-size: 15px;
+	text-decoration: none !important;
+	font-weight: bold;
+}
 .color-text{
 	color: #ff7f27 !important;
 	font-weight: bold;
@@ -73,7 +79,19 @@ width: 480px;
     padding-right: 19px;
     line-height: 32px;
     margin-bottom: 0;
+    padding-bottom: 7px;
 }
+.list_item2{
+	list-style: none;
+    margin-top: 10px;
+    padding-left: 25px;
+    padding-right: 19px;
+    line-height: 32px;
+    margin-bottom: 0;
+    padding-bottom: 7px;
+    color: #ff7f27;
+}
+
 .list_redes{
 	list-style: none;
 }
@@ -85,7 +103,7 @@ width: 480px;
 .list_item > li{
 	display: inline-block;
 	position: relative;
-	top: 1px;
+	top: -6px;
 }
 
 .active{
@@ -230,5 +248,15 @@ width: 480px;
 	    padding-right: 19px;
 	    line-height: 41px;
 	    margin-bottom: 0;
+	}
+	.list_item2{
+	    list-style: none;
+	    margin-top: 10px;
+	    padding-left: 25px;
+	    padding-right: 19px;
+	    line-height: 32px;
+	    margin-bottom: 0;
+	    padding-bottom: 12px;
+	    color: #ff7f27;
 	}
 }

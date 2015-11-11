@@ -85,9 +85,9 @@
 					</ul>
 				</li>
 				<li>
-					<ul class="<?=is_active('descargar_catalogo',$m)?> list_item">
+					<ul class="<?=is_active('descargar_catalogo',$m)?> list_item2">
 						<span class="icon_style glyphicon glyphicon-download-alt"></span>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>">DESCARGAR CATÁLOGO</a>
+						<a class="enlaces_header2" href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>">DESCARGAR CATÁLOGO</a>
 					</ul>
 				</li>
 			</ul>
