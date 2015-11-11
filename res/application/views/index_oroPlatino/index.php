@@ -57,9 +57,29 @@
 			</ul>
 		</div>
 	</div>
+	<script type="text/javascript">
+
+		var	infocus =1;
+		function left(id)
+		{
+			if(document.getElementById(id).childNodes.length-infocus>8)
+			{document.getElementById(id).childNodes[infocus].style.display='none';}
+			else{console.log("no");}
+			infocus+=2;
+		}
+		function rigth(id)
+		{
+			if(document.getElementById(id).childNodes.length-8>infocus)
+			{document.getElementById(id).childNodes[infocus].style.display='none';}
+			infocus-=2;
+		}
+	</script>
 	<div class="container_productos_principales col-md-12">
-		<span class="ico_flecha_left glyphicon glyphicon-chevron-left"></span>
-		<div class="contenedor_productos_item">
+		<a href="JavaScript:left('carrousel')">
+			<span class="ico_flecha_left glyphicon glyphicon-chevron-left" ></span>
+		</a>
+
+		<div id="carrousel" class="contenedor_productos_item">
 		<?php foreach($destacados as $key=>$producto):?>
 		<?php if(!$producto){continue;}?>
 			<div class="item_procud">
@@ -73,7 +93,9 @@
 						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
 					</div>
 				</div>
-				<!--<input type="checkbox" class="checkbox">-->
+				<div class="mini-logo">
+					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+				</div>
 			</div>
 		<?php endforeach;?>
 		<?php foreach($productos as $key=>$producto):?>
@@ -94,6 +116,7 @@
 				</div>
 			</div>
 		<?php endforeach;?>
+		</div>
 			<!---->
 	
 		<span class="ico_flecha_right glyphicon glyphicon-chevron-right"></span>
@@ -109,7 +132,7 @@
 		</button>
 	</div>
 </div>
-
+<?php if($empresa->videos):?>
 <div class="videos_empresa">
 	<div class="title_videos col-md-12">
 		<div class="col-md-3">
@@ -144,7 +167,7 @@
 		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 	</div>
 </div>
-
+<?php endif;?>
 <div class="contenedor_nuestraempresa">
 	<div class="nuestra_empresa col-md-12">
 		<div class="col-md-3">
@@ -206,6 +229,7 @@
 	</div>
 </div>
 
+<?php if($empresa->imagenes):?>
 <div class="contenido_galeria">
 	<div class="galeria_imagenes col-md-12">
 		<div class="col-md-3">
@@ -240,6 +264,7 @@
 		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 	</div>	
 </div>
+<?php endif;?>
 <div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
 	<button class="btn btn_soli">
 		<i class="icono-soli fa fa-file-text"></i>
@@ -294,6 +319,43 @@
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->web?></p>
 				</div>
+				<?php if($usuario->facebook):?>
+						<div class="title_info">
+							<i class="icon_redes_sociales fa fa-facebook-square"></i>
+							<p class="title_texto_info">Facebook</p> 
+						</div>
+						<div class="conten_into">
+							<p class="text_info" onclick="location.href='<?=$usuario->facebook?>'"><?=$usuario->facebook?></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->twitter):?>
+						<div class="title_info">
+							<i class="icon_redes_sociales fa fa-twitter-square"></i>
+							<p class="title_texto_info">Twitter</p> 
+						</div>
+						<div class="conten_into">
+							<p class="text_info" onclick="location.href='<?=$usuario->twitter?>'"><?=$usuario->twitter?></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->linkedin):?>
+						<div class="title_info">							
+							<i class="icon_redes_sociales fa fa-linkedin-square"></i> 
+							<p class="title_texto_info">Linkedin</p> 
+						</div>
+						<div class="conten_into">
+							<p class="text_info" onclick="location.href='<?=$usuario->linkedin?>'"><?=$usuario->linkedin?></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->youtube):?>
+					<div class="title_info">
+						<i class="icon_redes_sociales fa fa-youtube"></i>
+						<p class="title_texto_info">Youtube</p> 
+					</div>
+					<div class="conten_into">
+						<p class="text_info" onclick="location.href='<?=$usuario->youtube?>'"><?=$usuario->youtube?></p>
+					</div>
+					<?php endif;?>
+					<!--
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-thumbs-up"></span>
 					<p class="title_texto_info">Redes Sociales</p> 
@@ -324,6 +386,7 @@
 						</ul>
 					</li>
 				</ul>
+			-->
 		</div>
 		</div>
 		<div class="col-md-4" style="padding: 0;">

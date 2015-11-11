@@ -20,6 +20,8 @@ class Perfil extends CI_Controller {
 
 	public function ver_empresa($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	{		
+		if($id_empresa==10384)
+		{redirect(base_url().'empresa/inicio/10384');}
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}
 		if($id_empresa<1000)
@@ -206,6 +208,9 @@ class Perfil extends CI_Controller {
 	public function perfil_empresa($id_empresa,$id_seleccion=0){
 		// echo 'es_ '.$id_contacto;
 
+		if($id_empresa==10384)
+		{redirect(base_url().'empresa/inicio/10384');}
+	
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}
 		if($id_empresa<1000)
@@ -503,6 +508,8 @@ class Perfil extends CI_Controller {
 	}
 	public function productos_solicitados($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	 {	
+		if($id_empresa==10384)
+		{redirect(base_url().'empresa/inicio/10384');}
 
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}
@@ -563,6 +570,8 @@ class Perfil extends CI_Controller {
 	
 	public function contacto_empresa($id_empresa)
 	{
+		if($id_empresa==10384)
+		{redirect(base_url().'empresa/inicio/10384');}
 
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}

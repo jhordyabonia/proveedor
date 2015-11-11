@@ -322,7 +322,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Pagina de faceboo</label>
+							  <label for="">Pagina de facebook</label>
 							</div>
 
 							<!-- Campo 8 -->

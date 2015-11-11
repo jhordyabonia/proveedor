@@ -35,6 +35,9 @@ class Empresa extends CI_Controller
     $datos['empresa']= $this->empresa->get($id); 
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;   
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
+    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
+    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
+    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
    
     #$filtrado=$this->filtro_categoria($datos['productos']);
@@ -73,6 +76,9 @@ class Empresa extends CI_Controller
     $datos['empresa'] = $this->empresa->get($id);    
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['usuario'] = $this->usuarios->get($datos['empresa']->usuario);
+    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
+    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
+    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
    
     #$filtrado=$this->filtro_categoria($datos['productos']);
@@ -134,14 +140,13 @@ class Empresa extends CI_Controller
     $datos['empresa']= $this->empresa->get($id);  
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;  
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
+    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
+    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
+    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
 
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-
-    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
-    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
-    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
 
     $this->load->view('template/head');
     $this->load->view('template/javascript');    
@@ -158,6 +163,9 @@ class Empresa extends CI_Controller
     $datos['empresa']= $this->empresa->get($id);  
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;  
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
+    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
+    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
+    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
     #$datos['oportunidades'] = $this->asistentes_proveedor->get_all();
     $datos['oportunidades'] = $this->solicitud->get_all(array('empresa'=>$id));
@@ -202,11 +210,10 @@ class Empresa extends CI_Controller
     $datos['empresa']= $this->empresa->get($id);    
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
-    $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
-
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
     $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
+    $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
 
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
@@ -225,6 +232,9 @@ class Empresa extends CI_Controller
     $datos['empresa']= $this->empresa->get($id);    
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
+    $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
+    $datos['usuario']->ciudad=$this->municipio->get($datos['usuario']->ciudad)->municipio;
+    $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
     $datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$id));
 
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
