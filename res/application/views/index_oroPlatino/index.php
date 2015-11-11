@@ -262,7 +262,7 @@
 				</li>
 			</ul>
 		<?php endforeach;?>
-		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
+		<span class="ico_flecha_right_video2 glyphicon glyphicon-chevron-right"></span>
 	</div>	
 </div>
 <?php endif;?>
