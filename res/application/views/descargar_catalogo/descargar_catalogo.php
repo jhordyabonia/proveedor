@@ -22,14 +22,14 @@
 			<div class="encabezado_pro_pri">
 				<button class="btn btn_solicitar_coti">
 					<i class="ico_solicitar fa fa-file-text"></i>
-					<a class="enlace_soli" href="">SOLICITAR COTIZACION</a>
+					<a class="enlace_soli2" href="">SOLICITAR COTIZACION</a>
 				</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="conten_pro col-md-12">
+<div class="conten_pro pad-cincuenta col-md-12">
 	<div class="padding-left col-md-2">
 		<div class="conten_categorias2">
 			<div class="title_categoria">
@@ -85,12 +85,12 @@
 				<div class="imagen_producto">
 					<img class="img-pdf2" src="http://192.168.33.10/assets/img/pdf.png">
 				</div>
-				<div class="contexto_producto">
+				<div class="contexto_producto center">
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
 					</div>
 						<button class="btn btn-descargar" onclick="location.href='<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>">
-							<span class="icon_style_des2 glyphicon glyphicon-download-alt"></span>
+							<span class="icon_style_des3 glyphicon glyphicon-download-alt"></span>
 							DESCARGAR
 						</button>
 				</div>
