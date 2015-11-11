@@ -325,7 +325,7 @@
 							<p class="title_texto_info">Facebook</p> 
 						</div>
 						<div class="conten_into">
-							<p class="text_info" onclick="location.href='<?=$usuario->facebook?>'"><?=$usuario->facebook?></p>
+							<p class="text_info" onclick="location.href='<?=$usuario->facebook?>'"><a href='<?=$usuario->facebook?>'><?=$usuario->facebook?></a></p>
 						</div>
 					<?php endif;?>
 					<?php if($usuario->twitter):?>
@@ -334,7 +334,7 @@
 							<p class="title_texto_info">Twitter</p> 
 						</div>
 						<div class="conten_into">
-							<p class="text_info" onclick="location.href='<?=$usuario->twitter?>'"><?=$usuario->twitter?></p>
+							<p class="text_info" onclick="location.href='<?=$usuario->twitter?>'"><a href='<?=$usuario->twitter?>'><?=$usuario->twitter?></a></p>
 						</div>
 					<?php endif;?>
 					<?php if($usuario->linkedin):?>
@@ -343,7 +343,7 @@
 							<p class="title_texto_info">Linkedin</p> 
 						</div>
 						<div class="conten_into">
-							<p class="text_info" onclick="location.href='<?=$usuario->linkedin?>'"><?=$usuario->linkedin?></p>
+							<p class="text_info" onclick="location.href='<?=$usuario->linkedin?>'"><a href='<?=$usuario->linkedin?>'><?=$usuario->linkedin?></a></p>
 						</div>
 					<?php endif;?>
 					<?php if($usuario->youtube):?>
@@ -352,7 +352,7 @@
 						<p class="title_texto_info">Youtube</p> 
 					</div>
 					<div class="conten_into">
-						<p class="text_info" onclick="location.href='<?=$usuario->youtube?>'"><?=$usuario->youtube?></p>
+						<p class="text_info" onclick="location.href='<?=$usuario->youtube?>'"><a href='<?=$usuario->youtube?>'><?=$usuario->youtube?></a></p>
 					</div>
 					<?php endif;?>
 					<!--

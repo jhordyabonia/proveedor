@@ -64,14 +64,7 @@
 						echo '</a></p>';
 						echo '</div>';
 
-						echo '<div class="item_categoria">';
-						foreach ($categoria['subcategorias'] as $key2=>$subcategoria)
-						{ 
-							echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$page.'/'.$subcategoria['id'].'/1/">';
-							echo $key2.' <strong>('.$subcategoria['cantidad'].')</strong>';
-							echo '</a></p>';
-						}                  
-						echo '</div>';
+						
 						echo '</div>';
 					 }
 				?>
@@ -81,15 +74,16 @@
 	<div class="content_item_produc col-md-10">
 		<div class="contenedor_productos_item">
 			<?php foreach ($catalogos as $key => $catalogo):?>
+			<?php if($catalogo->catalogo==NULL) {continue;}?>
 			<div class="item_procud2">
 				<div class="imagen_producto">
-					<img class="img-pdf2" src="http://192.168.33.10/assets/img/pdf.png">
+					<img class="img-pdf2" src="<?=base_url()?>assets/img/pdf.png">
 				</div>
 				<div class="contexto_producto center">
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
 					</div>
-						<button class="btn btn-descargar" onclick="location.href='<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>'">
+						<button class="btn btn-descargar" onclick="location.href='<?=base_url()?>uploads/adjunto/<?=$catalogo->catalogo?>'">
 							<span class="icon_style_des3 glyphicon glyphicon-download-alt"></span>
 							DESCARGAR
 						</button>
@@ -99,7 +93,7 @@
 		</div>
 		</div>
 		<div class="solicitar_cotizacion2 col-md-12">
-			<button class="btn_solicitar_cotizacion">
+			<button class="btn_solicitar_cotizacion" data-toggle="modal" data-target="#popup_mensajes">
 					<i class="icono_solicitar fa fa-file-text"></i>
 					<a class="enlace_solicitar" href="">SOLICITAR COTIZACION</a>
 				</button>

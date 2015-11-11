@@ -178,16 +178,16 @@ class Empresa extends CI_Controller
       switch ($tipo_filtro) 
       {
         case 0:
-            $filtrado=$this->filtro_categoria($datos['productos'],$filtro); 
+            $filtrado=$this->filtro_categoria($datos['oportunidades'],$filtro); 
           break;
         
         default:
-            $filtrado=$this->filtro_categoria($datos['productos'],0,$filtro); 
+            $filtrado=$this->filtro_categoria($datos['oportunidades'],0,$filtro); 
             break;
       }
     }else
     {
-      $filtrado=$this->filtro_categoria($datos['productos']);
+      $filtrado=$this->filtro_categoria($datos['oportunidades']);
     }
     $productos=$filtrado['productos'];
     $datos['filtros']=$filtrado['categorias'];
@@ -250,16 +250,16 @@ class Empresa extends CI_Controller
       switch ($tipo_filtro) 
       {
         case 0:
-            $filtrado=$this->filtro_categoria($datos['productos'],$filtro); 
+            $filtrado=$this->filtro_categoria_catalogo($datos['catalogos'],$filtro); 
           break;
         
         default:
-            $filtrado=$this->filtro_categoria($datos['productos'],0,$filtro); 
+            $filtrado=$this->filtro_categoria_catalogo($datos['catalogos'],0,$filtro); 
             break;
       }
     }else
     {
-      $filtrado=$this->filtro_categoria($datos['productos']);
+      $filtrado=$this->filtro_categoria_catalogo($datos['catalogos']);
     }
     $productos=$filtrado['productos'];
     $datos['filtros']=$filtrado['categorias'];
@@ -289,6 +289,24 @@ class Empresa extends CI_Controller
       $out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['cantidad']+=1;
       $out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['id']=$value->subcategoria;
       
+      $producto=$this->cargar_producto($value);
+      if($id_subcategoria==$value->subcategoria)
+      { $out['productos'][]=$producto; }
+      elseif($id_categoria==$categoria->id_categoria) 
+      { $out['productos'][]=$producto; }
+    }
+    return $out;
+  }
+  private function filtro_categoria_catalogo($productos=0,$id_categoria=0,$id_subcategoria=0)
+  {   
+    $out=array();
+    foreach ($productos as $key => $value) 
+    {
+      $subcategoria=$this->subcategoria->get($value->categoria);
+      $categoria=$this->categoria->get($subcategoria->id_categoria);
+      $out['categorias'][$categoria->nombre_categoria]['id']=$categoria->id_categoria;
+      $out['categorias'][$categoria->nombre_categoria]['cantidad']+=1;
+       
       $producto=$this->cargar_producto($value);
       if($id_subcategoria==$value->subcategoria)
       { $out['productos'][]=$producto; }
