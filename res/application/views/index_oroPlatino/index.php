@@ -77,6 +77,7 @@
 	<div class="container_productos_principales col-md-12">
 		<a href="JavaScript:left('carrousel')">
 			<span class="ico_flecha_left glyphicon glyphicon-chevron-left" ></span>
+			<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 		</a>
 
 		<div id="carrousel" class="contenedor_productos_item">
