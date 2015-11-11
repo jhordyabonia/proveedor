@@ -8,8 +8,11 @@ function set_stack()
 {
 	out=Array(20);
 	<?php foreach(explode(',',$empresa->productos_destacados) as $key => $value):?>
-		<?php if($value==NULL){continue;}?>
-		out[<?=$key?>]=<?=$value?>;
+		<?php if($value==NULL):?>
+			out[<?=$key?>]=0;
+		<?php else:?>
+			out[<?=$key?>]=<?=$value?>;
+		<?php endif;?>
 	<?php endforeach;?>
 	return out;
 }

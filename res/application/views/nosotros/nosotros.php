@@ -45,9 +45,10 @@
 					</ul>
 				</div>
 					<p class="texto_descripcion"><?=$empresa->descripcion?></p>
+					<p id="telefonos" style="display:none;font-size:21px;"><b>Telefono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
 				</div>
 				<div class="botones_contac">
-					<button class="btn llamar_empresa">
+					<button class="btn llamar_empresa"onclick="if(document.getElementById('telefonos').style.display==''){document.getElementById('telefonos').style.display='none'}else{document.getElementById('telefonos').style.display='';}">
 						<span class="icon_compartir glyphicon glyphicon-earphone"></span>
 						<p class="texto_contacto">Llamar a la Empresa</p>
 					</button>
@@ -184,12 +185,43 @@
 				<div class="conten-into">
 					<p class="itm-cont"> <?=$usuario->ciudad?> -  <?=$usuario->departamento?> -  <?=$usuario->pais?></p>
 				</div>
-				<div class="titulo-info">
-					<p class="itm-title">Pagina Web</p>
-				</div>
-				<div class="conten-into">
-					<p class="itm-cont"> <?=$usuario->web?></p>
-				</div>
+				<?php if($usuario->facebook):?>
+						<div class="titulo-info">
+							<i class="icon_redes_sociales fa fa-facebook-square"></i>
+							<p class="itm-title">Facebook</p> 
+						</div>
+						<div class="conten_into">
+							<p class="itm-cont" onclick="location.href='<?=$usuario->facebook?>'"><a href='<?=$usuario->facebook?>'><?=$usuario->facebook?></a></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->twitter):?>
+						<div class="titulo-info">
+							<i class="icon_redes_sociales fa fa-twitter-square"></i>
+							<p class="itm-title">Twitter</p> 
+						</div>
+						<div class="conten_into">
+							<p class="itm-cont" onclick="location.href='<?=$usuario->twitter?>'"><a href='<?=$usuario->twitter?>'><?=$usuario->twitter?></a></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->linkedin):?>
+						<div class="titulo-info">							
+							<i class="icon_redes_sociales fa fa-linkedin-square"></i> 
+							<p class="itm-title">Linkedin</p> 
+						</div>
+						<div class="conten-into">
+							<p class="itm-cont" onclick="location.href='<?=$usuario->linkedin?>'"><a href='<?=$usuario->linkedin?>'><?=$usuario->linkedin?></a></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->youtube):?>
+					<div class="titulo-info">
+						<i class="icon_redes_sociales fa fa-youtube"></i>
+						<p class="itm-title">Youtube</p> 
+					</div>
+					<div class="conten_into">
+						<p class="itm-cont" onclick="location.href='<?=$usuario->youtube?>'"><a href='<?=$usuario->youtube?>'><?=$usuario->youtube?></a></p>
+					</div>
+					<?php endif;?>
+				<!--
 				<div class="titulo-info">
 					<p class="itm-title">Redes Sociales</p>
 				</div>
@@ -219,6 +251,7 @@
 						</ul>
 					</li>
 				</ul>
+			-->
 				<div class="conten_solicitud" data-toggle="modal" data-target="#popup_mensajes">
 					<button class="btn btn-solicitar-coti">
 						<i class="icono-soli fa fa-file-text"></i>

@@ -106,7 +106,12 @@
 	                    <td width="20%" >     
 	                    <textarea rows="2" cols="30"
 	                    id="<?=$dato->id?>descripcion" disabled="true" /><?=$dato->descripcion?>
-	                    </textarea>              
+	                    </textarea> 
+	                     <?php if($dato->adjunto):?>
+		                        <a href="<?=base_url()?>uploads/adjunto/<?=$dato->adjunto?>">
+		                        	Descargar adjunto <?=$dato->adjunto?>
+		                        </a>
+	                    <?php endif;?>            
 	                      </td>
 	                    <td width="20%" > 
 	                        <input type="text"  size="10"  id="<?=$dato->id?>cantidad" disabled="true" value="<?=$dato->cantidad_requerida?>"/>

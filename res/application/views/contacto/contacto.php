@@ -49,6 +49,43 @@
 					<div class="conten_into">
 						<p class="text_info"><?=$usuario->web?></p>
 					</div>
+					<?php if($usuario->facebook):?>
+						<div class="title_info">
+							<i class="icon_redes_sociales fa fa-facebook-square"></i>
+							<p class="title_texto_info">Facebook</p> 
+						</div>
+						<div class="conten_into">
+							<p class="text_info" onclick="location.href='<?=$usuario->facebook?>'"><a href='<?=$usuario->facebook?>'><?=$usuario->facebook?></a></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->twitter):?>
+						<div class="title_info">
+							<i class="icon_redes_sociales fa fa-twitter-square"></i>
+							<p class="title_texto_info">Twitter</p> 
+						</div>
+						<div class="conten_into">
+							<p class="text_info" onclick="location.href='<?=$usuario->twitter?>'"><a href='<?=$usuario->twitter?>'><?=$usuario->twitter?></a></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->linkedin):?>
+						<div class="title_info">							
+							<i class="icon_redes_sociales fa fa-linkedin-square"></i> 
+							<p class="title_texto_info">Linkedin</p> 
+						</div>
+						<div class="conten_into">
+							<p class="text_info" onclick="location.href='<?=$usuario->linkedin?>'"><a href='<?=$usuario->linkedin?>'><?=$usuario->linkedin?></a></p>
+						</div>
+					<?php endif;?>
+					<?php if($usuario->youtube):?>
+					<div class="title_info">
+						<i class="icon_redes_sociales fa fa-youtube"></i>
+						<p class="title_texto_info">Youtube</p> 
+					</div>
+					<div class="conten_into">
+						<p class="text_info" onclick="location.href='<?=$usuario->youtube?>'"><a href='<?=$usuario->youtube?>'><?=$usuario->youtube?></a></p>
+					</div>
+					<?php endif;?>
+					<!--
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-thumbs-up"></span>
 						<p class="title_texto_info">Redes Sociales</p> 
@@ -79,6 +116,7 @@
 							</ul>
 						</li>
 					</ul>
+					-->
 					<div class="boton-solicitar-cotizacion" data-toggle="modal" data-target="#popup_mensajes">
 						<button class="btn btn-cot-soli">
 							<i class="icono_button_soli fa fa-file-text"></i>

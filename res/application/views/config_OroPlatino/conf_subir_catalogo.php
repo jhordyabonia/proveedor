@@ -208,7 +208,8 @@
 						</div>
 						<!-- Paginador de catalogos -->
 						<div class="contentidoo-paginador">
-						  <ul class="pagination">						   
+						  <ul class="pagination">		
+						  <!--				   
 						    <li><a href="#">1</a></li>
 						    <li><a href="#">2</a></li>
 						    <li><a href="#">3</a></li>
@@ -217,6 +218,7 @@
 						        <span aria-hidden="true">siguiente</span>
 						      </a>
 						    </li>
+						-->
 						  </ul>
 						</div>
 					</div>

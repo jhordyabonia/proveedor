@@ -99,10 +99,11 @@ a:hover { text-decoration: none; }
 p.precio {
   font-size: 16px;
   font-weight: bold;
+  padding-top: 10px; 
 }
-p.simbprecio { font-size: 20px; color: #ff7f27; margin-right: 8px; margin-top: -4px; }
-p.unidades { font-size: 15px; color: #706f6f; height: 42px; max-height: 42px; }
-p.pmin { font-size: 10px; color: #706f6f; margin-top: -25px; }
+p.simbprecio { padding-top: 10px;font-size: 20px; color: #ff7f27; margin-right: 8px; margin-top: -4px; }
+p.unidades { font-size: 12px; color: #706f6f; height: 42px; max-height: 42px; padding-top: 10px; line-height:12px  }
+p.pmin { margin-top: -17px; line-height: 12px; padding-left: 30px; color: #706f6f;  }
 
 p.listaproductos {
   font-size: 15px; 

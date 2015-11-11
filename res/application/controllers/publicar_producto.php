@@ -212,7 +212,7 @@ class Publicar_producto extends CI_Controller {
 					'size' => $_FILES[$name_array]['size'][$i]
 				);
 				if ($this->u->imagen()) {
-					$imagenes.= $this->u->nombre_archivo;
+					$imagenes.= $this->u->nombre_archivo.',';
 				}else
 				{
 					$imagenes.= 'default.jpg';

@@ -105,9 +105,15 @@
   cursor: pointer;
 }
 
-.contenedor_productos_item {
-    padding-top: 30px;
-    padding-left: 30px;
+.contenedor_productos_item 
+{
+  overflow: hidden;
+  height: 380px; 
+  padding-top: 30px;
+  padding-left: 30px;
+   /*
+    width: 70%;
+   */
 }
 .contenedor_productos_item > .item_procud{
     display: inline-block;

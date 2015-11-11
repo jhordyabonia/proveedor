@@ -78,11 +78,11 @@
                           </div>
                           <div class="col-md-5 col-sm-5 col-xs-5" style="text-align: center;">
                             <div class="row" style="margin-bottom: 0;">
-                              <p class="unidades"> <?php echo decimal_points($producto->pedido_minimo).' '.$producto->medida ?> </p>
-                            </div>
-                            <div class="row">
-                              <p class="pmin"> Pedido mínimo </p>
-                            </div>
+                              <p class="unidades"> 
+                                <?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<div class="row"><p class="pmin"> Pedido mínimo </p></div>';}?>
+                               <!-- <?php echo decimal_points($producto->pedido_minimo).' '.$producto->medida ?> -->
+                              </p>
+                            </div>    
                           </div> 
                         </div>
                         <div class="divCont_mgbtncero row">
@@ -126,10 +126,10 @@
                           </div>
                           <div class="col-md-5 col-sm-5 col-xs-5" style="text-align: center;">
                             <div class="row" style="margin-bottom: 0;">
-                              <p class="unidades"> <?php echo decimal_points($solicitud->cantidad_requerida).' '.$solicitud->medida  ?> </p>
-                            </div>
-                            <div class="row">
-                              <p class="pmin"> Cantidad Requerida </p>
+                              <p class="unidades"> 
+                                <?php if($solicitud->cantidad_requerida==0){echo "Cantidad requerida a convenir.</p>";}else{echo decimal_points($solicitud->cantidad_requerida)." X ".$solicitud->medida.'<div class="row"><p class="pmin"> Cantidad requerida </p></div>';}?>
+                                <!--<?php echo decimal_points($solicitud->cantidad_requerida).' '.$solicitud->medida  ?> -->
+                              </p>
                             </div>
                           </div> 
                         </div>
