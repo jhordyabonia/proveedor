@@ -89,7 +89,7 @@
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
 					</div>
-						<button class="btn btn-descargar" onclick="location.href='<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>">
+						<button class="btn btn-descargar" onclick="location.href='<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>'">
 							<span class="icon_style_des3 glyphicon glyphicon-download-alt"></span>
 							DESCARGAR
 						</button>
