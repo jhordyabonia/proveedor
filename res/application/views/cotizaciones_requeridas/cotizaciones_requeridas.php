@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo css_url() ?>/solicitudes_tablero_usuario.css">
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/cotizaciones_requeridas/cotizaciones_requeridas.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -120,6 +121,7 @@
 	<div class="col-md-2"></div>
 	<div class="text-align col-md-10">
 		<ul class="pagination">
+			<!--
 	    <li><a href="#">1</a></li>
 	    <li><a href="#">2</a></li>
 	    <li><a href="#">3</a></li>
@@ -130,6 +132,7 @@
 	        <span aria-hidden="true">Siguiente &raquo;</span>
 	      </a>
 	    </li>
+	-->
 	  </ul>
 	</div>
 </div>

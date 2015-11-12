@@ -32,7 +32,7 @@
 					<p class="texto1">Productos Principales: <a class="text02"><?=$empresa->productos_principales?></a></p>
 					<div class="boton_descargar inline-block">
 						<span class="ico_descar glyphicon glyphicon-download-alt"></span>
-						<p class="texto_des_cata">Descargar Catalogo</p>
+						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catalogo</p></a>
 					</div>
 					<div class="redes_compartir">
 					<img class="style-sonisa img-responsive" src="<?=base_url()?>assets/img/sonrisaprecio.png">
