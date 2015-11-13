@@ -148,6 +148,17 @@
 		</div>
 	</div>
 	<div class="contenido_videos col-md-12">
+
+		<script language="javascript" type="text/javascript">
+			function textodeiframe(obj)
+			{
+			//var frame = document.getElementById(id);
+			//var txt = obj.contentWindow.document.getElementById('txt1').value;
+			//document.getElementById('data_'+obj.id).value = txt;
+			cosole.log(obj);
+			alert(obj);
+			}
+		</script>
 		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
 		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
 		<?php if($value==''){continue;}?>
@@ -156,10 +167,10 @@
 					<ul class="item_video">
 						<div class="item-video">
 							<div class="video">
-								<iframe   class="img_video img-responsive" src="<?=$value?>"></iframe>
+								<iframe  allowfullscreen onload="textodeiframe(this)" id="video_<?=$key?>" class="img_video img-responsive" src="<?=$value?>"></iframe>
 							</div>
 							<div class="titulo_video">
-								<p>Video <?=$key?></p>
+								<p id="data_video_<?=$key?>"></p>
 							</div>
 						</div>
 					</ul>
@@ -252,14 +263,14 @@
 			<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 		</a>
 		<div id="carrousel_imagenes">
-		<?php foreach ($imagenes as $key => $value):?>
+		<?php $key=0; foreach ($imagenes as $key => $value):?>
 		 <?php if($value==''){continue;}?>
 			<ul class="item_galeria">
 				<li>
 					<ul class="item_galeria">
-						<div class="item-galeria">
+						<div class="item-galeria" onclick="show('<?=$key?>')">
 							<div class="galeria">
-								<img class="img_galeria img-responsive" src="<?=base_url()?>uploads/imagenes/<?=$value?>">
+								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=base_url()?>uploads/imagenes/<?=$value?>">
 							</div>
 							<div class="titulo_galeria">
 								<p><?=$titulos[$key]?></p>
@@ -413,3 +424,79 @@
 		<p class="texto-tag">Cascos, Guantes, Overoles, Botas, Dotaciones</p>
 	</div>
 </div>
+
+
+<style type="text/css">
+/**
+ *Para dar estilos a un div, imagen u objeto especifico
+ *solo se referencia el objeto anteponieendo el caracter '#'
+ *al id del objeto se abren llaves y se especifican a continuacion
+ *los atributos de estilo deseados
+ **/
+#conten_pantalla
+{
+  height: 600px;
+  width: 1000px;
+  margin-left: -200px!important;
+}
+#pantalla
+{
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#conten_pantalla2
+{
+  left: 10%;
+  height:80%;
+  width: 80%;  
+}
+</style>
+<div class="slide_producto" >
+    <div class="modal fade" id="popup_slider" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="modal-dialog" >
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+          <div id="conten_pantalla" class="carousel-inner">
+            <center>
+              <div  id="conten_pantalla2" class="item active">
+                  <img id="pantalla" src="<?=base_url()?>uploads/banners/11.jpg" alt="...">
+              </div>
+           </center>
+          </div>
+ 
+        <!-- Controls -->
+          <a class="left carousel-control" href="JavaScript:anterior_imagen();" role="button" style="margin-left: -286px;">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="JavaScript:proxima_imagen();" role="button" style="margin-right: -286px;">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div> 
+    </div>
+  </div>              
+</div>  
+<a data-toggle="modal" data-target="#popup_slider" id="launch_popup_slider"></a>
+<script type="text/javascript">
+var imagen=0;
+function show(in1)
+{
+	document.getElementById('pantalla').src=document.getElementById('img_'+in1).src;
+	document.getElementById('launch_popup_slider').click();
+	imagen=in1;
+}
+function anterior_imagen()
+{
+	if(imagen<0){imagen=<?=$key?>;}
+	document.getElementById('pantalla').src=document.getElementById('img_'+(--imagen)).src;
+}
+function proxima_imagen()
+{
+	if(imagen><?=$key?>){imagen=0;}
+	document.getElementById('pantalla').src=document.getElementById('img_'+(++imagen)).src;
+}
+
+</script>
