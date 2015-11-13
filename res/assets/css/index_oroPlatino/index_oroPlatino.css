@@ -109,13 +109,11 @@
 
 .contenedor_productos_item 
 {
-  overflow: hidden;
-  height: 380px; 
-  padding-top: 30px;
-  padding-left: 30px;
-   /*
-    width: 70%;
-   */
+    overflow: hidden;
+    height: 380px; 
+    padding-top: 30px;
+    padding-left: 0;
+    text-align: center;
 }
 .contenedor_productos_item > .item_procud
 {
@@ -124,6 +122,7 @@
     padding-top: 30px;
     opacity: 1;    
     transition:  width 5s,opacity 2s,margin-left 2s,padding-left 2s ease-in-out;
+    text-align: left;
   }
 
 .contenedor_productos_item > .item_procud_hidden{
@@ -153,18 +152,30 @@
     height: 25px;
 }
 .item_procud{
-  position: relative;
-  top: 0;
-  width: 235px;
-  height: 330px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin-right: 22px;
-  margin-bottom: 22px;
-  padding-left: 15px;
-  padding-right: 15px;
+    position: relative;
+    top: 0;
+    width: 235px;
+    height: 330px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 0 10px 22px 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
-
+.flecha-left-galeria{
+    display: inline-block;
+    float: left;
+    font-size: 21px;
+    color: #ff7f27;
+    top: 134px;
+}
+.flecha-right-galeria{
+    display: inline-block;
+    float: right;
+    font-size: 21px;
+    color: #ff7f27;
+    top: 134px;
+}
 .btn_soli, .btn_soli:hover{
     width: 637px;
     height: 59px;
@@ -214,6 +225,12 @@
     margin-bottom: 0;
     font-size: 11px;
     color: #8d8c8c;
+}
+.carrousel_imagenes_class{
+    overflow: hidden;
+    height: 380px;
+    padding-left: 0;
+    text-align: center;
 }
 .content_videos{
     width: 100%;
@@ -358,7 +375,7 @@ iframe
     list-style: none;
     padding: 0;
     display: inline-block;
-    margin-top: 9px;
+    margin-top: 15px;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -388,7 +405,7 @@ iframe
     float: right;
     font-size: 21px;
     color: #ff7f27;
-    top: 183px;
+    top: 128px;
 }
 .ico_flecha_right_video2{
     display: inline-block;
