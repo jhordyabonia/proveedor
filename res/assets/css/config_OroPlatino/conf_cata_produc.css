@@ -690,7 +690,7 @@ a{
 .nom-produc{
     margin-bottom: 0;
     font-size: 13px;
-    max-width:138px;
+    width:138px;
     -webkit-line-clamp:1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -734,7 +734,7 @@ a{
 .rem-pro{
     font-size: 12px;
     color: #111;
-    margin-left: 89px;
+    float: right;
     text-decoration: none;
     cursor: pointer;    
 }
