@@ -138,4 +138,31 @@ function cambio_categoria_simple(id) {
 
 }
 
+                   
+                    function decimal_point(obj)
+                    {                        
+                        tmp=obj.value;
+                        while(tmp.indexOf('.')!=-1)
+                            {tmp=tmp.replace('.','');}
+
+                        while(tmp.indexOf(' ')!=-1)
+                            {tmp=tmp.replace(' ','');}
+
+                        var decimal=Array(parseInt(""+tmp.length/3));
+                        var i=0;
+                        while(tmp.length>2)
+                        {
+                            decimal[i]=tmp.substring(tmp.length-3, tmp.length);
+                            tmp=tmp.replace(decimal[i],'');
+                            i++;
+                        }
+                        out=tmp;
+                        for(a=i-1;a>=0;a--)
+                            out+='.'+decimal[a];
+
+                        if(out.indexOf('.')==0)
+                            {out=out.replace('.','');}
+
+                        obj.value=out.replace(' ','');
+                    }
 </script>

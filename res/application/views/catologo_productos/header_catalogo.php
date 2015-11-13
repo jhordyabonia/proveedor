@@ -16,7 +16,7 @@
 			<div class="conten_img">
 				<!--<img class="banners style-img-emp  img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>"></div>-->				
 				<div class="div-img">
-					<img class="img-responsive logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+					<img class="img-responsive logo img_logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
 				</div>
 				<div class="div-nom-empresa">
 					<p class="txt_nom_empre"><?=$empresa->nombre?></p>	
@@ -38,6 +38,7 @@
 						<p class="inline-block">Verificada</p>
 					</div>
 				<?php endif;?>
+				<!--
 				<div class="compartir_redes">
 					<p class="texto_redes">Compartir:</p>
 					<ul class="list_redes">
@@ -47,6 +48,7 @@
 						<li><a href="<?=$usuario->linkedin?>"><i class=" icono_redes fa fa-linkedin-square"></i></a></li>
 					</ul>
 				</div>
+			-->
 			</div>
 		</div>
 	</div>

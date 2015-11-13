@@ -158,13 +158,16 @@
 						<?=form_open_multipart(base_url().'editar_empresa/videos')?>
 							<!-- Campo 1 -->
 							
-							<div id="videos">
+							<div id="videos" class="col-xs-12 col-md-9 col-lg-9">
 								<?php foreach (explode(',',$empresa->videos) as $key => $video):?>
-									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
+									<div class="input-group col-xs-3 col-md-2 col-lg-2">
+									  <!--<input type="text" class="form-control" name="videos[]" value="<?=$video?>" placeholder="Introdusca dirección del video" style="border-radius: 0;">-->
+									</div>
+									<div class="input-group padig col-xs-12 col-md-6 col-lg-6">
 									  <span class="fiel-tramspa padi2 input-group-addon">
 									  	<?=$key+1?>
 									  </span>
-									  <input type="text" class="form-control" name="videos[]" value="<?=$video?>" placeholder="Introdusca dirección del video" style="border-radius: 0;">
+									  <input type="text" class="form-control" name="titulos_videos[]" value="<?=$video?>" placeholder="Introdusca titulo del video" style="border-radius: 0;">
 									</div>
 								<?php endforeach;?>
 							</div>

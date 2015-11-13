@@ -188,7 +188,7 @@
 						</div>
 					</div>
 					<div class="catalogo-public">
-						<h3 class="text-cata-publi">Catalogos Publicados (<?=count($catalogos)?>)</h3>	
+						<h3 class="text-cata-publi">Catalogos Publicados (<?php if(!$catalogos){echo 0;}else{ echo count($catalogos);}?>)</h3>	
 						<div class="conten-item-catapu row">
 							<?php foreach($catalogos as $key => $catalogo):?>
 								<div class="col-lg-6">
@@ -201,7 +201,7 @@
 										<p class="desc_catalo"><?=$catalogo->descripcion?></p>
 										<p class="pala_clave_catalo"><?=$catalogo->palabras_clave?></p>
 										<p class="nomArchivo-catalo"><a href="<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>" ><?=$catalogo->catalogo?></p></a>
-										<a class="eliminar-catalogo"><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
+										<a class="eliminar-catalogo" href="<?=base_url()?>editar_empresa/borrar_catalogo/<?=$catalogo->id?>" ><i class="ico-eli-cat fa fa-times-circle"></i>Borrar</a>
 									</div>
 								</div>
 							<?php endforeach;?>
