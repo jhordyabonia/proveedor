@@ -82,8 +82,8 @@
 		</a>
 
 		<div id="carrousel_destacados" class="contenedor_productos_item">
-		<?php foreach($destacados as $key=>$producto):?>
-		<?php if(!$producto){continue;}?>
+		<?php $tag=""; foreach($destacados as $key=>$producto):?>
+		<?php if(!$producto){continue;}$tag.=','.$producto->nombre;?>
 			<div class="item_procud">
 				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
@@ -167,7 +167,7 @@
 					<ul class="item_video">
 						<div class="item-video">
 							<div class="video">
-								<iframe  allowfullscreen onload="textodeiframe(this)" id="video_<?=$key?>" class="img_video img-responsive" src="<?=$value?>"></iframe>
+								<iframe  allowfullscreen onload="textodeiframe(this)" id="video_<?=$key?>?showinfo=1" class="img_video img-responsive" src="<?=$value?>"></iframe>
 							</div>
 							<div class="titulo_video">
 								<p id="data_video_<?=$key?>"></p>
@@ -420,8 +420,8 @@
 		<p class="text-tag">Etiquetas</p>
 	</div>
 	<div class="etiquetas_tag">
-		<p class="texto-tag">Fabricante</p>
-		<p class="texto-tag">Cascos, Guantes, Overoles, Botas, Dotaciones</p>
+		<p class="texto-tag"><?=$empresa->tipo?></p>
+		<p class="texto-tag"><?=$empresa->productos_principales.','.$tag?></p>
 	</div>
 </div>
 

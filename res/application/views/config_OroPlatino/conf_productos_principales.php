@@ -16,7 +16,7 @@ function set_stack()
 	<?php endforeach;?>
 	return out;
 }
-size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>;
+size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>+1;
 function agregar(id)
 {
 	if(size>=20)
@@ -187,7 +187,7 @@ function submit()
 									<?php if(!$producto){continue;}?>
 									<div class="conten-item-prin col-lg-4" id="destacado_<?=$key?>">
 										<div class="content-numero">
-											<p class="numero"><?=$key?></p>
+											<p class="numero"><?=$key+1?></p>
 										</div>
 										<div class="subir_bajar">
 											<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir(<?=$key?>);">Subir</a><br>
