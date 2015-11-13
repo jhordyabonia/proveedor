@@ -78,7 +78,7 @@
 			<span class="ico_flecha_left glyphicon glyphicon-chevron-left" ></span>
 		</a>
 		<a href="JavaScript:left('carrousel_destacados')">
-			<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
+			<span class="ico_flecha_right glyphicon glyphicon-chevron-right"></span>
 		</a>
 
 		<div id="carrousel_destacados" class="contenedor_productos_item">
@@ -246,12 +246,12 @@
 	</div>
 	<div class="contenedor_galeria col-md-12">
 		<a href="JavaScript://rigth('carrousel_imagenes')">
-			<span class="ico_flecha_left glyphicon glyphicon-chevron-left" ></span>
+			<span class="flecha-left-galeria glyphicon glyphicon-chevron-left" ></span>
 		</a>
 		<a href="JavaScript://left('carrousel_imagenes')">
-			<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
+			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
 		</a>
-		<div id="carrousel_imagenes">
+		<div id="carrousel_imagenes" class="carrousel_imagenes_class">
 		<?php foreach ($imagenes as $key => $value):?>
 		 <?php if($value==''){continue;}?>
 			<ul class="item_galeria">
