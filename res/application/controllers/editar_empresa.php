@@ -87,6 +87,17 @@ class Editar_empresa extends CI_Controller {
               $this->session->set_flashdata('confimacion_guardado','TRUE');
               redirect($_SERVER['HTTP_REFERER']);
 	  }
+    public function borrar_catalogo($id)
+    {
+      $catalogo=$this->catalogo->get($id);
+      $empresa=$this->empresa->get(array('usuario'=>$this->id))->id;
+      if($catalogo)
+      {
+        $this->catalogo->delete(array('id'=>$id,'empresa'=>$empresa));
+      }
+      $this->session->set_flashdata('confimacion_guardado','TRUE');
+      redirect($_SERVER['HTTP_REFERER']);
+    }
 	  public function usuario()
 	  {
               $datos['usuario']=$this->input->post('usuario');

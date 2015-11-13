@@ -16,17 +16,22 @@ class Banner_model extends CI_Model {
 		$data['url_publicar_solicitud']=base_url()."publicar_oferta";
 		return array(
 			array(
-				'img_url' => img_url()."index/viejita.png", 
+				'img_url' => img_url()."index/slide-1.png", 
 				'url' => $data['url_registro'], 
 				'active' => 'active', 
 			),
 			array(
-				'img_url' => img_url()."index/viejita.png", 
+				'img_url' => img_url()."index/slide-2.png", 
 				'url' => $data['url_publicar_producto'], 
 				'active' => '', 
 			),
 			array(
-				'img_url' => img_url()."index/viejita.png", 
+				'img_url' => img_url()."index/slide-3.png", 
+				'url' => $data['url_publicar_solicitud'], 
+				'active' => '', 
+			),
+			array(
+				'img_url' => img_url()."index/slide-4.png", 
 				'url' => $data['url_publicar_solicitud'], 
 				'active' => '', 
 			)

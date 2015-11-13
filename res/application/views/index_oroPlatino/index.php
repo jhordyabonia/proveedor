@@ -63,24 +63,25 @@
 		function left(id)
 		{
 			if(document.getElementById(id).childNodes.length-infocus>8)
-			{document.getElementById(id).childNodes[infocus].style.display='none';}
-			else{console.log("no");}
-			infocus+=2;
+			{document.getElementById(id).childNodes[infocus].className='item_procud_hidden';infocus+=2;}
+			//else{infocus =1;left(id);}			
 		}
 		function rigth(id)
 		{
-			if(document.getElementById(id).childNodes.length-8>infocus)
-			{document.getElementById(id).childNodes[infocus].style.display='none';}
-			infocus-=2;
+			if(infocus>=3)//&&document.getElementById(id).childNodes.length)
+			{infocus-=2;document.getElementById(id).childNodes[infocus].className='item_procud';}
+			//else{infocus =1;left(id);}			
 		}
 	</script>
 	<div class="container_productos_principales col-md-12">
-		<a href="JavaScript:left('carrousel')">
+		<a href="JavaScript:rigth('carrousel_destacados')">
 			<span class="ico_flecha_left glyphicon glyphicon-chevron-left" ></span>
+		</a>
+		<a href="JavaScript:left('carrousel_destacados')">
 			<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 		</a>
 
-		<div id="carrousel" class="contenedor_productos_item">
+		<div id="carrousel_destacados" class="contenedor_productos_item">
 		<?php foreach($destacados as $key=>$producto):?>
 		<?php if(!$producto){continue;}?>
 			<div class="item_procud">
@@ -193,7 +194,7 @@
 					s
 					<div class="boton_descargar inline-block">
 						<span class="ico_descar glyphicon glyphicon-download-alt"></span>
-						<a href="<?=base_url()?>empresa/descargar_catalogo/<?$empresa->id?>"><p class="texto_des_cata">Descargar Catalogo</p></a>
+						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catalogo</p></a>
 					</div>
 				</div>
 				<div class="texto_nuestra_empresa">
@@ -244,7 +245,13 @@
 		</div>
 	</div>
 	<div class="contenedor_galeria col-md-12">
-		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
+		<a href="JavaScript://rigth('carrousel_imagenes')">
+			<span class="ico_flecha_left glyphicon glyphicon-chevron-left" ></span>
+		</a>
+		<a href="JavaScript://left('carrousel_imagenes')">
+			<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
+		</a>
+		<div id="carrousel_imagenes">
 		<?php foreach ($imagenes as $key => $value):?>
 		 <?php if($value==''){continue;}?>
 			<ul class="item_galeria">
@@ -262,7 +269,7 @@
 				</li>
 			</ul>
 		<?php endforeach;?>
-		<span class="ico_flecha_right_video2 glyphicon glyphicon-chevron-right"></span>
+		</div>	
 	</div>	
 </div>
 <?php endif;?>

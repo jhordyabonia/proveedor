@@ -6,9 +6,16 @@
 }
 .txt_nom_empre{
    	margin-bottom: 0;
-   	font-size: 37px;
+   	font-size: 42px;
    	text-align: center;
    	line-height: .8;
+}
+
+.img_logo
+{
+position: relative;
+top: 50%;
+transform: translateY(-50%)
 }
 /*
 y remplaza este fragmento por el que ya esta 
@@ -49,19 +56,19 @@ width: 480px;
 }
 .enlaces_header{
 	color: #111;
-	font-size: 16px;
+	font-size: 17px;
 	text-decoration: none !important;
 }
 
 .enlaces_header2{
 	color: #ff7f27;
-	font-size: 15px;
+	font-size: 17px;
 	text-decoration: none !important;
 	font-weight: bold;
 }
 .enlaces_header2:hover{
 	color: #ff7f27;
-	font-size: 15px;
+	font-size: 17px;
 	text-decoration: none !important;
 	font-weight: bold;
 }
@@ -76,14 +83,14 @@ width: 480px;
 }
 .enlaces_header:hover{
 	color: #111;
-	font-size: 16px;
+	font-size: 17px;
 	text-decoration: none !important;
 }
 .list_item{
     list-style: none;
     margin-top: 10px;
-    padding-left: 25px;
-    padding-right: 19px;
+    padding-left: 32px;
+    /*padding-right: 19px;*/
     line-height: 32px;
     margin-bottom: 0;
     padding-bottom: 7px;
@@ -92,7 +99,7 @@ width: 480px;
 	list-style: none;
     margin-top: 10px;
     padding-left: 25px;
-    padding-right: 19px;
+   /* padding-right: 19px;*/
     line-height: 32px;
     margin-bottom: 0;
     padding-bottom: 7px;
@@ -252,8 +259,8 @@ width: 480px;
 	.list_item{
 		list-style: none;
 	    margin-top: 5px;
-	    padding-left: 21px;
-	    padding-right: 19px;
+	    padding-left: 32px;
+	    /*padding-right: 19px;*/
 	    line-height: 41px;
 	    margin-bottom: 0;
 	}
@@ -261,7 +268,7 @@ width: 480px;
 	    list-style: none;
 	    margin-top: 10px;
 	    padding-left: 25px;
-	    padding-right: 19px;
+	    /*padding-right: 19px;*/
 	    line-height: 32px;
 	    margin-bottom: 0;
 	    padding-bottom: 12px;

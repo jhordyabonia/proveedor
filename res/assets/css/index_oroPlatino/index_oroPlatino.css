@@ -117,9 +117,26 @@
     width: 70%;
    */
 }
-.contenedor_productos_item > .item_procud{
+.contenedor_productos_item > .item_procud
+{
+    overflow: hidden;
     display: inline-block;
     padding-top: 30px;
+    opacity: 1;    
+    transition:  width 5s,opacity 2s,margin-left 2s,padding-left 2s ease-in-out;
+  }
+
+.contenedor_productos_item > .item_procud_hidden{
+    overflow: hidden;
+    display: inline-block;
+    padding-top: 30px;
+    padding-left: -250px;
+    margin-left: -250px;
+    /*
+    width: 0;
+    */
+    opacity: 0;
+    transition:  width 5s,opacity 2s,margin-left 2s,padding-left 2s linear;
 }
 .div-img{
     width: 420px;

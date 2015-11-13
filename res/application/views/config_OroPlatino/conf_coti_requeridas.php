@@ -167,7 +167,7 @@
 
 							<!-- Campo 5 -->
 							<div class="input-group  inline-block style-padding3 col-xs-12 col-md-6 col-lg-4">
-							  	<input type="text" class="form-control" name="cantidad_requerida"  onKeyPress="return soloNumeros(event)"
+							  	<input type="text" class="form-control" name="cantidad_requerida" onchange="this.value+=' ';decimal_point(this)"  onKeyPress="decimal_point(this);return soloNumeros(event)"
                  				 required   placeholder="Cantidad requerida">
 							</div>
 							<div class="input-group inline-block style-padding4 col-xs-12 col-md-3 col-lg-3">
