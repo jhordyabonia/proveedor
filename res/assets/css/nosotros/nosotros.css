@@ -21,6 +21,10 @@
     color: #111;
     text-decoration: none;
 }
+.icono_info {
+    font-size: 16px !important;
+    color: orange;
+}
 .list-title{
     list-style: none;
     padding-left: 0;

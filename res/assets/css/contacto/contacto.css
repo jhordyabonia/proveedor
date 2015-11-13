@@ -13,7 +13,10 @@
 	color: #111 !important;
 	font-size: 20px;
 }
-
+.icono_info {
+    font-size: 16px !important;
+    color: orange;
+}
 .item_contactenos{
 	list-style: none;
     padding: 0;
