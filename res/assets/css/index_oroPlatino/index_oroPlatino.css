@@ -129,13 +129,17 @@
     overflow: hidden;
     display: inline-block;
     padding-top: 30px;
+    /*
     padding-left: -250px;
     margin-left: -250px;
-    /*
     width: 0;
+    transform: translateY(-50%)
     */
+    position: relative;
+    left: -100%;
+
     opacity: 0;
-    transition:  width 5s,opacity 2s,margin-left 2s,padding-left 2s linear;
+    transition:  left 5s,width 5s,opacity 2s,margin-left 2s,padding-left 2s linear;
 }
 .div-img{
     width: 420px;

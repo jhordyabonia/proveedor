@@ -265,7 +265,7 @@
 </div>
 <div class="cont-tags col-md-12">
 	<div class="tags">
-		<p class="texto_tag">Fabricantes</p>
+		<p class="texto_tag"><?=$empresa->tipo?></p>
 		<p class="texto_tag"> <?=$empresa->productos_de_interes?></p>
 	</div>
 </div>
