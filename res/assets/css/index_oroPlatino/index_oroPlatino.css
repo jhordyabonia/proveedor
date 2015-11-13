@@ -33,13 +33,15 @@
   overflow:hidden;
   text-overflow: ellipsis;
 }
-.contexto_producto > .textos > .nombre_producto{    
+.contexto_producto > .textos > .info_producto > .nombre_producto{    
     margin-bottom: 2px;
     font-size: 16px;
     line-height: 1;
     color: black !important;
     overflow:hidden;
     text-overflow: ellipsis;
+    color: #111;
+    text-decoration: none;
 } 
 .contexto_producto > .textos > .texto_precio{
     margin-bottom: -5px;
@@ -418,7 +420,7 @@ iframe
     display: inline-block;
 }
 .icono_info{
-    font-size: 16px;
+    font-size: 16px !important;
     color: orange;
 }
 .text_info{
@@ -430,10 +432,15 @@ iframe
     color: #999999;
 }
 .logo_empresa_2{
-    width: 100%;
+    width: 430px;
     background-color: #fff;
-    height: 463px;
+    height: 630px;
     margin-top: 20px;
+}
+.logo_empresa_3{
+    width: 420px;
+    background-color: #fff;
+    height: 240px;
 }
 .nombre_redes {
     color: #111;
@@ -441,10 +448,9 @@ iframe
 }
 .con_logo{
     margin: 0 auto;
-    width: 100%;
-    max-height: 100%;
-    padding-top: 105px;
-    padding-right: 20px;
+    max-width: 430px;
+    max-height: 630px;
+    padding: 0 15px;
 }
 .item_redes_sociales {
     padding-left: 8px;
@@ -554,8 +560,9 @@ iframe
     padding-right: 6px;
 }
 .logo_nuestra{
-    position: relative;
-    top: 55px;
+    margin: 0 auto;
+    max-width: 435px;
+    max-height: 131px;
 }
 .texto_contac{
     color: #111 !important;

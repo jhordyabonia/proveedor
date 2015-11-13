@@ -46,6 +46,9 @@ width: 480px;
     max-width: 420px;
     max-height: 144px;
     margin: 0 auto;
+    position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 }
 .nombre_membresia
 {
@@ -73,7 +76,11 @@ width: 480px;
 	color: #ff7f27 !important;
 	font-weight: bold;
 }
-
+.div-img {
+    width: 420px;
+    height: 144px;
+    margin: 0 auto;
+}
 .enlaces_header:hover{
 	color: #111;
 	font-size: 17px;
@@ -145,6 +152,7 @@ width: 480px;
 .info .tipo_empresa .style_empresa{
 	width: 56px;
 	display: inline-block;
+	top: 27px;
     margin-right: 10px;
     margin-left: 8px;
     margin-top: 1px;

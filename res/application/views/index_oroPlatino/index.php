@@ -224,7 +224,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="conten_info col-md-4">
+			<div class="logo_empresa_3 col-md-4">
 				<img class="logo_nuestra img-responsive logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
 			</div>
 		</div>
@@ -329,7 +329,7 @@
 				</div>
 				<?php if($usuario->facebook):?>
 						<div class="title_info">
-							<i class="icon_redes_sociales fa fa-facebook-square"></i>
+							<i class="icono_info fa fa-facebook-square"></i>
 							<p class="title_texto_info">Facebook</p> 
 						</div>
 						<div class="conten_into">
@@ -338,7 +338,7 @@
 					<?php endif;?>
 					<?php if($usuario->twitter):?>
 						<div class="title_info">
-							<i class="icon_redes_sociales fa fa-twitter-square"></i>
+							<i class="icono_info fa fa-twitter-square"></i>
 							<p class="title_texto_info">Twitter</p> 
 						</div>
 						<div class="conten_into">
@@ -347,7 +347,7 @@
 					<?php endif;?>
 					<?php if($usuario->linkedin):?>
 						<div class="title_info">							
-							<i class="icon_redes_sociales fa fa-linkedin-square"></i> 
+							<i class="icono_info fa fa-linkedin-square"></i> 
 							<p class="title_texto_info">Linkedin</p> 
 						</div>
 						<div class="conten_into">

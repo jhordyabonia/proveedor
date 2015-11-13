@@ -214,12 +214,23 @@ a
   overflow:hidden;
   text-overflow: ellipsis;
 }
-.contexto_producto > .textos > .nombre_producto{    
+.nombre_producto{    
     margin-bottom: 2px;
     font-size: 16px;
     line-height: 1;
     overflow:hidden;
     text-overflow: ellipsis;
+    color: #111;
+    text-decoration: none;
+} 
+.nombre_producto:hover{    
+    margin-bottom: 2px;
+    font-size: 16px;
+    line-height: 1;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    color: #111;
+    text-decoration: none;
 } 
 .contexto_producto > .textos > .texto_precio{
     margin-bottom: -5px;

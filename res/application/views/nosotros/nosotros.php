@@ -187,7 +187,6 @@
 				</div>
 				<?php if($usuario->facebook):?>
 						<div class="titulo-info">
-							<i class="icon_redes_sociales fa fa-facebook-square"></i>
 							<p class="itm-title">Facebook</p> 
 						</div>
 						<div class="conten_into">
@@ -196,7 +195,6 @@
 					<?php endif;?>
 					<?php if($usuario->twitter):?>
 						<div class="titulo-info">
-							<i class="icon_redes_sociales fa fa-twitter-square"></i>
 							<p class="itm-title">Twitter</p> 
 						</div>
 						<div class="conten_into">
@@ -205,7 +203,6 @@
 					<?php endif;?>
 					<?php if($usuario->linkedin):?>
 						<div class="titulo-info">							
-							<i class="icon_redes_sociales fa fa-linkedin-square"></i> 
 							<p class="itm-title">Linkedin</p> 
 						</div>
 						<div class="conten-into">

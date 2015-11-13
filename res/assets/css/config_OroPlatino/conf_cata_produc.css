@@ -111,11 +111,11 @@ a{
 .btn-publicarPro, .btn-publicarPro:hover{
     background-color: #FF7F27;
     color: #fff;
-    padding-top: 10px;
+    padding-top: 10px !importants;
     width: 420px;
     height: 51px;
     margin-top: 16px;
-    margin-bottom: 52px;
+    margin-bottom: 52px !important;
 }
 .btn-selected-princi, .btn-selected-princi:hover{
     width: 270px;
