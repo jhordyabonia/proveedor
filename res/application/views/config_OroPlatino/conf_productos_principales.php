@@ -208,12 +208,10 @@ function submit()
 								<?=form_open_multipart(base_url().'editar_empresa/destacados',array('name'=>'form'))?>
 									<input type="hidden" name="destacados" id="destacados">
 									<div class="input-group col-xs-12 col-md-6 col-lg-8">
-										<center>
-											<a href="JavaScript:submit();" class="btn btn-guardar-propri">
-												<i class="ico-circle fa fa-floppy-o"></i>
-												<p class="text-publicarPro">Guardar</p> 
-											</a>
-										</center>
+										<a href="JavaScript:submit();" class="btn btn-guardar-propri">
+											<i class="ico-circle fa fa-floppy-o"></i>
+											<p class="text-publicarPro">Guardar</p> 
+										</a>
 									</div>
 		    					<?=form_close()?>
 							</div>
@@ -240,7 +238,7 @@ function submit()
 									<img class="img-responsive img_preview_producto" id="imagen_producto_<?=$producto->id?>" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
 								</div>
 								<div class="info-pro-pri inline-block">
-									<p class="txt_nomproducto" id="nombre_producto_<?=$producto->id?>"><?=$producto->nombre?></p>
+									<p class="txt_nomproducto2" id="nombre_producto_<?=$producto->id?>"><?=$producto->nombre?></p>
 									<p class="txt_precio">Precio: $<?=$producto->precio_unidad?></p>
 									<p class="txt_pedido">Pedido Minimo: <?=$producto->pedido_minimo?> <?=$producto->medida?></p>
 									<p class="txt_desc"><?=$producto->descripcion?></p>
