@@ -71,7 +71,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<i class="ico-gene fa fa-file-pdf-o"></i>
 							  </span>
-							  <input type="text" class="form-control" name="nombre" 
+							  <input type="text" class="form-control" name="nombre" required
 							   onchange="JavaScript:verificar_largo(this,5);"
 							onclick="JavaScript:limpiar(this);" 
 							placeholder="Nombre del Catalogo">
@@ -93,7 +93,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-list"></span>
 							  </span>
-							  <select class="form-control" name="categoria"							  
+							  <select class="form-control" name="categoria"	 required						  
 							   onchange="JavaScript:verificar(this);"
 							onclick="JavaScript:limpiar(this);" >
 								  <option selected>Selecciones una categoria</option>
@@ -119,7 +119,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
 							  </span>
-							  <textarea class="form-control" rows="5" name="descripcion"
+							  <textarea class="form-control" rows="5" name="descripcion" required
 							   onchange="JavaScript:verificar_largo(this,10);"
 							onclick="JavaScript:limpiar(this);" 
 							 placeholder="Descripcion del Catálogo"></textarea>
@@ -166,7 +166,7 @@
 							  			<p class="text-subir-img">Subir catalogo <p class="agregarpdf" id="adjunto">(Agregar archivo PDF o DOC)</p></p>
 							  		</a>
 							  		<div style="display:none">
-							  			<input type="file"  id="catalogo" name="catalogo[]"
+							  			<input type="file"  id="catalogo" name="catalogo[]" required
 							  			onchange="JavaScript:var paths = document.getElementById('catalogo').files;document.getElementById('adjunto').innerHTML=paths[0]['name'];" >
 							  		</div>
 							  	</div>

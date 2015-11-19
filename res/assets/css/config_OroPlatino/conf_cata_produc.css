@@ -689,7 +689,7 @@ a{
 .nom-produc{
     margin-bottom: 0;
     font-size: 13px;
-    width:138px;
+    max-width: 138px;
     -webkit-line-clamp:1;
     overflow: hidden;
     text-overflow: ellipsis;

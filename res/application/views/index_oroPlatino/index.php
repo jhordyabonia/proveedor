@@ -62,14 +62,19 @@
 		var	infocus =1;
 		function left(id)
 		{
+
 			if(document.getElementById(id).childNodes.length-infocus>8)
-			{document.getElementById(id).childNodes[infocus].className='item_procud_hidden';infocus+=2;}
+			{document.getElementById(id).childNodes[infocus].className+='_hidden';infocus+=2;}
 			//else{infocus =1;left(id);}			
 		}
 		function rigth(id)
 		{
 			if(infocus>=3)//&&document.getElementById(id).childNodes.length)
-			{infocus-=2;document.getElementById(id).childNodes[infocus].className='item_procud';}
+			{
+				infocus-=2;
+				div_class=document.getElementById(id).childNodes[infocus].className;
+				document.getElementById(id).childNodes[infocus].className=div_class.replace('_hidden','');
+			}
 			//else{infocus =1;left(id);}			
 		}
 	</script>
@@ -101,7 +106,7 @@
 			</div>
 		<?php endforeach;?>
 		<?php foreach($productos as $key=>$producto):?>
-		<?php if(!$producto){continue;}?>
+		<?php if(!$producto){continue;}$tag.=','.$producto->nombre;?>
 			<div class="item_procud">
 				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
@@ -148,17 +153,6 @@
 		</div>
 	</div>
 	<div class="contenido_videos col-md-12">
-
-		<script language="javascript" type="text/javascript">
-			function textodeiframe(obj)
-			{
-			//var frame = document.getElementById(id);
-			//var txt = obj.contentWindow.document.getElementById('txt1').value;
-			//document.getElementById('data_'+obj.id).value = txt;
-			cosole.log(obj);
-			alert(obj);
-			}
-		</script>
 		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
 		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
 		<?php if($value==''){continue;}?>
@@ -256,10 +250,10 @@
 		</div>
 	</div>
 	<div class="contenedor_galeria col-md-12">
-		<a href="JavaScript://rigth('carrousel_imagenes')">
+		<a href="JavaScript:rigth('carrousel_imagenes')">
 			<span class="flecha-left-galeria glyphicon glyphicon-chevron-left" ></span>
 		</a>
-		<a href="JavaScript://left('carrousel_imagenes')">
+		<a href="JavaScript:left('carrousel_imagenes')">
 			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
 		</a>
 		<div id="carrousel_imagenes" class="carrousel_imagenes_class">
@@ -273,7 +267,7 @@
 								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=base_url()?>uploads/imagenes/<?=$value?>">
 							</div>
 							<div class="titulo_galeria">
-								<p><?=$titulos[$key]?></p>
+								<p><?php if($titulos[$key]!='Imagen'){ echo $titulos[$key];} ?></p>
 							</div>
 						</div>
 					</ul>
@@ -444,9 +438,11 @@
   max-width: 100%;
   max-height: 100%;
   position: relative;
+  /*
   top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
+  */
 }
 #conten_pantalla2
 {
@@ -462,7 +458,7 @@
         <!-- Wrapper for slides -->
           <div id="conten_pantalla" class="carousel-inner">
             <center>
-              <div  id="conten_pantalla2" class="item active">
+              <div  id="conten_pantalla2" class="item">
                   <img id="pantalla" src="<?=base_url()?>uploads/banners/11.jpg" alt="...">
               </div>
            </center>

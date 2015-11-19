@@ -16,7 +16,7 @@ function set_stack()
 	<?php endforeach;?>
 	return out;
 }
-size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>+1;
+size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>;
 function agregar(id)
 {
 	if(size>=20)
@@ -25,7 +25,7 @@ function agregar(id)
 	imagen=document.getElementById('imagen_producto_'+id).src;
 	DOM='<div class="conten-item-prin col-lg-4" id="destacado_'+size+'">';
 	DOM+='	<div class="content-numero">';
-	DOM+='	<p class="numero">'+size+'</p>';
+	DOM+='	<p class="numero">'+(size+1)+'</p>';
 	DOM+='</div>';
 	DOM+='<div class="subir_bajar">';
 	DOM+='	<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir('+size+');">Subir</a><br>';
@@ -190,14 +190,14 @@ function submit()
 											<p class="numero"><?=$key+1?></p>
 										</div>
 										<div class="subir_bajar">
-											<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir(<?=$key?>);">Subir</a><br>
-											<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar(<?=$key?>);">Bajar</a>
+											<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir(<?=$key+1?>);">Subir</a><br>
+											<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar(<?=$key+1?>);">Bajar</a>
 										</div>
-										<div class="img-nom-remove" id="img<?=$key?>">
+										<div class="img-nom-remove" id="img<?=$key+1?>">
 											<img class="img_mini_preview_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
 										</div>
 										<div class="nom-prod">
-											<p class="nom-produc" id="nom<?=$key?>"><?=$producto->nombre?></p>
+											<p class="nom-produc" id="nom<?=$key+1?>"><?=$producto->nombre?></p>
 											<a class="rem-pro" href="JavaScript:borrar(<?=$key?>)"><span class="icono-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 										</div>
 									</div>

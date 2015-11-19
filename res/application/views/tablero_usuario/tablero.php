@@ -172,7 +172,7 @@
 					<div class="col-md-12 btn_anunciar">
 						<a href="<?=base_url()?>config_empresa/inicio/"  class="link_tablero_usuario">
 							<p class="centrar_icono marg-top"><i class="fa fa-laptop sty-ico-confi"></i> <i class="fa fa-cog sty-ico-confi"></i></p>
-							<p class="texto_pagina_empresa">Configurar pagina de Empresa</p>
+							<p class="texto_pagina_empresa">Configurar página de Empresa</p>
 						</a>
 						<!--<a href="<?=base_url()?>" class="link_tablero_usuario"><p class="texto_mas_informacion_anunciar">Más Información</p></a>-->
 					</div>
