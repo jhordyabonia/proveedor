@@ -64,7 +64,10 @@
 		{
 
 			if(document.getElementById(id).childNodes.length-infocus>8)
-			{document.getElementById(id).childNodes[infocus].className+='_hidden';infocus+=2;}
+			{
+				document.getElementById(id).childNodes[infocus].className+='_hidden';
+				infocus+=2;
+			}
 			//else{infocus =1;left(id);}			
 		}
 		function rigth(id)

@@ -134,8 +134,8 @@
     display: inline-block;
     padding-top: 30px;
     text-align: left;
-
-    transition:  margin-left 0.5s ease-in-out;
+    opacity: 0;
+    transition:  opacity 0.5s,margin-left 0.1s ease-in-out;
 }
 .item_procud{
     position: relative;
@@ -155,7 +155,8 @@
     display: inline-block;
     padding-top: 30px;
     text-align: left;
-    transition:  margin-left 0.5s ease-in-out;
+    opacity: 1;
+    transition:  opacity 0s,margin-left 0.2s ease-in-out;
 }
 .div-img{
     width: 420px;
