@@ -29,10 +29,10 @@
 			<div class="conten_info col-md-12">
 				<div class="texto_nuestra_empresa">
 					<p class="texto1">Tipo de Empresa: <a class="text02"><?=$empresa->tipo?></a> </p>
-					<p class="texto1">Productos Principales: <a class="text02"><?=$empresa->productos_principales?></a></p>
+					<p class="texto1">Productos Principales: <span class="text02"><?=$empresa->productos_principales?><span/></p>
 					<div class="boton_descargar inline-block">
 						<span class="ico_descar glyphicon glyphicon-download-alt"></span>
-						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catalogo</p></a>
+						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catálogo</p></a>
 					</div>
 					<div class="redes_compartir">
 					<img class="style-sonisa img-responsive" src="<?=base_url()?>assets/img/sonrisaprecio.png">
@@ -45,7 +45,7 @@
 					</ul>
 				</div>
 					<p class="texto_descripcion"><?=$empresa->descripcion?></p>
-					<p id="telefonos" style="display:none;font-size:21px;"><b>Telefono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
+					<p id="telefonos" style="display:none;font-size:21px;"><b>Teléfono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
 				</div>
 				<div class="botones_contac">
 					<button class="btn llamar_empresa"onclick="if(document.getElementById('telefonos').style.display==''){document.getElementById('telefonos').style.display='none'}else{document.getElementById('telefonos').style.display='';}">
@@ -80,7 +80,9 @@
 			    	<div class="container_mision col-md-12">
 			    		<img class="img-responsive img_membresia" src="<?=base_url()?>assets/img/membresia/<?=$membresia->logo?>">
 			    		<p class="texto-membresia"><?=$membresia->nombre?></p>
-			    		<li><p class="texto_descrip_mem">La <?=$membresia->nombre?> en Proveedor.com.co</p></li>
+			    		<?php if($membresia->id==3):?><li><p class="texto_descrip_mem">Esta empresa cuenta con una membresía <?=str_replace('Empresa' , '',$membresia->nombre)?> en Proveedor.com.co lo que le da más de 15 beneficios que incluyen posicionamiento superior, página de empresa completa y acceso a un número importante de oportunidades comerciales cada semana.</p></li>
+			    		<?php elseif($membresia->id==2):?><li><p class="texto_descrip_mem">Esta empresa cuenta con una membresía <?=str_replace('Empresa' , '',$membresia->nombre)?> en Proveedor.com.co lo que le da más de 5 beneficios que incluyen posicionamiento, página de empresa completa </p></li>
+			    		<?php elseif($membresia->id==1):?><li><p class="texto_descrip_mem">Esta empresa cuenta con una membresía <?=str_replace('Empresa' , '',$membresia->nombre)?> en Proveedor.com.co lo que le da más de 15 beneficios que incluyen, página de empresa y  envío y resepción de cotizaciones, directo a su email.</p></li><?php endif;?>
 			    	</div>
 			    	<?php if($empresa->legalizacion):?>
 				    	<div class="container_vision col-md-12">
@@ -104,6 +106,7 @@
 		</div>
 	</div>
 </div>
+<?php if($empresa->mision):?>
 <div class="mision">
 	<div class="title-mision col-md-12">
 		<div class="col-md-4">
@@ -128,6 +131,8 @@
 		</div>
 	</div>
 </div>
+<?php endif;?>
+<?php if($empresa->vision):?>
 <div class="mision">
 	<div class="title-mision col-md-12">
 		<div class="col-md-4">
@@ -146,19 +151,20 @@
 				<h2 class="title-mi">Nuestra Vision</h2>
 				<img class="img-responsive img_sonrisa" src="<?=base_url()?>assets/img/sonrisaprecio.png">
 				<p class="texto_mision">
-					<?=$empresa->mision?>
+					<?=$empresa->vision?>
 				</p>
 			</div>
 		</div>
 	</div>
 </div>
+<?php endif;?>
 <div class="contactenos">
 	<div class="title-contactenos col-md-12">
 		<div class="col-md-4">
 			<ul class="list-title-contactenos">
 				<li>
 					<ul class=" active list-title-contactenos">
-						<a class="texto-mision">Contactenos</a>
+						<a class="texto-mision">Contáctenos</a>
 					</ul>
 				</li>
 			</ul>
@@ -168,19 +174,19 @@
 		<div class="conten_contac col-md-12">
 			<div class="info_contactenos col-md-12">
 				<div class="titulo-info">
-					<p class="itm-title">Telefonos</p>
+					<p class="itm-title">Telófonos</p>
 				</div>
 				<div class="conten-into">
-					<p class="itm-cont">Celular: <?=$usuario->celular?> - PBX: <?=$usuario->indicativo?>  <?=$usuario->telefono?> Extencion:  <?=$usuario->extension?></p>
+					<p class="itm-cont">Celular: <?=$usuario->celular?> - PBX: <?=$usuario->indicativo?>  <?=$usuario->telefono?> Extensión:  <?=$usuario->extension?></p>
 				</div>
 				<div class="titulo-info">
-					<p class="itm-title">Direccion</p>
+					<p class="itm-title">Dirección</p>
 				</div>
 				<div class="conten-into">
 					<p class="itm-cont"> <?=$usuario->direccion?></p>
 				</div>
 				<div class="titulo-info">
-					<p class="itm-title">Ubicacion</p>
+					<p class="itm-title">Ubicación</p>
 				</div>
 				<div class="conten-into">
 					<p class="itm-cont"> <?=$usuario->ciudad?> -  <?=$usuario->departamento?> -  <?=$usuario->pais?></p>
@@ -265,7 +271,9 @@
 </div>
 <div class="cont-tags col-md-12">
 	<div class="tags">
-		<p class="texto_tag"><?=$empresa->tipo?></p>
-		<p class="texto_tag"> <?=$empresa->productos_de_interes?></p>
+		<p class="texto_tag"><?=$empresa->tipo?>
+			<br>
+		<p class="texto_tag"><?=$empresa->productos_de_interes?>
+			<br>
 	</div>
 </div>

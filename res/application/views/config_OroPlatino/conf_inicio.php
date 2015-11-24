@@ -32,7 +32,7 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Producto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
@@ -48,7 +48,7 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catálogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -63,7 +63,7 @@
 					<div class="titles">
 						<h3 class="text-title-up">1. Subir imagenes centrales (Banners)</h3>
 						<div class="conten-paso1">
-							<p class="agreagar-text">Agregar avisos centrales a su pagina de inicio.</p> <p class="ver-ejm">- Ver ejemplo</p>
+							<p class="agreagar-text">Agregar avisos centrales a su página de inicio.</p> <p class="ver-ejm">- Ver ejemplo</p>
 							<p class="medidas-recom">Medidas recomendadas 700 pixeles por 600px pixeles</p>
 							<div class="img-banner">
 								<div class="subir-img">
@@ -152,7 +152,7 @@
 					<div class="titles">
 						<h3 class="text-title-up">2. Subir Videos de Youtube <i class="ico-youtube fa fa-youtube"></i></h3>
 						<div class="conten-paso2">
-							<p class="agreagar-text">Agregar videos de Youtube a su pagina de inicio.</p> <p class="ver-ejm">- Ver ejemplo</p>
+							<p class="agreagar-text">Agregar videos de Youtube a su página de inicio.</p> <p class="ver-ejm">- Ver ejemplo</p>
 							<p class="medidas-recom">Copie las direcciones de los videos y peguelas en los campos respectivos (Maximo 20 videos)</p>
 							
 						<?=form_open_multipart(base_url().'editar_empresa/videos')?>
@@ -232,7 +232,7 @@
 					<div class="titles">
 						<h3 class="text-title-up">3. Subir imagenes de la Empresa</h3>
 						<div class="conten-paso3">
-							<p class="agreagar-text3">Agregar imagenes de la empresa a la pagina de inicio (Maximo 20 imagenes).</p>
+							<p class="agreagar-text3">Agregar imagenes de la empresa a la página de inicio (Maximo 20 imagenes).</p>
 							
 						<?=form_open_multipart(base_url().'editar_empresa/imagenes')?>
 							<!-- Campo 1 -->

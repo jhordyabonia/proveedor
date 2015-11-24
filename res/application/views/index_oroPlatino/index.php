@@ -18,7 +18,7 @@
     <div id="carouselInicio" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <?php foreach (explode(',', $empresa->banners) as $i => $banner): ?>
+          <?php if(!$empresa->banners){ $empresa->banners='01_Registrese43.png,03_solicite2.png,02_publique2.png';}foreach (explode(',', $empresa->banners) as $i => $banner): ?>
           <?php if($banner==""){break;}?>
             <li data-target="#carouselInicio" data-slide-to="<?=$i;?>" 
               class="<?php if($i==0){ echo 'active';} ?>"></li>
@@ -91,7 +91,7 @@
 
 		<div id="carrousel_destacados" class="contenedor_productos_item">
 		<?php $tag=""; foreach($destacados as $key=>$producto):?>
-		<?php if(!$producto){continue;}$tag.=','.$producto->nombre;?>
+		<?php if(!$producto){continue;}$tag.=$producto->nombre.',';?>
 			<div class="item_procud">
 				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
@@ -100,7 +100,7 @@
 							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
 						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="pedido">pedido mínimo</p>';}?>
 					</div>
 				</div>
 				<div class="mini-logo">
@@ -109,7 +109,7 @@
 			</div>
 		<?php endforeach;?>
 		<?php foreach($productos as $key=>$producto):?>
-		<?php if(!$producto){continue;}$tag.=','.$producto->nombre;?>
+		<?php if(!$producto){continue;}$tag.=$producto->nombre.',';?>
 			<div class="item_procud">
 				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
@@ -118,7 +118,7 @@
 							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
 						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." X ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="pedido">pedido mínimo</p>';}?>
 					</div>
 				</div>
 				<div class="mini-logo">
@@ -127,12 +127,9 @@
 			</div>
 		<?php endforeach;?>
 		</div>
-			<!---->
-	
-		<span class="ico_flecha_right glyphicon glyphicon-chevron-right"></span>
 		<div class="vercatalogo col-md-12 col-lg-12">
 			<span class="glyphicon glyphicon-th-list"></span>
-			<a class="texto_vercatalogo" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Ver Catalogo > </a>
+			<a class="texto_vercatalogo" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Ver Catálogo > </a>
 		</div>
 	</div>
 	<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
@@ -157,6 +154,7 @@
 	</div>
 	<div class="contenido_videos col-md-12">
 		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
+		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
 		<?php if($value==''){continue;}?>
 			<ul class="item_video">
@@ -174,7 +172,6 @@
 				</li>
 			</ul>
 		<?php endforeach;?>
-		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
 	</div>
 </div>
 <?php endif;?>
@@ -202,14 +199,14 @@
 					s
 					<div class="boton_descargar inline-block">
 						<span class="ico_descar glyphicon glyphicon-download-alt"></span>
-						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catalogo</p></a>
+						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catálogo</p></a>
 					</div>
 				</div>
 				<div class="texto_nuestra_empresa">
 					<p class="texto1">Tipo de Empresa: <a class="text02"><?=$empresa->tipo?></a> </p>
 					<p class="texto1">Productos Principales: <a class="text02"><?=$empresa->productos_principales?></a></p>
 					<p class="texto_descripcion"><?=$empresa->descripcion?></p>
-					<p id="telefonos" style="display:none;font-size:21px;"><b>Telefono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
+					<p id="telefonos" style="display:none;font-size:21px;"><b>Teléfono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
 				</div>
 				<div class="botones_contac">
 					<button class="btn llamar_empresa" onclick="if(document.getElementById('telefonos').style.display==''){document.getElementById('telefonos').style.display='none'}else{document.getElementById('telefonos').style.display='';}">
@@ -253,10 +250,10 @@
 		</div>
 	</div>
 	<div class="contenedor_galeria col-md-12">
-		<a href="JavaScript:rigth('carrousel_imagenes')">
+		<a href="JavaScript://rigth('carrousel_imagenes')">
 			<span class="flecha-left-galeria glyphicon glyphicon-chevron-left" ></span>
 		</a>
-		<a href="JavaScript:left('carrousel_imagenes')">
+		<a href="JavaScript://left('carrousel_imagenes')">
 			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
 		</a>
 		<div id="carrousel_imagenes" class="carrousel_imagenes_class">
@@ -293,7 +290,7 @@
 		<ul class="item_contactenos">
 			<li>
 				<ul class="active item_contactenos">
-					<p class="texto_contac">Contactenos</p>
+					<p class="texto_contac">Contáctenos</p>
 				</ul>
 			</li>
 		</ul>
@@ -308,7 +305,7 @@
 		<div class="informacion-contacto">
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-earphone"></span>
-					<p class="title_texto_info">Telefono</p> 
+					<p class="title_texto_info">Teléfono</p> 
 				</div>
 				<div class="conten_into">
 					<p class="text_info">Celular: <?=$usuario->celular?></p>
@@ -316,24 +313,24 @@
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-home"></span>
-					<p class="title_texto_info">Direccion</p> 
+					<p class="title_texto_info">Dirección</p> 
 				</div>
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->direccion?></p>
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-map-marker"></span>
-					<p class="title_texto_info">Ubicacion</p> 
+					<p class="title_texto_info">Ubicación</p> 
 				</div>
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?></p>
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-globe"></span>
-					<p class="title_texto_info">Pagina Web</p> 
+					<p class="title_texto_info">Página Web</p> 
 				</div>
 				<div class="conten_into">
-					<p class="text_info"><?=$usuario->web?></p>
+					<p class="text_info" onclick="location.href='<?=$usuario->web?>'"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
 				</div>
 				<?php if($usuario->facebook):?>
 						<div class="title_info">
@@ -416,9 +413,12 @@
 	<div class="texto_tag">
 		<p class="text-tag">Etiquetas</p>
 	</div>
-	<div class="etiquetas_tag">
-		<p class="texto-tag"><?=$empresa->tipo?></p>
-		<p class="texto-tag"><?=$empresa->productos_principales.','.$tag?></p>
+	<div class="etiquetas_tag" style="padding-bottom: 15px;">
+		<p class="texto-tag"><?=$empresa->tipo?><br>
+		<br>
+		<p class="texto-tag"><?=$empresa->productos_principales?><br>
+		<br>
+		<p class="texto-tag"><?=str_replace(',', '', $tag)?>
 	</div>
 </div>
 

@@ -53,13 +53,13 @@ class Editar_empresa extends CI_Controller {
               #echo "<PRE>";
               #print_r($datos);
               #echo "</PRE>";
-              if(!is_int(strpos($datos['web'], 'http')))
+              if(!is_int(strpos($datos['web'], 'http'))&&$datos['web']!="")
               {$datos['web']="http://".$datos['web'];}
-              if(!is_int(strpos($datos['facebook'], 'http')))
+              if(!is_int(strpos($datos['facebook'], 'http'))&&$datos['facebook']!="")
               {$datos['facebook']="http://".$datos['facebook'];}
-              if(!is_int(strpos($datos['twitter'], 'http')))
+              if(!is_int(strpos($datos['twitter'], 'http'))&&$datos['twitter']!="")
               {$datos['twitter']="http://".$datos['twitter'];}
-              if(!is_int(strpos($datos['linkedin'], 'http')))
+              if(!is_int(strpos($datos['linkedin'], 'http'))&&$datos['linkedin']!="")
               {$datos['linkedin']="http://".$datos['linkedin'];}
               /*
               */

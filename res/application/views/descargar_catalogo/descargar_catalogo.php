@@ -8,7 +8,7 @@
 		<div class="col-md-10">
 			<div class="row">
 			<div class="text_pro_pri">
-				<p class="text_producPri">Descargar Catalogos de la Empresa</p>
+				<p class="text_producPri">Descargar Catálogos de la Empresa</p>
 			</div>
 			</div>
 		</div>
@@ -73,6 +73,7 @@
 	</div>
 	<div class="content_item_produc col-md-10">
 		<div class="contenedor_productos_item">
+		<?php if($catalogos!=NULL):?>
 			<?php foreach ($catalogos as $key => $catalogo):?>
 			<?php if($catalogo->catalogo==NULL) {continue;}?>
 			<div class="item_procud2">
@@ -83,13 +84,28 @@
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
 					</div>
-						<button class="btn btn-descargar" onclick="location.href='<?=base_url()?>uploads/adjunto/<?=$catalogo->catalogo?>'">
+						<a class="btn btn-descargar" href="<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>" target="other">
 							<span class="icon_style_des3 glyphicon glyphicon-download-alt"></span>
 							DESCARGAR
-						</button>
+						</a>
 				</div>
 			</div>
 		<?php endforeach;?>
+		<?php else:?>
+		<CENTER>
+		<h2>
+		 <br>
+		 <br>
+		 <br>
+		 <br>
+			La empresa no ha publicado catálogos.</h2>
+		 <br>
+		 <br>
+		 <br>
+		 <br>
+		</CENTER>
+		<?php endif;?>
+
 		</div>
 		</div>
 		<div class="solicitar_cotizacion2 col-md-12">

@@ -42,6 +42,8 @@ function agregar(id)
 	document.getElementById('canvas').innerHTML+=DOM;
 	stack[size++]=id;
 	document.getElementById('producto_'+id).innerText="Seleccionado";
+	document.getElementById('btn_guardar').style.display='';
+	document.getElementById('sin_productos').style.display='none';
 	//console.log(DOM);
 }
 function borrar(id)
@@ -138,7 +140,7 @@ function submit()
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Producto</a>
 				</div>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
@@ -154,7 +156,7 @@ function submit()
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catálogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -167,7 +169,7 @@ function submit()
 						<h3 class="text-title-pub">Seleccionar Productos Principales</h3>
 					</div>
 					<div class="conten-formulario-cata">						
-						<p>Para mostrar los productos principales de su empresa en las pestañas de <span class="ico-prin glyphicon glyphicon-home"></span>Inicio y <span class="ico-prin glyphicon glyphicon-th-list"></span>Catalogo de Producto
+						<p>Para mostrar los productos principales de su empresa en las pestañas de <span class="ico-prin glyphicon glyphicon-home"></span>Inicio y <span class="ico-prin glyphicon glyphicon-th-list"></span>Catálogo de Producto
 							debes seguir estos pasos:
 						</p>
 						<p>1.Debes seleccionar uno o varios productos del listado de "Productos publicados".</p>
@@ -183,7 +185,8 @@ function submit()
 						</div>
 						<div class="conten-selected">
 							<div id="canvas">
-								<?php foreach($destacados as $key => $producto):?>
+								<?php $no_destacados=TRUE; if($empresa->productos_destacados!=""):?>
+								<?php $no_destacados=FALSE; foreach($destacados as $key => $producto):?>
 									<?php if(!$producto){continue;}?>
 									<div class="conten-item-prin col-lg-4" id="destacado_<?=$key?>">
 										<div class="content-numero">
@@ -202,12 +205,17 @@ function submit()
 										</div>
 									</div>
 								<?php endforeach;?>
+								<?php else:?>
+								<CENTER id="sin_productos">
+									<h2>No se han seleccionado Productos Principales.</h2>
+								</CENTER>	
+								<?php endif;?>
 							</div>
 							<!-- Campo 7 -->
 							<div class="row">
 								<?=form_open_multipart(base_url().'editar_empresa/destacados',array('name'=>'form'))?>
 									<input type="hidden" name="destacados" id="destacados">
-									<div class="input-group col-xs-12 col-md-6 col-lg-8">
+									<div class="input-group col-xs-12 col-md-6 col-lg-8" id="btn_guardar"style="display:<?php if($no_destacados){echo 'none';}?>;">
 										<a href="JavaScript:submit();" class="btn btn-guardar-propri">
 											<i class="ico-circle fa fa-floppy-o"></i>
 											<p class="text-publicarPro">Guardar</p> 
@@ -222,12 +230,16 @@ function submit()
 						<p class="text-select">Seleccione uno o varios productos como "Principales".</p>
 						<ul class="list-item-pro-pri">
 							<li class="item-cata inline-block" style="margin-right: 40px;">
+								<a href="<?=base_url()?>config_empresa/publicar_producto">
 								<span class="glyphicon glyphicon-open"></span>
 								Publicar Producto
+								</a>
 							</li>
 							<li class="item-cata inline-block">
+								<a href="<?=base_url()?>producto/administrar">
 								<span class="glyphicon glyphicon-th"></span>
 								Administrar Productos
+								</a>
 							</li>
 						</ul>
 						<hr class="hr-separador">
@@ -239,8 +251,8 @@ function submit()
 								</div>
 								<div class="info-pro-pri inline-block">
 									<p class="txt_nomproducto2" id="nombre_producto_<?=$producto->id?>"><?=$producto->nombre?></p>
-									<p class="txt_precio">Precio: $<?=$producto->precio_unidad?></p>
-									<p class="txt_pedido">Pedido Minimo: <?=$producto->pedido_minimo?> <?=$producto->medida?></p>
+									<p class="txt_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
+									<p class="txt_pedido"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="pedido">pedido mínimo</p>';}?>
 									<p class="txt_desc"><?=$producto->descripcion?></p>
 									<button class="btn btn-selecc-princi">
 										<span class="ico-config-style glyphicon glyphicon-bookmark"></span>

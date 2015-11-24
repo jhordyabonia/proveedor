@@ -32,7 +32,7 @@
 				</div>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Producto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
@@ -48,13 +48,13 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catálogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
 				<h3>
 					<span class="ico-cont-style glyphicon glyphicon-th-list"></span>
-					Catalogo de Productos
+					Catálogo de Productos
 				</h3>
 				<div class="content-catalogo-pro">
 					<div class="titles">
@@ -71,7 +71,7 @@
 						</ul>
 					</div>
 					<div class="conten-formulario-cata">
-						<p class="text-publique">Publique en la pagina de "Catalago de Productos" los productos o servicios que ofrece la empresa.</p>
+						<p class="text-publique">Publique en la página de "Catalago de Productos" los productos o servicios que ofrece la empresa.</p>
 						<div class="formulario-cata">
 							<p class="text-requerido"><span class="ico-requerido glyphicon glyphicon-asterisk"></span>Requerido</p>
 							

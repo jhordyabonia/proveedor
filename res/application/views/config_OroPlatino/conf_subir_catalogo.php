@@ -32,7 +32,7 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Producto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
@@ -48,22 +48,22 @@
 				</div>
 				<div class="active-config margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catálogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
 				<h3>
 					<span class="ico-cont-style glyphicon glyphicon-th-list"></span>
-					Catalogo de Productos
+					Catálogo de Productos
 				</h3>
 				<div class="content-catalogo-pro">
 					<div class="titles">
-						<h3 class="text-title-pub">Publicar Catalogos</h3>
+						<h3 class="text-title-pub">Publicar Catálogos</h3>
 					</div>
 					<div class="conten-formulario-cata">						
 						<div class="formulario-subircata">
 							<p class="text-requerido"><span class="ico-requerido glyphicon glyphicon-asterisk"></span>Requerido</p>
-							<p class="text-subir-cata">Publique los catalogos de productos y/o servicios que ofrece la empresa.</p>
+							<p class="text-subir-cata">Publique los catálogos de productos y/o servicios que ofrece la empresa.</p>
 							
 						<?= form_open_multipart('editar_empresa/catalogos'); ?>
             				<!-- Campo 1 -->
@@ -74,7 +74,7 @@
 							  <input type="text" class="form-control" name="nombre" required
 							   onchange="JavaScript:verificar_largo(this,5);"
 							onclick="JavaScript:limpiar(this);" 
-							placeholder="Nombre del Catalogo">
+							placeholder="Nombre del Catálogo">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">							  	
 									<i id="err_nombre"></i>
 							  </span>
@@ -163,7 +163,7 @@
 								<div class="subir-imagenes-cata" onclick="document.getElementById('catalogo').click()">
 							  		<a class="enlace-ssubir-imagenes">
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
-							  			<p class="text-subir-img">Subir catalogo <p class="agregarpdf" id="adjunto">(Agregar archivo PDF o DOC)</p></p>
+							  			<p class="text-subir-img">Subir Catálogo <p class="agregarpdf" id="adjunto">(Agregar archivo PDF o DOC)</p></p>
 							  		</a>
 							  		<div style="display:none">
 							  			<input type="file"  id="catalogo" name="catalogo[]" required
@@ -181,14 +181,14 @@
 							<div class="input-group style-padding3 col-xs-12 col-md-6 col-lg-8">
 								<button class="btn btn-publicarPro">
 									<i class="ico-circle fa fa-arrow-circle-up"></i>
-									<p class="text-publicarPro">PUBLICAR CATALOGO</p> 
+									<p class="text-publicarPro">PUBLICAR CATÁLOGO</p> 
 								</button>
 							</div>											
     					<?=form_close()?>
 						</div>
 					</div>
 					<div class="catalogo-public">
-						<h3 class="text-cata-publi">Catalogos Publicados (<?php if(!$catalogos){echo 0;}else{ echo count($catalogos);}?>)</h3>	
+						<h3 class="text-cata-publi">Catálogos Publicados (<?php if(!$catalogos){echo 0;}else{ echo count($catalogos);}?>)</h3>	
 						<div class="conten-item-catapu row">
 							<?php foreach($catalogos as $key => $catalogo):?>
 								<div class="col-lg-6">

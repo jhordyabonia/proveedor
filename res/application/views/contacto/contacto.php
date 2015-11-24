@@ -8,7 +8,7 @@
 		<ul class="item_contactenos">
 			<li>
 				<ul class="active item_contactenos">
-					<p class="texto_contacto">Contactenos</p>
+					<p class="texto_contacto">Contáctenos</p>
 				</ul>
 			</li>
 		</ul>
@@ -22,7 +22,7 @@
 			<div class="info_contacto">
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-earphone"></span>
-						<p class="title_texto_info">Telefono</p> 
+						<p class="title_texto_info">Teléfono</p> 
 					</div>
 					<div class="conten_into">
 						<p class="text_info">Celular: <?=$usuario->celular?></p>
@@ -30,24 +30,24 @@
 					</div>
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-home"></span>
-						<p class="title_texto_info">Direccion</p> 
+						<p class="title_texto_info">Dirección</p> 
 					</div>
 					<div class="conten_into">
 						<p class="text_info"><?=$usuario->direccion?></p>
 					</div>
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-map-marker"></span>
-						<p class="title_texto_info">Ubicacion</p> 
+						<p class="title_texto_info">Ubicación</p> 
 					</div>
 					<div class="conten_into">
 						<p class="text_info"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?></p>
 					</div>
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-globe"></span>
-						<p class="title_texto_info">Pagina Web</p> 
+						<p class="title_texto_info">Página Web</p> 
 					</div>
 					<div class="conten_into">
-						<p class="text_info"><?=$usuario->web?></p>
+						<p class="text_info"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
 					</div>
 					<?php if($usuario->facebook):?>
 						<div class="title_info">
@@ -126,12 +126,14 @@
 			</div>
 	</div>
 </div>
-<div class="contenido_tag">
+<div class="contenido_tag col-md-12" style="background-color: #fff;padding: 0;">
 	<div class="texto_tag">
 		<p class="text-tag">Etiquetas</p>
 	</div>
-	<div class="etiquetas_tag">
-		<p class="texto-tag">Fabricante</p>
-		<p class="texto-tag">Cascos, Guantes, Overoles, Botas, Dotaciones</p>
+	<div class="etiquetas_tag" style="padding-bottom: 15px;">
+		<p class="texto-tag"><?=$empresa->tipo?><br>
+		<br>
+		<p class="texto-tag"><?=$empresa->productos_principales?><br>
 	</div>
 </div>
+

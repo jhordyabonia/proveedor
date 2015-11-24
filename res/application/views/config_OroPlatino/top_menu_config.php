@@ -6,8 +6,8 @@
 	<div class="top-menu">
 		<div class="top_menu_conf">
 			<ul class="nav navbar-nav">
-				<li>
-					<img class="img-style img-responsive" src="<?php echo base_url()?>assets/img/index/logo_proveedor.png">
+				<li>			
+					<img onclick="location.href='<?=base_url()?>'" class="img-style img-responsive" src="<?php echo base_url()?>assets/img/index/logo_proveedor.png">
 				</li>
 				<li class="list-menu">
 					<a class="item-list" href="<?=base_url()?>tablero_usuario">INICIO</a>
@@ -29,7 +29,7 @@
 				</li>
 				<li class="list-menu padding-style">
 					<span class="ico-user glyphicon glyphicon-user"></span>
-					<a class="nom_username" href="<?=base_url()?>empresa/inicio/<?=$empresa->id?>"><?=$usuario->usuario?></a>
+					<a class="nom_username" href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>"><?=$usuario->usuario?></a>
 				</li>
 				<li class="list-menu">
 					<a class="salir" href="<?=base_url()?>logueo/logout">salir</a>

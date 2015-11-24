@@ -313,6 +313,8 @@ a
 
 .textos2{
     font-weight: bold;
+    max-height: 25px;
+    overflow: hidden;
     font-size: 18px !important;
 }
 

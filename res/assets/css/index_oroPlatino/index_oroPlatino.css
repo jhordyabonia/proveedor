@@ -435,7 +435,7 @@ iframe
 }
 .etiquetas_tag{
     width: 100%;
-    height: 153px;
+    min-height: 200px!important;
     border: 23px solid whitesmoke;
     line-height: 1;
     padding-top: 38px;
@@ -710,6 +710,7 @@ iframe
 }
 .vercatalogo{
     text-align: right;
+    margin-top: -16px;
     padding-right: 45px;
     color: #ff7f27;
 }

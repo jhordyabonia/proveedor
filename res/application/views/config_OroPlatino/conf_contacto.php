@@ -32,7 +32,7 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Catalogo de Productos</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Producto</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
@@ -48,7 +48,7 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-open"></span>
-					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catalogo</a>
+					<a href="<?=base_url()?>config_empresa/catalogo" class="text-subitem">Subir Catálogo</a>
 				</div>
 			</div>
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
@@ -119,7 +119,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Direccion de la empresa</label>
+							  <label for="">Dirección de la empresa</label>
 							</div>
 
 							<!-- Campo 3 -->
@@ -247,7 +247,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Telefono celular</label>
+							  <label for="">Teléfono celular</label>
 							</div>
 
 							<!-- Campo 5 -->
@@ -257,7 +257,7 @@
 							  </span>
 							  <input required type="text" class="form-control" name="celular" id="celular" ondblclick="necessary"
 							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-')"
-							  value="<?=$usuario->celular?>" placeholder="Telefono celular">
+							  value="<?=$usuario->celular?>" placeholder="Teléfono celular">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_celular"></i>
 							  </span>
@@ -272,7 +272,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Telefono fijo y/o PBX</label>
+							  <label for="">Teléfono fijo y/o PBX</label>
 							</div>
 
 							<!-- Campo 6 -->
@@ -282,7 +282,7 @@
 							  </span>
 							  <input type="text" class="form-control" name="telefono" id="telefono"
 							  onchange="JavaScript:verificar(this);"
-							   value="<?=$usuario->telefono?>" placeholder="Telefono fijo y/o PBX">
+							   value="<?=$usuario->telefono?>" placeholder="Teléfono fijo y/o PBX">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_telefono"></i>
 							  </span>
@@ -297,7 +297,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Pagina Web</label>
+							  <label for="">Página Web</label>
 							</div>
 
 							<!-- Campo 7 -->
@@ -307,7 +307,7 @@
 							  </span>
 							  <input type="text" class="form-control" name="web" id="web" 
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
-							  value="<?=$usuario->web?>" placeholder="Pagina Web">
+							  value="<?=$usuario->web?>" placeholder="Página Web">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_web"></i>
 							  </span>
@@ -322,7 +322,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Pagina de facebook</label>
+							  <label for="">Página de facebook</label>
 							</div>
 
 							<!-- Campo 8 -->
@@ -332,7 +332,7 @@
 							  </span>
 							  <input type="text" class="form-control" name="facebook"
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
-							   value="<?=$usuario->facebook?>" placeholder="Pagina de facebook">
+							   value="<?=$usuario->facebook?>" placeholder="Página de facebook">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_facebook"></i>
 							  </span>
@@ -346,7 +346,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Pagina de twitter</label>
+							  <label for="">Página de twitter</label>
 							</div>
 
 							<!-- Campo 9 -->
@@ -356,7 +356,7 @@
 							  </span>
 							  <input type="text" class="form-control" name="twitter"
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE] ( ) ? ¿ =');"
-							   value="<?=$usuario->twitter?>" placeholder="Pagina de twitter">
+							   value="<?=$usuario->twitter?>" placeholder="Página de twitter">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_twitter"></i>
 							  </span>
@@ -371,7 +371,7 @@
 							</div>
 
 							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Pagina de likedin</label>
+							  <label for="">Página de likedin</label>
 							</div>
 
 							<!-- Campo 10 -->
@@ -381,7 +381,7 @@
 							  </span>
 							  <input type="text" class="form-control" name="linkedin"
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
-							   value="<?=$usuario->linkedin?>" placeholder="Pagina de likedin">
+							   value="<?=$usuario->linkedin?>" placeholder="Página de likedin">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_linkedin"></i>
 							  </span>

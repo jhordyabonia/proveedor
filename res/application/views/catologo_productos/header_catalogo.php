@@ -65,7 +65,7 @@
 				<li>
 					<ul class="<?=is_active('catalogo_producto',$m)?> list_item">
 						<span class="icon_style glyphicon glyphicon-th-list"></span>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Catalogo de Productos</a>
+						<a class="enlaces_header" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Catálogo de Productos</a>
 					</ul>
 				</li>
 				<li>

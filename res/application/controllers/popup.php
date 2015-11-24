@@ -116,7 +116,7 @@ class Popup extends CI_Controller
 		{
 			$this->session->set_flashdata('mensaje_enviado', "DONE");
 		}
-		#$this->session->set_flashdata('mensaje_enviado', "DONE");
+		$this->session->set_flashdata('mensaje_enviado', "DONE");
 		redirect(base_url()."registro/registro_automatico/".$id_solicitud);
     }
     

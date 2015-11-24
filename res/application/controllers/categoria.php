@@ -292,7 +292,9 @@ class Categoria extends CI_Controller {
             }else {$titulos[$value]=$value; }
         }
         $datos->titulos=$titulos;
-        $this->load->view('index/formulario_solicitudes', array('categoria'=>$in,'datos'=>$datos));
+        $mensaje_enviado= $this->session->userdata('mensaje_enviado');
+        $this->load->view('index/formulario_solicitudes', array('categoria'=>$in,'datos'=>$datos,'mensaje_enviado'=>$mensaje_enviado));
+        #$this->session->set_userdata('mensaje_enviado',FALSE);
         #$this->load->view("index/banner_adsense", $data);
 
         $dat['auto_launch_AP']=FALSE;

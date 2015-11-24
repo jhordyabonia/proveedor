@@ -114,7 +114,7 @@ class Registro extends CI_Controller {
 
 		#echo @$mensaje;
 		#$this->bienvenida(array_merge($datos_empresa,$datos_usuario));
-		
+		$this->session->set_userdata('mensaje_enviado',"TRUE");
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 

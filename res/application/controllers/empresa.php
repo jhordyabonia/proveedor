@@ -33,6 +33,10 @@ class Empresa extends CI_Controller
   function inicio($id)
   {
     $datos['empresa']= $this->empresa->get($id); 
+
+    if($datos['empresa']->membresia==1)
+    {redirect(base_url().'perfil/perfil_empresa/'.$id);}
+
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;   
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
@@ -45,14 +49,14 @@ class Empresa extends CI_Controller
     $datos['destacados']=array();
     foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value)
     {
-      $datos['destacados'][]=$this->producto->get($value);
+      $datos['destacados'][]=$this->cargar_producto($this->producto->get($value));
     }
     $tmp_productos=array();
     foreach ($datos['productos'] as $key => $value)
     {
       if($this->duplicado($datos['destacados'],$value))
         {continue;}
-      $tmp_productos[]=$value;
+      $tmp_productos[]=$this->cargar_producto($value);
     }
     $datos['productos']=$tmp_productos;
     $tmp=explode('|',$datos['empresa']->imagenes);
@@ -62,7 +66,7 @@ class Empresa extends CI_Controller
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
-    $this->load->view('template/head');
+    $this->load->view('template/head',array('titulo'=>$datos['empresa']->nombre));
     $this->load->view('template/javascript');
     $this->load->view('registro/funcionalidades_');
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -74,6 +78,10 @@ class Empresa extends CI_Controller
   function catalogo_producto($id)
   {
     $datos['empresa'] = $this->empresa->get($id);    
+
+    if($datos['empresa']->membresia==1)
+    {redirect(base_url().'perfil/ver_empresa/'.$id_empresa);}
+
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['usuario'] = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
@@ -86,14 +94,14 @@ class Empresa extends CI_Controller
     $datos['destacados']=array();
     foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value)
     {
-      $datos['destacados'][]=$this->producto->get($value);
+      $datos['destacados'][]=$this->cargar_producto($this->producto->get($value));
     }
     $tmp_productos=array();
     foreach ($datos['productos'] as $key => $value)
     {
       if($this->duplicado($datos['destacados'],$value))
         {continue;}
-      $tmp_productos[]=$value;
+      $tmp_productos[]=$this->cargar_producto($value);
     }
     $datos['productos']=$tmp_productos;
 
@@ -124,7 +132,7 @@ class Empresa extends CI_Controller
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
     #$datos['usuario']=$this->session->userdata('usuario');
 
-    $this->load->view('template/head');
+    $this->load->view('template/head',array('titulo'=>'Catálogo de productos - '.$datos['empresa']->nombre));
     $this->load->view('template/javascript');
     $this->load->view('registro/funcionalidades_');
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -137,7 +145,11 @@ class Empresa extends CI_Controller
 
   function contacto($id)
   {
-    $datos['empresa']= $this->empresa->get($id);  
+    $datos['empresa']= $this->empresa->get($id); 
+
+    if($datos['empresa']->membresia==1)
+    {redirect(base_url().'perfil/contacto/'.$id_empresa);}
+
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;  
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
@@ -148,7 +160,7 @@ class Empresa extends CI_Controller
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
-    $this->load->view('template/head');
+    $this->load->view('template/head',array('titulo'=>'Contacto - '.$datos['empresa']->nombre));
     $this->load->view('template/javascript');    
     $this->load->view('registro/funcionalidades_');
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -160,6 +172,10 @@ class Empresa extends CI_Controller
 
   function cotizaciones_requeridas($id)
   {
+
+    if($datos['empresa']->membresia==1)
+    {redirect(base_url().'perfil/productos_solicitados/'.$id_empresa);}
+
     $datos['empresa']= $this->empresa->get($id);  
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;  
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
@@ -194,8 +210,8 @@ class Empresa extends CI_Controller
     $datos['page']=0;//$page;
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-
-    $this->load->view('template/head');
+    
+    $this->load->view('template/head',array('titulo'=>'Cotizaciones Requeridas - '.$datos['empresa']->nombre));
     $this->load->view('template/javascript');
     $this->load->view('registro/funcionalidades_');
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -208,6 +224,9 @@ class Empresa extends CI_Controller
   function nosotros($id)
   {
     $datos['empresa']= $this->empresa->get($id);    
+    if($datos['empresa']->membresia==1)
+    {redirect(base_url().'perfil/perfil_empresa/'.$id);}
+  
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
@@ -218,7 +237,7 @@ class Empresa extends CI_Controller
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
-    $this->load->view('template/head');
+    $this->load->view('template/head',array('titulo'=>'Nuestra empresa - '.$datos['empresa']->nombre));
     $this->load->view('template/javascript');
     $this->load->view('registro/funcionalidades_');
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -229,7 +248,11 @@ class Empresa extends CI_Controller
   }
   function descargar_catalogo($id)
   {
-    $datos['empresa']= $this->empresa->get($id);    
+    $datos['empresa']= $this->empresa->get($id); 
+
+    if($datos['empresa']->membresia==1)
+    {redirect(base_url().'perfil/perfil_empresa/'.$id);}
+
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais=$this->pais->get($datos['usuario']->pais)->nombre;
@@ -242,32 +265,13 @@ class Empresa extends CI_Controller
     $datos['usuario']->departamento=$this->departamento->get($datos['usuario']->departamento)->nombre;
     $datos['productos'] = $this->producto->get_all(array('empresa'=>$id));
 
-    $filtro=38;
-    $tipo_filtro=0;
-
-    if($filtro!=0)
-    {
-      switch ($tipo_filtro) 
-      {
-        case 0:
-            $filtrado=$this->filtro_categoria_catalogo($datos['catalogos'],$filtro); 
-          break;
-        
-        default:
-            $filtrado=$this->filtro_categoria_catalogo($datos['catalogos'],0,$filtro); 
-            break;
-      }
-    }else
-    {
-      $filtrado=$this->filtro_categoria_catalogo($datos['catalogos']);
-    }
-    $productos=$filtrado['productos'];
+    $filtrado=$this->filtro_categoria_catalogo($datos['catalogos']);
     $datos['filtros']=$filtrado['categorias'];
     $datos['page']=0;//$page;
     
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-    $this->load->view('template/head');
+    $this->load->view('template/head',array('titulo'=>'Descargar Catálogo - '.$datos['empresa']->nombre));
     $this->load->view('template/javascript');
     $this->load->view('registro/funcionalidades_');
     $this->load->view('catologo_productos/top_menu_catalogo',array('usuario'=>$this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -297,21 +301,19 @@ class Empresa extends CI_Controller
     }
     return $out;
   }
-  private function filtro_categoria_catalogo($productos=0,$id_categoria=0,$id_subcategoria=0)
+  private function filtro_categoria_catalogo($catalogos=0,$id_categoria=0)
   {   
     $out=array();
-    foreach ($productos as $key => $value) 
+    foreach ($catalogos as $key => $catalogo) 
     {
-      $subcategoria=$this->subcategoria->get($value->categoria);
-      $categoria=$this->categoria->get($subcategoria->id_categoria);
+      $categoria=$this->categoria->get($catalogo->categoria);
+      if($categoria->nombre_categoria=="")continue;
       $out['categorias'][$categoria->nombre_categoria]['id']=$categoria->id_categoria;
       $out['categorias'][$categoria->nombre_categoria]['cantidad']+=1;
        
-      $producto=$this->cargar_producto($value);
-      if($id_subcategoria==$value->subcategoria)
-      { $out['productos'][]=$producto; }
+      if($id_categoria==0){ $out['productos'][]=$catalogo; }
       elseif($id_categoria==$categoria->id_categoria) 
-      { $out['productos'][]=$producto; }
+      { $out['productos'][]=$catalogo; }
     }
     return $out;
   }
@@ -319,10 +321,11 @@ class Empresa extends CI_Controller
   private function cargar_producto($dato)
   {
     $imagenes=explode(',',$dato->imagenes);
-    
+
+    $dato->imagenes="default.jpg";
     foreach ($imagenes as $value)
     {      
-      if(!is_null($value))
+      if(!$value=="")
       {
         $dato->imagenes=$value;
         break;

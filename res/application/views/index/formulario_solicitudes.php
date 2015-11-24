@@ -262,3 +262,33 @@ function ocultar_categorias()
 		</div>		
 	</div>
 </div>
+
+<script type="text/javascript">
+
+	     document.onload= start();
+	     start();
+		 var msj_enviado = true;//"<?=$mensaje_enviado?>";
+	     function start()
+	       {
+				if (msj_enviado)
+				{
+			       	var popup=new XMLHttpRequest();
+					url_popup="<?=base_url()?>popup/confirmar_mensaje";	
+
+					popup.open("GET", url_popup, true);
+					popup.addEventListener('load',show,false);
+					popup.send(null);
+
+					function show()
+						{
+							cotizar=document.getElementById('cotizar');
+							console.log(popup.response);
+							cotizar.innerHTML=popup.response;
+							document.getElementById('confimacion_msj_enviado').click();	
+						}
+				}
+			}
+
+	</script>
+  <div id="cotizar">
+		</div>

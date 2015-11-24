@@ -34,6 +34,9 @@ class Perfil extends CI_Controller {
 
 		if(!$empresa)
 			{redirect('registro/registrar');}
+
+		if($empresa->membresia>1)
+		{redirect(base_url().'empresa/inicio/'.$id_empresa);}
 		
 		$id_user=$empresa->usuario;
 		$datos['logo_empresa'] = $empresa->logo;
@@ -222,6 +225,9 @@ class Perfil extends CI_Controller {
 
 		if(!$empresa)
 			{redirect('registro/registrar');}
+
+		if($empresa->membresia>1)
+		{redirect(base_url().'empresa/nosotros/'.$id_empresa);}
 
 		$usuario=$this->usuarios->get($empresa->usuario);
 		$datos['des_empresa'] = $empresa->descripcion;
@@ -523,6 +529,9 @@ class Perfil extends CI_Controller {
 		if(!$empresa)
 			{redirect('registro/registrar');}
 
+		if($empresa->membresia>1)
+		{redirect(base_url().'empresa/cotizaciones_requeridas/'.$id_empresa);}
+
 		$id_user=$empresa->usuario;
 		
 		$datos['logo_empresa'] = $empresa->logo;
@@ -585,6 +594,9 @@ class Perfil extends CI_Controller {
 
 		if(!$empresa)
 			{redirect('registro/registrar');}
+
+		if($empresa->membresia>1)
+		{redirect(base_url().'empresa/contacto/'.$id_empresa);}
 		
 		$usuario=$this->usuarios->get($empresa->usuario);
 
