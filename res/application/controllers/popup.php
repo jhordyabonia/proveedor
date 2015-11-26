@@ -39,6 +39,8 @@ class Popup extends CI_Controller
     		$this->load->model('popups_textos_model', 'popups_textos');
 			$datos['id_popup']="asistentes_proveedor";
 			$datos['categoria']=33;
+	        $datos['index'] = FALSE;     
+	        $datos['categorias']  = $this->categorias->get_all();  
 			$datos['datos']=$this->popups_textos->get(array('categoria'=>$datos['categoria']));
 			$this->load->view('template/head', FALSE);
 			$this->load->view('template/javascript', FALSE);

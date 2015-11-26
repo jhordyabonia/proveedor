@@ -30,7 +30,7 @@ class Index extends CI_Controller {
 		$data['empresas']=$this->empresa->obtener_ultimos(5);
 
 		$this->load->model('popups_textos_model', 'popups_textos');
-		$datos=$this->popups_textos->get(array('categoria'=>0));
+		$datos=$this->popups_textos->get(array('categoria'=>42));
 		$titulos=array();
 		foreach (explode(',',$datos->titulos) as $key => $value) 
 		{
@@ -74,6 +74,15 @@ class Index extends CI_Controller {
 		$this->load->view('index/productos_patrocinados', $data);
 		$this->load->view('template/footer');
 		$this->load->view('template/footer_empy');
+
+        $dat['auto_launch_AP']=FALSE;
+        $dat['view'] = "asistentes_proveedor_popup";      
+        $dat['index'] = TRUE;     
+        $dat['datos']=$datos;     
+        $dat['categorias']  = $this->categoria->get_all();    
+        $dat['categoria'] = 42;      
+        $dat['id_popup'] = "asistentes_proveedor_popup";             
+        $this->load->view('popups/asistentes_proveedor', $dat);
 
 		$this->session->set_userdata('registro','');
 	}

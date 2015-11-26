@@ -57,7 +57,10 @@ class Registro extends CI_Controller {
 		$registro=$this->usuarios->get(array('email'=>$source->email));		
 		
 		if($registro!=FALSE)
+		{	
+			$this->activar_solicitud($id,$source->email);
 			redirect($_SERVER['HTTP_REFERER']);
+		}
 
 		$datos_usuario['usuario'] = "proveedor".substr($this->crypter->encrypt(rand(5,25)), 7);
 		$password=$this->crypter->encrypt(rand(10,50));
@@ -79,7 +82,7 @@ class Registro extends CI_Controller {
 		$datos_empresa['nombre'] =$source->nombre_empresa;
 		$datos_empresa['tipo'] = 1;
 		$datos_empresa['logo'] = "default.jpg";		
-		$datos_empresa['descripcion'] = "Empresa interesada en ".$this->categoria->get(38)->nombre_categoria;
+		$datos_empresa['descripcion'] = "Empresa interesada en ".$this->categoria->get($source->categoria)->nombre_categoria;
 		$datos_empresa['productos_principales'] = '';
 		$datos_empresa['productos_de_interes'] = '';	
 		$id_registro=$this->usuarios->insert($datos_usuario);
@@ -95,7 +98,7 @@ class Registro extends CI_Controller {
 		<br>Hola ".$source->nombres.", bienvenido(a) a <a href='".base_url()."'> Proveedor.com.co</a><br><br>"."
 
 		Hemos recibido correctamente tu solicitud. Recuerda a <a href='".base_url()."logueo/activar_cuenta/".$id."'>ACTIVAR TU CUENTA</a> para continuar.	
-		Ingresa a <a href='".base_url()."logueo/activar_cuenta/".$id."'>este enlace</a>,  copia  el nombre de usuario y contraseña para activar y publicar la solicitud de cotización, te recomendamos estar pendiente de tu correo y teléfono móvil dónde recibirás notificaciones.
+		Ingresa a <a href='".base_url()."logueo/activar_cuenta/".$id."'>este enlace</a>,  copia  el nombre de usuario y contraseña para activar y publicar la solicitud de cotización, te recomendamos estar atento de tu correo y teléfono móvil dónde recibirás notificaciones.
 		<br><br>Nombre de usuario: <b>".$source->email."</b><br>Contraseña: <b>".$password."</b><br> Atentamente, <br><a href='".base_url()."'>Equipo proveedor Proveedor.com.co</a><br>
 		<br><img style='max-width: 600px;' src='".img_url()."footer-email-platino.png' alt=''></div>";
 
@@ -116,6 +119,33 @@ class Registro extends CI_Controller {
 		#$this->bienvenida(array_merge($datos_empresa,$datos_usuario));
 		$this->session->set_userdata('mensaje_enviado',"TRUE");
 		redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	private function activar_solicitud($id,$email)
+	{
+		$mensaje="<div style='max-width: 600px;'> <img style='max-width: 600px;' src='".img_url()."header-email.png' alt=''>
+		<BR>Hemos recibido correctamente tu solicitud. Recuerda <a href='".base_url()."tablero_usuario/activar_solicitud/".$id."'>verificarla</a>, para su posterior activación.	
+		Ingresa a <a href='".base_url()."tablero_usuario/activar_solicitud/".$id."'>tu cuenta</a>,   para <a href='".base_url()."tablero_usuario/activar_solicitud/".$id."'>verificar</a> y publicar la solicitud de cotización, te recomendamos estar atento de tu correo y teléfono móvil dónde recibirás notificaciones.
+		<br> Atentamente, <br><a href='".base_url()."'>Equipo proveedor Proveedor.com.co</a><br>
+		<br><img style='max-width: 600px;' src='".img_url()."footer-email-platino.png' alt=''></div>";
+
+		$usr=$this->usuarios->get(array('email'=>$email))->id;
+		$emp=$this->empresa->get(array('usuario'=>$usr))->id;
+		$this->asistentes_proveedor->update(array('empresa'=>$$emp),$id);
+
+		$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+		$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		$this->email->to($email);
+		$this->email->subject("Verificar Solicitud");
+		$this->email->message($mensaje);
+		$this->email->send();
+		#echo @$mensaje;
+		
 	}
 
 	function validacion()

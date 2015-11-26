@@ -32,7 +32,7 @@
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-th-list"></span>
-					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Producto</a>
+					<a href="<?=base_url()?>config_empresa/publicar_producto" class="text-subitem">Subir Productos</a>
 				</div>
 				<div class="margin-conten col-xs-12 col-md-12 col-lg-12">
 					<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
@@ -168,6 +168,7 @@
 									  	<?=$key+1?>
 									  </span>
 									  <input type="text" class="form-control" name="videos[]" value="<?=$video?>" placeholder="Introdusca titulo del video" style="border-radius: 0;">
+									<a href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 									</div>
 								<?php endforeach;?>
 							</div>
@@ -176,6 +177,17 @@
 									videos=<?=count(explode(',',$empresa->videos))?>;
 									
 									videos_archivos=new Array();
+									function borrar_videos(id)
+									{
+										tmp_videos=document.getElementsByName('videos[]');
+										tmp_videos[id].value='';
+										i=0;
+										for(i=id;i<tmp_videos.length-1;i++)
+										{
+											tmp_videos[i].value=tmp_videos[i+1].value;
+										}
+										tmp_videos[i].value='';
+									}
 									function salvar_videos()
 									{
 										tmp_videos=document.getElementsByName('videos[]');
@@ -203,6 +215,7 @@
 											DOM+=++videos;
 											DOM+='</span>';
 											DOM+='<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca dirección del video" style="border-radius: 0;">';
+											DOM+='<a href="JavaScript:borrar_videos('+videos+')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
 											DOM+='</div>';
 											document.getElementById('videos').innerHTML+=DOM;
 											fijar_videos();

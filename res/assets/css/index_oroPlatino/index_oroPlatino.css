@@ -192,6 +192,7 @@
 .banner
 {
     max-height: 284px;
+    max-width: 1136px;
 }
 .botones_contac{
     margin-top: 45px;

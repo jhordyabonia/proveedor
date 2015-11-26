@@ -651,6 +651,8 @@ class Perfil extends CI_Controller {
 			$dat['datos']=$this->popups_textos->get(array('categoria'=>$dat['categoria']));
 			$dat['view'] = "asistentes_proveedor";		
 			$dat['id_popup'] = "asistentes_proveedor";	
+	        $dat['index'] = FALSE;     
+	        $dat['categorias']  = $this->categorias->get_all();  
 			$this->load->view('popups/asistentes_proveedor_servicios', $dat);
 			#return;
 		}
@@ -676,6 +678,8 @@ class Perfil extends CI_Controller {
 		
 		$datos['id_empresa']=$id_empresa;
 		$datos['titulo']=$empresa->nombre;
+        $datos['index'] = FALSE;     
+        $datos['categorias']  = $this->categorias->get_all();  
 		$datos['div_membresia']=$this->membresia->get_div($id_empresa);
 		$datos['usuario']=$this->session->userdata('usuario');
 		$this->load->view('template/head', $datos, FALSE);

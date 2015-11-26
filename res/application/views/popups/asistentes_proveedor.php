@@ -101,24 +101,33 @@
 
                   <p class="requerido"><span class="fa fa-asterisk asterisk"></span> Requerido</p><br>
 
-                 <?php if($datos->campos!=str_replace('email',"",$datos->campos)):?>
+                
+                 <?php if($index):?>
 
-                  <label for="email" class="label_modal_email hidden-xs hidden-sm"><?=$datos->titulos['email']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+                  <label for="forma_pago" class="label_modal hidden-xs hidden-sm">Categoría:</label>
 
                   <div class="input-group">
 
                     <span class="input-group-addon">
 
-                      <span class="fa fa-at" aria-hidden="true"></span>
+                      <span class="fa fa-list-ul" aria-hidden="true"></span>
 
                     </span>
+                    <input required id="categoria_requerida" type="hidden">
+                    <select onchange="document.getElementById('categoria_requerida').value=this.value;"
+                    name="categoria" class="form-control formas_de_pago" placeholder="Seleccione una categoría" required>
 
-                    <input type="email" class="form-control tam_caja" placeholder="<?=$datos->titulos['email']?>" name="email" value="" required>
-
-                  <input type="hidden" name="tipo" value="">
+                    <option>Seleccione una categoría</option>
+                    <optgroup label="__________________________________________________"></optgroup>
+                      <?php foreach ($categorias as $key => $value):?>
+                      <option  value="<?=$value->id_categora?>"><?=$value->nombre_categoria?></option>
+                      <?php endforeach;?>
+                    </select>
 
                   </div>
 
+                <?php else:?>
+                   <input type="hidden" class="form-control texto_ciudad tam_caja" placeholder="" name="categoria" value="<?=$categoria?>">
                 <?php endif;?>
 
                  <?php if($datos->campos!=str_replace('nombre', "",$datos->campos)):?>
@@ -178,7 +187,7 @@
                       </span>
                       <div class="" id="adjunto" unable onclick="document.getElementById('userfile').click();"></div>
                       <div style='display:none'>
-                         <input type="file" class="upload"  onchange="JavaScript:var paths = document.getElementById('userfile').files;document.getElementById('adjunto').innerHTML=paths[0]['name'];" id="userfile" name="userfile"  data-badge="false">
+                         <input type="file" class="upload"  onchange="JavaScript:var paths = document.getElementById('userfile').files;document.getElementById('adjunto').innerHTML='<b>Archivo Adjunto: </b> '+paths[0]['name'];" id="userfile" name="userfile"  data-badge="false">
                       </div>
 
                     </div>
@@ -277,6 +286,26 @@
 
                 <?php endif;?>
 
+                 <?php if($datos->campos!=str_replace('email',"",$datos->campos)):?>
+
+                  <label for="email" class="label_modal_email hidden-xs hidden-sm"><?=$datos->titulos['email']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
+
+                  <div class="input-group">
+
+                    <span class="input-group-addon">
+
+                      <span class="fa fa-at" aria-hidden="true"></span>
+
+                    </span>
+
+                    <input type="email" class="form-control tam_caja" placeholder="<?=$datos->titulos['email']?>" name="email" value="" required>
+
+                  <input type="hidden" name="tipo" value="">
+
+                  </div>
+
+                <?php endif;?>
+
                  <?php if($datos->campos!=str_replace('teléfono', "",$datos->campos)):?>
 
                   <label for="empresa" class="label_modal hidden-xs hidden-sm"><?=$datos->titulos['teléfono']?>:<span class="fa fa-asterisk asterisk_label"></span></label>
@@ -323,8 +352,6 @@
                     <button type="submit" class="btn btn-default center-block boton_enviar">SOLICITAR</button>
 
                   </div>
-
-                  <input type="hidden" class="form-control texto_ciudad tam_caja" placeholder="" name="categoria" value="<?=$categoria?>">
 
                   <?=$datos->texto_body?> 
 

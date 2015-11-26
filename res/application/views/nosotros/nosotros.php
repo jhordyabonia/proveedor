@@ -82,7 +82,6 @@
 			    		<p class="texto-membresia"><?=$membresia->nombre?></p>
 			    		<?php if($membresia->id==3):?><li><p class="texto_descrip_mem">Esta empresa cuenta con una membresía <?=str_replace('Empresa' , '',$membresia->nombre)?> en Proveedor.com.co lo que le da más de 15 beneficios que incluyen posicionamiento superior, página de empresa completa y acceso a un número importante de oportunidades comerciales cada semana.</p></li>
 			    		<?php elseif($membresia->id==2):?><li><p class="texto_descrip_mem">Esta empresa cuenta con una membresía <?=str_replace('Empresa' , '',$membresia->nombre)?> en Proveedor.com.co lo que le da más de 5 beneficios que incluyen posicionamiento, página de empresa completa </p></li>
-			    		<?php elseif($membresia->id==1):?><li><p class="texto_descrip_mem">Esta empresa cuenta con una membresía <?=str_replace('Empresa' , '',$membresia->nombre)?> en Proveedor.com.co lo que le da más de 15 beneficios que incluyen, página de empresa y  envío y resepción de cotizaciones, directo a su email.</p></li><?php endif;?>
 			    	</div>
 			    	<?php if($empresa->legalizacion):?>
 				    	<div class="container_vision col-md-12">

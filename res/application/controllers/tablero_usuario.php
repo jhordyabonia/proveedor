@@ -111,6 +111,8 @@ class Tablero_usuario extends CI_Controller {
         $dat['auto_launch_AP']=TRUE;
         $dat['datos']=$datos;
         $dat['solicitud']=$source;
+        $dat['index'] = FALSE;     
+        $dat['categorias']  = $this->categoria->get_all();  
         $dat['view'] = "asistentes_proveedor_popup";      
         $dat['categoria'] = $this->categoria->get($source->categoria);      
         $dat['id_popup'] = "asistentes_proveedor_popup";             
