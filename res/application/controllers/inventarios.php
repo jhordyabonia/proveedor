@@ -22,7 +22,8 @@ class Inventarios extends CI_Controller {
         $this->load->model('new/Subcategoria_model','subcategoria');
         $this->load->model('new/Usuarios_model','usuarios');
         $this->load->model('u_model','u');
-        $this->load->library('excelNew');
+        $this->load->library('excelNew');        
+        $this->verifyc_login();
     }
     // end: construc
      
@@ -33,8 +34,25 @@ class Inventarios extends CI_Controller {
 
 
      
+    private function verifyc_login()
+    {
+        $usuario =$this->usuarios->get($this->session->userdata('id_usuario'));
+        if($usuario->permisos==1)
+        {   return TRUE;    }
+
+        redirect(base_url());
+    } 
+    
     public function index()
     {
+
+        #$dat['titulo']="Registro masivo de productos";
+        #$dat['nit']=$this->session->userdata('empresa');
+        #$dat['usuario']=$this->session->userdata('usuario');
+
+        #$this->load->view('template/head', $dat);
+        #$this->load->view('tablero_usuario/header', $dat, FALSE);
+        #$this->load->view('template/javascript', FALSE);
         $data['namefile']="";
         $data['id_empresa']="";
         $this->load->view('inventarios/cargar',$data);
@@ -87,6 +105,14 @@ class Inventarios extends CI_Controller {
         echo "</PRE>";
         return;
         */
+
+        $dat['titulo']="Registro masivo de productos";
+        $dat['nit']=$this->session->userdata('empresa');
+        $dat['usuario']=$this->session->userdata('usuario');
+
+        $this->load->view('template/head', $dat);
+        $this->load->view('tablero_usuario/header', $dat, FALSE);
+        $this->load->view('template/javascript', FALSE);
         $data['namefile']=$data['url_full'];
         $this->load->view("template/head", $data);
         $this->load->view('inventarios/cargar',$data);
@@ -126,7 +152,7 @@ class Inventarios extends CI_Controller {
          $productos[$i]['precio_unidad']=$precios[$i]|0;
          $productos[$i]['subcategoria']=$this->subcategoria($subcategorias[$i]);
          $productos[$i]['pedido_minimo']=$pedidos_minimos[$i]|1;
-         $productos[$i]['formas_de_pago']=$formas_de_pago[$i]|"A conenir";
+         $productos[$i]['formas_de_pago']=$formas_de_pago[$i]|"A convenir";
          $productos[$i]['empresa']=$id_empresa;
        }
 
@@ -141,6 +167,13 @@ class Inventarios extends CI_Controller {
         }
           
        #return;
+        $dat['titulo']="Registro masivo de productos";
+        $dat['nit']=$this->session->userdata('empresa');
+        $dat['usuario']=$this->session->userdata('usuario');
+
+        $this->load->view('template/head', $dat);
+        $this->load->view('tablero_usuario/header', $dat, FALSE);
+        $this->load->view('template/javascript', FALSE);
        echo "<center><h3>Se registraron ".$key." productos, con exito!!</h3>";
        $out['empresa']=$this->empresa->get($id_empresa);
        echo "<h4>Empresa: ".$out['empresa']->nombre;

@@ -84,7 +84,7 @@
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
 					</div>
-						<a class="btn btn-descargar" href="<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>" target="other">
+						<a class="btn btn-descargar" href="<?=base_url()?>uploads/resize/catalogo/<?=$catalogo->catalogo?>" target="other">
 							<span class="icon_style_des3 glyphicon glyphicon-download-alt"></span>
 							DESCARGAR
 						</a>

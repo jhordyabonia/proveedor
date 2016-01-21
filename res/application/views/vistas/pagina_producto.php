@@ -550,8 +550,8 @@
 							<tr> <td style="width: 322px; max-width: 322px; height: 360px;">
 									<div class="sp-wrap"> <!-- maximo 8 imagenes -->
 										<?php foreach ($img_principal as $row): ?> <!--Este ciclo trae de la bd el nombre de la imagen -->
-											<a href="<?= base_url() ?>uploads/<?php echo $row['nombre_img']; ?>">
-												<img src="<?= base_url() ?>uploads/<?php echo $row['nombre_img']; ?>" alt=""> </a>
+											<a href="<?= base_url() ?>uploads/resize<?php echo $row['nombre_img']; ?>">
+												<img src="<?= base_url() ?>uploads/resize<?php echo $row['nombre_img']; ?>" alt=""> </a>
 										<?php endforeach; ?>
 									</div>
 								</td> </tr>
@@ -927,7 +927,7 @@
 																		<td class="subtitulo">
 																			<table width="auto" style="margin-left: 0px;"> <tr>
 																					<td width="15%">
-																						<img src="<?= base_url() ?>uploads/<?= $img_mensaje->nombre_img; ?>"
+																						<img src="<?= base_url() ?>uploads/resize<?= $img_mensaje->nombre_img; ?>"
 																							 style="width: auto; height: auto; max-width: 80px; max-height: 50px;" /> </td>
 																					<td width="80%" style="vertical-align: middle;"> <a href="#">
 																							<?php echo $nombre_producto->nom_producto; ?> </a> </td>

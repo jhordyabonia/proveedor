@@ -57,7 +57,7 @@
                     <div class="cadaElem col-md-12">
                       <div class="divImg col-md-4 col-sm-12 col-xs-12"> 
                         <a href="<?php echo $producto->url ?>">
-                          <img src="<?php echo $producto->imagen ?>" />
+                          <img src="<?=base_url()?>uploads/resize/index_carrouseles/<?=$producto->imagen?>" />
                         </a>
                       </div>
                       <div class="divCont col-md-8 col-sm-12 col-xs-12">
@@ -105,7 +105,7 @@
                     <div class="cadaElem col-md-12">
                       <div class="divImg col-md-4 col-sm-12 col-xs-12"> 
                         <a href="<?php echo $solicitud->url ?>">
-                          <img src="<?php echo $solicitud->imagen ?>" />
+                          <img src="<?=base_url()?>uploads/resize/index_carrouseles/<?=$solicitud->imagen?>" />
                         </a>
                       </div>
                       <div class="divCont col-md-8 col-sm-12 col-xs-12">
@@ -153,7 +153,7 @@
                     <div class="cadaElem col-md-12">
                       <div class="divImg col-md-4 col-sm-12 col-xs-12"> 
                         <a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>">
-                          <img src="<?=base_url()?>uploads/logos/<?=$empresa->logo ?>" />
+                          <img src="<?=base_url()?>uploads/resize/index_carrouseles/logos/<?=$empresa->logo ?>" />
                         </a>
                       </div>
                       <div class="divCont col-md-8 col-sm-12 col-xs-12">

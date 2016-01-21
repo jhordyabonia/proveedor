@@ -10,6 +10,7 @@
 	<!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
 	<link href="<?= base_url() ?>assets/img/logoweb.ico" rel="shortcut icon" />
 	<script> var base_url = "<?= base_url() ?>"; </script>
+  <meta name="google-site-verification" content="px6HVEw0kihblm_G6SY3jvhBiP8mMdC0Zscl_TKI1bI" />
 </head>
 <body>
 

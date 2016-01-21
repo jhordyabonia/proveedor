@@ -66,6 +66,13 @@
 		  <div class="row">
 
 	        
+        <!-- columna de tamaño 9 para la tabla un espacio -->
+        <div class="col-xs-10 col-xs-push-0 table-responsive " > <CENTER>
+
+		<a href="<?=base_url()?>inventarios2"><h2>Registro masivos<i class="fa fa-shield fa-flip-vertical" > 
+						</i> </h2></a>
+		<a href="<?=base_url()?>inventarios2/eliminar"><h2>Eliminar registros masivos</h2></a>
+
 
         <!-- columna de tamaño 9 para la tabla un espacio -->
         <div class="col-xs-10 col-xs-push-0 table-responsive " >
@@ -104,7 +111,7 @@
 	                    </center> 
                      </td>
                       <td width="15%" > 
-						<img  class="center-block" src="<?=base_url()?>uploads/logos/<?=$proveedor['empresa']->logo?>" style="max-width:155px; max-height:70px">
+						<img  class="center-block" src="<?=base_url()?>uploads/resize/logos/<?=$proveedor['empresa']->logo?>" style="max-width:155px; max-height:70px">
 					 	<input id="empresa_<?=$proveedor['empresa']->id?>logo_old" type="hidden" value="<?=$proveedor['empresa']->logo?>">
 					  </td>
                       <td width="15%" > 
@@ -116,6 +123,17 @@
 					  </td>					  
 					  <td width="30%" > 
 					   	<center>
+					   		<b>Tipo Registro:</b><br>
+					   			<?php if($proveedor['empresa']->tipo_registro==1): ?> 
+	                      			<option value="1">Orgánico</option>
+	                      		<?php elseif ($proveedor['empresa']->tipo_registro==2): ?>
+	                      			Automático (Desde Solicitud)
+	                      		<?php elseif ($proveedor['empresa']->tipo_registro==3): ?>
+	                      			Registro Masivo
+	                      		<?php else:?>	                
+	                      			Registro Rápido (Desde Micro_admin)
+	                      		<?php endif;?>
+                      		<br>
 					   		<b>Membresia:</b>
                       		<br>
                       		<select value="<?=$proveedor['empresa']->membresia?>" 

@@ -87,9 +87,9 @@
 										<td width="20%" > 
 										 <a href="<?= base_url(); ?>oportunidad_comercial/ver/<?=$solicitud->id?>" >
 											<div class="center-block" style="height: 120px; width: 120px; /* border-style: solid; *"/>
-												<img src="<?= base_url() ?>uploads/<?=$solicitud->nombre_img?>" 
+												<img src="<?= base_url() ?>uploads/resize/<?=$solicitud->nombre_img?>" 
 												class="img-responsive center-block" style="/* margin: auto auto; */ height: 85%;"/> 
-												<!--<img src="<?= base_url() ?>uploads/<?=$oferta->nombre_img?>" width="80px" height="118px"/> -->
+												<!--<img src="<?= base_url() ?>uploads/resize/<?=$oferta->nombre_img?>" width="80px" height="118px"/> -->
 											</div>
 										</td>
 											</a>

@@ -48,17 +48,55 @@ class Registro extends CI_Controller {
 	function registro_usuario() 
 	{	$this->index(); }
 	
+	function create_users()
+	{
+		$u=$this->asistentes_proveedor->get_all(array('empresa'=>'0'));
+		$out=0;
+		foreach ($u as $key => $value) 
+		{
+			$this->registro_automatico($value->id);
+			$out++;
+		}
+
+		echo $out." nuevas empresas.";
+
+	} 
+
+	function update_names()
+	{
+		$empresas= $this->empresa->get_all();
+		foreach ($empresas as $key => $value) 
+		{
+			if(stripos($value->nombre, "empresa")===FALSE)
+				{}else
+			$this->empresa->update(array('nombre'=>'Empresa Compradora - '.($value->id-10650)),$value->id);
+		}
+	}
+	function update_categoria()
+	{
+
+		$sources=$this->asistentes_proveedor->get_all();
+		foreach ($sources as $key => $value) 
+		{
+			$descripcion= "Empresa interesada en ".$this->categoria->get($value->categoria)->nombre_categoria;
+			$this->empresa->update(array('descripcion'=>$descripcion),$value->empresa);		
+		}
+	}
+
 	function registro_automatico($id)
 	{
 		$source=$this->asistentes_proveedor->get($id);
 		if($source->empresa!=0)
-			redirect($_SERVER['HTTP_REFERER']);
+		{	
+	        $this->session->set_flashdata('auto_launch_AP', 2);
+	        redirect($_SERVER['HTTP_REFERER']);
+	    }
 
 		$registro=$this->usuarios->get(array('email'=>$source->email));		
 		
 		if($registro!=FALSE)
 		{	
-			$this->activar_solicitud($id,$source->email);
+        	$this->session->set_flashdata('auto_launch_AP', 2);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 
@@ -66,8 +104,11 @@ class Registro extends CI_Controller {
 		$password=$this->crypter->encrypt(rand(10,50));
 		$datos_usuario['email'] = $source->email;
 		$datos_usuario['password'] = md5($password);
-		$datos_usuario['rol'] = '';	
-		$datos_usuario['nombres']= $source->nombres;
+		$datos_usuario['rol'] = '';
+		if($source->nombres!="")	
+			$datos_usuario['nombres']= $source->nombres;
+		else 
+			$datos_usuario['nombres']= "Empresa "+$source->id;
 		$datos_usuario['cargo'] = '';
 		$datos_usuario['direccion'] = '';
 		$datos_usuario['departamento'] = 33;
@@ -78,9 +119,10 @@ class Registro extends CI_Controller {
 		$datos_usuario['telefono'] = $source->telefono;
 		//Datos de Empresa
 		$datos_empresa['categorias']=$source->categoria.'|';
+		$datos_empresa['tipo_registro'] =2;
 		$datos_empresa['nit'] = '';
 		$datos_empresa['nombre'] =$source->nombre_empresa;
-		$datos_empresa['tipo'] = 1;
+		$datos_empresa['tipo'] = 8;
 		$datos_empresa['logo'] = "default.jpg";		
 		$datos_empresa['descripcion'] = "Empresa interesada en ".$this->categoria->get($source->categoria)->nombre_categoria;
 		$datos_empresa['productos_principales'] = '';
@@ -117,7 +159,10 @@ class Registro extends CI_Controller {
 
 		#echo @$mensaje;
 		#$this->bienvenida(array_merge($datos_empresa,$datos_usuario));
-		$this->session->set_userdata('mensaje_enviado',"TRUE");
+		#$this->session->set_userdata('mensaje_enviado',"TRUE");
+
+        $this->session->set_flashdata('auto_launch_AP', 2);
+		#return;
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
@@ -323,6 +368,32 @@ class Registro extends CI_Controller {
 		redirect('tablero_usuario');		
 	}	
 
+	private function resize_img($path,$img)
+	{
+		$this->resize("logos/".$img,"index_carrouseles/logos/",120,120);
+		$this->resize("logos/".$img,"index_productos_principales/logos/",184,41);
+		$this->resize("logos/".$img,"index_productos_principales_mas_destacado/logos/",237,56);
+		$this->resize("logos/".$img,"pagina_de_empresa/logos/",180,90);
+	}
+	private function resize($img,$destino="",$width=316,$heigth=160)
+	{		
+		$CI = & get_instance();
+        $CI->load->library('image_lib');
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = 'uploads/'.$img;#$data['full_path'];"uploads/imagenes/1.png";
+        $config['new_image'] = 'uploads/resize/'.$destino;
+        $config['maintain_ratio'] = TRUE;
+        $config['create_thumb'] = FALSE;
+        $config['width'] = $width;
+        $config['height'] = $heigth;
+
+        $CI->image_lib->initialize($config);
+
+        if ($CI->image_lib->resize());
+        	#{echo "<br>hecho";}
+	}
+
+
 	private function subir_logo()
 	{
 		//Configuramos los parametros para subir el archivo al servidor.        
@@ -340,6 +411,7 @@ class Registro extends CI_Controller {
         else
         {            
             $data = array('upload_data' => $this->upload->data()); 
+            $this->resize_img($config['upload_path'],$data['upload_data']['file_name']);
             return $data['upload_data']['file_name'];
         }       
 	}

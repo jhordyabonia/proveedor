@@ -1,4 +1,5 @@
 <a data-toggle="modal" id="popup_launch_AP" data-target="#<?=$id_popup?>">
+  </a><a data-toggle="modal" id="popup_launch_msj" data-target="#msj">
   </a>
 
 <?=form_open_multipart('popup/asistentes_proveedor/TRUE');  ?>
@@ -113,15 +114,12 @@
                       <span class="fa fa-list-ul" aria-hidden="true"></span>
 
                     </span>
-                    <input required id="categoria_requerida" type="hidden">
-                    <select onchange="document.getElementById('categoria_requerida').value=this.value;"
-                    name="categoria" class="form-control formas_de_pago" placeholder="Seleccione una categoría" required>
-
-                    <option>Seleccione una categoría</option>
-                    <optgroup label="__________________________________________________"></optgroup>
-                      <?php foreach ($categorias as $key => $value):?>
-                      <option  value="<?=$value->id_categora?>"><?=$value->nombre_categoria?></option>
-                      <?php endforeach;?>
+                    <select  name="categoria" class="form-control formas_de_pago" required>
+                      <option value="38">Seleccione una categoría</option>
+                      <optgroup label="__________________________________________________"></optgroup>
+                        <?php foreach ($categorias as $key => $value):?>
+                          <option  value="<?=$value->id_categoria?>"><?=$value->nombre_categoria?></option>
+                        <?php endforeach;?>
                     </select>
 
                   </div>
@@ -372,6 +370,48 @@
   function fun()
   {
     document.getElementById('popup_launch_AP').click();
+  }
+  </SCRIPT>
+  <?php elseif($this->session->flashdata('auto_launch_AP')=="2"||$auto_launch_AP):?>
+  <div class="login">
+  <link rel="stylesheet" type="text/css" href="<?php echo css_url()?>styles_login.css">
+        <div class="modal fade" id="msj" tabindex="-1" role="dialog" 
+                  aria-labelledby="myModalLabel" aria-hidden="true" >
+          <div class="modal-dialog ">
+            <div class="modal-content modal-content-login modal-content-one">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">
+                  <span class="glyphicon glyphicon-remove icono_cerrar" aria-hidden="true">
+                  </span>
+                  </span>
+                  <span class="sr-only">Close</span>
+               </button>
+                
+                <span class="glyphicon glyphicon-ok-sign icon_conf" aria-hidden="true" >
+                </span>
+                <h4 class="text-center"> 
+                  <b>Mensaje enviado</b>
+                </h4>
+                <h5 class="text-center">Su mensaje ha sido enviado exitosamente.</h5>
+                <button type="button" class="btn btn-primary btn_hecho" data-dismiss="modal"
+                onclick="JavaScript:window.location.reload()">
+                    Hecho
+                </button>
+
+              </div>
+              <div class="modal-body">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <SCRIPT TYPE="text/javascript">
+    window.onload=fun();
+  function fun()
+  {
+    document.getElementById('popup_launch_msj').click();
   }
   </SCRIPT>
   <?php endif;?>

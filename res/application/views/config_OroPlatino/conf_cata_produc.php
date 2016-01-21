@@ -54,7 +54,7 @@
 			<div class="conten-general-cata col-xs-12 col-md-9 col-lg-9">
 				<h3>
 					<span class="ico-cont-style glyphicon glyphicon-th-list"></span>
-					Catálogo de Productos
+					Subir Productos
 				</h3>
 				<div class="content-catalogo-pro">
 					<div class="titles">
@@ -236,7 +236,7 @@
 							  			<p class="text-subir-img">Subir imagenes del producto</p>
 							  		</a>
 							  		<div class="container-logo-empresa inline-block">
-							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/logos/default.png">
+							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/resize/logos/default.png">
 							  		</div>
 							  	</div>   
 							  	<div style="display:none">

@@ -241,7 +241,7 @@
 						<div>
 							<div class="alineacion-inlineblock style-default">
 		 						<p style="line-height: 1;margin-top: 2px;">
-		 							<img  id="logo" alt="Solo se permiten imagenes de en formato JPG y PNG" style="display:none; max-width:70px; max-height:50px" src="<?=base_url()?>uploads/default.jpg">
+		 							<img  id="logo" alt="Solo se permiten imagenes de en formato JPG y PNG" style="display:none; max-width:70px; max-height:50px" src="<?=base_url()?>uploads/resize/default.jpg">
 		 							<i id='err_logo' class="style-text-validation" style="display:none">
 										<span class="glyphicon glyphicon-remove-sign boton-verificar-nok"></span>
 										<br>

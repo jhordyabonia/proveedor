@@ -169,7 +169,7 @@ function submit()
 						<h3 class="text-title-pub">Seleccionar Productos Principales</h3>
 					</div>
 					<div class="conten-formulario-cata">						
-						<p>Para mostrar los productos principales de su empresa en las pestañas de <span class="ico-prin glyphicon glyphicon-home"></span>Inicio y <span class="ico-prin glyphicon glyphicon-th-list"></span>Catálogo de Producto
+						<p>Para mostrar los productos principales de su empresa en las pestañas de <a href="<?=base_url()?>config_empresa/inicio"><span class="ico-prin glyphicon glyphicon-home"></span>Inicio </a>y <a href="<?=base_url()?>producto/administrar"><span class="ico-prin glyphicon glyphicon-th-list"></span>Catálogo de Producto</a>
 							debes seguir estos pasos:
 						</p>
 						<p>1.Debes seleccionar uno o varios productos del listado de "Productos publicados".</p>
@@ -197,7 +197,7 @@ function submit()
 											<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar(<?=$key+1?>);">Bajar</a>
 										</div>
 										<div class="img-nom-remove" id="img<?=$key+1?>">
-											<img class="img_mini_preview_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
+											<img class="img_mini_preview_producto" src="<?=base_url()?>uploads/resize/<?=$producto->imagenes?>">
 										</div>
 										<div class="nom-prod">
 											<p class="nom-produc" id="nom<?=$key+1?>"><?=$producto->nombre?></p>
@@ -247,7 +247,7 @@ function submit()
 						<?php foreach($productos as $producto):?>
 							<div class="padding-bottom col-lg-6">
 								<div class="imagen-prin inline-block">
-									<img class="img-responsive img_preview_producto" id="imagen_producto_<?=$producto->id?>" src="<?=base_url()?>uploads/<?=$producto->imagenes?>">
+									<img class="img-responsive img_preview_producto" id="imagen_producto_<?=$producto->id?>" src="<?=base_url()?>uploads/resize/<?=$producto->imagenes?>">
 								</div>
 								<div class="info-pro-pri inline-block">
 									<p class="txt_nomproducto2" id="nombre_producto_<?=$producto->id?>"><?=$producto->nombre?></p>

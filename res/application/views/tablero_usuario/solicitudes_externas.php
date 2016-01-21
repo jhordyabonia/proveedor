@@ -148,7 +148,7 @@ document.oncontextmenu=inhabilitar
 	                    	<input type="checkbox" name="<?=$dato->id?>" onchange="JavaScript:destinatarios=document.getElementById('destinatarios');if(this.checked){destinatarios.value+=','+this.name}else{destinatarios.value=destinatarios.value.replace(','+this.name,'')}console.log(destinatarios.value);"/>
 	                    </td>    
 	                    <td width="7%" class="centrado">
-	                    	<!--<img  src="<?=base_url()?>uploads/logos/<?=$dato->logo?>"/>-->
+	                    	<!--<img  src="<?=base_url()?>uploads/resize/logos/<?=$dato->logo?>"/>-->
 	                         <p class="fecha_solicitud"><?=$dato->fecha?><br></p>
 	                    </td>    
 	                    <th width="20%" class="dato1">                 
@@ -157,7 +157,7 @@ document.oncontextmenu=inhabilitar
 	                    <td width="20%" class="dato1">   
 	                        <p class="descripcion_solicitud"><?=$dato->descripcion?></p>
 	                        <?php if($dato->adjunto):?>
-		                        <a href="<?=base_url()?>uploads/adjunto/<?=$dato->adjunto?>">
+		                        <a href="<?=base_url()?>uploads/resize/adjunto/<?=$dato->adjunto?>">
 		                        	Descargar adjunto <?=$dato->adjunto?>
 		                        </a>
 	                    	<?php endif;?>
@@ -180,7 +180,7 @@ document.oncontextmenu=inhabilitar
 		                     	<tr><th class="label_dato">Tipo:<th class="dato"> 
 	                     	</table>
 		                    <?php else:?>
-		                   <!-- <img src="<?=base_url()?>uploads/ver_mas.jpg">-->
+		                   <!-- <img src="<?=base_url()?>uploads/resize/ver_mas.jpg">-->
 		                   	<div class="col-md-12 contenedor_tabla_estandar">
 		                   		<div class="col-md-4 contenedor_estandar">
 		                   			<table>

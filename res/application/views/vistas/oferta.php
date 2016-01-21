@@ -987,8 +987,8 @@
   						<tr> <td style="width: 322px; max-width: 322px; height: 360px;">
   							<div class="sp-wrap"> <?php
                   foreach ($imagenes as $imagen) { ?>
-                    <a href="<?php echo base_url()."uploads/".$imagen['nombre_img']; ?>">
-                      <img src="<?php echo base_url()."uploads/".$imagen['nombre_img']; ?>" alt=""> </a> <?php
+                    <a href="<?php echo base_url()."uploads/resize".$imagen['nombre_img']; ?>">
+                      <img src="<?php echo base_url()."uploads/resize".$imagen['nombre_img']; ?>" alt=""> </a> <?php
                   } ?>
   							</div>
   						</td> </tr>
@@ -1271,7 +1271,7 @@
   												<td class="subtitulo">
   													<table style="width: auto; margin-left: 0px;"> <tr>
   														<td style="width: 15%;">
-                                <img src="<?php echo base_url()."uploads/".$imagenes[0]['nombre_img']; ?>"
+                                <img src="<?php echo base_url()."uploads/resize".$imagenes[0]['nombre_img']; ?>"
                                   style="width: 75px;" /> </td>
   														<td style="width: 80%; vertical-align: middle; padding-left: 1em;">
                                 <a href="#"> <?php echo $nom_producto; ?> </a> </td>

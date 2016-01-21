@@ -60,7 +60,7 @@ $seg4 = $this->uri->segment(4);
 								<p class="text_descript">  
 									<div class="col-md-2 logo_div">
 										<div class="col-md-12 center-block">
-											<img class="img-responsive center-block logo_empresa" src="<?php echo base_url()?>uploads/logos/<?php echo $logo_empresa->logo; ?>" alt="Logo Empresa" class="img-responsive">
+											<img class="img-responsive center-block logo_empresa" src="<?php echo base_url()?>uploads/resize/logos/<?php echo $logo_empresa->logo; ?>" alt="Logo Empresa" class="img-responsive">
 											<input type='file' name='logo'>Cambiar</input>
 										</div>		
 									</div>

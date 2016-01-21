@@ -306,7 +306,7 @@
        <div class="col-md-3 logo_div col-sm-2 col-xs-10">
           <div class="col-md-12 center-block">
 
-            <img id="logo" class="center-block logo_empresa" height="50px" src="<?php echo base_url()?>uploads/logos/<?php echo $empresa->logo; ?>" alt="Logo Empresa">
+            <img id="logo" class="center-block logo_empresa" height="50px" src="<?php echo base_url()?>uploads/resize/logos/<?php echo $empresa->logo; ?>" alt="Logo Empresa">
             <input type="hidden" name="logo_old" value="<?=$empresa->logo; ?>">
           </div>    
         </div>

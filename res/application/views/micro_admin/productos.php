@@ -115,7 +115,7 @@
                     <td width="10%" > 
                      <a href="<?= base_url(); ?>producto/ver/<?=$producto->id?>/0" >
                         <div class="center-block" style="height: 120px; width: 120px; /* border-style: solid; */">
-                            <img src="<?= base_url() ?>uploads/<?=$producto->imagenes?>" 
+                            <img src="<?= base_url() ?>uploads/resize/<?=$producto->imagenes?>" 
                             class="img-responsive center-block" style="/* margin: auto auto; */ height: 85%;"/>
                         </div>
                     </td>

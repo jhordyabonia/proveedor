@@ -29,6 +29,7 @@ width: 480px;
 .conten_header_catalogo{
 	width: 100%;
 	height: 245px;
+	overflow: hidden;
 }
 .conten_header_item{
 	width: 100%;

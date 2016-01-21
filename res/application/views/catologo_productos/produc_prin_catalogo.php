@@ -83,8 +83,9 @@
 		<div class="contenedor_productos_item">
 		<?php foreach($destacados as $key=>$producto):?>
 		<?php if(!$producto){continue;}?>
+		<?php if($producto->nombre==""){continue;}?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -99,8 +100,10 @@
 		<?php endforeach;?>
 		<?php foreach($productos as $key=>$producto):?>
 		<?php if(!$producto){continue;}?>
+		<?php if($producto->nombre==""){continue;}?>
+
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">

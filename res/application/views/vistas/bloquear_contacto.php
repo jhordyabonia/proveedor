@@ -88,7 +88,7 @@
 					new_content += '</div>';
 					
 					new_content += '<div class="grid_2 alpha" id="tablita_col1_p">';
-						new_content += '<img src="<?=base_url()?>uploads/logos/' + contactosB[i][0] + '" width="120" height="67"/> <br> <br>';
+						new_content += '<img src="<?=base_url()?>uploads/resize/logos/' + contactosB[i][0] + '" width="120" height="67"/> <br> <br>';
 						new_content += '<p style="color: grey; font-weight: bold;">' + contactosB[i][1] + '</p>';
 					new_content += '</div>';
 

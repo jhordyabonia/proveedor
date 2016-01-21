@@ -186,7 +186,7 @@
 							<paper-ripple fit></paper-ripple>
 						</div>
 						<div class="alineacion-inlineblock">
-	 						<img id="logo" class="center-block logo_empresa" style="margin-top: 10px;" height="50px" src="<?=base_url()?>uploads/logos/default.jpg" alt="Logo Empresa">
+	 						<img id="logo" class="center-block logo_empresa" style="margin-top: 10px;" height="50px" src="<?=base_url()?>uploads/resize/logos/default.jpg" alt="Logo Empresa">
 	 					</div>
 					</div>
 					<div class="group"> 

@@ -74,7 +74,7 @@ class Popup extends CI_Controller
 			#$remitente['correo']=$datos['email'];
 			$remitentetmp['nombres']=$datos['nombres'];
 			$remitentetmp['telefono']=$datos['telefono'];
-			$this->remitente->update($remitente,$remitente->id);
+			$this->remitente->update($remitentetmp,$remitente->id);
 		}
 		else 
 		{

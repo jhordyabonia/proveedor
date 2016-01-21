@@ -1,0 +1,37 @@
+.solicitud .popup_central{margin:0px auto 30px;background:white;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+.solicitud .encabezado{background:#FE3C00;border-top-left-radius:5px;border-top-right-radius:5px;}
+.solicitud .cerrar{color:black;}
+.solicitud .icono_mensaje{color:white;margin-right:15px;}
+.solicitud .input-group{margin-bottom:10px;}
+.solicitud .titulo_popup{font-size:32px;color:white;font-weight:bold;}
+.solicitud .titulo_popup_2{font-size:16px;}
+.solicitud .img_logo{padding-left:270px;}
+.solicitud .img_logo_md{padding-left:270px;}
+.solicitud .img_logo_sm{padding-left:121px;}
+.solicitud .texto_superior{text-align:justify;color:#FE3C00;font-weight:bold;font-size:16px;}
+.solicitud .texto_superior_2{text-align:justify;font-size:12px;margin-top:-5px;}
+.solicitud .label_modal{display:flex;}
+.solicitud .tipo_pago{display:flex;margin-top:5px;height:30px;}
+.solicitud .producto_insumo{margin-top:-20px;}
+.solicitud .texto_cantidad{margin-left:-4px;}
+.solicitud .texto_precio{margin-left:-3px;}
+.solicitud .texto_empresa{margin-left:-3px;}
+.solicitud .tam_caja{height:35px;}
+.solicitud .ico_precio_solici{font-size:14px;}
+.solicitud .texto_ciudad{margin-left:-2px;}
+.solicitud .boton_enviar{background:#FE3C00;color:white;width:170px;height:50px;border-radius:5px;margin-top:8px;font-size:19px;border-color:transparent;float:left;}
+.solicitud .caja_mensaje{border:1px solid #CCCCCC;resize:none;font-family:Arial;border-radius:4px;}
+.solicitud .label_modal_email{display:flex;font-weight:bold;}
+.solicitud .enviar{padding-top:15px;}
+.solicitud .texto_ceo_1{text-align:justify;font-weight:bold;font-size:12px;padding-top:15px;}
+.solicitud .texto_ceo_2{text-align:justify;font-size:12px;}
+.solicitud .texto_ceo_3{text-align:justify;font-size:12px;}
+@media screen and (min-width:1200px){.solicitud .col-lg-12{width:900px;float:inherit;}
+}
+@media screen and (min-width:992px){.solicitud .col-md-12{width:900px;float:inherit;}
+}
+@media screen and (min-width:768px){.solicitud .col-sm-12{float:inherit;}
+}
+.solicitud .requerido{float:right;margin-bottom:0;}
+.solicitud .asterisk{color:#FE3C00;font-size:13px;}
+.solicitud .asterisk_label{color:#FE3C00;font-size:10px;padding-top:5px;padding-left:5px;}

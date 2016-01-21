@@ -98,9 +98,9 @@
 					<div class="col-md-2">
 						<div class="background" >
 							<div class="center-vertical"><?php if(!$logo_empresa){$logo_empresa="default.jpg"; } ?>
-								<img class="logo_empresa" src="<?php echo base_url()?>uploads/logos/<?php echo $logo_empresa; ?>" alt="Logo Empresa" >
+								<img class="logo_empresa" src="<?php echo base_url()?>uploads/resize/pagina_de_empresa/logos/<?=$logo_empresa;?>" alt="Logo Empresa" >
 								<!--
-									<img class="img" src="<?=base_url()?>uploads/logos/<?php echo $logo_empresa->logo; ?>" alt="Logo Empresa" class="img-responsive">
+									<img class="img" src="<?=base_url()?>uploads/resize/logos/<?php echo $logo_empresa->logo; ?>" alt="Logo Empresa" class="img-responsive">
 								-->
 							</div>
 						</div>		

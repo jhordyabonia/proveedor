@@ -116,7 +116,8 @@
     padding-right: -235;
     text-align: center;
 }
-.item_procud_hidden{
+.item_procud_hidden{display: none;}
+.item_procud_run{
     position: relative;
     top: 0;
     width: 235px;
@@ -374,11 +375,55 @@ iframe
     list-style: none;
     padding: 0;
     display: inline-block;
-    margin-top: 9px;
+    margin-top: 15px;
     padding-left: 5px;
     padding-right: 5px;
 }
+.item_video_run{
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    margin-top: 15px;
+    padding-left: -235px;
+    padding-right: 5px;
+    transition:  opacity 0.5s,margin-left 0.1s ease-in-out;
+}
+.item_video_hidden{display: none;}
 .item_galeria{
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding-left: 3px;
+    padding-right: 3px; 
+    transition:  opacity 0.5s,margin-left 0.1s ease-in-out;
+}
+.item_galeria_run{
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-left: -235px;
+    padding-left: 3px;
+    padding-right: 3px;
+    opacity: 0;   
+    /*width: 130px;*/
+    /*display: none; */
+    transition:  opacity 1s,margin-left 1s ease-in-out;
+}
+.item_galeria_hidden{
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-left: -235px;
+    padding-left: 3px;
+    padding-right: 3px;
+    display: none;
+}
+.item_galeria_content{
     list-style: none;
     padding: 0;
     display: inline-block;
@@ -466,7 +511,7 @@ iframe
     margin-top: 20px;
 }
 .logo_empresa_3{
-    width: 420px;
+    width: 375px;
     background-color: #fff;
     height: 240px;
 }
@@ -476,7 +521,7 @@ iframe
 }
 .con_logo{
     margin: 0 auto;
-    max-width: 430px;
+    max-width: 362px;
     max-height: 630px;
     padding: 0 15px;
 }
@@ -511,8 +556,9 @@ iframe
     top: 0px;
 }
 .img_galeria{
-    width: auto;
-    height: 170px;
+
+    max-height: 129px;
+    max-width: 100%;
     position: relative;
     top: 0px;
     margin: 0 auto;
@@ -589,7 +635,7 @@ iframe
 }
 .logo_nuestra{
     margin: 0 auto;
-    max-width: 435px;
+    max-width: 385px;
     max-height: 131px;
 }
 .texto_contac{
@@ -694,6 +740,7 @@ iframe
     height: 35px;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 24px;
 }
 .style-info{
     display: inline-block;
@@ -724,8 +771,8 @@ iframe
 }
 .galeria{
     max-width: 269px;
-    max-height: 170px;
-    margin: 26px 8px 4px 11px;
+    max-height: 109px;
+    margin: 60px 8px 4px 11px;
     position: relative;
     top: -15px;
 }

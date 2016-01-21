@@ -500,7 +500,7 @@
 
 										<td width="20%" style="font-weight: bold; text-align: center; padding: 30px 30px 30px 30px;"> 
 
-											<img src="<?= base_url() ?>uploads/<?=$row->nombre_img?>" width="80px" height="118px"/> </td>
+											<img src="<?= base_url() ?>uploads/resize<?=$row->nombre_img?>" width="80px" height="118px"/> </td>
 
 
 

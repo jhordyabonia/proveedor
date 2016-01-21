@@ -91,7 +91,7 @@ echo	'];
 						new_content += '<tr> <td colspan="6" style="padding-top: 10px;">';
 							new_content += '<table border="1" style="width: 100%; height: auto; border: 4px solid #ddd"> <tr>';
 								new_content += '<td id="primercol_tablaprincipal" style="vertical-align: middle; font-weight:bold; text-align:center;">';
-									new_content += '<p id="nomEmpresa">' + '<img src="<?=base_url()?>uploads/logos/' + contactos[i][0] + '" id="nomEmpresa_img" style="width: 110px; height: 47px;"/> ' 
+									new_content += '<p id="nomEmpresa">' + '<img src="<?=base_url()?>uploads/resizelogos/' + contactos[i][0] + '" id="nomEmpresa_img" style="width: 110px; height: 47px;"/> ' 
 										+ contactos[i][1] + '</p> ';
 								new_content += '</td>';
 								new_content += '<td style="width: 10%; vertical-align: middle; text-align: center;">';

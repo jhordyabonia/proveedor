@@ -54,7 +54,7 @@
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
                                 <a href="http://www.proveedor.com.co/producto/ver/254">
-                                  <img src="http://www.proveedor.com.co/uploads/default.jpg">
+                                  <img src="http://www.proveedor.com.co/uploads/resize/default.jpg">
                                 </a>
                               </div> 
                             </div>
@@ -74,7 +74,7 @@
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="http://www.proveedor.com.co/uploads/logos/membresiaplatinofondonaranja.png" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="http://www.proveedor.com.co/uploads/resize/logos/membresiaplatinofondonaranja.png" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -127,7 +127,7 @@
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
                                 <a href="http://www.proveedor.com.co/producto/ver/255">
-                                  <img src="http://www.proveedor.com.co/uploads/default.jpg">
+                                  <img src="http://www.proveedor.com.co/uploads/resize/default.jpg">
                                 </a>
                               </div>
                             </div>
@@ -148,7 +148,7 @@
                         </div>
                         <div class="col-md-12">
                            <a href="http://www.proveedor.com.co//perfil/ver_empresa/0/13068269">
-                                 <img src="http://www.proveedor.com.co/uploads/logos/membresiaplatinofondonaranja.png" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                                 <img src="http://www.proveedor.com.co/uploads/resize/logos/membresiaplatinofondonaranja.png" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                               </a>  
                         </div>
                       </div>
@@ -202,7 +202,7 @@
                             <div class="col-md-12"> 
                               <div class="row div_imagen_grande">
                                 <a href="http://www.proveedor.com.co/producto/ver/253">
-                                  <img src="http://www.proveedor.com.co/uploads/default.jpg">
+                                  <img src="http://www.proveedor.com.co/uploads/resize/default.jpg">
                                 </a>
                               </div>
                             </div>
@@ -223,7 +223,7 @@
                         </div>
                         <div class="col-md-12">
                               <a href="http://www.proveedor.com.co//perfil/ver_empresa/0/13068269">
-                                 <img src="http://www.proveedor.com.co/uploads/logos/membresiaplatinofondonaranja.png" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                                 <img src="http://www.proveedor.com.co/uploads/resize/logos/membresiaplatinofondonaranja.png" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                               </a>
                         </div>
                       </div>

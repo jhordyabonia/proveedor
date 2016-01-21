@@ -137,8 +137,8 @@ class Solicitud_model extends CI_Model {
         {
             $img=explode(',',$solicitud->imagenes);
             if ($img[0])
-             {  $solicitud->imagen=base_url()."uploads/".$img[0];   }
-            else{   $solicitud->imagen=base_url()."uploads/default.jpg"; }
+             {  $solicitud->imagen=$img[0];   }
+            else{   $solicitud->imagen="default.jpg"; }
 
             $dimension=$this->dimension->get($solicitud->medida);
             if($solicitud->cantidad_requerida==1)
@@ -150,11 +150,11 @@ class Solicitud_model extends CI_Model {
             {
                 $data_empresa->nombre="Nombre de empresa no provisto";
                 $data_empresa->nit = "404";
-                $data_empresa->logo = "default.jpg";
+                $data_empresa->logo = "default.png";
             }
             $solicitud->nombre_empresa=$data_empresa->nombre;
             $solicitud->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->id;
-            $solicitud->logo_empresa=base_url()."uploads/logos/".$data_empresa->logo;
+            $solicitud->logo_empresa=$data_empresa->logo;
             $data_empresa=NULL;
         }
         return $list;

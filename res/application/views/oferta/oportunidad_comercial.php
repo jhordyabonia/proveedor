@@ -6,11 +6,11 @@
 				<div class="center-vertical_imagen">
 					<?php if(count($solicitud->imagenes)>0):?>
 						<a href="JavaScript:slider();" >
-						 <!--<img id="display" src="<?=base_url()?>uploads/Fileteadora_Industral_790.000_.jpg" class=" img_imagen img-responsive">-->
+						 <!--<img id="display" src="<?=base_url()?>uploads/resize/Fileteadora_Industral_790.000_.jpg" class=" img_imagen img-responsive">-->
 					<?php if(is_null($solicitud->imagenes[0])):?>
-						 <img id="display" src="<?=base_url()?>uploads/<?=$solicitud->imagenes[1]?>" class=" img_imagen img-responsive">
+						 <img id="display" src="<?=base_url()?>uploads/resize/pagina_producto/visualizador/<?=$solicitud->imagenes[1]?>" class=" img_imagen img-responsive">
 					<?php else:?>
-						 <img id="display" src="<?=base_url()?>uploads/<?=$solicitud->imagenes[0]?>" class=" img_imagen img-responsive">
+						 <img id="display" src="<?=base_url()?>uploads/resize/pagina_producto/visualizador/<?=$solicitud->imagenes[0]?>" class=" img_imagen img-responsive">
 					<?php endif;?>
 						</a>
 					<?php endif;?>
@@ -26,7 +26,7 @@
 				<?php foreach($solicitud->imagenes as $key => $value):?>
 				<?php if($value==""){continue;}?>						
 					<div class="col-md-4 mini">
-						<a href="JavaScript:mostrar_imagen('imagen_<?=$key?>')"><img  id="imagen_<?=$key?>" src="<?=base_url()?>uploads/<?=$value?>" class="imag"></a>
+						<a href="JavaScript:mostrar_imagen('imagen_<?=$key?>')"><img  id="imagen_<?=$key?>" src="<?=base_url()?>uploads/resize/pagina_producto/miniatura/<?=$value?>" class="imag"></a>
 					</div>
 				<?php endforeach;?>
 			<?php endif;?>

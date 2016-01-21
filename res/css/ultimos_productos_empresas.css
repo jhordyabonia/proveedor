@@ -1,0 +1,44 @@
+.row_ult_prod_soli{margin:2em 0 0 0;margin-top:0;}
+.btn_vertodo{margin-right:4px;background:#FF7F27;color:white;font-size:11px;font-weight:bold;border-radius:16px;margin-bottom:25px;}
+.abc{margin-bottom:5px}
+.contene_boton{margin-top:5px;margin-bottom:5px;}
+.contene_boton2{padding-right:18px;}
+.contene_boton3{padding-right:8px;}
+.contene_boton4{padding-right:0;}
+.seccionTresElem{background:#f6f6f6;display:none;}
+.seccionTresElem > div.row{margin:0;}
+.row_ult_prod_soli ul.nav{height:3em;max-height:3em;line-height:3em;color:#ffffff;font-size:16px;}
+.row_ult_prod_soli ul.nav li{width:85%;padding-left:1em;cursor:pointer;}
+ul.nav.ult_prod_soli li{background:#ff7f27;}
+ul.nav-tabs.ult_prod_soli{border-bottom:1px solid #ff7f27;}
+ul.nav.ult_prod_publi li{background:#575756;}
+ul.nav-tabs.ult_prod_publi{border-bottom:1px solid #575756;}
+ul.nav.ult_emp_reg li{background:#36a9e1;}
+ul.nav-tabs.ult_emp_reg{border-bottom:1px solid #36a9e1;}
+#sol_ticker, #pub_ticker, #reg_ticker{list-style:none;padding:0;height:740px;}
+.cadaElem{margin:1em 0 0em 0;background:#ffffff;padding:1em 0 0em 0;overflow:auto;}
+.cadaElem .divImg{height:120px;min-height:120px;max-height:120px;}
+.cadaElem .divImg img{width:auto;max-width:100%;max-height:100%;padding-right:8px;padding-bottom:5px;margin-top:-3px;}
+.cadaElem .divCont div.row{margin:auto 0 0 0;margin-left:-30px;}
+.divCont_mgbtncerop{margin-left:0;}
+.ppales{text-align:left;font-weight:bold;}
+a{text-decoration:none;}
+a:hover{text-decoration:none;}
+.row_ult_prod_soli h4{display:block;display:-webkit-box;height:16px * 1.1em * 2;margin:0 auto;font-size:16px;line-height:1.1em;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;color:#36a9e1;min-height:2.1em;text-align:left;}
+.row_ult_prod_soli h5{font-size:12px;text-align:right;margin-bottom:0;color:#706f6f;}
+.divCont_mgbtncero div{text-align:left;padding:0;}
+.divCont_mgbtncero div h5{text-align:left;font-weight:bold;}
+.row_ult_prod_soli p{margin:0}
+p.precio{font-size:16px;font-weight:bold;padding-top:10px;}
+p.simbprecio{padding-top:10px;font-size:20px;color:#ff7f27;margin-right:8px;margin-top:-4px;}
+p.unidades{font-size:12px;color:#706f6f;height:42px;max-height:42px;padding-top:10px;line-height:12px}
+p.pmin{margin-top:-17px;line-height:12px;padding-left:30px;color:#706f6f;}
+p.listaproductos{font-size:15px;color:#706f6f;display:block;display:-webkit-box;height:16px * 1.3em * 2;margin:0 auto;line-height:1.3em;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;min-height:2.1em;text-align:left;}
+.row-centered{text-align:center;margin:auto;}
+@media (max-width:992px){.row_ult_prod_soli ul.nav{font-size:14px;}
+}
+@media (max-width:767px){.row_ult_prod_soli ul.nav li{width:auto !important;}
+.row-centered{text-align:center;margin:0 auto;}
+.cadaElem{margin:2em 1em 1em 1em;display:inline-block;float:none;text-align:left;}
+.cadaElem .divImg{text-align:center;}
+}

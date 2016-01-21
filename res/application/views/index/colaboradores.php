@@ -6,8 +6,8 @@
       <div class="col-md-8">
         <div class="row">
           <div class="containter_colabor">
-            <b id="text_colabor">Colaboradores de Proveedor</b>
-            <img src="<?=base_url()?>assets/img/index/platino.png?>" class="fotos_colabor">
+            <b id="text_colabor">Colaboradores </b>
+            <a href="http://www.payulatam.com/logos/pol.php?l=113&c=5658994bf177d" target="_blank"><img class="fotos_colabor" src="http://www.payulatam.com/logos/logo.php?l=113&c=5658994bf177d" alt="PayU Latam" border="0" /></a>
             <img src="<?= base_url() ?>assets/img/index/2.png" class="fotos_colabor">
             <img src="<?= base_url() ?>assets/img/index/campujave.png" class="fotos_colabor2">
           </div>

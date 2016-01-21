@@ -68,6 +68,7 @@
 	        <!-- columna de tamaño 9 para la tabla un espacio -->
 	        <div class="col-xs-10 col-xs-push-0 table-responsive " >
 	         <CENTER>
+	         	<a href="<?=base_url()?>micro_admin/registrar_empresa"><h3>Registro Rapído</h3></a>
 	         	<a href="<?=base_url()?>micro_admin/test_envio/1/1/667"><h3>Editor de plantillas</h3></a>
 	         	<a href="<?=base_url()?>popup_categoria/crear"><h3>Crear capturador de oportunidades</h3></a>
 	         	<a href="<?=base_url()?>micro_admin/busquedas_frecuentes"><h3>Terminos de busqueda frecuentes</h3></a>

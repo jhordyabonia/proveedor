@@ -18,6 +18,40 @@ class U_model extends CI_Model {
 		parent::__construct();
 		$this->load->library('image_lib');
 	}
+	private function resize_img($path,$img)
+	{
+		$this->resize($img,"index_carrouseles/",120,120);
+		$this->resize($img,"index_productos_principales/",184,122);
+		$this->resize($img,"index_productos_principales_mas_destacado/",266,148);
+		$this->resize($img,"listados/",175,155);
+		$this->resize($img,"pagina_producto/miniatura/",55,55);
+		$this->resize($img,"pagina_producto/visualizador/",316,160);
+		$this->resize($img,"pagina_producto/galeria/",480,401);
+		$this->resize($img,"pagina_de_empresa/",220,185);
+		$this->resize($img,"SOP/",235,155);
+
+		$this->resize("logos/".$img,"index_carrouseles/logos/",120,120);
+		$this->resize("logos/".$img,"index_productos_principales/logos/",184,41);
+		$this->resize("logos/".$img,"index_productos_principales_mas_destacado/logos/",237,56);
+		$this->resize("logos/".$img,"pagina_de_empresa/logos/",180,90);
+	}
+	private function resize($img,$destino="",$width=316,$heigth=160)
+	{		
+		$CI = & get_instance();
+        $CI->load->library('image_lib');
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = 'uploads/'.$img;#$data['full_path'];"uploads/imagenes/1.png";
+        $config['new_image'] = 'uploads/resize/'.$destino;
+        $config['maintain_ratio'] = TRUE;
+        $config['create_thumb'] = FALSE;
+        $config['width'] = $width;
+        $config['height'] = $heigth;
+
+        $CI->image_lib->initialize($config);
+
+        if ($CI->image_lib->resize());
+        	#{echo "<br>hecho";}
+	}
 
 	function imagen() {
 		$config['allowed_types'] = self::TYPE;
@@ -27,7 +61,7 @@ class U_model extends CI_Model {
 		if ($this->upload->do_upload()) {
 			$data = $this->upload->data();
 			$nombre_archivo = $data['file_name'];
-			$this->_create_thumbnail($nombre_archivo);
+			$this->resize_img($config['upload_path'],$data['file_name']);
 			$this->error = $this->upload->display_errors();
 			$this->nombre_archivo = $nombre_archivo;
 			return TRUE;
@@ -42,6 +76,7 @@ class U_model extends CI_Model {
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload()) {
 			$data = $this->upload->data();
+			$this->resize_img($data['full_path']);
 			$nombre_archivo = $data['file_name'];
 			$this->error = $this->upload->display_errors();
 			$this->nombre_archivo = $nombre_archivo;
@@ -72,25 +107,4 @@ class U_model extends CI_Model {
 	 * new_image: Directorio donde se guardar la nueva imagen
 	 * return: Falso o verdadero sin la accion tiene efecto.
 	 */
-
-	function _create_thumbnail($filename = FALSE) {
-		if ($filename) {
-			$config['image_library'] = 'gd';
-			$config['source_image'] = 'uploads/' . $filename;
-			$config['create_thumb'] = TRUE;
-			$config['maintain_ratio'] = TRUE;
-			$config['new_image'] = 'uploads/thumbs/';
-			$config['width'] = 150;
-			$config['height'] = 150;
-			$this->image_lib->initialize($config);
-			if (!$this->image_lib->resize()) {
-				echo $this->image_lib->display_errors();
-				$this->image_lib->clear();
-			}
-			$this->image_lib->clear();
-		}
-		$this->image_lib->clear();
-		return FALSE;
-	}
-
 }

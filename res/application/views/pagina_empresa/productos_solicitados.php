@@ -161,8 +161,8 @@
 															<div class="content_foto_producto">
 																<a href="<?php echo base_url().'oportunidad_comercial/ver/'.$oferta->id ?>">
 																	<?php $imagenes=explode(',',$oferta->imagenes);?>
-																	<img class="img_imagen" src="<?=base_url()?>uploads/<?=$imagenes[0]?>">
-																	<!--<img src="<?=base_url()?>uploads/ma6new_11.jpg" class="img-responsive img_producto">-->
+																	<img class="img_imagen" src="<?=base_url()?>uploads/resize/pagina_de_empresa/<?=$imagenes[0]?>">
+																	<!--<img src="<?=base_url()?>uploads/resize/ma6new_11.jpg" class="img-responsive img_producto">-->
 																</a>
 															</div>
 															<div class="col-md-12">

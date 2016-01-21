@@ -2,7 +2,7 @@
 <div class="contenedor_tablero">
 	<div class="col-md-12 contenedor_empresa">
 		<div class="col-md-2 contenedor_logo">
-			<img class="img-responsive img_logo_empresa" src="http://www.proveedor.com.co/uploads/logos/imagen_proveedores1.jpg">
+			<img class="img-responsive img_logo_empresa" src="http://www.proveedor.com.co/uploads/resize/logos/imagen_proveedores1.jpg">
 		</div>
 		<div class="col-md-7 titulo_empresa">
 			<p class="nombre_empresa">Provestand S.A.S y Asociados de Colombia y el mundo</p>

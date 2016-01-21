@@ -156,7 +156,7 @@
                               <h1 id="letras">To:</h1></div>
                             <div class="grid_2" style="margin-top: 10px; height:50px; background:transparent; width:365px; margin-left:-13px;"><span>
                               <input type="text" style="width: 166px; max-width:165px; height: 48px; margin-left:0px; margin-top:0px; border:0px" value="<?=$usuario?>" />
-                              <img src="<?=base_url()?>uploads/logos/<?=$logo?>" width="55px" height="50px"></span></div>
+                              <img src="<?=base_url()?>uploads/resizelogos/<?=$logo?>" width="55px" height="50px"></span></div>
                             <div class="grid_2" style="margin-top: 10px; height:50px; background:red; width:160px; background:#fafafa;"></div>
                         </div>
 

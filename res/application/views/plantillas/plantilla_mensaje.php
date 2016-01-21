@@ -229,7 +229,7 @@
                                                          <td align="center" class="devicewidth">
                                                             <a href="<?=$url?>">
                                                                <?php $imagen=explode(',',$imagen);?>
-                                                               <img src="<?=base_url()?>uploads/<?=$imagen[0]?>" style="/* display:block;*/ border:none; outline:none; text-decoration:none; max-width:250px;" class="colimg2">
+                                                               <img src="<?=base_url()?>uploads/resize/<?=$imagen[0]?>" style="/* display:block;*/ border:none; outline:none; text-decoration:none; max-width:250px;" class="colimg2">
                                                             </a>
                                                          </td>
                                                       </tr>

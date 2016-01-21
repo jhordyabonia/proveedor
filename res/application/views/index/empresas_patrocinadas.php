@@ -20,13 +20,13 @@
         <div class="col-md-12 conten_emp_patrocinada">
           <div class="row">
             <div class="col-md-4 col-sm-12">
-              <a href="http://proveedor.com.co/perfil/ver_empresa/0/9001348346"> 
-                <img class="imgempresa" src="http://proveedor.com.co/uploads/logos/2bp74Gt5rCLUlFrKoXXur13RyCnYpUTD8XXJuOghkgc.jpg">
+              <a href="http://www.proveedor.com.co//perfil/ver_empresa/10296"> 
+                <img class="imgempresa" src="http://www.proveedor.com.co/uploads/logos/LOGO_GYJ_INGENIERIA_GROUP.jpg">
               </a>
             </div>
             <div class="col-md-8 col-sm-12 patrocinadas">
-              <a href="http://proveedor.com.co/perfil/ver_empresa/0/9001348346"> 
-                <b>  <p class="txtempresa"> Ferredotaciones </p> </b> 
+              <a href="http://www.proveedor.com.co//perfil/ver_empresa/10296"> 
+                <b>  <p class="txtempresa"> GYJ Ingenieria Group</p> </b> 
               </a>
             </div>
           </div>
@@ -36,14 +36,14 @@
         <div class="col-md-12 conten_emp_patrocinada">
           <div class="row">
             <div class="col-md-4 col-sm-12 ">
-              <a href="http://proveedor.com.co/perfil/ver_empresa/0/900517250"> 
-                <img class="imgempresa" src="<?php echo img_url().'index/dalcor.png' ?>">
+              <a href="http://www.proveedor.com.co/perfil/perfil_empresa/10302"> 
+                <img class="imgempresa" src="http://www.proveedor.com.co/uploads/logos/INDUSEG_SAS_IMAGEN_INDUSEG.JPG">
               </a>
             </div>
             <div class="col-md-8 col-sm-12 patrocinadas">
-              <a href="http://proveedor.com.co/perfil/ver_empresa/0/900517250"> 
+              <a href="http://www.proveedor.com.co/perfil/perfil_empresa/10302"> 
  <b>                 <p class="txtempresa"> 
-Dalcor S.A.S.
+Induseg
 
  </p> </b> 
               </a>

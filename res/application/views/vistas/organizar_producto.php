@@ -431,7 +431,7 @@
 											<?=$row->nom_producto?> </td>
 
 										<td width="20%" style="font-weight: bold; text-align: center; padding: 30px 30px 30px 30px;"> 
-											<img src="<?= $url ?>uploads/<?=$row->nombre_img?>" width="80px" height="118px"/> </td>
+											<img src="<?= $url ?>uploads/resize<?=$row->nombre_img?>" width="80px" height="118px"/> </td>
 
 										<td width="20%" style="text-align: left; vertical-align: middle;"> 
 											<?= $row->fecha_publicacion ?>  </td>

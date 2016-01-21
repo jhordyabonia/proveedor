@@ -110,7 +110,7 @@
 
 	echo'
 
-	["uploads/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
+	["uploads/resize'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
 
 	    "'.@$value->precio_unidad.'", "'.@$value->pedido_min.' unidades pedido mínimo",
 
@@ -166,13 +166,13 @@ foreach (@$proveedor as $value) {
 
 echo'
 
-	["uploads/logos/'.@$value->logo.'", "'.@$value->nombre.'",
+	["uploads/resizelogos/'.@$value->logo.'", "'.@$value->nombre.'",
 
-	"uploads/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
+	"uploads/resize'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
 
-	"uploads/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
+	"uploads/resize'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
 
-	"uploads/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
+	"uploads/resize'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
 
 	"1", "'.@$value->ciudad.'",
 
@@ -212,7 +212,7 @@ foreach (@$ofertas as $value) {
 
 echo'
 
-	["uploads/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
+	["uploads/resize'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
 
 	"'.@$value->descripcion.'",
 
@@ -1320,7 +1320,7 @@ echo '
 
 											<a href="#" style="text-decoration: none;"> 
 
-												<img src="<?=base_url()?>uploads/<?=$row->nombre_img?>" class="imagenes_PE"/></a>
+												<img src="<?=base_url()?>uploads/resize<?=$row->nombre_img?>" class="imagenes_PE"/></a>
 
 										</td> </tr>
 
@@ -2499,7 +2499,7 @@ echo '
 
 											<a href="#" style="text-decoration: none;"> 
 
-												<img src="<?=base_url()?>uploads/<?=$row->nombre_img?>" class="imagenes_PE"/></a>
+												<img src="<?=base_url()?>uploads/resize<?=$row->nombre_img?>" class="imagenes_PE"/></a>
 
 										</td> </tr>
 

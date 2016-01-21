@@ -12,10 +12,28 @@ class Inventarios2 extends CI_Controller {
         $this->load->model('crypter_model','crypter');
         $this->load->model('u_model','u');
         $this->load->library('excelNew');
+        $this->verifyc_login();
     }
      
+    private function verifyc_login()
+    {
+      $usuario =$this->usuarios->get($this->session->userdata('id_usuario'));
+      if($usuario->permisos==1)
+      { return TRUE;  }
+
+      redirect(base_url());
+    } 
+
     public function index()
     {
+
+      $dat['titulo']="Registro masivo de Empresas";
+    $dat['nit']=$this->session->userdata('empresa');
+    $dat['usuario']=$this->session->userdata('usuario');
+
+    $this->load->view('template/head', $dat);
+    $this->load->view('tablero_usuario/header', $dat, FALSE);
+    $this->load->view('template/javascript', FALSE);
         $data['namefile']="";
         $data['id_empresa']="";
         $this->load->view('inventarios2/cargar',$data);
@@ -30,7 +48,7 @@ class Inventarios2 extends CI_Controller {
     }
 
     function cargar()
-    {
+    {        
         //Configuramos los parametros para subir el archivo al servidor.        
         $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/');        
         $config['allowed_types'] = 'xlsx|xls|ods';
@@ -57,6 +75,7 @@ class Inventarios2 extends CI_Controller {
         $data['excel'] = $excel[0];
 
         /*
+        echo 10;
         echo "<PRE>";
         print_r( $data['excel']);
         echo "</PRE>";
@@ -65,19 +84,9 @@ class Inventarios2 extends CI_Controller {
         $data['namefile']=$data['url_full'];
         $this->load->view("template/head", $data);
         $this->load->view('inventarios2/cargar',$data);
-        $this->load->view('inventarios2/ver_', $data);  
+        $this->load->view('inventarios2/ver_', $data); 
 }
-    public function verificar_empresa($id_empresa=0)
-    {      
-        if($id_empresa==0)
-        { $id_empresa = $this->input->post('id_empresa'); }
-
-        $datos['empresa']=$this->empresa->get(array('nit'=>$id_empresa));
-        if(!$datos['empresa'])
-          {$datos['empresa']=$this->empresa->get($id_empresa);}
-       
-        $this->load->view('inventarios/verificar_empresa', $datos);
-    }
+    
     public function registrar_($id_empresa=0)
     { 
         $this->load->view("template/head", array('title'=>''));
@@ -98,6 +107,7 @@ class Inventarios2 extends CI_Controller {
           if($nombres_u[$i]==NULL||$nombres_u[$i]==NULL)
             { continue; }
          $registros[$i]->empresa['nit']=$nits[$i]|1;
+         $registros[$i]->empresa['tipo_registro']=3;
          $registros[$i]->empresa['logo']="default.png";
          $registros[$i]->empresa['nombre']=$nombres[$i];
          $registros[$i]->empresa['descripcion']=$descripciones[$i]|$nombres[$i];
@@ -132,11 +142,16 @@ class Inventarios2 extends CI_Controller {
         }
           
        #return;
-       echo "<center><h3>Se registraron ".$key." productos, con exito!!</h3>";
-       $out['empresa']=$this->empresa->get($id_empresa);
-       echo "<h4>Empresa: ".$out['empresa']->nombre;
-       echo "<P>Nit: ".$id_empresa;
-       echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
+      $dat['titulo']="Registro masivo de empresas";
+      $dat['nit']=$this->session->userdata('empresa');
+      $dat['usuario']=$this->session->userdata('usuario');
+
+      $this->load->view('template/head', $dat);
+      $this->load->view('tablero_usuario/header', $dat, FALSE);
+      $this->load->view('template/javascript', FALSE);
+       echo "<center><br><br><br><br><h3>Se registraron ".$key." Empresas, con exito!!</h3>";
+       echo "</h4><br><a href='".base_url()."inventarios2'>Volver</a>";
+       echo "</h4><br><a href='".base_url()."micro_admin/'>Micro Adimin</a>";
     }
 
   function load_image($id_registro,$i) 
@@ -158,6 +173,20 @@ class Inventarios2 extends CI_Controller {
       }
 
     $this->producto->update(array('imagenes'=> $imagenes),$id_registro);
+  }
+
+  function eliminar()
+  {
+      $dat['titulo']="Eliminacion de empresas";
+    $dat['nit']=$this->session->userdata('empresa');
+    $dat['usuario']=$this->session->userdata('usuario');
+
+    $this->load->view('template/head', $dat);
+    $this->load->view('tablero_usuario/header', $dat, FALSE);
+    $this->load->view('template/javascript', FALSE);
+   $t= $this->empresa->delete(array('tipo_registro'=>3));
+   echo "Se eliminaron ".$t." registros";
+   echo "</h4><br><a href='".base_url()."inventarios2'>Volver</a>";
   }
 }
 // end: excel

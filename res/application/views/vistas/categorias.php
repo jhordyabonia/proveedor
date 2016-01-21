@@ -24,7 +24,7 @@
 	if($productos){
 		foreach (@$productos as $value) {
 	echo '	
-    ["uploads/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
+    ["uploads/resize/'.@$value->nombre_img.'", "'.@$value->nom_producto.'",
     "'.@$value->precio_unidad.'", "'.@$value->pedido_min.' unidades pedido mínimo",
     "'.nl2br(substr(@$value->descripcion_producto, 0, 76)).'..",
     "1", "'.@$value->nombre.'", 
@@ -1216,7 +1216,7 @@
 												<table width="auto" style="font-size: 13px;">
 												<tr> <td style="text-align: center; vertical-align: middle; height: 125px;">
 													<a href="<?=base_url()?>producto/ver/<?= $row->id_producto;?>/<?= $row->id_usuario;?>"> 
-													<img src="<?=base_url()?>uploads/<?=$row->nombre_img?>" class="c_prodplus_imagen"/>
+													<img src="<?=base_url()?>uploads/resize/<?=$row->nombre_img?>" class="c_prodplus_imagen"/>
 													</a>
 												</td> </tr>
 												<tr> <td style="padding-bottom: 8px; padding-top: 15px; text-align: center;">

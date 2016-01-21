@@ -52,7 +52,7 @@ div.productos img
 		 foreach ($productos as $producto) 
 			{
 				echo "<div class='productos'>";
-				echo '<img src="'.base_url()."uploads/".$producto->nombre_img.'">';
+				echo '<img src="'.base_url()."uploads/resize/".$producto->nombre_img.'">';
 				echo "<p>".$producto->nom_producto."</p>";
 				echo "$: ".$producto->precio_unidad;
 				echo "<br>".$producto->pedido_min;

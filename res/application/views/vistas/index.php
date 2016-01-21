@@ -117,7 +117,7 @@ height: 30%;
 	centro
 
 	<div id="img_superior">
-		<img src="http://scriptmedia.co/proveedor/uploads/promocion.jpg" width="100%" height="100%">
+		<img src="http://scriptmedia.co/proveedor/uploads/resizepromocion.jpg" width="100%" height="100%">
 	</div>
 
 <p>productos plus</p>
@@ -159,38 +159,38 @@ height: 30%;
 <tr><td style="width:100px; height: 100px">Ultimas ofertas</td><td style="width:100px; height: 100px">Ultimos productos</td></tr>
 <tr>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">	
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">	
 	</td>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px"> 
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">
 	</td>
 </tr>
 	<tr>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">	
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">	
 	</td>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">
 	 </td>
 	</tr>
 
 	</tr>
 	<tr>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">	
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">	
 	</td>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">
 	 </td>
 	</tr>
 
 	</tr>
 	<tr>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">	
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">	
 	</td>
 	<td style="border:1px solid #81DAF5; width:100px; height: 100px">
-	<img src="http://scriptmedia.co/proveedor/uploads/Line.png" width="50px" height="50px">
+	<img src="http://scriptmedia.co/proveedor/uploads/resizeLine.png" width="50px" height="50px">
 	 </td>
 	</tr>
 </table>

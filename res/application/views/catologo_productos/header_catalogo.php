@@ -14,9 +14,9 @@
 	<div class="col-md-12">
 		<div class="col-md-10">
 			<div class="conten_img">
-				<!--<img class="banners style-img-emp  img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>"></div>-->				
+				<!--<img class="banners style-img-emp  img-responsive" src="<?=base_url()?>uploads/resize/banners/<?=$empresa->banners?>"></div>-->				
 				<div class="div-img">
-					<img class="img-responsive logo img_logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+					<img class="img-responsive logo img_logo" src="<?=base_url()?>uploads/resize/SOP/logos1/<?=$empresa->logo?>">
 				</div>
 				<div class="div-nom-empresa">
 					<p class="txt_nom_empre"><?=$empresa->nombre?></p>	

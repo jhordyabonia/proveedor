@@ -9,6 +9,7 @@ class Micro_admin extends CI_Controller
 	function __construct() 
 	{
 		parent::__construct();
+		
 		$this->load->model('new/Producto_model', 'producto');
 		$this->load->model('new/Busquedas_model', 'busqueda');
 		$this->load->model('new/Solicitud_model', 'solicitud');
@@ -27,8 +28,128 @@ class Micro_admin extends CI_Controller
 		$this->load->model('crypter_model','crypter');
 		$this->load->library(array('session', 'email','form_validation'));
 		$this->load->helper('file');
+		
+		$this->load->database();
+		$this->load->helper('url');
+
+		$this->load->library('grocery_CRUD');
 	}
 
+	public function empresas_()
+	{
+			$this->verifyc_login();
+			$crud = new grocery_CRUD();
+
+			#$crud->set_theme('datatables');
+			$crud->set_theme('twitter-bootstrap');
+			$crud->set_table('empresa');
+			$crud->set_relation('usuario','usuarios','email');
+			$crud->set_relation('tipo','tipo_empresa','tipo');
+			$crud->set_relation('tipo_registro','tipo_registro','nombre');
+			$crud->set_relation('membresia','membresia','nombre');
+			$crud->display_as('productos_principales','Productos Principales');
+			$crud->set_subject('Empresa');
+
+			$crud->required_fields('nombre');
+			$crud->required_fields('usuario');
+
+			//Campos a editar o agregar
+			$crud->fields('id', 'nombre', 'membresia' ,  'tipo_registro' ,'tipo', 'legalizacion', 'decripcion', 'productos_principales', 'special_features');
+			//Columnas a mostrar
+			#$crud->columns('id', 'nombre', 'membresia' ,  'tipo_registro' ,'tipo', 'legalizacion', 'decripcion', 'productos_principales');
+			//Eliminar columnas			
+			#$crud->unset_columns('nit');
+			//Desactivar agregar
+			$crud->unset_add();
+			//Desctivar eliminiar
+			$crud->unset_delete();
+
+			$crud->set_field_upload('file_url','assets/uploads/files');
+
+			$output = $crud->render();
+
+			$this->load->view('main.php',$output);
+			#echo "<div style='height:20px;'>Menu</div><div>";
+			#echo $output['output'];
+			#echo "</div>";
+	}
+	public function registrar_empresa($form=0)
+	{
+		$this->verifyc_login();
+
+	    $dat['titulo']="Registrar empresa";
+	    $dat['nit']=$this->session->userdata('empresa');
+	    $dat['usuario']=$this->session->userdata('usuario');
+
+	    $this->load->view('template/head', $dat);
+	    $this->load->view('tablero_usuario/header', $dat, FALSE);
+	    $this->load->view('template/javascript', FALSE);
+		
+		if($form===0)
+		{
+	    	$dat['categorias']=$this->categoria->get_all();
+	    	$dat['dept']=$this->departamento->get_all();
+	    	$dat['municipios']=$this->municipio->get(array('id_departamento'=>33));
+			$this->load->view('registro/funcionalidades_');
+	        $this->load->view('micro_admin/registro_empresa', $dat);
+	        return;
+		}
+
+       $empresa['nombre']=$this->input->post('nombre_empresa');
+       $empresa['categorias']=$this->input->post('categoria')."|";
+       $empresa['descripcion']="Empresa del sector de ".$this->categoria->get($this->input->post('categoria'))->nombre_categoria;
+       $empresa['logo']="default.jpg";
+       $empresa['tipo_registro']=4;
+       
+
+       $usuario['ciudad']=$this->input->post('municipio');
+       $usuario['departamento']=$this->input->post('provincia');
+       $usuario['nombres']=$this->input->post('nombres');
+       $usuario['email']=$this->input->post('email');
+       $usuario['telefono']=$this->input->post('fijo');
+	   $password=$this->crypter->encrypt(rand(10,50));
+	   $usuario['usuario'] = "proveedor".substr($this->crypter->encrypt(rand(5,25)), 7);
+       $usuario['password'] = md5($password);
+
+		$registro=$this->usuarios->insert($usuario);
+						
+		$empresa['usuario'] = $registro;
+		$id_unic=$this->empresa->insert($empresa);	
+
+       #echo $password."<PRE>";
+       #print_r($empresa);
+       #print_r($usuario);
+       #echo "</PRE>";
+       #return;
+
+		$mensaje="<div style='max-width: 600px;'> <img style='max-width: 600px;' src='".img_url()."header-email.png' alt=''>
+		<br>Hola ".$usuario['nombres'].", bienvenido(a) a <a href='".base_url()."'> Proveedor.com.co</a><br><br>"."
+
+		Ingresa a <a href='".base_url()."logueo'>este enlace</a>,  copia  el nombre de usuario y contraseña para activar tu cuenta
+		<br><br>Nombre de usuario: <b>".$usuario['email']."</b><br>Contraseña: <b>".$password."</b><br> Atentamente, <br><a href='".base_url()."'>Equipo proveedor Proveedor.com.co</a><br>
+		<br><img style='max-width: 600px;' src='".img_url()."footer-email-platino.png' alt=''></div>";
+
+
+		$config['protocol'] = 'sendmail';
+		$config['mailpath'] = '/usr/sbin/sendmail';
+		$config['charset'] = 'utf-8';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$this->email->initialize($config);
+		$this->email->from('contacto@proveedor.com.co', 'Proveedor.com.co');
+		$this->email->to($usuario['email']);
+		$this->email->subject("Bienvenido a Proveedor.com.co");
+		$this->email->message($mensaje);
+		$this->email->send();
+
+		echo "<center><br><br><br><br><h3>Se ha hecho el registro sactisfactoriamente y enviado el siguiente mensaje:</h3>";
+        echo @$mensaje;
+		echo '<br>
+				<a href="'.base_url().'micro_admin/registrar_empresa"><h5>Volver</h5></a>
+	         	<a href="'.base_url().'micro_admin/"><h5>Micro admin</h5></a>';
+       
+
+	}
 	public function guadar_plantilla()
 	{
 		$this->verifyc_login();

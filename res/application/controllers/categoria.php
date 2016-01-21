@@ -328,6 +328,11 @@ class Categoria extends CI_Controller {
         $this->session->set_flashdata('auto_launch_AP', 1);
         redirect(base_url().'categoria/ver/'.$in);
     }
+    function cotizar_index()
+    {
+        $this->session->set_flashdata('auto_launch_AP', 1);
+        redirect(base_url());
+    }
 
     private function filtro_categoria($productos=0,$id_categoria=0,$id_subcategoria=0)
     {       

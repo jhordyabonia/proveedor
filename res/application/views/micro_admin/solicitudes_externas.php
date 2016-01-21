@@ -108,7 +108,7 @@
 	                    id="<?=$dato->id?>descripcion" disabled="true" /><?=$dato->descripcion?>
 	                    </textarea> 
 	                     <?php if($dato->adjunto):?>
-		                        <a href="<?=base_url()?>uploads/adjunto/<?=$dato->adjunto?>">
+		                        <a href="<?=base_url()?>uploads/resize/adjunto/<?=$dato->adjunto?>">
 		                        	Descargar adjunto <?=$dato->adjunto?>
 		                        </a>
 	                    <?php endif;?>            
@@ -160,6 +160,7 @@
 		                     	Publicada
 		                      </a>										
 		                     <?php endif;?>	
+		                     <a href="<?=base_url()?>cotizacion/crear/<?=$dato->id?>"><br>Publicacion<br> Especial</a>
 	                    </td>
 	                     <td width="5%"> 
 	                     	<a id="<?=$dato->id?>"  type="button" href="JavaScript:editar(<?=$dato->id?>);">

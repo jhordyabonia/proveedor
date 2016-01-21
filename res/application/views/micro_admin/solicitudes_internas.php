@@ -106,7 +106,7 @@
 										<td width="15%" > 
 										 <a href="<?= base_url(); ?>oportunidad_comercial/ver/<?=$solicitud->id?>" >
 											<div class="center-block" style="height: 120px; width: 120px; /* border-style: solid; *"/>
-												<img src="<?= base_url() ?>uploads/<?=$solicitud->imagenes?>" 
+												<img src="<?= base_url() ?>uploads/resize/<?=$solicitud->imagenes?>" 
 												class="img-responsive center-block" style="/* margin: auto auto; */ height: 85%;"/> 
 											</div>
 										</td>

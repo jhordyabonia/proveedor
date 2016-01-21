@@ -238,7 +238,7 @@
                     <?php if($value=='default.jpg') {continue;}    ?>              
                         <div id='imagen<?=$key?>' class="col-md-4 col-sm-4 col-xs-4">
                           <a href="#" class="thumbnail">
-                            <img class="img-responsive" src="<?=base_url();?>uploads/<?=$value;?>" alt="Imagen eliminada">
+                            <img class="img-responsive" src="<?=base_url();?>uploads/resize/<?=$value;?>" alt="Imagen eliminada">
                           </a> 
                         </div>
                       <? 

@@ -140,15 +140,15 @@ class Producto_model extends CI_Model {
             $img=explode(',',$producto->imagenes);
             if ($img)
              {
-                $producto->imagen=base_url()."uploads/default.jpg";
+                $producto->imagen="default.jpg";
                 foreach ($img as $key => $i)
                  {
                     if($i==''){continue;}
-                    $producto->imagen=base_url()."uploads/".$i;
+                    $producto->imagen=$i;
                     if($i!=''){break;}
                   }  
              }
-            else{   $producto->imagen=base_url()."uploads/default.jpg"; }
+            else{   $producto->imagen="default.jpg"; }
 
             $dimension=$this->dimension->get($producto->medida);
             if($producto->pedido_minimo==1)
@@ -164,7 +164,7 @@ class Producto_model extends CI_Model {
             }
             $producto->nombre_empresa=$data_empresa->nombre;
             $producto->url_empresa=base_url()."perfil/ver_empresa/".$data_empresa->id;
-            $producto->logo_empresa=base_url()."uploads/logos/".$data_empresa->logo;
+            $producto->logo_empresa=$data_empresa->logo;
             $data_empresa=NULL;
         }
         return $list;

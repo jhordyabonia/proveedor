@@ -29,7 +29,7 @@ document.addEventListener('touchmove', function (e) { e.preventDefault(); }, fal
 		                    <div class="cadaElem col-md-12">
 		                      	<div class="divImg col-md-4 col-sm-12 col-xs-12"> 
 		                        	<a>
-		                          		<img src="http://www.proveedor.com.co/uploads/default.jpg">
+		                          		<img src="http://www.proveedor.com.co/uploads/resize/default.jpg">
 		                        	</a>
 		                      	</div>
 		                    	<div class="divCont col-md-8 col-sm-12 col-xs-12">

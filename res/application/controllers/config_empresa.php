@@ -133,7 +133,7 @@ class Config_empresa extends CI_Controller {
     $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
     $this->datos['categorias']=$this->categoria->get_all();
     $this->datos['unidades']=$this->dimension->get_all();
-    $this->load->view('template/head',array('titulo'=>'Publicar productos'));
+    $this->load->view('template/head',array('titulo'=>'Subir productos'));
     $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_cata_produc',$this->datos);

@@ -95,14 +95,20 @@ class Empresa_model extends CI_Model {
             #$this->db->where(array('categoria'=>$categoria));
         }else
         {            
-                $this->db->or_like('nombre', $palabra, 'both'); 
-                $this->db->or_like('descripcion', $palabra, 'both'); 
-                $this->db->or_like('productos_principales', $palabra, 'both');
-                $this->db->or_like('productos_de_interes', $palabra, 'both');
+            $this->db->or_like('nombre', $palabra, 'both'); 
+            $this->db->or_like('descripcion', $palabra, 'both'); 
+            $this->db->or_like('productos_principales', $palabra, 'both');
+            $this->db->or_like('productos_de_interes', $palabra, 'both');
         }
-        
-        $this->db->order_by('empresa.membresia',"desc");
-        $this->db->order_by('empresa.legalizacion',"desc");
+        if($palabra == "")
+        {
+            $this->db->order_by('empresa.id',"desc");
+        }
+        else
+        {
+            $this->db->order_by('empresa.membresia',"desc");
+            $this->db->order_by('empresa.legalizacion',"desc");
+        }
         $result = $this->db->get()->result();
         if ($result)
         {   return $result; }
@@ -172,7 +178,7 @@ class Empresa_model extends CI_Model {
         $this->db->from(self::TABLE_NAME);
         if($categoria!=0)
         {
-            $this->db->where(array("categoria"=>$categoria,'registro'=>1));
+            $this->db->where(array("categoria"=>$categoria,'tipo_registro'=>1));
         }
         $this->db->order_by("id", $order);
         $this->db->limit($limit);

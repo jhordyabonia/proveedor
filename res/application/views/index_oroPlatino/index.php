@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/index_oroPlatino/index_oroPlatino.css">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
 
 <div class="imagen_principal">
 	<div class="container_imagen">
@@ -40,7 +40,7 @@
 
 
 
-	<!--	<img class="banners img-responsive" src="<?=base_url()?>uploads/banners/<?=$empresa->banners?>">-->
+	<!--	<img class="banners img-responsive" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$empresa->banners?>">-->
 
 
 	</div>
@@ -60,12 +60,25 @@
 	<script type="text/javascript">
 
 		var	infocus =1;
+		function wait(ms)
+		{
+			out=0;
+			var n = (new Date()).getSeconds();
+			do if((new Date()).getSeconds()!=n)out++;
+			while(out!=ms);
+		} 
 		function left(id)
 		{
 
 			if(document.getElementById(id).childNodes.length-infocus>8)
 			{
-				document.getElementById(id).childNodes[infocus].className+='_hidden';
+				document.getElementById(id).childNodes[infocus].className+='_run';
+				
+				wait(500);
+
+				div_class=document.getElementById(id).childNodes[infocus].className;
+				document.getElementById(id).childNodes[infocus].className=div_class.replace('_run','_hidden');
+				console.log('flan');
 				infocus+=2;
 			}
 			//else{infocus =1;left(id);}			
@@ -76,6 +89,10 @@
 			{
 				infocus-=2;
 				div_class=document.getElementById(id).childNodes[infocus].className;
+				document.getElementById(id).childNodes[infocus].className=div_class.replace('_hidden','_run');
+				/*
+				wait(500);
+				*/
 				document.getElementById(id).childNodes[infocus].className=div_class.replace('_hidden','');
 			}
 			//else{infocus =1;left(id);}			
@@ -91,9 +108,9 @@
 
 		<div id="carrousel_destacados" class="contenedor_productos_item">
 		<?php $tag=""; foreach($destacados as $key=>$producto):?>
-		<?php if(!$producto){continue;}$tag.=$producto->nombre.',';?>
+		<?php if(!$producto||$producto->nombre==""){continue;}$tag.=$producto->nombre.',';?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -104,14 +121,14 @@
 					</div>
 				</div>
 				<div class="mini-logo">
-					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/resize/SOP/logos2/<?=$empresa->logo?>">
 				</div>
 			</div>
 		<?php endforeach;?>
 		<?php foreach($productos as $key=>$producto):?>
-		<?php if(!$producto){continue;}$tag.=$producto->nombre.',';?>
+		<?php if(!$producto||$producto->nombre==""){continue;}$tag.=$producto->nombre.',';?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/<?=$producto->imagenes?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -122,7 +139,7 @@
 					</div>
 				</div>
 				<div class="mini-logo">
-					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/resize/SOP/logos2/<?=$empresa->logo?>">
 				</div>
 			</div>
 		<?php endforeach;?>
@@ -153,13 +170,16 @@
 		</div>
 	</div>
 	<div class="contenido_videos col-md-12">
-		<span class="ico_flecha_left_video glyphicon glyphicon-chevron-left"></span>
-		<span class="ico_flecha_right_video glyphicon glyphicon-chevron-right"></span>
+		<a href="JavaScript:rigth('carrousel_videos')">
+			<span class="flecha-left-galeria glyphicon glyphicon-chevron-left" ></span>
+		</a>
+		<a href="JavaScript:left('carrousel_videos')">
+			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
+		</a>
+		<div id="carrousel_videos">
 		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
 		<?php if($value==''){continue;}?>
-			<ul class="item_video">
-				<li>
-					<ul class="item_video">
+					<div class="item_video">
 						<div class="item-video">
 							<div class="video">
 								<iframe  allowfullscreen onload="textodeiframe(this)" id="video_<?=$key?>?showinfo=1" class="img_video img-responsive" src="<?=$value?>"></iframe>
@@ -168,10 +188,9 @@
 								<p id="data_video_<?=$key?>"></p>
 							</div>
 						</div>
-					</ul>
-				</li>
-			</ul>
+					</div>
 		<?php endforeach;?>
+		</div>
 	</div>
 </div>
 <?php endif;?>
@@ -189,7 +208,7 @@
 	</div>
 	<div class="info_nuestra_empresa col-md-12">
 		<div class="container_nues_empresa col-md-12">
-			<div class="title-nom_empresa"><p class="texto_nom_empre">Provestand de Colombia S.A.S</p></div>
+			<div class="title-nom_empresa"><p class="texto_nom_empre"><?=$empresa->nombre?></p></div>
 			<div class="conten_info col-md-8">
 				<div class="info">
 					<div class="tipo_empresa inline-block">
@@ -230,7 +249,7 @@
 				</div>
 			</div>
 			<div class="logo_empresa_3 col-md-4">
-				<img class="logo_nuestra img-responsive logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+				<img class="logo_nuestra img-responsive logo" src="<?=base_url()?>uploads/resize/SOP/logos3/<?=$empresa->logo?>">
 			</div>
 		</div>
 	</div>
@@ -250,29 +269,25 @@
 		</div>
 	</div>
 	<div class="contenedor_galeria col-md-12">
-		<a href="JavaScript://rigth('carrousel_imagenes')">
+		<a href="JavaScript:rigth('carrousel_imagenes')">
 			<span class="flecha-left-galeria glyphicon glyphicon-chevron-left" ></span>
 		</a>
-		<a href="JavaScript://left('carrousel_imagenes')">
+		<a href="JavaScript:left('carrousel_imagenes')">
 			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
 		</a>
 		<div id="carrousel_imagenes" class="carrousel_imagenes_class">
 		<?php foreach ($imagenes as $key => $value):?>
 		 <?php if($value==''){continue;}?>
-			<ul class="item_galeria">
-				<li>
-					<ul class="item_galeria">
+					<div class="item_galeria">
 						<div class="item-galeria" onclick="show('<?=$key?>')">
 							<div class="galeria">
-								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=base_url()?>uploads/imagenes/<?=$value?>">
+								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=base_url()?>uploads/resize/SOP/imagenes/<?=$value?>">
 							</div>
 							<div class="titulo_galeria">
 								<p><?php if($titulos[$key]!='Imagen'){ echo $titulos[$key];} ?></p>
 							</div>
 						</div>
-					</ul>
-				</li>
-			</ul>
+					</div>
 		<?php endforeach;?>
 		</div>	
 	</div>	
@@ -462,7 +477,7 @@
           <div id="conten_pantalla" class="carousel-inner">
             <center>
               <div  id="conten_pantalla2" class="item">
-                  <img id="pantalla" src="<?=base_url()?>uploads/banners/11.jpg" alt="...">
+                  <img id="pantalla" src="<?=base_url()?>uploads/resize/SOP/banners/11.jpg" alt="...">
               </div>
            </center>
           </div>
@@ -483,19 +498,19 @@
 var imagen=0;
 function show(in1)
 {
-	document.getElementById('pantalla').src=document.getElementById('img_'+in1).src;
+	document.getElementById('pantalla').src=document.getElementById('img_'+in1).src.replace('resize/SOP/','');
 	document.getElementById('launch_popup_slider').click();
 	imagen=in1;
 }
 function anterior_imagen()
 {
 	if(imagen<0){imagen=<?=$key?>;}
-	document.getElementById('pantalla').src=document.getElementById('img_'+(--imagen)).src;
+	document.getElementById('pantalla').src=document.getElementById('img_'+(--imagen)).src.replace('resize/SOP/','');
 }
 function proxima_imagen()
 {
 	if(imagen><?=$key?>){imagen=0;}
-	document.getElementById('pantalla').src=document.getElementById('img_'+(++imagen)).src;
+	document.getElementById('pantalla').src=document.getElementById('img_'+(++imagen)).src.replace('resize/SOP/','');
 }
 
 </script>

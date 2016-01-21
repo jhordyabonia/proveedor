@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo css_url()?>index/index.css">
 <script src="<?php echo js_url().'index/productos_destacados.js' ?>"></script>
 <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script src="http:/html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
 <div class="content_destacados hidden-sm hidden-xs">
@@ -38,7 +38,7 @@
           <div id="pag1_c" class="item active">
             <div class="row">
               <div class="col-md-12">
-                <?php foreach ($productos_destacados_1 as $key => $producto_destacado): ?>
+                <?php foreach ($productos_destacados_1 as $key => $producto): ?>
                 <?php if ($key==0): ?>
                   <!-- Producto 1-->
                   <div class="col-md-4">
@@ -48,30 +48,30 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
-                                <a href="<?php echo $producto_destacado->url ?>">
-                                  <img src="<?php echo $producto_destacado->imagen ?>">
+                                <a href="<?php echo $producto->url ?>">
+                                  <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/<?=$producto->imagen?>">
                                 </a>
                               </div> 
                             </div>
                             <div class="col-md-12">                              
-                                <a href="<?php echo $producto_destacado->url ?>">
-                                  <p id="nom_produ_grande"><?php echo $producto_destacado->nombre ?></p>
+                                <a href="<?php echo $producto->url ?>">
+                                  <p id="nom_produ_grande"><?php echo $producto->nombre ?></p>
                                 </a>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="col-md-12 content_precio_product">
-                            <?php echo decimal_points($producto_destacado->precio_unidad) ?>
+                            <?php echo decimal_points($producto->precio_unidad) ?>
                             <img src="<?= base_url() ?>assets/img/index/sonrisaprecio.png" class="sonrisa_precio img-responsive">
                           </div>
                           <div class="col-md-12 content_unid_product">
-                            <p class="unidades_produc"><?php echo decimal_points($producto_destacado->pedido_minimo); ?> <?php echo $producto_destacado->medida?></p>
+                            <p class="unidades_produc"><?php echo decimal_points($producto->pedido_minimo); ?> <?php echo $producto->medida?></p>
                             <p class="pedido_produc">pedido minimo</p>
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="<?php echo $producto_destacado->logo_empresa ?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -83,23 +83,23 @@
                       <div class="row">
                         <div class="col-md-12 content_foto_product">
                           <div class="row">
-                              <img src="<?php echo $producto_destacado->imagen ?>" class="foto_producto img-responsive">
+                              <img src="<?=base_url()?>uploads/resize/index_productos_principales/<?=$producto->imagen?>" class="foto_producto img-responsive">
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <a href="<?php echo $producto_destacado->url ?>"><p class="nom_produ"><?php echo $producto_destacado->nombre ?></p></a>
+                          <a href="<?php echo $producto->url ?>"><p class="nom_produ"><?php echo $producto->nombre ?></p></a>
                         </div>
                         <div class="col-md-12 content_precio_product">
-                          <?php echo decimal_points($producto_destacado->precio_unidad) ?>
+                          <?php echo decimal_points($producto->precio_unidad) ?>
                           <img src="<?= base_url() ?>assets/img/index/sonrisaprecio.png" class="sonrisa_precio img-responsive">
                         </div>
                         <div class="col-md-12 content_unid_product">
-                          <p class="unidades_produc"><?php echo decimal_points($producto_destacado->pedido_minimo) ?> <?php echo $producto_destacado->medida?></p>
+                          <p class="unidades_produc"><?php echo decimal_points($producto->pedido_minimo) ?> <?php echo $producto->medida?></p>
                           <p class="pedido_produc">pedido minimo</p>
                         </div>
                         <div class="col-md-12 content_emp_product">
-                          <a href="<?php echo $producto_destacado->url_empresa ?>">
-                            <img src="<?php echo $producto_destacado->logo_empresa ?>" class="foto_emp_producto img-responsive">
+                          <a href="<?php echo $producto->url_empresa ?>">
+                            <img src="<?=base_url()?>uploads/resize/index_productos_principales/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive">
                           </a>
                         </div>
                       </div>
@@ -113,7 +113,7 @@
           <div id="pag2_c" class="item">
             <div class="row">
               <div class="col-md-12">
-                <?php foreach ($productos_destacados_2 as $key => $producto_destacado): ?>
+                <?php foreach ($productos_destacados_2 as $key => $producto): ?>
                 <?php if ($key==0): ?>
                   <!-- Producto 1-->
                   <div class="col-md-4">
@@ -123,30 +123,30 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
-                                <a href="<?php echo $producto_destacado->url ?>">
-                                  <img src="<?php echo $producto_destacado->imagen ?>">
+                                <a href="<?php echo $producto->url ?>">
+                                  <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/<?=$producto->imagen?>">
                                 </a>
                               </div> 
                             </div>
                             <div class="col-md-12">
-                                <a href="<?php echo $producto_destacado->url ?>">
-                                  <p id="nom_produ_grande"><?php echo $producto_destacado->nombre ?></p>
+                                <a href="<?php echo $producto->url ?>">
+                                  <p id="nom_produ_grande"><?php echo $producto->nombre ?></p>
                                 </a>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="col-md-12 content_precio_product">
-                            <?php echo decimal_points($producto_destacado->precio_unidad) ?>
+                            <?php echo decimal_points($producto->precio_unidad) ?>
                             <img src="<?= base_url() ?>assets/img/index/sonrisaprecio.png" class="sonrisa_precio img-responsive">
                           </div>
                           <div class="col-md-12 content_unid_product">
-                            <p class="unidades_produc"><?php echo decimal_points($producto_destacado->pedido_minimo); ?> <?php echo $producto_destacado->medida?></p>
+                            <p class="unidades_produc"><?php echo decimal_points($producto->pedido_minimo); ?> <?php echo $producto->medida?></p>
                             <p class="pedido_produc">pedido minimo</p>
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="<?php echo $producto_destacado->logo_empresa ?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -158,23 +158,23 @@
                       <div class="row">
                         <div class="col-md-12 content_foto_product">
                           <div class="row">
-                              <img src="<?php echo $producto_destacado->imagen ?>" class="foto_producto img-responsive">
+                              <img src="<?=base_url()?>uploads/resize/index_productos_principales/<?=$producto->imagen?>" class="foto_producto img-responsive">
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <a href="<?php echo $producto_destacado->url ?>"><p class="nom_produ"><?php echo $producto_destacado->nombre ?></p></a>
+                          <a href="<?php echo $producto->url ?>"><p class="nom_produ"><?php echo $producto->nombre ?></p></a>
                         </div>
                         <div class="col-md-12 content_precio_product">
-                          <?php echo decimal_points($producto_destacado->precio_unidad) ?>
+                          <?php echo decimal_points($producto->precio_unidad) ?>
                           <img src="<?= base_url() ?>assets/img/index/sonrisaprecio.png" class="sonrisa_precio img-responsive">
                         </div>
                         <div class="col-md-12 content_unid_product">
-                          <p class="unidades_produc"><?php echo decimal_points($producto_destacado->pedido_minimo) ?> <?php echo $producto_destacado->medida?></p>
+                          <p class="unidades_produc"><?php echo decimal_points($producto->pedido_minimo) ?> <?php echo $producto->medida?></p>
                           <p class="pedido_produc">pedido minimo</p>
                         </div>
                         <div class="col-md-12 content_emp_product">
-                          <a href="<?php echo $producto_destacado->url_empresa ?>">
-                            <img src="<?php echo $producto_destacado->logo_empresa ?>" class="foto_emp_producto img-responsive">
+                          <a href="<?php echo $producto->url_empresa ?>">
+                            <img src="<?=base_url()?>uploads/resize/index_productos_principales/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive">
                           </a>
                         </div>
                       </div>
@@ -188,7 +188,7 @@
           <div id="pag3_c" class="item">
             <div class="row">
               <div class="col-md-12">
-                <?php foreach ($productos_destacados_3 as $key => $producto_destacado): ?>
+                <?php foreach ($productos_destacados_3 as $key => $producto): ?>
                 <?php if ($key==0): ?>
                   <!-- Producto 1-->
                   <div class="col-md-4">
@@ -198,30 +198,30 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
-                                <a href="<?php echo $producto_destacado->url ?>">
-                                  <img src="<?php echo $producto_destacado->imagen ?>">
+                                <a href="<?php echo $producto->url ?>">
+                                  <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/<?=$producto->imagen?>">
                                 </a>
                               </div> 
                             </div>
                             <div class="col-md-12">
-                                <a href="<?php echo $producto_destacado->url ?>">
-                                  <p id="nom_produ_grande"><?php echo $producto_destacado->nombre ?></p>
+                                <a href="<?php echo $producto->url ?>">
+                                  <p id="nom_produ_grande"><?php echo $producto->nombre ?></p>
                                 </a>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="col-md-12 content_precio_product">
-                            <?php echo decimal_points($producto_destacado->precio_unidad) ?>
+                            <?php echo decimal_points($producto->precio_unidad) ?>
                             <img src="<?= base_url() ?>assets/img/index/sonrisaprecio.png" class="sonrisa_precio img-responsive">
                           </div>
                           <div class="col-md-12 content_unid_product">
-                            <p class="unidades_produc"><?php echo decimal_points($producto_destacado->pedido_minimo); ?> <?php echo $producto_destacado->medida?></p>
+                            <p class="unidades_produc"><?php echo decimal_points($producto->pedido_minimo); ?> <?php echo $producto->medida?></p>
                             <p class="pedido_produc">pedido minimo</p>
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="<?php echo $producto_destacado->logo_empresa ?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -233,23 +233,23 @@
                       <div class="row">
                         <div class="col-md-12 content_foto_product">
                           <div class="row">
-                              <img src="<?php echo $producto_destacado->imagen ?>" class="foto_producto img-responsive">
+                              <img src="<?=base_url()?>uploads/resize/index_productos_principales/<?=$producto->imagen?>" class="foto_producto img-responsive">
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <a href="<?php echo $producto_destacado->url ?>"><p class="nom_produ"><?php echo $producto_destacado->nombre ?></p></a>
+                          <a href="<?php echo $producto->url ?>"><p class="nom_produ"><?php echo $producto->nombre ?></p></a>
                         </div>
                         <div class="col-md-12 content_precio_product">
-                          <?php echo decimal_points($producto_destacado->precio_unidad) ?>
+                          <?php echo decimal_points($producto->precio_unidad) ?>
                           <img src="<?= base_url() ?>assets/img/index/sonrisaprecio.png" class="sonrisa_precio img-responsive">
                         </div>
                         <div class="col-md-12 content_unid_product">
-                          <p class="unidades_produc"><?php echo decimal_points($producto_destacado->pedido_minimo) ?> <?php echo $producto_destacado->medida?></p>
+                          <p class="unidades_produc"><?php echo decimal_points($producto->pedido_minimo) ?> <?php echo $producto->medida?></p>
                           <p class="pedido_produc">pedido minimo</p>
                         </div>
                         <div class="col-md-12 content_emp_product">
-                          <a href="<?php echo $producto_destacado->url_empresa ?>">
-                            <img src="<?php echo $producto_destacado->logo_empresa ?>" class="foto_emp_producto img-responsive">
+                          <a href="<?php echo $producto->url_empresa ?>">
+                            <img src="<?=base_url()?>uploads/resize/index_productos_principales/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive">
                           </a>
                         </div>
                       </div>
