@@ -60,6 +60,33 @@
 	<script type="text/javascript">
 
 		var	infocus =1;
+		var ant_galeria;
+		var galeria1 =1;
+		var galeria2 =1;
+		var galeria3 =1;
+		function my_test(id)
+		{
+
+			if(ant_galeria=="carrousel_destacados")
+				galeria1=infocus;
+			else if(ant_galeria=="carrousel_videos")
+				galeria2=infocus;
+			else
+				galeria3=infocus;
+
+			if(id=="carrousel_destacados")
+				infocus=galeria1;
+			else if(id=="carrousel_videos")
+				infocus=galeria2;
+			else
+				infocus=galeria3;
+			
+			console.log(id+" "+ant_galeria+" "+galeria3 +" "+ galeria2 +" "+ galeria1);
+
+			if(ant_galeria!=id)
+				ant_galeria=id;
+
+		}
 		function wait(ms)
 		{
 			out=0;
@@ -69,6 +96,7 @@
 		} 
 		function left(id)
 		{
+			my_test(id);
 
 			if(document.getElementById(id).childNodes.length-infocus>8)
 			{
@@ -85,6 +113,9 @@
 		}
 		function rigth(id)
 		{
+
+			my_test(id);
+
 			if(infocus>=3)//&&document.getElementById(id).childNodes.length)
 			{
 				infocus-=2;

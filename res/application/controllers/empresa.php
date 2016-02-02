@@ -3,10 +3,15 @@
 class Empresa extends CI_Controller 
 {
 
+    private $ci;
+
     ///Constructor de la clase del control
   function __construct()
   {
     parent::__construct();
+
+    $this->ci =& get_instance();
+
     $this->load->model('new/Empresa_model','empresa');
     $this->load->model('new/Membresia_model','membresia');
     $this->load->model('new/Tipo_empresa_model','tipo_empresa');
@@ -21,7 +26,7 @@ class Empresa extends CI_Controller
     $this->load->model('new/Dimension_model','dimension');
     $this->load->model('new/Subcategoria_model','subcategoria');
     $this->load->model('Asistentes_proveedor_model','asistentes_proveedor');
-  }   
+  }
   private function duplicado($stack,$needle)
   {
     foreach ($stack as $key => $value) 
@@ -32,10 +37,15 @@ class Empresa extends CI_Controller
   }
   function inicio($id)
   {
+    if ($this->ci->agent->is_mobile())
+    {       
+      redirect(base_url()."empresa_m/ver_empresa/".$id);
+    }
+
     $datos['empresa']= $this->empresa->get($id); 
 
     if($datos['empresa']->membresia==1)
-    {redirect(base_url().'perfil/perfil_empresa/'.$id);}
+    {redirect(base_url().'perfil/ver_empresa/'.$id);}
 
     $datos['empresa']->tipo=$this->tipo_empresa->get($datos['empresa']->tipo)->tipo;   
     $datos['usuario']=$this->usuarios->get($datos['empresa']->usuario);
@@ -77,6 +87,11 @@ class Empresa extends CI_Controller
   }
   function catalogo_producto($id)
   {
+    if ($this->ci->agent->is_mobile())
+    {       
+      redirect(base_url()."empresa_m/ver_empresa/".$id);
+    }
+
     $datos['empresa'] = $this->empresa->get($id);    
 
     if($datos['empresa']->membresia==1)
@@ -145,6 +160,10 @@ class Empresa extends CI_Controller
 
   function contacto($id)
   {
+    if ($this->ci->agent->is_mobile())
+    {       
+      redirect(base_url()."empresa_m/contacto_empresa/".$id);
+    }
     $datos['empresa']= $this->empresa->get($id); 
 
     if($datos['empresa']->membresia==1)
@@ -172,6 +191,10 @@ class Empresa extends CI_Controller
 
   function cotizaciones_requeridas($id)
   {
+    if ($this->ci->agent->is_mobile())
+    {       
+      redirect(base_url()."empresa_m/productos_solicitados/".$id);
+    }
 
     if($datos['empresa']->membresia==1)
     {redirect(base_url().'perfil/productos_solicitados/'.$id_empresa);}
@@ -223,6 +246,11 @@ class Empresa extends CI_Controller
   
   function nosotros($id)
   {
+    if ($this->ci->agent->is_mobile())
+    {       
+      redirect(base_url()."empresa_m/perfil_empresa/".$id);
+    }
+
     $datos['empresa']= $this->empresa->get($id);    
     if($datos['empresa']->membresia==1)
     {redirect(base_url().'perfil/perfil_empresa/'.$id);}
@@ -248,6 +276,11 @@ class Empresa extends CI_Controller
   }
   function descargar_catalogo($id)
   {
+    if ($this->ci->agent->is_mobile())
+    {       
+      redirect(base_url()."empresa_m/ver_empresa/".$id);
+    }
+    
     $datos['empresa']= $this->empresa->get($id); 
 
     if($datos['empresa']->membresia==1)

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Perfil extends CI_Controller {
+class Empresa_m extends CI_Controller {
 
 	///Constructor de la clase del control
 	function __construct(){
@@ -20,8 +20,6 @@ class Perfil extends CI_Controller {
 
 	public function ver_empresa($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	{		
-		if($id_empresa==10384)
-		{redirect(base_url().'empresa/inicio/10384');}
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}
 		if($id_empresa<1000)
@@ -34,9 +32,6 @@ class Perfil extends CI_Controller {
 
 		if(!$empresa)
 			{redirect('registro/registrar');}
-
-		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/inicio/'.$id_empresa);}
 		
 		$id_user=$empresa->usuario;
 		$datos['logo_empresa'] = $empresa->logo;
@@ -184,28 +179,6 @@ class Perfil extends CI_Controller {
 			   } 
 			return $total;
 	}
-	/* funcion para aÃ±adir proveedor --vista pagina empresa 
-	  en donde $mi_id es el id del usuario que inicio sesion
-	  $id_prov es la id del contacto que va agregar
-	  $nit es el nit de la empresa del usuario que  se va agregar */
-
-	public function add_proveedor($mi_id, $id_prov, $id_cont, $nit){
-		$datos = array(
-			'id_usuario' => $mi_id,
-			'id_usuario_prov' => $id_prov,
-			'id_contacto' => $id_cont,
-			'nit_empresa' => $nit
-				// 'estado'      => ''
-		);
-// $datos['addproveedor'] = $this->perfil_model->add_prov($mi_id, $nit);
-		$this->db->insert('contactos_usuario', $datos);
-
-		$this->session->flashdata('usuario_add');
-		redirect('perfil/ver_empresa/' . $mi_id . '/' . $nit);
-
-
-// echo 'mi id es_: '.$mi_id.' __nit_ '.$nit.' _id_contacto_ '.$id_prov ;
-	}
 
 //con esta funcion se llama a la vista de la segunda pestaÃ±a de la vista perfil empresa
 	public function perfil_empresa($id_empresa,$id_seleccion=0){
@@ -274,248 +247,8 @@ class Perfil extends CI_Controller {
 		$this->load->view('pagina_empresa/perfil_empresa', $datos, FALSE);
 		$this->load->view('template/footer', $datos, FALSE);
 	}
-
-	private function obterner_datos()
-	{
-		$informacion['usuario']['nombres']=$this->input->post('nombres');
-		$informacion['usuario']['cargo']=$this->input->post('cargo');
-		$informacion['usuario']['direccion']=$this->input->post('direccion');
-		$informacion['usuario']['departamento']=$this->input->post('departamento');
-		$informacion['usuario']['ciudad']=$this->input->post('ciudad');
-		$informacion['usuario']['web']=$this->input->post('web');
-
-		$informacion['usuario']['celular']=$this->input->post('celular');
-		$informacion['usuario']['indicativo']=$this->input->post('indicativo');
-		$informacion['usuario']['telefono']=$this->input->post('telefono');
-		$informacion['usuario']['extension']=$this->input->post('extension');
-
-		$informacion['empresa']['nombre']=$this->input->post('nombre');
-		$informacion['empresa']['nit']=$this->input->post('nit');
-		$informacion['empresa']['tipo']=$this->input->post('tipo_empresa');
-		$datos = array('nombre_empresa' => $informacion['empresa']['nombre'],'logo_old' => $this->input->post('logo_old'));
-		$informacion['empresa']['logo']=$this->upload_logo($datos);
-
-		$informacion['empresa']['descripcion']=$this->input->post('descripcion');
-		$informacion['empresa']['categorias']=$this->input->post('id_categorias');
-		$informacion['empresa']['productos_principales']=$this->input->post('productos_principales');
-		$informacion['empresa']['productos_de_interes']=$this->input->post('productos_interes');	
-
-		return $informacion;
-	}
-	private function upload_logo($datos) 
-	{
-		if(!$_FILES) {	return;	}
-		if ($_FILES['userfile']) 
-		{	
-			$numero_archivos = count($_FILES['userfile']['name']);
-			for ($i = 0; $i < $numero_archivos; $i++) 
-			{
-				$new_logo=$datos['nombre_empresa']."_".$_FILES['userfile']['name'][$i];
-				$_FILES['userfile'] = array(
-					'name' => $new_logo,
-					'type' => $_FILES['userfile']['type'][$i],
-					'tmp_name' => $_FILES['userfile']['tmp_name'][$i],
-					'error' => $_FILES['userfile']['error'][$i],
-					'size' => $_FILES['userfile']['size'][$i]
-				);
-				//delete($datos['logo_old']);
-				$this->load->model('u_model', "u");
-				if ($this->u->load_logo()) 
-				{
-					return str_replace(' ', '_', $this->u->load_logo());
-				}
-			}
-		}
-		return $datos['logo_old'];
-	}
-
-	public function actualizar()
-	{
-		$datos=$this->obterner_datos();
-
-		$id_user=$this->session->userdata('id_usuario');
-		$datos_usuario= $this->usuarios->get($id_user);
-		$empresa=$this->empresa->get(array('usuario'=>$id_user));
-
-		if(!$this->verificar_logged($empresa->id))
-			{	return;	}
-
-		$this->empresa->update($datos['empresa'],$empresa->id);
-		$this->usuarios->update($datos['usuario'],$empresa->usuario);
-		redirect('/tablero_usuario');
-	}
-	public function actualizar2()
-	{
-		$datos=$this->obterner_datos();
-		#$datos['id']=$this->input->post('id');
-		
-		$empresa=$this->empresa->get($this->input->post('id'));
-		/*
-		echo "<PRE>";
-		print_r($empresa);
-		echo "</PRE>";
-		return;
-		*/
-
-		if(!$this->verificar_logged($empresa->id))
-			{	return;	}
-
-		$this->empresa->update($datos['empresa'],$empresa->id);
-		$this->usuarios->update($datos['usuario'],$empresa->usuario);
-		redirect('/perfil/ver_empresa/'.$empresa->id);
-	}
-	public function existen_usuario_email($usuario, $email="")
-	{
-		$tmp = 0;
-		$usuarios=$this->usuarios->get_all();
-		foreach ($usuarios as $value) 
-		{
-			if($value->usuario==$usuario||$value->email==$email)
-				{ 	
-					$tmp++;
-					if($tmp>1)
-					return TRUE;
-				}
-		}
-		return FALSE;
-	} 
-	public function actualizar_cuenta()
-	{
-		#if(!$this->verificar_logged($nit))
-		#	{ return; }
-		//reglas de validacion.
-		/*
-		$this->form_validation->set_rules('usuario', 'usuario', 'trim|required|min_length[4]|max_length[20]|is_unique[usuario.usuario]|callback_validaEspacios|alpha_numeric');
-		$this->form_validation->set_rules('password', 'Contraseña', 'required|min_length[6]|max_length[20]|matches[password2]');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[usuario.email]');
-		
-		if (!$this->form_validation->run()) 
-		{
-			redirect(base_url() . 'perfil_test/editar_empresa/'.$nit, 'refresh');
-			return;
-		}
-		*/
-		$id_user=$this->session->userdata('id_usuario');
-		$usuario= $this->usuarios->get($id_user);
-		$empresa=$this->empresa->get(array('usuario'=>$id_user));
-
-
-		$email_form=$this->input->post('email');
-		$usuario_form=$this->input->post('usuario');
-		$password_form=md5($this->input->post('password'));
-		$newpassword_form=$this->input->post('newpassword');
-		
-		if($this->existen_usuario_email($usuario_form, $email_form))
-		{	
-			$this->session->set_flashdata('usuario_modififcado', 'Nombre de usuario y/o email; ya existen!!');
-			redirect(base_url() . 'perfil/editar_empresa/'.$empresa->id, 'refresh');
-			return;
-		}
-		
-		#if($password_db===$password_form) #requerir contraseña para cuaquier cambio en los datos de usuario.
-		#{
-			if($usuario_form)
-			{	$datos['usuario']=$usuario_form;	}
-			if($email_form)
-			{	
-				//requerir nueva verificacion de correo.
-				$datos['email']=$email_form;
-			}
-			if($newpassword_form)
-			{	
-				if($usuario->password===$password_form) #eliminar esta validacion cuando descomente las lineas con numeral
-				{
-					$datos['password']=md5($newpassword_form);
-				}	
-				else
-				{
-					$this->session->set_flashdata('usuario_modififcado', 'Para cambiar la contraseña se requiere ingresar la contraseña actual!!');
-					redirect(base_url() . 'perfil/editar_empresa/'.$empresa->id, 'refresh');
-				}
-			}
-
-			$exito=$this->usuarios->update($datos,$id_user);
-			
-			if($exito)
-			{
-				$this->session->set_flashdata('usuario_modififcado', 'Datos de usuario modificados!!');
-			}
-			else
-			{			
-				$this->session->set_flashdata('usuario_modififcado', 'Error temporal!!');
-			}
-		#}
-		#else
-		#{			
-		#	$this->session->set_flashdata('usuario_modififcado', 'Error en los datos!!');
-		#}
-
-		redirect(base_url() . 'perfil/editar_empresa/'.$empresa->id, 'refresh');
-		
-	}
-	public function editar_empresa()
-	{
-		#$datos['nit'] = $nit;
-		#$datos['contacto'] = $this->perfil_model->contacto($nit);  //para traer la informacion  del campo contacto
-		#$datos['contacto2'] = $this->perfil_model->contacto2($nit); // trae informacion de telefono y celular
-		
-		$datos['empresa'] = $this->empresa->get(array('usuario'=>$this->session->userdata('id_usuario')));
-		$datos['datos_usuario'] = $this->usuarios->get($datos['empresa']->usuario);
-		$datos['categorias'] = $this->categoria->get_all();
-		$datos['departamento'] = $this->departamento->get_all();
-		$dept_select=array('id_departamento'=>$datos['datos_usuario']->departamento);
-		$datos['municipios'] = $this->municipio->get_all($dept_select);
-		$datos['tipos_empresa'] = $this->tipo_empresa->get_all();
-		
-		$tmp_categorias;
-		foreach (explode('|',$datos['empresa']->categorias) as $key => $value) 
-		{
-			if($value==""){continue;}
-			$tmp_categorias[]=$this->categoria->get($value);
-		}
-		$datos['empresa']->categorias=$tmp_categorias;
-		$datos['usuario']->usuario=$this->session->userdata('usuario');
-		$datos['administrador']=$datos['datos_usuario']->permisos;
-		$datos['titulo'] = "Editar perfil empresa";
-
-		$this->load->view('template/head', $datos, FALSE);
-		$this->load->view('tablero_usuario/header', $datos, FALSE);
-		$this->load->view('empresa/editar', $datos, FALSE);
-		$this->load->view('template/javascript', $datos, FALSE);
-		$this->load->view('template/footer', $datos, FALSE);;
-	}
-	//funcion para verificar que el producto pertenezca al usuario con sesion iniciada
-	public function verificar_logged($id_empresa=0)
-	{
-		#if($id_empresa=="1059985632-7"||($id_empresa=="90058523"||$id_empresa=="102223263921"))
-    	#{	return TRUE;	}
-
-		$id_logged = $this->session->userdata('id_usuario');
-		$id_empresa_editar = $this->empresa->get($id_empresa)->usuario;
-	
-		if($this->usuarios->get($id_logged)->permisos==1)
-		{	return TRUE;	}
-
-		if($id_logged=='')
-		{	
-			redirect('/logueo');
-			return FALSE;
-		}elseif($id_empresa_editar==NULL)
-		{
-			show_404();
-			return FALSE;
-		}elseif($id_empresa_editar==$id_logged)
-		{
-			return TRUE;
-		}
-		
-		redirect('/tablero_usuario');
-		return FALSE;
-	}
 	public function productos_solicitados($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
 	 {	
-		if($id_empresa==10384)
-		{redirect(base_url().'empresa/inicio/10384');}
 
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}
@@ -528,9 +261,6 @@ class Perfil extends CI_Controller {
 
 		if(!$empresa)
 			{redirect('registro/registrar');}
-
-		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/cotizaciones_requeridas/'.$id_empresa);}
 
 		$id_user=$empresa->usuario;
 		
@@ -579,8 +309,6 @@ class Perfil extends CI_Controller {
 	
 	public function contacto_empresa($id_empresa)
 	{
-		if($id_empresa==10384)
-		{redirect(base_url().'empresa/inicio/10384');}
 
 		if($id_empresa==10263||$id_empresa==10264)
 		{redirect('perfil/ver_empresa/10560');}
@@ -594,9 +322,6 @@ class Perfil extends CI_Controller {
 
 		if(!$empresa)
 			{redirect('registro/registrar');}
-
-		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/contacto/'.$id_empresa);}
 		
 		$usuario=$this->usuarios->get($empresa->usuario);
 
@@ -693,27 +418,6 @@ class Perfil extends CI_Controller {
 		if($this->session->flashdata('mensaje_enviado')=="DONE")
 			return;
 		
-	}
-
-	/* Esta funcion es la encargada de agregar un contacto al usuario */
-
-	public function add_contacto() {
-		if ($this->input->post('id_user')) {
-			//se crea un array con las variables necesarias y se envian al modelo para insertar en la BD
-			$datos = array(
-				'id_user' => $this->input->post('id_user'),
-				'nit' => $this->input->post('nit'),
-				'id_contacto' => $this->input->post('id_contacto'),
-				'mi_id' => $this->input->post('mi_id')
-			);
-			// $id_user = $this->input->post('id_user');
-			$add_contacto = $this->perfil_model->add_contacto($datos);
-			if ($add_contacto == true) {
-				echo 'Proveedor aÃ±adido correctamente.';
-			} else {
-				echo 'El proveedor ya esta en tu lista de contactos.';
-			}
-		}
 	}
 
 }
