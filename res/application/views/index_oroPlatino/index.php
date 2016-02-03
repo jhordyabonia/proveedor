@@ -268,14 +268,23 @@
 						<p class="texto_contacto">Contactar Empresa</p>
 					</button>
 				</div>
+				<!-- 
+				Trabajando en funcionalidad de botones de compartir
+				Se agregará un script en js
+				 -->
 				<div class="redes_compartir">
 					<img class="style-sonisa img-responsive" src="<?=base_url()?>assets/img/sonrisaprecio.png">
 					<p class="texto_redes">Compartir:</p>
 					<ul class="list_redes">
-						<li><a href="<?=$usuario->facebook?>"><i class=" icono_redes fa fa-facebook-square"></i></a></li>
-						<li><a href="<?=$usuario->twitter?>"><i class=" icono_redes fa fa-twitter-square"></i></a></li>
-						<li><a href="<?=$usuario->youtube?>"><i class=" icono_redes fa fa-youtube"></i></a></li>
-						<li><a href="<?=$usuario->linkedin?>"><i class=" icono_redes fa fa-linkedin-square"></i></a></li>
+						<!-- Botones de facebook, twitter listos para compartir esta vista -->
+						<li><a href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo current_url(); ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class=" icono_redes fa fa-facebook-square"></i></a></li>
+						<li><a href="javascript: void(0);" onclick="window.open('https://twitter.com/intent/tweet?url=<?php echo current_url(); ?>&text=<?php echo $empresa->nombre; ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class=" icono_redes fa fa-twitter-square"></i></a></li>
+						<li><a href="javascript: void(0);" onclick="window.open('https://www.linkedin.com/cws/share?url=<?php echo current_url(); ?>&text=<?php echo $empresa->nombre; ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="icono_redes fa fa-linkedin-square"></i></a></li>
+						
+						<!-- <li><a href="<?=$usuario->youtube?>"><i class=" icono_redes fa fa-youtube"></i></a></li> -->
+						<!-- 
+							Pruebas
+						 -->
 					</ul>
 				</div>
 			</div>

@@ -75,7 +75,6 @@ class Empresa extends CI_Controller
 
     $datos['titulo'] = $datos['empresa']->nombre;
     $datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
-
     $this->load->view('template/head',array('titulo'=>$datos['empresa']->nombre));
     $this->load->view('template/javascript');
     $this->load->view('registro/funcionalidades_');
