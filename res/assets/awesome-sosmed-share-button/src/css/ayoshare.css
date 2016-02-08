@@ -1,4 +1,4 @@
-#share p{
+#share p, #share-header p{
 	display:inline-block;
 	margin:10px 0px 10px;
 	padding:0
@@ -6,6 +6,9 @@
 a.sh_btn{
 	color:#fff;
 	text-decoration:none
+}
+#share-header p .sh_btn{
+	padding: 8px;
 }
 .sh_btn {
 	cursor:pointer;

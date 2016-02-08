@@ -1,11 +1,8 @@
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/index_oroPlatino/index_oroPlatino.css">
 <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
+<script src="<?php echo assets_url() ?>awesome-sosmed-share-button/src/js/ayoshare.js"></script>
 
-<div class="imagen_principal">
-	<div class="container_imagen">
-
-	<!--<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/index/index.css">-->
 <script type="text/javascript">
   $(document).ready(function(){
     $('#carouselInicio').carousel({interval: 5000});
@@ -24,6 +21,8 @@
     );
   });
 </script>
+<div class="imagen_principal">
+	<div class="container_imagen">
 <div class="row" id="banner" >
   <!-- Seccion de Carousel -->
   <div class="row" id="foto_principal">

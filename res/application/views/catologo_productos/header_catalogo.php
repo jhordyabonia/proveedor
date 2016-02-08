@@ -1,6 +1,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/catalogo_producto/header_catalogo.css">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo assets_url() ?>awesome-sosmed-share-button/src/css/ayoshare.css">
+<script src="<?php echo assets_url() ?>awesome-sosmed-share-button/src/js/ayoshare_a.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#share-header").aayoshare(
+        google = true, // true or false
+        stumbleupon = false,
+        facebook = true,
+        linkedin = true,
+        pinterest = false,
+        bufferapp = false,
+        reddit = false,
+        vk = false,
+        pocket = false,
+        twitter = true,
+        total = false
+    );
+  });
+</script>
  <?php 
 	$m =  $this->uri->segment(2);
 	function is_active($p='',$metodo='')
@@ -27,29 +45,26 @@
 			</div>
 		</div>
 		<div class="col-md-2">
-			<div class="info">
-				<div class="tipo_empresa">
-					<img class="style_empresa img-responsive logo" src="<?=base_url()?>assets/img/membresia/<?=$membresia->logo?>">
-					<p class="inline-block nombre_membresia"><?=$membresia->nombre?></p>
-				</div>
-				<?php if($empresa->legalizacion):?>
-					<div class="verificacion">
-						<img class="style_verificacion img-responsive" src="<?=base_url()?>assets/img/membresia/Check_mark__64.png">
-						<p class="inline-block">Verificada</p>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="info">
+						<div class="tipo_empresa">
+							<img class="style_empresa img-responsive logo" src="<?=base_url()?>assets/img/membresia/<?=$membresia->logo?>">
+							<p class="inline-block nombre_membresia"><?=$membresia->nombre?></p>
+						</div>
+						<?php if($empresa->legalizacion):?>
+							<div class="verificacion">
+								<img class="style_verificacion img-responsive" src="<?=base_url()?>assets/img/membresia/Check_mark__64.png">
+								<p class="inline-block">Verificada</p>
+							</div>
+						<?php endif;?>
 					</div>
-				<?php endif;?>
-				<!--
-				<div class="compartir_redes">
-					<p class="texto_redes">Compartir:</p>
-					<ul class="list_redes">
-						<li><a href="<?=$usuario->facebook?>"><i class=" icono_redes fa fa-facebook-square"></i></a></li>
-						<li><a href="<?=$usuario->twitter?>"><i class=" icono_redes fa fa-twitter-square"></i></a></li>
-						<li><a href="<?=$usuario->youtube?>"><i class=" icono_redes fa fa-youtube"></i></a></li>
-						<li><a href="<?=$usuario->linkedin?>"><i class=" icono_redes fa fa-linkedin-square"></i></a></li>
-					</ul>
 				</div>
-			-->
+				<div class="col-md-12 share-well">
+					<div id="share-header" class="inline"></div>
+				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
