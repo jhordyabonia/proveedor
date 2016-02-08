@@ -12,7 +12,9 @@ a.sh_btn {
 #share-header p .sh_btn {
     padding: 8px;
 }
-
+.share-well{
+	padding: 4px;
+}
 .sh_btn {
     cursor: pointer;
     color: #fff;

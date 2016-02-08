@@ -1,4 +1,9 @@
-
+#share-header p .sh_btn {
+    padding: 8px;
+}
+.share-well{
+    padding: 4px !important;
+}
 .style-img-emp{
    position: relative;
    max-height: 
