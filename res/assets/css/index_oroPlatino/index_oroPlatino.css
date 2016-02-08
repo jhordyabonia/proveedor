@@ -1,65 +1,74 @@
-.boton_descargar{
+    .boton_descargar {
     margin-left: 38px;
 }
 
-.content_item_produc{
+.inline {
+    display: inline-block;
+}
+
+.content_item_produc {
     padding-left: 25px;
     margin-bottom: 40px;
 }
-.img_producto
-{
-  max-height: 155px;
-  max-width: 100%;
+
+.img_producto {
+    max-height: 155px;
+    max-width: 100%;
 }
-.imagen_producto{
+
+.imagen_producto {
     width: 100%;
-    height: 155px;    
+    height: 155px;
     margin-top: 15px;
     text-align: center;
 }
-.contexto_producto{
+
+.contexto_producto {
     width: 100%;
     height: 85px;
     position: relative;
     top: 18px;
 }
-.info_producto
-{
-  margin-bottom: 2px;
-  font-size: 16px;
-  height: 35px;
-  width: 100%;
-  line-height: 1;
-  overflow:hidden;
-  text-overflow: ellipsis;
+
+.info_producto {
+    margin-bottom: 2px;
+    font-size: 16px;
+    height: 35px;
+    width: 100%;
+    line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.contexto_producto > .textos > .info_producto > .nombre_producto{    
+
+.contexto_producto > .textos > .info_producto > .nombre_producto {
     margin-bottom: 2px;
     font-size: 16px;
     line-height: 1;
     color: black !important;
-    overflow:hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     color: #111;
     text-decoration: none;
-} 
-.contexto_producto > .textos > .texto_precio{
+}
+
+.contexto_producto > .textos > .texto_precio {
     margin-bottom: -5px;
     font-size: 17px;
     color: orange;
 }
-.contexto_producto > .textos > .unidades{
-  margin-bottom: -5px;
-  font-size: 15px;
-  color: #8d8c8c;
+
+.contexto_producto > .textos > .unidades {
+    margin-bottom: -5px;
+    font-size: 15px;
+    color: #8d8c8c;
 }
+
 .contexto_producto > .textos > .pedido {
     margin-bottom: 0;
     font-size: 10px;
     font-weight: bold;
     color: #8d8c8c;
 }
-
 
 .checkbox {
     position: relative;
@@ -69,55 +78,58 @@
     left: -7px;
     float: right;
 }
- 
+
 .checkbox:before {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  content: "";
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #ccc;
-}
- 
-.checkbox:checked:before {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  height: 9px;
-  border-color: #009688;
-  border-top-style: none;
-  border-right-style: none;
-  border-width: 2px;
-}
- 
-.checkbox:after {
-  content: "";
-  position: absolute;
-  top: -0.125rem;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
 }
 
-.contenedor_productos_item 
-{
+.checkbox:checked:before {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    height: 9px;
+    border-color: #009688;
+    border-top-style: none;
+    border-right-style: none;
+    border-width: 2px;
+}
+
+.checkbox:after {
+    content: "";
+    position: absolute;
+    top: -0.125rem;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.contenedor_productos_item {
     overflow: hidden;
-    height: 380px; 
+    height: 380px;
     padding-top: 30px;
     padding-left: 0;
     padding-right: -235;
     text-align: center;
 }
-.item_procud_hidden{display: none;}
-.item_procud_run{
+
+.item_procud_hidden {
+    display: none;
+}
+
+.item_procud_run {
     position: relative;
     top: 0;
     width: 235px;
@@ -130,15 +142,15 @@
     margin-left: -250px;
     padding-left: 15px;
     padding-right: 15px;
-
     overflow: hidden;
     display: inline-block;
     padding-top: 30px;
     text-align: left;
     opacity: 0;
-    transition:  opacity 0.5s,margin-left 0.1s ease-in-out;
+    transition: opacity 0.5s, margin-left 0.1s ease-in-out;
 }
-.item_procud{
+
+.item_procud {
     position: relative;
     top: 0;
     width: 235px;
@@ -146,224 +158,255 @@
     background-color: #fff;
     border: 1px solid #ccc;
     margin-top: 0px;
-    margin-left: 10px ;
+    margin-left: 10px;
     margin-bottom: 22px;
     margin-right: 10px;
     padding-left: 15px;
     padding-right: 15px;
-
     overflow: hidden;
     display: inline-block;
     padding-top: 30px;
     text-align: left;
     opacity: 1;
-    transition:  opacity 0s,margin-left 0.2s ease-in-out;
+    transition: opacity 0s, margin-left 0.2s ease-in-out;
 }
-.div-img{
+
+.div-img {
     width: 420px;
     height: 144px;
     margin: 0 auto;
 }
-.div-sonrisa{
+
+.div-sonrisa {
     margin: 0 auto;
     width: 100%;
     height: 25px;
 }
-.flecha-left-galeria{
+
+.flecha-left-galeria {
     display: inline-block;
     float: left;
     font-size: 21px;
     color: #ff7f27;
     top: 134px;
 }
-.flecha-right-galeria{
+
+.flecha-right-galeria {
     display: inline-block;
     float: right;
     font-size: 21px;
     color: #ff7f27;
     top: 134px;
 }
-.btn_soli, .btn_soli:hover{
+
+.btn_soli, .btn_soli:hover {
     width: 637px;
     height: 59px;
     background-color: #ff7f27;
     color: #fff;
     border-radius: 3px;
 }
-.banner
-{
+
+.banner {
     max-height: 284px;
     max-width: 1136px;
 }
-.botones_contac{
+
+.botones_contac {
     margin-top: 45px;
     margin-bottom: 45px;
     display: inline-block;
 }
-.cont-img{
+
+.cont-img {
     margin: 15px;
     max-width: 180px;
 }
-.char-img{
+
+.char-img {
     max-height: 155px;
     max-width: 100%;
     margin: 0 auto;
 }
-.textos-img{
+
+.textos-img {
     margin: 10px;
 }
-.texto-1{
+
+.texto-1 {
     font-size: 16px;
     color: #111;
     margin-bottom: 0;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.texto-2{
+
+.texto-2 {
     margin-bottom: 0;
     color: orange;
     font-size: 17px;
 }
-.texto-3{
+
+.texto-3 {
     margin-bottom: 0;
     font-size: 14px;
     color: #8d8c8c;
 }
-.texto-4{
+
+.texto-4 {
     margin-bottom: 0;
     font-size: 11px;
     color: #8d8c8c;
 }
-.carrousel_imagenes_class{
+
+.carrousel_imagenes_class {
     overflow: hidden;
     height: 380px;
     padding-left: 0;
     text-align: center;
 }
-.content_videos{
+
+.content_videos {
     width: 100%;
     height: 353px;
     background-color: #fff;
 }
-.contactar_empresa{
+
+.contactar_empresa {
     background-color: #ff7f27;
     color: #fff;
-    width: 243px;
-    height: 45px;
 }
-.conten_info{
+
+.conten_info {
     padding-left: 25px;
 }
-.contenido_videos{
+
+.contenido_videos {
     width: 100%;
-    height:281px;
+    height: 281px;
     background-color: whitesmoke;
 }
-.contenedor_galeria{
+
+.contenedor_galeria {
     width: 100%;
-    height:297px;
+    height: 297px;
     background-color: whitesmoke;
 }
-.conten_btn_soli_coti{
+
+.conten_btn_soli_coti {
     width: 100%;
     height: 121px;
     background-color: #fff;
     text-align: center;
     padding-top: 30px;
 }
-.container_imagen{
+
+.container_imagen {
     width: 100%;
     height: 283px;
     background-color: whitesmoke;
 }
-.container_nues_empresa{
+
+.container_nues_empresa {
     width: 100%;
     height: auto;
     background-color: #fff;
     border: 1px solid #ccc;
 }
-.container_productos_principales{
+
+.container_productos_principales {
     background-color: whitesmoke;
     width: 100%;
     height: 387px;
     padding-left: 7px;
     padding-right: 7px;
-
 }
-.contenido_contacto{
+
+.contenido_contacto {
     width: 100%;
     height: 56px;
     border-bottom: 5px solid #ccc;
-    margin-top: -8px;  
+    margin-top: -8px;
     background-color: #fff;
 }
-.galeria_imagenes{
+
+.galeria_imagenes {
     width: 100%;
     height: 73px;
     background-color: #fff;
     border-bottom: 5px solid #ccc;
 }
-.texto-galeria_imagenes, .texto-galeria_imagenes:hover{
+
+.texto-galeria_imagenes, .texto-galeria_imagenes:hover {
     font-size: 22px;
     color: #111;
     text-decoration: none;
     padding-left: 6px;
 }
-.item_contactenos{
+
+.item_contactenos {
     list-style: none;
     padding: 0;
     padding-right: 7px;
     margin-top: 13px;
     width: 42%;
 }
-.icon_compartir{
+
+.icon_compartir {
     display: inline-block;
-    font-size: 22px;    
+    font-size: 22px;
 }
-.ico_descar{
+
+.ico_descar {
     display: inline-block;
     color: #ff7f27;
     font-size: 25px;
     position: relative;
     top: 8px;
 }
-.inline-block{
+
+.inline-block {
     display: inline-block;
 }
-.info_nuestra_empresa{
-    background-color: whitesmoke;   
-    padding: 20px 20px; 
 
+.info_nuestra_empresa {
+    background-color: whitesmoke;
+    padding: 20px 20px;
 }
-iframe
-{
+
+iframe {
     border: 0px;
     height: 80%
 }
-.imagen_principal{
+
+.imagen_principal {
     padding: 18px 136px 18px 136px;
     background-color: whitesmoke;
     margin: 20px 0 0 0;
 }
-.item-proPrin{
+
+.item-proPrin {
     width: 215px;
     height: 305px;
     background-color: #fff;
     border: 1px solid #ccc;
 }
-.item-video{
+
+.item-video {
     width: 294px;
     height: 248px;
     background-color: #fff;
     border: 1px solid #ccc;
 }
-.item-galeria{
+
+.item-galeria {
     width: 294px;
     height: 236px;
     background-color: #fff;
     border: 1px solid #ccc;
 }
-.item_proPri{
+
+.item_proPri {
     list-style: none;
     padding: 0;
     display: inline-block;
@@ -371,7 +414,8 @@ iframe
     padding-left: 0px;
     padding-right: 10px;
 }
-.item_video{
+
+.item_video {
     list-style: none;
     padding: 0;
     display: inline-block;
@@ -379,27 +423,33 @@ iframe
     padding-left: 5px;
     padding-right: 5px;
 }
-.item_video_run{
+
+.item_video_run {
     list-style: none;
     padding: 0;
     display: inline-block;
     margin-top: 15px;
     padding-left: -235px;
     padding-right: 5px;
-    transition:  opacity 0.5s,margin-left 0.1s ease-in-out;
+    transition: opacity 0.5s, margin-left 0.1s ease-in-out;
 }
-.item_video_hidden{display: none;}
-.item_galeria{
+
+.item_video_hidden {
+    display: none;
+}
+
+.item_galeria {
     list-style: none;
     padding: 0;
     display: inline-block;
     margin-top: 25px;
     margin-bottom: 20px;
     padding-left: 3px;
-    padding-right: 3px; 
-    transition:  opacity 0.5s,margin-left 0.1s ease-in-out;
+    padding-right: 3px;
+    transition: opacity 0.5s, margin-left 0.1s ease-in-out;
 }
-.item_galeria_run{
+
+.item_galeria_run {
     list-style: none;
     padding: 0;
     display: inline-block;
@@ -408,12 +458,13 @@ iframe
     margin-left: -235px;
     padding-left: 3px;
     padding-right: 3px;
-    opacity: 0;   
+    opacity: 0;
     /*width: 130px;*/
     /*display: none; */
-    transition:  opacity 1s,margin-left 1s ease-in-out;
+    transition: opacity 1s, margin-left 1s ease-in-out;
 }
-.item_galeria_hidden{
+
+.item_galeria_hidden {
     list-style: none;
     padding: 0;
     margin-top: 25px;
@@ -423,7 +474,8 @@ iframe
     padding-right: 3px;
     display: none;
 }
-.item_galeria_content{
+
+.item_galeria_content {
     list-style: none;
     padding: 0;
     display: inline-block;
@@ -431,55 +483,64 @@ iframe
     padding-left: 5px;
     padding-right: 5px;
 }
-.ico_flecha_left{
+
+.ico_flecha_left {
     display: inline-block;
     float: left;
     font-size: 21px;
     color: #ff7f27;
     top: 183px;
 }
-.ico_flecha_right{
+
+.ico_flecha_right {
     display: inline-block;
     float: right;
     font-size: 21px;
     color: #ff7f27;
     top: 183px;
 }
-.ico_flecha_left_video{
+
+.ico_flecha_left_video {
     display: inline-block;
     float: left;
     font-size: 21px;
     color: #ff7f27;
     top: 128px;
 }
-.ico_flecha_right_video{
+
+.ico_flecha_right_video {
     display: inline-block;
     float: right;
     font-size: 21px;
     color: #ff7f27;
     top: 128px;
 }
-.ico_flecha_right_video2{
+
+.ico_flecha_right_video2 {
     display: inline-block;
     float: right;
     font-size: 21px;
     color: #ff7f27;
     top: 128px;
 }
-.texto_tag{
+
+.texto_tag {
     width: 100%;
     height: 74px;
 }
-.text-tag{
+
+.text-tag {
     padding-top: 42px;
     font-size: 19px;
     padding-left: 35px;
     font-weight: bold;
 }
-.texto-tag{
+
+.texto-tag {
     margin: 0;
 }
-.etiquetas_tag{
+
+.etiquetas_tag {
     width: 100%;
     min-height: 200px!important;
     border: 23px solid whitesmoke;
@@ -489,60 +550,72 @@ iframe
     color: #ff7f27;
     font-size: 16px;
 }
+
 .item_redes_sociales > li {
     display: inline-block;
 }
-.icono_info{
+
+.icono_info {
     font-size: 16px !important;
     color: orange;
 }
-.text_info{
+
+.text_info {
     padding-left: 17px;
     font-size: 17px;
 }
+
 .icon_redes_sociales {
     font-size: 20px !important;
     color: #999999;
 }
-.logo_empresa_2{
+
+.logo_empresa_2 {
     width: 430px;
     background-color: #fff;
     height: 372px;
     margin-top: 20px;
 }
-.logo_empresa_3{
+
+.logo_empresa_3 {
     width: 375px;
     background-color: #fff;
     height: 240px;
 }
+
 .nombre_redes {
     color: #111;
     font-size: 16px !important;
 }
-.con_logo{
+
+.con_logo {
     margin: 0 auto;
     max-width: 362px;
     max-height: 630px;
     padding: 0 15px;
 }
+
 .item_redes_sociales {
     padding-left: 8px;
     margin-top: 5px;
     margin-bottom: 7px;
     padding-right: 28px;
 }
-.title_texto_info{
+
+.title_texto_info {
     margin-bottom: 0;
     background-color: whitesmoke;
     height: 44px;
     line-height: 2;
-    font-size: 21px;    
+    font-size: 21px;
 }
-.icono-soli{
+
+.icono-soli {
     font-size: 35px !important;
     margin-right: 20px;
 }
-.informacion-contacto{
+
+.informacion-contacto {
     width: 100%;
     border: 0;
     background-color: #fff;
@@ -550,43 +623,47 @@ iframe
     margin-bottom: 22px;
     padding: 30px 20px 20px 20px;
 }
-.img_video{
+
+.img_video {
     position: relative;
     height: 80%;
     top: 0px;
 }
-.img_galeria{
 
+.img_galeria {
     max-height: 129px;
     max-width: 100%;
     position: relative;
     top: 0px;
     margin: 0 auto;
 }
-.nuestra_empresa{
+
+.nuestra_empresa {
     width: 100%;
     height: 50px;
     background-color: #fff;
     border-bottom: 5px solid #ccc;
 }
-.mini-logo{
+
+.mini-logo {
     width: 20px !important;
     height: 34px;
     float: right;
 }
-.mini-logo2{
+
+.mini-logo2 {
     max-width: 20px !important;
     max-height: 34px;
     float: right;
 }
-.llamar_empresa{
+
+.llamar_empresa {
     background-color: #ff7f27;
     color: #fff;
-    width: 243px;
-    height: 45px;
     margin-right: 10px;
 }
-.list-title{
+
+.list-title {
     list-style: none;
     padding-left: 0;
     padding-top: 7px;
@@ -594,7 +671,8 @@ iframe
     margin-right: 77px;
     margin-bottom: 0;
 }
-.list-title-galeria{
+
+.list-title-galeria {
     list-style: none;
     padding-left: 0;
     padding-top: 19px;
@@ -602,7 +680,8 @@ iframe
     margin-right: 30px;
     margin-bottom: 0;
 }
-.list-title-videos{
+
+.list-title-videos {
     list-style: none;
     padding-left: 0;
     padding-top: 29px;
@@ -610,7 +689,8 @@ iframe
     margin-right: 0;
     margin-bottom: 0;
 }
-.list_pro{
+
+.list_pro {
     list-style: none;
     padding-left: 0;
     padding-top: 20px;
@@ -618,7 +698,8 @@ iframe
     margin-right: 40px;
     margin-bottom: 0;
 }
-.list-title-nuestra{
+
+.list-title-nuestra {
     list-style: none;
     padding-left: 0;
     padding-top: 7px;
@@ -626,46 +707,54 @@ iframe
     margin-right: 48px;
     margin-bottom: 0;
 }
-.list_redes{
+
+.list_redes {
     list-style: none;
 }
-.list_redes > li{
+
+.list_redes > li {
     display: inline-block;
     padding-right: 6px;
 }
-.logo_nuestra{
+
+.logo_nuestra {
     margin: 0 auto;
     max-width: 385px;
     max-height: 131px;
 }
-.texto_contac{
+
+.texto_contac {
     color: #111 !important;
     font-size: 20px;
 }
-.texto_contacto{
+
+.texto_contacto {
     display: inline-block;
     margin-bottom: 0;
     position: relative;
     top: -3px;
     font-size: 17px;
 }
-.text02{
+
+.text02 {
     font-weight: normal;
     color: #ff7f27;
     text-decoration: none;
     font-size: 16px;
-
 }
-.texto1{
+
+.texto1 {
     font-weight: bold;
     color: #7f7f7f;
     font-size: 15px;
 }
-.texto_descripcion{
+
+.texto_descripcion {
     text-align: justify;
     font-size: 16px;
 }
-.texto_des_cata{
+
+.texto_des_cata {
     margin-bottom: 0;
     display: inline-block;
     font-size: 20px;
@@ -674,7 +763,8 @@ iframe
     color: #ff7f27;
     margin-left: 5px;
 }
-.texto-soli{
+
+.texto-soli {
     display: inline-block;
     margin-bottom: 0;
     position: relative;
@@ -682,57 +772,68 @@ iframe
     font-size: 20px;
     font-weight: bold;
 }
-.texto-nuestra_empresa, .texto-nuestra_empresa:hover{
+
+.texto-nuestra_empresa, .texto-nuestra_empresa:hover {
     font-size: 22px;
     color: #111;
     text-decoration: none;
     padding-left: 6px;
 }
-.texto_vercatalogo{
+
+.texto_vercatalogo {
     color: #ff7f27;
 }
-.texto_vercatalogo:hover{
+
+.texto_vercatalogo:hover {
     color: #ff7f27;
     text-decoration: none;
 }
-.texto_nom_empre{
+
+.texto_nom_empre {
     font-size: 30px;
     padding-left: 12px;
     padding-top: 25px;
 }
-.redes_compartir > p, .redes_compartir > ul{
+
+.redes_compartir > p, .redes_compartir > ul {
     display: inline-block;
     padding: 0;
     padding-right: 4px;
 }
-.title_videos{
+
+.title_videos {
     width: 100%;
     height: 72px;
     background-color: #fff;
     border-bottom: 5px solid #ccc;
 }
-.title_producPrin{
+
+.title_producPrin {
     font-size: 20px;
     color: #111;
 }
-.title_producPrin:hover{
+
+.title_producPrin:hover {
     font-size: 20px;
     color: #111;
     text-decoration: none;
 }
-.title_productosPrincipales{
+
+.title_productosPrincipales {
     background-color: #fff;
     width: 100%;
     height: 73px;
     border-bottom: 5px solid #ccc;
 }
-.titulo_video{
+
+.titulo_video {
     position: relative;
     top: -62px;
     text-align: center;
     font-size: 15px;
 }
-.titulo_galeria{
+
+.titulo_galeria {
     text-align: center;
     font-size: 15px;
     line-height: 1;
@@ -742,49 +843,51 @@ iframe
     text-overflow: ellipsis;
     margin-top: 24px;
 }
-.style-info{
+
+.style-info {
     display: inline-block;
     margin-left: 37px;
 }
-.style-sonisa{
+
+.style-sonisa {
     position: relative;
-    top: 37px;
-    left: 10px;
+    left: 15px;
 }
-.redes_compartir{
-    margin-top: 12px;
-    margin-left: 25px;
-    display: inline-block;
-}
-.vercatalogo{
+
+.vercatalogo {
     text-align: right;
     margin-top: -16px;
     padding-right: 45px;
     color: #ff7f27;
 }
-.video{
+
+.video {
     width: auto;
     height: 250px;
     margin: 26px 8px 4px 11px;
     position: relative;
     top: -17px;
 }
-.galeria{
+
+.galeria {
     max-width: 269px;
     max-height: 109px;
     margin: 60px 8px 4px 11px;
     position: relative;
     top: -15px;
 }
+
 .title_info > p, .title_info > span {
     display: inline-block;
 }
-.title_info{
+
+.title_info {
     background-color: whitesmoke;
     height: 44px;
     padding-left: 17px;
 }
-.contenido_info_contacto{
+
+.contenido_info_contacto {
     width: 100%;
     height: auto;
     background-color: whitesmoke;
@@ -793,13 +896,13 @@ iframe
 }
 
 @media (max-width: 1280px) {
-    .item-proPrin{
+    .item-proPrin {
         width: 195px;
         height: 302px;
         background-color: #fff;
         border: 1px solid #ccc;
     }
-    .list_pro{
+    .list_pro {
         list-style: none;
         padding-left: 0;
         padding-top: 20px;
@@ -807,7 +910,7 @@ iframe
         margin-right: 30px;
         margin-bottom: 0;
     }
-    .list-title{
+    .list-title {
         list-style: none;
         padding-left: 0;
         padding-top: 7px;
@@ -815,7 +918,7 @@ iframe
         margin-right: 50px;
         margin-bottom: 0;
     }
-    .list-title-nuestra{
+    .list-title-nuestra {
         list-style: none;
         padding-left: 0;
         padding-top: 7px;
@@ -823,21 +926,20 @@ iframe
         margin-right: 49px;
         margin-bottom: 0;
     }
-    .item-video{
+    .item-video {
         width: 270px;
         height: 248px;
         background-color: #fff;
         border: 1px solid #ccc;
     }
-    .item-galeria{
+    .item-galeria {
         width: 270px;
         height: 262px;
         background-color: #fff;
         border: 1px solid #ccc;
     }
-    .con_logo{
+    .con_logo {
         position: relative;
         top: 165px;
         left: 27px;
     }
-}

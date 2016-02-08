@@ -9,6 +9,19 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#carouselInicio').carousel({interval: 5000});
+    $("#share").ayoshare(
+        google = true, // true or false
+        stumbleupon = false,
+        facebook = true,
+        linkedin = true,
+        pinterest = false,
+        bufferapp = false,
+        reddit = false,
+        vk = false,
+        pocket = false,
+        twitter = true,
+        total = false
+    );
   });
 </script>
 <div class="row" id="banner" >
@@ -270,34 +283,27 @@ $tag .= $producto->nombre . ',';?>
 					<p class="texto_descripcion"><?=$empresa->descripcion?></p>
 					<p id="telefonos" style="display:none;font-size:21px;"><b>Teléfono:</b> <?=$usuario->telefono?> <b>Cel:</b> <?=$usuario->celular?> </p>
 				</div>
-				<div class="botones_contac">
-					<button class="btn llamar_empresa" onclick="if(document.getElementById('telefonos').style.display==''){document.getElementById('telefonos').style.display='none'}else{document.getElementById('telefonos').style.display='';}">
-						<span class="icon_compartir glyphicon glyphicon-earphone"></span>
-						<p class="texto_contacto" >Llamar a la Empresa</p>
-					</button>
-					<button class="btn contactar_empresa" data-toggle="modal" data-target="#popup_mensajes">
-						<span class="icon_compartir glyphicon glyphicon-envelope"></span>
-						<p class="texto_contacto">Contactar Empresa</p>
-					</button>
-				</div>
-				<!--
-				Trabajando en funcionalidad de botones de compartir
-				Se agregará un script en js
-				 -->
-				<div class="redes_compartir">
-					<img class="style-sonisa img-responsive" src="<?=base_url()?>assets/img/sonrisaprecio.png">
-					<p class="texto_redes">Compartir:</p>
-					<ul class="list_redes">
-						<!-- Botones de facebook, twitter listos para compartir esta vista -->
-						<li><a href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo current_url(); ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class=" icono_redes fa fa-facebook-square"></i></a></li>
-						<li><a href="javascript: void(0);" onclick="window.open('https://twitter.com/intent/tweet?url=<?php echo current_url(); ?>&text=<?php echo $empresa->nombre; ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class=" icono_redes fa fa-twitter-square"></i></a></li>
-						<li><a href="javascript: void(0);" onclick="window.open('https://www.linkedin.com/cws/share?url=<?php echo current_url(); ?>&text=<?php echo $empresa->nombre; ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="icono_redes fa fa-linkedin-square"></i></a></li>
-
-						<!-- <li><a href="<?=$usuario->youtube?>"><i class=" icono_redes fa fa-youtube"></i></a></li> -->
-						<!--
-							Pruebas
-						 -->
-					</ul>
+				<div class="row">
+					<div class="col-md-7 botones_contac">
+						<button class="btn llamar_empresa" onclick="if(document.getElementById('telefonos').style.display==''){document.getElementById('telefonos').style.display='none'}else{document.getElementById('telefonos').style.display='';}">
+							<span class="icon_compartir glyphicon glyphicon-earphone"></span>
+							<p class="texto_contacto" >Llamar a la Empresa</p>
+						</button>
+						<button class="btn contactar_empresa" data-toggle="modal" data-target="#popup_mensajes">
+							<span class="icon_compartir glyphicon glyphicon-envelope"></span>
+							<p class="texto_contacto">Contactar Empresa</p>
+						</button>
+					</div>
+					<div class="col-md-5 botones_contac">
+						<div class="inline">
+							<p class="texto_redes">Compartir:
+								<span>
+									<img class="style-sonisa img-responsive" src="<?=base_url()?>assets/img/sonrisaprecio.png">
+								</span>
+							</p>
+						</div>
+						<div id="share" class="inline"></div>
+					</div>
 				</div>
 			</div>
 			<div class="logo_empresa_3 col-md-4">

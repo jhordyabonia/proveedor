@@ -1,3 +1,8 @@
+#share p{
+	display:inline-block;
+	margin:10px 0px 10px;
+	padding:0
+}
 a.sh_btn{
 	color:#fff;
 	text-decoration:none
@@ -6,7 +11,7 @@ a.sh_btn{
 	cursor:pointer;
 	color: #fff;
 	border: none;
-	padding: 10px;
+	padding: 12px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
 	transition: border .25s linear,color .25s linear,background-color .25s linear
