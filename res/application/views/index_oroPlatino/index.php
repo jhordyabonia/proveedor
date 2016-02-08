@@ -1,11 +1,11 @@
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
-<link rel="stylesheet" href="<?php echo base_url()?>assets/css/index_oroPlatino/index_oroPlatino.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/index_oroPlatino/index_oroPlatino.css">
 <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
 
 <div class="imagen_principal">
 	<div class="container_imagen">
 
-	<!--<link rel="stylesheet" href="<?php echo base_url()?>assets/css/index/index.css">-->
+	<!--<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/index/index.css">-->
 <script type="text/javascript">
   $(document).ready(function(){
     $('#carouselInicio').carousel({interval: 5000});
@@ -18,23 +18,28 @@
     <div id="carouselInicio" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <?php if(!$empresa->banners){ $empresa->banners='01_Registrese43.png,03_solicite2.png,02_publique2.png';}foreach (explode(',', $empresa->banners) as $i => $banner): ?>
-          <?php if($banner==""){break;}?>
-            <li data-target="#carouselInicio" data-slide-to="<?=$i;?>" 
-              class="<?php if($i==0){ echo 'active';} ?>"></li>
-          <?php endforeach ?>
+          <?php if (!$empresa->banners) {$empresa->banners = '01_Registrese43.png,03_solicite2.png,02_publique2.png';}
+foreach (explode(',', $empresa->banners) as $i => $banner): ?>
+          <?php if ($banner == "") {break;}
+?>
+            <li data-target="#carouselInicio" data-slide-to="<?=$i;?>"
+              class="<?php if ($i == 0) {echo 'active';}
+?>"></li>
+          <?php endforeach?>
         </ol>
         <div class="carousel-inner" >
-          <?php foreach (explode(',', $empresa->banners)  as $i => $banner): ?>
-          <?php if($banner==""){break;}?>
-            <div class="item anti-active <?php if($i==0){ echo 'active';} ?>">
+          <?php foreach (explode(',', $empresa->banners) as $i => $banner): ?>
+          <?php if ($banner == "") {break;}
+?>
+            <div class="item anti-active <?php if ($i == 0) {echo 'active';}
+?>">
             	<center>
-                	<img src="<?php echo base_url().'uploads/banners/'.$banner?>" class="img-responsive banner">
+                	<img src="<?php echo base_url() . 'uploads/banners/' . $banner ?>" class="img-responsive banner">
             	</center>
              </div>
-          <?php endforeach ?>
+          <?php endforeach?>
         </div>
-    </div> 
+    </div>
   </div>
 </div>
 
@@ -80,7 +85,7 @@
 				infocus=galeria2;
 			else
 				infocus=galeria3;
-			
+
 			console.log(id+" "+ant_galeria+" "+galeria3 +" "+ galeria2 +" "+ galeria1);
 
 			if(ant_galeria!=id)
@@ -93,7 +98,7 @@
 			var n = (new Date()).getSeconds();
 			do if((new Date()).getSeconds()!=n)out++;
 			while(out!=ms);
-		} 
+		}
 		function left(id)
 		{
 			my_test(id);
@@ -101,7 +106,7 @@
 			if(document.getElementById(id).childNodes.length-infocus>8)
 			{
 				document.getElementById(id).childNodes[infocus].className+='_run';
-				
+
 				wait(500);
 
 				div_class=document.getElementById(id).childNodes[infocus].className;
@@ -109,7 +114,7 @@
 				console.log('flan');
 				infocus+=2;
 			}
-			//else{infocus =1;left(id);}			
+			//else{infocus =1;left(id);}
 		}
 		function rigth(id)
 		{
@@ -126,7 +131,7 @@
 				*/
 				document.getElementById(id).childNodes[infocus].className=div_class.replace('_hidden','');
 			}
-			//else{infocus =1;left(id);}			
+			//else{infocus =1;left(id);}
 		}
 	</script>
 	<div class="container_productos_principales col-md-12">
@@ -138,8 +143,9 @@
 		</a>
 
 		<div id="carrousel_destacados" class="contenedor_productos_item">
-		<?php $tag=""; foreach($destacados as $key=>$producto):?>
-		<?php if(!$producto||$producto->nombre==""){continue;}$tag.=$producto->nombre.',';?>
+		<?php $tag = "";foreach ($destacados as $key => $producto): ?>
+		<?php if (!$producto || $producto->nombre == "") {continue;}
+$tag .= $producto->nombre . ',';?>
 			<div class="item_procud">
 				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
@@ -147,8 +153,10 @@
 						<div class="info_producto">
 							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
-						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="pedido">pedido mínimo</p>';}?>
+						<p class="texto_precio"><?php if ($producto->precio_unidad == 0) {echo "Precio a convenir.";} else {echo '$' . decimal_points($producto->precio_unidad);}
+?></p>
+						<p class="unidades"><?php if ($producto->pedido_minimo == 0) {echo "Pedido mínimo a convenir.</p>";} else {echo decimal_points($producto->pedido_minimo) . " " . ($producto->medida) . '<p class="pedido">pedido mínimo</p>';}
+?>
 					</div>
 				</div>
 				<div class="mini-logo">
@@ -156,8 +164,9 @@
 				</div>
 			</div>
 		<?php endforeach;?>
-		<?php foreach($productos as $key=>$producto):?>
-		<?php if(!$producto||$producto->nombre==""){continue;}$tag.=$producto->nombre.',';?>
+		<?php foreach ($productos as $key => $producto): ?>
+		<?php if (!$producto || $producto->nombre == "") {continue;}
+$tag .= $producto->nombre . ',';?>
 			<div class="item_procud">
 				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
@@ -165,8 +174,10 @@
 						<div class="info_producto">
 							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
-						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="pedido">pedido mínimo</p>';}?>
+						<p class="texto_precio"><?php if ($producto->precio_unidad == 0) {echo "Precio a convenir.";} else {echo '$' . decimal_points($producto->precio_unidad);}
+?></p>
+						<p class="unidades"><?php if ($producto->pedido_minimo == 0) {echo "Pedido mínimo a convenir.</p>";} else {echo decimal_points($producto->pedido_minimo) . " " . ($producto->medida) . '<p class="pedido">pedido mínimo</p>';}
+?>
 					</div>
 				</div>
 				<div class="mini-logo">
@@ -187,7 +198,7 @@
 		</button>
 	</div>
 </div>
-<?php if($empresa->videos):?>
+<?php if ($empresa->videos): ?>
 <div class="videos_empresa">
 	<div class="title_videos col-md-12">
 		<div class="col-md-3">
@@ -208,8 +219,9 @@
 			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
 		</a>
 		<div id="carrousel_videos">
-		<?php foreach (explode(',',$empresa->videos) as $key => $value):?>
-		<?php if($value==''){continue;}?>
+		<?php foreach (explode(',', $empresa->videos) as $key => $value): ?>
+		<?php if ($value == '') {continue;}
+?>
 					<div class="item_video">
 						<div class="item-video">
 							<div class="video">
@@ -268,7 +280,7 @@
 						<p class="texto_contacto">Contactar Empresa</p>
 					</button>
 				</div>
-				<!-- 
+				<!--
 				Trabajando en funcionalidad de botones de compartir
 				Se agregará un script en js
 				 -->
@@ -280,9 +292,9 @@
 						<li><a href="javascript: void(0);" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo current_url(); ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class=" icono_redes fa fa-facebook-square"></i></a></li>
 						<li><a href="javascript: void(0);" onclick="window.open('https://twitter.com/intent/tweet?url=<?php echo current_url(); ?>&text=<?php echo $empresa->nombre; ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class=" icono_redes fa fa-twitter-square"></i></a></li>
 						<li><a href="javascript: void(0);" onclick="window.open('https://www.linkedin.com/cws/share?url=<?php echo current_url(); ?>&text=<?php echo $empresa->nombre; ?>','ventanacompartir', 'toolbar=0, status=0, width=650, height=450');"><i class="icono_redes fa fa-linkedin-square"></i></a></li>
-						
+
 						<!-- <li><a href="<?=$usuario->youtube?>"><i class=" icono_redes fa fa-youtube"></i></a></li> -->
-						<!-- 
+						<!--
 							Pruebas
 						 -->
 					</ul>
@@ -295,7 +307,7 @@
 	</div>
 </div>
 
-<?php if($empresa->imagenes):?>
+<?php if ($empresa->imagenes): ?>
 <div class="contenido_galeria">
 	<div class="galeria_imagenes col-md-12">
 		<div class="col-md-3">
@@ -316,21 +328,23 @@
 			<span class="flecha-right-galeria glyphicon glyphicon-chevron-right"></span>
 		</a>
 		<div id="carrousel_imagenes" class="carrousel_imagenes_class">
-		<?php foreach ($imagenes as $key => $value):?>
-		 <?php if($value==''){continue;}?>
+		<?php foreach ($imagenes as $key => $value): ?>
+		 <?php if ($value == '') {continue;}
+?>
 					<div class="item_galeria">
 						<div class="item-galeria" onclick="show('<?=$key?>')">
 							<div class="galeria">
 								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=base_url()?>uploads/resize/SOP/imagenes/<?=$value?>">
 							</div>
 							<div class="titulo_galeria">
-								<p><?php if($titulos[$key]!='Imagen'){ echo $titulos[$key];} ?></p>
+								<p><?php if ($titulos[$key] != 'Imagen') {echo $titulos[$key];}
+?></p>
 							</div>
 						</div>
 					</div>
 		<?php endforeach;?>
-		</div>	
-	</div>	
+		</div>
+	</div>
 </div>
 <?php endif;?>
 <div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
@@ -349,7 +363,7 @@
 				</ul>
 			</li>
 		</ul>
-		
+
 	</div>
 	<div class="col-md-2"></div>
 </div>
@@ -360,7 +374,7 @@
 		<div class="informacion-contacto">
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-earphone"></span>
-					<p class="title_texto_info">Teléfono</p> 
+					<p class="title_texto_info">Teléfono</p>
 				</div>
 				<div class="conten_into">
 					<p class="text_info">Celular: <?=$usuario->celular?></p>
@@ -368,56 +382,56 @@
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-home"></span>
-					<p class="title_texto_info">Dirección</p> 
+					<p class="title_texto_info">Dirección</p>
 				</div>
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->direccion?></p>
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-map-marker"></span>
-					<p class="title_texto_info">Ubicación</p> 
+					<p class="title_texto_info">Ubicación</p>
 				</div>
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?></p>
 				</div>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-globe"></span>
-					<p class="title_texto_info">Página Web</p> 
+					<p class="title_texto_info">Página Web</p>
 				</div>
 				<div class="conten_into">
 					<p class="text_info" onclick="location.href='<?=$usuario->web?>'"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
 				</div>
-				<?php if($usuario->facebook):?>
+				<?php if ($usuario->facebook): ?>
 						<div class="title_info">
 							<i class="icono_info fa fa-facebook-square"></i>
-							<p class="title_texto_info">Facebook</p> 
+							<p class="title_texto_info">Facebook</p>
 						</div>
 						<div class="conten_into">
 							<p class="text_info" onclick="location.href='<?=$usuario->facebook?>'"><a href='<?=$usuario->facebook?>'><?=$usuario->facebook?></a></p>
 						</div>
 					<?php endif;?>
-					<?php if($usuario->twitter):?>
+					<?php if ($usuario->twitter): ?>
 						<div class="title_info">
 							<i class="icono_info fa fa-twitter-square"></i>
-							<p class="title_texto_info">Twitter</p> 
+							<p class="title_texto_info">Twitter</p>
 						</div>
 						<div class="conten_into">
 							<p class="text_info" onclick="location.href='<?=$usuario->twitter?>'"><a href='<?=$usuario->twitter?>'><?=$usuario->twitter?></a></p>
 						</div>
 					<?php endif;?>
-					<?php if($usuario->linkedin):?>
-						<div class="title_info">							
-							<i class="icono_info fa fa-linkedin-square"></i> 
-							<p class="title_texto_info">Linkedin</p> 
+					<?php if ($usuario->linkedin): ?>
+						<div class="title_info">
+							<i class="icono_info fa fa-linkedin-square"></i>
+							<p class="title_texto_info">Linkedin</p>
 						</div>
 						<div class="conten_into">
 							<p class="text_info" onclick="location.href='<?=$usuario->linkedin?>'"><a href='<?=$usuario->linkedin?>'><?=$usuario->linkedin?></a></p>
 						</div>
 					<?php endif;?>
-					<?php if($usuario->youtube):?>
+					<?php if ($usuario->youtube): ?>
 					<div class="title_info">
 						<i class="icon_redes_sociales fa fa-youtube"></i>
-						<p class="title_texto_info">Youtube</p> 
+						<p class="title_texto_info">Youtube</p>
 					</div>
 					<div class="conten_into">
 						<p class="text_info" onclick="location.href='<?=$usuario->youtube?>'"><a href='<?=$usuario->youtube?>'><?=$usuario->youtube?></a></p>
@@ -426,7 +440,7 @@
 					<!--
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-thumbs-up"></span>
-					<p class="title_texto_info">Redes Sociales</p> 
+					<p class="title_texto_info">Redes Sociales</p>
 				</div>
 				<ul class="item_redes_sociales">
 					<li>
@@ -450,7 +464,7 @@
 					<li>
 						<ul class="item_redes_sociales">
 							<a class="nombre_redes" href="<?=$usuario->linkedin?>">Linkedin</a>
-							<i class="icon_redes_sociales fa fa-linkedin-square"></i> 
+							<i class="icon_redes_sociales fa fa-linkedin-square"></i>
 						</ul>
 					</li>
 				</ul>
@@ -497,7 +511,7 @@
   max-height: 100%;
   position: relative;
   /*
-  top: 50%; 
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   */
@@ -506,7 +520,7 @@
 {
   left: 10%;
   height:80%;
-  width: 80%;  
+  width: 80%;
 }
 </style>
 <div class="slide_producto" >
@@ -521,7 +535,7 @@
               </div>
            </center>
           </div>
- 
+
         <!-- Controls -->
           <a class="left carousel-control" href="JavaScript:anterior_imagen();" role="button" style="margin-left: -286px;">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -529,10 +543,10 @@
           <a class="right carousel-control" href="JavaScript:proxima_imagen();" role="button" style="margin-right: -286px;">
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
-      </div> 
+      </div>
     </div>
-  </div>              
-</div>  
+  </div>
+</div>
 <a data-toggle="modal" data-target="#popup_slider" id="launch_popup_slider"></a>
 <script type="text/javascript">
 var imagen=0;
