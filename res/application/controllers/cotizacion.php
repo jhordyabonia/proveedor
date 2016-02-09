@@ -23,7 +23,7 @@ class Cotizacion extends CI_Controller {
     	if($usuario->permisos==1)
     	{	return TRUE;	}
 
-    	redirect(base_url());
+    	redirect(base_url(),'refresh');
     } 
 
 	private function toArray($obj)

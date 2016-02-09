@@ -81,6 +81,7 @@ class Empresa_model extends CI_Model {
         {
             foreach ($palabra as $key => $value)
             {
+                if($value=="")continue;
                 $this->db->or_like('nombre', $value, 'both'); 
                 $this->db->or_like('descripcion', $value, 'both'); 
                 $this->db->or_like('productos_principales', $value, 'both');
@@ -126,6 +127,7 @@ class Empresa_model extends CI_Model {
         {
             foreach ($palabra as $key => $value)
             {
+                if($value=="")continue;
                 $this->db->or_like('empresa.nombre', $value, 'both'); 
                 $this->db->or_like('empresa.descripcion', $value, 'both'); 
                 $this->db->or_like('productos_principales', $value, 'both');

@@ -49,7 +49,7 @@ class Eliminar extends CI_Controller
 			$this->usuarios->delete($id_usuario);
 		}
 
-    	redirect($_SERVER['HTTP_REFERER']);
+    	redirect($_SERVER['HTTP_REFERER'],'refresh');
 	}
 	private function verifyc_login()
     {
@@ -58,7 +58,7 @@ class Eliminar extends CI_Controller
     	if($usuario->permisos==1)
     	{	return;	}
 
-    	redirect(base_url());
+    	redirect(base_url(),'refresh');
     } 
 
 }

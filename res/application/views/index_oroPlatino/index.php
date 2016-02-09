@@ -377,14 +377,23 @@ $tag .= $producto->nombre . ',';?>
 	<div class="col-md-12">
 		<div class="col-md-8" style="padding: 0;">
 		<div class="informacion-contacto">
+			<?php
+				$telefonos;
+				if($usuario->indicativo!=0)
+				$telefonos.="PBX: ".$usuario->indicativo; 
+				if($usuario->telefono!=0)
+				$telefono.=" Extensión: ".$usuario->extension;
+				?>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-earphone"></span>
 					<p class="title_texto_info">Teléfono</p>
 				</div>
 				<div class="conten_into">
 					<p class="text_info">Celular: <?=$usuario->celular?></p>
-					<p class="text_info">PBX: <?=$usuario->indicativo?> <?=$usuario->telefono?> Extensión: <?=$usuario->extension?></p>
+					<p class="text_info"><?=$telefonos?></p>
 				</div>
+
+				<?php if ($usuario->direccion): ?>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-home"></span>
 					<p class="title_texto_info">Dirección</p>
@@ -392,6 +401,8 @@ $tag .= $producto->nombre . ',';?>
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->direccion?></p>
 				</div>
+
+				<?php endif;?>
 				<div class="title_info">
 					<span class="icono_info glyphicon glyphicon-map-marker"></span>
 					<p class="title_texto_info">Ubicación</p>
@@ -399,13 +410,21 @@ $tag .= $producto->nombre . ',';?>
 				<div class="conten_into">
 					<p class="text_info"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?></p>
 				</div>
-				<div class="title_info">
-					<span class="icono_info glyphicon glyphicon-globe"></span>
-					<p class="title_texto_info">Página Web</p>
-				</div>
-				<div class="conten_into">
-					<p class="text_info" onclick="location.href='<?=$usuario->web?>'"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
-				</div>
+
+				<?php if ($usuario->web): ?>
+					<div class="title_info">
+						<span class="icono_info glyphicon glyphicon-globe"></span>
+						<p class="title_texto_info">Página Web</p>
+					</div><?php
+					if(is_int(stripos($usuario->web,"http:")))
+						$web=$usuario->web;
+					else
+						$web="http://".$usuario->web;
+					?>
+					<div class="conten_into">
+						<p class="text_info" onclick="location.href='<?=$web?>'"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
+					</div>
+				<?php endif;?>
 				<?php if ($usuario->facebook): ?>
 						<div class="title_info">
 							<i class="icono_info fa fa-facebook-square"></i>
@@ -492,7 +511,7 @@ $tag .= $producto->nombre . ',';?>
 		<br>
 		<p class="texto-tag"><?=$empresa->productos_principales?><br>
 		<br>
-		<p class="texto-tag"><?=str_replace(',', '', $tag)?>
+		<p class="texto-tag"><?=$tag?>
 	</div>
 </div>
 

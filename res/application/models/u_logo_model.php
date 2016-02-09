@@ -31,6 +31,9 @@ class U_logo_model extends CI_Model {
 		$this->resize($img,"pagina_de_empresa/",220,185);
 		$this->resize($img,"SOP/",235,155);
 
+		$this->resize("logos/".$img,"SOP/logos3/",90,50);
+		$this->resize("logos/".$img,"SOP/logos2/",288,630);
+		$this->resize("logos/".$img,"SOP/logos1/",420,144);
 		$this->resize("logos/".$img,"index_carrouseles/logos/",120,120);
 		$this->resize("logos/".$img,"index_productos_principales/logos/",184,41);
 		$this->resize("logos/".$img,"index_productos_principales_mas_destacado/logos/",237,56);

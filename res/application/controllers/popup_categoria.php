@@ -22,7 +22,7 @@ class Popup_categoria extends CI_Controller
     	if($usuario->permisos==1)
     	{	return;	}
 
-    	redirect(base_url());
+    	redirect(base_url(),'refresh');
     } 
 
 	public function crear($recorded=FALSE)
@@ -94,6 +94,6 @@ class Popup_categoria extends CI_Controller
     	else {echo "Se actualizo el popup con exito ".$this->categoria->get($datos['categoria'])->nombre_categoria;}
 		echo "<br><a href='".base_url()."micro_admin'>volver</a>";
 		*/
-    	redirect(base_url()."categoria/captura/".$datos['categoria']);
+    	redirect(base_url()."categoria/captura/".$datos['categoria'],'refresh');
 	}
 }

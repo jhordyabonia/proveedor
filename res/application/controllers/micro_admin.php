@@ -524,7 +524,7 @@ class Micro_admin extends CI_Controller
     	if($usuario->permisos==1)
     	{	return TRUE;	}
 
-    	redirect(base_url());
+    	redirect(base_url(),'refresh');
     } 
     
     public function index()
@@ -971,12 +971,12 @@ class Micro_admin extends CI_Controller
 
 		echo "<H3>Se enviaron ".$count." mensajes, sactisfactoriamente</H3>";
 		echo "<a href='JavaScript:windows.close();'>Cerrar</a>"; 
-		//redirect($_SERVER['HTTP_REFERER']);
+		//redirect($_SERVER['HTTP_REFERER'],'refresh');
     }
     public function eliminar_solicitud_externa($id)
 	{		 
 		$this->asistentes_proveedor->delete($id);
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER'],'refresh');
 	}
 
     public function editar_solicitud_externa()
@@ -1141,6 +1141,6 @@ class Micro_admin extends CI_Controller
 			$this->session->set_flashdata('mensaje_enviado', "DONE");
 		}
 		$this->session->set_flashdata('mensaje_enviado', "DONE");
-		redirect(base_url()."micro_admin/empresas");
+		redirect(base_url()."micro_admin/empresas",'refresh');
 	}
 }

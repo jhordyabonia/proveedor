@@ -36,7 +36,7 @@ class Perfil extends CI_Controller {
 			{redirect('registro/registrar');}
 
 		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/inicio/'.$id_empresa);}
+		{redirect(base_url().'empresa/inicio/'.$id_empresa,'refresh');}
 		
 		$id_user=$empresa->usuario;
 		$datos['logo_empresa'] = $empresa->logo;
@@ -227,7 +227,7 @@ class Perfil extends CI_Controller {
 			{redirect('registro/registrar');}
 
 		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/inicio/'.$id_empresa);}
+		{redirect(base_url().'empresa/inicio/'.$id_empresag,'refresh');}
 
 		$usuario=$this->usuarios->get($empresa->usuario);
 		$datos['des_empresa'] = $empresa->descripcion;
@@ -342,7 +342,7 @@ class Perfil extends CI_Controller {
 
 		$this->empresa->update($datos['empresa'],$empresa->id);
 		$this->usuarios->update($datos['usuario'],$empresa->usuario);
-		redirect('/tablero_usuario');
+		redirect('/tablero_usuario','refresh');
 	}
 	public function actualizar2()
 	{
@@ -362,7 +362,7 @@ class Perfil extends CI_Controller {
 
 		$this->empresa->update($datos['empresa'],$empresa->id);
 		$this->usuarios->update($datos['usuario'],$empresa->usuario);
-		redirect('/perfil/ver_empresa/'.$empresa->id);
+		redirect('/perfil/ver_empresa/'.$empresa->id,'refresh');
 	}
 	public function existen_usuario_email($usuario, $email="")
 	{
@@ -509,7 +509,7 @@ class Perfil extends CI_Controller {
 			return TRUE;
 		}
 		
-		redirect('/tablero_usuario');
+		redirect('/tablero_usuario','refresh');
 		return FALSE;
 	}
 	public function productos_solicitados($id_empresa, $id_seleccion=0, $tipo_seleccion=0)
@@ -530,7 +530,7 @@ class Perfil extends CI_Controller {
 			{redirect('registro/registrar');}
 
 		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/cotizaciones_requeridas/'.$id_empresa);}
+		{redirect(base_url().'empresa/cotizaciones_requeridas/'.$id_empresa,'refresh');}
 
 		$id_user=$empresa->usuario;
 		
@@ -596,7 +596,7 @@ class Perfil extends CI_Controller {
 			{redirect('registro/registrar');}
 
 		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/contacto/'.$id_empresa);}
+		{redirect(base_url().'empresa/contacto/'.$id_empresa,'refresh');}
 		
 		$usuario=$this->usuarios->get($empresa->usuario);
 

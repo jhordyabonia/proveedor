@@ -40,12 +40,12 @@ class Empresa extends CI_Controller
     public function inicio($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/" . $id);
+            redirect(base_url() . "empresa_m/ver_empresa/",'refresh');
         }
 
         $datos['empresa'] = $this->empresa->get($id);
 
-        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id);}
+        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id,'refresh');}
 
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
@@ -88,12 +88,12 @@ class Empresa extends CI_Controller
     public function catalogo_producto($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/" . $id);
+            redirect(base_url() . "empresa_m/ver_empresa/" . $id,'refresh');
         }
 
         $datos['empresa'] = $this->empresa->get($id);
 
-        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id_empresa);}
+        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id_empresa,'refresh');}
 
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
@@ -152,11 +152,11 @@ class Empresa extends CI_Controller
     public function contacto($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/contacto_empresa/" . $id);
+            redirect(base_url() . "empresa_m/contacto_empresa/" . $id,'refresh');
         }
         $datos['empresa'] = $this->empresa->get($id);
 
-        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa);}
+        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa,'refresh');}
 
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
@@ -167,6 +167,12 @@ class Empresa extends CI_Controller
 
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
+        
+        $datos['tag'] = "";
+        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        {
+            $datos['tag'].=$value->nombre.",";
+        }
 
         $this->load->view('template/head', array('titulo' => 'Contacto - ' . $datos['empresa']->nombre));
         $this->load->view('template/javascript');
@@ -181,10 +187,10 @@ class Empresa extends CI_Controller
     public function cotizaciones_requeridas($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/productos_solicitados/" . $id);
+            redirect(base_url() . "empresa_m/productos_solicitados/" . $id,'refresh');
         }
 
-        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa);}
+        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa,'refresh');}
 
         $datos['empresa']               = $this->empresa->get($id);
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
@@ -217,7 +223,12 @@ class Empresa extends CI_Controller
         $datos['page']      = 0; //$page;
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
-
+        
+        $datos['tag'] = "";
+        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        {
+            $datos['tag'].=$value->nombre.",";
+        }
         $this->load->view('template/head', array('titulo' => 'Cotizaciones Requeridas - ' . $datos['empresa']->nombre));
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');
@@ -231,11 +242,11 @@ class Empresa extends CI_Controller
     public function nosotros($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/perfil_empresa/" . $id);
+            redirect(base_url() . "empresa_m/perfil_empresa/" . $id,'refresh');
         }
 
         $datos['empresa'] = $this->empresa->get($id);
-        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id);}
+        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
@@ -246,6 +257,12 @@ class Empresa extends CI_Controller
 
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
+        
+        $datos['tag'] = "";
+        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        {
+            $datos['tag'].=$value->nombre.",";
+        }
 
         $this->load->view('template/head', array('titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre));
         $this->load->view('template/javascript');
@@ -259,12 +276,12 @@ class Empresa extends CI_Controller
     public function descargar_catalogo($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/" . $id);
+            redirect(base_url() . "empresa_m/ver_empresa/" . $id,'refresh');
         }
 
         $datos['empresa'] = $this->empresa->get($id);
 
-        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id);}
+        if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
@@ -284,6 +301,11 @@ class Empresa extends CI_Controller
 
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
+        $datos['tag'] = "";
+        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        {
+            $datos['tag'].=$value->nombre.",";
+        }
         $this->load->view('template/head', array('titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre));
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');

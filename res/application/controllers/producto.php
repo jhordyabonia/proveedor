@@ -138,7 +138,7 @@ class Producto extends CI_Controller
 				{	return  TRUE; }
 			else
 				{
-					redirect('/logueo');
+					redirect('/logueo','refresh');
 					return FALSE;
 				}			
 		}
@@ -155,7 +155,7 @@ class Producto extends CI_Controller
 			{	return  TRUE; }
 		}
 		 
-		redirect('/tablero_usuario');
+		redirect('/tablero_usuario','refresh');
 		return FALSE;
 	}
 
@@ -167,7 +167,7 @@ class Producto extends CI_Controller
 
 		$this->producto->delete($id_producto);
 		$this->session->set_flashdata('producto_eliminado', 'Producto Eliminados de su cuenta de usuario');
-		redirect('/producto/administrar');
+		redirect('/producto/administrar','refresh');
 	}
 
 	//funcion para editar

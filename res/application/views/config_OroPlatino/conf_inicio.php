@@ -158,17 +158,21 @@
 						<?=form_open_multipart(base_url().'editar_empresa/videos')?>
 							<!-- Campo 1 -->
 							
-							<div id="videos" class="col-xs-12 col-md-9 col-lg-9">
+							<div id="videos" class="col-xs-12 col-md-12 col-lg-12">
 								<?php $key=0; foreach (explode(',',$empresa->videos) as $key => $video):?>
-									<div class="input-group col-xs-3 col-md-2 col-lg-2">
-									  <!--<input type="text" class="form-control" name="titulos_videos[]" value="<?=$video?>" placeholder="Introdusca dirección del video" style="border-radius: 0;">-->
-									</div>
-									<div class="input-group padig col-xs-12 col-md-6 col-lg-6">
+									<div class="input-group padig col-xs-12 col-md-4 col-lg-4">
 									  <span class="fiel-tramspa padi2 input-group-addon">
-									  	<?=$key+1?>
+									  	<?=$key+1?> Url:<br>
 									  </span>
 									  <input type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introdusca titulo del video" style="border-radius: 0;">
 									<a id="a_<?=$key?>" style="display:none"  href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									</div>
+								
+									<div class="input-group padig col-xs-12 col-md-4 col-lg-4">
+									<span class="fiel-tramspa padi2 input-group-addon">
+									  Nombre:<br>
+									  </span>
+									<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca titulo del video" style="border-radius: 0;">
 									</div>
 								<?php endforeach;?>
 									</div>

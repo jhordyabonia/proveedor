@@ -218,13 +218,14 @@ margin-top: 10px;
 .conten_footer_adsense{
     /*height: auto;*/
 }
-.banner_footer_adsense
-{  
-    padding-top: 10px;
+.banner_footer_adsense {
+    /* padding-top: 15px; */
     max-width: 728px!important;
     margin: 0 auto;
-    margin-bottom: 50px;
-    /*background-color: whitesmoke;*/
+    /* margin-bottom: 34px; */
+    /* background-color: whitesmoke; */
+    height: 113px;
+}  /* background-color: whitesmoke; */
 }
 .titulo_footer_publi{
     font-size: 9px;

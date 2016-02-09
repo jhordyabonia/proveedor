@@ -21,7 +21,7 @@ class Inventarios2 extends CI_Controller {
       if($usuario->permisos==1)
       { return TRUE;  }
 
-      redirect(base_url());
+      redirect(base_url(),'refresh');
     } 
 
     public function index()

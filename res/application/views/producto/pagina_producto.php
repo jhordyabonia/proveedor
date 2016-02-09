@@ -40,7 +40,7 @@
 	</div>
 	<div class="col-md-6 contenedor_descripciones">
 		<div class="col-md-12">
-			<p class="nom_producto"><?=$producto->nombre ?></p>
+			<h1 class="nom_producto"><?=$producto->nombre ?></h1>
 		</div>
 		<div class="col-md-12 content_producto">
 			<div class="col-md-12">

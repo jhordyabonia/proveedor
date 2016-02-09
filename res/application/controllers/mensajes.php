@@ -416,7 +416,7 @@ class Mensajes extends CI_Controller {
 	}
 
 	$this->session->set_flashdata('correos_eliminados', $key.' Correos eliminados!!');
-	redirect($_SERVER['HTTP_REFERER']); 
+	redirect($_SERVER['HTTP_REFERER'],'refresh'); 
   }
 
   private function veryficar_logged($id_mensaje=FALSE)
@@ -430,7 +430,7 @@ class Mensajes extends CI_Controller {
 
 	if($id_usuario=='')
 	{ 
-	  redirect('/logueo');
+	  redirect('/logueo','refresh');
 	  return FALSE;
 	}    
 	if(!$id_mensaje)
@@ -684,7 +684,7 @@ class Mensajes extends CI_Controller {
 		#return;
 		$this->session->set_flashdata('mensaje_enviado', "DONE"); // comenta esta linea para funcionamiento en el servidor
 				
-		redirect($_SERVER['HTTP_REFERER']);//comenta esta linea, para pruebas locales, el msj no se enviará		
+		redirect($_SERVER['HTTP_REFERER'],'refresh');//comenta esta linea, para pruebas locales, el msj no se enviará		
 	} 
   public function enviar($tipo=1)
 	{
@@ -739,6 +739,6 @@ class Mensajes extends CI_Controller {
 
 		$this->session->set_flashdata('mensaje_enviado', "DONE"); // comenta esta linea para funcionamiento en el servidor
 				
-		redirect($_SERVER['HTTP_REFERER']);//comenta esta linea, para pruebas locales, el msj no se enviará		
+		redirect($_SERVER['HTTP_REFERER'],'refresh');//comenta esta linea, para pruebas locales, el msj no se enviará		
 	} 
 }
