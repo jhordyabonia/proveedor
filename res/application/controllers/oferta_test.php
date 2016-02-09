@@ -84,7 +84,7 @@ class oferta_test extends CI_Controller {
 				{	return  TRUE; }
 			else
 				{
-					redirect('/logueo');
+					redirect('/logueo','refresh');
 					return FALSE;
 				}	
 		}
@@ -102,7 +102,7 @@ class oferta_test extends CI_Controller {
 			
 		}
 		 
-		redirect('/tablero_usuario');
+		redirect('/tablero_usuario','refresh');
 		return FALSE;
 	}
 	public function editar($id_oferta) 
@@ -268,7 +268,7 @@ class oferta_test extends CI_Controller {
 		
 		$this->solicitud->delete($oferta);
 		$this->session->set_flashdata('oferta_eliminada', 'Solicitud de producto eliminada de su inventario');
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER'],'refresh');
 	}
 
 }

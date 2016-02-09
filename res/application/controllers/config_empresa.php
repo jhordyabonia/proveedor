@@ -19,7 +19,7 @@ class Config_empresa extends CI_Controller {
 
     $id=$this->session->userdata('id_usuario');
     if($id=='')
-      {redirect(base_url());}
+      {redirect(base_url(),'refresh');}
     $this->datos['usuario']=$this->usuario->get($id);
     $this->datos['empresa']=$this->empresa->get(array('usuario'=>$id));
   }

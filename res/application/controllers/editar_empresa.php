@@ -12,7 +12,7 @@ class Editar_empresa extends CI_Controller {
 
     $this->id=$this->session->userdata('id_usuario');
     if($this->id=='')
-      {redirect(base_url());}
+      {redirect(base_url(),'refresh');}
     $usuario=$this->usuario->get($this->id);
     $empresa=$this->empresa->get(array('usuario'=>$this->id));
 	}
@@ -32,7 +32,7 @@ class Editar_empresa extends CI_Controller {
              #return;
              $this->empresa->update($datos,array('usuario'=>$this->id));
              $this->session->set_flashdata('confimacion_guardado','TRUE');
-             redirect($_SERVER['HTTP_REFERER']);
+             redirect($_SERVER['HTTP_REFERER'],'refresh');
     }
 	  public function contacto()
 	  {
@@ -66,7 +66,7 @@ class Editar_empresa extends CI_Controller {
 
               $this->usuario->update($datos,$this->id);
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	  public function catalogos()
 	  {
@@ -85,7 +85,7 @@ class Editar_empresa extends CI_Controller {
               $datos['empresa']=$this->empresa->get(array('usuario'=>$this->id))->id;
               $this->catalogo->insert($datos);
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
     public function borrar_catalogo($id)
     {
@@ -96,7 +96,7 @@ class Editar_empresa extends CI_Controller {
         $this->catalogo->delete(array('id'=>$id,'empresa'=>$empresa));
       }
       $this->session->set_flashdata('confimacion_guardado','TRUE');
-      redirect($_SERVER['HTTP_REFERER']);
+      redirect($_SERVER['HTTP_REFERER'],'refresh');
     }
 	  public function usuario()
 	  {
@@ -112,7 +112,7 @@ class Editar_empresa extends CI_Controller {
               $actual['password']=md5($this->input->post('password_old'));
               $this->usuario->update($datos,$actual);              
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	  public function perfil()
 	  {
@@ -135,7 +135,7 @@ class Editar_empresa extends CI_Controller {
               $this->usuario->update($datos_usuario,$this->id);
               $this->empresa->update($datos,array('usuario'=>$this->id));
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }  
 	  public function nosotros()
 	  {
@@ -148,7 +148,7 @@ class Editar_empresa extends CI_Controller {
 
               $this->empresa->update($datos,array('usuario'=>$this->id));
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  } 
 	  public function banners()
 	  {        
@@ -171,7 +171,7 @@ class Editar_empresa extends CI_Controller {
               #return;
               $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	   public function videos()
 	  {            
@@ -192,7 +192,7 @@ class Editar_empresa extends CI_Controller {
               $usuario=$this->session->userdata('id_usuario');
               $this->empresa->update(array('videos'=>$datos),array('usuario'=>$usuario));
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	   public function imagenes()
 	  {
@@ -222,6 +222,6 @@ class Editar_empresa extends CI_Controller {
               $datos.='|'.$archivos_actuales.$archivos;
               $this->empresa->update(array('imagenes'=>$datos),array('usuario'=>$this->id));
               $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER']);
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	}

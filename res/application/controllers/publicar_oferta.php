@@ -31,7 +31,7 @@ class Publicar_oferta extends CI_Controller {
 				{	return  TRUE; }
 			else
 				{
-					redirect('/logueo');
+					redirect('/logueo','refresh');
 					return FALSE;
 				}			
 		}
@@ -48,7 +48,7 @@ class Publicar_oferta extends CI_Controller {
 			{	return  TRUE; }
 		}
 		 
-		redirect('/tablero_usuario');
+		redirect('/tablero_usuario','refresh');
 		return FALSE;
 	}
 
@@ -97,7 +97,7 @@ class Publicar_oferta extends CI_Controller {
 			{	$this->_images_form($id_registro);	}
 
 			$this->session->set_flashdata('oferta_registrada', 'Oferta registrada exitosamente!!');
-			 redirect($_SERVER['HTTP_REFERER']);
+			 redirect($_SERVER['HTTP_REFERER'],'refresh');
 		}
 		#else
 		#{$this->index();}

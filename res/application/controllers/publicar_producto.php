@@ -29,7 +29,7 @@ class Publicar_producto extends CI_Controller {
 				{	return  TRUE; }
 			else
 				{
-					redirect('/logueo');
+					redirect('/logueo','refresh');
 					return FALSE;
 				}			
 		}
@@ -92,7 +92,7 @@ class Publicar_producto extends CI_Controller {
 			$id_registro=$this->producto->insert($producto);
 			$this->_images_form($id_registro);
 			$this->session->set_flashdata('producto_registrado', 'Producto registrado exitosamente!!');
-			 redirect($_SERVER['HTTP_REFERER']);
+			 redirect($_SERVER['HTTP_REFERER'],'refresh');
 		}
 		#else
 		#{$this->index();}

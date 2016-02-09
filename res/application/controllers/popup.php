@@ -119,7 +119,7 @@ class Popup extends CI_Controller
 			$this->session->set_flashdata('mensaje_enviado', "DONE");
 		}
 		$this->session->set_flashdata('mensaje_enviado', "DONE");
-		redirect(base_url()."registro/registro_automatico/".$id_solicitud);
+		redirect(base_url()."registro/registro_automatico/".$id_solicitud,'refresh');
     }
     
     public function auto_launch($view,$launcher=FALSE)
@@ -265,8 +265,8 @@ class Popup extends CI_Controller
 		if($iduser)
 			{
 				if($_SERVER['HTTP_REFERER'])
-					{	redirect($_SERVER['HTTP_REFERER']); }
-				else{ 	redirect(base_url());	}
+					{	redirect($_SERVER['HTTP_REFERER'],'refresh'); }
+				else{ 	redirect(base_url(),'refresh');	}
 			}
 
 		$this->session->set_flashdata('reffer', $reffer);
@@ -276,7 +276,7 @@ class Popup extends CI_Controller
 
 		if($user&&$pass)
 		{			
-			redirect('logueo/login/'.$user.'/'.$pass);
+			redirect('logueo/login/'.$user.'/'.$pass,'refresh');
 		}
 		else
 		{
@@ -448,6 +448,6 @@ class Popup extends CI_Controller
 
 		$this->session->set_flashdata('mensaje_enviado', "DONE"); // comenta esta linea para funcionamiento en el servidor
 				
-		redirect($_SERVER['HTTP_REFERER']);//comenta esta linea, para pruebas locales, el msj no se enviará		
+		redirect($_SERVER['HTTP_REFERER'],'refresh');//comenta esta linea, para pruebas locales, el msj no se enviará		
 	} 
 }

@@ -89,7 +89,7 @@ class Registro extends CI_Controller {
 		if($source->empresa!=0)
 		{	
 	        $this->session->set_flashdata('auto_launch_AP', 2);
-	        redirect($_SERVER['HTTP_REFERER']);
+	        redirect($_SERVER['HTTP_REFERER'],'refresh');
 	    }
 
 		$registro=$this->usuarios->get(array('email'=>$source->email));		
@@ -97,7 +97,7 @@ class Registro extends CI_Controller {
 		if($registro!=FALSE)
 		{	
         	$this->session->set_flashdata('auto_launch_AP', 2);
-			redirect($_SERVER['HTTP_REFERER']);
+			redirect($_SERVER['HTTP_REFERER'],'refresh');
 		}
 
 		$datos_usuario['usuario'] = "proveedor".substr($this->crypter->encrypt(rand(5,25)), 7);
@@ -163,7 +163,7 @@ class Registro extends CI_Controller {
 
         $this->session->set_flashdata('auto_launch_AP', 2);
 		#return;
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect($_SERVER['HTTP_REFERER'],'refresh');
 	}
 
 	private function activar_solicitud($id,$email)

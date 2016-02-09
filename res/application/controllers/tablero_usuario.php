@@ -46,7 +46,7 @@ class Tablero_usuario extends CI_Controller {
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$iduser));
 
 		if(!$datos['empresa'])#completar registro de empresa, en caso de estar incompleto.
-		{redirect('registro/asistente_registro/'.$this->usuarios->get($iduser)->usuario);}
+		{redirect('registro/asistente_registro/'.$this->usuarios->get($iduser)->usuario,'refresh');}
 
 		$datos['membresia']=$this->membresia->get($datos['empresa']->membresia);
 
@@ -133,7 +133,7 @@ class Tablero_usuario extends CI_Controller {
 
     	if(!$this->verificar_logged($source->empresa))
     		{
-    			redirect(base_url()."tablero_usuario");
+    			redirect(base_url()."tablero_usuario",'refresh');
     			return;
     		}
 

@@ -48,11 +48,13 @@
 	padding-left: 0;
 	padding-right: 0;
 }
-.pagina_producto .nom_producto{
-	font-size: 20px;
-	font-weight: bold;
-	padding-top: 20px;
-	border-bottom: 1px solid #F4F4F4;
+.pagina_producto .nom_producto {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F4F4F4;
 }
 .pagina_producto .content_producto{
 	padding-top: 25px;

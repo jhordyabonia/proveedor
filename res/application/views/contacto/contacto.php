@@ -19,6 +19,13 @@
 <div class="contenido_info_contacto row">
 		<div class="col-md-2"></div>
 		<div class="col-md-10">
+			<?php
+				$telefonos;
+				if($usuario->indicativo!=0)
+				$telefonos.="PBX: ".$usuario->indicativo; 
+				if($usuario->telefono!=0)
+				$telefono.=" Extensión: ".$usuario->extension;
+				?>
 			<div class="info_contacto">
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-earphone"></span>
@@ -26,8 +33,10 @@
 					</div>
 					<div class="conten_into">
 						<p class="text_info">Celular: <?=$usuario->celular?></p>
-						<p class="text_info">PBX: <?=$usuario->indicativo?> <?=$usuario->telefono?> Extension: <?=$usuario->extension?></p>
+						<p class="text_info"><?=$telefonos?></p>
 					</div>
+
+				<?php if ($usuario->direccion): ?>
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-home"></span>
 						<p class="title_texto_info">Dirección</p> 
@@ -35,6 +44,7 @@
 					<div class="conten_into">
 						<p class="text_info"><?=$usuario->direccion?></p>
 					</div>
+				<?php endif;?>
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-map-marker"></span>
 						<p class="title_texto_info">Ubicación</p> 
@@ -42,13 +52,21 @@
 					<div class="conten_into">
 						<p class="text_info"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?></p>
 					</div>
+				<?php if($usuario->web):?>
 					<div class="title_info">
 						<span class="icono_info glyphicon glyphicon-globe"></span>
 						<p class="title_texto_info">Página Web</p> 
 					</div>
-					<div class="conten_into">
-						<p class="text_info"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
+					<div class="conten_into"><?php
+					if(is_int(stripos($usuario->web,"http:")))
+						$web=$usuario->web;
+					else
+						$web="http://".$usuario->web;
+					?>
+						<p class="text_info"><a href='<?=$usuario->web?>'><?=$web?></a></p>
 					</div>
+
+				<?php endif;?>
 					<?php if($usuario->facebook):?>
 						<div class="title_info">
 							<i class="icono_info fa fa-facebook-square"></i>

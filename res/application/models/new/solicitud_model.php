@@ -82,6 +82,7 @@ class Solicitud_model extends CI_Model {
         {
             foreach ($palabra as $key => $value)
             {
+                if($value=="")continue;
                 $this->db->or_like('palabras_clave', $value, 'both'); 
                 #$this->db->or_like('empresa.nombre', $value, 'both'); 
                 #$this->db->or_like('empresa.descripcion', $value, 'both'); 

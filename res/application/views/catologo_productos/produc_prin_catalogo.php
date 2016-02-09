@@ -145,3 +145,15 @@
 	  </ul>
 	</div>
 </div>
+<div class="contenido_tag col-md-12" style="background-color: #fff;padding: 0;">
+	<div class="texto_tag">
+		<p class="text-tag">Etiquetas</p>
+	</div>
+	<div class="etiquetas_tag" style="padding-bottom: 15px;">
+		<p class="texto-tag"><?=$empresa->tipo?><br>
+		<br>
+		<p class="texto-tag"><?=$empresa->productos_principales?><br>
+		<br>
+		<p class="texto-tag"><?=$tag?>
+	</div>
+</div>

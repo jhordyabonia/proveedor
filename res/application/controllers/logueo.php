@@ -27,16 +27,16 @@ switch ($this->session->userdata('rol_usuario')) {
                 $this->load->view('vistas/sesion_usuario',$data);
                 break;
             case 'Administrador': 
-                redirect(base_url().'admin');
+                redirect(base_url().'admin','refresh');
                 break;
             case 'Comprador': 
-                redirect(base_url().'tablero_usuario');
+                redirect(base_url().'tablero_usuario','refresh');
                 break;    
             case 'Vendedor':      
-                redirect(base_url().'tablero_usuario');
+                redirect(base_url().'tablero_usuario','refresh');
                 break;
    			case 'Ambos':
-                redirect(base_url().'tablero_usuario');
+                redirect(base_url().'tablero_usuario','refresh');
                 break;
             default:        
                 $data['titulo'] = 'Bienvenido a proveedor_';
@@ -65,7 +65,7 @@ switch ($this->session->userdata('rol_usuario')) {
             }
         }else
         { 
-            redirect(base_url().'logueo');
+            redirect(base_url().'logueo','refresh');
         }
     }
         public function popup($reffer="")
@@ -109,10 +109,10 @@ switch ($this->session->userdata('rol_usuario')) {
 
                     $path_redirect = $this->session->userdata('path_current');
 
-                    if($path_redirect) {   redirect($path_redirect); }
-                    else if($reffer=="false"){ redirect($_SERVER['HTTP_REFERER']);}
-                    else { redirect(base_url().$reffer);}
-                }else{  redirect(base_url().'logueo');  }
+                    if($path_redirect) {   redirect($path_redirect,'refresh'); }
+                    else if($reffer=="false"){ redirect($_SERVER['HTTP_REFERER'],'refresh');}
+                    else { redirect(base_url().$reffer,'refresh');}
+                }else{  redirect(base_url().'logueo','refresh');  }
         }
 
 	//funcion para generar un token aleatorio y encriptado en md5 para la seguridad del login
@@ -126,7 +126,7 @@ switch ($this->session->userdata('rol_usuario')) {
 
 	public function logout()    {
         $this->session->sess_destroy();
-         redirect($_SERVER['HTTP_REFERER']);
+         redirect($_SERVER['HTTP_REFERER'],'refresh');
     }
 
 
