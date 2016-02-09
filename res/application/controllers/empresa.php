@@ -72,7 +72,11 @@ class Empresa extends CI_Controller
 
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
-        $this->load->view('template/head', array('titulo' => $datos['empresa']->nombre));
+
+        $this->load->view('template/head', array(
+            'titulo' => $datos['empresa']->nombre,
+            'facebook' => True
+        ));
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');
         $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
