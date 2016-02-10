@@ -118,7 +118,8 @@
 								function mostrar_div(id,img)
 								{
 									document.getElementById(id).style.display='';
-									document.getElementById('banners_eliminados').value+=img+',';
+									if(img!=0)
+										document.getElementById('banners_eliminados').value+=img+',';
 									console.log(id);
 								}
 								function load_new_logo(id)
@@ -160,20 +161,20 @@
 							
 							<div id="videos" class="col-xs-12 col-md-12 col-lg-12">
 								<?php $key=0; foreach (explode(',',$empresa->videos) as $key => $video):?>
-									<div class="input-group padig col-xs-12 col-md-4 col-lg-4">
+									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
 									  <span class="fiel-tramspa padi2 input-group-addon">
-									  	<?=$key+1?> Url:<br>
+									  	<?=$key+1?><!-- Url:<br>-->
 									  </span>
-									  <input type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introdusca titulo del video" style="border-radius: 0;">
+									  <input type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca titulo del video" style="border-radius: 0;">
 									<a id="a_<?=$key?>" style="display:none"  href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 									</div>
-								
-									<div class="input-group padig col-xs-12 col-md-4 col-lg-4">
+									<!--
+									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
 									<span class="fiel-tramspa padi2 input-group-addon">
 									  Nombre:<br>
 									  </span>
 									<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca titulo del video" style="border-radius: 0;">
-									</div>
+									</div>-->
 								<?php endforeach;?>
 									</div>
 							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
@@ -218,7 +219,7 @@
 											DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
 											DOM+=++videos;
 											DOM+='</span>';
-											DOM+='<input type="text" onchange="document.getElementById('+"'a_"+videos+"'"+').style.display='+"'';"+'"  class="form-control" name="videos[]" value="" placeholder="Introdusca dirección del video" style="border-radius: 0;">';
+											DOM+='<input type="text" onchange="document.getElementById('+"'a_"+videos+"'"+').style.display='+"'';"+'"  class="form-control" name="videos[]" value="" placeholder="Introduzca dirección del video" style="border-radius: 0;">';
 											DOM+='<a style="display:none" id="a_'+videos+'" href="JavaScript:borrar_videos('+videos+')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
 											DOM+='</div>';
 											document.getElementById('videos').innerHTML+=DOM;
@@ -305,11 +306,11 @@
 											DOM+='<span class="ico-up glyphicon glyphicon-open"></span>';
 											DOM+='<a href="JavaScript:document.getElementById('+"'banner"+(imagenes+4)+"'"+').click()" class="text-up-img">Subir imágen '+imagenes+'</a>';
 											DOM+='<div style="display:none" >';
-											DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+')">/>';
+											DOM+='<input type="file" id="banner'+(imagenes+4)+'" name="imagenes[]"  onchange="JavaScript:load_new_logo('+(imagenes+4)+');">'+" mostrar_div(borrar_video_"+(imagenes+4)+",0)+/>";
 											DOM+='</div></div><div  id="div_img'+(imagenes+4)+'"  class="subido-img2">';
-											DOM+='<img id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/resize/default.jpg">';
+											DOM+='<img alt="." id="img'+(imagenes+4)+'" class="imge-subido img_preview" src="<?=base_url()?>uploads/file.jpg">';
 											DOM+='<p class="name-file"></p>';
-											DOM+='<a href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/resize/default.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
+											DOM+='<a id="borrar_video_'+(imagenes+4)+'" href="JavaScript:document.getElementById('+"'img"+(imagenes+4)+"'"+').src="<?=base_url()?>uploads/file.jpg;" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
 											DOM+='</div></div>';
 											document.getElementById('imagenes').innerHTML+=DOM;
 											fijar_imagenes();
@@ -351,13 +352,13 @@
 												<span class="ico-up glyphicon glyphicon-open"></span>
 												<a href="JavaScript:document.getElementById('banner<?=$key+4?>').click()" class="text-up-img">Subir imágen <?=$key+1?></a>
 												<div style="display:none" >
-											  		<input type="file" id="banner<?=$key+4?>" name="imagenes[]"  onchange="JavaScript:load_new_logo(<?=$key+4?>)">/>
+											  		<input type="file" id="banner<?=$key+4?>" name="imagenes[]"  onchange="JavaScript:load_new_logo(<?=$key+4?>);mostrar_div(borrar_video_<?=$key+4?>,0)"/>
 												</div>
 											</div>
-											<div id="div_img<?=$key+4?>" class="subido-img2">
-												<img id="img<?=$key+4?>" class="imge-subido img_preview" src="<?php echo base_url()?>uploads/resize/imagenes/<?=$imagenes[$key]?>">
+											<div id="div_img<?=$key+4?>" class="subido-img2 imge-subido img_preview">
+												<img id="img<?=$key+4?>" alt="'" class="imge-subido img_preview" src="<?php echo base_url()?>uploads/resize/imagenes/<?=$imagenes[$key]?>">
 												<p class="name-file"></p>
-												<a href="JavaScript:eliminar_img('<?=$imagenes[$key]?>',<?=$key+4?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+												<a id="borrar_video_<?=$key+4?>" href="JavaScript:eliminar_img('<?=$imagenes[$key]?>',<?=$key+4?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 											</div>
 										</div>
 									<?php endforeach;?>

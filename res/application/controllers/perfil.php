@@ -227,7 +227,7 @@ class Perfil extends CI_Controller {
 			{redirect('registro/registrar');}
 
 		if($empresa->membresia>1)
-		{redirect(base_url().'empresa/inicio/'.$id_empresag,'refresh');}
+		{redirect(base_url().'empresa/inicio/'.$id_empresa,'refresh');}
 
 		$usuario=$this->usuarios->get($empresa->usuario);
 		$datos['des_empresa'] = $empresa->descripcion;

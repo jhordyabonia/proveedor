@@ -416,13 +416,13 @@ $tag .= $producto->nombre . ',';?>
 						<span class="icono_info glyphicon glyphicon-globe"></span>
 						<p class="title_texto_info">Página Web</p>
 					</div><?php
-					if(is_int(stripos($usuario->web,"http:")))
+					if($usuario->web!=str_replace('http://', "",$usuario->web))
 						$web=$usuario->web;
 					else
 						$web="http://".$usuario->web;
 					?>
 					<div class="conten_into">
-						<p class="text_info" onclick="location.href='<?=$web?>'"><a href='<?=$usuario->web?>'><?=$usuario->web?></a></p>
+						<p class="text_info" onclick="location.href='<?=$web?>'"><a href='<?=$usuario->web?>'><?=$web?></a></p>
 					</div>
 				<?php endif;?>
 				<?php if ($usuario->facebook): ?>

@@ -41,7 +41,7 @@ a{
 }
 .img_preview
 {
-  max-height: 40px;
+  height: 40px;
   max-width: 127px;
 }
 .logo

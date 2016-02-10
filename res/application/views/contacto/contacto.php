@@ -58,12 +58,12 @@
 						<p class="title_texto_info">Página Web</p> 
 					</div>
 					<div class="conten_into"><?php
-					if(is_int(stripos($usuario->web,"http:")))
+					if($usuario->web!=str_replace('http://', "",$usuario->web))
 						$web=$usuario->web;
 					else
 						$web="http://".$usuario->web;
 					?>
-						<p class="text_info"><a href='<?=$usuario->web?>'><?=$web?></a></p>
+						<p class="text_info"><a href='<?=$web?>'><?=$web?></a></p>
 					</div>
 
 				<?php endif;?>

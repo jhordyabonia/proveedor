@@ -43,6 +43,7 @@ $route['404_override'] = '';
 $route['productos/pagina'] = 'productos';//cuando sea la primera página
 $route['productos/pagina/(:num)'] = 'productos';//cuando no sea la primera página
 $route['categoria/(:num)/(:any)'] = "categoria/index/$1/$2";
+/*$route['empresa/inicio/'] = 'empresa'*/
 
 
 /* End of file routes.php */
