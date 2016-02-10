@@ -11,9 +11,12 @@
 	<link href="<?= base_url() ?>assets/img/logoweb.ico" rel="shortcut icon" />
 	<script> var base_url = "<?= base_url() ?>"; </script>
   <meta name="google-site-verification" content="px6HVEw0kihblm_G6SY3jvhBiP8mMdC0Zscl_TKI1bI" />
-
   <meta name="google-site-verification" content="KCcycDogdTluio0fwtnVFmj2SaUULxHn9SOdpcfvI_o" />
-  
+  <?php if ($facebook): ?>
+    <?php 
+      $this->load->view('facebook-banners/meta');
+    ?>
+  <?php endif ?>
 </head>
 <body>
 
