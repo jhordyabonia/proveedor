@@ -571,10 +571,10 @@
 <script type="text/javascript">
  $(document).ready(function(){
     $('.share').ShareLink({
-        // title: 'My great post', // title for share message
-        // text: 'text of my great post', // text for share message
-        // image: 'http://my-site-url.com/images/funny-cats.png', // optional image for share message (not for all networks)
-        // url: location.href, // link on shared page
+        title: 'My great post', // title for share message
+        text: 'text of my great post', // text for share message
+        image: 'http://www.proveedor.com.co/assets/img/facebook-banner/facebook-banner-catalogo-default.png', // optional image for share message (not for all networks)
+        url: location.href, // link on shared page
         // class_prefix: 's_', // optional class prefix for share elements (buttons or links or everything), default: 's_'
         width: 700, // optional popup initial width
         height: 480 // optional popup initial height

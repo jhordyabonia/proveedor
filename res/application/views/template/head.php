@@ -14,12 +14,7 @@
   <script> var base_url = "<?= base_url() ?>"; </script>
   <meta name="google-site-verification" content="px6HVEw0kihblm_G6SY3jvhBiP8mMdC0Zscl_TKI1bI" />
   <meta name="google-site-verification" content="KCcycDogdTluio0fwtnVFmj2SaUULxHn9SOdpcfvI_o" />
-  
-  <?php if ($facebook): ?>
-    <?php 
-      $this->load->view('facebook-banners/meta');
-    ?>
-  <?php endif ?>
+  <?php $this->load->view('facebook-banners/meta'); ?>
 </head>
 <body>
 
@@ -30,6 +25,12 @@
       appId      : '682439635234689',
       xfbml      : true,
       version    : 'v2.3'
+    });
+    FB.api('https://graph.facebook.com/', 'post', {
+            id: window.location.href,
+            scrape: true
+        }, function(response) {
+            //console.log('rescrape!',response);
     });
   };
 

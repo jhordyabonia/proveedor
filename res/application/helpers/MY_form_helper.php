@@ -46,17 +46,6 @@ if (! function_exists('form_button_facebook'))
     }
 }
 
-if (! function_exists('form_button_twitter'))
-{
-    function form_button_twitter()
-    {
-        $data = array(
-            'class' => 'share-btn share s_twitter'
-        );
-        return form_a($data, icon('fa fa-twitter').counter('twitter'));
-    }
-}
-
 if (! function_exists('form_button_plus'))
 {
     function form_button_plus()
@@ -88,7 +77,34 @@ if (! function_exists('form_button_email'))
             'class' => 'share-btn share s_email',
             'href' => 'mailto:someone@yoursite.com?subject=Mail from Our Site'
         );
-        return form_a($data, icon('fa fa-envelope').counter());
+        return form_a($data, icon('fa fa-envelope'));
+    }
+}
+
+if (! function_exists('form_button_whatsapp'))
+{
+    function form_button_whatsapp()
+    {
+        $data = array(
+            'class' => 'share-btn share s_whatsapp',
+            'href' => 'whatsapp://send',
+            'data-text' => 'Cómo crear el botón de Compartir en WhatsApp en tu sitio:' ,
+            'data-href' => 'http://www.google.com',
+            'style' => "display:none"
+        );
+        return form_a($data, icon('fa fa-whatsapp'));
+    }
+}
+
+
+if (! function_exists('form_button_twitter'))
+{
+    function form_button_twitter()
+    {
+        $data = array(
+            'class' => 'share-btn share s_twitter'
+        );
+        return form_a($data, icon('fa fa-twitter'));
     }
 }
 
@@ -98,12 +114,13 @@ if (! function_exists('form_buttons_socials'))
     {
         
         return "<div class='inline'>".
-					form_button_facebook().
-					form_button_twitter().
-					form_button_plus().
-					form_button_linkedin().
+                    form_button_facebook().
+                    form_button_plus().
+                    form_button_linkedin().
+                    form_button_twitter().
                     form_button_email().
-				"</div>";
+                    form_button_whatsapp().
+                "</div>";
     }
 }
 
