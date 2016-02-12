@@ -1,26 +1,15 @@
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/index_oroPlatino/index_oroPlatino.css">
 <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
-<script src="<?php echo assets_url() ?>awesome-sosmed-share-button/src/js/ayoshare.js"></script>
-
+<link rel="stylesheet" href="<?php echo css_url(); ?>social.css">
 <script type="text/javascript">
   $(document).ready(function(){
     $('#carouselInicio').carousel({interval: 5000});
-    $("#share").ayoshare(
-        google = true, // true or false
-        stumbleupon = false,
-        facebook = true,
-        linkedin = true,
-        pinterest = false,
-        bufferapp = false,
-        reddit = false,
-        vk = false,
-        pocket = false,
-        twitter = true,
-        total = false
-    );
   });
 </script>
+
+
+
 <div class="imagen_principal">
 	<div class="container_imagen">
 <div class="row" id="banner" >
@@ -301,7 +290,13 @@ $tag .= $producto->nombre . ',';?>
 								</span>
 							</p>
 						</div>
-						<div id="share" class="inline"></div>
+
+						<div class="inline">
+							<?php echo form_button_facebook() ?>
+							<?php echo form_button_twitter() ?>
+							<?php echo form_button_plus() ?>
+							<?php echo form_button_linkedin() ?>
+						</div>
 					</div>
 				</div>
 			</div>
