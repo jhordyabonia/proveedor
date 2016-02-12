@@ -26,13 +26,6 @@
       xfbml      : true,
       version    : 'v2.3'
     });
-    FB.api('https://graph.facebook.com/', 'post', {
-            id: window.location.href,
-            scrape: true
-        }, function(response) {
-            //console.log('rescrape!',response);
-    });
-  };
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -41,6 +34,8 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+
 </script>
 <!-- Estart SDK funciones de facebook-->
 
