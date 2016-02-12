@@ -79,6 +79,19 @@ if (! function_exists('form_button_linkedin'))
     }
 }
 
+
+if (! function_exists('form_button_email'))
+{
+    function form_button_email()
+    {
+        $data = array(
+            'class' => 'share-btn share s_email',
+            'href' => 'mailto:someone@yoursite.com?subject=Mail from Our Site'
+        );
+        return form_a($data, icon('fa fa-envelope').counter());
+    }
+}
+
 if (! function_exists('form_buttons_socials'))
 {
     function form_buttons_socials()
@@ -89,6 +102,7 @@ if (! function_exists('form_buttons_socials'))
 					form_button_twitter().
 					form_button_plus().
 					form_button_linkedin().
+                    form_button_email().
 				"</div>";
     }
 }

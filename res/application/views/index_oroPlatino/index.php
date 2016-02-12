@@ -290,13 +290,7 @@ $tag .= $producto->nombre . ',';?>
 								</span>
 							</p>
 						</div>
-
-						<div class="inline">
-							<?php echo form_button_facebook() ?>
-							<?php echo form_button_twitter() ?>
-							<?php echo form_button_plus() ?>
-							<?php echo form_button_linkedin() ?>
-						</div>
+						<?php echo form_buttons_socials() ?>
 					</div>
 				</div>
 			</div>
