@@ -25,6 +25,63 @@ class Config_empresa extends CI_Controller {
   }
   
 
+
+    private function cargar_producto($dato)
+    {
+        $imagenes = explode(',', $dato->imagenes);
+
+        $dato->imagenes = "default.jpg";
+        foreach ($imagenes as $value) {
+            if (!$value == "") {
+                $dato->imagenes = $value;
+                break;
+            }
+        }
+        $dato->medida = $this->dimension->get($dato->medida)->nombre;
+
+        if ($dato->precio_unidad == 0) {$dato->precio_unidad = "A convenir";}
+
+        if ($dato->pedido_minimo == 0) {
+            $dato->medida        = "";
+            $dato->pedido_minimo = "A convenir";
+        }
+
+        return $dato;
+    }
+  
+    public function producto($id)
+    {
+      $out=$this->producto->get($id);
+
+      $imagen="default.jpg";
+      foreach (explode(',',$out->imagenes) as $key => $value)
+       {
+        if($imagen!="")
+          $imagen=$value;
+       }
+      echo $imagen.",".$out->nombre;
+    }
+
+    public function productos_empresa($id,$destacados)
+    {
+        $productos = $this->producto->get_all(array('empresa' => $this->datos['empresa']->id));
+
+        $datos['identificador_temporal'] =$id;
+        $datos['productos'] = array();
+        foreach ($productos as $key => $producto)
+        {
+          foreach (explode('A', $destacados) as $key => $destacado) 
+          {
+            if($producto->id==$destacado) 
+                $producto=NULL;
+          }
+          if(!is_null($producto))
+          $datos['productos'][]=$this->cargar_producto($producto);
+        }
+        #$datos['productos']=$productos;
+        $this->load->view('config_OroPlatino/conf_productos_empresa.php', $datos);
+    }
+
   ##LLama la vista que mostrara la parte del footer en las vistas
   function inicio()
   {
@@ -147,13 +204,22 @@ class Config_empresa extends CI_Controller {
   function productos_principales()
   {
     $datos['empresa'] = $this->empresa->get($this->datos['empresa']->id);
-    $datos['productos'] = $this->producto->get_all(array('empresa'=>$this->datos['empresa']->id));
+    #$datos['productos'] = $this->producto->get_all(array('empresa'=>$this->datos['empresa']->id));
     $datos['destacados'] = array();# $this->producto->get_all(array('empresa'=>4264));
-    foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value) 
+    if($datos['empresa']->productos_destacados!="")
     {
-      if(is_null($value)){break;}
-      $datos['destacados'][]=$this->producto->get($value);
-    }
+      foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value) 
+      {
+        if($value==-1)break;
+        if(is_null($value)||$value==0)
+          {
+            $obj->nombre="Seleccionar producto";
+            $obj->imagenes="file.jpg";
+            $datos['destacados'][]=$obj;
+          }else
+        $datos['destacados'][]=$this->cargar_producto($this->producto->get($value));
+      }
+    }else{$datos['destacados']=FALSE;}
     $this->load->view('template/head',array('titulo'=>'Productos destacados'));
     $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);

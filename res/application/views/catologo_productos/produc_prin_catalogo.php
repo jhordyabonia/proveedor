@@ -92,7 +92,7 @@
 							<a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
 						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida)."<p class='pedido'>pedido mínimo</p>";}?>
 					</div>
 				</div>
 				<input type="checkbox" class="checkbox">
@@ -109,8 +109,8 @@
 						<div class="info_producto">
 							<a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
 						</div>
-						<p class="texto_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-						<p class="unidades"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".$producto->medida.'<p class="pedido">pedido mínimo</p>';}?>
+						<p class="texto_precio"><?php if($producto->precio_unidad == 0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
+						<p class="unidades"><?php if ($producto->pedido_minimo == 0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida)."<p class='pedido'>pedido mínimo</p>";}?>
 					</div>
 				</div>
 				<input type="checkbox" class="checkbox">
@@ -151,6 +151,8 @@
 	</div>
 	<div class="etiquetas_tag" style="padding-bottom: 15px;">
 		<p class="texto-tag"><?=$empresa->tipo?><br>
+		<br>
+		<p class="texto-tag"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?><br>
 		<br>
 		<p class="texto-tag"><?=$empresa->productos_principales?><br>
 		<br>

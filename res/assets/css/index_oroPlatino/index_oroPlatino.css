@@ -317,7 +317,7 @@
 .container_productos_principales {
     background-color: whitesmoke;
     width: 100%;
-    height: 387px;
+    height: 407px;
     padding-left: 7px;
     padding-right: 7px;
 }
@@ -856,8 +856,9 @@ iframe {
 
 .vercatalogo {
     text-align: right;
-    margin-top: -16px;
-    padding-right: 45px;
+    margin-top: -5px;
+    padding-right: 5px;
+    font-size: 18px;
     color: #ff7f27;
 }
 
