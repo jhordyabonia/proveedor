@@ -1,24 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/catalogo_producto/header_catalogo.css">
 <link rel="stylesheet" href="<?php echo assets_url() ?>awesome-sosmed-share-button/src/css/ayoshare.css">
-<script src="<?php echo assets_url() ?>awesome-sosmed-share-button/src/js/ayoshare_a.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#share-header").aayoshare(
-        google = true, // true or false
-        stumbleupon = false,
-        facebook = true,
-        linkedin = true,
-        pinterest = false,
-        bufferapp = false,
-        reddit = false,
-        vk = false,
-        pocket = false,
-        twitter = true,
-        total = false
-    );
-  });
-</script>
+
  <?php 
 	$m =  $this->uri->segment(2);
 	function is_active($p='',$metodo='')
@@ -61,7 +44,7 @@
 					</div>
 				</div>
 				<div class="col-md-12 share-well">
-					<div id="share-header" class="inline"></div>
+					<?php echo form_buttons_socials() ?>
 				</div>
 			</div>
 			

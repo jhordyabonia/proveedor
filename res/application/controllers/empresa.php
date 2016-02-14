@@ -75,7 +75,7 @@ class Empresa extends CI_Controller
 
         $this->load->view('template/head', array(
             'titulo' => $datos['empresa']->nombre,
-            'facebook' => True
+            'url_image_facebook' => img_url()."facebook-banner/facebook-banner-inicio-default.png"
         ));
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');
@@ -143,7 +143,12 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
-        $this->load->view('template/head', array('titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre));
+
+        $this->load->view('template/head', array(
+            'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
+            'url_image_facebook' => img_url()."facebook-banner/facebook-banner-catalogo-default.png"
+            )
+        );
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');
         $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
