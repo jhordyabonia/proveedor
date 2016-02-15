@@ -1,6 +1,13 @@
 #share-header p .sh_btn {
     padding: 8px;
 }
+.share-buttons{
+    position: relative;
+    left: -11px;
+}
+.label-share{
+	margin-top: 13px;
+}
 .share-well{
     padding: 4px !important;
 }

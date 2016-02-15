@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">
 <?php
 		//En estas variables se guarda el id de usuario del proveedor y el nit, son capturados de la url
+		// Esto va a ser un caos para la slugify
 		$seg3 = $this->uri->segment(2);
 		$seg4 = $this->uri->segment(3);
 	?>

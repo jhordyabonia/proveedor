@@ -21,7 +21,8 @@ a.share-btn{
 }
 .share-btn:hover {
 	background-color: rgba(220,220,220,0.5);
-	color: #000
+	color: #000;
+	text-decoration:none;
 }
 .s_facebook {
 	background-color: #4769a5;

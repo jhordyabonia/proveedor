@@ -110,10 +110,10 @@ if (! function_exists('form_button_twitter'))
 
 if (! function_exists('form_buttons_socials'))
 {
-    function form_buttons_socials()
+    function form_buttons_socials($class = "")
     {
         
-        return "<div class='inline'>".
+        return "<div class='inline $class'>".
                     form_button_facebook().
                     form_button_plus().
                     form_button_linkedin().

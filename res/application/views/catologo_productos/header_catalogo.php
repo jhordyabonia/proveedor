@@ -43,9 +43,11 @@
 						<?php endif;?>
 					</div>
 				</div>
-				<div class="col-md-12 share-well">
-					<?php echo form_buttons_socials() ?>
-				</div>
+				<?php if ($m == "inicio"): ?>	
+					<div class="col-md-12 share-well">
+						<?php echo form_buttons_socials() ?>
+					</div>
+				<?php endif ?>
 			</div>
 			
 		</div>

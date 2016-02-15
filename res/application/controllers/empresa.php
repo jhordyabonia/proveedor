@@ -147,10 +147,12 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
-
+        $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
+                                  'mensaje'=> "Visite nuestro catálogo de productos en Proveedor.com.co",
+                                  'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-catalogo-default.png");
         $this->load->view('template/head', array(
             'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
-            'url_image_facebook' => img_url()."facebook-banner/facebook-banner-catalogo-default.png"
+            'facebook' => $post['facebook']
             )
         );
         $this->load->view('template/javascript');
@@ -186,8 +188,14 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
+        $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
+                                  'mensaje'=> $datos['empresa']->nombre ." Celular ". $datos['usuario']->celular." Sitio WEB: ".$datos['usuario']->web,
+                                  'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
+        $this->load->view('template/head', array(
+            'titulo' => 'Contacto - ' . $datos['empresa']->nombre,
+             'facebook' => $post['facebook']
+            ));
 
-        $this->load->view('template/head', array('titulo' => 'Contacto - ' . $datos['empresa']->nombre));
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');
         $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -276,8 +284,15 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
+        $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
+                                  'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
+                                  'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
 
-        $this->load->view('template/head', array('titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre));
+        $this->load->view('template/head', array(
+            'titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre,
+            'facebook' => $post['facebook']
+            )
+        );
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');
         $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));

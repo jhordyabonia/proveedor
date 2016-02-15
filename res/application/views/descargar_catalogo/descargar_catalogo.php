@@ -3,6 +3,18 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="conten_pro_pri">
+<div class="col-md-10">
+	<p class="pull-right label-share">
+		Compartir Catálogos en redes
+	</p>
+</div>
+<div class="col-md-2 pull-right">
+	<div class="row">
+		<div class="col-md-12 share-well">
+			<?php echo form_buttons_socials('share-buttons') ?>
+		</div>
+	</div>
+</div>
 	<div class="col-md-12">
 		<div class="col-md-2"></div>
 		<div class="col-md-10">

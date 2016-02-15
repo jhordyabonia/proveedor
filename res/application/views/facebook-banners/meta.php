@@ -15,7 +15,7 @@ function get_meta_image($url_image_facebook = False)
 <?php echo get_meta_image($facebook['url_image_facebook']) ?>
 <meta property="og:description" content="<?php echo $facebook['mensaje'] ?>" />
 
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="<?php echo $titulo ?>" />
 <meta name="twitter:description" content="<?php echo $facebook['mensaje'] ?>" />
 <meta name="twitter:image" content="<?php echo $facebook['url_image_facebook'] ?>" />
