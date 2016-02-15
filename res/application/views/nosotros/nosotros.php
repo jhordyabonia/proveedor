@@ -265,15 +265,17 @@
 		</div>
 	</div>
 </div>
-
-<div class="conten_tag col-md-12">
-	<p class="title-tag">Etiquetas</p>
-</div>
-<div class="cont-tags col-md-12">
-	<div class="tags">
-		<p class="texto_tag"><?=$empresa->tipo?>
-			<br>
-		<p class="texto_tag"><?=$empresa->productos_de_interes?>
-			<br>
+<div class="contenido_tag col-md-12" style="background-color: #fff;padding: 0;">
+	<div class="texto_tag">
+		<p class="text-tag">Etiquetas</p>
+	</div>
+	<div class="etiquetas_tag" style="padding-bottom: 15px;">
+		<p class="texto-tag"><?=$empresa->tipo?><br>
+		<br>
+		<p class="texto-tag"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?><br>
+		<br>
+		<p class="texto-tag"><?=$empresa->productos_principales?><br>
+		<br>
+		<p class="texto-tag"><?=$tag?>
 	</div>
 </div>

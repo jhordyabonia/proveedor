@@ -40,7 +40,7 @@ class Empresa extends CI_Controller
     public function inicio($id)
     {
         if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/",'refresh');
+            redirect(base_url() . "empresa_m/ver_empresa/".$id,'refresh');
         }
 
         $datos['empresa'] = $this->empresa->get($id);
@@ -105,7 +105,7 @@ class Empresa extends CI_Controller
         $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
         $datos['usuario']->departamento = $this->departamento->get($datos['usuario']->departamento)->nombre;
         $datos['productos']             = $this->producto->get_all(array('empresa' => $id));
-
+        
         #$filtrado=$this->filtro_categoria($datos['productos']);
         #$productos=$filtrado['productos'];
         $datos['destacados'] = array();
@@ -142,6 +142,11 @@ class Empresa extends CI_Controller
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         #$datos['usuario']=$this->session->userdata('usuario');
+        $datos['tag'] = "";
+        foreach ($datos['productos'] as $value)
+        {
+            $datos['tag'].=$value->nombre.",";
+        }
 
         $this->load->view('template/head', array(
             'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
@@ -177,7 +182,7 @@ class Empresa extends CI_Controller
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         
         $datos['tag'] = "";
-        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        foreach ($datos['productos'] as $value)
         {
             $datos['tag'].=$value->nombre.",";
         }
@@ -233,7 +238,7 @@ class Empresa extends CI_Controller
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         
         $datos['tag'] = "";
-        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        foreach ($datos['productos'] as $value)
         {
             $datos['tag'].=$value->nombre.",";
         }
@@ -267,7 +272,7 @@ class Empresa extends CI_Controller
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         
         $datos['tag'] = "";
-        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        foreach ($datos['productos'] as $value)
         {
             $datos['tag'].=$value->nombre.",";
         }
@@ -298,9 +303,6 @@ class Empresa extends CI_Controller
         $datos['usuario']->departamento = $this->departamento->get($datos['usuario']->departamento)->nombre;
         $datos['catalogos']             = $this->catalogo->get_all(array('empresa' => $id));
 
-        $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
-        $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
-        $datos['usuario']->departamento = $this->departamento->get($datos['usuario']->departamento)->nombre;
         $datos['productos']             = $this->producto->get_all(array('empresa' => $id));
 
         $filtrado         = $this->filtro_categoria_catalogo($datos['catalogos']);
@@ -310,7 +312,7 @@ class Empresa extends CI_Controller
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         $datos['tag'] = "";
-        foreach ($this->producto->get_all(array('empresa' => $id))as $value)
+        foreach ( $datos['productos'] as $value)
         {
             $datos['tag'].=$value->nombre.",";
         }

@@ -498,6 +498,8 @@ $tag .= $producto->nombre . ',';?>
 	<div class="etiquetas_tag" style="padding-bottom: 15px;">
 		<p class="texto-tag"><?=$empresa->tipo?><br>
 		<br>
+		<p class="texto-tag"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?><br>
+		<br>
 		<p class="texto-tag"><?=$empresa->productos_principales?><br>
 		<br>
 		<p class="texto-tag"><?=$tag?>

@@ -128,7 +128,8 @@
 }
 .contenedor_tablero .contenedor_logo{
 	height: 75px;
-	
+	    padding-left: 0px;
+    padding-right: 0px;
 }
 .contenedor_tablero .titulo_empresa{
 	height: 75px;

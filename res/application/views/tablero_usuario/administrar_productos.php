@@ -10,7 +10,10 @@
 
   
 
-    <!-- Contenedor Central -->
+    <!-- Contenedor Central --><br>
+    <!-- Contenedor Central --><br>
+    <!-- Contenedor Central --><br>
+    <!-- Contenedor Central --><br>
   <div class="container-fluid" style="margin-top:50px">
     
       
@@ -87,16 +90,16 @@
                   <tr>
                     
                     <td width="20%" >                       
-                       <a href="<?= base_url(); ?>producto/ver/<?=$producto->id?>/0" >
+                       <a href="<?= base_url(); ?>producto/ver/<?=$producto->id?>/" >
                          <h5 style="margin: 15% 10% ;">
                           <?=$producto->nombre?>
                           </h5>
                         </a>
                       </td>
                     <td width="20%" > 
-                     <a href="<?= base_url(); ?>producto/ver/<?=$producto->id?>/0" >
+                     <a href="<?= base_url(); ?>producto/ver/<?=$producto->id?>/" >
                         <div class="center-block" style="height: 120px; width: 120px; /* border-style: solid; */">
-                            <img src="<?= base_url() ?>uploads/resize/<?=$producto->nombre_img?>" 
+                            <img src="<?= base_url() ?>uploads/<?=$producto->nombre_img?>" 
                             class="img-responsive center-block" style="/* margin: auto auto; */ height: 85%;"/>
                             <!-- <img src="<?= base_url() ?>uploads/resize/<?=$producto->nombre_img?>" width="80px" height="118px"/> -->
                         </div>

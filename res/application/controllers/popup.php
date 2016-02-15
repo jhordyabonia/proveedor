@@ -48,6 +48,9 @@ class Popup extends CI_Controller
 	    	return;
 	    }
 
+		if($_SERVER['HTTP_REFERER']==""||$_SERVER['HTTP_REFERER']!=str_replace('registro/registro_automatico/',"",$_SERVER['HTTP_REFERER']))
+			redirect(base_url());
+
 		$datos['solicitud'] = $this->input->post('solicitud');
 		$datos['descripcion'] = $this->input->post('descripcion');
 		$datos['cantidad_requerida'] = $this->input->post('cantidad_requerida');
@@ -60,6 +63,8 @@ class Popup extends CI_Controller
 		$datos['ciudad_entrega'] = $this->input->post('ciudad_entrega');
 		$datos['categoria'] = $this->input->post('categoria');
 
+		if(is_null($datos['descripcion'])||is_null($datos['solicitud']))			
+	     redirect(base_url(),'refresh');
 
 		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('categoria_model','categoria');

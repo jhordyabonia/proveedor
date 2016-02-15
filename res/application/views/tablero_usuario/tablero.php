@@ -7,9 +7,9 @@
 				<div class="col-md-3 contenedor_logo">
 					<!-- REEMPLAZAR IMAGEN ESTÁTICA POR IMAGEN LLAMADA CON VARIABLE -->
 					<?php if($empresa->logo):?>
-						<img class="img-responsive img_logo_empresa" src="<?=base_url()?>uploads/resize/logos/<?=$empresa->logo?>">				</div>
+						<img class="img-responsive img_logo_empresa" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">				</div>
 					<?php else:?>
-						<img class="img-responsive img_logo_empresa" src="<?=base_url()?>uploads/resize/logos/default.jpg">				</div>
+						<img class="img-responsive img_logo_empresa" src="<?=base_url()?>uploads/logos/default.jpg">				</div>
 					<?php endif;?>
 				<div class="col-md-6 titulo_empresa">
 					<p class="nombre_empresa">

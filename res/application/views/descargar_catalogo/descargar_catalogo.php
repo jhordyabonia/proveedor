@@ -84,7 +84,7 @@
 					<div class="textos2">
 						<p><?=$catalogo->nombre?></p>
 					</div>
-						<a class="btn btn-descargar" href="<?=base_url()?>uploads/resize/catalogo/<?=$catalogo->catalogo?>" target="other">
+						<a class="btn btn-descargar" href="<?=base_url()?>uploads/catalogo/<?=$catalogo->catalogo?>" target="other">
 							<span class="icon_style_des3 glyphicon glyphicon-download-alt"></span>
 							DESCARGAR
 						</a>
@@ -92,17 +92,19 @@
 			</div>
 		<?php endforeach;?>
 		<?php else:?>
-		<CENTER>
 		<h2>
-		 <br>
-		 <br>
-		 <br>
 		 <br>
 			La empresa no ha publicado catálogos.</h2>
 		 <br>
 		 <br>
 		 <br>
 		 <br>
+		 <br>
+		 <br>
+		 <br>
+		 <br>
+		 <br>
+		<CENTER>
 		</CENTER>
 		<?php endif;?>
 
@@ -135,7 +137,7 @@
 	  </ul>
 	</div>
 </div>
-
+</div>
 <div class="contenido_tag col-md-12" style="background-color: #fff;padding: 0;">
 	<div class="texto_tag">
 		<p class="text-tag">Etiquetas</p>
@@ -143,8 +145,11 @@
 	<div class="etiquetas_tag" style="padding-bottom: 15px;">
 		<p class="texto-tag"><?=$empresa->tipo?><br>
 		<br>
+		<p class="texto-tag"><?=$usuario->ciudad?> - <?=$usuario->departamento?> - <?=$usuario->pais?><br>
+		<br>
 		<p class="texto-tag"><?=$empresa->productos_principales?><br>
 		<br>
 		<p class="texto-tag"><?=$tag?>
 	</div>
 </div>
+<div class="container-fluid">

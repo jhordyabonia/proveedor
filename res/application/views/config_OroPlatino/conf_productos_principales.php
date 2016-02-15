@@ -3,111 +3,113 @@
 
 <script type="text/javascript">
 
-stack=set_stack();
-function set_stack()
-{
-	out=Array(20);
-	<?php foreach(explode(',',$empresa->productos_destacados) as $key => $value):?>
-		<?php if($value==NULL):?>
-			out[<?=$key?>]=0;
-		<?php else:?>
-			out[<?=$key?>]=<?=$value?>;
-		<?php endif;?>
-	<?php endforeach;?>
-	return out;
-}
-size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>;
-function agregar(id)
-{
-	if(size>=20)
-		return;
-	nombre=document.getElementById('nombre_producto_'+id).innerText;
-	imagen=document.getElementById('imagen_producto_'+id).src;
-	DOM='<div class="conten-item-prin col-lg-4" id="destacado_'+size+'">';
-	DOM+='	<div class="content-numero">';
-	DOM+='	<p class="numero">'+(size+1)+'</p>';
-	DOM+='</div>';
-	DOM+='<div class="subir_bajar">';
-	DOM+='	<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir('+size+');">Subir</a><br>';
-	DOM+='	<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar('+size+');">Bajar</a>';
-	DOM+='</div>';
-	DOM+='<div class="img-nom-remove" id="img'+(size+1)+'">';
-	DOM+='	<img class="img_mini_preview_producto" src="'+imagen+'">';
-	DOM+='</div>';
-	DOM+='<div class="nom-prod" >';
-	DOM+='	<p class="nom-produc" id="nom'+size+'">'+nombre+'</p>';
-	DOM+='<a class="rem-pro" href="JavaScript:borrar('+size+')"><span class="icono-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
-	DOM+='</div>';
-	DOM+='</div>';
-	document.getElementById('canvas').innerHTML+=DOM;
-	stack[size++]=id;
-	document.getElementById('producto_'+id).innerText="Seleccionado";
-	document.getElementById('btn_guardar').style.display='';
-	document.getElementById('sin_productos').style.display='none';
-	//console.log(DOM);
-}
-function borrar(id)
-{
-	for(i=id;i<(size-1);i++)
-		{bajar(i);}
-	document.getElementById('destacado_'+(size-1)).remove();
-	stack[--size]=undefined;
-}
-function subir(id)
-{
-	if(id<=0)
-		return;
-
-	tmp=0;
-
-	nombre = document.getElementById('nom'+(id-1)).innerHTML;
-	document.getElementById('nom'+(id-1)).innerHTML=document.getElementById('nom'+id).innerHTML;
-	document.getElementById('nom'+id).innerHTML=nombre;
-
-	imangen = document.getElementById('img'+(id-1)).innerHTML;
-	document.getElementById('img'+(id-1)).innerHTML=document.getElementById('img'+id).innerHTML;
-	document.getElementById('img'+id).innerHTML=imangen;
-	
-	tmp=stack[id];
-	stack[id]=stack[id-1];
-	stack[id-1]=tmp;
-}
-function bajar(id)
-{
-	if(id==19)
-		return;
-
-	nombre = document.getElementById('nom'+(id+1)).innerHTML;
-	document.getElementById('nom'+(id+1)).innerHTML=document.getElementById('nom'+id).innerHTML;
-	document.getElementById('nom'+id).innerHTML=nombre;
-
-	imangen = document.getElementById('img'+(id+1)).innerHTML;
-	document.getElementById('img'+(id+1)).innerHTML=document.getElementById('img'+id).innerHTML;
-	document.getElementById('img'+id).innerHTML=imangen;
-
-	tmp=stack[id+1];
-	stack[id+1]=stack[id];
-	stack[id]=tmp;
-}
-function ordenar()
-{
-	out=Array();
-	for(i=0;i<size;i++)
+	stack=set_stack();
+	size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>;
+	function set_stack()
 	{
-		if(stack[i]==0)
-		{ continue;}
-		out[out.length]=stack[i];
-	}
-	stack=out;
-}
-function submit()
-{	
-	ordenar();
-	document.getElementById('destacados').value=stack;
-	//console.log(stack);
-	document.form.submit();
-}
+		out=Array(20);
+		for (var i = out.length - 1; i >= 0; i--) 
+			{	out[i]=0;	};
 
+		<?php foreach(explode(',',$empresa->productos_destacados) as $key => $value):?>
+			<?php if($value==NULL):?>
+				out[<?=$key?>]=0;
+			<?php else:?>
+				out[<?=$key?>]=<?=$value?>;
+			<?php endif;?>
+		<?php endforeach;?>
+		return out;
+	}
+	function agregar(i,id)
+	{
+		if(size>=20&&i<20&&i>0)
+			return;
+		stack[i]=id;
+
+		var popup=new XMLHttpRequest();
+        var url_popup="<?=base_url()?>config_empresa/producto/"+id;
+        popup.open("GET", url_popup, true);
+        popup.addEventListener('load',show,false);
+        popup.send(null);
+
+        function show()
+        {
+        	var datos=popup.response.split(',');
+			
+			document.getElementById('imagen_pro_'+i).src='<?=base_url()?>uploads/'+datos[0];
+			document.getElementById('nombre_pro_'+i).innerHTML=datos[1];
+			document.getElementById('link_pro_'+i).style.display='';
+			document.getElementById('close').click();
+        }
+	}
+	function ordenar()
+	{
+		out="";
+		for(i=0;i<size+1;i++)
+		{
+			if(stack[i]==0)
+				out+=",";
+			else		
+				out+=stack[i]+",";
+		}
+		return out+",-1";
+	}
+	function submit()
+	{	
+		document.getElementById('destacados').value= ordenar();
+		console.log(ordenar());
+		//console.log(stack);
+		document.form.submit();
+	}
+    function lanzar_popup(id)
+    {
+		out="";
+		for(i=0;i<size;i++)
+			out+=stack[i]+'A';
+
+        var popup=new XMLHttpRequest();
+        var url_popup="<?=base_url()?>config_empresa/productos_empresa/"+id+"/"+out;
+        popup.open("GET", url_popup, true);
+        popup.addEventListener('load',show,false);
+        popup.send(null);
+        console.log(url_popup);
+        function show()
+        {
+            var div=document.getElementById('popup_productos_empresa');
+            div.innerHTML=popup.response;
+            document.getElementById('lanzador_popup_productos').click();
+        }
+    } 
+    function eliminar_producto(id)
+    {    	
+		document.getElementById('imagen_pro_'+id).src='<?=base_url()?>uploads/file.jpg';
+		document.getElementById('nombre_pro_'+id).innerHTML="Seleccionar producto";
+		document.getElementById('link_pro_'+id).style.display='none';
+
+		if(id>20&&id<0)
+			return;
+
+		stack[id]=0;
+    }
+    function agregar_producto()
+    {
+		if(size>=20&&size<=0)
+			{alert("Has pasado el limite permitido.");return;}
+
+    	size++;
+    	DOM='<div class="img-banner"><div class="subir-img">';
+		DOM+='<span class="ico-up glyphicon glyphicon-open"></span>';
+		DOM+='<a href="JavaScript:lanzar_popup()" class="text-up-img"> '+size+'</a>';									
+		DOM+='</div>';
+		DOM+='<div class="subido-img">';
+		DOM+='<img id="imagen_pro_'+size+'" class="imge-subido banner_preview" src="<?=base_url()?>uploads/file.jpg">';
+		DOM+='<p class="name-file"><a id="nombre_pro_'+size+'" href="JavaScript:lanzar_popup('+size+')">Seleccionar producto</a></p>';
+		DOM+='<a id="link_pro_'+size+'"  href="JavaScript:eliminar_producto('+size+')" class="btn-remov-img" style="display:none"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
+		DOM+='</div>';
+		DOM+='</div>';
+		document.getElementById('div_destacados').innerHTML+=DOM;
+		stack[size]=0;
+    }
 </script>
 
 <div class="contenedor-config">
@@ -174,93 +176,57 @@ function submit()
 						</p>
 						<p>1.Debes seleccionar uno o varios productos del listado de "Productos publicados".</p>
 						<p>2.Puede configurar el orden en que se mostrarán los Productos Principales, 
-							haciendo click en <i class="ico-ip-down fa fa-chevron-up"></i><strong class="subir-strong">Subir</strong> "Subir" 0 <i class="ico-ip-down fa fa-chevron-down"></i><strong class="subir-strong">Bajar</strong> "Bajar"
-							del listado de "Productos Seleccionados".
+							Solo seleccionando en la posicion deseada el producto a mostrar.
 						</p>
 						<p>3.Hacer click en el botón "Guardar".</p>
 					</div>
 					<div class="seleccion-producto-prin">
 						<div class="titles2">
-							<h3 class="text-title-pub2">Productos Principales Seleccionados (Maximo 20)</h3>
+							<h3 class="text-title-pub2">Productos Principales Seleccionados</h3>
 						</div>
-						<div class="conten-selected">
-							<div id="canvas">
-								<?php $no_destacados=TRUE; if($empresa->productos_destacados!=""):?>
-								<?php $no_destacados=FALSE; foreach($destacados as $key => $producto):?>
-									<?php if(!$producto){continue;}?>
-									<div class="conten-item-prin col-lg-4" id="destacado_<?=$key?>">
-										<div class="content-numero">
-											<p class="numero"><?=$key+1?></p>
+					
+				<div class="content-config-inicio">
+					<div class="titles">
+						<h3 class="text-title-up">Seleccione el orden en que quiere sean mostrados su productos</h3>
+						<div class="conten-paso1">
+							<p class="agreagar-text">Permita que sus produtos estrella, de mayor demanda sean los primeros en mostrase</p> <p class="ver-ejm">- Ver ejemplo</p>
+							<p class="medidas-recom">Puede seleccionar los primeros 20 productos que se mostran en su catálogo. </p>
+							<div id="div_destacados">
+								<?php if(count($destacados)):?>
+									<?php foreach ($destacados as $key => $destacado):?>
+									  	<div class="img-banner">
+											<div class="subir-img">
+												<span class="ico-up glyphicon glyphicon-open"></span>
+												<a href="JavaScript:lanzar_popup(<?=$key?>)" class="text-up-img"><?=$key+1?></a>									
+											</div>
+											<div class="subido-img">
+												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=base_url()?>uploads/<?=$destacado->imagenes?>">
+												<p class="name-file"><a id="nombre_pro_<?=$key?>" href="JavaScript:lanzar_popup(<?=$key?>)"><?=$destacado->nombre?></a></p>
+												<a id="link_pro_<?=$key?>" href="JavaScript:eliminar_producto(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+											</div>
 										</div>
-										<div class="subir_bajar">
-											<i class="sub-aba fa fa-chevron-up"></i><a href="JavaScript:subir(<?=$key+1?>);">Subir</a><br>
-											<i class="sub-aba fa fa-chevron-down"></i><a href="JavaScript:bajar(<?=$key+1?>);">Bajar</a>
-										</div>
-										<div class="img-nom-remove" id="img<?=$key+1?>">
-											<img class="img_mini_preview_producto" src="<?=base_url()?>uploads/resize/<?=$producto->imagenes?>">
-										</div>
-										<div class="nom-prod">
-											<p class="nom-produc" id="nom<?=$key+1?>"><?=$producto->nombre?></p>
-											<a class="rem-pro" href="JavaScript:borrar(<?=$key?>)"><span class="icono-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
-										</div>
-									</div>
-								<?php endforeach;?>
-								<?php else:?>
-								<CENTER id="sin_productos">
-									<h2>No se han seleccionado Productos Principales.</h2>
-								</CENTER>	
+									<?php endforeach;?>
 								<?php endif;?>
 							</div>
-							<!-- Campo 7 -->
-							<div class="row">
-								<?=form_open_multipart(base_url().'editar_empresa/destacados',array('name'=>'form'))?>
-									<input type="hidden" name="destacados" id="destacados">
-									<div class="input-group col-xs-12 col-md-6 col-lg-8" id="btn_guardar"style="display:<?php if($no_destacados){echo 'none';}?>;">
-										<a href="JavaScript:submit();" class="btn btn-guardar-propri">
-											<i class="ico-circle fa fa-floppy-o"></i>
-											<p class="text-publicarPro">Guardar</p> 
-										</a>
-									</div>
-		    					<?=form_close()?>
+							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
+							  <a class="agregar-mas-videos2" href="JavaScript:agregar_producto();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más productos principales</a>
 							</div>
+							
+							<!-- Campo 7 -->
+							<div class="input-group col-xs-12 col-md-6 col-lg-8">
+								<button class="btn btn-guardar-inicio" onclick="submit();">
+									<i class="ico-circle fa fa-floppy-o"></i>
+									<p class="text-publicarPro">Guardar</p> 
+								</button>
+							</div>
+							<?= form_open_multipart('editar_empresa/destacados',array('name'=>'form','id'=>'form')); ?>
+								<input type="hidden" name="destacados" id="destacados">
+	    					<?=form_close()?>
 						</div>
 					</div>
-					<div class="catalogo-public">
-						<h3 class="text-pro-pub-ca">Productos Publicados (<?=count($productos)?>)</h3>	
-						<p class="text-select">Seleccione uno o varios productos como "Principales".</p>
-						<ul class="list-item-pro-pri">
-							<li class="item-cata inline-block" style="margin-right: 40px;">
-								<a href="<?=base_url()?>config_empresa/publicar_producto">
-								<span class="glyphicon glyphicon-open"></span>
-								Publicar Producto
-								</a>
-							</li>
-							<li class="item-cata inline-block">
-								<a href="<?=base_url()?>producto/administrar">
-								<span class="glyphicon glyphicon-th"></span>
-								Administrar Productos
-								</a>
-							</li>
-						</ul>
-						<hr class="hr-separador">
-						<div class="conten-item-catapu2 row">
-						<?php foreach($productos as $producto):?>
-							<div class="padding-bottom col-lg-6">
-								<div class="imagen-prin inline-block">
-									<img class="img-responsive img_preview_producto" id="imagen_producto_<?=$producto->id?>" src="<?=base_url()?>uploads/resize/<?=$producto->imagenes?>">
-								</div>
-								<div class="info-pro-pri inline-block">
-									<p class="txt_nomproducto2" id="nombre_producto_<?=$producto->id?>"><?=$producto->nombre?></p>
-									<p class="txt_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
-									<p class="txt_pedido"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="pedido">pedido mínimo</p>';}?>
-									<p class="txt_desc"><?=$producto->descripcion?></p>
-									<button class="btn btn-selecc-princi">
-										<span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-										<p class="selec-pri-txt inline-block" id="producto_<?=$producto->id?>"><a class="select_button" href="JavaScript:agregar(<?=$producto->id?>);">Seleccionar como Principal</a></p>
-									</button>
-								</div>
-							</div>
-						<?php endforeach;?>					</div>
+				</div>
+
+					</div>
 						<!-- Paginador de catalogos -->
 						<div class="contentidoo-paginador">
 						  <ul class="pagination">	
@@ -283,3 +249,4 @@ function submit()
 		</div>
 	</div>
 </div>
+<div id="popup_productos_empresa"></div>
