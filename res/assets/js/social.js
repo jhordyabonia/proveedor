@@ -184,7 +184,8 @@
             yorumcuyum: 'http://www.yorumcuyum.com/?baslik={title}&link={url}',
             youmob: 'http://youmob.com/mobit.aspx?title={title}&mob={url}',
             zakladoknet: 'http://zakladok.net/link/?u={url}&t={title}',
-            ziczac: 'http://ziczac.it/a/segnala/?gurl={url}&gtit={title}'
+            ziczac: 'http://ziczac.it/a/segnala/?gurl={url}&gtit={title}',
+            email: 'mailto:?subject={title}&body={text} {url}'
         }
 
         function link(network){

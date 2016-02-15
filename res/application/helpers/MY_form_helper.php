@@ -75,7 +75,7 @@ if (! function_exists('form_button_email'))
     {
         $data = array(
             'class' => 'share-btn share s_email',
-            'href' => 'mailto:someone@yoursite.com?subject=Mail from Our Site'
+            // 'href' => 'mailto:someone@yoursite.com?subject=Mail from Our Site'
         );
         return form_a($data, icon('fa fa-envelope'));
     }

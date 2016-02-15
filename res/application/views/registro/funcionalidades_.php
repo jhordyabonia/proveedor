@@ -571,9 +571,9 @@
 <script type="text/javascript">
  $(document).ready(function(){
     $('.share').ShareLink({
-        title: 'My great post', // title for share message
-        text: 'text of my great post', // text for share message
-        image: 'http://www.proveedor.com.co/assets/img/facebook-banner/facebook-banner-catalogo-default.png', // optional image for share message (not for all networks)
+        title: '<?php echo $facebook['titulo'] ?>',
+        text: '<?php echo $facebook['mensaje'] ?>',
+        image: '<?php echo $facebook['url_image_facebook'] ?>',
         url: location.href, // link on shared page
         // class_prefix: 's_', // optional class prefix for share elements (buttons or links or everything), default: 's_'
         width: 700, // optional popup initial width

@@ -8,8 +8,14 @@ function get_meta_image($url_image_facebook = False)
 	return  '<meta property="og:image" content="' . $default_url . '" />';
 }
 ?>
+
 <meta property="fb:app_id" content="1746467018915200">
 <meta property="og:title" content="<?php echo $titulo ?>">
 <meta property="og:site_name" content="Proveedor.com.co">
-<?php echo get_meta_image($url_image_facebook) ?>
-<meta property="og:description" content="" />
+<?php echo get_meta_image($facebook['url_image_facebook']) ?>
+<meta property="og:description" content="<?php echo $facebook['mensaje'] ?>" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="<?php echo $titulo ?>" />
+<meta name="twitter:description" content="<?php echo $facebook['mensaje'] ?>" />
+<meta name="twitter:image" content="<?php echo $facebook['url_image_facebook'] ?>" />
