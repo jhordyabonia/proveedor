@@ -7,7 +7,16 @@
             <div class="modal-header header">
                 <h4>
                     <button id="close" type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span class="sr-only">Close</span></button>
-                    <CENTER>Seleccione el producto "Principal" <?=$identificador_temporal+1?>.</CENTER>
+                    <CENTER>
+                        Seleccione el producto "Principal" <?=$identificador_temporal+1?>.
+                        <br>
+                        <?php if($page>0):?>
+                            <a class="btn" href="JavaSrcipt:void();" onclick="JavaScript:page--;lanzar_popup(<?=$identificador_temporal?>)"><span aria-hidden="true">Anterior</span></a>    
+                        <?php endif;?>
+                        <?php if($productos):?>
+                            <a class="btn" href="JavaSrcipt:void();" onclick="JavaScript:page++;lanzar_popup(<?=$identificador_temporal?>)"><span aria-hidden="true">Siguiente</span></a>
+                        <?php endif;?>
+                    </CENTER>
                 </h4>
             </div>
         	<div class="modal-body contenido_popup">

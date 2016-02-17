@@ -5,6 +5,8 @@
 
 	stack=set_stack();
 	size=<?php if($destacados){echo count($destacados);}else{echo 0;}?>;
+	page = 0;
+	first_launch=true;     
 	function set_stack()
 	{
 		out=Array(20);
@@ -12,7 +14,7 @@
 			{	out[i]=0;	};
 
 		<?php foreach(explode(',',$empresa->productos_destacados) as $key => $value):?>
-			<?php if($value==NULL):?>
+			<?php if($value==NULL||$value==-1):?>
 				out[<?=$key?>]=0;
 			<?php else:?>
 				out[<?=$key?>]=<?=$value?>;
@@ -38,6 +40,7 @@
 			
 			document.getElementById('imagen_pro_'+i).src='<?=base_url()?>uploads/'+datos[0];
 			document.getElementById('nombre_pro_'+i).innerHTML=datos[1];
+			document.getElementById('nombre_pro_'+i).className ='';
 			document.getElementById('link_pro_'+i).style.display='';
 			document.getElementById('close').click();
         }
@@ -63,12 +66,15 @@
 	}
     function lanzar_popup(id)
     {
+    	if(!first_launch)
+			document.getElementById('close').click();
+
 		out="";
 		for(i=0;i<size;i++)
 			out+=stack[i]+'A';
 
         var popup=new XMLHttpRequest();
-        var url_popup="<?=base_url()?>config_empresa/productos_empresa/"+id+"/"+out;
+        var url_popup="<?=base_url()?>config_empresa/productos_empresa/"+id+"/"+out+"/"+page;
         popup.open("GET", url_popup, true);
         popup.addEventListener('load',show,false);
         popup.send(null);
@@ -78,12 +84,14 @@
             var div=document.getElementById('popup_productos_empresa');
             div.innerHTML=popup.response;
             document.getElementById('lanzador_popup_productos').click();
+            first_launch=false;     
         }
     } 
     function eliminar_producto(id)
     {    	
 		document.getElementById('imagen_pro_'+id).src='<?=base_url()?>uploads/file.jpg';
 		document.getElementById('nombre_pro_'+id).innerHTML="Seleccionar producto";
+		document.getElementById('nombre_pro_'+id).className ="btn btn1";
 		document.getElementById('link_pro_'+id).style.display='none';
 
 		if(id>20&&id<0)
@@ -99,11 +107,11 @@
     	size++;
     	DOM='<div class="img-banner"><div class="subir-img">';
 		DOM+='<span class="ico-up glyphicon glyphicon-open"></span>';
-		DOM+='<a href="JavaScript:lanzar_popup()" class="text-up-img"> '+size+'</a>';									
+		DOM+='<a href="JavaScript:lanzar_popup('+size+')" class="text-up-img"> '+size+'</a>';									
 		DOM+='</div>';
 		DOM+='<div class="subido-img">';
 		DOM+='<img id="imagen_pro_'+size+'" class="imge-subido banner_preview" src="<?=base_url()?>uploads/file.jpg">';
-		DOM+='<p class="name-file"><a id="nombre_pro_'+size+'" href="JavaScript:lanzar_popup('+size+')">Seleccionar producto</a></p>';
+		DOM+='<p class="name-file"><a id="nombre_pro_'+size+'" class="btn1 btn" href="JavaScript:lanzar_popup('+size+')">Seleccionar producto</a></p>';
 		DOM+='<a id="link_pro_'+size+'"  href="JavaScript:eliminar_producto('+size+')" class="btn-remov-img" style="display:none"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
 		DOM+='</div>';
 		DOM+='</div>';
@@ -194,6 +202,7 @@
 							<div id="div_destacados">
 								<?php if(count($destacados)):?>
 									<?php foreach ($destacados as $key => $destacado):?>
+										<?php if(is_null($destacado->id)):?>
 									  	<div class="img-banner">
 											<div class="subir-img">
 												<span class="ico-up glyphicon glyphicon-open"></span>
@@ -201,19 +210,32 @@
 											</div>
 											<div class="subido-img">
 												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=base_url()?>uploads/<?=$destacado->imagenes?>">
-												<p class="name-file"><a id="nombre_pro_<?=$key?>" href="JavaScript:lanzar_popup(<?=$key?>)"><?=$destacado->nombre?></a></p>
+												<p class="name-file"><a id="nombre_pro_<?=$key?>" class="btn btn1" href="JavaScript:lanzar_popup(<?=$key?>)"><?=$destacado->nombre?></a></p>
+												<a id="link_pro_<?=$key?>" href="JavaScript:eliminar_producto(<?=$key?>)" class="btn-remov-img" style="display:none"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+											</div>
+										</div>
+									<?php else:?>
+									<div class="img-banner">
+											<div class="subir-img">
+												<span class="ico-up glyphicon glyphicon-open"></span>
+												<a href="JavaScript:lanzar_popup(<?=$key?>)" class="text-up-img"><?=$key+1?></a>									
+											</div>
+											<div class="subido-img">
+												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=base_url()?>uploads/<?=$destacado->imagenes?>">
+												<p class="name-file"><a id="nombre_pro_<?=$key?>" class="" href="JavaScript:lanzar_popup(<?=$key?>)"><?=$destacado->nombre?></a></p>
 												<a id="link_pro_<?=$key?>" href="JavaScript:eliminar_producto(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 											</div>
 										</div>
+									<?php endif;?>
 									<?php endforeach;?>
 								<?php endif;?>
 							</div>
-							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
+							<div class="conten-mas-videos col-xs-12 col-md-12 col-lg-12">
 							  <a class="agregar-mas-videos2" href="JavaScript:agregar_producto();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más productos principales</a>
 							</div>
 							
 							<!-- Campo 7 -->
-							<div class="input-group col-xs-12 col-md-6 col-lg-8">
+							<div class="input-group col-xs-12 col-md-12 col-lg-12">
 								<button class="btn btn-guardar-inicio" onclick="submit();">
 									<i class="ico-circle fa fa-floppy-o"></i>
 									<p class="text-publicarPro">Guardar</p> 

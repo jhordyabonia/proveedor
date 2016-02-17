@@ -62,21 +62,30 @@ class Config_empresa extends CI_Controller {
       echo $imagen.",".$out->nombre;
     }
 
-    public function productos_empresa($id,$destacados)
+    public function productos_empresa($id,$destacados,$page=0)
     {
         $productos = $this->producto->get_all(array('empresa' => $this->datos['empresa']->id));
 
         $datos['identificador_temporal'] =$id;
         $datos['productos'] = array();
+        $numero_destacados=0;
+        $datos['page']=$page;
+
+
         foreach ($productos as $key => $producto)
         {
-          foreach (explode('A', $destacados) as $key => $destacado) 
-          {
-            if($producto->id==$destacado) 
-                $producto=NULL;
+          if(($key>=((20*$page)+$numero_destacados))&&($key<=(((20*($page+1))+$numero_destacados))))
+          {    
+            foreach (explode('A', $destacados) as $key => $destacado) 
+            {
+              if($producto->id==$destacado) 
+                  $producto=NULL;
+            }
+            if(!is_null($producto))
+              $datos['productos'][]=$this->cargar_producto($producto);
+            else
+              $numero_destacados++;
           }
-          if(!is_null($producto))
-          $datos['productos'][]=$this->cargar_producto($producto);
         }
         #$datos['productos']=$productos;
         $this->load->view('config_OroPlatino/conf_productos_empresa.php', $datos);

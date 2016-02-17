@@ -3,6 +3,18 @@
     max-height: 39px;
     max-width: 130px;
 }*/
+.btn1
+{
+    /* width: 108px; */
+    height: 32px;
+    background-color: #FF7F27;
+    color: #fff;
+    margin-top: 19px;
+    margin-bottom: 28px;
+    margin-right: 31px;
+    margin-left: 0px;
+    padding-top: 4px;
+}
 .popup-productos
  {
     width: 965.818182px;
@@ -75,7 +87,9 @@ a{
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
-    margin-right: 16px;
+    padding-left: 100px;
+    margin-right: -101px;
+    width: 430px;
 }
 .agreagar-text{
     margin-top: 10px;
@@ -113,10 +127,11 @@ a{
     margin-left: 11px;
 }
 .btn-remov-img, .btn-remov-img:hover{
-    display: inline-block;
+     display: inline-block;
     color: #111;
     text-decoration: none;
     cursor: pointer;
+    margin-left: 27px;
 }
 .btn-publicarPro, .btn-publicarPro:hover{
     background-color: #FF7F27;
@@ -168,13 +183,14 @@ a{
     padding-top: 4px;
 }
 .btn-guardar-inicio, .btn-guardar-inicio:hover{
-    width: 110px;
+       /* width: 108px; */
     height: 32px;
     background-color: #FF7F27;
     color: #fff;
     margin-top: 19px;
     margin-bottom: 28px;
-    padding-top: 4px;    
+    margin-left: 0px;
+    padding-top: 4px;
 }
 .btn-guardar-inicio2, .btn-guardar-inicio2:hover{
     width: 110px;
@@ -878,7 +894,7 @@ a{
     margin: 0;
 }
 .text-up-img{
-    color: #FF7F27;
+    color: #333333;;
     text-decoration: none;
     cursor: pointer;
     font-size: 18px;
@@ -1074,7 +1090,7 @@ a{
 }
 .imagen-prin {
     padding-right: 5px;
-    width: 125px;
+    width: 124px;
     height: 103px;
 }
 
