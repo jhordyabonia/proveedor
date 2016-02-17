@@ -26,6 +26,9 @@ sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/mysql/app-pass password r
 sudo debconf-set-selections <<< 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2'﻿
 sudo apt-get install -y phpmyadmin
 
+
+sudo apt-get install curl
+
 #Creamos los alias para que el server apache se redirecione a la carpeta res
 sudo rm -rf /var/www
 sudo ln -fs /res /var/www

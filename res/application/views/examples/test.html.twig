@@ -1,0 +1,15 @@
+{% extends '_layouts/base.html.twig' %}
+{% block title %}
+    Hola Mundo con Twig
+{% endblock %}
+{% block content %}
+	<table>
+	    {% for user in users if users %}
+		    <tr>
+			    <td>{{user.id}}</td>
+			    <td>{{user.nombre}}</td>
+			    <td>{{user.correo}}</td>
+		    </tr>
+	    {% endfor %}
+	</table>
+{% endblock %}

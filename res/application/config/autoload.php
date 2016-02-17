@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 $autoload['libraries'] = array('database', 'session', 'form_validation');   //antes estaba solo esta 'libupload'
-
+$autoload['sparks'] = array('Twiggy/0.8.5');
 
 /*
 | -------------------------------------------------------------------
