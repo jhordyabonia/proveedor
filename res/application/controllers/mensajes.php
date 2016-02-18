@@ -15,7 +15,17 @@ class Mensajes extends CI_Controller {
 		$this->load->model('asistentes_proveedor_model','asistentes_proveedor');
 		$this->load->model('crypter_model','crypter');
 		$this->load->library('session');
+		$this->load->library('grocery_CRUD');
+
+	    /*
+	    */
+	    $id=$this->session->userdata('id_usuario');
+	    if($id=='')
+	      {redirect(base_url(),'refresh');}
+	    $this->datos['usuario']=$this->usuarios->get($id);
+	    $this->datos['empresa']=$this->empresa->get(array('usuario'=>$id));
 	}
+
  
   public function descargar_adjunto($id_mensaje=0)
   {   	
@@ -36,6 +46,60 @@ class Mensajes extends CI_Controller {
 	 $data = file_get_contents('uploads/adjunto/'.$mensaje->adjunto);
      force_download($mensaje->adjunto,$data); 
   }
+
+	public function test()
+	{
+			#$this->verifyc_login();
+			$crud = new grocery_CRUD();
+
+			#$crud->set_theme('datatables');
+			$crud->set_theme('twitter-bootstrap');
+			$crud->set_table('mensajes');
+			$crud->set_relation('destinatario','usuarios','email');
+			$crud->set_relation('remitente','remitente','correo');
+			#$crud->set_relation('tipo_registro','tipo_registro','nombre');
+			#$crud->set_relation('membresia','membresia','nombre');
+			$crud->display_as('id_objeto','Objeto');
+			$crud->set_subject('Mensajes');
+
+			#$crud->required_fields('nombre');
+			#$crud->required_fields('usuario');
+
+			//Campos a editar o agregar
+			#$crud->fields('id', 'nombre', 'membresia' ,  'tipo_registro' ,'tipo', 'legalizacion', 'decripcion', 'productos_principales', 'special_features');
+			//Columnas a mostrar
+			$crud->columns('remitente', 'asunto', 'mensaje' ,  'fecha' );
+			//Eliminar columnas			
+			#$crud->unset_columns('nit');
+			//Desactivar agregar
+			$crud->unset_add();
+			//Desactivar todas las operacones
+			#$crud->unset_operations();
+			//Desactivar editar
+			$crud->unset_edit();
+			//Desacrtivar imprimir
+			$crud->unset_print();
+			//Desacrtivar Leer
+			$crud->unset_read();
+			//Desacrtivar exportar
+			$crud->unset_export();
+			//Desctivar eliminiar
+			#$crud->unset_delete();
+
+			#$crud->set_field_upload('file_url','assets/uploads/files');
+
+			$output = $crud->render();
+
+			$output->listado="Enviados";
+
+		    $this->load->view('template/head',array('titulo'=>"Mensajes"));
+		    $this->load->view('template/javascript');
+    		$this->load->view('config_OroPlatino/top_menu_config',$this->datos);
+			$this->load->view('mensaje/listado.php',$output);
+			#echo "<div style='height:20px;'>Menu</div><div>";
+			#echo $output['output'];
+			#echo "</div>";
+	}
   // Muestra la vista de mensajes recibidos del tablero de usuario
   public function enviados()
   {
