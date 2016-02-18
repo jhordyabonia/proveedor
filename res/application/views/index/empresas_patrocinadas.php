@@ -55,13 +55,13 @@ Induseg
         <div class="col-md-12 conten_emp_patrocinada">
           <div class="row">
             <div class="col-md-4 col-sm-12">
-              <a href="http://clientes.proveedfor.com.co"> 
-                <img class="imgempresa" src="<?php echo img_url().'index/platino.png' ?>">
+              <a href="http://www.proveedor.com.co/empresa/inicio/10510"> 
+                <img class="imgempresa" src="http://oro.proveedor.com.co/wp-content/uploads/2016/02/tecnoplus.png">
               </a>
             </div>
             <div class="col-md-8 col-sm-12 patrocinadas">
-             <b> Su empresa aqui.  </b><a href="http://clientes.proveedor.com.co/"> 
-                <p class="txtempresa">Conviertase en Platino: Más Información </p>
+             <b>  </b><a href="http://www.proveedor.com.co/empresa/inicio/10510"> 
+                <p class="txtempresa">Tecnoplus Colombia S.A.S.</p>
               </a>
             </div>
           </div>

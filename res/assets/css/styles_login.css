@@ -143,6 +143,9 @@
 .login .btn_login
   {
     height: 45px; width: 252px;
+    
+    background-color: #337ab7;
+    border-color: #2e6da4;
   }
 
 

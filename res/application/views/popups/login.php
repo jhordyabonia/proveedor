@@ -39,8 +39,8 @@
                       </button>
                       <br>
                   
-                      <button type="button" class="btn btn-link" onmouseover=''
-                      onclick="JavaScript:document.getElementById('txt_soporte').style.display='';this.style.display='none';">¿Olvidaste tu contraseña?</button> 
+                      <a type="button" onmouseover=''
+                      onclick="JavaScript:document.getElementById('txt_soporte').style.display='';this.style.display='none';">¿Olvidaste tu contraseña?</a> 
                       <div id="txt_soporte" style="display:none; color:#000; font-family: Arial; line-height: 14px; font-size: 14px;">
                         <br>¿Olvidaste tu contraseña?<br>Por favor envíe un correo a<br> soporte@proveedor.com.co
                       </div>                  
