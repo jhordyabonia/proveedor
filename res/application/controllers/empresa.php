@@ -33,7 +33,7 @@ class Empresa extends CI_Controller
     private function duplicado($stack, $needle)
     {
         foreach ($stack as $key => $value) {
-            if ($value == $needle) {return true;}
+            if ($value->id == $needle->id) {return true;}
         }
         return false;
     }
@@ -81,15 +81,21 @@ class Empresa extends CI_Controller
             'titulo' => $datos['empresa']->nombre,
             'facebook' => $post['facebook']
         ));
-        $this->load->view('template/javascript');
-        $this->load->view('registro/funcionalidades_', $post);
-        $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-        $this->load->view('catologo_productos/header_catalogo', $datos);
-        $this->load->view('index_oroPlatino/index.php', $datos);
-        $this->load->view('template/footer');
-        $this->load->view('template/footer_empy');
+        if ($this->ci->agent->is_mobile())
+        {
+            #Vistas Mobiles
+        }else
+        {
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_', $post);
+            $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
+            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('index_oroPlatino/index.php', $datos);
+            $this->load->view('template/footer');
+            $this->load->view('template/footer_empy');
+        }
     }
-    public function catalogo_producto($id)
+    public function catalogo_producto($id, $page=0)
     {
         if ($this->ci->agent->is_mobile()) {
             redirect(base_url() . "empresa_m/ver_empresa/" . $id,'refresh');
@@ -108,17 +114,40 @@ class Empresa extends CI_Controller
         
         #$filtrado=$this->filtro_categoria($datos['productos']);
         #$productos=$filtrado['productos'];
+        $count=0;##
         $datos['destacados'] = array();
-        foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value) {
-            $datos['destacados'][] = $this->cargar_producto($this->producto->get($value));
+        $datos['tag'] = "";##
+        $datos['page'] = $page;##
+        $numeroXpagina=20; ##
+        $datos['cantidad_paginas'] = count($datos['productos'])/$numeroXpagina;##
+        
+        foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value) 
+        {
+            if(($count>=(($numeroXpagina*$page)))&&($count<=((($numeroXpagina*($page+1))))))##
+            {
+                $datos['destacados'][] = $this->cargar_producto($this->producto->get($value));
+                $count++;##
+            }
         }
+        if($page!=0){$count=0;$datos['destacados']=NULL;}##
         $tmp_productos = array();
-        foreach ($datos['productos'] as $key => $value) {
-            if ($this->duplicado($datos['destacados'], $value)) {continue;}
-            $tmp_productos[] = $this->cargar_producto($value);
+        foreach ($datos['productos'] as $key => $value) 
+        {
+            $datos['tag'].=$value->nombre.",";##
+            $count++;##
+        
+            if(($count>=(($numeroXpagina*$page)))&&($count<((($numeroXpagina*($page+1)))))) ##
+            {
+                if ($this->duplicado($datos['destacados'], $value)) {continue;}
+                $tmp_productos[] = $this->cargar_producto($value);
+            }
         }
         $datos['productos'] = $tmp_productos;
 
+        #echo "<PRE>"; 
+        #print_r($datos['productos']);
+        #echo "</PRE>"; 
+        #return;
         $filtro      = 38;
         $tipo_filtro = 0;
 
@@ -137,16 +166,11 @@ class Empresa extends CI_Controller
         }
         $productos        = $filtrado['productos'];
         $datos['filtros'] = $filtrado['categorias'];
-        $datos['page']    = 0; //$page;
 
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         #$datos['usuario']=$this->session->userdata('usuario');
-        $datos['tag'] = "";
-        foreach ($datos['productos'] as $value)
-        {
-            $datos['tag'].=$value->nombre.",";
-        }
+        
         $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
                                   'mensaje'=> "Visite nuestro catálogo de productos en Proveedor.com.co",
                                   'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-catalogo-default.png");
@@ -155,13 +179,21 @@ class Empresa extends CI_Controller
             'facebook' => $post['facebook']
             )
         );
-        $this->load->view('template/javascript');
-        $this->load->view('registro/funcionalidades_');
-        $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-        $this->load->view('catologo_productos/header_catalogo', $datos);
-        $this->load->view('catologo_productos/produc_prin_catalogo', $datos);
-        $this->load->view('template/footer');
-        $this->load->view('template/footer_empy');
+
+
+        if ($this->ci->agent->is_mobile())
+        {
+            #vistas Mobiles
+        }else
+        {
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_');
+            $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
+            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('catologo_productos/produc_prin_catalogo', $datos);
+            $this->load->view('template/footer');
+            $this->load->view('template/footer_empy');
+        }
     }
 
     public function contacto($id)
@@ -196,13 +228,19 @@ class Empresa extends CI_Controller
              'facebook' => $post['facebook']
             ));
 
-        $this->load->view('template/javascript');
-        $this->load->view('registro/funcionalidades_');
-        $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-        $this->load->view('catologo_productos/header_catalogo', $datos);
-        $this->load->view('contacto/contacto', $datos);
-        $this->load->view('template/footer');
-        $this->load->view('template/footer_empy');
+        if ($this->ci->agent->is_mobile()) 
+        {
+            #Vistas Mobiles
+        }else
+        {
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_');
+            $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
+            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('contacto/contacto', $datos);
+            $this->load->view('template/footer');
+            $this->load->view('template/footer_empy');
+        }
     }
 
     public function cotizaciones_requeridas($id)
@@ -250,22 +288,25 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
-        $this->load->view('template/head', array('titulo' => 'Cotizaciones Requeridas - ' . $datos['empresa']->nombre));
-        $this->load->view('template/javascript');
-        $this->load->view('registro/funcionalidades_');
-        $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-        $this->load->view('catologo_productos/header_catalogo', $datos);
-        $this->load->view('cotizaciones_requeridas/cotizaciones_requeridas');
-        $this->load->view('template/footer');
-        $this->load->view('template/footer_empy');
+
+        if ($this->ci->agent->is_mobile()) 
+        {
+            #Vistas mobiles
+        }else
+        {
+            $this->load->view('template/head', array('titulo' => 'Cotizaciones Requeridas - ' . $datos['empresa']->nombre));
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_');
+            $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
+            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('cotizaciones_requeridas/cotizaciones_requeridas');
+            $this->load->view('template/footer');
+            $this->load->view('template/footer_empy');
+        }
     }
 
     public function nosotros($id)
     {
-        if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/perfil_empresa/" . $id,'refresh');
-        }
-
         $datos['empresa'] = $this->empresa->get($id);
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
@@ -293,20 +334,25 @@ class Empresa extends CI_Controller
             'facebook' => $post['facebook']
             )
         );
-        $this->load->view('template/javascript');
-        $this->load->view('registro/funcionalidades_');
-        $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-        $this->load->view('catologo_productos/header_catalogo', $datos);
-        $this->load->view('nosotros/nosotros');
-        $this->load->view('template/footer');
-        $this->load->view('template/footer_empy');
+
+
+        if ($this->ci->agent->is_mobile()) 
+        {
+            #Vistas mobiles
+        }else
+        {
+
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_');
+            $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
+            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('nosotros/nosotros');
+            $this->load->view('template/footer');
+            $this->load->view('template/footer_empy');
+        }
     }
     public function descargar_catalogo($id)
     {
-        if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/" . $id,'refresh');
-        }
-
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
@@ -331,14 +377,22 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
-        $this->load->view('template/head', array('titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre));
-        $this->load->view('template/javascript');
-        $this->load->view('registro/funcionalidades_');
-        $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-        $this->load->view('catologo_productos/header_catalogo', $datos);
-        $this->load->view('descargar_catalogo/descargar_catalogo', $datos);
-        $this->load->view('template/footer');
-        $this->load->view('template/footer_empy');
+
+
+        if ($this->ci->agent->is_mobile()) 
+        {
+            #vistas mobiles
+        }else
+        {
+            $this->load->view('template/head', array('titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre));
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_');
+            $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
+            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('descargar_catalogo/descargar_catalogo', $datos);
+            $this->load->view('template/footer');
+            $this->load->view('template/footer_empy');
+        }
     }
 
     private function filtro_categoria($productos = 0, $id_categoria = 0, $id_subcategoria = 0)

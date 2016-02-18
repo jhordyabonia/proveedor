@@ -142,18 +142,21 @@
 	<div class="col-md-2"></div>
 	<div class="text-align col-md-10">
 		<ul class="pagination">
-			<!--
-	    <li><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li><a href="#">5</a></li>
+		<li>
+	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>/<?=$page-1?>" aria-label="Next">
+	        <span aria-hidden="true">Anterior</span>
+	      </a>
+	    </li>
+		    <?php for ($key=0;$key<$cantidad_paginas;$key++) 
+		    {
+		    	echo '<li><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$key.'">'.($key+1).'</a></li>';
+		    }
+		    ?>	    
 	    <li>
-	      <a href="#" aria-label="Next">
+	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>/<?=$page+1?>" aria-label="Next">
 	        <span aria-hidden="true">Siguiente &raquo;</span>
 	      </a>
 	    </li>
-	-->
 	  </ul>
 	</div>
 </div>
