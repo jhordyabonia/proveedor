@@ -192,8 +192,10 @@ $config['twiggy']['default_template'] = 'index';
 
 $config['twiggy']['register_functions'] = array
 (
-
+    // Some functions from the url_helper.php
+    'css', 'js', 'assets_url', 'site_url', 'base_url', 'uri_string', 'anchor', 'url_title', 'js_url', 'css_url', 'img_url'
 );
+
 
 
 /*
@@ -212,9 +214,9 @@ $config['twiggy']['register_functions'] = array
 
 $config['twiggy']['register_filters'] = array
 (
-
+    // Functions (filters) from the inflector_helper.php
+    'singular', 'plural', 'camelize', 'underscore', 'humanize'
 );
-
 /*
 |--------------------------------------------------------------------------
 | Title separator
@@ -226,3 +228,4 @@ $config['twiggy']['register_filters'] = array
 */
 
 $config['twiggy']['title_separator'] = ' | ';
+
