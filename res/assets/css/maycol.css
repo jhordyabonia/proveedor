@@ -1,0 +1,19 @@
+.top_menu{
+	background: #FF7F27;
+}
+.top_menu .boton{
+	
+}
+.top_menu .imagen{
+	width: 45%;
+	display: inline-block;
+}
+.top_menu .texto{
+	color:white;
+	font-size: 13px;
+	display: inline-block;
+	padding: 4px 4px 0px;
+}
+.top_menu .icono{
+	font-size: 14px;
+}
