@@ -39,10 +39,6 @@ class Empresa extends CI_Controller
     }
     public function inicio($id)
     {
-        if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/".$id,'refresh');
-        }
-
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id,'refresh');}
@@ -97,10 +93,6 @@ class Empresa extends CI_Controller
     }
     public function catalogo_producto($id, $page=0)
     {
-        if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/ver_empresa/" . $id,'refresh');
-        }
-
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id_empresa,'refresh');}
@@ -198,9 +190,6 @@ class Empresa extends CI_Controller
 
     public function contacto($id)
     {
-        if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/contacto_empresa/" . $id,'refresh');
-        }
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa,'refresh');}
@@ -245,10 +234,6 @@ class Empresa extends CI_Controller
 
     public function cotizaciones_requeridas($id)
     {
-        if ($this->ci->agent->is_mobile()) {
-            redirect(base_url() . "empresa_m/productos_solicitados/" . $id,'refresh');
-        }
-
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa,'refresh');}
 
         $datos['empresa']               = $this->empresa->get($id);
