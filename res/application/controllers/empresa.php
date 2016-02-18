@@ -80,6 +80,7 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile())
         {
             #Vistas Mobiles
+            $this->twiggy->display('empresa\inicio_movil', $datos);
         }else
         {
             $this->load->view('template/javascript');
