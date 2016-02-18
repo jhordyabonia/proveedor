@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %} - Proveedor.com.co</title>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - Proveedor.com.co</title>
+    {% block styles %}
+        <link rel="stylesheet" href="{{ assets_url() }}bootstrap336/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ assets_url() }}bootstrap336/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{{ css_url() }}font-awesome.min.css">
+        <link rel="stylesheet" href="{{ css_url() }}maycol.css">
+        <link rel="stylesheet" href="{{ css_url() }}carlos.css">
+    {% endblock styles %}
 </head>
 <body>
-	{% block content %}
-	    Hola {{ name}}
-	{% endblock %}
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <!-- /.container-fluid -->
+    {% block javascripts %}
+        {{ js("jquery-1.11.1.min.js")}}
+        {{ js("bootstrap.min.js")}}
+    {% endblock javascripts %}
 </body>
 </html>
