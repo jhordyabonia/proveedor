@@ -68,21 +68,20 @@ class Empresa extends CI_Controller
 
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
-        // print_r($datos);
-        $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
-                                  'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
-                                  'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
-
-        $this->load->view('template/head', array(
-            'titulo' => $datos['empresa']->nombre,
-            'facebook' => $post['facebook']
-        ));
         if ($this->ci->agent->is_mobile())
         {
             #Vistas Mobiles
             $this->twiggy->display('empresa\inicio_movil', $datos);
         }else
         {
+            $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
+                                      'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
+                                      'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
+
+            $this->load->view('template/head', array(
+                'titulo' => $datos['empresa']->nombre,
+                'facebook' => $post['facebook']
+            ));
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_', $post);
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -92,6 +91,7 @@ class Empresa extends CI_Controller
             $this->load->view('template/footer_empy');
         }
     }
+
     public function catalogo_producto($id, $page=0)
     {
         $datos['empresa'] = $this->empresa->get($id);
