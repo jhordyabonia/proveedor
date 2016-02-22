@@ -30,13 +30,10 @@
 	width: 50px;
     padding-left: 25px;
 }
-.navbar_empresa .menu_item:active{
-	color:orange;
-}
 .navbar_empresa .link_menu{
 	font-size: 16px;
     color: #808080;
 }
-.navbar_empresa .active:hover{
-	color:orange;
+.navbar_empresa a:focus{
+	color: #FF7F27;
 }
