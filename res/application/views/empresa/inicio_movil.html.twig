@@ -7,5 +7,11 @@
     {% include "components/top_menu.html.twig" %}
     {% include "components/header_empresa.html.twig" %}
     {% include "components/navbar_empresa.html.twig" %}
-
+    {% include "components/banners.html.twig" %}
+    {% include "components/slider-touch.html.twig" with {'items' : empresa.videos} only %}
 {% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{js_url()}}slider.js"></script>
+{% endblock javascripts %}

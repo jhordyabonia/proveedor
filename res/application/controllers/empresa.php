@@ -70,6 +70,7 @@ class Empresa extends CI_Controller
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         if ($this->ci->agent->is_mobile())
         {
+            // print_r($datos);
             #Vistas Mobiles
             $this->twiggy->display('empresa\inicio_movil', $datos);
         }else
@@ -194,7 +195,7 @@ class Empresa extends CI_Controller
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa,'refresh');}
-
+        
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
         $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
