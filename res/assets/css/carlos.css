@@ -1,9 +1,16 @@
 .header .logo{
-    width: 30%;
+    /*width: auto;*/
+    width: 100%;
+    /*max-height: 135px;*/
 }
 .font-naranja{
     color: #FF7F27;
 }
 .header{
     padding-top: 15px;
+}
+
+.banner{
+    width:100%;
+    height: 200px;
 }
