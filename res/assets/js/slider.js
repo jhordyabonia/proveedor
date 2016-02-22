@@ -1,3 +1,6 @@
-jQuery(document).ready(function($) {
-	// TODO: Manejar los eventos del movil con jQueryMobile
+$('.multiple-items').slick({
+  arrows: false,
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 1
 });
