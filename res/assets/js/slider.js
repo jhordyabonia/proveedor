@@ -6,5 +6,4 @@ $('.multiple-items').slick({
   swipeToSlide: true,
   centerPadding: '15px',
   customPaging: '15px',
-
 });
