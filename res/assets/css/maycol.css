@@ -132,6 +132,7 @@
     display: inline-block;
     margin-top: 10px;
     color: black;
+    line-height: 16px;
 }
 .nuestra_empresa .catalogo{
     color: #808080;
