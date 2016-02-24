@@ -16,9 +16,9 @@
  * @copyright 			Copyright (c) 2012 Edmundas Kondrašovas <as@edmundask.lt>
  */
 
-if(!defined('TWIGGY_ROOT')) define('TWIGGY_ROOT', dirname(__DIR__));
+if(!defined('TWIGGY_ROOT')) define('TWIGGY_ROOT', dirname(__FILE__));
 
-require_once(TWIGGY_ROOT . '/vendor/Twig/lib/Twig/Autoloader.php');
+require_once(TWIGGY_ROOT . '/../vendor/Twig/lib/Twig/Autoloader.php');
 Twig_Autoloader::register();
 
 class Twiggy
@@ -100,7 +100,7 @@ class Twiggy
 	 * @return	object 	instance of this class
 	 */
 
-	public function set($key, $value, $global = FALSE)
+	public function set($key, $value = FALSE, $global = FALSE)
 	{
 		if(is_array($key))
 		{
@@ -429,8 +429,11 @@ class Twiggy
 	 * @return	void
 	 */
 
-	public function display($template = '')
+	public function display($template = '', $data = FALSE)
 	{
+		if (is_array($data)) {
+				$this->set($data);
+		}
 		if(!empty($template)) $this->template($template);
 
 		try

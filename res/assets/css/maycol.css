@@ -1,0 +1,87 @@
+.top_menu{
+	background: #FF7F27;
+}
+.top_menu .imagen{
+	width: 45%;
+	display: inline-block;
+}
+.top_menu p{
+	color:white;
+	display: inline-block;
+	padding: 3% 1%;
+}
+.navbar_empresa{
+	padding: 0px;
+}
+.navbar_empresa .navegacion_empresa{
+	background: transparent;
+    border-right: 0;
+    border-left: 0;
+    border-top-color: #EDEDED;
+    border-top-width: 3px;
+    box-shadow: inset 0 0px;
+    border-bottom-color: #0080C0;
+    border-bottom-width: 4px;
+}
+.navbar_empresa .navbar_emp{
+	padding: 13px 10px 0px 13px;
+}
+.navbar_empresa .menu_item{
+	width: 50px;
+    padding-left: 25px;
+}
+.navbar_empresa .link_menu{
+	font-size: 16px;
+    color: #808080;
+}
+.navbar_empresa a:focus{
+	color: #FF7F27;
+}
+.productos_principales{
+	margin-top: 15px;
+}
+.productos_principales .texto_titulo{
+	font-size: 20px;
+    font-weight: bold;
+}
+.productos_principales .nombre_producto{
+	font-size: 18px;
+    color: black;
+    margin: 0px;
+}
+.productos_principales .precio{
+	font-size: 18px;
+}
+.productos_principales .swiper-container {
+    width: 300px;
+    height: 200px;
+}
+.productos_principales .item_slider_producto{
+	width: 200px;
+}
+.productos_principales .imagen{
+	width: 100%
+}
+.productos_principales .ver_todo{
+	background: #FF7F27;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 15px;
+    float: right;
+}
+.productos_principales .solicitud{
+	width: 100%;
+    height: 50px;
+    background: #ff7f27;
+    color: #fff;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+.productos_principales .icono{
+	font-size: 20px;
+    margin-right: 10px;
+}
+.productos_principales .texto_solicitud{
+	font-size: 18px;
+    margin-top: 5px;
+}

@@ -3,13 +3,20 @@
     Hola Mundo con Twig
 {% endblock %}
 {% block content %}
-	<table>
-	    {% for user in users if users %}
-		    <tr>
-			    <td>{{user.id}}</td>
-			    <td>{{user.nombre}}</td>
-			    <td>{{user.correo}}</td>
-		    </tr>
-	    {% endfor %}
-	</table>
+	{% include "components/navbar_empresa.html.twig" %}
+	<div class="row">
+		<div class="col-md-12">
+			<table>
+			    {% for user in users if users %}
+				    <tr>
+					    <td>{{user.id}}</td>
+					    <td>{{user.nombre}}</td>
+					    <td>{{user.correo}}</td>
+				    </tr>
+			    {% endfor %}
+			</table>
+		</div>
+			<!-- /.col-md-12 -->	
+	</div>
+	<!-- /.row -->
 {% endblock %}

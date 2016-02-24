@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3><strong>Catálogo - Productos principales</strong></h3>
+        <hr>
+        {% for producto in productos %}
+            <div class="row">
+                <div class="col-xs-4">
+                    <img class="img-responsive" src="http://lorempixel.com/400/400/technics/image-{{loop.index}}" alt="">
+                    <!-- <img src="{{ producto.imagenes }}" alt="Imagen del producto"> -->
+                </div>
+                <div class="col-xs-8">
+                    <h4>
+                        <a href="#">
+                            <strong>
+                                {{ producto.nombre }}
+                            </strong>
+                        </a>
+                    </h4>
+                    <div>
+                        <span class="inline text-grey">
+                            Pedido minimo:
+                        </span>
+                        <p class="inline">
+                            <strong>
+                                {{ producto.pedido_minimo }}
+                            </strong>
+                        </p>
+                    </div>
+                    <div>
+                        <span class="inline text-grey">
+                            Precio:
+                        </span>
+                        <p class="font-naranja inline">
+                            {{ producto.precio_unidad }}
+                        </p>
+                    </div>
+                    <div>
+                        <i class="pull-right font-naranja glyphicon glyphicon-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+</div>

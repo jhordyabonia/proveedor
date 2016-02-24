@@ -1,0 +1,47 @@
+{% extends '_layouts/base.html.twig' %}
+{% block title %}
+    Pagina empresa {# Aca puedes imprimir nombre de empresa para SEO #}
+{% endblock title %}
+{% block styles %}
+    {{ parent()}}
+    {# Libreria para sliders #}
+    <link rel="stylesheet" href="{{assets_url()}}slick/slick/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+        
+{% endblock styles %}
+{% block meta %}
+    {# Aqui se deben agregar la información para el contenido que se comparte en redes sociales, si necesita ayuda de como identificar el contenido por favor verifique en https://developers.facebook.com/docs/sharing/webmasters#markup y https://dev.twitter.com/cards/types/summary-large-image #}
+    <meta property ="og:url" content="" />
+    <meta property ="og:type" content="" />
+    <meta property ="og:title" content="" />
+    <meta property ="og:description"  content="" />
+    <meta property ="og:image"  content="" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+{% endblock meta %}
+
+{% block content %}
+    {% include "components/top_menu.html.twig" %}
+    {% include "components/header_empresa.html.twig" %}
+    {% include "components/navbar_empresa.html.twig" %}
+    {% include "components/banners.html.twig" %}
+    {% include "components/slider-productos-principales.html.twig" %}
+    {# Slider videos #}
+    {% include "components/slider-touch-videos.html.twig" %}
+
+    {% include "components/slider-touch-productos.html.twig" %}
+    {% include "components/etiquetas.html.twig" %}
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {# Libreria para sliders #}
+    <script src="{{ assets_url() }}slick/slick/slick.min.js" ></script>
+    <script src="{{js_url()}}slider.js"></script>
+{% endblock javascripts %}

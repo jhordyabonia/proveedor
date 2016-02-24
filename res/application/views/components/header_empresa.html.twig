@@ -1,0 +1,30 @@
+<div class="row header">
+    <div class="col-xs-6 col-xs-offset-3">
+        <img class="img-responsive center-block logo" src="{{ base_url() }}uploads/resize/SOP/logos1/{{ empresa.logo }}" alt="Logo de la empresa">
+        <!-- <img class="img-responsive center-block logo" src="http://lorempixel.com/800/600/" alt="Logo de la empresa"> -->
+    </div>
+    <div class="col-xs-3 pull-right">
+        <img class="inline-block" src="{{ img_url() }}membresia/{{ membresia.logo }}" alt="Icono Membresia" width="40%">
+        {% if empresa.verificacion == 'Y' %}
+            <img class="inline-block" src="{{ img_url() }}membresia/Check_mark__64.png" alt="Icono de verificacion" width="40%">
+        {% endif %}
+    </div>
+    <!-- /.col-xs-2 -->
+    <!-- TODO: Verificar la url del logo de la empresa. -->
+</div>
+<!-- /.row -->
+<div class="row">
+  <div class="col-xs-12">
+        <h1 class="text-center">
+            {{ empresa.nombre }}
+        </h1>
+
+        <h3 class="text-center ">
+            <i class="fa fa-map-marker font-naranja"></i>
+            {{ usuario.ciudad|title }}
+        </h3>
+
+    </div>
+    <!-- /.col-xs-12 -->
+</div>
+<!-- /.row -->
