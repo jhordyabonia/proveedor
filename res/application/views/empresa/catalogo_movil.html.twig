@@ -1,6 +1,6 @@
 {% extends '_layouts/base.html.twig' %}
 {% block title %}
-    Pagina empresa {# Aca puedes imprimir nombre de empresa para SEO #}
+    Catalogo empresa {# Aca puedes imprimir nombre de empresa para SEO #}
 {% endblock title %}
 {% block styles %}
     {{ parent()}}
@@ -30,12 +30,17 @@
     {% include "components/top_menu.html.twig" %}
     {% include "components/header_empresa.html.twig" %}
     {% include "components/navbar_empresa.html.twig" %}
-    {% include "components/banners.html.twig" %}
-    {% include "components/slider-productos-principales.html.twig" %}
-    {# Slider videos #}
-    {% include "components/slider-touch-videos.html.twig" %}
-
-    {% include "components/slider-touch-productos.html.twig" %}
+    {% include "components/boton_solicitar_cotizacion.html.twig" %}
+    {% include "components/lista_productos.html.twig" %}
+    {% include "components/boton_solicitar_cotizacion.html.twig" %}
+    <div class="row">
+        <div class="col-xs-6" style="padding-right: 1px">
+            {% include "components/boton_contactar.html.twig" %}
+        </div>
+        <div class="col-xs-6" style="padding-left: 1px">
+            {% include "components/boton_telefono.html.twig" %}
+        </div>
+    </div>
     {% include "components/etiquetas.html.twig" %}
 {% endblock content %}
 
