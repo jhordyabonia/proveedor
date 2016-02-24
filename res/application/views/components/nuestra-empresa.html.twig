@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-xs-12 nuestra_empresa">
+		<h3 class="titulos"><strong>Nuestra Empresa</strong></h3>
+		<p class="font-naranja titulo_empresa"><strong>{{ empresa.nombre|title }}</strong></p>
+        <p class="titulo_membresia"><img class="inline-block img_membresia" src="{{ img_url() }}membresia/{{ membresia.logo }}" alt="Icono Membresia" width="10%">Empresa Platino <!-- insertar variable -->
+        {% if empresa.verificacion == 'Y' %}
+        <span class="titulo_validacion"><img class="inline-block img_membresia" src="{{ img_url() }}membresia/Check_mark__64.png" alt="Icono de verificacion" width="8%">Verificada</span></p><p class="ciudad"><i class="fa fa-map-marker font-naranja ico_puntero"></i>{{ usuario.ciudad|title }}</p>
+       	{% endif %}
+        <p class="descripcion_empresa">
+        	{{empresa.descripcion}}</p>
+        <p class="dato_empresa">Ubicación: <span class="variable">{{ usuario.ciudad|title}}</span></p><!-- añadir variable departamento -->
+        <p class="dato_empresa">Tipo de Empresa: <span class="variable">{{empresa.tipo|title}}</span></p>
+        <p class="dato_empresa_ppales">Productos Principales: <span class="variable_ppales">{{empresa.productos_principales|title}}</span></p>
+		<p class="catalogo"><span class="glyphicon glyphicon-th ico_cat_soli"></span>Ver Catálogo -<a href="#" class="productos"> 5 - productos</a></p> <!-- insertar variable -->
+		<p class="catalogo"><span class="glyphicon glyphicon-list-alt ico_cat_soli"></span>Productos Solicitados -<a href="#" class="productos"> 4 - Solicitudes</a></p> <!-- insertar variable -->	
+		<button class="btn btn-default solicitud"><p class="texto_solicitud"><i class="glyphicon glyphicon-envelope icono"></i>CONTACTAR</p></button>
+		<button class="btn btn-default solicitud"><p class="texto_solicitud"><i class="fa fa-phone icono"></i>3004313456</p></button> <!-- insertar variable de numero celular -->
+	</div>
+	<!-- /.col-xs-12 -->
+</div>
+	<!-- /.row -->	

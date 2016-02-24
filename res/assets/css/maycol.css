@@ -1,3 +1,6 @@
+.titulos{
+    color:black;
+}
 .top_menu{
 	background: #FF7F27;
 }
@@ -40,10 +43,6 @@
 .productos_principales{
 	margin-top: 15px;
 }
-.productos_principales .texto_titulo{
-	font-size: 20px;
-    font-weight: bold;
-}
 .productos_principales .nombre_producto{
 	font-size: 18px;
     color: black;
@@ -75,7 +74,6 @@
     background: #ff7f27;
     color: #fff;
     border-radius: 3px;
-    margin-bottom: 15px;
 }
 .productos_principales .icono{
 	font-size: 20px;
@@ -83,5 +81,77 @@
 }
 .productos_principales .texto_solicitud{
 	font-size: 18px;
+    margin-top: 5px;
+}
+.nuestra_empresa .titulo_empresa{
+    font-size: 18px;
+}
+.nuestra_empresa .titulo_membresia{
+    color:#808080;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #D9D9D9;
+}
+.nuestra_empresa .titulo_validacion{
+    color:#808080;
+}
+.nuestra_empresa .img_membresia{
+    margin-right: 2px;
+}
+.nuestra_empresa .ciudad{
+    padding-bottom: 5px;
+    border-bottom: solid 1px #D9D9D9;
+    color: #808080;
+}
+.nuestra_empresa .ico_puntero{
+    font-size: 20px;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+.nuestra_empresa .descripcion_empresa{
+    font-size: 15px;
+    line-height: 14px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #D9D9D9;
+    margin-bottom: 15px;
+}
+.nuestra_empresa .dato_empresa{
+    color: #808080;
+    line-height: 5px;
+}
+.nuestra_empresa .dato_empresa_ppales{
+    color: #808080;
+    line-height: 5px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px #D9D9D9;
+    padding-bottom: 15px;
+}
+.nuestra_empresa .variable{
+    color:black;
+}
+.nuestra_empresa .variable_ppales{
+    display: inline-block;
+    margin-top: 10px;
+    color: black;
+}
+.nuestra_empresa .catalogo{
+    color: #808080;
+}
+.nuestra_empresa .ico_cat_soli{
+    font-size: 20px;
+    margin-right: 5px;
+}
+.nuestra_empresa .solicitud{
+    width: 49%;
+    height: 50px;
+    background: #ff7f27;
+    color: #fff;
+    border-radius: 3px;
+}
+.nuestra_empresa .icono{
+    font-size: 18px;
+    margin-right: 8px;
+}
+.nuestra_empresa .texto_solicitud{
+    font-size: 18px;
     margin-top: 5px;
 }
