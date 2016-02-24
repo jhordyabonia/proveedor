@@ -158,3 +158,47 @@
     font-size: 18px;
     margin-top: 5px;
 }
+.contacto .ciudad{
+    font-weight: bold;
+    font-size: 18px;
+}
+.contacto .ico_puntero{
+    margin-right: 5px;
+}
+.contacto .cont_titulo{
+    background: #F5F5F5;
+    height: 50px;
+}
+.contacto .cont_texto{
+    height: 50px;
+}
+.contacto .titulo{
+    color:black;
+    font-size: 19px;
+}
+.contacto .icono{
+    margin-right: 5px;
+    margin-top: 10px;
+}
+.contacto .texto{
+    margin-top: 10px;
+    font-size: 16px;
+}
+.contacto .url{
+    font-size: 16px;
+}
+.contacto .solicitud{
+    width: 100%;
+    height: 50px;
+    background: #ff7f27;
+    color: #fff;
+    border-radius: 3px;
+}
+.contacto .icono2{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.contacto .texto_solicitud{
+    font-size: 18px;
+    margin-top: 5px;
+}
