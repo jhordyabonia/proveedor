@@ -99,7 +99,7 @@ class Check_nav_disp
 
 		// if($this->CI->session->userdata('logged_in')!=true && $this->CI->router->method != 'login' && in_array($this->CI->router->class,$controllersprivados)) redirect('user/login'); 
 		// if($this->CI->session->userdata('is_logued_in')==true && $this->CI->router->method == 'index') redirect ('index');
-		 if($this->CI->session->userdata('is_logued_in')!=true && in_array($this->CI->router->class,$controllersprivados)) redirect('index'); 
+		 if($this->CI->session->userdata('is_logued_in')!=true && in_array($this->CI->router->class,$controllersprivados)) redirect('logueo'); 
 	}
 }
 /*

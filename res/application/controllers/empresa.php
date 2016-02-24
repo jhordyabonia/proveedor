@@ -168,18 +168,19 @@ class Empresa extends CI_Controller
         $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
                                   'mensaje'=> "Visite nuestro catálogo de productos en Proveedor.com.co",
                                   'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-catalogo-default.png");
-        $this->load->view('template/head', array(
-            'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
-            'facebook' => $post['facebook']
-            )
-        );
 
 
         if ($this->ci->agent->is_mobile())
         {
-            #vistas Mobiles
+            // print_r($datos);
+            $this->twiggy->display('empresa\catalogo_movil', $datos);
         }else
         {
+            $this->load->view('template/head', array(
+                'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
+                'facebook' => $post['facebook']
+                )
+            );
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_');
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));

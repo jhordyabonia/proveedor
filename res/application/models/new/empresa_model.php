@@ -74,65 +74,28 @@ class Empresa_model extends CI_Model {
     }
 //Este metodo es usuado para busquedas desde el micro_admin
  public function buscar2($palabra = "",$categoria=0)
-    {
-        $this->db->select('id');
-        $this->db->from(self::TABLE_NAME);
-        if(is_array($palabra))
-        {
-            foreach ($palabra as $key => $value)
-            {
-                if($value=="")continue;
-                $this->db->or_like('nombre', $value, 'both'); 
-                $this->db->or_like('descripcion', $value, 'both'); 
-                $this->db->or_like('productos_principales', $value, 'both');
-                $this->db->or_like('productos_de_interes', $value, 'both');
-            }
-        }elseif($categoria!=0)
-        {
-            $this->db->like('empresa.categorias', $categoria, 'both'); # %|*|%
-            #$this->db->like('empresa.categorias', '|'.$categoria.'|', 'both'); # %|*|%
-            #$this->db->like('empresa.categorias', $categoria.'|', 'after'); # *|%
-            #$this->db->like('empresa.categorias', '|'.$categoria, 'before'); # %|*
-            #$this->db->where(array('categoria'=>$categoria));
-        }else
-        {            
-            $this->db->or_like('nombre', $palabra, 'both'); 
-            $this->db->or_like('descripcion', $palabra, 'both'); 
-            $this->db->or_like('productos_principales', $palabra, 'both');
-            $this->db->or_like('productos_de_interes', $palabra, 'both');
-        }
-        if($palabra == "")
-        {
-            $this->db->order_by('empresa.id',"desc");
-        }
-        else
-        {
-            $this->db->order_by('empresa.membresia',"desc");
-            $this->db->order_by('empresa.legalizacion',"desc");
-        }
-        $result = $this->db->get()->result();
-        if ($result)
-        {   return $result; }
-        else 
-        {   return false;   }
+    {$this->buscar($palabra,$categoria,TRUE);
     }
 
- public function buscar($palabra = "",$categoria=0)
+ public function buscar($palabra = "",$categoria=0,$solo_empresa=TRUE)
     {
         $this->db->select('empresa.id');
         $this->db->from(self::TABLE_NAME);
-        $this->db->join('producto',"empresa.id = producto.empresa");
+        if(!$solo_empresa)
+            $this->db->join('producto',"empresa.id = producto.empresa");
         #$this->db->join('solicitud',"empresa.id = solicitud.empresa");
        if(is_array($palabra))
         {
             foreach ($palabra as $key => $value)
             {
                 if($value=="")continue;
-                $this->db->or_like('empresa.nombre', $value, 'both'); 
+                $this->db->like('empresa.nombre', $value, 'both');
+                #$this->db->or_like('empresa.nombre', $value, 'both'); 
                 $this->db->or_like('empresa.descripcion', $value, 'both'); 
                 $this->db->or_like('productos_principales', $value, 'both');
                 $this->db->or_like('productos_de_interes', $value, 'both');
                 //En productos
+                if($solo_empresa)continue;
                 $this->db->or_like('producto.palabras_clave', $value, 'both');
                 $this->db->or_like('producto.nombre', $value, 'both'); 
                 $this->db->or_like('producto.descripcion', $value, 'both'); 
@@ -150,11 +113,13 @@ class Empresa_model extends CI_Model {
             #$this->db->where(array('categoria'=>$categoria));
         }else
         {            
-                $this->db->or_like('empresa.nombre', $palabra, 'both'); 
+                $this->db->like('empresa.nombre', $palabra, 'both'); 
+                #$$this->db->or_like('empresa.nombre', $palabra, 'both'); 
                 $this->db->or_like('empresa.descripcion', $palabra, 'both'); 
                 $this->db->or_like('productos_principales', $palabra, 'both');
                 $this->db->or_like('productos_de_interes', $palabra, 'both');                
                 //En productos
+                if($solo_empresa)continue;
                 $this->db->or_like('producto.palabras_clave', $palabra, 'both');
                 $this->db->or_like('producto.nombre', $palabra, 'both'); 
                 $this->db->or_like('producto.descripcion', $palabra, 'both'); 
@@ -163,14 +128,21 @@ class Empresa_model extends CI_Model {
                 #$this->db->or_like('solicitud.nombre', $value, 'both'); 
                 #$this->db->or_like('solicitud.descripcion', $value, 'both'); 
         }
-        
-        $this->db->order_by('empresa.membresia',"desc");
-        $this->db->order_by('empresa.legalizacion',"desc");
+         if($palabra == "")
+        {
+            $this->db->order_by('empresa.id',"desc");
+        }
+        else
+        {
+            $this->db->order_by('empresa.membresia',"desc");
+            $this->db->order_by('empresa.legalizacion',"desc");
+        }
         $result = $this->db->get()->result();
         if ($result)
         {   return $result; }
-        else 
-        {   return $this->buscar2($palabra,$categoria);   }
+        elseif($solo_empresa) 
+        {   return $this->buscar($palabra,$categoria,FLASE);   }
+        else return FALSE;
     }
 
 

@@ -39,8 +39,8 @@ class Tablero_usuario extends CI_Controller {
 		if($datos['nuevos'])
 		{$datos['count_msj']=count($datos['nuevos']);}
 		else {$datos['count_msj']=0;}		
-		if($datos['enviados'])
-		{$datos['count_msj2']=count($datos['enviados']);}
+		if($datos['recibidos'])
+		{$datos['count_msj2']=count($datos['recibidos']);}
 		else {$datos['count_msj2']=0;}
 
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$iduser));

@@ -6,8 +6,13 @@
 .font-naranja{
     color: #FF7F27;
 }
+.color-naranja{
+  background-color: #FF7F27;
+  color: #FFF;
+}
 .header{
-    padding-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .banner{
@@ -78,4 +83,11 @@
 }
 .slider-imagenes p{
   padding-right: 10px;
+}
+.inline {
+    display:inline;
+}
+
+span.text-grey{
+  color: #7F7F7F
 }

@@ -229,7 +229,7 @@
                                                          <td align="center" class="devicewidth">
                                                             <a href="<?=$url?>">
                                                                <?php $imagen=explode(',',$imagen);?>
-                                                               <img src="<?=base_url()?>uploads/resize/<?=$imagen[0]?>" style="/* display:block;*/ border:none; outline:none; text-decoration:none; max-width:250px;" class="colimg2">
+                                                               <img src="<?=base_url()?>uploads/<?=$imagen[0]?>" style="/* display:block;*/ border:none; outline:none; text-decoration:none; max-width:250px;" class="colimg2">
                                                             </a>
                                                          </td>
                                                       </tr>
@@ -315,7 +315,7 @@
                               <tr>
                                  <td align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 13px;color: #ffffff">
                                      <h2 style="margin-bottom: 0px; margin-top: 5px;"> 
-                                     Proveedor.com.co S.A.S. 2015 </h2>
+                                     Proveedor.com.co S.A.S. 2016 </h2>
                                      <br> 
                                     <!-- Para dejar de recibir estos correos,   <a href="#" style="color: #0033FF"> haz clic aqui. </a> -->
                                  </td>

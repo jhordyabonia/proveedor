@@ -22,13 +22,44 @@ function send()
 		<?=form_open_multipart(base_url().'inventarios2/registrar_/'.$id_empresa)?>
 			<br><br>
 <div style="overflow:scroll; height:70%">
-			<table>
+			<table><tr>
+						<!--<td >							
+							<input style="margin-top: 10px; margin-botton: 10px;" type="file" name="img[]" />
+							</td>-->
+						<th >
+							Nit 
+							</th>
+						<th >
+							Nombre
+							</th>
+						<th >
+							Direccion 
+						</th>
+						<th >
+							Municipio
+						</th>
+						<th >
+							Tipo
+						</td>
+						<th >
+							Telefono
+						</td>
+						<th >
+							Email
+						</th>
+						<th >
+							Descripcion
+						</th>
+						<th >
+							Nombres
+						</th>
+					</tr>
 				<?php $end=0; foreach($excel->values as $key => $rows) : ?>	
 						<?php if(is_null($rows[0])){$end++; continue;}?> 
 					<tr>
-						<td >							
+						<!--<td >							
 							<input style="margin-top: 10px; margin-botton: 10px;" type="file" name="img[]" />
-							</td>
+							</td>-->
 						<td >
 							<input name="nit[]" value="<?=$rows[1]?>" > 
 							</td>
