@@ -33,7 +33,14 @@
     {% include "components/banners.html.twig" %}
     {% include "components/slider-productos-principales.html.twig" %}
     {% include "components/nuestra-empresa.html.twig" %}
-
+    <div class="row">
+        <div class="col-xs-6" style="padding-right: 1px">
+            {% include "components/boton_contactar.html.twig" %}
+        </div>
+        <div class="col-xs-6" style="padding-left: 1px">
+            {% include "components/boton_telefono.html.twig" %}
+        </div>
+    </div>
     {# Slider videos #}
     {% include "components/slider-touch-videos.html.twig" %}
 

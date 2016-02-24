@@ -143,21 +143,6 @@
     font-size: 20px;
     margin-right: 5px;
 }
-.nuestra_empresa .solicitud{
-    width: 47%;
-    height: 50px;
-    background: #ff7f27;
-    color: #fff;
-    border-radius: 3px;
-}
-.nuestra_empresa .icono{
-    font-size: 18px;
-    margin-right: 6px;
-}
-.nuestra_empresa .texto_solicitud{
-    font-size: 18px;
-    margin-top: 5px;
-}
 .contacto .ciudad{
     font-weight: bold;
     font-size: 18px;
