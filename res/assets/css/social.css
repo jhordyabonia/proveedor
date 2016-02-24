@@ -3,6 +3,9 @@
     margin: 10px 0px 10px;
     padding: 0;
 }
+.well-social{
+	margin-top: 23px;
+}
 a.share-btn{
 	color:#fff;
 	text-decoration:none
