@@ -17,11 +17,11 @@ class Mensajes extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('grocery_CRUD');
 
-	    /*
-	    */
 	    $id=$this->session->userdata('id_usuario');
+	    /*
 	    if($id=='')
 	      {redirect(base_url(),'refresh');}
+	    */
 	    $this->datos['usuario']=$this->usuarios->get($id);
 	    $this->datos['empresa']=$this->empresa->get(array('usuario'=>$id));
 	}
@@ -47,65 +47,198 @@ class Mensajes extends CI_Controller {
      force_download($mensaje->adjunto,$data); 
   }
 
-	public function test()
+	  function siguiente($bandeja="enviados",$id=0)
+	  {
+		$id_user=$this->session->userdata('id_usuario');
+	  	if($bandeja=="enviados")
+	  	{
+	  		$bandeja_tmp="remitente";
+			$usuario=$this->usuarios->get($id_user);
+			$id_user=$this->remitente->get(array('correo'=>$usuario->email))->id;
+		}
+	  	else{ 	$bandeja_tmp="destinatario"; }
+
+	    $mensajes=$this->mensajes->get_all(array($bandeja_tmp => $id_user));
+	    if(!$mensajes)
+	    	$this->index();
+	    foreach ($mensajes as $key => $value)
+	    {
+	      if($value->id>$id)
+	        {$this->leer($value->id,$bandeja);return;}
+	    }
+	    $this->siguiente($bandeja,0);
+	  }
+	  function anterior($bandeja="enviados",$id=0)
+	  {	
+		$id_user=$this->session->userdata('id_usuario');
+	  	if($bandeja=="enviados")
+	  	{
+	  		$bandeja_tmp="remitente";
+			$usuario=$this->usuarios->get($id_user);
+			$id_user=$this->remitente->get(array('correo'=>$usuario->email))->id;
+		}
+	  	else{ 	$bandeja_tmp="destinatario"; }
+
+	    $mensajes=$this->mensajes->get_all(array($bandeja_tmp => $id_user));
+	    if(!$mensajes)
+	    	$this->index();
+	    foreach ($mensajes as $key => $value)
+	    {
+	      if($value->id<$id)
+	        {$this->leer($value->id,$bandeja);return;}
+	    }
+	    $this->anterior($bandeja,999999);
+	  } 
+	public function leer($id,$bandeja="enviados")
+	{		
+	  	 $this->session->set_userdata('path_current',base_url()."mensajes/leer/".$id);
+		 $datos['administrador']=FALSE;
+	  	 if(!is_numeric($id))
+	  	 {
+	  		$this->usuario_noregistrado($id);
+		  	return;
+		 }
+		 if(!$this->veryficar_logged($id))
+		 { 
+		   show_404();
+		   return;
+		 }
+		$id_user=$this->session->userdata('id_usuario');
+		$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 0));
+		$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 1));
+		$datos['enviados'] =$this->mensajes->get_all(array('remitente' => $id_user));
+
+		$datos['numero_nuevos']=count($datos['nuevos']);
+		$datos['numero_recibidos']=count($datos['recibidos'])+$datos['numero_nuevos'];
+		$datos['numero_enviados']=count($datos['enviados']);
+	  	
+		$datos['mensaje'] =$this->mensajes->get($id);   
+
+		$datos['mensaje']->url=FALSE;
+		$datos['mensaje']->image=FALSE;
+		$id_tmp=$datos['mensaje']->id_objeto;
+
+	switch ($datos['mensaje']->tipo) 
 	{
-			#$this->verifyc_login();
-			$crud = new grocery_CRUD();
-
-			#$crud->set_theme('datatables');
-			$crud->set_theme('twitter-bootstrap');
-			$crud->set_table('mensajes');
-			$crud->set_relation('destinatario','usuarios','email');
-			$crud->set_relation('remitente','remitente','correo');
-			#$crud->set_relation('tipo_registro','tipo_registro','nombre');
-			#$crud->set_relation('membresia','membresia','nombre');
-			$crud->display_as('id_objeto','Objeto');
-			$crud->set_subject('Mensajes');
-
-			#$crud->required_fields('nombre');
-			#$crud->required_fields('usuario');
-
-			//Campos a editar o agregar
-			#$crud->fields('id', 'nombre', 'membresia' ,  'tipo_registro' ,'tipo', 'legalizacion', 'decripcion', 'productos_principales', 'special_features');
-			//Columnas a mostrar
-			$crud->columns('remitente', 'asunto', 'mensaje' ,  'fecha' );
-			//Eliminar columnas			
-			#$crud->unset_columns('nit');
-			//Desactivar agregar
-			$crud->unset_add();
-			//Desactivar todas las operacones
-			#$crud->unset_operations();
-			//Desactivar editar
-			$crud->unset_edit();
-			//Desacrtivar imprimir
-			$crud->unset_print();
-			//Desacrtivar Leer
-			$crud->unset_read();
-			//Desacrtivar exportar
-			$crud->unset_export();
-			//Desctivar eliminiar
-			#$crud->unset_delete();
-
-			#$crud->set_field_upload('file_url','assets/uploads/files');
-
-			$output = $crud->render();
-
-			$output->listado="Enviados";
-
-		    $this->load->view('template/head',array('titulo'=>"Mensajes"));
-		    $this->load->view('template/javascript');
-    		$this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-			$this->load->view('mensaje/listado.php',$output);
-			#echo "<div style='height:20px;'>Menu</div><div>";
-			#echo $output['output'];
-			#echo "</div>";
+		case '1':
+			$objeto = $this->producto->get($id_tmp);
+			$datos['mensaje']->url=base_url()."producto/ver/".$objeto->id;
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$image= explode(',', $objeto->imagenes);
+			if($image[0]!="")
+			{$datos['mensaje']->image=base_url()."uploads/".$image[0];}
+			elseif($image[1]!=""){$datos['mensaje']->image=base_url()."uploads/".$image[1];}
+			else{$datos['mensaje']->image=base_url()."uploads/default.jpg";}
+			
+			break;
+		case '2':
+			$datos['mensaje']->datos=0;
+			$objeto=$this->solicitud->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->id;
+			$image= explode(',', $objeto->imagenes);
+			if($image[0]!="")
+			{$datos['mensaje']->image=base_url()."uploads/".$image[0];}
+			elseif($image[1]!=""){$datos['mensaje']->image=base_url()."uploads/".$image[1];}
+			else{$datos['mensaje']->image=base_url()."uploads/default.jpg";}
+			break;
+		case '3':
+			$datos['mensaje']->datos=0;
+			$objeto=$this->empresa->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$objeto->id;
+			if(!$objeto->logo){$objeto->logo="default.png";}
+			$datos['mensaje']->image=base_url()."uploads/logos/".$objeto->logo;
+			break;	
+		default:
+			$datos['mensaje']->datos=0;
+			$objeto=$this->asistentes_proveedor->get($id_tmp);
+			$datos['mensaje']->nom_objeto=$objeto->nombre;
+			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->publicada;
+			$datos['mensaje']->image=base_url()."uploads/default.jpg";
+			break;		
 	}
+	
+	if(!$datos['mensaje']->image)
+	{
+		$datos['mensaje']->image=base_url()."uploads/default.jpg";
+	}
+	
+	if($bandeja=="enviados")
+	{
+		$datos['mensaje']->remitente=$this->usuarios->get($this->session->userdata('id_usuario'));
+		$datos['mensaje']->destinatario=$this->usuarios->get($datos['mensaje']->destinatario);
+	}
+	else
+	{
+		$var=$this->remitente->get($datos['mensaje']->remitente);
+		if($var)
+			$obj=$this->usuarios->get(array('email'=>$var->correo));	
+		else
+		{ 			
+			$obj->telefono = array('indicativo','numero','extension','celular');
+			$obj->email = FALSE;
+			$obj->nombres = "Usuario no registrado";
+			$obj->id = 0;
+			$obj->direccion = "No especificada";
+		}
+		$datos['mensaje']->remitente=$obj;
+		$datos['mensaje']->destinatario=$this->usuarios->get($this->session->userdata('id_usuario'));
+	}
+
+	if($bandeja=="enviados")
+	{
+		$datos['mensaje']->ubicacion->direccion=$datos['mensaje']->destinatario->direccion; 
+		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($datos['mensaje']->destinatario->ciudad)->municipio;
+		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($datos['mensaje']->destinatario->departamento)->nombre;
+		$datos['mensaje']->nombres_decontato=$datos['mensaje']->destinatario->nombres;
+		$datos['mensaje']->telefono['indicativo']=$datos['mensaje']->destinatario->indicativo;
+		$datos['mensaje']->telefono['numero']=$datos['mensaje']->destinatario->numero;
+		$datos['mensaje']->telefono['extension']=$datos['mensaje']->destinatario->extension;
+		$datos['mensaje']->telefono['celular']=$datos['mensaje']->destinatario->celular;
+								
+	
+		#$datos['mensaje']->destinatario = $participante1;
+		#$datos['mensaje']->remitente = $participante2;
+	}else
+	{
+		$datos['mensaje']->ubicacion->direccion=$datos['mensaje']->remitente->direccion; 
+		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($datos['mensaje']->remitente->ciudad)->municipio;
+		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($datos['mensaje']->remitente->departamento)->nombre;
+		$datos['mensaje']->nombres_decontato=$datos['mensaje']->remitente->nombres;
+		$datos['mensaje']->telefono['indicativo']=$datos['mensaje']->remitente->indicativo;
+		$datos['mensaje']->telefono['numero']=$datos['mensaje']->remitente->numero;
+		$datos['mensaje']->telefono['extension']=$datos['mensaje']->remitente->extension;
+		$datos['mensaje']->telefono['celular']=$datos['mensaje']->remitente->celular;
+		
+		#$datos['mensaje']->remitente = $participante1;
+		#$datos['mensaje']->destinatario =$participante2;
+		$this->mensajes->update(array('estado' => 1),$id);
+	}
+
+	#echo "<PRE>";
+	#print_r($datos);
+	#echo "</PRE>";
+	#return;
+ 
+	$datos['tap']=$bandeja;
+	$datos['usuario']->usuario=$this->session->userdata('usuario');
+	$datos['id_usuario']=$this->session->userdata('id_usuario');
+	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
+
+	$this->load->view('template/head',array('titulo'=>"Leer"));
+	$this->load->view('template/javascript');
+    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);  
+	$this->load->view('mensaje/leer', $datos);
+	$this->load->view('template/footer_empy'); 
+
+	} 
   // Muestra la vista de mensajes recibidos del tablero de usuario
   public function enviados()
   {
   	$this->index("enviados");
   }
-  function index($tab="recibidos")
+  public function index($tab="recibidos")
   {     
   	$this->session->set_userdata('path_current',base_url()."mensajes");
 	if(!$this->veryficar_logged())
@@ -159,159 +292,12 @@ class Mensajes extends CI_Controller {
 	{$datos['numero_enviados']=count($datos['enviados']);}
 	else {$datos['numero_enviados']=0;}
 
-	$datos['usuario']->usuario=$this->session->userdata('usuario');
-	$datos['id_usuario']=$this->session->userdata('id_usuario');
-	$datos['administrador']=FALSE;
-	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
-	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
-	$this->load->view('template/javascript', FALSE, FALSE);     
-	$this->load->view('tablero_usuario/header', $datos, FALSE);
-	$this->load->view('mensaje/recibidos', $datos);
+	$this->load->view('template/head',array('titulo'=>"Mensajes"));
+	$this->load->view('template/javascript');
+    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
+	$this->load->view('mensaje/listado.php',$datos);
   }
  
-  public function leer($id)
-  {
-  	 $this->session->set_userdata('path_current',base_url()."mensajes/leer/".$id);
-	 $datos['administrador']=FALSE;
-  	 if(!is_numeric($id))
-  	 {
-  		$this->usuario_noregistrado($id);
-	  	return;
-	 }
-	 if(!$this->veryficar_logged($id))
-	 { 
-	   show_404();
-	   return;
-	 }
-  	 /*
-  	*/
-	$id_user=$this->session->userdata('id_usuario');
-	$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 0));
-	$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $id_user, 'estado' => 1));
-	$datos['enviados'] =$this->mensajes->get_all(array('remitente' => $id_user));
-
-	$datos['numero_nuevos']=count($datos['nuevos']);
-	$datos['numero_recibidos']=count($datos['recibidos'])+$datos['numero_nuevos'];
-	$datos['numero_enviados']=count($datos['enviados']);
-  	
-	$datos['mensaje'] =$this->mensajes->get($id);   
-
-	$datos['mensaje']->url=FALSE;
-	$datos['mensaje']->image=FALSE;
-	$id_tmp=$datos['mensaje']->id_objeto;
-
-	switch ($datos['mensaje']->tipo) 
-	{
-		case '1':
-			$objeto = $this->producto->get($id_tmp);
-			$datos['mensaje']->url=base_url()."producto/ver/".$objeto->id;
-			$datos['mensaje']->nom_objeto=$objeto->nombre;
-			$image= explode(',', $objeto->imagenes);
-			if($image[0]!="")
-			{$datos['mensaje']->image=base_url()."uploads/".$image[0];}
-			elseif($image[1]!=""){$datos['mensaje']->image=base_url()."uploads/".$image[1];}
-			else{$datos['mensaje']->image=base_url()."uploads/default.jpg";}
-			
-			break;
-		case '2':
-			$datos['mensaje']->datos=0;
-			$objeto=$this->solicitud->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$objeto->nombre;
-			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->id;
-			$image= explode(',', $objeto->imagenes);
-			if($image[0]!="")
-			{$datos['mensaje']->image=base_url()."uploads/".$image[0];}
-			elseif($image[1]!=""){$datos['mensaje']->image=base_url()."uploads/".$image[1];}
-			else{$datos['mensaje']->image=base_url()."uploads/default.jpg";}
-			break;
-		case '3':
-			$datos['mensaje']->datos=0;
-			$objeto=$this->empresa->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$objeto->nombre;
-			$datos['mensaje']->url=base_url()."perfil/perfil_empresa/".$objeto->id;
-			if(!$objeto->logo){$objeto->logo="default.png";}
-			$datos['mensaje']->image=base_url()."uploads/logos/".$objeto->logo;
-			break;	
-		default:
-			$datos['mensaje']->datos=0;
-			$objeto=$this->asistentes_proveedor->get($id_tmp);
-			$datos['mensaje']->nom_objeto=$objeto->nombre;
-			$datos['mensaje']->url=base_url()."oportunidad_comercial/ver/".$objeto->publicada;
-			$datos['mensaje']->image=base_url()."uploads/default.jpg";
-			break;		
-	}
-	
-	if(!$datos['mensaje']->image)
-	{
-		$datos['mensaje']->image=base_url()."uploads/default.jpg";
-	}
-	
-	$usuario = $this->usuarios->get($datos['mensaje']->destinatario);
-	//$contacto = $this->contacto->get($datos['mensaje']->destinatario);
-	if(!$usuario)
-	{
-		$remitente_tmp=$this->remitente->get($datos['mensaje']->destinatario);
-		if($remitente_tmp)
-		{
-			$participante1->telefono = $remitente_tmp->telefono;
-			$participante1->correo = $remitente_tmp->correo;
-			$participante1->nombres = $remitente_tmp->nombres;
-			$participante1->id_contacto = $remitente_tmp->id;
-		}else
-		{
-			$participante1->telefono = FALSE;
-			$participante1->correo = FALSE;
-			$participante1->nombres = "Usuario no registrado";
-			$participante1->id_contacto = 0;
-		}
-	}else
-	{
-		$participante1->id_contacto = $usuario->id;
-		$participante1->nombres = $usuario->nombres;
-		$participante1->correo = $usuario->email;
-		$participante1->telefono = $usuario->telefono;
-	}
-	$participante2 = $this->remitente->get(array('id' => $datos['mensaje']->remitente ));
-	$participante2->id_contacto = 0;//$participante2->id;
-	$user = $this->usuarios->get(array('email' => $participante2->correo));
-	if($user)
-	{	$participante2->id_contacto =$user->id; }
-	else{	$participante2->id_contacto =$participante2->id; }
-
-	if($id_user!=$datos['mensaje']->destinatario)
-	{
-		$datos['mensaje']->ubicacion->direccion=$usuario->direccion; 
-		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($usuario->ciudad)->municipio;
-		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($usuario->departamento)->nombre;
-	
-		$datos['mensaje']->destinatario = $participante1;
-		$datos['mensaje']->remitente = $participante2;
-	}else
-	{
-		$datos['mensaje']->ubicacion->direccion=$user->direccion; 
-		$datos['mensaje']->ubicacion->ciudad =$this->municipio->get($user->ciudad)->municipio;
-		$datos['mensaje']->ubicacion->departamento =$this->departamento->get($user->departamento)->nombre;
-		
-		$datos['mensaje']->remitente = $participante1;
-		$datos['mensaje']->destinatario =$participante2;
-		$this->mensajes->update(array('estado' => 1),$id);
-	}
-
-	#echo "<PRE>";
-	#print_r($datos);
-	#echo "</PRE>";
-	#return;
- 
-	$datos['usuario']->usuario=$this->session->userdata('usuario');
-	$datos['id_usuario']=$this->session->userdata('id_usuario');
-	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
-	$this->load->view('template/head',array('titulo' => "Contactar --proveedor.com.co"), FALSE); 
-	$this->load->view('template/javascript', FALSE, FALSE);  
-	$this->load->view('tablero_usuario/header', $datos, FALSE);   
-	$this->load->view('mensaje/mensaje', $datos);
-	$this->load->view('template/footer_empy');
-  }
-
   public function test_encrypt($number)
   {
   	$result =$this->crypter->encrypt($number);
@@ -443,6 +429,19 @@ class Mensajes extends CI_Controller {
   }
 
   
+  public function eliminar_uno($value=0,$estado)
+  {
+  	if(!$this->veryficar_logged($value))
+	{
+		$this->session->set_flashdata('error_eliminando', $key.' Error eliminando correo!!');
+		continue;
+	}
+  	$this->mensajes->update(array('estado'=>$estado),$value);
+  	redirect(base_url()."mensajes");
+	#$mensaje=$this->mensajes->get($value);
+	#$this->mensajes->update(array('destinatario' =>-$mensaje->remitente), $value);
+		
+  }
   public function eliminar()
   {
   	#return;
@@ -594,7 +593,7 @@ class Mensajes extends CI_Controller {
 			case '3': //desde pefil de empresa
 				$empresa= $this->empresa->get($id_objeto);
 				$usuario= $this->usuarios->get($empresa->usuario);
-				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Tiene una mensaje para su empresa! ";
+				$datos['mensaje']['asunto'] = "Proveedor.com.co - ¡Tiene un mensaje para su empresa! ";
 				$datos['mensaje']['destinatario']= $usuario->id;
 			 	$datos['detinatario_email']=$usuario->email;
 			 	$datos['plantilla']['nombre_usuario'] = "Sr(a) ".$usuario->nombres;

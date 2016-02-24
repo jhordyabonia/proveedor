@@ -12,7 +12,7 @@ class Inventarios2 extends CI_Controller {
         $this->load->model('crypter_model','crypter');
         $this->load->model('u_model','u');
         $this->load->library('excelNew');
-        $this->verifyc_login();
+        #$this->verifyc_login();
     }
      
     private function verifyc_login()
@@ -39,12 +39,21 @@ class Inventarios2 extends CI_Controller {
         $this->load->view('inventarios2/cargar',$data);
     }
 
-    function ciudad($in)
+    private function ciudad($in)
     {
-     $out=$this->minicipio->get(array('municipio'=>$in));
-     if($out)
-     { return $out->id_municipio;}
-     return 1113;
+     $out=FALSE;
+     foreach(explode(' ',$in) as $key=>$value)
+      {
+        $out=$this->minicipio->get(array('municipio'=>$in));
+        if($out)break;
+      }
+
+     if(!$out)
+      {
+        $out->id_municipio=1113;
+        $out->id_departamento=33;
+      }
+     return $out;
     }
 
     function cargar()
@@ -93,7 +102,7 @@ class Inventarios2 extends CI_Controller {
    
        $nombres=$this->input->post('nombre');
        $nits=$this->input->post('nit');
-       $precios=$this->input->post('dirrecion');
+       $direccion=$this->input->post('direccion');
        $descripciones=$this->input->post('descripcion');
        $tipos=$this->input->post('tipo');
        $nombres_u=$this->input->post('nombres');
@@ -110,11 +119,15 @@ class Inventarios2 extends CI_Controller {
          $registros[$i]->empresa['tipo_registro']=3;
          $registros[$i]->empresa['logo']="default.png";
          $registros[$i]->empresa['nombre']=$nombres[$i];
-         $registros[$i]->empresa['descripcion']=$descripciones[$i]|$nombres[$i];
+         $registros[$i]->empresa['descripcion']=$descripciones[$i]==""?$nombres[$i]:$descripciones[$i];
+         $registros[$i]->empresa['direccion']=$direccion[$i];
+         $registros[$i]->empresa['categorias']=$this->buscar_caretgorias($registros[$i]->empresa['descripcion']);
          $registros[$i]->empresa['tipo']=$tipos[$i]|1;
 
          $registros[$i]->usuario['telefono']=$telefonos[$i];
-         $registros[$i]->usuario['ciudad']=$this->ciudad($ciudades[$i]);
+         $tmp=$this->ciudad($ciudades[$i]);
+         $registros[$i]->usuario['ciudad']=$tmp->id_municipio;
+         $registros[$i]->usuario['departamento']=$tmp->id_departamento;
          $registros[$i]->usuario['nombres']=$nombres_u[$i];
          $registros[$i]->usuario['usuario']="proveedor".substr($this->crypter->encrypt(rand(2,25)), 7);
          $registros[$i]->usuario['email']=$emails[$i];
@@ -146,13 +159,38 @@ class Inventarios2 extends CI_Controller {
       $dat['nit']=$this->session->userdata('empresa');
       $dat['usuario']=$this->session->userdata('usuario');
 
-      $this->load->view('template/head', $dat);
-      $this->load->view('tablero_usuario/header', $dat, FALSE);
-      $this->load->view('template/javascript', FALSE);
+      #$this->load->view('template/head', $dat);
+      #$this->load->view('tablero_usuario/header', $dat, FALSE);
+      #$this->load->view('template/javascript', FALSE);
        echo "<center><br><br><br><br><h3>Se registraron ".$key." Empresas, con exito!!</h3>";
        echo "</h4><br><a href='".base_url()."inventarios2'>Volver</a>";
        echo "</h4><br><a href='".base_url()."micro_admin/'>Micro Adimin</a>";
     }
+  private function buscar_caretgorias($inputs="")
+  {       
+        $out="";
+        foreach (explode(' ',$inputs) as $key => $value) 
+        {
+          if(is_null($value)||strlen($value)<4)continue;
+          $out.=$this->trt($value);
+          #echo strtolower($value.'<br>'); 
+        }       
+
+        return $out."|39";
+  }
+  private function trt($value)
+  {
+        $out="";
+        $db = $this->load->database('default', TRUE);
+        $db->from('categoria');
+        $db->select('id_categoria');
+         $db->like('nombre_categoria', strtolower($value), 'both'); 
+         foreach ($db->get()->result() as $key=>$value)
+        {
+          $out.=$value->id_categoria.'|';
+        }
+        return $out;
+  }
 
   function load_image($id_registro,$i) 
   {
@@ -177,16 +215,14 @@ class Inventarios2 extends CI_Controller {
 
   function eliminar()
   {
-      $dat['titulo']="Eliminacion de empresas";
-    $dat['nit']=$this->session->userdata('empresa');
-    $dat['usuario']=$this->session->userdata('usuario');
-
-    $this->load->view('template/head', $dat);
-    $this->load->view('tablero_usuario/header', $dat, FALSE);
-    $this->load->view('template/javascript', FALSE);
-   $t= $this->empresa->delete(array('tipo_registro'=>3));
-   echo "Se eliminaron ".$t." registros";
-   echo "</h4><br><a href='".base_url()."inventarios2'>Volver</a>";
+   $empresas= $this->empresa->get_all(array('tipo_registro'=>3));
+   foreach ($empresas as $key => $value) 
+   {
+    $this->usuarios->delete($value->usuario);
+   }
+   $t=$this->empresa->delete(array('tipo_registro'=>3));
+   echo "<br><br><br><br>Se eliminaron ".$t." registros";
+   echo "<h4><br><a href='".base_url()."inventarios2'>Volver</a>";
   }
 }
 // end: excel

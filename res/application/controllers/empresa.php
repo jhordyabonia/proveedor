@@ -80,6 +80,7 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile())
         {
             #Vistas Mobiles
+            echo "HLA";
         }else
         {
             $this->load->view('template/javascript');
