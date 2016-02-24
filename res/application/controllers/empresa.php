@@ -317,18 +317,19 @@ class Empresa extends CI_Controller
                                   'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
                                   'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
 
-        $this->load->view('template/head', array(
-            'titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre,
-            'facebook' => $post['facebook']
-            )
-        );
 
 
         if ($this->ci->agent->is_mobile()) 
         {
-            #Vistas mobiles
+           $this->twiggy->display('empresa/nosotros_movil', $datos);
         }else
         {
+
+            $this->load->view('template/head', array(
+                'titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre,
+                'facebook' => $post['facebook']
+                )
+            );
 
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_');

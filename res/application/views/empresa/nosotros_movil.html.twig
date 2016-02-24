@@ -1,6 +1,6 @@
 {% extends '_layouts/base.html.twig' %}
 {% block title %}
-    Catalogo empresa {# Aca puedes imprimir nombre de empresa para SEO #}
+    Nosotros {# Aca puedes imprimir nombre de empresa para SEO #}
 {% endblock title %}
 {% block styles %}
     {{ parent()}}
@@ -30,24 +30,13 @@
     {% include "components/top_menu.html.twig" %}
     {% include "components/header_empresa.html.twig" %}
     {% include "components/navbar_empresa.html.twig" %}
-    {% include "components/boton_solicitar_cotizacion.html.twig" %}
-    {% include "components/lista_productos.html.twig" %}
-    {% include "components/paginador.html.twig" %}
-    {% include "components/boton_solicitar_cotizacion.html.twig" %}
-    <div class="row">
-        <div class="col-xs-6" style="padding-right: 1px">
-            {% include "components/boton_contactar.html.twig" %}
-        </div>
-        <div class="col-xs-6" style="padding-left: 1px">
-            {% include "components/boton_telefono.html.twig" %}
-        </div>
-    </div>
+    {% include "components/nuestra-empresa.html.twig" %}
+    {% include "components/boton_contactenos.html.twig" %}
+    {% include "components/boton_contactenos.html.twig" %}
     {% include "components/etiquetas.html.twig" %}
 {% endblock content %}
 
 {% block javascripts %}
     {{ parent() }}
     {# Libreria para sliders #}
-    <script src="{{ assets_url() }}slick/slick/slick.min.js" ></script>
-    <script src="{{js_url()}}slider.js"></script>
 {% endblock javascripts %}
