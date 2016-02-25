@@ -187,3 +187,23 @@
     font-size: 18px;
     margin-top: 5px;
 }
+.mision .titulo{
+    border-bottom: solid 1px #D9D9D9;
+    padding-bottom: 5px;
+}
+.mision .texto_mision{
+    font-size: 16px;
+}
+.mision .ico_bandera{
+    margin-right: 5px;
+}
+.vision .titulo{
+    border-bottom: solid 1px #D9D9D9;
+    padding-bottom: 5px;
+}
+.vision .texto_vision{
+    font-size: 16px;
+}
+.vision .ico_bandera{
+    margin-right: 5px;
+}
