@@ -1,0 +1,62 @@
+{% extends '_layouts/base.html.twig' %}
+{% block title %}
+    Nosotros {# Aca puedes imprimir nombre de empresa para SEO #}
+{% endblock title %}
+{% block styles %}
+    {{ parent()}}
+    {# Libreria para sliders #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+{% endblock styles %}
+{% block meta %}
+    {# Aqui se deben agregar la información para el contenido que se comparte en redes sociales, si necesita ayuda de como identificar el contenido por favor verifique en https://developers.facebook.com/docs/sharing/webmasters#markup y https://dev.twitter.com/cards/types/summary-large-image #}
+    <meta property ="og:url" content="" />
+    <meta property ="og:type" content="" />
+    <meta property ="og:title" content="" />
+    <meta property ="og:description"  content="" />
+    <meta property ="og:image"  content="" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+{% endblock meta %}
+
+{% block content %}
+    {% include "components/top_menu.html.twig" %}
+    {% include "components/header_empresa.html.twig" %}
+    {% include "components/navbar_empresa.html.twig" %}
+    {% include "components/boton_contactenos.html.twig" %}
+    {% include "components/contacto.html.twig" %}
+    <div class="row">
+        <div class="col-xs-6" style="padding-right: 1px">
+            {% include "components/boton_contactar.html.twig" %}
+        </div>
+        <div class="col-xs-6" style="padding-left: 1px">
+            {% include "components/boton_telefono.html.twig" %}
+        </div>
+    </div>
+    {% include "components/redes_sociales.html.twig" %}
+    {% include "components/etiquetas.html.twig" %}
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {# Libreria para sliders #}
+    <script src="{{js_url()}}social.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+           $('.share').ShareLink({
+                // se deben llenar los datos para compartir con los botones
+                title: '', 
+                text: '', 
+                image: '', 
+                url: '', 
+                width: 640, 
+                height: 480 
+            }) 
+        });
+    </script>
+{% endblock javascripts %}
