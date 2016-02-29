@@ -157,6 +157,7 @@ class Categoria extends CI_Controller {
         #$data['div_categorias']=$this->load->view('listados/div_categorias', $filtros, TRUE);
 
 
+        if(!$productos){$data['div']="proveedores";}
         if ($productos) 
         {
             $data['page_count'] = count($productos)/25;

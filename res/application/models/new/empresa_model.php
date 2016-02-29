@@ -74,7 +74,7 @@ class Empresa_model extends CI_Model {
     }
 //Este metodo es usuado para busquedas desde el micro_admin
  public function buscar2($palabra = "",$categoria=0)
-    {$this->buscar($palabra,$categoria,TRUE);
+    {return $this->buscar($palabra,$categoria);
     }
 
  public function buscar($palabra = "",$categoria=0,$solo_empresa=TRUE)
@@ -119,10 +119,12 @@ class Empresa_model extends CI_Model {
                 $this->db->or_like('productos_principales', $palabra, 'both');
                 $this->db->or_like('productos_de_interes', $palabra, 'both');                
                 //En productos
-                if($solo_empresa)continue;
-                $this->db->or_like('producto.palabras_clave', $palabra, 'both');
-                $this->db->or_like('producto.nombre', $palabra, 'both'); 
-                $this->db->or_like('producto.descripcion', $palabra, 'both'); 
+                if(!$solo_empresa)
+                {
+                    $this->db->or_like('producto.palabras_clave', $palabra, 'both');
+                    $this->db->or_like('producto.nombre', $palabra, 'both'); 
+                    $this->db->or_like('producto.descripcion', $palabra, 'both'); 
+                }
                 //En solicitudes
                 #$this->db->or_like('solicitud.palabras_clave', $value, 'both');   
                 #$this->db->or_like('solicitud.nombre', $value, 'both'); 
@@ -140,7 +142,7 @@ class Empresa_model extends CI_Model {
         $result = $this->db->get()->result();
         if ($result)
         {   return $result; }
-        elseif($solo_empresa) 
+        elseif(!$solo_empresa) 
         {   return $this->buscar($palabra,$categoria,FLASE);   }
         else return FALSE;
     }
