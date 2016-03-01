@@ -157,7 +157,7 @@ document.oncontextmenu=inhabilitar
 	                    <td width="20%" class="dato1">   
 	                        <p class="descripcion_solicitud"><?=$dato->descripcion?></p>
 	                        <?php if($dato->adjunto):?>
-		                        <a href="<?=base_url()?>uploads/resize/adjunto/<?=$dato->adjunto?>">
+		                        <a href="<?=base_url()?>uploads/adjunto/<?=$dato->adjunto?>">
 		                        	Descargar adjunto <?=$dato->adjunto?>
 		                        </a>
 	                    	<?php endif;?>

@@ -853,38 +853,32 @@ class Micro_admin extends CI_Controller
 	    $this->load->view('micro_admin/solicitudes_internas', $datos);   
 	    $this->load->view('micro_admin/funcionalidades', $datos); 
     }
-    public function solicitudes_externas($oferta_publicada=FALSE,$var=FALSE)
+    public function solicitudes_externas($oferta_publicada=0,$var=0,$page=0)
     {
 		$solicitudes=$this->asistentes_proveedor->get_all();
-		if($var)
+		if($var!=0)
 		{	return $solicitudes;	}
 	
     	$this->verifyc_login();
-		$dotos['page_count'] = count($solicitudes)/25;
-		$datos['page']=($this->input->post('page')-1);			    	
-		foreach ($solicitudes as $key => $solicitud)
-		{
-			/*
-			if($key<($datos['page']*25))
-			{  continue; }
-	  		if($datos['page']>0)
-			{
-				if($key>=($datos['page']*50))	
-				{break;}
-			}	
-			else
-			{
-				if($key>=25)	
-				 {break;}
-			}
-			*/
-			$solicitud->categoria=$this->categoria->get($solicitud->categoria);
-		
-			$datos['datos'][]=$solicitud;
-		}
 
-    	$datos['titulo']="Proveedor Administrador- Solicitudes externas";
-		$id_usuario=$this->session->userdata('id_usuario');
+		$count=0;##
+        $tmp_solicitudes = array();
+        $datos['page'] = $page;##
+        $numeroXpagina = 20; ##
+        $datos['cantidad_paginas'] = count($solicitudes)/$numeroXpagina;##
+        
+        foreach ($solicitudes as $key => $value) 
+        {            
+            $count++;##        
+            if(!(($count>=(($numeroXpagina*$page)))&&($count<((($numeroXpagina*($page+1)))))))
+            	continue; ##
+        
+            $value->categoria=$this->categoria->get($value->categoria);
+            $tmp_solicitudes[] = $value;
+        }		
+        $datos['datos']=$tmp_solicitudes; 
+
+    	$datos['titulo']="Proveedor Administrador - Solicitudes externas";
 		$id_usuario=$this->session->userdata('id_usuario');
 		$datos['usuario']->usuario=$this->session->userdata('usuario');
 		$datos['administrador']=FALSE;
@@ -896,7 +890,7 @@ class Micro_admin extends CI_Controller
 		$this->load->view('template/javascript', FALSE);
 	    $this->load->view('micro_admin/solicitudes_externas', $datos);  
 	    $this->load->view('micro_admin/funcionalidades', $datos); 
-	    if($oferta_publicada)
+	    if($oferta_publicada!=0)
 	    {	    	
 			$data['launcher'] = FALSE;
 			$data['view'] = 'confirmar_solicitud';		

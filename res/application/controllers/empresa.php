@@ -190,7 +190,7 @@ class Empresa extends CI_Controller
             $this->load->view('template/footer_empy');
         }
     }
-    public function cotizaciones_requeridas($id)
+    public function cotizaciones_requeridas($id, $page=0)
     {
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa,'refresh');}
 
@@ -222,7 +222,6 @@ class Empresa extends CI_Controller
         }
         $productos          = $filtrado['productos'];
         $datos['filtros']   = $filtrado['categorias'];
-        $datos['page']      = 0; //$page;
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         
@@ -231,6 +230,21 @@ class Empresa extends CI_Controller
         {
             $datos['tag'].=$value->nombre.",";
         }
+
+        
+        $count=0;##
+        $datos['tag']="";##
+        $datos['page']=$page;##
+        $numeroXpagina=20;##
+        $datos['cantidad_paginas'] = count($datos['oportunidades'])/$numeroXpagina;##
+        $oportunidades_tmp= array();
+        foreach ($datos['oportunidades'] as $key => $value) 
+        {
+            $count++;##        
+            if(($count>=(($numeroXpagina*$page)))&&($count<((($numeroXpagina*($page+1)))))) ##
+                $oportunidades_tmp[] = $value;
+        }
+        $datos['oportunidades']=$oportunidades_tmp;
 
         if ($this->ci->agent->is_mobile()) 
         {
