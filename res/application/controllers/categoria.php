@@ -56,21 +56,44 @@ class Categoria extends CI_Controller {
         $datos['url_publicar_solicitud']=base_url()."publicar_oferta";        
         $data['url_publicar_producto']=base_url()."publicar_producto";
         $data['url_publicar_solicitud']=base_url()."publicar_oferta";
-        $this->load->view('index/header_buscador',$data);
-        $datos['datos']->titulos=$titulos;
-        $this->load->view('template/head', array('titulo'=>"Categorias --proveedor.com.co"));
+        #$this->load->view('index/header_buscador',$data);
+        $datos['datos']->titulos=$titulos;  
+        $datos['index'] = FALSE; 
+       # $this->load->view('template/head', array('titulo'=>"Categorias --proveedor.com.co",'facebook' =>FALSE));
         $this->load->view('template/javascript', FALSE);
-        $this->load->view('popups/asistentes_proveedor', $datos); 
+        #$this->load->view('popups/asistentes_proveedor', $datos); 
+        $mensaje_enviado= $this->session->userdata('mensaje_enviado');
+        $this->load->view('index/formulario_solicitudes', array('categoria'=>$categoria,'datos'=>$datos['datos'],'mensaje_enviado'=>$mensaje_enviado));
+       
 
-        $datos['permiso']=FALSE;
-        $nit = $this->session->userdata('empresa');
-        if($nit=="1059985632-7"||($nit=="90058523"||$nit=="102223263921"))
-        {  $datos['permiso']=TRUE;  }
-        $this->load->view('categorias/captura', $datos); 
-        $this->load->view("template/footer");
+        #$this->load->view("template/footer");
         
         return;
     }
+    public function vinvular_dispositivo()
+    {
+        $ipAddress=gethostbyaddr($_SERVER['REMOTE_ADDR']);
+        $macAddr=false;
+
+        #run the external command, break output into lines
+        $arp='arp -n $ipAddress';
+        $lines=explode('\n', $arp);
+
+        #look for the output line describing our IP address
+        foreach($lines as $line)
+        {
+           $cols=preg_split('/\s+/', trim($line));
+           if ($cols[0]==$ipAddress)
+           {
+               $macAddr=$cols[1];
+           }
+        }
+        echo  $ipAddress."<PRE>";
+        print_r($macAddr);
+        echo "</PRE>";
+
+        #$this->load->view('registro/registro_dispositivo');
+    } 
     public function ver_sub($in2=0, $div="productos", $page=0,$filtro=0,$tipo_filtro=0)
     {
         $this->ver(0,$div,$page,$filtro,$tipo_filtro,$in2);

@@ -90,7 +90,8 @@
 			<?php if($catalogo->catalogo==NULL) {continue;}?>
 			<div class="item_procud2">
 				<div class="imagen_producto">
-					<img class="img-pdf2" src="<?=base_url()?>assets/img/pdf.png">
+					<i class="icon_catalogo fa fa-file-pdf-o"></i>
+					<!--<img class="img-pdf2" src="<?=base_url()?>assets/img/pdf.png">-->
 				</div>
 				<div class="contexto_producto center">
 					<div class="textos2">

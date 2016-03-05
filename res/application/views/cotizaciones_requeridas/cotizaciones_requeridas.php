@@ -57,7 +57,7 @@
 					{
 						echo '<div class="conte_item_categorias">';
 						echo '<div class="text_categoria">';
-						echo '<p><a class="enla-color" href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$page.'/'.$categoria['id'].'">';
+						echo '<p><a class="enla-color" href="'.base_url().'empresa/cotizaciones_requeridas/'.$empresa->id.'/'.$page.'/'.$categoria['id'].'">';
 						echo $key.' <strong>('.$categoria['cantidad'].')</strong>';
 						echo '</a></p>';
 						echo '</div>';
@@ -65,7 +65,7 @@
 						echo '<div class="item_categoria">';
 						foreach ($categoria['subcategorias'] as $key2=>$subcategoria)
 						{ 
-							echo '<p><a class="enla-color" href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$page.'/'.$subcategoria['id'].'/1/">';
+							echo '<p><a class="enla-color" href="'.base_url().'empresa/cotizaciones_requeridas/'.$empresa->id.'/'.$page.'/'.$subcategoria['id'].'/1/">';
 							echo $key2.' <strong>('.$subcategoria['cantidad'].')</strong>';
 							echo '</a></p>';
 						}                  
@@ -121,18 +121,21 @@
 	<div class="col-md-2"></div>
 	<div class="text-align col-md-10">
 		<ul class="pagination">
-			<!--
-	    <li><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li><a href="#">5</a></li>
+		<li>
+	      <a href="<?=base_url()?>empresa/cotizaciones_requeridas/<?=$empresa->id?>/<?=$page-1?>" aria-label="Next">
+	        <span aria-hidden="true">Anterior</span>
+	      </a>
+	    </li>
+		    <?php for ($key=0;$key<$cantidad_paginas;$key++) 
+		    {
+		    	echo '<li><a href="'.base_url().'empresa/cotizaciones_requeridas/'.$empresa->id.'/'.$key.'">'.($key+1).'</a></li>';
+		    }
+		    ?>	    
 	    <li>
-	      <a href="#" aria-label="Next">
+	      <a href="<?=base_url()?>empresa/cotizaciones_requeridas/<?=$empresa->id?>/<?=$page+1?>" aria-label="Next">
 	        <span aria-hidden="true">Siguiente &raquo;</span>
 	      </a>
 	    </li>
-	-->
 	  </ul>
 	</div>
 </div>

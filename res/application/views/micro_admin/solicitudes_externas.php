@@ -108,7 +108,7 @@
 	                    id="<?=$dato->id?>descripcion" disabled="true" /><?=$dato->descripcion?>
 	                    </textarea> 
 	                     <?php if($dato->adjunto):?>
-		                        <a href="<?=base_url()?>uploads/resize/adjunto/<?=$dato->adjunto?>">
+		                        <a href="<?=base_url()?>uploads/adjunto/<?=$dato->adjunto?>">
 		                        	Descargar adjunto <?=$dato->adjunto?>
 		                        </a>
 	                    <?php endif;?>            
@@ -205,44 +205,27 @@ desde que pagina se esta invocando, (appications/viwes/micro_admin/editor.php ó
 <input type="hidden" id="editor" value="FALSE">
 
 <?= form_close() ?>
-
-
-<script type="text/javascript">
-										function pagination(page)
-											{
-												document.getElementById('page').value=page;
-												document.getElementById('form_page').submit();
-											}
-										</script>
-										<?php
-											$atributos = array(
-												'autocomplete' => 'off',
-												'id' => 'form_page',
-												'novalidate' => 'novalidate');
-										?>
-										<?= form_open_multipart(base_url()."micro_admin/solicitudes_externas",$atributos); ?>
-											<input type="hidden" id="page" name="page" value="0">
-											<? if($page_count>1): ?>
-												<center>
-													<nav>
-													  <ul class="pagination">
-														<?php if($page==-1){$page=0;} ?>
-														<? if($page>0): ?>
-															<li><a href="JavaScript:pagination(<?=$page-1?>);">&laquo; Anterior</a></li>
-														<?php endif; ?>
-														<? for($i=0;$i<$page_count;$i++): ?>
-															<li><a href="JavaScript:pagination(<?=$i+1?>);"><?=$i+1?></a></li>
-														<?endfor;?>
-														<? if($page+1<=$page_count): ?>
-															<li><a href="JavaScript:pagination(<?=$page+2?>);">Siguiente &raquo;</a></li>
-													  	<?php endif; ?>
-													  </ul>
-													</nav>
-												</center>
-											<?php endif; ?>
-										<?= form_close() ?>
-
-
-
+<div class="contenedor_paginador col-md-12">
+	<div class="col-md-2"></div>
+	<div class="text-align col-md-10">
+		<ul class="pagination">
+		<li>
+	      <a href="<?=base_url()?>micro_admin/solicitudes_externas/FALSE/FALSE/<?=$page-1?>" aria-label="Next">
+	        <span aria-hidden="true">Anterior</span>
+	      </a>
+	    </li>
+		    <?php for ($key=0;$key<$cantidad_paginas;$key++) 
+		    {
+		    	echo '<li><a href="'.base_url().'micro_admin/solicitudes_externas/FALSE/FALSE/'.$key.'">'.($key+1).'</a></li>';
+		    }
+		    ?>	    
+	    <li>
+	      <a href="<?=base_url()?>micro_admin/solicitudes_externas/FALSE/FALSE/<?=$page+1?>" aria-label="Next">
+	        <span aria-hidden="true">Siguiente &raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
+	</div>
+</div>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/perfil_empresa/catologo_productos.css">
