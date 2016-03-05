@@ -181,3 +181,9 @@ span.text-grey{
 .navbar-empresa div.active button{
   color: #FF762F;
 }
+.ver_todo{
+  border-radius: 3px;
+}
+.item_slider_producto {
+  padding-right: 20px;
+}
