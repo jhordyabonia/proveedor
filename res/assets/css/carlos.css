@@ -4,7 +4,10 @@
     /*max-height: 135px;*/
 }
 .font-naranja{
-    color: #FF7F27;
+  color: #FF7F27;
+}
+.font-gris{
+  color: #808080;
 }
 .color-naranja{
   background-color: #FF7F27;
@@ -186,4 +189,13 @@ span.text-grey{
 }
 .item_slider_producto {
   padding-right: 20px;
+}
+.texto-membresia{
+  font-size: 13px;
+}
+.video{
+  position: absolute;
+  top: 200px;
+  left: 0;
+  width: 100%;
 }
