@@ -1,37 +1,49 @@
 <div class="row">
   <div class="navbar-empresa">
-    <div class="col-xs-2 active">
-      <button type="button" class="btn btn-lg btn-block">
-        <i class="glyphicon glyphicon-home"></i>
-      </button>
-    </div>
-    <div class="col-xs-2">    
-      <button type="button" class="btn btn-lg btn-block">
-        <i class="glyphicon glyphicon-list"></i>
-      </button>
-    </div>
-    <div class="col-xs-2">
-      <button type="button" class="btn btn-lg btn-block">
-        <i class="glyphicon glyphicon-briefcase"></i>
-      </button>
-    </div>
-    <div class="col-xs-2">
-      <button type="button" class="btn btn-lg btn-block">
-        <i class="fa fa-file-text-o"></i>
-      </button>
-    </div>    
-    <div class="col-xs-2">
-      <button type="button" class="btn btn-lg btn-block">
-        <i class="fa fa-phone"></i>
-      </button>
+    <div class="col-xs-1">
+      <a class="btn-lg btn-block" style="color: #FFF">
+        <i class="fa fa-download"></i>
+      </a>
     </div>
 
-    <div class="col-xs-2">
-      <button type="button" class="btn btn-lg btn-block">
-        <i class="glyphicon glyphicon-download-alt"></i>
-      </button>
+    <div class="col-xs-2 {% if inicio %}active{% endif %}">
+      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/inicio/{{empresa.id}}">
+        <i class="fa fa-home"></i>
+      </a>
     </div>
-  
+    <div class="col-xs-2 {% if catalogo_producto %}active{% endif %}">    
+      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/catalogo_producto/{{empresa.id}}">
+        <i class="fa fa-list"></i>
+      </a>
+    </div>
+    <div class="col-xs-2 {% if nosotros %}active{% endif %}">
+      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/nosotros/{{empresa.id}}">
+        <i class="fa fa-briefcase"></i>
+      </a>
+    </div>
+    <!--
+    <div class="col-xs-2 {% if cotizaciones_requeridas %}active{% endif %}">
+      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/cotizaciones_requeridas/{{empresa.id}}">
+        <i class="fa fa-file-text-o"></i>
+      </a>
+    </div> -->    
+    <div class="col-xs-2 {% if contacto %}active{% endif %}">
+      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/contacto/{{empresa.id}}">
+        <i class="fa fa-phone"></i>
+      </a>
+    </div>
+
+    <div class="col-xs-2 {% if descargar_catalogo %}active{% endif %}">
+      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/descargar_catalogo/{{empresa.id}}">
+        <i class="fa fa-download"></i>
+      </a>
+    </div>
+    <div class="col-xs-1">
+      <a class="btn-lg btn-block">
+        <i class="fa fa-download"  style="color: #FFF"></i>
+      </a>
+    </div>
+
   </div>
 </div>
 <!-- /.row -->

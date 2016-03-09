@@ -174,14 +174,14 @@ span.text-grey{
   color: #FF762F;
 }
 
-.navbar-empresa div button{
+.navbar-empresa div a{
   border-radius: 0px;
   border: 0px;
   background-color: #FFF;
   color: #808080
 }
 
-.navbar-empresa div.active button{
+.navbar-empresa div.active a{
   color: #FF762F;
 }
 .ver_todo{
