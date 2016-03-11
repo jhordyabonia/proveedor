@@ -1,7 +1,114 @@
 <link href="<?php echo css_url().'index/formulario_solicitudes.css' ?>" rel="stylesheet">
 <script src="<?php echo js_url().'index/bootstrap-select.js' ?>"></script>
+<!--
+<style type="text/css">
 
-<div class="formulario_solicitudes" >
+	.iconos-usados {
+	    font-size: 16px !important;
+	    color: #fff!important;
+	}
+	textarea.input-style {
+	    font-size: 16px!important;
+	    border: 1px solid #fff!important;
+	}
+	div {
+	    background-color: #337AB7!important;
+	}
+	body{
+	    background-color: #337AB7!important;
+	}textarea {
+	    background-color: #337AB7!important;
+	    color:white;
+	}
+
+	select {
+	    background-color: #337AB7!important;
+	    color:white;
+	}
+	input {
+	    background-color: #337AB7!important;
+	    border: 1px 0 0 0 solid #fff!important;
+	    color:white!important;
+	}
+	select.input-style 
+	{
+	    border-bottom: 1px solid #fff!important;
+	}
+	.orange 
+	{
+	    background-color: #337AB7!important;
+	}
+
+</style>-->
+<style type="text/css">
+	h1
+	{
+		font-size: 20px;
+		font-weight: bold;
+		color: black;
+		background-color: whitesmoke;
+		padding: 12px;
+		margin: 0px;
+		width: 110%;
+	    margin-left: -10px;
+	}
+	input {font-size: 14px!important;}
+	select {font-size: 14px!important;}
+	textarea 
+	{
+		font-size: 14px!important;
+		border-bottom: 1px solid #ccc!important;
+		border-top: 0 solid #ccc!important;
+		border-left: 0 solid #ccc!important;
+		border-right: 0 solid #ccc!important;
+		outline: medium none;
+	}
+	.card
+	{    margin: 10px auto 20px auto;
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: rgb(225,225,225) 0px 5px 0px;
+	}
+	.boton_menu
+	{
+		margin-right: 10px!important;
+	    margin-top: 10px!important;
+	    font-size: 36px!important;
+	    color: #EF7204;
+	}
+	.acciones
+	{
+		padding: 30px;
+		background-color: whitesmoke;
+	}
+	.top_menu 
+	{background-color: #FF7F27;}
+	.top_menu .imagen 
+	{
+	    width: 45%;
+	    padding-left: 12px;
+	    padding-top: 12px;
+	    padding-bottom: 10px;
+	    display: inline-block;
+	}
+	.btn-solicitarAhora {width: 100%!important;background-color: #FF7F27!important;}
+</style>
+
+<div class="row">
+	<div class="top_menu">    	
+		<p class="texto pull-right">
+				<i aria-hidden="true" class="fa fa-bars boton_menu"></i>
+		</p>
+		<img src="<?=base_url()?>assets/img/imagen_empresa/captura1.png" class="imagen">
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-xs-12 col-lg-12">
+		<h1>Solicite su cotización gratis!</h1>
+	</div>
+</div>
+<div class="formulario_solicitudes">
 	<div class="row hidden-xs hidden-sm">
 		<div class="col-md-12">
 			<div id="launcher" class="boton_solicitudes" onclick="ocultar_categorias();">
@@ -37,23 +144,25 @@
             }
         </script>
 
-		<div class=" col-md-12 form_solicitudes">
-			<form class="form-style" method="post" action="<?=base_url();?>popup/asistentes_proveedor/TRUE" id="form">
+		<div class=" col-md-12 form_solicitudes orange">
+			<form class="form-style card" method="post" action="<?=base_url();?>popup/asistentes_proveedor/TRUE" id="form">
 				<div class="cont_title_form">
-					<p class="texto_form_soli"><?=$datos->texto_head?></p>
-					<p class="texto2_form_soli"><?=$datos->texto_titulo?></p>
+					<!--<p class="texto_form_soli"><?=$datos->texto_head?></p>-->
+					<!--<p class="texto2_form_soli"><?=$datos->texto_titulo?></p>-->
 				</div>
 				<div class="contenido-requerido">
+					<!--
 	                <span class="glyphicon glyphicon-asterisk style-aste"></span>					
 	                <p class="style-requerido">Requerido</p>
+	            -->
 				</div>
 			
           		<div class="input-group ">
 	                <span class="input-group-addon transparencia">
 	                  <i class="fa fa-list-ul"></i>
 	                </span>
-			        <select name="categoria" type="text" class="input-style font-text">
-			        	<option value="1" selected>Seleccina la categoria</option>
+			        <select name="categoria" required type="text" class="input-style font-text">
+			        	<option value="1" selected>Selecciona la categoria</option>
 				        	<?php foreach ($categorias as $key => $value):?>
 						     <option value="<?=$value->id_categoria?>"><?=$value->nombre_categoria?></option>
 						    <?php endforeach;?>
@@ -74,7 +183,7 @@
 	                <span class="input-group-addon transparencia">
 	                	<i class="fa fa-cube iconos-usados"></i>
 	                </span>
-			        <input type="text" class="input-style" name="solicitud" placeholder="<?=$datos->titulos['nombre']?>">
+			        <input required type="text" class="input-style" name="solicitud" placeholder="<?=$datos->titulos['nombre']?>">
 	                <span class="input-group-addon transparencia style-right">
 	                 <!-- <i class="fa fa-check-circle style-icon-vali"></i>--><br>
 	                </span>
@@ -93,7 +202,7 @@
 	                <span class="input-group-addon transparencia">
 	                  <i class="fa fa-file-text iconos-usados"></i>
 	                </span>
-			        <textarea type="textarea" name="descripcion" class="input-style" placeholder="<?=$datos->titulos['descripción']?>"></textarea>
+			        <textarea required type="textarea" name="descripcion" class="input-style" placeholder="<?=$datos->titulos['descripción']?>"></textarea>
 	                <span class="input-group-addon transparencia style-right">
 	                 <!-- <i class="fa fa-check-circle style-icon-vali"></i>-->
 	                </span>
@@ -112,7 +221,7 @@
 	                <span class="input-group-addon transparencia">
 	                  <i class="fa fa-user iconos-usados"></i>
 	                </span>
-			        <input type="text" name="nombres" class="input-style" placeholder="<?=$datos->titulos['contacto']?>">
+			        <input required type="text" name="nombres" class="input-style" placeholder="<?=$datos->titulos['contacto']?>">
 	                <span class="input-group-addon transparencia style-right">
 	                  <!--<i class="fa fa-times-circle style-icon-novali"></i>-->
 	                </span>
@@ -131,7 +240,7 @@
 	                <span class="input-group-addon transparencia">
 	                  <i class="fa fa-at iconos-usados"></i>
 	                </span>
-			        <input type="email" name="email" class="input-style" placeholder="<?=$datos->titulos['email']?>">
+			        <input required type="email" name="email" class="input-style" placeholder="<?=$datos->titulos['email']?>">
 	                <span class="input-group-addon transparencia style-right">
 	                 <!-- <i class="fa fa-check-circle style-icon-vali"></i>-->
 	                </span>
@@ -167,7 +276,8 @@
                  
           		<div class="input-group ">
 	                <span class="input-group-addon transparencia">
-	                  <i class="fa fa-globe iconos-usados"></i>
+	                 <!-- <i class="fa fa-globe iconos-usados"></i>-->
+	                  <i class="fa fa-map-marker iconos-usados"></i>
 	                </span>
 			        <input type="text" class="input-style" name="ciudad_entrega" placeholder="<?=$datos->titulos['ciudad']?>">
 	                <span class="input-group-addon transparencia style-right">
@@ -250,16 +360,41 @@
 	              <p class="style-text-vali"><br></p>
           		</div>
 				<?php endif;?>
-          		<div class="col-xs-12 col-sm-12 col-md-12 input-group" style="text-align:center;">
-	                <a class="btn btn-solicitarAhora" href="JavaScript:document.getElementById('form').submit()"> SOLICITAR AHORA !</a>
-                </div>
-              	 <?=$datos->texto_body?> 
-				<div class="input-group col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
-					<div class="hidden-md visible-xs visible-sm">
-                		<span><i class="fa fa-chevron-circle-up boton-flotante-mobil"></i></span>
-                	</div>
-            	</div>
+          		
+                <SCRIPT TYPE="text/javascript">
+	                function menos()
+	                {
+	                	document.getElementById('mas_info').style.display='none';
+	                	document.getElementById('btn_mas_info').innerHTML='<p>Más información <i class="fa fa-chevron-circle-down"></i></p>';
+	                	document.getElementById('btn_mas_info').onclick=mas_info;
+	                }
+	                function mas_info()
+	                {
+	                	document.getElementById('mas_info').style.display='';
+	                	document.getElementById('btn_mas_info').innerHTML='<p>Menos <i class="fa fa-chevron-circle-up"></i></p>';
+	                	document.getElementById('btn_mas_info').onclick=menos;
+	                }
+                </SCRIPT>
+	           <input type="submit" id="submit" style="display:none">
 			</form>
 		</div>		
 	</div>
 </div>
+
+<div class="row acciones">
+   <a class="btn btn-solicitarAhora" href="JavaScript:document.getElementById('submit').click()"> SOLICITAR COTIZACIÓN !</a>
+	<h1>LLame ahora</h1>
+   <a class="btn btn-solicitarAhora" href="tel:300-618-4848">
+    	<i class="fa fa-phone"></i> 300-618-4848 
+	</a>
+</div>
+  <div id="btn_mas_info" onclick="mas_info();">
+	                	<p>
+	                		Más información 
+	                		<i class="fa fa-chevron-circle-down"></i>
+	                	</p>
+	                </div>
+	                   
+                <div id="mas_info" style="display:none">
+              	 <?=$datos->texto_body?> 
+              	</div>

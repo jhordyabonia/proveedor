@@ -390,7 +390,7 @@ class Listados extends CI_Controller {
 		$resultados= "Productos:".($data['page_count']*25).",Solicitudes:".($data['page_count3']*25).",Proveedores:".($data['page_count2']*25);
 		$this->busquedas->insert(array('busqueda'=>$data['busqueda'],'resultados'=>$resultados));
 		$this->load->view('listados/div_header_seo', $data, FALSE);
-		$this->load->view('index/banner_adsense');
+		#$this->load->view('index/banner_adsense');
 		$this->load->view("listados/elemento", $data);
 		$this->load->view("listados/div_footer_seo", $data);
 		$this->load->view("listados/div_footer_seo_2", $data);

@@ -173,10 +173,27 @@ class Mensajes extends CI_Controller {
 	{
 		$var=$this->remitente->get($datos['mensaje']->remitente);
 		if($var)
-			$obj=$this->usuarios->get(array('email'=>$var->correo));	
+		{
+				$obj=$this->usuarios->get(array('email'=>$var->correo));	
+				if($obj==FALSE)
+				{								
+					$obj->indicativo = "";
+					$obj->exencion = "";
+					$obj->celular = "";
+					$obj->telefono = $var->telefono;
+					$obj->numero = $var->telefono;
+					$obj->email = $var->correo;
+					$obj->nombres = $var->nombres;
+					$obj->id = 0;
+					$obj->direccion = "No especificada";
+				}
+		}
 		else
-		{ 			
-			$obj->telefono = array('indicativo','numero','extension','celular');
+		{ 				
+			$obj->indicativo = "";
+			$obj->exencion = "";
+			$obj->celular = "";
+			$obj->telefono = "";
 			$obj->email = FALSE;
 			$obj->nombres = "Usuario no registrado";
 			$obj->id = 0;

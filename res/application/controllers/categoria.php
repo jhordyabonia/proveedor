@@ -31,7 +31,7 @@ class Categoria extends CI_Controller {
         $this->load->model('new/Categoria_model', 'categoria');
 
         $datos['id_popup']="asistentes_proveedor";
-        $datos['categorias']=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
+        $datos['categorias']=$this->categoria->get_all();
         $datos['categoria']=$categoria;
         $datos['datos']=$this->popups_textos->get(array('categoria'=>$datos['categoria']));
         $titulos=array();
@@ -44,26 +44,24 @@ class Categoria extends CI_Controller {
             }else {$titulos[$value]=$value; }
         }
 
-        $datos['registro']=$this->session->userdata('registro')|TRUE;
-        $datos['paso']=$this->session->userdata('paso')|0;
-        $datos['id_registro']=$this->session->userdata('id_registro')|0;
-        $datos['id_usuario']= $this->session->userdata('id_usuario');
-        $this->load->view('template/head', $datos, FALSE);
-        $this->load->view('template/javascript', FALSE, FALSE);
-        $this->load->view('index/top_menu',$datos);
-        $datos['url_registro']=base_url()."registro/registro_usuario";
-        $datos['url_publicar_producto']=base_url()."publicar_producto";
-        $datos['url_publicar_solicitud']=base_url()."publicar_oferta";        
-        $data['url_publicar_producto']=base_url()."publicar_producto";
-        $data['url_publicar_solicitud']=base_url()."publicar_oferta";
+        #$datos['id_registro']=$this->session->userdata('id_registro');
+        #$datos['id_usuario']= $this->session->userdata('id_usuario');
+        #$this->load->view('template/head', $datos, FALSE);
+        #$this->load->view('template/javascript', FALSE, FALSE);
+        #$this->load->view('index/top_menu',$datos);
+        #$datos['url_registro']=base_url()."registro/registro_usuario";
+        #$datos['url_publicar_producto']=base_url()."publicar_producto";
+        #$datos['url_publicar_solicitud']=base_url()."publicar_oferta";        
+        #$data['url_publicar_producto']=base_url()."publicar_producto";
+        #$data['url_publicar_solicitud']=base_url()."publicar_oferta";
         #$this->load->view('index/header_buscador',$data);
         $datos['datos']->titulos=$titulos;  
-        $datos['index'] = FALSE; 
-       # $this->load->view('template/head', array('titulo'=>"Categorias --proveedor.com.co",'facebook' =>FALSE));
+        $datos['index'] = TRUE;      
+        $this->load->view('template/head', array('titulo'=>"Categorias --proveedor.com.co",'facebook' =>FALSE));
         $this->load->view('template/javascript', FALSE);
         #$this->load->view('popups/asistentes_proveedor', $datos); 
-        $mensaje_enviado= $this->session->userdata('mensaje_enviado');
-        $this->load->view('index/formulario_solicitudes', array('categoria'=>$categoria,'datos'=>$datos['datos'],'mensaje_enviado'=>$mensaje_enviado));
+        $datos['mensaje_enviado']= $this->session->userdata('mensaje_enviado');
+        $this->load->view('index/formulario_solicitudes_index', $datos);
        
 
         #$this->load->view("template/footer");
@@ -298,7 +296,7 @@ class Categoria extends CI_Controller {
         $this->load->view('registro/funcionalidades_');
         $this->load->view('index/top_menu',$data);
         $this->load->view('index/header_buscador_categorias',$data);
-        $this->load->view('index/banner_adsense');
+        #$this->load->view('index/banner_adsense');
         #$this->load->view('index_test/banner', $data);
         #$this->load->view('index_test/ultimos_productos_empresas', $data);
 

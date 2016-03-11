@@ -144,13 +144,13 @@
 					<span class="ico-config-style glyphicon glyphicon-phone-alt"></span>
 					Telefono:
 					<br>
-					<?php if(is_array($mensaje->destinatario->telefono)):?>
+					<?php if(is_array($mensaje->telefono)):?>
 									<br><b>Indicativo:</b> <?=$mensaje->telefono['indicativo']?>
 									<br><b>Numero:</b> <?=$mensaje->telefono['numero']?>
 									<br><b>Extension:</b> <?=$mensaje->telefono['extension']?>
 									<br><b>Celular:</b> <?=$mensaje->telefono['celular']?>
 								<?php else: ?>
-									<?=$mensaje->destinatario->telefono?>
+									<?=$mensaje->telefono?>
 								<?php endif;?>
 				</div>
 				

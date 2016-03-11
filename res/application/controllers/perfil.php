@@ -288,6 +288,7 @@ class Perfil extends CI_Controller {
 		$informacion['empresa']['nit']=$this->input->post('nit');
 		$informacion['empresa']['tipo']=$this->input->post('tipo_empresa');
 		$datos = array('nombre_empresa' => $informacion['empresa']['nombre'],'logo_old' => $this->input->post('logo_old'));
+		$informacion['logo_old']=$this->input->post('logo_old');
 		$informacion['empresa']['logo']=$this->upload_logo($datos);
 
 		$informacion['empresa']['descripcion']=$this->input->post('descripcion');

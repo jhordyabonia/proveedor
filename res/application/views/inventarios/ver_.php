@@ -33,6 +33,9 @@ function send()
 							<input name="nombre[]" value="<?=$rows[0]?>" > 
 							</td>
 						<td >
+							<input name="referencia[]" value="<?=$rows[1]?>" > 
+							</td>
+						<td >
 							<input name="descripcion[]" value="<?=$rows[4]?>" > 
 							</td>
 						<td >
