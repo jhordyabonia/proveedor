@@ -7,3 +7,10 @@ $('.multiple-items').slick({
   centerPadding: '15px',
   customPaging: '15px',
 });
+$('.slider_producto').slick({
+  arrows: false,
+  infinite: false,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  swipeToSlide: true,
+});
