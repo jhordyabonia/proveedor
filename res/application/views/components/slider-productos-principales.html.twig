@@ -2,26 +2,13 @@
 	<div class="col-xs-12 productos_principales">
         <h3 class="titulos"><strong>Productos Principales</strong></h3>
         <div class="slider_producto">
-            <div class="item_slider_producto">
-                <img src="http://lorempixel.com/100/71/" alt="" class="imagen">
-                <p class="nombre_producto">Insertar Variable para nombre</p>
-                <p class="precio font-naranja">Insertar variable precio</p>
-            </div>
-            <div class="item_slider_producto">
-                <img src="http://lorempixel.com/100/72/" alt="" class="imagen">
-                <p class="nombre_producto">Insertar Variable para nombre</p>
-                <p class="precio font-naranja">Insertar variable precio</p>
-            </div>
-            <div class="item_slider_producto">
-                <img src="http://lorempixel.com/100/73/" alt="" class="imagen">
-                <p class="nombre_producto">Insertar Variable para nombre</p>
-                <p class="precio font-naranja">Insertar variable precio</p>
-            </div>
-            <div class="item_slider_producto">
-                <img src="http://lorempixel.com/100/74/" alt="" class="imagen">
-                <p class="nombre_producto">Insertar Variable para nombre</p>
-                <p class="precio font-naranja">Insertar variable precio</p>
-            </div>
+            {% for producto in productos %}
+                <div class="item_slider_producto">
+                    <img src="http://lorempixel.com/100/71/?v={{loop.index}}" alt="" class="imagen">
+                    <p class="nombre_producto">{{ producto.nombre }}</p>
+                    <p class="precio font-naranja">{{ producto.precio_unidad}}</p>
+                </div>
+            {% endfor %}
         </div>
 		<div class="col-xs-12">
 			<button class="btn ver_todo">Ver Todos</button>
