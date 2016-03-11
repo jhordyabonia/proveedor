@@ -99,22 +99,23 @@ class Inventarios extends CI_Controller {
         $data['id_empresa'] = $this->input->post('id_empresa');
         $data['excel'] = $excel[1];
 
-        /*
-        echo "<PRE>";
-        print_r( $data['excel']);
-        echo "</PRE>";
-        return;
-        */
-
+        
+        
         $dat['titulo']="Registro masivo de productos";
-        $dat['nit']=$this->session->userdata('empresa');
-        $dat['usuario']=$this->session->userdata('usuario');
+        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+        $dat['administrador']=$dat['usuario']->permisos;
 
         $this->load->view('template/head', $dat);
         $this->load->view('tablero_usuario/header', $dat, FALSE);
         $this->load->view('template/javascript', FALSE);
+        
+        #echo "<PRE>";
+        #print_r( $data['excel']);
+        #echo "</PRE>";
+        #return;
+        
         $data['namefile']=$data['url_full'];
-        $this->load->view("template/head", $data);
         $this->load->view('inventarios/cargar',$data);
         $this->load->view('inventarios/ver_', $data);  
 }
@@ -137,6 +138,7 @@ class Inventarios extends CI_Controller {
        $medidas=$this->input->post('medida');
        $precios=$this->input->post('precio');
        $descripciones=$this->input->post('descripcion');
+       $referencias=$this->input->post('referencia');
        $subcategorias=$this->input->post('subcategoria');
        $pedidos_minimos=$this->input->post('pedido_minimo');
        $formas_de_pago=$this->input->post('formas_de_pago');
@@ -147,12 +149,13 @@ class Inventarios extends CI_Controller {
           if($nombres[$i]==NULL)
             { continue; }
          $productos[$i]['nombre']=$nombres[$i];
-         $productos[$i]['descripcion']=$descripciones[$i]|$nombres[$i];
-         $productos[$i]['medida']=$medidas[$i]|1;
-         $productos[$i]['precio_unidad']=$precios[$i]|0;
+         $productos[$i]['descripcion']=$descripciones[$i]==""?$nombres[$i]:$descripciones[$i];
+         $productos[$i]['imagenes']=$referencias[$i]==NULL?"default.jpg":$referencias[$i].".jpg";
+         $productos[$i]['medida']=$medidas[$i]==NULL?1:$medidas[$i];
+         $productos[$i]['precio_unidad']=$precios[$i]==NULL?0:$precios[$i];
          $productos[$i]['subcategoria']=$this->subcategoria($subcategorias[$i]);
-         $productos[$i]['pedido_minimo']=$pedidos_minimos[$i]|1;
-         $productos[$i]['formas_de_pago']=$formas_de_pago[$i]|"A convenir";
+         $productos[$i]['pedido_minimo']=$pedidos_minimos[$i]=NULL?1:$pedidos_minimos[$i];
+         $productos[$i]['formas_de_pago']=$formas_de_pago[$i]==NULL?"A convenir":$formas_de_pago[$i];
          $productos[$i]['empresa']=$id_empresa;
        }
 
@@ -160,25 +163,26 @@ class Inventarios extends CI_Controller {
        foreach ($productos as $key => $producto) 
        {
          $id=$this->producto->insert($producto); 
-         $this->load_image($id,$key); 
+         #$this->load_image($id,$key); 
+         echo "<h3>".$id."</h3>"; 
          echo "<PRE>";
          print_r($producto);
          echo "</PRE>";
         }
           
-       #return;
+       #return;        
         $dat['titulo']="Registro masivo de productos";
-        $dat['nit']=$this->session->userdata('empresa');
-        $dat['usuario']=$this->session->userdata('usuario');
+        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+        $dat['administrador']=$dat['usuario']->permisos;
 
         $this->load->view('template/head', $dat);
         $this->load->view('tablero_usuario/header', $dat, FALSE);
         $this->load->view('template/javascript', FALSE);
-       echo "<center><h3>Se registraron ".$key." productos, con exito!!</h3>";
-       $out['empresa']=$this->empresa->get($id_empresa);
-       echo "<h4>Empresa: ".$out['empresa']->nombre;
-       echo "<P>Nit: ".$id_empresa;
-       echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
+        echo "<center><h3>Se registraron ".$key." productos, con exito!!</h3>";
+        echo "<h4>Empresa: ".$dat['empresa']->nombre;
+        echo "<P>Nit: ".$id_empresa;
+        echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
     }
 
   function load_image($id_registro,$i) 

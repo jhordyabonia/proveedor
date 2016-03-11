@@ -75,7 +75,7 @@ class Oportunidad_comercial extends CI_Controller {
             $this->load->view('registro/funcionalidades_',$data);
             $this->load->view('index/top_menu',$data);
             $this->load->view('index/header_buscador',$data);
-            $this->load->view('oferta/oportunidad_banner_adsense');
+            #$this->load->view('oferta/oportunidad_banner_adsense');
         	$this->load->view('oferta/oportunidad_comercial',$data);
             $this->load->view("template/footer");
         } else {

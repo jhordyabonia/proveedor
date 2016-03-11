@@ -11,6 +11,13 @@ class Index extends CI_Controller {
 		$this->load->model('new/Categoria_model','categoria');
 		$this->load->model('banner_model');
 	}
+	public function banners()
+	{
+		$this->load->view('template/head', array('titulo'=>"PROVEEDOR.com.co"));
+		$this->load->view('template/javascript');
+		$data['banners']= $this->banner_model->get();
+		$this->load->view('index/banner', $data); 		
+	}
 	
 	public function index()
 	{
@@ -53,7 +60,7 @@ class Index extends CI_Controller {
 		$this->load->view('index/header_buscador',$data);
        	#$this->load->view('index/formulario_solicitudes_index', array('categoria'=>$in,'datos'=>$datos),FALSE);		
 		$this->load->view('index/banner', $data); 
-		$this->load->view('index/banner_adsense');
+		#$this->load->view('index/banner_adsense');
         
         #$this->load->view("listados/listados_mobil", $data);
 		$this->load->view('index/colaboradores', $data);

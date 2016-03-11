@@ -111,7 +111,7 @@
 	                    </center> 
                      </td>
                       <td width="15%" > 
-						<img  class="center-block" src="<?=base_url()?>uploads/resize/logos/<?=$proveedor['empresa']->logo?>" style="max-width:155px; max-height:70px">
+						<img  class="center-block" src="<?=base_url()?>uploads/logos/<?=$proveedor['empresa']->logo?>" style="max-width:155px; max-height:70px">
 					 	<input id="empresa_<?=$proveedor['empresa']->id?>logo_old" type="hidden" value="<?=$proveedor['empresa']->logo?>">
 					  </td>
                       <td width="15%" > 

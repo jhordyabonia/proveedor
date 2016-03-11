@@ -192,6 +192,22 @@ if ( ! function_exists('img_url'))
     }
 }
 /**
+ * Get image URL
+ *
+ * @access  public
+ * @return  string
+ */
+if ( ! function_exists('verificar_imagen'))
+{
+    function verificar_imagen($url)
+    {
+      if(file_exists($url))
+            return base_url().$url;
+        else
+            return base_url()."uploads/default.jpg";
+    }
+}
+/**
  * Get SWF URL
  *
  * @access  public
