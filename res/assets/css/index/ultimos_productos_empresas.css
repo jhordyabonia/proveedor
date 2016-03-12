@@ -27,17 +27,17 @@
   font-size: 16px;
 }
 .row_ult_prod_soli ul.nav li { /*estilo que aplica a todos los LI dentro de un <ul class="nav"> */
-  width: 85%;
+  width: 100%;
   padding-left: 1em;
   cursor: pointer;
 }
-ul.nav.ult_prod_soli li { background: #ff7f27; }
+ul.nav.ult_prod_soli li { background: #575756; }
 ul.nav-tabs.ult_prod_soli { border-bottom: 1px solid #ff7f27; }
 
 ul.nav.ult_prod_publi li { background: #575756; }
 ul.nav-tabs.ult_prod_publi { border-bottom: 1px solid #575756; }
 
-ul.nav.ult_emp_reg li { background: #36a9e1; }
+ul.nav.ult_emp_reg li { background: #575756; }
 ul.nav-tabs.ult_emp_reg { border-bottom: 1px solid #36a9e1; }
 
 #sol_ticker, #pub_ticker, #reg_ticker { list-style: none; padding: 0; height: 740px; }

@@ -26,7 +26,7 @@ div.containter{
 }
 
 div.containter_colabor{
-	background: #F6F6F6;
+	/*background: #F6F6F6;*/
 	width: 99%;
 	margin-bottom: 2px;
 }
@@ -53,7 +53,7 @@ div.containter_colabor{
 }
 
 div.container_regis{
-	background: #F6F6F6;
+	background: #EEE;
 }
 
 #boton_registro{
@@ -74,7 +74,7 @@ p.text_regis{
 	font-size: 12px;
 	line-height: 29px;
 	font-weight: bold;
-	color: rgb(116, 116, 116);
+	color: black;
 }
 /*---------------------------------------*/
 
@@ -98,13 +98,13 @@ div.menu{
 
 /*Productos Destacados*/
 .contenedor_pestana{
-	border-bottom: 2px solid #ff7f27;
+	/*border-bottom: 2px solid #ff7f27;*/
 	background-color: #fff;
 }
 
 div.container_pestana{
-	background: #ff7f27;
-	width: 328px;
+	background: #555;
+    width: 100%;
 	height: 41px;
 	display: table-cell;
 	float: left;
@@ -251,11 +251,8 @@ p.pedido_produc{
 /*---------------------------------------*/
 
 /*Productos Patrocinados*/
-.contenedor_pestana#patrocinados{
-	border-bottom: 2px solid rgb(0, 148, 255);
-}
 div.container_pestana#patrocinados_container{
-	background: rgb(0, 148, 255);
+	background: #1D71B8;
 }
 .content_patrocinado{
 	background: #ffffff;
