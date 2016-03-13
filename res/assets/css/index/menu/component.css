@@ -533,20 +533,21 @@
 }
 
 .form_botones_ind .ico_soli_coti{
-    font-size: 36px;
+    font-size: 29px;
     float: left;
-    padding-left: 11px;
+    padding-left: 16px;
 }
 
 .form_botones_ind .ico_publicar_coti{
-    font-size: 40px;
+    padding-bottom: 3px;
+    font-size: 32px;
     float: left;
     padding-top: 0;
-    padding-left: 11px;
+    padding-left: 16px;
 }
 
 .form_botones_ind .txt_soli_coti{
-  font-size: 15px;
+  font-size: 13px;
   font-family: sans-serif;
   display: inline-block;
   padding-left: 5px;
@@ -558,7 +559,7 @@
 } 
 
 .form_botones_ind .btn_solicitar_cotizacion{
-    background-color: #00a2e8;
+    background-color: #1D71B8;
     width: 100%;
     height: 52px;
     border-radius: 3px;
@@ -578,4 +579,8 @@
 .form_botones_ind{
 	text-align: center;
 	padding: 0;
+}
+
+.navbar-search{
+	margin-right: 0px !important;
 }

@@ -21,6 +21,7 @@
 										</a>
 									<?php else: ?>
 										<li><span class="ingresar_ico glyphicon glyphicon-user"></span></li>
+										<!-- <i class="fa fa-sign-in"></i> -->
 										<li><a id="launch_login" class="enlace_top"  href="JavaScript:login(this,'tablero_usuario');"
 											class="enlace_top enlace_registro cursor-mano  hidden-xs hidden-sm visible-md visible-lg" style="color:#111;">Ingresar</a></li>
 									<?php endif; ?>
@@ -28,7 +29,11 @@
 							</li>
 							<li>
 								<ul class="list-inline contenedor_top hidden-xs hidden-sm visible-md visible-lg">
-									<li><img src="<?php echo base_url()?>assets/img/index/registro.png"  style="width: 23px;margin-left: -12px;"></li>
+									<li>
+
+									<!-- <img src="<?php echo base_url()?>assets/img/index/registro.png"  style="width: 23px;margin-left: -12px;"> -->
+									<span class="glyphicon glyphicon-pencil"></span>
+									</li>
 									<?php if($id_usuario):?>
 										<li><a class="enlace_top  hidden-xs hidden-sm visible-md visible-lg" href="<?=base_url()?>tablero_usuario">Tablero de usuario</a></li>										
 									<?php else: ?>

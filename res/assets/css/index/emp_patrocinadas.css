@@ -21,6 +21,7 @@ a:hover { text-decoration: none; }
 
 .row-centered { text-align: center; }
 .cadaEmpPatr {
+  height: 120px;
   margin: 2em 1em 1em 1em;
   background: #f6f6f6;
   padding: 1em 0 1em 0;
@@ -59,16 +60,17 @@ ul.nav.emp_patr li { background: #ff7f27; width: 22%; }
   padding-top: 3px;
 }
 .row_emp_patr .contenedor_pestana{
-  border-bottom: 2px solid #ff7f27;
+  border-bottom: 2px solid #1d71b8;;
   padding-left: 0;
   padding-right: 0;
 }
 .row_emp_patr .platino_patrocinadas{
+  margin-top: 20px;
   padding-right: 0;
   padding-left: 0;
 }
 .row_emp_patr .container_pestana{
-  background: #ff7f27;
+  background: #1d71b8;;
   width: 328px;
   height: 41px;
   display: table-cell;

@@ -142,7 +142,7 @@
 }
 #mostrarocultar{
   background: transparent;
-  margin-top: -23px;
+  margin-top: -34px;
   padding-left: 25px;
   outline: none;
   box-shadow: none;
@@ -214,8 +214,8 @@
   font-size: 12px;
   font-weight: bold;
   color: #FF7F27;
-  padding-left: 9px;
-  padding-top: 10px;
+  padding-left: 10px;
+  padding-top: 4px; 
 }
 
 .titulo_index_boton{
@@ -245,8 +245,7 @@
   margin-top: 19px;
 }
 .caja_logo{
-  width: 318px;
-  max-width: 318px;
+  padding-left: 112px;
 }
 .caja_logo2{
   padding: 0;

@@ -29,28 +29,38 @@
 {% block content %}
     {% include "components/top_menu.html.twig" %}
     {% include "components/header_empresa.html.twig" %}
+    {% set inicio = true %}
     {% include "components/navbar_empresa.html.twig" %}
     {% include "components/banners.html.twig" %}
     {% include "components/slider-productos-principales.html.twig" %}
     {% include "components/boton_solicitar_cotizacion.html.twig" %}
-    <h3>
-        Nuestra empresa
-    </h3>    
+    <br>
+    <div class="row" style="background-color: #EEEEEE; padding-bottom: 10px;">
+        <div class="col-xs-12">
+            <h3>
+                Nuestra empresa
+            </h3>    
+        </div>
+    </div>
     {% include "components/nuestra-empresa.html.twig" %}
     <div class="row">
         <div class="col-xs-6" style="padding-right: 1px">
-            {% include "components/boton_contactar.html.twig" %}
+            {% include "components/boton_contactenos.html.twig" %}
         </div>
         <div class="col-xs-6" style="padding-left: 1px">
             {% include "components/boton_telefono.html.twig" %}
         </div>
     </div>
+    <br>
     {# Slider videos #}
     {% include "components/slider-touch-videos.html.twig" %}
-
+    <br>
     {% include "components/slider-touch-productos.html.twig" %}
+    <br>
     {% include "components/contacto.html.twig" %}
+    <br>
     {% include "components/boton_solicitar_cotizacion.html.twig" %}
+    <br>
     {% include "components/etiquetas.html.twig" %}
 {% endblock content %}
 

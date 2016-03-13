@@ -12,8 +12,7 @@
 <div class="header_logo_buscador">
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="row" id="borde_lateral">
-      <div class="col-md-1 col-sm-1 hidden-xs"></div>
-      <div class="col-md-11 col-sm-11 col-xs-12 hidden-xs caja_logo">
+      <div class="col-md-12 col-sm-12 col-xs-12 hidden-xs caja_logo">
         <div class="row">
           <a href="<?php echo base_url() ?>">
             <img class="img-responsive" src="<?php echo img_url().'index/logo_proveedor.png' ?>">
@@ -43,7 +42,7 @@
           </div>
       </div>
           <div class="col-md-11 col-sm-12 col-xs-12">
-            <div class="row">
+            <div class="row navbar-search">
               <div class="col-md-8 col-sm-12 col-xs-12 visible-lg hidden-xs hidden-sm visible-md">
                 <div class="row form_buscador">                 
                  <?= form_open(base_url() . 'listados/validar') ?> 
