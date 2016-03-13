@@ -154,7 +154,7 @@ class Inventarios extends CI_Controller {
          $productos[$i]['medida']=$medidas[$i]==NULL?1:$medidas[$i];
          $productos[$i]['precio_unidad']=$precios[$i]==NULL?0:$precios[$i];
          $productos[$i]['subcategoria']=$this->subcategoria($subcategorias[$i]);
-         $productos[$i]['pedido_minimo']=$pedidos_minimos[$i]=NULL?1:$pedidos_minimos[$i];
+         $productos[$i]['pedido_minimo']=intval(($pedidos_minimos[$i]==NULL?0:$pedidos_minimos[$i])/$productos[$i]['precio_unidad']);#$pedidos_minimos[$i]=NULL?1:$pedidos_minimos[$i];
          $productos[$i]['formas_de_pago']=$formas_de_pago[$i]==NULL?"A convenir":$formas_de_pago[$i];
          $productos[$i]['empresa']=$id_empresa;
        }

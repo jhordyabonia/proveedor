@@ -56,7 +56,7 @@ while ( $text.outerHeight() > containerHeight ) {
 						<div class="center-vertical_imagen">
 						<a href="<?=base_url()?>producto/ver/<?=$producto->id?>">
 							<?php $producto->imagenes=explode(',',$producto->imagenes);?>
-							<img src="<?=base_url()?>uploads/resize/index_carrouseles/<?=$producto->imagenes[0]?>" class="img_imagen img-responsive">
+							<img src="<?=verificar_imagen('uploads/resize/index_carrouseles/'.$producto->imagenes[0])?>" class="img_imagen img-responsive">
 						</a>
 						</div>
 					</div>

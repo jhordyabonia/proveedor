@@ -201,6 +201,7 @@ if ( ! function_exists('verificar_imagen'))
 {
     function verificar_imagen($url)
     {
+      #$url= substr($url, stripos($url, ".co/"+4));
       if(file_exists($url))
             return base_url().$url;
         else

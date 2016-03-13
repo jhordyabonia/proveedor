@@ -27,7 +27,7 @@
             <div class="row">
               <div class="col-md-12">
                 <a href="http://servicios.corferias.com/catalogo_expositores/index.cfm?doc=catalogo_expositores&subdoc=catalogo_listar&ano=2015&evento=14&lang=es">
-                       <img src="<?=base_url()?>uploads/resize/eventos/BANNER_EVENTO.png" class="banner_eventos">
+                       <img src="<?=verificar_imagen('uploads/resize/eventos/BANNER_EVENTO.png');?>" class="banner_eventos">
                      </a>
               </div>
             </div>

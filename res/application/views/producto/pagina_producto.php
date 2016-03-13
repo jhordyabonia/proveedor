@@ -16,7 +16,7 @@
 					<?php $imagen=""; foreach($producto->imagenes as $value){$imagen=$value;if($imagen!=''){break;}}?>
 						<a href="JavaScript:slider();" >
 							 <!--<img src="<?=base_url()?>uploads/resize/Fileteadora_Industral_790.000_.jpg" class=" img_imagen img-responsive">-->
-							 <img id="display" src="<?=base_url()?>uploads/resize/pagina_producto/visualizador/<?=$imagen?>" class=" img_imagen img-responsive"> 
+							 <img id="display" src="<?=verificar_imagen('uploads/resize/pagina_producto/visualizador/'.$imagen);?>" class=" img_imagen img-responsive"> 
 						</a>
 					<?php endif;?>
 				</div>
@@ -31,7 +31,7 @@
 				<?php foreach($producto->imagenes as $key => $value):?>
 				<?php if($value==""){continue;}?>						
 					<div class="col-md-4 mini">
-						<a href="JavaScript:mostrar_imagen('imagen_<?=$key?>')"><img  id="imagen_<?=$key?>" src="<?=base_url()?>uploads/resize/pagina_producto/miniatura/<?=$value?>" class="imag"></a>
+						<a href="JavaScript:mostrar_imagen('imagen_<?=$key?>')"><img  id="imagen_<?=$key?>" src="<?=verificar_imagen('uploads/resize/pagina_producto/miniatura/'.$value);?>" class="imag"></a>
 					</div>
 				<?php endforeach;?>
 			<?php endif;?>

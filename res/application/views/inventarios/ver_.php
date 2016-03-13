@@ -45,7 +45,7 @@ function send()
 							<input name="medida[]" value="<?=$rows[5]?>" > 
 						</td>
 						<td >
-							<input name="pedido_minimo[]" value="<?=$rows[6]?>" > 
+							<input name="pedido_minimo[]" value="<?=$rows[9]?>" > 
 						</td>
 						<td >
 							<input name="precio[]" value="<?=$rows[7]?>" > 

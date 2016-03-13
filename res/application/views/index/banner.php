@@ -20,7 +20,7 @@
           <?php foreach ($banners as $banner): ?>
             <div class="item <?php echo $banner['active']; ?>">
               <a href="<?php echo $banner['url']; ?> ">
-                <img src="<?php echo $banner['img_url']; ?>" class="img-responsive" style="width: 100%;">
+                <img src="<?=$banner['img_url'];?>" class="img-responsive" style="width: 100%;">
               </a>
             </div>
           <?php endforeach ?>

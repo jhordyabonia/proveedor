@@ -49,7 +49,7 @@
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
                                 <a href="<?php echo $producto->url ?>">
-                                  <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/<?=$producto->imagen?>">
+                                  <img src="<?=verificar_imagen('uploads/resize/index_productos_principales_mas_destacado/'.$producto->imagen);?>">
                                 </a>
                               </div> 
                             </div>
@@ -71,7 +71,7 @@
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="<?=verificar_imagen('uploads/resize/index_productos_principales_mas_destacado/logos/'.$producto->logo_empresa);?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -83,7 +83,7 @@
                       <div class="row">
                         <div class="col-md-12 content_foto_product">
                           <div class="row">
-                              <img src="<?=base_url()?>uploads/resize/index_productos_principales/<?=$producto->imagen?>" class="foto_producto img-responsive">
+                              <img src="<?=verificar_imagen('uploads/resize/index_productos_principales/'.$producto->imagen);?>" class="foto_producto img-responsive">
                           </div>
                         </div>
                         <div class="col-md-12">
@@ -99,7 +99,7 @@
                         </div>
                         <div class="col-md-12 content_emp_product">
                           <a href="<?php echo $producto->url_empresa ?>">
-                            <img src="<?=base_url()?>uploads/resize/index_productos_principales/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive">
+                            <img src="<?=verificar_imagen('uploads/resize/index_productos_principales/logos/'.$producto->logo_empresa);?>" class="foto_emp_producto img-responsive">
                           </a>
                         </div>
                       </div>
@@ -124,7 +124,7 @@
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
                                 <a href="<?php echo $producto->url ?>">
-                                  <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/<?=$producto->imagen?>">
+                                  <img src="<?=verificar_imagen('uploads/resize/index_productos_principales_mas_destacado/'.$producto->imagen);?>">
                                 </a>
                               </div> 
                             </div>
@@ -146,7 +146,7 @@
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="<?=verificar_imagen('uploads/resize/index_productos_principales_mas_destacado/logos/'.$producto->logo_empresa);?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -158,7 +158,7 @@
                       <div class="row">
                         <div class="col-md-12 content_foto_product">
                           <div class="row">
-                              <img src="<?=base_url()?>uploads/resize/index_productos_principales/<?=$producto->imagen?>" class="foto_producto img-responsive">
+                              <img src="<?=verificar_imagen('uploads/resize/index_productos_principales/'.$producto->imagen);?>" class="foto_producto img-responsive">
                           </div>
                         </div>
                         <div class="col-md-12">
@@ -174,7 +174,7 @@
                         </div>
                         <div class="col-md-12 content_emp_product">
                           <a href="<?php echo $producto->url_empresa ?>">
-                            <img src="<?=base_url()?>uploads/resize/index_productos_principales/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive">
+                            <img src="<?=verificar_imagen('uploads/resize/index_productos_principales/logos/'.$producto->logo_empresa);?>" class="foto_emp_producto img-responsive">
                           </a>
                         </div>
                       </div>
@@ -199,7 +199,7 @@
                             <div class="col-md-12">
                               <div class="row div_imagen_grande">
                                 <a href="<?php echo $producto->url ?>">
-                                  <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/<?=$producto->imagen?>">
+                                  <img src="<?=verificar_imagen('uploads/resize/index_productos_principales_mas_destacado/'.$producto->imagen);?>">
                                 </a>
                               </div> 
                             </div>
@@ -221,7 +221,7 @@
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <img src="<?=base_url()?>uploads/resize/index_productos_principales_mas_destacado/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
+                          <img src="<?=verificar_imagen('uploads/resize/index_productos_principales_mas_destacado/logos/'.$producto->logo_empresa);?>" class="foto_emp_producto img-responsive" id="foto_emp_grande">
                         </div>
                       </div>
                     </div>
@@ -233,7 +233,7 @@
                       <div class="row">
                         <div class="col-md-12 content_foto_product">
                           <div class="row">
-                              <img src="<?=base_url()?>uploads/resize/index_productos_principales/<?=$producto->imagen?>" class="foto_producto img-responsive">
+                              <img src="<?=verificar_imagen('uploads/resize/index_productos_principales/'.$producto->imagen);?>" class="foto_producto img-responsive">
                           </div>
                         </div>
                         <div class="col-md-12">
@@ -249,7 +249,7 @@
                         </div>
                         <div class="col-md-12 content_emp_product">
                           <a href="<?php echo $producto->url_empresa ?>">
-                            <img src="<?=base_url()?>uploads/resize/index_productos_principales/logos/<?=$producto->logo_empresa?>" class="foto_emp_producto img-responsive">
+                            <img src="<?=verificar_imagen('uploads/resize/index_productos_principales/logos/'.$producto->logo_empresa);?>" class="foto_emp_producto img-responsive">
                           </a>
                         </div>
                       </div>
