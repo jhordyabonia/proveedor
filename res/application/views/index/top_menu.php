@@ -14,13 +14,13 @@
 				        <li class="active">
 				            <?php if($id_usuario):?>
 				                <a class="enlace_top" href="<?=base_url()?>logueo/logout">
-				                    <span class="fa fa-sign-out"></span>
+				                    <i class="fa fa-sign-out"></i>
 				                    Salir
 				                </a>
 				            <?php else: ?>
 				                <a id="launch_login" class="enlace_top"  href="JavaScript:login(this,'tablero_usuario');"
 				                class="enlace_top enlace_registro cursor-mano  hidden-xs hidden-sm visible-md visible-lg" style="color:#111;">
-				                    <span class="ingresar_ico glyphicon glyphicon-user"></span>
+				                    <i class="ingresar_ico glyphicon glyphicon-user"></i>
 				                    Ingresar
 				                </a>
 				            <?php endif; ?>
@@ -34,7 +34,7 @@
 				            <?php else: ?>
 				                <a id="launch_registro" data-toggle="modal" href="JavaScript:launch(this);"
 				                            class="enlace_top enlace_registro cursor-mano  hidden-xs hidden-sm visible-md visible-lg" style="color:#111;">
-				                    <span class="fa fa-check"></span>
+				                    <i class="fa fa-check"></i>
 				                    Registro Gratis
 				                </a>
 				            <?php endif; ?>
