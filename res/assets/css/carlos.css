@@ -213,3 +213,28 @@ span.text-grey{
 img.img_verificacion {
     margin-left: 2px;
 }
+
+.youtube:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 120px;
+    z-index: 100;
+    background: transparent url(http://dev.proveedor.com.co/assets/img/play-video.png) no-repeat center;
+    pointer-events: none;
+}
+
+.modal-dialog {
+  width: 98%;
+  height: 98%;
+  padding: 0;
+}
+
+.youtube-modal .modal-content {
+  height: 70%;
+  border-radius: 0;
+}
+.youtube-modal .modal-body{
+  height: 70%;
+}
