@@ -1,3 +1,7 @@
+.fa.fa-check{
+	font-size: 1.3em;
+}
+
 #content_general{
 	height: auto;
 	max-width: 100%;
@@ -34,7 +38,10 @@
 .icono-ingresar{
 	font-size: 20px;
 }
-	
+
+.bor_botoom{
+	margin-top: 12px;
+}
 
 @media (max-width: 991px) {
 	.contenedor_top{
