@@ -1,15 +1,15 @@
  <!-- Brand and toggle get grouped for better mobile display -->
-
 	    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/index/top_menu.css">
+
 	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div id="content_general"  onload="launch();">
-	    	<div id="sub_content_general" class="row">
+	    <div onload="launch();">
+	    	<div class="row top_menu">
 	    		<div class="col-md-7">
 	    			<div class="row hidden-xs hidden-sm">
 						<p id="texto_bienvenido" style="padding-left:15px">Bienvenido al portal de intercambios comerciales de las empresas en Colombia!</p>
 	    			</div>
 	    		</div>
-	    		<div class="col-xs-12 col-md-5 bor_botoom">
+	    		<div class="col-xs-12 col-md-5 text-right">
 				    <ul class="list-inline pull-right">
 				        <li class="active">
 				            <?php if($id_usuario):?>
