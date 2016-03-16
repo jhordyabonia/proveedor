@@ -224,7 +224,7 @@ img.img_verificacion {
     background: transparent url(http://dev.proveedor.com.co/assets/img/play-video.png) no-repeat center;
     pointer-events: none;
 }
-
+/*
 .modal-dialog {
   width: 98%;
   height: 98%;
@@ -237,4 +237,4 @@ img.img_verificacion {
 }
 .youtube-modal .modal-body{
   height: 70%;
-}
+}*/

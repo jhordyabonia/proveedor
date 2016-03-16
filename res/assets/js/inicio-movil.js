@@ -16,3 +16,4 @@ $('.slider_producto').slick({
 });
 
 $('.swipebox').swipebox();
+$('.swipebox-video').swipebox();
