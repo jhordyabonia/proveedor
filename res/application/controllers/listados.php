@@ -196,9 +196,17 @@ class Listados extends CI_Controller {
         return $busqueda;
     }
 	public function lista($p="XXXXXX",$div="productos", $page=0, $filtro=0,$tipo_filtro=0)
-	{
-		$data['div']=$div;
+	{	
+		$data['div']=$div;		
 		$data['busqueda']=$this->analisis_busqueda($p);
+		if($p=="default")
+		{				
+			if($div=="productos")
+				$data['busqueda']="Últimos ".$div;
+			else $data['busqueda']=$div;
+			//$data['nom_producto']="Ver todo";
+		}
+		
 		$data['id_usuario']= $this->session->userdata('id_usuario');
 
 		$data['filtro']=$filtro;
@@ -219,7 +227,7 @@ class Listados extends CI_Controller {
 		}
 		if($p=="default")
 		{	
-			$p="";
+			$p="";		
 			//$data['nom_producto']="Ver todo";
 		}		
 		$data['titulo']=$data['busqueda'];
