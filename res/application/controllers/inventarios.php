@@ -23,7 +23,7 @@ class Inventarios extends CI_Controller {
         $this->load->model('new/Usuarios_model','usuarios');
         $this->load->model('u_model','u');
         $this->load->library('excelNew');        
-        $this->verifyc_login();
+        #$this->verifyc_login();
     }
     // end: construc
      
@@ -42,7 +42,48 @@ class Inventarios extends CI_Controller {
 
         redirect(base_url(),'refresh');
     } 
-    
+    public function test(){echo "<h1>Jhordy</h1>";}
+    public function subir_imagenes($formulario=TRUE)
+    {
+        if($formulario==TRUE)
+        {
+            echo "<form method='post' action='inventarios/subir_imagenes/FALSE'>
+                    <input type='file' name='file'>
+                    <input type='submit' value='Subir imagenes'>
+                  </form>";
+            return;
+        }
+        /*
+        //Configuramos los parametros para subir el archivo al servidor.    
+
+
+        $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/img');        
+        $config['allowed_types'] = 'zip';
+        $config['max_size'] = '0';          
+        //Load the Upload CI library 
+        //Cargamos la libreria CI para Subir
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('file') )
+        {   
+                print_r($this->upload->display_errors());                       
+        }
+        else
+        {            
+            $data = array('upload_data' => $this->upload->data()); 
+            $data['url_full']=$data['upload_data']['file_name'];             
+        }  
+
+        $p = new PharData($data['url_full']);
+        $p->decompressFiles();
+        foreach ($p as $fichero) 
+        {
+            var_dump($fichero->getFileName());
+            var_dump($fichero->isCompressed());
+            var_dump($fichero->isCompressed(Phar::BZ2));
+            var_dump($fichero->isCompressed(Phar::GZ));
+        }
+        */
+    }
     public function index()
     {
 
@@ -118,7 +159,7 @@ class Inventarios extends CI_Controller {
         $data['namefile']=$data['url_full'];
         $this->load->view('inventarios/cargar',$data);
         $this->load->view('inventarios/ver_', $data);  
-}
+    }
     public function verificar_empresa($id_empresa=0)
     {      
         if($id_empresa==0)
