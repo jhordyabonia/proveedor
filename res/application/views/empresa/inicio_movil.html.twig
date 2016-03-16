@@ -6,9 +6,7 @@
     {{ parent()}}
     {# Libreria para sliders #}
     <link rel="stylesheet" href="{{assets_url()}}slick/slick/slick.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-        
+    <link rel="stylesheet" href="{{assets_url()}}swipebox/css/swipebox.min.css">
 {% endblock styles %}
 {% block meta %}
     {# Aqui se debe agregar la información para el contenido que se comparte en redes sociales, si necesita ayuda de como identificar el contenido por favor verifique en https://developers.facebook.com/docs/sharing/webmasters#markup y https://dev.twitter.com/cards/types/summary-large-image #}
@@ -68,5 +66,6 @@
     {{ parent() }}
     {# Libreria para sliders #}
     <script src="{{ assets_url() }}slick/slick/slick.min.js" ></script>
+    <script src="{{ assets_url() }}swipebox/js/jquery.swipebox.min.js"></script>
     <script src="{{js_url()}}slider.js"></script>
 {% endblock javascripts %}
