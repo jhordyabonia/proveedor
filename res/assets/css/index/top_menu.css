@@ -2,62 +2,20 @@
 	font-size: 1.3em;
 }
 
-#content_general{
-	height: auto;
-	max-width: 100%;
-	margin-bottom: 20px;
+
+.top_menu{
 	-webkit-box-shadow: 0px 3px 10px rgba(153, 153, 153, 0.41);
 	-moz-box-shadow: 0px 3px 10px rgba(153, 153, 153, 0.41);
 	box-shadow: 0px 3px 10px rgba(153, 153, 153, 0.41);
+	padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+    margin-bottom: 15px;
 }
-#sub_content_general
-{
-	max-width: 100%;
-}
-#texto_bienvenido{
-	margin-left:  20px !important;
-	margin-top: 12px;
-}
+
 .enlace_top{
 	color:black;
 	font-size:12px;
 	/*margin-left: -12px;*/
 }
-.contenedor_top{
-	/*border-right: 2px solid #D9D9D9;*/
-	height: 23px;
-}
-.contenedor_gral{
-	margin-top: 11px;
-	float: right;
-	/*margin-right: 6px;*/
-}
-.ingresar_ico{
-	/*padding-right: 3px;*/
-}
-.icono-ingresar{
-	font-size: 20px;
-}
-
-.bor_botoom{
-	margin-top: 12px;
-}
-
-@media (max-width: 991px) {
-	.contenedor_top{
-		border-right: 0;
-		height: 23px;
-	}
-	.bor_botoom{
-		background: #fff;
-		height: auto;
-		margin-bottom: 5px;
-		border-bottom: 1px solid #e0e0e0;
-	}
-	#content_general{
-	background: #fff;
-	height: auto;
-	margin-bottom: 5px;
-}
-}
-
