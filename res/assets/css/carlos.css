@@ -103,7 +103,7 @@ span.text-grey{
   padding: 20px 0px;
 }
 .share-btn {
-      font-size: 24px;
+  font-size: 24px;
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
   border-radius: 50%;
@@ -224,17 +224,7 @@ img.img_verificacion {
     background: transparent url(http://dev.proveedor.com.co/assets/img/play-video.png) no-repeat center;
     pointer-events: none;
 }
-/*
-.modal-dialog {
-  width: 98%;
-  height: 98%;
-  padding: 0;
+.separator{
+  height: 20px;
+  background-color: #EEEEEE;
 }
-
-.youtube-modal .modal-content {
-  height: 70%;
-  border-radius: 0;
-}
-.youtube-modal .modal-body{
-  height: 70%;
-}*/
