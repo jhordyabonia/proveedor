@@ -1,41 +1,37 @@
-<div class="row navbar-row">
+<div class="row shadow">
   <div class="navbar-empresa">
 
-    <div class="col-xs-2 {% if inicio %}active{% endif %}">
-      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/inicio/{{empresa.id}}">
+    <div class="{% if inicio %}active{% endif %}">
+      <a class="btn btn-lg " href="{{base_url()}}empresa/inicio/{{empresa.id}}">
         <i class="fa fa-home"></i>
       </a>
     </div>
-    <div class="col-xs-2 {% if catalogo_producto %}active{% endif %}">    
-      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/catalogo_producto/{{empresa.id}}">
+    <div class="{% if catalogo_producto %}active{% endif %}">    
+      <a class="btn btn-lg " href="{{base_url()}}empresa/catalogo_producto/{{empresa.id}}">
         <i class="fa fa-list"></i>
       </a>
     </div>
-    <div class="col-xs-2 {% if nosotros %}active{% endif %}">
-      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/nosotros/{{empresa.id}}">
+    <div class="{% if nosotros %}active{% endif %}">
+      <a class="btn btn-lg " href="{{base_url()}}empresa/nosotros/{{empresa.id}}">
         <i class="fa fa-briefcase"></i>
       </a>
     </div>
     <!--
-    <div class="col-xs-2 {% if cotizaciones_requeridas %}active{% endif %}">
-      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/cotizaciones_requeridas/{{empresa.id}}">
+    <div class="{% if cotizaciones_requeridas %}active{% endif %}">
+      <a class="btn btn-lg " href="{{base_url()}}empresa/cotizaciones_requeridas/{{empresa.id}}">
         <i class="fa fa-file-text-o"></i>
       </a>
     </div> -->    
-    <div class="col-xs-2 {% if contacto %}active{% endif %}">
-      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/contacto/{{empresa.id}}">
+    <div class="{% if contacto %}active{% endif %}">
+      <a class="btn btn-lg " href="{{base_url()}}empresa/contacto/{{empresa.id}}">
         <i class="fa fa-phone"></i>
       </a>
     </div>
-    <div class="col-xs-2 {% if descargar_catalogo %}active{% endif %}">
-      <a class="btn btn-lg btn-block" href="{{base_url()}}empresa/descargar_catalogo/{{empresa.id}}">
+    <div class="{% if descargar_catalogo %}active{% endif %}">
+      <a class="btn btn-lg " href="{{base_url()}}empresa/descargar_catalogo/{{empresa.id}}">
         <i class="fa fa-download"></i>
       </a>
     </div>
-    <div class="col-xs-2 {% if descargar_catalogo %}active{% endif %}">
-
-    </div>
-
   </div>
 </div>
 <!-- /.row -->
