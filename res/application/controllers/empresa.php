@@ -82,6 +82,17 @@ class Empresa extends CI_Controller
         {
             // print_r($datos);
             #Vistas Mobiles
+            
+            $dat['auto_launch_AP']=FALSE;
+            $dat['view'] = "asistentes_proveedor_popup";      
+            $dat['index'] = TRUE;     
+            $dat['datos']=$datos;     
+            $dat['categorias']  = $this->categoria->get_all();    
+            $dat['categoria'] = 42;      
+            $dat['id_popup'] = "asistentes_proveedor_popup";             
+            $this->load->view('popups/asistentes_proveedor', $dat);
+            $this->load->view('registro/funcionalidades_');
+            
             if (!$datos['empresa']->banners) {$datos['empresa']->banners = '01_Registrese43.png,03_solicite2.png,02_publique2.png';}
             $datos['empresa']->banners=explode(',', $datos['empresa']->banners);      
             $datos['tags']=explode(',', $datos['empresa']->productos_prinsipales);      
@@ -199,6 +210,17 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile())
         {
             // print_r($datos);
+            
+            $dat['auto_launch_AP']=FALSE;
+            $dat['view'] = "asistentes_proveedor_popup";      
+            $dat['index'] = TRUE;     
+            $dat['datos']=$datos;     
+            $dat['categorias']  = $this->categoria->get_all();    
+            $dat['categoria'] = 42;      
+            $dat['id_popup'] = "asistentes_proveedor_popup";             
+            $this->load->view('popups/asistentes_proveedor', $dat);
+            $this->load->view('registro/funcionalidades_');
+            
             $this->twiggy->display('empresa\catalogo_movil', $datos);
         }else
         {
@@ -316,6 +338,17 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile()) 
         {
            # Vista movil
+           
+            $dat['auto_launch_AP']=FALSE;
+            $dat['view'] = "asistentes_proveedor_popup";      
+            $dat['index'] = TRUE;     
+            $dat['datos']=$datos;     
+            $dat['categorias']  = $this->categoria->get_all();    
+            $dat['categoria'] = 42;      
+            $dat['id_popup'] = "asistentes_proveedor_popup";             
+            $this->load->view('popups/asistentes_proveedor', $dat);
+            $this->load->view('registro/funcionalidades_');
+            
            $this->twiggy->display('empresa/nosotros_movil', $datos);
         }else
         {
@@ -364,6 +397,7 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile()) 
         {
             #Vistas Mobiles
+            $this->load->view('registro/funcionalidades_');
             $this->twiggy->display('empresa\contacto_movil', $datos);
         }else
         {
@@ -413,6 +447,16 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile()) 
         {
             #vistas mobiles
+            $dat['auto_launch_AP']=FALSE;
+            $dat['view'] = "asistentes_proveedor_popup";      
+            $dat['index'] = TRUE;     
+            $dat['datos']=$datos;     
+            $dat['categorias']  = $this->categoria->get_all();    
+            $dat['categoria'] = 42;      
+            $dat['id_popup'] = "asistentes_proveedor_popup";             
+            $this->load->view('popups/asistentes_proveedor', $dat);
+            $this->load->view('registro/funcionalidades_');
+            
             $this->twiggy->display('empresa\descargar_catalogo_movil', $datos);
         }else
         {
