@@ -238,3 +238,6 @@ img.img_verificacion {
 .shadow{
   box-shadow: 0px 3px 10px #999;
 }
+.row.shadow{
+  margin-bottom: 15px;
+}
