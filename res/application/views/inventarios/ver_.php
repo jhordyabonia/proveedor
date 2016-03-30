@@ -144,13 +144,13 @@ window.onload=function()
 							<input name="descripcion[]" value="<?=$rows[4]?>" > 
 							</td>
 						<td >
-							<input name="precio_unitario[]" value="<?=$rows[5]?>" > 
+							<input name="precio[]" value="<?=$rows[5]?>" > 
 							</td>
 						<td >
-							<input name="unidad[]" value="<?=$rows[6]?>" > 
+							<input name="medida[]" value="<?=$rows[6]?>" > 
                             </td>
 						<td >
-							<input name="pedido_minimo_[]" value="<?=$rows[7]?>" > 
+							<input name="pedido_minimo[]" value="<?=$rows[7]?>" > 
                             </td>
 						<td >
 							<input name="" value="<?=$rows[8]?>" > 

@@ -103,14 +103,14 @@ span.text-grey{
   padding: 20px 0px;
 }
 .share-btn {
-  font-size: 24px;
+  font-size: 22px;
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
   border-radius: 50%;
   border: none;
   color: #fff;
   cursor:pointer;
-  padding: 10px;
+  padding: 5px;
   transition: border .25s linear,color .25s linear,background-color .25s linear
 }
 .s_facebook {
@@ -236,5 +236,8 @@ img.img_verificacion {
 }
 
 .shadow{
-  box-shadow: 0px 5px 10px #999;
+  box-shadow: 0px 3px 10px #999;
+}
+.row.shadow{
+  margin-bottom: 15px;
 }
