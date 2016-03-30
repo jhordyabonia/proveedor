@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	# Disable automatic box update checking. If you disable this, then
 	# boxes will only be checked for updates when the user runs
 	# `vagrant box outdated`. This is not recommended.
-	# config.vm.box_check_update = false
+	config.vm.box_check_update = false
 	# config.vm.network "forwarded_port", guest: 80, host: 8080
 	# config.vm.network :forwarded_port, guest: 3306, host: 33066
 	# Create a private network, which allows host-only access to the machine

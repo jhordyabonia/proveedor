@@ -44,12 +44,14 @@ class Empresa extends CI_Controller
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id,'refresh');}
 
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+        $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
+        $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria; 
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
         $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
         $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
         $datos['usuario']->departamento = $this->departamento->get($datos['usuario']->departamento)->nombre;
         $datos['productos']             = $this->producto->get_all(array('empresa' => $id));
-
+        $datos['solicitudes']           = $this->solicitud->get_all(array('empresa' => $id));
         #$filtrado=$this->filtro_categoria($datos['productos']);
         #$productos=$filtrado['productos'];
         $datos['destacados'] = array();
@@ -65,13 +67,26 @@ class Empresa extends CI_Controller
         $tmp                = explode('|', $datos['empresa']->imagenes);
         $datos['titulos']   = explode(',', $tmp[0]);
         $datos['imagenes']  = explode(',', $tmp[1]);
+        $datos['videos']   = explode(',', $datos['empresa']->videos);
 
+        foreach ($datos['videos'] as $key => $video)
+        {if(""==$video)continue;$datos['videos'][$key]=id_video($video);}
+       
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
+        
+        $datos['empresa']->numero_productos=count($datos['productos']);
+        $datos['empresa']->numero_solicitudes=count($datos['solicitudes']);
+        
         if ($this->ci->agent->is_mobile())
         {
             // print_r($datos);
             #Vistas Mobiles
+            if (!$datos['empresa']->banners) {$datos['empresa']->banners = '01_Registrese43.png,03_solicite2.png,02_publique2.png';}
+            $datos['empresa']->banners=explode(',', $datos['empresa']->banners);      
+            $datos['tags']=explode(',', $datos['empresa']->productos_prinsipales);      
+            $this->load->view('template/javascript');
+            $this->load->view('registro/funcionalidades_', $datos);
             $this->twiggy->display('empresa\inicio_movil', $datos);
         }else
         {
@@ -93,37 +108,67 @@ class Empresa extends CI_Controller
         }
     }
 
-    public function catalogo_producto($id, $page=0)
+    public function catalogo_producto($id, $page=0,$filtro = 0,$tipo_filtro=0)
     {
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id_empresa,'refresh');}
 
+        $datos['tipo_filtro']           = $tipo_filtro;
+        $datos['filtro']                = $filtro;
         $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
         $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
         $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
         $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
         $datos['usuario']->departamento = $this->departamento->get($datos['usuario']->departamento)->nombre;
         $datos['productos']             = $this->producto->get_all(array('empresa' => $id));
-        
-        #$filtrado=$this->filtro_categoria($datos['productos']);
-        #$productos=$filtrado['productos'];
+        $productos=$datos['productos'];
+        $count_productos=count($datos['productos']);
+  /************************** filtros ***********************************/       
+        if ($filtro != 0) 
+        {
+            switch ($tipo_filtro) 
+            {
+                case 0:
+                    $filtrado = $this->filtro_categoria($datos['productos'], $filtro);//filtro por categoria.
+                    break;
+                case 1:
+                    $filtrado = $this->filtro_categoria($datos['productos'], 0, $filtro);//filtro por subcategoria.
+                    break;
+
+                default:
+                    $filtrado = $this->filtro_categoria($datos['productos'], 0, $filtro);
+                    break;
+            }
+
+            $datos['productos'] = $filtrado['productos'];
+             $datos['filtros'] = $filtrado['categorias'];
+        } else 
+        {
+            $filtrado = $this->filtro_categoria($productos); 
+            $datos['filtros'] = $filtrado['categorias'];
+        }
+/***********************end filtros************************************/
+
+
+/*************************paginado************************************/
         $count=0;##
         $datos['destacados'] = array();
         $datos['tag'] = "";##
         $datos['page'] = $page;##
         $numeroXpagina=20; ##
-        $datos['cantidad_paginas'] = count($datos['productos'])/$numeroXpagina;##
-        
-        foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value) 
+        $datos['cantidad_paginas'] = $count_productos/$numeroXpagina;##
+        if($page===0)
         {
-            if(($count>=(($numeroXpagina*$page)))&&($count<=((($numeroXpagina*($page+1))))))##
+            foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value) 
             {
-                $datos['destacados'][] = $this->cargar_producto($this->producto->get($value));
-                $count++;##
+                if(($count>=(($numeroXpagina*$page)))&&($count<=((($numeroXpagina*($page+1))))))##
+                {
+                    $datos['destacados'][] = $this->cargar_producto($this->producto->get($value));
+                    $count++;##
+                }
             }
         }
-        if($page!=0){$count=0;$datos['destacados']=NULL;}##
         $tmp_productos = array();
         foreach ($datos['productos'] as $key => $value) 
         {
@@ -137,30 +182,9 @@ class Empresa extends CI_Controller
             }
         }
         $datos['productos'] = $tmp_productos;
-
-        #echo "<PRE>"; 
-        #print_r($datos['productos']);
-        #echo "</PRE>"; 
-        #return;
-        $filtro      = 38;
-        $tipo_filtro = 0;
-
-        if ($filtro != 0) {
-            switch ($tipo_filtro) {
-                case 0:
-                    $filtrado = $this->filtro_categoria($datos['productos'], $filtro);
-                    break;
-
-                default:
-                    $filtrado = $this->filtro_categoria($datos['productos'], 0, $filtro);
-                    break;
-            }
-        } else {
-            $filtrado = $this->filtro_categoria($datos['productos']);
-        }
-        $productos        = $filtrado['productos'];
-        $datos['filtros'] = $filtrado['categorias'];
-
+/**************************end paginado***********************************/
+        
+        
         $datos['titulo']    = $datos['empresa']->nombre;
         $datos['membresia'] = $this->membresia->get($datos['empresa']->membresia);
         #$datos['usuario']=$this->session->userdata('usuario');
@@ -170,6 +194,8 @@ class Empresa extends CI_Controller
                                   'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-catalogo-default.png");
 
 
+        $datos['empresa']->numero_productos=count($datos['productos']);
+        $datos['empresa']->numero_solicitudes=count($datos['productos']);
         if ($this->ci->agent->is_mobile())
         {
             // print_r($datos);

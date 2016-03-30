@@ -6,6 +6,19 @@ class Mensajes_model extends CI_Model {
 
     const PRI_INDEX = 'id';
 
+    public function get1_complet($where = NULL)
+    {
+        $this->db->select('*');
+        $this->db->where(self::PRI_INDEX, $where);
+        $result = $this->db->get()->result();
+        if (!$result) return false;
+        $result= array_shift($result);
+        $this->load->model('new/Remitente_model', "remitente");
+        $this->load->model('new/Usuarios_model', "usuario");
+        $result->destinatario=$this->usuario->get($result->destinatario);
+        $result->remitente=$this->remitente->get($result->remitente);
+        return $result;           
+    }
     public function get($where = NULL) {
         $this->db->select('*');
         $this->db->from(self::TABLE_NAME);

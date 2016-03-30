@@ -394,6 +394,8 @@ class Listados extends CI_Controller {
 		}
 		$data['page']=$page;		
 		if(!$productos){$data['div']="proveedores";}
+        elseif(!$proveedores){$data['div']="solicitudes";}
+        else{$data['div']="productos";}
 
 		$resultados= "Productos:".($data['page_count']*25).",Solicitudes:".($data['page_count3']*25).",Proveedores:".($data['page_count2']*25);
 		$this->busquedas->insert(array('busqueda'=>$data['busqueda'],'resultados'=>$resultados));

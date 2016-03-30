@@ -1,27 +1,12 @@
 <br>
-<div class="row banners">
-    <div class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="banner item active"> 
-                <img src="http://lorempixel.com/800/500/" alt="Primer banner">
-            </div>
-            <div class="banner item"> 
-                <img  src="http://lorempixel.com/800/800/" alt="Segundo Banner">
-            </div>
-        </div><!-- /.carousel-inner -->
-    </div>
-</div>
 
-<!-- Este codigo no ha sido probado ya que en la maquina virtual no hay banners
-y no se como es el manejo de esto. -->
-
-{% if banners %}
+{% if empresa.banners %}
     <div class="row banners">
         <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                {% for banner in banners %}
+                {% for banner in empresa.banners %}
                     <div class="banner item {% if loop.first %}active{% endif %}"> 
-                        <img src="{{banner.image_url}}">
+                        <img src="{{base_url()}}uploads/banners/{{banner}}">
                     </div>
                 {% endfor %}
             </div><!-- /.carousel-inner -->

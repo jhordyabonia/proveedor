@@ -2,45 +2,17 @@
     <div class="col-xs-12">
         <h3 class="titulos"><strong>Galería de Imágenes</strong></h3>
         <div class="multiple-items slider-imagenes">
-
-            <!-- Cada item debe tener dos imagenes, una grande y una pequeña, asi la pagina va a cargar mas rapido, en la etiqueta a va la grande, en la img la pequeña. 80x50 considero es lo recomendado. -->
-            <div>
-                <a rel="galery-productos" href="http://lorempixel.com/80/50/?v17" class="swipebox">
-                    <img src="http://lorempixel.com/80/50/?v17" alt="">
-                    <p>Abrazadera 1 pie zincada 57</p>
-                </a>
-            </div>
-            <!-- aqui termina un item -->
-            <div>
-                <a rel="galery-productos" href="http://lorempixel.com/80/50/?v19" class="swipebox">
-                    <img src="http://lorempixel.com/80/50/?v19" alt="">
-                    <p>Abrazadera 1 pie zincada 59</p>
-                </a>
-            </div>
-            <div>
-                <a rel="galery-productos" href="http://lorempixel.com/80/50/?v11" class="swipebox">
-                    <img src="http://lorempixel.com/80/50/?v11" alt="">
-                    <p>Abrazadera 1 pie zincada 61</p>
-                </a>
-            </div>
-            <div>
-                <a rel="galery-productos" href="http://lorempixel.com/80/50/?v13" class="swipebox">
-                    <img src="http://lorempixel.com/80/50/?v13" alt="">
-                    <p>Abrazadera 1 pie zincada 63</p>
-                </a>
-            </div>
-            <div>
-                <a rel="galery-productos" href="http://lorempixel.com/80/50/?v15" class="swipebox">
-                    <img src="http://lorempixel.com/80/50/?v15" alt="">
-                    <p>Abrazadera 1 pie zincada 65</p>
-                </a>
-            </div>
-            <div>
-                <a rel="galery-productos" href="http://lorempixel.com/80/50/?v15" class="swipebox">
-                    <img src="http://lorempixel.com/80/50/?v15" alt="">
-                    <p>1 pie zincada 65</p>
-                </a>
-            </div>
+        {% set count=0 %}
+             {% for imagen in imagenes %}
+              <!-- Cada item debe tener dos imagenes, una grande y una pequeña, asi la pagina va a cargar mas rapido, en la etiqueta a va la grande, en la img la pequeña. 80x50 considero es lo recomendado. -->
+                <div>
+                    <a rel="galery-productos" href="{{base_url()}}uploads/SOP/imagenes/{{imagen}}" class="swipebox">
+                        <img src="{{base_url()}}uploads/resize/SOP/imagenes/{{imagen}}" alt="">
+                        <p>{{titulos[count]}}</p>{% set count=count+1 %}
+                    </a>
+                  </div>
+                <!-- aqui termina un item --> 
+             {% endfor %}           
         </div>
     </div>
 </div>

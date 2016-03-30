@@ -35,7 +35,7 @@ foreach (explode(',', $empresa->banners) as $i => $banner): ?>
             <div class="item anti-active <?php if ($i == 0) {echo 'active';}
 ?>">
             	<center>
-                	<img src="<?php echo base_url() . 'uploads/banners/' . $banner ?>" class="img-responsive banner">
+                	<img src="<?=verificar_imagen('uploads/banners/' . $banner )?>" class="img-responsive banner">
             	</center>
              </div>
           <?php endforeach?>
@@ -148,7 +148,7 @@ foreach (explode(',', $empresa->banners) as $i => $banner): ?>
 		<?php if (!$producto || $producto->nombre == "") {continue;}
 $tag .= $producto->nombre . ',';?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -161,7 +161,7 @@ $tag .= $producto->nombre . ',';?>
 					</div>
 				</div>
 				<div class="mini-logo">
-					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/resize/SOP/logos2/<?=$empresa->logo?>">
+					<img class="img-responsive mini-logo2" src="<?=verificar_imagen('uploads/resize/SOP/logos2/'.$empresa->logo)?>">
 				</div>
 			</div>
 		<?php endforeach;?>
@@ -169,7 +169,7 @@ $tag .= $producto->nombre . ',';?>
 		<?php if (!$producto || $producto->nombre == "") {continue;}
 $tag .= $producto->nombre . ',';?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=base_url()?>uploads/resize/SOP/<?=$producto->imagenes?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -182,7 +182,7 @@ $tag .= $producto->nombre . ',';?>
 					</div>
 				</div>
 				<div class="mini-logo">
-					<img class="img-responsive mini-logo2" src="<?=base_url()?>uploads/resize/SOP/logos2/<?=$empresa->logo?>">
+					<img class="img-responsive mini-logo2" src="<?=verificar_imagen('uploads/resize/SOP/logos2/'.$empresa->logo)?>">
 				</div>
 			</div>
 		<?php endforeach;?>
@@ -295,7 +295,7 @@ $tag .= $producto->nombre . ',';?>
 				</div>
 			</div>
 			<div class="logo_empresa_3 col-md-4">
-				<img class="logo_nuestra img-responsive logo" src="<?=base_url()?>uploads/resize/SOP/logos3/<?=$empresa->logo?>">
+				<img class="logo_nuestra img-responsive logo" src="<?=verificar_imagen('uploads/resize/SOP/logos3/'.$empresa->logo)?>">
 			</div>
 		</div>
 	</div>
@@ -328,7 +328,7 @@ $tag .= $producto->nombre . ',';?>
 					<div class="item_galeria">
 						<div class="item-galeria" onclick="show('<?=$key?>')">
 							<div class="galeria">
-								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=base_url()?>uploads/resize/SOP/imagenes/<?=$value?>">
+								<img id="img_<?=$key?>" class="img_galeria img-responsive" src="<?=verificar_imagen('uploads/resize/SOP/imagenes/'.$value)?>">
 							</div>
 							<div class="titulo_galeria">
 								<p><?php if ($titulos[$key] != 'Imagen') {echo $titulos[$key];}
@@ -486,7 +486,7 @@ $tag .= $producto->nombre . ',';?>
 		</div>
 		<div class="col-md-4" style="padding: 0;">
 			<div class="logo_empresa_2">
-				<img class="con_logo img-responsive logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
+				<img class="con_logo img-responsive logo" src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>">
 			</div>
 		</div>
 	</div>

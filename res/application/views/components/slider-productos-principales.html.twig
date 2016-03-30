@@ -4,8 +4,8 @@
         <div class="slider_producto">
             {% for producto in productos %}
                 <div class="item_slider_producto">
-                    <a href="{{producto.url}}">
-                        <img src="http://lorempixel.com/100/71/?v={{loop.index}}" alt="" class="imagen">
+                    <a href="{{base_url()}}producto/ver/{{producto.id}}">
+                        <img src="{{ base_url() }}uploads/resize/SOP/{{producto.imagenes}}" alt="" class="imagen">
                         <p class="nombre_producto">{{ producto.nombre }}</p>
                         <p class="precio font-naranja">{{ producto.precio_unidad}}</p>
                     </a>
@@ -13,7 +13,7 @@
             {% endfor %}
         </div>
 		<div class="col-xs-12">
-			<button class="btn ver_todo">Ver Todos</button>
+			<button class="btn ver_todo" onclick="location.href='{{ base_url() }}empresa/catalogo_producto/{{empresa.id}}'">Ver Todos</button>
 		</div>
 	</div>
 	<!-- ./col-xs-12 -->

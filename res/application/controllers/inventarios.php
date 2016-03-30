@@ -1,19 +1,8 @@
 <?php
-/**
- *  
- * excel
- */
-class Inventarios extends CI_Controller {
-     
-     
-     
-     
-     
-    /**
-     * 
-     * __construct
-     */
-    public function __construct () {
+class Inventarios extends CI_Controller 
+{     
+    public function __construct () 
+    {
         parent::__construct();
          
         // inicializamos la librería      
@@ -25,15 +14,6 @@ class Inventarios extends CI_Controller {
         $this->load->library('excelNew');        
         #$this->verifyc_login();
     }
-    // end: construc
-     
-     /**
-      *
-      *index
-     */
-
-
-     
     private function verifyc_login()
     {
         $usuario =$this->usuarios->get($this->session->userdata('id_usuario'));
@@ -43,19 +23,17 @@ class Inventarios extends CI_Controller {
         redirect(base_url(),'refresh');
     } 
     public function test(){echo "<h1>Jhordy</h1>";}
-    public function subir_imagenes($formulario=TRUE)
+    public function imagenes($formulario='read')
     {
-        if($formulario==TRUE)
+        if($formulario=='read')
         {
-            echo "<form method='post' action='inventarios/subir_imagenes/FALSE'>
+            echo "<form name='form' method='post' action='/inventarios/imagenes/load' accept-charset='utf-8' enctype='multipart/form-data'>
                     <input type='file' name='file'>
                     <input type='submit' value='Subir imagenes'>
                   </form>";
-            return;
+            return $formulario;
         }
-        /*
         //Configuramos los parametros para subir el archivo al servidor.    
-
 
         $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/img');        
         $config['allowed_types'] = 'zip';
@@ -65,7 +43,8 @@ class Inventarios extends CI_Controller {
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('file') )
         {   
-                print_r($this->upload->display_errors());                       
+                print_r($this->upload->display_errors());   
+                return;                    
         }
         else
         {            
@@ -73,39 +52,49 @@ class Inventarios extends CI_Controller {
             $data['url_full']=$data['upload_data']['file_name'];             
         }  
 
-        $p = new PharData($data['url_full']);
-        $p->decompressFiles();
-        foreach ($p as $fichero) 
-        {
-            var_dump($fichero->getFileName());
-            var_dump($fichero->isCompressed());
-            var_dump($fichero->isCompressed(Phar::BZ2));
-            var_dump($fichero->isCompressed(Phar::GZ));
-        }
-        */
+      $this->load->view('template/javascript');
+      $this->load->view('inventarios/imagenes',$data);
     }
-    public function index()
+    public function redimencionar($json="")
     {
+      $json=explode('value', $json);
+      /*
+      Proceso de redimencionado aqui....
 
-        #$dat['titulo']="Registro masivo de productos";
-        #$dat['nit']=$this->session->userdata('empresa');
-        #$dat['usuario']=$this->session->userdata('usuario');
+      echo "json:<PRE>";
+       print_r($json);
+      echo "</PRE>";
+      */
+      $dat['titulo']="Registro masivo de productos";
+      $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+      $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+      $dat['administrador']=$dat['usuario']->permisos;
 
-        #$this->load->view('template/head', $dat);
-        #$this->load->view('tablero_usuario/header', $dat, FALSE);
-        #$this->load->view('template/javascript', FALSE);
+      $this->load->view('template/head', $dat);
+      $this->load->view('tablero_usuario/header', $dat, FALSE);
+      $this->load->view('template/javascript', FALSE);
+
+      $this->load->view('template/javascript', FALSE);
+      echo "<br><br><br><br><br><br><br><center><h3>Carga de imagenes completa.!!</h3>";
+      echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
+    }
+    public function index($val=TRUE)//($val=FALSE)
+    {
+       if (!$val)return;
+        $dat['titulo']="Registro masivo de productos";
+        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+        $dat['administrador']=$dat['usuario']->permisos;
+
+        $this->load->view('template/head', $dat);
+        $this->load->view('tablero_usuario/header', $dat, FALSE);
+        $this->load->view('template/javascript', FALSE);
         $data['namefile']="";
         $data['id_empresa']="";
         $this->load->view('inventarios/cargar',$data);
     }
-     
-     
-    /**
-    *
-    *upload
-    */
-
-    function subcategoria($subcategoria)
+    
+    public function subcategoria($subcategoria)
     {
      $out=$this->subcategoria->get(array('nom_subcategoria'=>$subcategoria));
      if($out)
@@ -113,7 +102,30 @@ class Inventarios extends CI_Controller {
      return 4000;
     }
 
-    function cargar()
+    public function tf()
+    {
+    $this->index(TRUE);
+    }
+    public function leer($id_empresa,$file_name,$begging=0)
+    {        
+        $excel = $this->excelnew->read_file($file_name);
+        $data['excel'] = $excel[1];        
+        
+        $dat['titulo']="Registro masivo de productos";
+        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+        $dat['administrador']=$dat['usuario']->permisos;
+
+        $this->load->view('template/head', $dat);
+        $this->load->view('tablero_usuario/header', $dat, FALSE);
+        $this->load->view('template/javascript', FALSE);
+        $data['url_full']=$file_name;
+        $data['id_empresa']=$id_empresa;
+        $data['begging']=$begging;
+        $this->load->view('inventarios/cargar',$data);
+        $this->load->view('inventarios/ver_', $data);      
+    }
+    public function cargar()
     {
         //Configuramos los parametros para subir el archivo al servidor.        
         $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/');        
@@ -124,42 +136,20 @@ class Inventarios extends CI_Controller {
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('file') )
         {   
-                print_r($this->upload->display_errors());                       
+            print_r($this->upload->display_errors());    
+            return;                   
         }
         else
         {            
-            $data = array('upload_data' => $this->upload->data()); 
-            $data['url_full']=$data['upload_data']['file_name'];
-            $excel = $this->excelnew->read_file($data['upload_data']['file_name']);              
+            $data = array('upload_data' => $this->upload->data());               
         }       
         
        //El archivo almacenado en el servidor sera eliminado, no lo necesitamos mas.
         //unlink($config['upload_path'].'/'.$data['upload_data']['file_name']);           
         
        //Asignamos el arreglo resultante de la funcion de la libreria y lo pasamos a la vista.
-        $data['id_empresa'] = $this->input->post('id_empresa');
-        $data['excel'] = $excel[1];
-
-        
-        
-        $dat['titulo']="Registro masivo de productos";
-        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
-        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
-        $dat['administrador']=$dat['usuario']->permisos;
-
-        $this->load->view('template/head', $dat);
-        $this->load->view('tablero_usuario/header', $dat, FALSE);
-        $this->load->view('template/javascript', FALSE);
-        
-        #echo "<PRE>";
-        #print_r( $data['excel']);
-        #echo "</PRE>";
-        #return;
-        
-        $data['namefile']=$data['url_full'];
-        $this->load->view('inventarios/cargar',$data);
-        $this->load->view('inventarios/ver_', $data);  
-    }
+        $this->leer($this->input->post('id_empresa'),$data['upload_data']['file_name']);        
+        }
     public function verificar_empresa($id_empresa=0)
     {      
         if($id_empresa==0)
@@ -171,10 +161,9 @@ class Inventarios extends CI_Controller {
        
         $this->load->view('inventarios/verificar_empresa', $datos);
     }
-    public function registrar_($id_empresa=0)
-    { 
-        $this->load->view("template/head", array('title'=>''));
-   
+    public function registrar_($id_empresa=0,$file_name)
+    {    
+       $begging=$this->input->post('begging');
        $nombres=$this->input->post('nombre');
        $medidas=$this->input->post('medida');
        $precios=$this->input->post('precio');
@@ -185,159 +174,74 @@ class Inventarios extends CI_Controller {
        $formas_de_pago=$this->input->post('formas_de_pago');
 
        $productos=array();
+       $empty=0;
        for($i=1;$i<count($nombres);$i++)
        { 
-          if($nombres[$i]==NULL)
+          if($i>5&&$empty==0)break;
+          if($nombres[$i]==NULL||$nombres[$i]=='')
             { continue; }
          $productos[$i]['nombre']=$nombres[$i];
          $productos[$i]['descripcion']=$descripciones[$i]==""?$nombres[$i]:$descripciones[$i];
          $productos[$i]['imagenes']=$referencias[$i]==NULL?"default.jpg":$referencias[$i].".jpg";
          $productos[$i]['medida']=$medidas[$i]==NULL?1:$medidas[$i];
-         $productos[$i]['precio_unidad']=$precios[$i]==NULL?0:$precios[$i];
+         $productos[$i]['precio_unidad']=$precios[$i]==NULL?0:intval($precios[$i]);
          $productos[$i]['subcategoria']=$this->subcategoria($subcategorias[$i]);
          $productos[$i]['pedido_minimo']=intval(($pedidos_minimos[$i]==NULL?0:$pedidos_minimos[$i])/$productos[$i]['precio_unidad']);#$pedidos_minimos[$i]=NULL?1:$pedidos_minimos[$i];
          $productos[$i]['formas_de_pago']=$formas_de_pago[$i]==NULL?"A convenir":$formas_de_pago[$i];
          $productos[$i]['empresa']=$id_empresa;
-       }
-
-       $test=$this->input->post('imagenes_1');
-       foreach ($productos as $key => $producto) 
-       {
-         $id=$this->producto->insert($producto); 
-         #$this->load_image($id,$key); 
-         echo "<h3>".$id."</h3>"; 
-         echo "<PRE>";
-         print_r($producto);
-         echo "</PRE>";
+         $empty++;
         }
-          
-       #return;        
+  
+        if($empty>1)        
+        {
+           foreach ($productos as $key => $producto) 
+           {
+              $id=$this->producto->insert($producto); 
+              $this->load_image($id,$key);
+           }
+           $this->leer($id_empresa,$file_name,$begging+$empty);
+        }else{$this->fin($id_empresa,$begging);}          
+    }
+    public function fin($id_empresa,$numero)
+    {                 
         $dat['titulo']="Registro masivo de productos";
-        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
-        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+        $dat['facebook']=FALSE;
+        $dat['empresa']=$this->empresa->get($id_empresa);
+        $dat['usuario']=$this->usuarios->get($dat['empresa']->usuario);
         $dat['administrador']=$dat['usuario']->permisos;
 
         $this->load->view('template/head', $dat);
-        $this->load->view('tablero_usuario/header', $dat, FALSE);
-        $this->load->view('template/javascript', FALSE);
-        echo "<center><h3>Se registraron ".$key." productos, con exito!!</h3>";
+        $this->load->view('tablero_usuario/header', $dat);
+        $this->load->view('template/javascript');
+
+        echo "<br><br><br><br><center><h3>Se registraron ".$numero." productos, con exito!!</h3>";
         echo "<h4>Empresa: ".$dat['empresa']->nombre;
-        echo "<P>Nit: ".$id_empresa;
-        echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
+        echo "<P>Nit o Id : ".$id_empresa;
+        echo "<h4>Subir imagenes</h4><br>";
+        $this->imagenes();
+        echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";     
     }
 
-  function load_image($id_registro,$i) 
-  {
-    $name_array = "img";
-    $imagenes="default.jpg";
-    if ($_FILES[$name_array]) 
+    public function load_image($id_registro,$i) 
     {
-        $_FILES['userfile'] = array(
-          'name' => $_FILES[$name_array]['name'][$i],
-          'type' => $_FILES[$name_array]['type'][$i],
-          'tmp_name' => $_FILES[$name_array]['tmp_name'][$i],
-          'error' => $_FILES[$name_array]['error'][$i],
-          'size' => $_FILES[$name_array]['size'][$i]
-        );
-        if ($this->u->imagen()) {
-          $imagenes= $this->u->nombre_archivo;
-        }
-      }
-
-    $this->producto->update(array('imagenes'=> $imagenes),$id_registro);
-  }
-    /**
-     * 
-     * setExcel
-     */
-
-    public function setExcel () {
-         
-
-        $this->load->library('classes/phpexcel');
-        // configuramos las propiedades del documento
-        $this->phpexcel->getProperties()->setCreator("Arkos Noem Arenom")
-                                     ->setLastModifiedBy("Arkos Noem Arenom")
-                                     ->setTitle("Office 2007 XLSX Test Document")
-                                     ->setSubject("Office 2007 XLSX Test Document")
-                                     ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-                                     ->setKeywords("office 2007 openxml php")
-                                     ->setCategory("Test result file");
-         
-         
-        // agregamos información a las celdas
-        $this->phpexcel->setActiveSheetIndex(0)
-                    ->setCellValue('A1', 'Nombre')
-                    ->setCellValue('A2', 'Description')
-                    ->setCellValue('A3', 'precio')
-                    ->setCellValue('A4', 'Flores')
-                    ->setCellValue('A5', 'otros');
-         
-        // La librería puede manejar la codificación de caracteres UTF-8
-        $this->phpexcel->setActiveSheetIndex(0)
-                    ->setCellValue('B1', 'producto1')
-                    ->setCellValue('B2', 'descripcion producto1')
-                    ->setCellValue('B3', '10000')
-                    ->setCellValue('B4', 'Flores')
-                    ->setCellValue('B5', 'null');
-         
-        // La librería puede manejar la codificación de caracteres UTF-8
-        $this->phpexcel->setActiveSheetIndex(0)
-                    ->setCellValue('C1', 'producto2')
-                    ->setCellValue('C2', 'descripcion producto2')
-                    ->setCellValue('C3', '20000')
-                    ->setCellValue('C4', 'Flores')
-                    ->setCellValue('C5', 'null');
-         
-        // La librería puede manejar la codificación de caracteres UTF-8
-        $this->phpexcel->setActiveSheetIndex(0)
-                    ->setCellValue('D1', 'producto3')
-                    ->setCellValue('D2', 'descripcion producto3')
-                    ->setCellValue('D3', '30000')
-                    ->setCellValue('D4', 'Flores')
-                    ->setCellValue('D5', 'null');
-         
-        // La librería puede manejar la codificación de caracteres UTF-8
-        $this->phpexcel->setActiveSheetIndex(0)
-                    ->setCellValue('E1', 'producto4')
-                    ->setCellValue('E2', 'descripcion producto4')
-                    ->setCellValue('E3', '410000')
-                    ->setCellValue('E4', 'Flores')
-                    ->setCellValue('E5', 'null');
-         
-        // La librería puede manejar la codificación de caracteres UTF-8
-        $this->phpexcel->setActiveSheetIndex(0)
-                    ->setCellValue('F1', 'producto5')
-                    ->setCellValue('F2', 'descripcion producto5')
-                    ->setCellValue('F3', '50000')
-                    ->setCellValue('F4', 'Flores')
-                    ->setCellValue('F5', 'null');
-         
-        // Renombramos la hoja de trabajo
-        $this->phpexcel->getActiveSheet()->setTitle('Simple');
-         
-         
-         
-        // Renombramos la hoja de trabajo
-        $this->phpexcel->getActiveSheet()->setTitle('Simple');
-         
-         
-        // configuramos el documento para que la hoja
-        // de trabajo número 0 sera la primera en mostrarse
-        // al abrir el documento
-        $this->phpexcel->setActiveSheetIndex(0);
-         
-         
-        // redireccionamos la salida al navegador del cliente (Excel2007)
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="01simple.xlsx"');
-        header('Cache-Control: max-age=0');
-         
-        $objWriter = PHPExcel_IOFactory::createWriter($this->phpexcel, 'Excel2007');
-        $objWriter->save('php://output');
-         
+        $name_array = "img";
+        $imagenes="default.jpg";
+        if ($_FILES[$name_array]) 
+        {
+            $_FILES['userfile'] = array(
+              'name' => $_FILES[$name_array]['name'][$i],
+              'type' => $_FILES[$name_array]['type'][$i],
+              'tmp_name' => $_FILES[$name_array]['tmp_name'][$i],
+              'error' => $_FILES[$name_array]['error'][$i],
+              'size' => $_FILES[$name_array]['size'][$i]
+            );
+            if ($this->u->imagen()) {
+              $imagenes= $this->u->nombre_archivo;
+            }
+          }
+        $tmp=$this->producto->get($id_registro);
+        $this->producto->update(array('imagenes'=> $tmp->imagenes.','.$imagenes),$id_registro);
     }
-    // end: setExcel
 }
 // end: excel
 ?>

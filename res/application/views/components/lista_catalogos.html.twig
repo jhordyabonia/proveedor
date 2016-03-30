@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-xs-4">
                     <img class="img-responsive" src="http://lorempixel.com/400/400/technics/image-{{loop.index}}" alt="">
-                    <!-- <img src="{{ producto.imagenes }}" alt="Imagen del producto"> -->
+                    <!-- <img src="{{ catalogo.imagenes }}" alt="{{catalogo.nombre}}"> -->
                 </div>
                 <div class="col-xs-8">
                     <div>
-                        <button class="btn btn-lg ">
-                            <i class="fa fa-download font-withe"></i>
+                        <button class="btn btn-lg" target="new" onclick="JavaScript:location.href='{{base_url()}}uploads/catalogo/{{catalogo.catalogo}}';">
+                            <i class="fa fa-download font-withe" ></i>
                             DESCARGAR
                         </button>
                     </div>

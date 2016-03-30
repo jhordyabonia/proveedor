@@ -151,7 +151,7 @@ if ( ! function_exists('already'))
  */
 if ( ! function_exists('decimal_points'))
 {
-    function decimal_points($number)
+    function decimal_points($number="10000")
     {
           if(!is_string($number))
           {$number="".$number;}
@@ -175,6 +175,34 @@ if ( ! function_exists('decimal_points'))
             }
           }
           return $out;
+    }
+}
+/**
+ * Jhordy Abonia
+ * Este metodo extrae el id de un video de youtube embedido para un iframe
+ * @access  public
+ * @return  string
+ */
+if ( ! function_exists('id_video'))
+{
+    function id_video($video)
+    {
+        $out=explode('embed/', $video);
+        return $out[1];
+    }
+}
+/**
+ * Jhordy Abonia
+ * Este metodo extrae el elemento $id incluido en $source divivido por $need
+ * @access  public
+ * @return  string
+ */
+if ( ! function_exists('get'))
+{
+    function get($source,$id=0,$need=',')
+    {
+        $out=explode($need, $source);
+        return $out[$id];
     }
 }
 /**
@@ -205,7 +233,7 @@ if ( ! function_exists('verificar_imagen'))
       if(file_exists($url))
             return base_url().$url;
         else
-            return base_url()."uploads/default.jpg";
+            return base_url()."uploads/resize/SOP/default.jpg";
     }
 }
 /**

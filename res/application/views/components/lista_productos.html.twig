@@ -5,12 +5,12 @@
         {% for producto in productos %}
             <div class="row">
                 <div class="col-xs-4">
-                    <img class="img-responsive" src="http://lorempixel.com/400/400/technics/image-{{loop.index}}" alt="">
+                    <img class="img-responsive" src={{base_url()}}uploads/resize/SOP/{{producto.imagenes}}" alt="">
                     <!-- <img src="{{ producto.imagenes }}" alt="Imagen del producto"> -->
                 </div>
                 <div class="col-xs-8">
                     <h4>
-                        <a href="#">
+                        <a href="{{ base_url() }}producto/ver/{{ producto.id }}">
                             <strong>
                                 {{ producto.nombre }}
                             </strong>

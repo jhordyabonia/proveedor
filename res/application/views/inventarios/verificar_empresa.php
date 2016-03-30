@@ -1,4 +1,4 @@
-<div>
+<div style="padding:10px;margin:4px">
 		<table>	
                     
                     <td width="10%" >                       
@@ -7,7 +7,7 @@
                         </a>
                       </td>
                       <td width="10%" > 
-						<img  class="center-block" src="<?=base_url()?>uploads/resize/logos/<?=$empresa->logo?>" style="max-width:185px; max-height:100px">
+						<img  class="center-block" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>" style="max-width:185px; max-height:100px">
 					  </td>
                       <td width="15%" > 
 					    <div class="center-block" style="max-width: 220px;">

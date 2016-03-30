@@ -143,7 +143,7 @@ class Empresa_model extends CI_Model {
         if ($result)
         {   return $result; }
         elseif($solo_empresa) 
-        {   return $this->buscar($palabra,$categoria,FLASE);   }
+        {   return $this->buscar($palabra,$categoria,FALSE);   }
         else return FALSE;
     }
 

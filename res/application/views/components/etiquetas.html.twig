@@ -2,14 +2,9 @@
     <div class="col-xs-12">
         <h3 class="titulos"><strong>Etiquetas</strong></h3>
         <ul class="tags">
-            <li><a href="#" class="tag">botas</a></li>
-            <li><a href="#" class="tag">cascos</a></li>
-            <li><a href="#" class="tag">guantes</a></li>
-            <li><a href="#" class="tag">gafas</a></li>
-            <li><a href="#" class="tag">señalización</a></li>    
-            <li><a href="#" class="tag">botas</a></li>
-            <li><a href="#" class="tag">cascos</a></li>
-            <li><a href="#" class="tag">guantes</a></li>
+        {% for tag in tags %} 
+          <!--  <li><a href="#" class="tag">{{tag}}</a></li>-->
+        {% endfor %}
         </ul>
     </div>
 </div>
