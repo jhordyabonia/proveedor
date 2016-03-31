@@ -566,15 +566,17 @@
                         obj.value=out.replace(' ','');
                     }
                     
-<!-- funcionalidad de msj en popup -->
+/* funcionalidad de msj en popup */
 	<?php 
 		$nit = $this->uri->segment(4); 
 		$reffer= "none";
 	  if($this->session->flashdata('reffer')) 
 	  	{	$reffer=$this->session->flashdata('reffer');	}
 	  ?>
+      
  	   reffer= "<?=$reffer?>";
 	     document.onload= start();
+         var mensajes_abbled=false;
 	     function start()
 	       {
 		       	var popup=new XMLHttpRequest();
@@ -589,7 +591,6 @@
 
 				function show()
 					{
-
 						cotizar=document.getElementById('div_login');
 						cotizar.innerHTML="";
 
@@ -609,16 +610,18 @@
 			                }else
 			                if(mensaje=="mensaje")
 			                {
-								document.getElementById('btn_contactar').click();
+								//document.getElementById('btn_contactar').click();
 								<?=$this->session->set_flashdata('reffer',FALSE)?>
 							}								
 						}  		
+                        mensajes_abbled=true;
 						document.getElementById('id_objeto').value="<?=$this->uri->segment(3)?>" ;
 					}
 					//login();
 			}
             function mensajes()
             {
+                if(!mensajes_abbled)start();
                 document.getElementById('btn_contactar').click();
             }
             function registro(obj)
@@ -631,4 +634,4 @@
 <div id="div_login" ></div>
 <div id="registro" ></div>
 <div id="cotizar" ></div>
-<div id="btn_contactar" data-toggle="modal" data-target="#popup_mensajes_vacio"></button>
+<div id="btn_contactar" data-toggle="modal" data-target="#popup_mensajes"></div>

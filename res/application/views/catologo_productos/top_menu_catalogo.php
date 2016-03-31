@@ -47,7 +47,7 @@
 								Tablero Usuario
 							</a>
 						<?php else:?>
-						<a id="launch_registro" class="enlaces" href="JavaScript:launch();">
+						<a id="launch_registro" class="enlaces" href="JavaScript:launch(this);">
 								Registro Gratis
 							</a>
 						<?php endif?>
