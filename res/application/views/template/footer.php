@@ -164,7 +164,7 @@
 						</div>
 				</div>
 				<div class="col-md-12">
-					<p id="texto_Proveedor">Teléfono Fijo Bogotá 7038188 CEL 3195168590. Av 15 # 118 - 75 of 506 Bogotá - Colombia - Proveedor.com.co S.A.S. 2015 - Todos los derechos reservados. </p>
+					<p id="texto_Proveedor">Teléfono Fijo Bogotá 7038188 CEL 3195168590. Av 15 # 118 - 75 of 506 Bogotá - Colombia - Proveedor.com.co S.A.S. 2016 - Todos los derechos reservados. </p>
                 </div>
 				<div class="col-md-12" id="contenedor_politicas">
 					<div class="row" >

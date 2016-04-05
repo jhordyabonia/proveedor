@@ -5,12 +5,12 @@
         {% set count=0 %}
              {% for imagen in imagenes %}
               <!-- Cada item debe tener dos imagenes, una grande y una pequeña, asi la pagina va a cargar mas rapido, en la etiqueta a va la grande, en la img la pequeña. 80x50 considero es lo recomendado. -->
-                <div>
-                    <a rel="galery-productos" href="{{base_url()}}uploads/imagenes/{{imagen}}" class="swipebox">
-                        <img src="{{base_url()}}uploads/resize/SOP/imagenes/{{imagen}}" alt="">
-                        <p>{{titulos[count]}}</p>{% set count=count+1 %}
-                    </a>
-                  </div>
+               <a rel="galery-productos" href="{{base_url()}}uploads/imagenes/{{imagen}}" class="swipebox">
+                <div class="content-slider">               
+                   <img class="imagen" src="{{base_url()}}uploads/resize/SOP/imagenes/{{imagen}}" alt="{{titulos[count]}}">                        
+                </div>
+                   <p class="elipse">{{titulos[count]}}</p>{% set count=count+1 %}
+                </a>
                 <!-- aqui termina un item --> 
              {% endfor %}           
         </div>

@@ -2,19 +2,11 @@
     <div class="col-xs-12">
         <h3 class="titulos"><strong>Etiquetas</strong></h3>
         <ul class="tags">
-        {% for tag in tags %} 
-          <!--  <li><a href="#" class="tag">{{tag}}</a></li>-->
+        {% for targget in tag %} 
+            {% if not (targget == '') %}
+                        <li><a href="#" class="tag">{{targget}}</a></li>
+            {% endif %}
         {% endfor %}
         </ul>
     </div>
 </div>
-
-<!-- Este codigo es para que desde backend se llamen todas las etiquetas - Carlos Martinez-->
-<!-- 
-{% for tag in tags %}
-        <li><a href="{{url}}" class="tag">{{palabra}}</a></li>
-{% endfor %} -->
-
-
-
-

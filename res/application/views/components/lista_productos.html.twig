@@ -3,8 +3,10 @@
         {% for producto in productos %}
             <div class="row">
                 <div class="col-xs-4">
+                 <a href="{{ base_url() }}producto/ver/{{ producto.id }}">
                     <img class="img-responsive" src="{{producto.imagenes}}" alt="">
                     <!-- <img src="{{ producto.imagenes }}" alt="Imagen del producto"> -->
+                    </a>
                 </div>
                 <div class="col-xs-8">
                     <h4>
@@ -34,7 +36,9 @@
                         </p>
                     </div>
                     <div>
-                        <i class="pull-right font-naranja glyphicon glyphicon-chevron-right"></i>
+                        <a href="{{ base_url() }}producto/ver/{{ producto.id }}">
+                            <i class="pull-right font-naranja glyphicon glyphicon-chevron-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
