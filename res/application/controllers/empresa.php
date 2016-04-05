@@ -83,21 +83,13 @@ class Empresa extends CI_Controller
             // print_r($datos);
             #Vistas Mobiles
             
-            $dat['auto_launch_AP']=FALSE;
-            $dat['view'] = "asistentes_proveedor_popup";      
-            $dat['index'] = TRUE;     
-            $dat['datos']=$datos;     
-            $dat['categorias']  = $this->categoria->get_all();    
-            $dat['categoria'] = 42;      
-            $dat['id_popup'] = "asistentes_proveedor_popup";             
-            $this->load->view('popups/asistentes_proveedor', $dat);
-            $this->load->view('registro/funcionalidades_');
-            
             if (!$datos['empresa']->banners) {$datos['empresa']->banners = '01_Registrese43.png,03_solicite2.png,02_publique2.png';}
             $datos['empresa']->banners=explode(',', $datos['empresa']->banners);      
             $datos['tags']=explode(',', $datos['empresa']->productos_prinsipales);      
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_', $datos);
+            
+            $this->popup_captura_solicitud(42);
             $this->twiggy->display('empresa\inicio_movil', $datos);
         }else
         {
@@ -168,14 +160,16 @@ class Empresa extends CI_Controller
         $datos['tag'] = "";##
         $datos['page'] = $page;##
         $numeroXpagina=20; ##
-        $datos['cantidad_paginas'] = $count_productos/$numeroXpagina;##
+        $datos['cantidad_paginas'] = intval($count_productos/$numeroXpagina);##
         if($page===0)
         {
             foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value) 
             {
                 if(($count>=(($numeroXpagina*$page)))&&($count<=((($numeroXpagina*($page+1))))))##
                 {
-                    $datos['destacados'][] = $this->cargar_producto($this->producto->get($value));
+                    $tmp=$this->cargar_producto($this->producto->get($value));
+                    $datos['destacados'][] = $tmp;
+                   # $this->console(  'd:'.$tmp->imagenes);
                     $count++;##
                 }
             }
@@ -189,7 +183,9 @@ class Empresa extends CI_Controller
             if(($count>=(($numeroXpagina*$page)))&&($count<((($numeroXpagina*($page+1)))))) ##
             {
                 if ($this->duplicado($datos['destacados'], $value)) {continue;}
-                $tmp_productos[] = $this->cargar_producto($value);
+                $tmp=$this->cargar_producto($value);
+                $tmp_productos[] = $tmp;
+                #$this->console( 'p:'.$tmp->imagenes);                
             }
         }
         $datos['productos'] = $tmp_productos;
@@ -207,30 +203,22 @@ class Empresa extends CI_Controller
 
         $datos['empresa']->numero_productos=count($datos['productos']);
         $datos['empresa']->numero_solicitudes=count($datos['productos']);
+        
+        $this->load->view('template/head', array(
+           'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
+           'facebook' => $post['facebook']
+           )
+         );
+        $this->load->view('template/javascript');
+        $this->load->view('registro/funcionalidades_');
         if ($this->ci->agent->is_mobile())
         {
             // print_r($datos);
             
-            $dat['auto_launch_AP']=FALSE;
-            $dat['view'] = "asistentes_proveedor_popup";      
-            $dat['index'] = TRUE;     
-            $dat['datos']=$datos;     
-            $dat['categorias']  = $this->categoria->get_all();    
-            $dat['categoria'] = 42;      
-            $dat['id_popup'] = "asistentes_proveedor_popup";             
-            $this->load->view('popups/asistentes_proveedor', $dat);
-            $this->load->view('registro/funcionalidades_');
-            
+            $this->popup_captura_solicitud(42);
             $this->twiggy->display('empresa\catalogo_movil', $datos);
         }else
         {
-            $this->load->view('template/head', array(
-                'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
-                'facebook' => $post['facebook']
-                )
-            );
-            $this->load->view('template/javascript');
-            $this->load->view('registro/funcionalidades_');
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
             $this->load->view('catologo_productos/header_catalogo', $datos);
             $this->load->view('catologo_productos/produc_prin_catalogo', $datos);
@@ -284,7 +272,7 @@ class Empresa extends CI_Controller
         $datos['tag']="";##
         $datos['page']=$page;##
         $numeroXpagina=20;##
-        $datos['cantidad_paginas'] = count($datos['oportunidades'])/$numeroXpagina;##
+        $datos['cantidad_paginas'] = intval(count($datos['oportunidades'])/$numeroXpagina);##
         $oportunidades_tmp= array();
         foreach ($datos['oportunidades'] as $key => $value) 
         {
@@ -339,15 +327,7 @@ class Empresa extends CI_Controller
         {
            # Vista movil
            
-            $dat['auto_launch_AP']=FALSE;
-            $dat['view'] = "asistentes_proveedor_popup";      
-            $dat['index'] = TRUE;     
-            $dat['datos']=$datos;     
-            $dat['categorias']  = $this->categoria->get_all();    
-            $dat['categoria'] = 42;      
-            $dat['id_popup'] = "asistentes_proveedor_popup";             
-            $this->load->view('popups/asistentes_proveedor', $dat);
-            $this->load->view('registro/funcionalidades_');
+            $this->popup_captura_solicitud(42);
             
            $this->twiggy->display('empresa/nosotros_movil', $datos);
         }else
@@ -447,15 +427,7 @@ class Empresa extends CI_Controller
         if ($this->ci->agent->is_mobile()) 
         {
             #vistas mobiles
-            $dat['auto_launch_AP']=FALSE;
-            $dat['view'] = "asistentes_proveedor_popup";      
-            $dat['index'] = TRUE;     
-            $dat['datos']=$datos;     
-            $dat['categorias']  = $this->categoria->get_all();    
-            $dat['categoria'] = 42;      
-            $dat['id_popup'] = "asistentes_proveedor_popup";             
-            $this->load->view('popups/asistentes_proveedor', $dat);
-            $this->load->view('registro/funcionalidades_');
+            $this->popup_captura_solicitud(42);
             
             $this->twiggy->display('empresa\descargar_catalogo_movil', $datos);
         }else
@@ -482,7 +454,8 @@ class Empresa extends CI_Controller
             $out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['cantidad'] += 1;
             $out['categorias'][$categoria->nombre_categoria]['subcategorias'][$subcategoria->nom_subcategoria]['id'] = $value->subcategoria;
 
-            $producto = $this->cargar_producto($value);
+            $producto = $value;
+#            $producto = $this->cargar_producto($value);
             if ($id_subcategoria == $value->subcategoria) {$out['productos'][] = $producto;} elseif ($id_categoria == $categoria->id_categoria) {$out['productos'][] = $producto;}
         }
         return $out;
@@ -508,10 +481,12 @@ class Empresa extends CI_Controller
     {
         $imagenes = explode(',', $dato->imagenes);
 
-        $dato->imagenes = "default.jpg";
-        foreach ($imagenes as $value) {
-            if (!$value == "") {
-                $dato->imagenes = $value;
+        $dato->imagenes = base_url()."uploads/default.jpg";
+        foreach ($imagenes as $value) 
+        {
+            if (!$value == "") 
+            {
+                $dato->imagenes = verificar_imagen('uploads/'.$value);
                 break;
             }
         }
@@ -525,5 +500,34 @@ class Empresa extends CI_Controller
         }
 
         return $dato;
+    }
+    function popup_captura_solicitud($categoria)
+    {
+        $this->load->model('popups_textos_model', 'popups_textos');
+        $datos=$this->popups_textos->get(array('categoria'=>$categoria));
+        $titulos=array();
+        foreach (explode(',',$datos->titulos) as $key => $value) 
+        {
+          $dato_tmp=explode('|',$value);
+          if(count($dato_tmp)>1)
+          {
+             $titulos[$dato_tmp[0]]=$dato_tmp[1];
+          }else {$titulos[$value]=$value; }
+        }
+
+       	$datos->titulos=$titulos;
+        $dat['auto_launch_AP']=FALSE;
+        $dat['view'] = "asistentes_proveedor_popup";      
+        $dat['index'] = TRUE;     
+        $dat['datos']=$datos;     
+        $dat['categorias']  = $this->categoria->get_all();    
+        $dat['categoria'] = $categoria;      
+        $dat['id_popup'] = "asistentes_proveedor_popup";             
+        $this->load->view('popups/asistentes_proveedor', $dat);
+        $this->load->view('registro/funcionalidades_');    
+    }
+    function console($var)
+    {
+        echo "<script>console.log('".$var."')</script>";
     }
 }

@@ -35,7 +35,7 @@
           <div id="conten_pantalla" class="carousel-inner">
             <center>
               <div  id="conten_pantalla2" class="item active">
-                  <img id="pantalla" src="<?=base_url()?>uploads/resize/pagina_producto/galeria/<?=$imagen?>" alt="...">
+                  <img id="pantalla" src="<?=base_url()?>uploads/<?=$imagen?>" alt="...">
               </div>
            </center>
           </div>

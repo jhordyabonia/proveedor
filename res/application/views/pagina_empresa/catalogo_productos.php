@@ -174,7 +174,7 @@
 														<div class="center-vertical_imagen">
 															<a href="<?php echo base_url() ?>producto/ver/<?php echo $producto->id ?>">
 																<?php $imagen=""; foreach(explode(',',$producto->imagenes) as $value){if($imagen!=''){break;} $imagen=$value;}?>
-																<img class="img_imagen" src="<?=base_url()?>uploads/resize/pagina_de_empresa/<?=$imagen?>">
+																<img class="img_imagen" src="<?=verificar_imagen('uploads/resize/pagina_de_empresa/'.$imagen);?>">
 															</a>
 														</div>
 														</div>

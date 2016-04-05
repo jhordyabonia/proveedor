@@ -6,7 +6,7 @@
              {% for imagen in imagenes %}
               <!-- Cada item debe tener dos imagenes, una grande y una pequeña, asi la pagina va a cargar mas rapido, en la etiqueta a va la grande, en la img la pequeña. 80x50 considero es lo recomendado. -->
                 <div>
-                    <a rel="galery-productos" href="{{base_url()}}uploads/SOP/imagenes/{{imagen}}" class="swipebox">
+                    <a rel="galery-productos" href="{{base_url()}}uploads/imagenes/{{imagen}}" class="swipebox">
                         <img src="{{base_url()}}uploads/resize/SOP/imagenes/{{imagen}}" alt="">
                         <p>{{titulos[count]}}</p>{% set count=count+1 %}
                     </a>

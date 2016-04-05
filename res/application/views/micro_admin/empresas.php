@@ -237,6 +237,11 @@
 		                        <span class="glyphicon glyphicon-trash" style="font-size: 30px; margin: 20% 40%;"></span>
 		                     </a> 
 						 <br>
+                         
+                             <br><a href="<?=base_url()?>inventarios/empresa/<?=$proveedor['empresa']->id?>"> 
+		                        <span class="fa fa-shield fa-flip-vertical" style="font-size: 30px; margin: 20% 40%;"></span>
+                                Carga masiva
+		                     </a> 
 		                 </center>
                     </td>
 

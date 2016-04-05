@@ -189,7 +189,10 @@ window.onload=function()
 </div>
 			<input type='hidden' value="<?=$begging?>" name="begging">
 			<input type='hidden' value="<?=$url_full?>" name="url_full">
-			<input type='hidden' value="<?=$id_empresa?>" name="id_empresa">            
+			<input type='hidden' value="<?=$id_empresa?>" name="id_empresa">   
+            <?php if($id_empresa!=""):?>
+            <script>verificar();</script>
+            <?php endif;?>         
             
     	<?=form_close()?>
     </CENTER>

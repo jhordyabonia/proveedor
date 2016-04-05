@@ -634,4 +634,4 @@
 <div id="div_login" ></div>
 <div id="registro" ></div>
 <div id="cotizar" ></div>
-<div id="btn_contactar" data-toggle="modal" data-target="#popup_mensajes"></div>
+<div id="btn_contactar" data-toggle="modal" data-target="#popup_mensajes" style="display:none"></div>

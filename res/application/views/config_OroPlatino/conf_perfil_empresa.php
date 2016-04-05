@@ -271,7 +271,7 @@
 							<div class="input-group inline-block col-xs-12 col-md-5 col-lg-5">
 								<div class="adjuntar-archivo">
 							  		<div class="container-logo-empresa inline-block">
-							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/resize/logos/<?=$empresa->logo?>">
+							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>">
 							  		</div>
 							  		<div class="nombre-img-empres">
 							  			<p class="nombre-archivo-logo"></p>

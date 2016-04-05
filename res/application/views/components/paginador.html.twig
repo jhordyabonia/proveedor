@@ -1,11 +1,15 @@
 <div class="row">
-    <div class="col-xs-4">
-        <a href="" class="btn btn-default">Anterior</a>
+    <div class="col-xs-4">    
+    {% if not (page == 0) %}
+        <a href="{{base_url()}}empresa/catalogo_producto/{{empresa.id}}/{{page-1}}/{{filtro}}/{{tipo_filtro}}" class="btn btn-default">Anterior</a>
+    {% endif %}   
     </div>
     <div class="col-xs-4">
-        <p class="text-center center-vertical-text">1/6</p>
+        <p class="text-center center-vertical-text">{{page+1}}/{{cantidad_paginas+1}}</p>
     </div>
     <div class="col-xs-4">
-        <a href="" class="btn btn-default pull-right">Siguiente</a>
+    {% if not (page == cantidad_paginas) %}
+        <a href="{{base_url()}}empresa/catalogo_producto/{{empresa.id}}/{{page+1}}/{{filtro}}/{{tipo_filtro}}" class="btn btn-default pull-right">Siguiente</a>
+    {% endif %}   
     </div>
 </div>

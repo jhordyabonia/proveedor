@@ -51,6 +51,8 @@ foreach (explode(',', $empresa->banners) as $i => $banner): ?>
 
 	</div>
 </div>
+<!--Div Productos destacados-->
+<?php if ($productos):?>
 <div class="producto_principales">
 	<div class="title_productosPrincipales">
 		<div class="col-md-3">
@@ -148,7 +150,7 @@ foreach (explode(',', $empresa->banners) as $i => $banner): ?>
 		<?php if (!$producto || $producto->nombre == "") {continue;}
 $tag .= $producto->nombre . ',';?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -165,33 +167,45 @@ $tag .= $producto->nombre . ',';?>
 				</div>
 			</div>
 		<?php endforeach;?>
-		<?php foreach ($productos as $key => $producto): ?>
-		<?php if (!$producto || $producto->nombre == "") {continue;}
-$tag .= $producto->nombre . ',';?>
-			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
-				<div class="contexto_producto">
-					<div class="textos">
-						<div class="info_producto">
-							<a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
-						</div>
-						<p class="texto_precio"><?php if ($producto->precio_unidad == 0) {echo "Precio a convenir.";} else {echo '$' . decimal_points($producto->precio_unidad);}
-?></p>
-						<p class="unidades"><?php if ($producto->pedido_minimo == 0) {echo "Pedido mínimo a convenir.</p>";} else {echo decimal_points($producto->pedido_minimo) . " " . ($producto->medida) . '<p class="pedido">pedido mínimo</p>';}
-?>
-					</div>
-				</div>
-				<div class="mini-logo">
-					<img class="img-responsive mini-logo2" src="<?=verificar_imagen('uploads/resize/SOP/logos2/'.$empresa->logo)?>">
-				</div>
-			</div>
-		<?php endforeach;?>
+            <?php foreach ($productos as $key => $producto): ?>
+              <?php if (!$producto || $producto->nombre == "") {continue;} $tag .= $producto->nombre . ',';?>
+                        <div class="item_procud">
+                            <div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
+                            <div class="contexto_producto">
+                                <div class="textos">
+                                    <div class="info_producto">
+                                        <a class="nombre_producto" href="<?=base_url()?>producto/ver/<?=$producto->id?>"><p class="nombre_producto"><?=$producto->nombre?></p></a>
+                                    </div>
+                                    <p class="texto_precio">
+                                    <?php 
+                                        if ($producto->precio_unidad == 0) 
+                                        {echo "Precio a convenir.";} 
+                                        else 
+                                        {echo '$' . decimal_points($producto->precio_unidad);}
+                                    ?>
+                                    </p>
+                                    <p class="unidades">
+                                    <?php 
+                                        if ($producto->pedido_minimo == 0)
+                                        {echo "Pedido mínimo a convenir.</p>";}
+                                        else 
+                                        {echo decimal_points($producto->pedido_minimo) . " " . ($producto->medida) . '<p class="pedido">pedido mínimo</p>';}
+                                     ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mini-logo">
+                                <img class="img-responsive mini-logo2" src="<?=verificar_imagen('uploads/resize/SOP/logos2/'.$empresa->logo)?>">
+                            </div>
+                        </div>
+                    <?php endforeach;?>
 		</div>
 		<div class="vercatalogo col-md-12 col-lg-12">
 			<span class="glyphicon glyphicon-th-list"></span>
 			<a class="texto_vercatalogo" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Ver Catálogo > </a>
 		</div>
 	</div>
+<?php endif;?>
 	<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
 		<button class="btn btn_soli">
 			<i class="icono-soli fa fa-file-text"></i>

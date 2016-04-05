@@ -5,7 +5,7 @@
             {% for producto in productos %}
                 <div class="item_slider_producto">
                     <a href="{{base_url()}}producto/ver/{{producto.id}}">
-                        <img src="{{ base_url() }}uploads/resize/SOP/{{producto.imagenes}}" alt="" class="imagen">
+                        <img src="{{producto.imagenes}}" alt="" class="imagen">
                         <p class="nombre_producto">{{ producto.nombre }}</p>
                         <p class="precio font-naranja">{{ producto.precio_unidad}}</p>
                     </a>

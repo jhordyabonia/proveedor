@@ -68,13 +68,7 @@
 		  <!-- Tab info -->
 		  <div class="tab-content">
 		    <div role="tabpanel" class="<?=$_div_productos?>" id="productos">
-		    	<div class="row">
-					<div class="contenedor_banner hidden-xs col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
-						<div class="banner_publicidad">
-							<script type="text/javascript">broadstreet.zone(45614);</script> 
-						</div>
-					</div>
-				</div>
+		    	
 		    	<?php if($div_productos)
 			    	{
 			    		foreach ($div_productos as $key => $value) 
@@ -113,13 +107,7 @@
 												</center>
 		    </div>
 		    <div role="tabpanel" class="<?=$_div_proveedores?>" id="proveedores">
-		    	<div class="row">
-					<div class="contenedor_banner hidden-xs col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
-						<div class="banner_publicidad">
-							<script type="text/javascript">broadstreet.zone(45614);</script> 
-						</div>
-					</div>
-				</div>
+		    	
 		    	<?php if($div_empresas)
 			    	{
 			    		foreach ($div_empresas as $key => $value) 
@@ -151,13 +139,7 @@
 												</center>
 		    </div>
 		    <div role="tabpanel" class="<?=$_div_solicitudes?>" id="solicitudes">
-		    	<div class="row">
-					<div class="contenedor_banner hidden-xs col-md-12 col-lg-12 col-xs-12 col-sm-12" style="padding-left: 0px; padding-right: 15px;">
-						<div class="banner_publicidad">
-							<script type="text/javascript">broadstreet.zone(45614);</script> 
-						</div>
-					</div>
-				</div>
+		    	
 
 				<?php if($div_solicitudes)
 			    	{

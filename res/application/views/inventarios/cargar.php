@@ -83,4 +83,7 @@
 			    	</ul>
 		    </div>
     </body>
+    <?php if($id_empresa!=""):?>
+            <script>verificar();</script>
+            <?php endif;?> 
 </html>

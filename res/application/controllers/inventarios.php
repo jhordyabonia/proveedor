@@ -12,7 +12,7 @@ class Inventarios extends CI_Controller
         $this->load->model('new/Usuarios_model','usuarios');
         $this->load->model('u_model','u');
         $this->load->library('excelNew');        
-        #$this->verifyc_login();
+        $this->verifyc_login();
     }
     private function verifyc_login()
     {
@@ -35,7 +35,7 @@ class Inventarios extends CI_Controller
         }
         //Configuramos los parametros para subir el archivo al servidor.    
 
-        $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/img');        
+        $config['upload_path'] = realpath(APPPATH.'../uploads/inventarios/img/');        
         $config['allowed_types'] = 'zip';
         $config['max_size'] = '0';          
         //Load the Upload CI library 
@@ -50,29 +50,45 @@ class Inventarios extends CI_Controller
         {            
             $data = array('upload_data' => $this->upload->data()); 
             $data['url_full']=$data['upload_data']['file_name'];             
-        }          //Creamos un objeto de la clase ZipArchive()
-        $enzipado = new ZipArchive();
+        }                
         
-        //Abrimos el archivo a descomprimir
-        $enzipado->open($data['url_full']);
+        //Creamos un objeto de la clase ZipArchive()
         
-        //Extraemos el contenido del archivo dentro de la carpeta especificada
-        $extraido = $enzipado->extractTo("uploads/");
+        ini_set('zlib_output_compression','On');
+        $enzipado = new ZipArchive;
+        $file = $data['upload_data']['full_path'];
+        chmod($file,0777);
+        #echo $file;
+        if ($enzipado->open($file) === TRUE) 
+        {
+          $enzipado->extractTo("./uploads/resize/SOP/");
+          $enzipado->extractTo('./uploads/');
+          $enzipado->extractTo("./uploads/resize/index_carrouseles/");
+		  $enzipado->extractTo("./uploads/resize/index_productos_principales/");
+		  $enzipado->extractTo("./uploads/resize/index_productos_principales_mas_destacado/");
+		  $enzipado->extractTo("./uploads/resize/pagina_de_empresa/");
+          
+          $enzipado->extractTo("./uploads/resize/SOP/index_carrouseles/");
+		  $enzipado->extractTo("./uploads/resize/SOP/index_productos_principales/");
+		  $enzipado->extractTo("./uploads/resize/SOP/index_productos_principales_mas_destacado/");
+		  $enzipado->extractTo("./uploads/resize/SOP/pagina_de_empresa/");
+          $enzipado->close();
+        } else { echo 'failed'; }
         
-        /* Si el archivo se extrajo correctamente listamos los nombres de los
-        * archivos que contenia de lo contrario mostramos un mensaje de error
-        */
-        if($extraido == TRUE){
-        for ($x = 0; $x < $enzipado->numFiles; $x++) {
-        $archivo = $enzipado->statIndex($x);
-        echo 'Extraido: '.$archivo['name'].'</br>';
-        }
-        echo $enzipado->numFiles ." archivos descomprimidos en total";
-        }
-        else {
-        'Ocurrió un error y el archivo no se pudó descomprimir';
-        }
-    }
+         $dat['titulo']="Registro masivo de productos";
+        $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
+        $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
+        $dat['administrador']=$dat['usuario']->permisos;
+
+        $this->load->view('template/head', $dat);
+        $this->load->view('tablero_usuario/header', $dat, FALSE);
+        $this->load->view('template/javascript', FALSE);
+
+        $this->load->view('template/javascript', FALSE);
+        echo "<br><br><br><br><br><br><br><center><h3>Carga de imagenes completa.!!</h3>";
+        echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
+                
+       }
     public function redimencionar($json="")
     {
       $json=explode('value', $json);
@@ -96,9 +112,8 @@ class Inventarios extends CI_Controller
       echo "<br><br><br><br><br><br><br><center><h3>Carga de imagenes completa.!!</h3>";
       echo "</h4><br><a href='".base_url()."inventarios'>Volver</a>";
     }
-    public function index($val=TRUE)//($val=FALSE)
+    public function index($val="")//($val=FALSE)
     {
-       if (!$val)return;
         $dat['titulo']="Registro masivo de productos";
         $dat['usuario']=$this->usuarios->get($this->session->userdata('id_usuario'));
         $dat['empresa']=$this->empresa->get(array('usuario'=>$dat['usuario']->id));
@@ -108,7 +123,7 @@ class Inventarios extends CI_Controller
         $this->load->view('tablero_usuario/header', $dat, FALSE);
         $this->load->view('template/javascript', FALSE);
         $data['namefile']="";
-        $data['id_empresa']="";
+        $data['id_empresa']=$val;
         $this->load->view('inventarios/cargar',$data);
     }
     
@@ -178,6 +193,10 @@ class Inventarios extends CI_Controller
           {$datos['empresa']=$this->empresa->get($id_empresa);}
        
         $this->load->view('inventarios/verificar_empresa', $datos);
+    }
+    public function empresa($id_empresa=0)
+    {  
+        $this->index($id_empresa);
     }
     public function registrar_($id_empresa=0,$file_name)
     {    

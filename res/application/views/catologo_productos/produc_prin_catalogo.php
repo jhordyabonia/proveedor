@@ -98,7 +98,7 @@
 		<?php if(!$producto){continue;}?>
 		<?php if($producto->nombre==""){continue;}?>
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -116,7 +116,7 @@
 		<?php if($producto->nombre==""){continue;}?>
 
 			<div class="item_procud">
-				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=verificar_imagen('uploads/'.$producto->imagenes)?>"></div></a>
+				<div class="imagen_producto"><a href="<?=base_url()?>producto/ver/<?=$producto->id?>"><img class="img_producto" src="<?=$producto->imagenes?>"></div></a>
 				<div class="contexto_producto">
 					<div class="textos">
 						<div class="info_producto">
@@ -148,9 +148,13 @@
 	        <span aria-hidden="true">Anterior</span>
 	      </a>
 	    </li>
-		    <?php for ($key=0;$key<$cantidad_paginas;$key++) 		    
-		    	echo '<li><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$key.'/'.$filtro.'/'.$tipo_filtro.'">'.($key+1).'</a></li>';
-			?>	    
+		    <?php for ($key=0;$key<$cantidad_paginas;$key++) 
+            {		    
+		    	echo '<li><a ';
+                if($page==$key)
+                    echo " style='background-color: whitesmoke'";
+                 echo ' href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$key.'/'.$filtro.'/'.$tipo_filtro.'">'.($key+1).'</a></li>';
+            }?>	    
 	    <li>
 	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>" aria-label="Next">
 	        <span aria-hidden="true">Siguiente &raquo;</span>

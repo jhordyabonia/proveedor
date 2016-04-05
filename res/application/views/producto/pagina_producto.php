@@ -296,7 +296,7 @@
           function mostrar_imagen(id)
 		  {
 			src=document.getElementById(id).src;
-			document.getElementById('display').src=src;
+			document.getElementById('display').src='<?=base_url()?>uploads/resize/pagina_producto/galeria/'+original(src);
 		  }
           function anterior_imagen()
           {            
@@ -304,7 +304,7 @@
             if(actual_imagen<=0)
               {actual_imagen=total_imagenes;}
             src=document.getElementById("imagen_"+actual_imagen).src;
-            document.getElementById('pantalla').src=src;
+            document.getElementById('pantalla').src='<?=base_url()?>uploads/resize/pagina_producto/visualizador/'+original(src);
           }
           function proxima_imagen()
           {              
@@ -312,7 +312,13 @@
             if(actual_imagen>=total_imagenes)
               {actual_imagen=0;}
             src=document.getElementById("imagen_"+actual_imagen).src;
-            document.getElementById('pantalla').src=src;
+            document.getElementById('pantalla').src='<?=base_url()?>uploads/resize/pagina_producto/visualizador/'+original(src);
+          }
+          function original(input)
+          {
+              trash=input.substring(input.lastIndexOf('/')+1,input.length);
+              //console.log(trash);
+              return trash;
           }
  </script>
 
