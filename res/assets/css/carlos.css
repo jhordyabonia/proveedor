@@ -227,7 +227,7 @@ img.img_verificacion {
     width: 150px;
     height: 120px;
     z-index: 100;
-    background: transparent url(http://dev.proveedor.com.co/assets/img/play-video.png) no-repeat center;
+    background: transparent url(/assets/img/play-video.png) no-repeat center;
     pointer-events: none;
 }
 .separator{
