@@ -113,13 +113,14 @@ class Config_empresa extends CI_Controller {
     $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
     $this->datos['categorias']=$this->categoria->get_all();
     $this->datos['unidades']=$this->dimension->get_all();
+    $this->load->view('template/head',array('titulo'=>'Cotizaciones Requeridas'));
+    $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_coti_requeridas',$this->datos);
     $this->load->view('popups/confirmacion/confirmacion_guardado');
+    $this->load->view('oferta/funcionalidades');
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('oferta/funcionalidades');
   }
   ##LLama la vista que mostrara la parte del footer en las vistas
   function contacto()
@@ -131,9 +132,9 @@ class Config_empresa extends CI_Controller {
     $this->load->view('template/head',array('titulo'=>'Configuración contacto'));
     $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('registro/funcionalidades_');
     $this->load->view('config_OroPlatino/conf_contacto',$this->datos);
     $this->load->view('popups/confirmacion/confirmacion_guardado');
+    $this->load->view('registro/funcionalidades_');
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
   }
@@ -156,25 +157,29 @@ class Config_empresa extends CI_Controller {
     $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_usuario',$this->datos);
+    $this->load->view('registro/funcionalidades_');
     $this->load->view('popups/confirmacion/confirmacion_guardado');
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
-    $this->load->view('registro/funcionalidades_');
   }
 
   ##LLama la vista que mostrara la parte del footer en las vistas
   function catalogo()
   {
     $this->datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$this->datos['empresa']->id));
+    foreach ($this->datos['catalogos'] as $key => $value) 
+    {
+        $value->categoria=$this->categoria->get($value->categoria)->nombre_categoria;
+    }
     $this->datos['categorias']=$this->categoria->get_all();
     $this->load->view('template/head',array('titulo'=>'Publicar catalogo'));
     $this->load->view('template/javascript',$this->datos);
     $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
     $this->load->view('config_OroPlatino/conf_subir_catalogo',$this->datos);
     $this->load->view('popups/confirmacion/confirmacion_guardado');
+    $this->load->view('registro/funcionalidades_');
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
-    $this->load->view('registro/funcionalidades_');
   }
 
 

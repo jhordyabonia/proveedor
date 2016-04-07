@@ -1,8 +1,10 @@
-<div class="row">
-	<div class="col-xs-12 mision">
-        <h4 class="font-naranja titulo"><i class="glyphicon glyphicon-flag ico_bandera"></i>MISIÓN</h4>
-        <p class="texto_mision">{{empresa.mision}}</p>
+{% if not (empresa.mision=='') %}
+    <div class="row">
+        <div class="col-xs-12 mision">
+            <h4 class="font-naranja titulo"><i class="glyphicon glyphicon-flag ico_bandera"></i>MISIÓN</h4>
+            <p class="texto_mision">{{empresa.mision}}</p>
+        </div>
+        <!-- /.col-xs-12 -->
     </div>
-	<!-- /.col-xs-12 -->
-</div>
 <!-- /.row -->
+{% endif %}

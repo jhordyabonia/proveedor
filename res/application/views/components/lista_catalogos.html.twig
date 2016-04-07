@@ -3,16 +3,17 @@
         {% for catalogo in catalogos %}
             <div class="row">
                 <div class="col-xs-4">
-                    <img class="img-responsive" src="http://lorempixel.com/400/400/technics/image-{{loop.index}}" alt="">
+                     <i class="icon_catalogo fa fa-file-pdf-o" style="font-size: 97px;color: #2e6da4;"></i>
                     <!-- <img src="{{ catalogo.imagenes }}" alt="{{catalogo.nombre}}"> -->
                 </div>
                 <div class="col-xs-8">
                     <div>
-                        <button class="btn btn-lg" target="new" onclick="JavaScript:location.href='{{base_url()}}uploads/catalogo/{{catalogo.catalogo}}';">
+                        <button class="btn-descargar-catalogo_producto btn btn-lg" target="new" onclick="JavaScript:location.href='{{base_url()}}uploads/catalogo/{{catalogo.catalogo}}';">
                             <i class="fa fa-download font-withe" ></i>
                             DESCARGAR
                         </button>
                     </div>
+                    <p style=" font-size: 17px;padding: 11px 0px 0px 8px;">{{catalogo.nombre}}</p>
                 </div>
             </div>
             <hr>
@@ -25,3 +26,12 @@
         {% endfor %}
     </div>
 </div>
+
+<style>
+  .btn-descargar-catalogo_producto
+  {
+    background-color: #FF7F27;
+    color: white;
+    font-size: 13px;
+}
+</style>

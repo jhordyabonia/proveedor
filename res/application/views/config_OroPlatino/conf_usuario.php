@@ -120,7 +120,7 @@
 							</div>
 
 							<div class="input-group pad-left3 col-xs-12 col-md-8 col-lg-8">
-							  <label for="">Contraseña Actual</label>
+							  <label for="">Contraseña</label>
 							</div>
 
 							<!-- Campo 2 -->
@@ -136,7 +136,23 @@
 							  	<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
 							  </span>
 							</div>
-
+                            <script>
+                                function cambiar_clave_f()
+                                {
+                                    document.getElementById('cambiar_clave_link').style.display='none';
+                                    document.getElementById('cambiar_clave').style.display='';
+                                    document.getElementById('password').required=true;
+                                    document.getElementById('password2').required=true;
+                                 }
+                             </script>
+							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">
+								<a id="cambiar_clave_link" href="JavaScript:cambiar_clave_f();">
+									<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
+									<p>Cambiar Contraseña</p> 
+								</a>
+							</div>
+                            
+<div id="cambiar_clave" style="display:none">
 							<div class="input-group pad-left3 col-xs-12 col-md-8 col-lg-8">
 							  <label for="">Nueva Contraseña</label>
 							</div>
@@ -145,7 +161,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <input required type="password" class="form-control" id="password" name="password" onclick="JavaScript:limpiar(this);"
+							  <input type="password" class="form-control" id="password" name="password" onclick="JavaScript:limpiar(this);"
 								onchange="JavaScript:verificar_igualdad(document.getElementById('password2'),this);verificar_largo(this,6);verificar_caracteres(this,' áéíóúñ');" 
 								class="input-style"  placeholder="Nueva contraseña">
 
@@ -172,7 +188,7 @@
 							  	<span class="ico-gene glyphicon glyphicon-asterisk"></span>
 							  </span>
 
-							  <input required type="password" class="form-control" name="password2" id="password2" placeholder="Confirmar nueva contraseña"
+							  <input type="password" class="form-control" name="password2" id="password2" placeholder="Confirmar nueva contraseña"
 								onclick="JavaScript:limpiar(this);"  ondblclick="necessary"
 				  				onchange="JavaScript:verificar_igualdad(this,document.getElementById('password'))">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
@@ -187,7 +203,7 @@
 							<div id="parent_msj_err_password2" style="display:none" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
 							  <p class="text_errors" id="msj_err_password2"></p>
 							</div>
-
+</div><!-- cambiar_clave -->
 							<!-- Campo 7 -->
 							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">
 								<button class="btn btn-guardar" type="submit">

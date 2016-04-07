@@ -39,6 +39,7 @@ class Empresa extends CI_Controller
     }
     public function inicio($id)
     {
+        $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id,'refresh');}
@@ -54,14 +55,20 @@ class Empresa extends CI_Controller
         $datos['solicitudes']           = $this->solicitud->get_all(array('empresa' => $id));
         #$filtrado=$this->filtro_categoria($datos['productos']);
         #$productos=$filtrado['productos'];
+        $top=2000;#limite temporal
         $datos['destacados'] = array();
-        foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value) {
+        foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value)
+         {
+             $top-=1;
             $datos['destacados'][] = $this->cargar_producto($this->producto->get($value));
         }
         $tmp_productos = array();
         foreach ($datos['productos'] as $key => $value) {
             if ($this->duplicado($datos['destacados'], $value)) {continue;}
             $tmp_productos[] = $this->cargar_producto($value);
+            $datos['tag'].=$value->nombre.",";
+            if($top<0)break;
+            $top-=1;
         }
         $datos['productos'] = $tmp_productos;
         $tmp                = explode('|', $datos['empresa']->imagenes);
@@ -85,12 +92,14 @@ class Empresa extends CI_Controller
             
             if (!$datos['empresa']->banners) {$datos['empresa']->banners = '01_Registrese43.png,03_solicite2.png,02_publique2.png';}
             $datos['empresa']->banners=explode(',', $datos['empresa']->banners);      
-            $datos['tags']=explode(',', $datos['empresa']->productos_prinsipales);      
+            $datos['tag'].=','.$datos['empresa']->productos_prinsipales;      
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_', $datos);
             
             $this->popup_captura_solicitud(42);
+            $datos['tag']=explode(',',$datos['tag']);
             $this->twiggy->display('empresa\inicio_movil', $datos);
+            $this->load->view('template/footer');
         }else
         {
             $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
@@ -113,6 +122,7 @@ class Empresa extends CI_Controller
 
     public function catalogo_producto($id, $page=0,$filtro = 0,$tipo_filtro=0)
     {
+        $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id_empresa,'refresh');}
@@ -216,7 +226,9 @@ class Empresa extends CI_Controller
             // print_r($datos);
             
             $this->popup_captura_solicitud(42);
+            $datos['tag']=explode(',',$datos['tag']);
             $this->twiggy->display('empresa\catalogo_movil', $datos);
+            $this->load->view('template/footer');
         }else
         {
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -228,6 +240,7 @@ class Empresa extends CI_Controller
     }
     public function cotizaciones_requeridas($id, $page=0)
     {
+        $datos['logued']=$this->session->userdata('is_logued_in');
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa,'refresh');}
 
         $datos['empresa']               = $this->empresa->get($id);
@@ -299,6 +312,7 @@ class Empresa extends CI_Controller
     }
     public function nosotros($id)
     {
+        $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
@@ -328,8 +342,9 @@ class Empresa extends CI_Controller
            # Vista movil
            
             $this->popup_captura_solicitud(42);
-            
-           $this->twiggy->display('empresa/nosotros_movil', $datos);
+            $datos['tag']=explode(',',$datos['tag']);           
+            $this->twiggy->display('empresa/nosotros_movil', $datos);
+            $this->load->view('template/footer');
         }else
         {
 
@@ -351,6 +366,7 @@ class Empresa extends CI_Controller
 
     public function contacto($id)
     {
+        $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa,'refresh');}
@@ -378,7 +394,9 @@ class Empresa extends CI_Controller
         {
             #Vistas Mobiles
             $this->load->view('registro/funcionalidades_');
+            $datos['tag']=explode(',',$datos['tag']);
             $this->twiggy->display('empresa\contacto_movil', $datos);
+            $this->load->view('template/footer');
         }else
         {
             $this->load->view('template/head', array(
@@ -398,6 +416,7 @@ class Empresa extends CI_Controller
 
     public function descargar_catalogo($id)
     {
+        $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
@@ -428,8 +447,9 @@ class Empresa extends CI_Controller
         {
             #vistas mobiles
             $this->popup_captura_solicitud(42);
-            
+            $datos['tag']=explode(',',$datos['tag']);
             $this->twiggy->display('empresa\descargar_catalogo_movil', $datos);
+            $this->load->view('template/footer');
         }else
         {
             $this->load->view('template/head', array('titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre));

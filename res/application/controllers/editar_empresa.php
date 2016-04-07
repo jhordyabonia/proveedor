@@ -102,7 +102,10 @@ class Editar_empresa extends CI_Controller {
 	  {
               $datos['usuario']=$this->input->post('usuario');
               $datos['email']=$this->input->post('email');
-              $datos['password']=md5($this->input->post('password'));
+              $password=$this->input->post('password');
+              
+              if($password)
+                $datos['password']=md5($password);
               #$usuario['password2']=$this->input->post('password2');
               #echo "<PRE>";
               #print_r($datos);

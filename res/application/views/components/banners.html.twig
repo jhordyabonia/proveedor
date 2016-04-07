@@ -3,9 +3,11 @@
         <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 {% for banner in empresa.banners %}
-                    <div class="banner item {% if loop.first %}active{% endif %}"> 
-                        <img src="{{base_url()}}uploads/banners/{{banner}}">
-                    </div>
+                    {% if not (banner =='') %}
+                        <div class="banner item {% if loop.first %}active{% endif %}"> 
+                            <img class="banners-img" src="{{base_url()}}uploads/banners/{{banner}}">
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div><!-- /.carousel-inner -->
         </div>
