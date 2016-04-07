@@ -32,7 +32,11 @@
                             Precio:
                         </span>
                         <p class="font-naranja inline">
-                            {{ producto.precio_unidad }}
+                            {% if producto.precio_unidad == "A convenir" %}
+                                {{ producto.precio_unidad}}
+                            {% else %}
+                                ${{ producto.precio_unidad|number_format(0, ',', '.')}}
+                            {% endif %}
                         </p>
                     </div>
                     <div>
