@@ -105,7 +105,9 @@
 									<a href="mailto:soporte@proveedor.com.co?subject=Contacto &"><p class="texto_links2">Contacta con nosotros</p></a>
 								</div>
 								<div class="col-md-12">
-									<a href="mailto:soporte@proveedor.com.co?subject=quiero trabajar con Proveedor.com.co &"><p class="texto_links2">Trabaja con nosotros</p></a>
+									<a href="http://tienda.proveedor.com.co/prensa-menciones/">
+										<p class="texto_links2">Prensa / Menciones</p>
+									</a>
 								</div>
 							</div>
 						</div>
