@@ -5,7 +5,7 @@
           <!-- cada item necesita de la imagen miniatura del video y el video como tal en la etiqueta img va la imagen https://i.ytimg.com/vi/AQUI_ID/hqdefault.jpg y en la etiqueta a atributo href va el link del video -->
            {% for video in videos %}               
              <div>            
-                   <a class="swipebox-video" rel="gallery-videos" href="https://www.youtube.com/embed/{{video}}">
+                   <a class="swipebox-video" rel="gallery-videos" href="https://www.youtube.com/watch?v={{video}}">
                         <div class="youtube">
                             {# <!-- <img src="https://i.ytimg.com/vi/{{video}}/hqdefault.jpg" alt="">--> #}
                              <img src="https://img.youtube.com/vi/{{video}}/0.jpg" alt="">
