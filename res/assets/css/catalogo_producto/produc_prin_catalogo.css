@@ -1,3 +1,9 @@
+.well-social{
+  margin-top: 15px;
+}
+.descargar-social{
+    padding-top: 6px;
+}
 .icon_catalogo
 {
     font-size: 100px!important;
@@ -100,7 +106,7 @@ a
     background-color: #fff;
 }
 .text_producPri{
-    margin-top: 23px;
+    margin-top: 15px;
     font-size: 24px;
 }
 .ico_solicitar{

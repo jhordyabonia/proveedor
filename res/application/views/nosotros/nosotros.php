@@ -4,7 +4,7 @@
 
 <div class="contenedor_nuestra_empresa">
 	<div class="nuestra_empresa col-md-12">
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<ul class="list-title">
 				<li>
 					<ul class="active list-title">
@@ -13,15 +13,17 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-6 well-social">
-			<p class="pull-right label-share">
-				Compartir Nosotros en redes
-			</p>
-		</div>
-		<div class="col-md-2 pull-right well-social">
-			<div class="row">
-				<div class="col-md-12 share-well">
-					<?php echo form_buttons_socials('share-buttons') ?>
+		<div class="col-md-6">
+			<div class="col-md-7 well-social">
+				<p class="pull-right label-share">
+					Compartir Nosotros en redes
+				</p>
+			</div>
+			<div class="col-md-5 pull-right well-social">
+				<div class="row">
+					<div class="col-md-12 share-well">
+						<?php echo form_buttons_socials('share-buttons') ?>
+					</div>
 				</div>
 			</div>
 		</div>

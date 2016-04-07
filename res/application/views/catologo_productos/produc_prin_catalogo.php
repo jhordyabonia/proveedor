@@ -13,16 +13,17 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="col-md-4  well-social">
-		<p class="pull-right label-share">
-			Compartir catálogo en redes
-		</p>
-	</div>
-	<div class="col-md-2 pull-right well-social">
-		<div class="row">
-			<div class="col-md-12 share-well">
-				<?php echo form_buttons_socials('share-buttons') ?>
+	<div class="col-md-6 well-social">
+		<div class="col-md-8">
+			<p class="pull-right label-share">
+				Compartir catálogo en redes
+			</p>
+		</div>
+		<div class="col-md-4 pull-right">
+			<div class="row">
+				<div class="col-md-12 share-well">
+					<?php echo form_buttons_socials('share-buttons') ?>
+				</div>
 			</div>
 		</div>
 	</div>
