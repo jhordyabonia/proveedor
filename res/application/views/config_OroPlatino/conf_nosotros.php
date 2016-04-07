@@ -66,7 +66,7 @@
 						<p class="text-nosotros">Introduzca la Descripción, la Mision, y la Visión de la empresa.</p>
 						<div class="formulario-nosotros">
 							<h3 style="margin-bottom: 4px;"><span class="ico-edi-nosotros glyphicon glyphicon-pencil"></span>Nuestra Empresa</h3>
-							<textarea class="form-control" rows="7" name="nosotros" value="" placeholder="Ingrese la descripción de la empresa" style="border-radius: 0;resize: none;"><?=$empresa->descripcion?></textarea>
+							<textarea onchange="NO_SAVE=true;" onclick="no_save()" class="form-control" rows="7" name="nosotros" value="<?=set_value('nosotros')?>" placeholder="Ingrese la descripción de la empresa" style="border-radius: 0;resize: none;"><?=set_value('nosotros')|$empresa->descripcion?></textarea>
 							<div class="conten-pala-but">
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
 								<!-- Campo validacion -->
@@ -79,7 +79,7 @@
 								</button>
 							</div>
 							<h3 style="margin-top: 0px;margin-bottom: 4px;"><span class="ico-edi-nosotros glyphicon glyphicon-pencil"></span>Misión</h3>
-							<textarea class="form-control" rows="7" name="mision" value="" placeholder="Ingrese la Misión de la empresa" style="border-radius: 0;resize: none;"><?=$empresa->mision?></textarea>
+							<textarea onchange="NO_SAVE=true;" onclick="no_save()" class="form-control" rows="7" name="mision" value="<?=set_value('mision')?>" placeholder="Ingrese la Misión de la empresa" style="border-radius: 0;resize: none;"><?=set_value('mision')|$empresa->mision?></textarea>
 							<div class="conten-pala-but">
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
 								<!-- Campo validacion -->
@@ -92,7 +92,7 @@
 								</button>
 							</div>
 							<h3 style="margin-top: 0px;margin-bottom: 4px;"><span class="ico-edi-nosotros glyphicon glyphicon-pencil"></span>Visión</h3>
-							<textarea class="form-control" rows="7" name="vision" value="" placeholder="Ingrese la Visión de la empresa" style="border-radius: 0;resize: none;"><?=$empresa->vision?></textarea>
+							<textarea onchange="NO_SAVE=true;" onclick="no_save()" class="form-control" rows="7" name="vision" value="<?=set_value('vision')?>" placeholder="Ingrese la Visión de la empresa" style="border-radius: 0;resize: none;"><?=set_value('vision')|$empresa->vision?></textarea>
 							<div class="conten-pala-but" style="margin-bottom: 20px;">
 								<p class="text-pal-max"><strong>5000</strong> palabras maximo</p>
 								<!-- Campo validacion -->
@@ -113,3 +113,11 @@
 		</div>
 	</div>
 </div>
+<script>
+    NO_SAVE=<?php if(set_value('vision')|set_value('mision')|set_value('nosotros'))echo 'true';else echo 'false';?>;
+    function no_save()
+    {
+       // if(NO_SAVE)
+       // alert('Tienes campos sin guardar!');        
+    }
+</script>

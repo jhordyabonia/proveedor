@@ -1,18 +1,27 @@
-<div class="row">
-    <div class="col-xs-12">
-        <h3 class="titulos"><strong>Galería de Imágenes</strong></h3>
-        <div class="multiple-items slider-imagenes">
-        {% set count=0 %}
-             {% for imagen in imagenes %}
-              <!-- Cada item debe tener dos imagenes, una grande y una pequeña, asi la pagina va a cargar mas rapido, en la etiqueta a va la grande, en la img la pequeña. 80x50 considero es lo recomendado. -->
-               <a rel="galery-productos" href="{{base_url()}}uploads/imagenes/{{imagen}}" class="swipebox">
-                <div class="content-slider">               
-                   <img class="imagen" src="{{base_url()}}uploads/resize/SOP/imagenes/{{imagen}}" alt="{{titulos[count]}}">                        
-                </div>
-                   <p class="elipse">{{titulos[count]}}</p>{% set count=count+1 %}
-                </a>
-                <!-- aqui termina un item --> 
-             {% endfor %}           
+{% set able =false %}
+{% for imagen in imagenes %}
+{% if not (imagen =='') %}{% set able =true %}{% endif %}
+{% endfor %}  
+
+{% if able %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="titulos"><strong>Galería de Imágenes.</strong></h3>
+            <div class="multiple-items slider-imagenes">
+            {% set count=0 %}
+                {% for imagen in imagenes %}
+                    {% if not (imagen =='') %}
+                    <!-- Cada item debe tener dos imagenes, una grande y una pequeña, asi la pagina va a cargar mas rapido, en la etiqueta a va la grande, en la img la pequeña. 80x50 considero es lo recomendado. -->
+                    <a rel="galery-productos" href="{{base_url()}}uploads/imagenes/{{imagen}}" class="swipebox">
+                        <div class="content-slider">               
+                        <img class="imagen" src="{{base_url()}}uploads/resize/SOP/imagenes/{{imagen}}" alt="{{titulos[count]}}">                        
+                        </div>
+                        <p class="elipse">{{titulos[count]}}</p>{% set count=count+1 %}
+                        </a>
+                        <!-- aqui termina un item --> 
+                    {% endif %}   
+                {% endfor %}           
+            </div>
         </div>
-    </div>
-</div>
+    </div>   
+{% endif %}   

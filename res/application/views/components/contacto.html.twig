@@ -1,36 +1,47 @@
 <div class="row">
 	<div class="col-xs-12 contacto">
 		<p class="ciudad"><i class="fa fa-map-marker font-naranja ico_puntero"></i>{{ usuario.ciudad|title }}</p>
-		<div class="col-xs-12 cont_titulo">
+		
+        {% if not (usuario.direccion=='') %}
+        <div class="col-xs-12 cont_titulo">
 			<p class="titulo"><i class="font-naranja icono glyphicon glyphicon-home"></i>Dirección</p>
 		</div>
 		<div class="col-xs-12 cont_texto">
 			<p class="texto">{{usuario.direccion}}</p> 
 		</div>
+        {% endif %}
+        {% if not (usuario.telefono=='') %}
 		<div class="col-xs-12 cont_titulo">
 			<p class="titulo"><i class="font-naranja icono fa fa-phone"></i>Teléfono</p>
 		</div>
 		<div class="col-xs-12 cont_texto">
 			<p class="texto">{{usuario.telefono}}</p> 
 		</div>
+        {% endif %}
+        {% if not (usuario.web=='') %}
 		<div class="col-xs-12 cont_titulo">
 			<p class="titulo"><i class="font-naranja icono fa fa-globe"></i>Página Web</p>
 		</div>
 		<div class="col-xs-12 cont_texto">
 			<p class="texto"><a href="{{usuario.web}}" class="url"> {{usuario.web}}</a></p>
 		</div>
+        {% endif %}
+        {% if not (usuario.facebook=='') %}
 		<div class="col-xs-12 cont_titulo">
 			<p class="titulo"><i class="font-naranja icono fa fa-facebook-square"></i>Facebook</p>
 		</div>
 		<div class="col-xs-12 cont_texto">
 			<p class="texto"><a href{{usuario.facebook}}" class="url">{{usuario.facebook}}</a></p>
 		</div>
+        {% endif %}
+        {% if not (usuario.twitter=='') %}
 		<div class="col-xs-12 cont_titulo">
 			<p class="titulo"><i class="font-naranja icono fa fa-twitter-square"></i>Twitter</p>
 		</div>
 		<div class="col-xs-12 cont_texto">
 			<p class="texto"><a href="{{usuario.twitter}}" class="url">{{usuario.twitter}}</a></p>
 		</div>
+        {% endif %}
 	</div>
 	<!-- /.col-xs-12 -->
 </div>

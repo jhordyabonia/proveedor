@@ -166,7 +166,7 @@
 									  	<?=$key+1?><!-- Url:<br>-->
 									  </span>
 									  <input type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca titulo del video" style="border-radius: 0;">
-									<a id="a_<?=$key?>"  href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a id="a_<?=$key?>"  style="display:none" href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 									</div>
 									<!--
 									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
@@ -184,6 +184,7 @@
 									videos_archivos=new Array();
 									function borrar_videos(id)
 									{
+                                        document.getElementById('a_'+id).style.display='none';
 										tmp_videos=document.getElementsByName('videos[]');
 										tmp_videos[id].value='';
 										i=0;

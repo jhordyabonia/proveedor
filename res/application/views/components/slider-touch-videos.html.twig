@@ -1,18 +1,26 @@
-<div class="row">
-    <div class="col-xs-12">
-        <h3 class="titulos"><strong>Videos de la Empresa</strong></h3>
-        <div class="multiple-items">
-          <!-- cada item necesita de la imagen miniatura del video y el video como tal en la etiqueta img va la imagen https://i.ytimg.com/vi/AQUI_ID/hqdefault.jpg y en la etiqueta a atributo href va el link del video -->
-           {% for video in videos %}               
-             <div>            
-                   <a class="swipebox-video" rel="gallery-videos" href="https://www.youtube.com/embed/{{video}}">
-                        <div class="youtube">
-                            {# <!-- <img src="https://i.ytimg.com/vi/{{video}}/hqdefault.jpg" alt="">--> #}
-                             <img src="https://img.youtube.com/vi/{{video}}/0.jpg" alt="">
+{% set able =false %}
+{% for video in videos %}
+{% if not (video =='') %}{% set able =true %}{% endif %}
+{% endfor %} 
+{% if able %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="titulos"><strong>Videos de la Empresa</strong></h3>
+            <div class="multiple-items">
+            <!-- cada item necesita de la imagen miniatura del video y el video como tal en la etiqueta img va la imagen https://i.ytimg.com/vi/AQUI_ID/hqdefault.jpg y en la etiqueta a atributo href va el link del video -->
+            {% for video in videos %}  
+                    {% if not (video =='') %}             
+                        <div>            
+                            <a class="swipebox-video" rel="gallery-videos" href="  https://www.youtube.com/watch?v={{video}}">
+                                    <div class="youtube">
+                                        {# <!-- <img src="https://i.ytimg.com/vi/{{video}}/hqdefault.jpg" alt="">--> #}
+                                        <img src="https://img.youtube.com/vi/{{video}}/0.jpg" alt="">
+                                    </div>
+                                </a>
                         </div>
-                    </a>
-              </div>
-            {% endfor %}  
+                    {% endif %} 
+                {% endfor %}  
+            </div>
         </div>
     </div>
-</div>
+{% endif %}

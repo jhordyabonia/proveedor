@@ -157,7 +157,7 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-requerido2 glyphicon glyphicon-asterisk"></span>
 							  </span>
-							  <span class="palabras-maxima"><strong>5000</strong> palabras maimo</span>
+							  <span class="palabras-maxima"><strong>5000</strong> palabras máximo</span>
 							</div>
 
 							<!-- Campo validacion -->
@@ -181,7 +181,7 @@
 								</div>								
 							</div>
 							<div class="input-group inline-block style-padding5 col-xs-12 col-md-1 col-lg-1">
-								<p>(Opcional)</p>
+								<p style="padding-left: 55px;">(Opcional)</p>
 							</div>
 
 							<!-- Campo validacion -->

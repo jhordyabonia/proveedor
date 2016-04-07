@@ -255,8 +255,8 @@
 							  <span class="fiel-tramspa input-group-addon">
 							  	<span class="ico-gene glyphicon glyphicon-phone"></span>
 							  </span>
-							  <input required type="text" class="form-control" name="celular" id="celular" ondblclick="necessary"
-							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-')"
+							  <input required type="text" size="10" class="form-control" name="celular" id="celular" ondblclick="necessary"
+							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-'); limit_size(this,10);"
 							  value="<?=$usuario->celular?>" placeholder="Teléfono celular">
 							  <span class="fiel-tramspa input-group-addon conten-ico-vali">
 							  	<i id="err_celular"></i>

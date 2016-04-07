@@ -55,7 +55,7 @@ class Empresa extends CI_Controller
         $datos['solicitudes']           = $this->solicitud->get_all(array('empresa' => $id));
         #$filtrado=$this->filtro_categoria($datos['productos']);
         #$productos=$filtrado['productos'];
-        $top=20;#limite temporal
+        $top=2000;#limite temporal
         $datos['destacados'] = array();
         foreach (explode(',', $datos['empresa']->productos_destacados) as $key => $value)
          {

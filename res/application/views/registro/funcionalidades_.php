@@ -471,15 +471,16 @@
                         document.getElementById('ubicacion2').style.display='none';
                         document.getElementById('provincia').style.display='none';
                         document.getElementById('municipio').style.display='none';
+                        document.getElementById('provincia').value=33;
+                        cambio_departamento(33);
+                        
                         if(active_validation)
                         {
                             document.getElementById('required_municipio').style.display='none';
                             document.getElementById('required_provincia').style.display='none';
                         }
                                             
-                        document.getElementById('provincia').value=33;
-                        cambio_departamento(33);
-                    }
+                    }cambio_pais();
 
                     function cambio_departamento(id)
                     {
@@ -568,14 +569,13 @@
                     
 /* funcionalidad de msj en popup */
 	<?php 
-		$nit = $this->uri->segment(4); 
 		$reffer= "none";
 	  if($this->session->flashdata('reffer')) 
 	  	{	$reffer=$this->session->flashdata('reffer');	}
 	  ?>
       
  	   reffer= "<?=$reffer?>";
-	     document.onload= start();
+	     //document.onload= start();
          var mensajes_abbled=false;
 	     function start()
 	       {
@@ -627,6 +627,11 @@
             function registro(obj)
             {
                 launch(obj)
+            }
+            function limit_size(obj,size)
+            {
+                if(obj.value.length>size)
+                    obj.value=obj.value.substr(0,size);
             }
 
                                              

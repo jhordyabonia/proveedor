@@ -48,7 +48,7 @@
 	function ordenar()
 	{
 		out="";
-		for(i=0;i<size+1;i++)
+		for(i=0;i<size;i++)
 		{
 			if(stack[i]==0)
 				out+=",";
@@ -197,12 +197,12 @@
 					<div class="titles">
 						<h3 class="text-title-up">Seleccione el orden en que quiere sean mostrados su productos</h3>
 						<div class="conten-paso1">
-							<p class="agreagar-text">Permita que sus produtos estrella, de mayor demanda sean los primeros en mostrase</p> <p class="ver-ejm">- Ver ejemplo</p>
+							<p class="agreagar-text">Permita que sus produtos estrella, de mayor demanda sean los primeros en mostrase</p>
 							<p class="medidas-recom">Puede seleccionar los primeros 20 productos que se mostran en su catálogo. </p>
 							<div id="div_destacados">
 								<?php if(count($destacados)):?>
 									<?php foreach ($destacados as $key => $destacado):?>
-										<?php if(is_null($destacado->id)):?>
+                                    <?php if(is_null($destacado->id)):?>
 									  	<div class="img-banner">
 											<div class="subir-img">
 												<span class="ico-up glyphicon glyphicon-open"></span>
