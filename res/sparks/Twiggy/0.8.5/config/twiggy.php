@@ -215,7 +215,7 @@ $config['twiggy']['register_functions'] = array
 $config['twiggy']['register_filters'] = array
 (
     // Functions (filters) from the inflector_helper.php
-    'singular', 'plural', 'camelize', 'underscore', 'humanize'
+    'singular', 'plural', 'camelize', 'underscore', 'humanize', 'number_format'
 );
 /*
 |--------------------------------------------------------------------------
