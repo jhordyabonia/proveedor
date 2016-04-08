@@ -1026,10 +1026,9 @@
   </script>
 
   <script type="text/javascript"> 
-        function method()
-        {
+        <?php if($avanzada):?>
             document.getElementById('publi_completa_link').click();
-        }
+        <?php endif;?>
   </script>
   <div data-toggle="modal" data-target="#confirmar_producto" id="launch_popup_ready">
     </div>

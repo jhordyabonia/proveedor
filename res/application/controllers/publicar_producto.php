@@ -49,11 +49,16 @@ class Publicar_producto extends CI_Controller {
 		redirect('/tablero_usuario');
 		return FALSE;
 	}
-	public function index() 
+    public function avanzada()
+    {
+        $this->index(TRUE);
+    }
+	public function index($avanzada=FALSE) 
 	{
 
 		$this->verificar_logged();
 
+		$data['avanzada']=$avanzada;
 		$data['categoria'] = $this->categoria->get_all();
 		$data['tipos_empresas'] = $this->tipo_empresa->get_all();
 		$data['departamentos'] = $this->departamento->get_all();

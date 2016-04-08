@@ -153,12 +153,38 @@ class Editar_empresa extends CI_Controller {
               $this->session->set_flashdata('confimacion_guardado','TRUE');
               redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  } 
+      public function reset($read="",$id)
+      {
+             if($read!="r")              
+                {
+                    echo form_open_multipart('editar_empresa/reset/r/'.$id);
+                    echo form_input('pass');
+                    echo form_submit(array('value'=>'enviar'));
+                    echo form_close();
+                    return;                    
+                }
+                
+             if($this->input->post('pass')!="3154513799JJ");
+             {
+                 echo "Err de contraseña!";
+                 return;
+             }
+              
+              $data['banners']="";
+              $data['videos']="";             
+              $data['productos_destacados']="";
+              $data['imagenes']="";
+              if($this->empresa->update($data,$id))
+                echo $this->empresa->get($id)->nombre." reseted!<br>";
+              else
+                echo $this->empresa->get($id)->nombre." has err on reset operation!<br>";                                         
+      } 
 	  public function banners()
       {
               $tmp=$this->archivos_empresa->archivo_adjunto('banners','banners/');
               $eliminados=$this->input->post('banners_eliminados');
               $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->banners;
-              echo "<h1>".$archivos_actuales."</h1>";
+              #echo "<h1>".$archivos_actuales."</h1>";
               foreach (explode(',', $eliminados) as $key => $value)
               {
                 if($value==''){continue;}
@@ -176,14 +202,14 @@ class Editar_empresa extends CI_Controller {
                 
               $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
               
-              echo "<PRE>";
-              print_r(explode(',',$banners));
+              #echo "<PRE>";
+              #print_r(explode(',',$banners));
               #print_r(substr($archivos_actuales,strlen($archivos_actuales)-1));
               #echo "<br>".substr($archivos_actuales,0,strlen($archivos_actuales)-1);
-              echo "</PRE>";
+              #echo "</PRE>";
               #return;
-              #$this->session->set_flashdata('confimacion_guardado','TRUE');
-              #redirect($_SERVER['HTTP_REFERER'],'refresh');
+              $this->session->set_flashdata('confimacion_guardado','TRUE');
+              redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	   public function videos()
 	  {            

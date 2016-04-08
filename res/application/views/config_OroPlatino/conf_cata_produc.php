@@ -60,7 +60,7 @@
 					<div class="titles">
 						<h3 class="text-title-pub">Publicar Producto o Servicio</h3>
 						<ul class="list-item-cata">
-							<li class="item-cata" onclick="location.href='<?=base_url()?>publicar_producto'">
+							<li class="item-cata" onclick="location.href='<?=base_url()?>publicar_producto/avanzada'">
 								<span class="glyphicon glyphicon-open"></span>
 								Publicacion Completa
 							</li>
