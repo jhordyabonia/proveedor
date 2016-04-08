@@ -147,8 +147,8 @@
                              </script>
 							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">
 								<a id="cambiar_clave_link" href="JavaScript:cambiar_clave_f();">
-									<span class="ico-requerido glyphicon glyphicon-asterisk"></span>
-									<p>Cambiar Contraseña</p> 
+									<p>Cambiar Contraseña <span style="padding-left:15px" class="ico-requerido glyphicon glyphicon-chevron-down"></span>
+									</p> 
 								</a>
 							</div>
                             

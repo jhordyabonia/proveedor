@@ -63,7 +63,7 @@
 					<div class="titles">
 						<h3 class="text-title-up">1. Subir imagenes centrales (Banners)</h3>
 						<div class="conten-paso1">
-							<p class="agreagar-text">Agregar avisos centrales a su página de inicio.</p> <p class="ver-ejm">- Ver ejemplo</p>
+							<p class="agreagar-text">Agregar avisos centrales a su página de inicio.</p> <p class="ver-ejm"><!-- - Ver ejemplo --></p>
 							<p class="medidas-recom">Medidas recomendadas 700 pixeles por 600px pixeles</p>
 							<div class="img-banner">
 								<div class="subir-img">
@@ -74,7 +74,7 @@
 									</div>
 								</div>
 								<div id="div_img1" class="subido-img" style="display:<?php if($banners[0]==''){ echo 'none';}?>">
-									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?php if($banners[0]==''){ echo '11.jpg';}else{echo $banners[0];} ?>">
+									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[0]?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img1','<?=$banners[0]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
@@ -88,7 +88,7 @@
 									</div>
 								</div>
 								<div id="div_img2" class="subido-img" style="display:<?php if($banners[1]==''){ echo 'none';}?>">
-									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/banners/<?php if($banners[1]==''){ echo '11.jpg';}else{echo $banners[1];} ?>">
+									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[1]?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img2','<?=$banners[1]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
@@ -102,25 +102,33 @@
 									</div>
 								</div>
 								<div id="div_img3" class="subido-img" style="display:<?php if($banners[2]==''){ echo 'none';}?>">
-									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/banners/<?php if($banners[2]==''){ echo '11.jpg';}else{echo $banners[2];} ?>">
+									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[2]?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img3','<?=$banners[2]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
 							</div>
 
 							<script type="text/javascript">
+                                function contents(need,stack)
+                                {
+                                    return !stack.replace(need,'')==stack;                                    
+                                } 
 								function ocultar_div(id,img)
 								{
 									document.getElementById(id).style.display='none';
-									document.getElementById('banners_eliminados').value+=img+',';
-									console.log(id);
+									if(!contents(img,document.getElementById('banners_eliminados').value))
+									    document.getElementById('banners_eliminados').value+=img+',';
+									console.log(img);
+                                    console.log(document.getElementById('banners_eliminados').value);                                  
 								}
 								function mostrar_div(id,img)
 								{
 									document.getElementById(id).style.display='';
-									if(img!=0)
-										document.getElementById('banners_eliminados').value+=img+',';
-									console.log(id);
+                                    if(img!=0)
+									    if(!contents(img,document.getElementById('banners_eliminados').value))
+										    document.getElementById('banners_eliminados').value+=img+',';
+									console.log(img);
+                                    console.log(document.getElementById('banners_eliminados').value);
 								}
 								function load_new_logo(id)
 			                    {
@@ -153,7 +161,7 @@
 					<div class="titles">
 						<h3 class="text-title-up">2. Subir Videos de Youtube <i class="ico-youtube fa fa-youtube"></i></h3>
 						<div class="conten-paso2">
-							<p class="agreagar-text">Agregar videos de Youtube a su página de inicio.</p> <p class="ver-ejm">- Ver ejemplo</p>
+							<p class="agreagar-text">Agregar videos de Youtube a su página de inicio.</p> <p class="ver-ejm"><!-- - Ver ejemplo --></p>
 							<p class="medidas-recom">Copie las direcciones de los videos y peguelas en los campos respectivos (Maximo 20 videos)</p>
 							
 						<?=form_open_multipart(base_url().'editar_empresa/videos')?>
@@ -166,7 +174,7 @@
 									  	<?=$key+1?><!-- Url:<br>-->
 									  </span>
 									  <input type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca titulo del video" style="border-radius: 0;">
-									<a id="a_<?=$key?>"  style="display:none" href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									<a id="a_<?=$key?>"  style="display:<?php if(!$video){echo 'none';}?>" href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 									</div>
 									<!--
 									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">

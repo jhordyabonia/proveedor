@@ -154,27 +154,36 @@ class Editar_empresa extends CI_Controller {
               redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  } 
 	  public function banners()
-	  {        
+      {
+              $tmp=$this->archivos_empresa->archivo_adjunto('banners','banners/');
               $eliminados=$this->input->post('banners_eliminados');
               $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->banners;
+              echo "<h1>".$archivos_actuales."</h1>";
               foreach (explode(',', $eliminados) as $key => $value)
               {
                 if($value==''){continue;}
-                $archivos_actuales=str_replace($value.',', '', $archivos_actuales);
-                $archivos_actuales=str_replace(',,', ',', $archivos_actuales);
+                $archivos_actuales=str_replace($value, '', $archivos_actuales);
               }
-              if(substr($archivos_actuales,strlen($archivos_actuales)-1)==',')
-                {$banners=substr($archivos_actuales,1);}
-
-              $banners.=$this->archivos_empresa->archivo_adjunto('banners','banners/');
-
-              #echo "<PRE>";
-              #print_r($banners);
-              #echo "</PRE>";
-              #return;
+                           
+              $banners="";
+              foreach (explode(',',$archivos_actuales.','.$tmp) as $key => $value)
+              {
+                if($value==''){continue;}
+                $banners.=$value.',';
+              }
+              
+              $banners=substr($banners,0,strlen($banners)-1);
+                
               $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
-              $this->session->set_flashdata('confimacion_guardado','TRUE');
-              redirect($_SERVER['HTTP_REFERER'],'refresh');
+              
+              echo "<PRE>";
+              print_r(explode(',',$banners));
+              #print_r(substr($archivos_actuales,strlen($archivos_actuales)-1));
+              #echo "<br>".substr($archivos_actuales,0,strlen($archivos_actuales)-1);
+              echo "</PRE>";
+              #return;
+              #$this->session->set_flashdata('confimacion_guardado','TRUE');
+              #redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	   public function videos()
 	  {            

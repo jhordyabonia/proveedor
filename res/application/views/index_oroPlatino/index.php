@@ -220,7 +220,7 @@ $tag .= $producto->nombre . ',';?>
 			<ul class="list-title-videos">
 				<li>
 					<ul class=" active list-title">
-						<a class="texto-nuestra_empresa">Videos de Empresa</a>
+						<a class="texto-nuestra_empresa">Videos de la Empresa</a>
 					</ul>
 				</li>
 			</ul>
