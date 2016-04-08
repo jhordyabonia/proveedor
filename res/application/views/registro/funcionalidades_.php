@@ -540,7 +540,7 @@
                         }
                     }
 
-                    function decimal_point(obj)
+                    function decimal_point(obj,first)
                     {                        
                         tmp=obj.value;
                         while(tmp.indexOf('.')!=-1)
@@ -553,9 +553,13 @@
                         var i=0;
                         while(tmp.length>2)
                         {
-                            decimal[i]=tmp.substring(tmp.length-3, tmp.length);
+                            if(first)
+                                decimal[i]=tmp.substring(tmp.length-2, tmp.length);
+                            else
+                                decimal[i]=tmp.substring(tmp.length-3, tmp.length);
                             tmp=tmp.replace(decimal[i],'');
                             i++;
+                            first=false;
                         }
                         out=tmp;
                         for(a=i-1;a>=0;a--)

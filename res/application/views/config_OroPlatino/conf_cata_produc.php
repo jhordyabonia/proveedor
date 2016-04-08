@@ -197,7 +197,7 @@
 							  	<span class="input-group-addon">
 							  		$
 							  	</span>
-							  	<input type="text" class="form-control" name="precio" id="precio" onkeypress="this.value+=' ';decimal_point(this)" onchange="decimal_point(this)" placeholder="Precio">
+							  	<input type="text" class="form-control" name="precio" id="precio" onkeypress="decimal_point(this,true)" onchange="decimal_point(this,false)" placeholder="Precio">
 							  	<span class="fiel-tramspa input-group-addon">
 							  		por
 							  	</span>
