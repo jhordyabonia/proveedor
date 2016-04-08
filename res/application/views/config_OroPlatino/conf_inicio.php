@@ -169,11 +169,11 @@
 							
 							<div id="videos" class="col-xs-12 col-md-12 col-lg-12">
 								<?php $key=0; foreach (explode(',',$empresa->videos) as $key => $video):?>
-									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
+									<div class="input-group padig col-xs-12 col-md-8 col-lg-8">
 									  <span class="fiel-tramspa padi2 input-group-addon">
 									  	<?=$key+1?><!-- Url:<br>-->
 									  </span>
-									  <input type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca titulo del video" style="border-radius: 0;">
+									  <input id="v_<?=$key?>" type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca dirección del video" style="border-radius: 0;width: 74%;">
 									<a id="a_<?=$key?>"  style="display:<?php if(!$video){echo 'none';}?>" href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 									</div>
 									<!--
@@ -193,14 +193,15 @@
 									function borrar_videos(id)
 									{
                                         document.getElementById('a_'+id).style.display='none';
-										tmp_videos=document.getElementsByName('videos[]');
-										tmp_videos[id].value='';
-										i=0;
+										//tmp_videos=document.getElementsByName('videos[]');
+										//tmp_videos[id].value='';
+                                        document.getElementById('v_'+id).value='';
+										/*i=0;
 										for(i=id;i<tmp_videos.length-1;i++)
 										{
 											tmp_videos[i].value=tmp_videos[i+1].value;
 										}
-										tmp_videos[i].value='';
+										tmp_videos[i].value='';*/
 									}
 									function salvar_videos()
 									{
@@ -224,11 +225,11 @@
 										{
 											salvar_videos();
 											if(videos>=20){alert('Limite exedido.');return;}
-											DOM='<div class="input-group padig col-xs-12 col-md-5 col-lg-5">';
+											DOM='<div class="input-group padig col-xs-12 col-md-8 col-lg-8">';
 											DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
 											DOM+=++videos;
 											DOM+='</span>';
-											DOM+='<input type="text" onchange="document.getElementById('+"'a_"+videos+"'"+').style.display='+"'';"+'"  class="form-control" name="videos[]" value="" placeholder="Introduzca dirección del video" style="border-radius: 0;">';
+											DOM+='<input id="v_'+videos+'" type="text" onchange="document.getElementById('+"'a_"+videos+"'"+').style.display='+"'';"+'"  class="form-control" name="videos[]" value="" placeholder="Introduzca dirección del video" style="border-radius: 0;width: 74%;">';
 											DOM+='<a style="display:none" id="a_'+videos+'" href="JavaScript:borrar_videos('+videos+')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
 											DOM+='</div>';
 											document.getElementById('videos').innerHTML+=DOM;
