@@ -8,8 +8,14 @@
                         <div class="content-slider"> 
                             <img src="{{producto.imagenes}}" alt="" class="imagen">
                         </div>
-                          <p class="elipse nombre_producto">{{ producto.nombre }}</p>
-                          <p class="elipse precio font-naranja">{{ producto.precio_unidad}}</p>
+                            <p class="elipse nombre_producto">{{ producto.nombre }}</p>
+                            <p class="elipse precio font-naranja">
+                            {% if producto.precio_unidad == "A convenir" %}
+                                {{ producto.precio_unidad}}
+                            {% else %}
+                                ${{ producto.precio_unidad|number_format(0, ',', '.')}}
+                            {% endif %}
+                            </p>                        
                     </a>
                 </div>
             {% endfor %}
@@ -23,6 +29,7 @@
 <!-- ./row -->
 
 <style>
+/*Tengo mis dudas de estos estilos aca, TODO: Mover estos estilos al archivo adecuado *LCM */
 .banners
 {
     height: 100px;
