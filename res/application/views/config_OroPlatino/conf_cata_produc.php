@@ -236,7 +236,7 @@
 							  			<p class="text-subir-img">Subir imagenes del producto</p>
 							  		</a>
 							  		<div class="container-logo-empresa inline-block">
-							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/file.jpg">
+							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/file2.jpg">
 							  		</div>
 							  	</div>   
 							  	<div style="display:none">

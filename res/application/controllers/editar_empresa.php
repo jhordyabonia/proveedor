@@ -158,15 +158,16 @@ class Editar_empresa extends CI_Controller {
              if($read!="r")              
                 {
                     echo form_open_multipart('editar_empresa/reset/r/'.$id);
-                    echo form_input('pass');
+                    echo form_input(array('name'=>'pass','type'=>'password'));
                     echo form_submit(array('value'=>'enviar'));
                     echo form_close();
                     return;                    
                 }
                 
-             if($this->input->post('pass')!="3154513799JJ");
+            # echo $this->input->post('pass');
+             if($this->input->post('pass')!="3154513799JJ")
              {
-                 echo "Err de contraseña!";
+                 echo "Error de autenticacion!";
                  return;
              }
               
