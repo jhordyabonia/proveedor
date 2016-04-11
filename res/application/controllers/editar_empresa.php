@@ -234,32 +234,43 @@ class Editar_empresa extends CI_Controller {
               redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
 	   public function imagenes()
-	  {
-              $datos="";
-              foreach ($this->input->post('imagenes_titulos') as $key => $imagen)
-              {
-                if($imagen==''){$imagen="Imagen";}
-                 $datos.=$imagen.",";
-              }
-              $archivos=$this->archivos_empresa->archivo_adjunto('imagenes','imagenes/');
-              $eliminados=$this->input->post('eliminados');
-              $archivos_actuales=$this->empresa->get(array('usuario'=>$this->id))->imagenes;
-              $archivos_actuales=explode('|',$archivos_actuales);
-              $archivos_actuales=$archivos_actuales[1];
-              foreach (explode(',', $eliminados) as $key => $value)
-              {
-                $archivos_actuales=str_replace($value, '', $archivos_actuales);
-                $archivos_actuales=str_replace(',,', ',', $archivos_actuales);
-              }
-
-              /*
-              echo "<PRE>";
-              print_r($archivos_actuales);
-              echo "</PRE>";
-              return;
-              */
-              $datos.='|'.$archivos_actuales.$archivos;
-              $this->empresa->update(array('imagenes'=>$datos),array('usuario'=>$this->id));
+	  {       
+              $titulos=$this->input->post('titulos');
+              $imagenes_actuales=array();
+              foreach(explode(',',$this->empresa->get(array('usuario'=>$this->id))->imagenes) as $key => $imagen)
+                {
+                    if($imagen=='')continue;
+                    $tmp=explode('|',$imagen);
+                    $imagenes_actuales[]=array('imagen'=>$tmp[0],'titulo'=>$titulos[$key]);
+                }                 
+                
+              $imagenes_eliminadas=$this->input->post('imagenes_eliminadas');
+              if($imagenes_eliminadas)
+                foreach(explode(',',$imagenes_eliminadas) as $eliminada)
+                    foreach ($imagenes_actuales as $key => $imagen)
+                        if($imagen['imagen']==$eliminada)
+                              $imagenes_actuales[$key]['imagen']=NULL;
+              
+              $archivos=array();
+              foreach(explode(',',$this->archivos_empresa->archivo_adjunto('imagenes','imagenes/')) as $img)
+                if($img!='')$archivos[]=$img;
+                
+              $t=0;
+              foreach ($imagenes_actuales as $key => $imagen)
+                if($imagenes_actuales[$key]['imagen']==NULL)
+                    $imagenes_actuales[$key]['imagen']=$archivos[$t++];
+                    
+               for($a=count($imagenes_actuales);$a<count($titulos);$a++)               
+                    $imagenes_actuales[$a]=array('imagen'=>$archivos[$a],'titulo'=>$titulos[$a]);
+                             
+               foreach ($imagenes_actuales as $key => $imagen)
+                 $imagenes_actuales[$key]=implode('|',$imagen);
+               
+               $imagenes_actuales=implode(',',$imagenes_actuales);
+               
+              $this->empresa->update(array('imagenes'=>$imagenes_actuales),array('usuario'=>$this->id));
+              #echo "<center><h1><br><br>$imagenes_actuales</h1></center>";
+              #return ;
               $this->session->set_flashdata('confimacion_guardado','TRUE');
               redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }

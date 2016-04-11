@@ -71,9 +71,13 @@ class Empresa extends CI_Controller
             $top-=1;
         }
         $datos['productos'] = $tmp_productos;
-        $tmp                = explode('|', $datos['empresa']->imagenes);
-        $datos['titulos']   = explode(',', $tmp[0]);
-        $datos['imagenes']  = explode(',', $tmp[1]);
+        $tmp_imagenes=explode(',',$datos['empresa']->imagenes);
+        foreach($tmp_imagenes as $img)
+        {
+            $tmp=explode('|',$img);
+            $datos['titulos'][]=$tmp[1];
+            $datos['imagenes'][]=$tmp[0];
+        }
         $datos['videos']   = explode(',', $datos['empresa']->videos);
 
         foreach ($datos['videos'] as $key => $video)

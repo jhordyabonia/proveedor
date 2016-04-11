@@ -257,7 +257,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="content-config-inicio">
+				<div class="content-config-inicio">                    
+						<?=form_open_multipart(base_url().'editar_empresa/imagenes')?>
 					<div class="titles">
 						<h3 class="text-title-up">3. Subir imagenes de la Empresa</h3>
 						<div class="conten-paso3">
@@ -269,11 +270,11 @@
                                         <a id="link<?=$key?>";  href="javaScript:remove_img(<?=$key?>)">
                                             <span class="borrar">X</span>
                                         </a>
-                                        <a href="javaScript:document.getElementById('<?=$key?>_input').click();">
-                                            <img id="galeria<?=$key?>" alt="Subir imagen" class="img" src=<?=verificar_imagen('uploads/'.$imagen)?>>
+                                        <a href="javaScript:document.getElementById('input<?=$key?>').click();">
+                                            <img id="galeria<?=$key?>" alt="Subir imagen" class="img" src=<?=verificar_imagen('uploads/imagenes/'.$imagen)?>>
                                         </a>
-                                        <input class="titulo_img input-editing"  placeholder="Titulo de la imágen" name="tiulos[]" value="<?=$titulos[$key]?>">
-                                        <div style="display:none"><input id="<?=$key?>_input" type="file" name="imagenes[]" onchange="show_img(<?=$key?>);"></div>
+                                        <input class="titulo_img input-editing"  placeholder="Titulo de la imágen" name="titulos[]" value="<?=$titulos[$key]?>">
+                                        <div style="display:none"><input id="input<?=$key?>" type="file" name="imagenes[]" onchange="show_img(<?=$key?>);"></div>
                                      </div>
                                  <?php endforeach;?>
                                  <?php if($key<20):?>
@@ -292,11 +293,11 @@
                                     if(id.type=='change')
                                      input =id.target;
                                     else
-                                     input = document.getElementById(id+"_input");
+                                     input = document.getElementById("input"+id);
 			                        var paths = input.files;
 			                        var navegador = window.URL || window.webkitURL;
 			                        var url = navegador.createObjectURL(paths[0]);
-                                    id=input.id.substr(0,1);
+                                    id=input.id.replace('input','');
                                     var img=document.getElementById('galeria'+id);
                                     img.src= url;
                                     
@@ -309,7 +310,7 @@
                                 {                                
                                     if(document.getElementById('link'+id)!=null)return;
                                     var a = document.createElement('a');
-                                    a.href="javaScript:document.getElementById('"+id+"_input').click();";
+                                    a.href="javaScript:document.getElementById('input"+id+"').click();";
                                     a.id="link"+id;                              
                                     var h = document.createElement('h4');
                                     h.className="img-subit-titulo"
@@ -322,6 +323,7 @@
                                     h.appendChild(i);
                                     img.parentElement.parentElement.appendChild(a);
                                     img.parentElement.parentElement.className="img-content white col-md-3 col-lg-3 col-xs-3";
+                                    document.getElementById("input"+id).files="";
                                 }
                                 function add_img()
                                 {
@@ -335,7 +337,7 @@
                                     if(id < 20 )                               
                                         {div1.innerHTML=last.innerHTML;} 
                                      else
-                                        {div.className="";}
+                                        {div1.className="";}
                                     div1.align="center"; 
                                     last.innerHTML="";
                                     last.id="";
@@ -348,7 +350,7 @@
                                     span.className="borrar";
                                     
                                     var a = document.createElement('a');
-                                    a.href="javaScript:document.getElementById('"+id+"_input').click();";
+                                    a.href="javaScript:document.getElementById('input"+id+"').click();";
                                     
                                     var img = document.createElement('img');
                                     img.id="galeria"+id;
@@ -357,13 +359,13 @@
                                     var input = document.createElement('input');
                                     input.className="titulo_img input-editing";
                                     input.placeholder="Titulo de la imágen";
-                                    input.name="tiulos[]";
+                                    input.name="titulos[]";
                                                                         
                                     var div2=document.createElement('div');
                                     div2.style.display='none';
                                     
                                     var inputFile = document.createElement('input');
-                                    inputFile.id=id+"_input";
+                                    inputFile.id="input"+id;
                                     inputFile.type="file";
                                     inputFile.name="imagenes[]";                                           
                                     
@@ -377,8 +379,10 @@
                                     last.appendChild(div2);                                   
                                     
                                     doc.appendChild(div1);
+                                    
                                     inputFile.click();  
                                     inputFile.onchange=show_img;   
+                                    //remove_img(id);
                                     id_global=id;    
                                 }
                             </script>
@@ -424,6 +428,7 @@
                                     border: 3px solid white;
                                 }
                                 .black{background-color: rgb(0, 0, 0);}
+                                .white{background-color: white;}
                                 .whitesmoke{background-color: rgb(245, 245, 245);}
                                 .img
                                 {
@@ -434,7 +439,6 @@
                                 }
                             </style>
                         <!-- viejo maquetado de fijar_imagenes	
-						<?=form_open_multipart(base_url().'editar_empresa/imagenes')?>
 							
 							<script type="text/javascript">
 									imagenes=<?=count($titulos)?>;
@@ -673,17 +677,8 @@
 							  <a class="agregar-mas-videos2" href="JavaScript:agregar_images();"><i class="ico-mas fa fa-plus-circle"></i> Agregar más imagenes</a>
 							</div>
 -->
-							<!-- Campo 1 -->
-							
-
-							<!-- Campo validacion -->
-							<div class="input-group content_validacion4 col-xs-12 col-md-12 col-lg-12">
-							  <p class="text_errors"></p>
-							</div>
-
-							<!-- Campo 7 -->
 							<div class="input-group col-xs-12 col-md-6 col-lg-8">
-								<button class="btn btn-guardar-inicio2">
+								<button type="submit"class="btn btn-guardar-inicio2">
 									<i class="ico-circle fa fa-floppy-o"></i>
 									<p class="text-publicarPro">Guardar</p> 
 								</button>
