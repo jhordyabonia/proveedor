@@ -208,7 +208,7 @@
 										tmp_videos=document.getElementsByName('videos[]');
 										for(i=0;i<tmp_videos.length;i++)
 										{
-											imagenes_titulos[i]=tmp_videos[i].value;
+											videos_archivos[i]=tmp_videos[i].value;
 										}
 									}
 									function fijar_videos()
@@ -216,7 +216,7 @@
 										tmp_videos=document.getElementsByName('videos[]');
 										for(i=0;i<tmp_videos.length-1;i++)
 										{
-											tmp_videos[i].value=imagenes_titulos[i];
+											tmp_videos[i].value=videos_archivos[i];
 										}
 									}
 									function agregar_video()
@@ -271,10 +271,10 @@
                                             <span class="borrar">X</span>
                                         </a>
                                         <a href="javaScript:document.getElementById('input<?=$key?>').click();">
-                                            <img id="galeria<?=$key?>" alt="Subir imagen" class="img" src=<?=verificar_imagen('uploads/imagenes/'.$imagen)?>>
+                                            <img id="galeria<?=$key?>" class="img" src=<?=verificar_imagen('uploads/imagenes/'.$imagen)?>>
                                         </a>
                                         <input class="titulo_img input-editing"  placeholder="Titulo de la imágen" name="titulos[]" value="<?=$titulos[$key]?>">
-                                        <div style="display:none"><input id="input<?=$key?>" type="file" name="imagenes[]" onchange="show_img(<?=$key?>);"></div>
+                                        <div style="display:none"><input id="input<?=$key?>" type="file" name="imagenes[]" alt="<?=$imagen?>" onchange="show_img(<?=$key?>);"></div>
                                      </div>
                                  <?php endforeach;?>
                                  <?php if($key<20):?>
@@ -283,6 +283,8 @@
                                           <h4 class="img-subit-titulo">Subir imagen <i class="ico-up glyphicon glyphicon-open"></i> </h4>
                                         </a>
                                     </div>
+                                    <input id="imagenes_eliminadas"  name="imagenes_eliminadas" type="hidden">
+                                    
                                  <?php endif;?>
                             </div>
                             <script>
@@ -303,12 +305,15 @@
                                     
                                     img.parentElement.parentElement.className="img-content black col-md-3 col-lg-3 col-xs-3";
                                     if(document.getElementById('link'+id)!=null)
-                                    img.parentElement.parentElement.removeChild(document.getElementById('link'+id));
-                                    
+                                    img.parentElement.parentElement.removeChild(document.getElementById('link'+id));  
+                                     
+                                    if(input.alt=="")return;
+                                    document.getElementById('imagenes_eliminadas').value+=','+input.alt;
+                                    input.alt="";                                 
 	                    		}
                                 function remove_img(id)
                                 {                                
-                                    if(document.getElementById('link'+id)!=null)return;
+                                    //if(document.getElementById('link'+id)!=null)return;
                                     var a = document.createElement('a');
                                     a.href="javaScript:document.getElementById('input"+id+"').click();";
                                     a.id="link"+id;                              
@@ -323,7 +328,11 @@
                                     h.appendChild(i);
                                     img.parentElement.parentElement.appendChild(a);
                                     img.parentElement.parentElement.className="img-content white col-md-3 col-lg-3 col-xs-3";
-                                    document.getElementById("input"+id).files="";
+                                    document.getElementById("input"+id).files=null;
+                                    input = document.getElementById("input"+id);
+                                    if(input.alt=="")return;
+                                    document.getElementById('imagenes_eliminadas').value+=','+input.alt;
+                                    input.alt="";
                                 }
                                 function add_img()
                                 {

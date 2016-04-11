@@ -235,7 +235,8 @@ class Editar_empresa extends CI_Controller {
 	  }
 	   public function imagenes()
 	  {       
-              $titulos=$this->input->post('titulos');
+             $titulos=$this->input->post('titulos');
+              
               $imagenes_actuales=array();
               foreach(explode(',',$this->empresa->get(array('usuario'=>$this->id))->imagenes) as $key => $imagen)
                 {
@@ -259,18 +260,26 @@ class Editar_empresa extends CI_Controller {
               foreach ($imagenes_actuales as $key => $imagen)
                 if($imagenes_actuales[$key]['imagen']==NULL)
                     $imagenes_actuales[$key]['imagen']=$archivos[$t++];
-                    
-               for($a=count($imagenes_actuales);$a<count($titulos);$a++)               
-                    $imagenes_actuales[$a]=array('imagen'=>$archivos[$a],'titulo'=>$titulos[$a]);
-                             
-               foreach ($imagenes_actuales as $key => $imagen)
-                 $imagenes_actuales[$key]=implode('|',$imagen);
+             
+              for($a=count($imagenes_actuales);$a<=count($titulos);$a++)               
+                $imagenes_actuales[$a]=array('imagen'=>$archivos[$a],'titulo'=>$titulos[$a]);
+                                
+              foreach ($imagenes_actuales as $key => $imagen)
+                if($imagen['imagen']!='')
+                    $imagenes_actuales[$key]=implode('|',$imagen);
+                else $imagenes_actuales[$key]='';
                
-               $imagenes_actuales=implode(',',$imagenes_actuales);
+              $imagenes_actuales=implode(',',$imagenes_actuales); 
+              
+              foreach($archivos as $a)               
+                if(str_replace($a,'',$imagenes_actuales)==$imagenes_actuales)#."?$a</h1>";
+                    $imagenes_actuales.=','.$a.'|';    
+                             
+              if(str_replace('.','',$imagenes_actuales)==$imagenes_actuales)
+               $imagenes_actuales='';
                
               $this->empresa->update(array('imagenes'=>$imagenes_actuales),array('usuario'=>$this->id));
-              #echo "<center><h1><br><br>$imagenes_actuales</h1></center>";
-              #return ;
+              
               $this->session->set_flashdata('confimacion_guardado','TRUE');
               redirect($_SERVER['HTTP_REFERER'],'refresh');
 	  }
