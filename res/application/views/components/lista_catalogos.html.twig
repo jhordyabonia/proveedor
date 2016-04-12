@@ -1,13 +1,17 @@
 <div class="row">
     <div class="col-xs-12">
         {% for catalogo in catalogos %}
-            <div class="row">
+            {% if loop.length == 1 %}
+                <div class="row" style="margin-bottom: 230px;">
+            {% else %}
+                <div class="row">
+            {% endif %}
                 <div class="col-xs-4">
                      <i class="icon_catalogo fa fa-file-pdf-o" style="font-size: 97px;color: #2e6da4;"></i>
                     <!-- <img src="{{ catalogo.imagenes }}" alt="{{catalogo.nombre}}"> -->
                 </div>
                 <div class="col-xs-8">
-                    <p style=" font-size: 17px;padding: 11px 0px 0px 8px;">{{catalogo.nombre}}</p>
+                    <p style=" font-size: 17px;">{{catalogo.nombre}}</p>
                     <div>
                         <button class="btn-descargar-catalogo_producto btn btn-lg" target="new" onclick="JavaScript:location.href='{{base_url()}}uploads/catalogo/{{catalogo.catalogo}}';">
                             <i class="fa fa-download font-withe" ></i>
