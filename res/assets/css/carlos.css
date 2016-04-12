@@ -9,6 +9,9 @@
 .font-gris{
   color: #808080;
 }
+.font-black{
+  color: #000;
+}
 .color-naranja{
   background-color: #FF7F27;
   color: #FFF;
@@ -268,4 +271,12 @@ a:hover, a:focus {
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
   max-height: 180px;  
+}
+.elipse 
+{
+   white-space: nowrap; 
+   max-width: 10em; 
+   overflow: hidden;
+   text-overflow: ellipsis; 
+   /*border: 1px solid #000000;*/
 }
