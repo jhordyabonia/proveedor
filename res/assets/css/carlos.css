@@ -245,6 +245,11 @@ img.img_verificacion {
   color: #FFF;
   text-decoration: none;
 }
+.btn.focus, .btn:focus, .btn:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
 a:hover {
   color: #FFF;
   text-decoration: underline;
