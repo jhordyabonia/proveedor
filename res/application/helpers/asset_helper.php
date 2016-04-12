@@ -227,13 +227,37 @@ if ( ! function_exists('img_url'))
  */
 if ( ! function_exists('verificar_imagen'))
 {
-    function verificar_imagen($url)
+   function verificar_imagen($url)
     {
-      #$url= substr($url, stripos($url, ".co/"+4));
-      if(file_exists($url))
-            return base_url().$url;
-        else
-            return base_url()."uploads/resize/SOP/default.jpg";
+        $paths=array('imagenes/','banners/','listados/','index_carrouseles/',
+        'index_productos_principales/','index_productos_principales_mas_destacado/',
+        'pagina_producto/miniatura/','pagina_producto/visualizador/','pagina_producto/galeria/',
+        'pagina_de_empresa/');
+        #$url= substr($url, stripos($url, ".co/"+4));
+        $tmp=explode('/',$url);
+        $image= $tmp[count($tmp)-1];
+        $path= str_replace($image,'',$url);
+        
+        if($image=='')return  base_url().'uploads/resize/SOP/default.jpg';
+        
+        $out=$url;
+        if(file_exists($out)) return base_url().$out;
+        else foreach ($paths as $key => $value) 
+        {
+            $out='uploads/'.$value.$image;
+            if(file_exists($out))
+               {  return base_url().$out; }
+                
+            $out='uploads/'.$value.'resize/'.$image;
+            if(file_exists($out))
+               {  return base_url().$out; }
+                
+            $out='uploads/'.$value.'resize/SOP/'.$image;
+            if(file_exists($out))
+               {   return base_url().$out; }
+        }
+        $out=file_exists('uploads/'.$image)?'uploads/'.$image:'uploads/resize/SOP/default.jpg';
+        return base_url().$out;
     }
 }
 /**

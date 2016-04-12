@@ -35,7 +35,7 @@
                                     ?>
                                 <div class="padding-bottom col-lg-6">
                                     <div class="imagen-prin inline-block">
-                                        <img class="img-responsive img_preview_producto" src="<?=base_url()?>uploads/<?=$imagen?>">
+                                        <img class="img-responsive img_preview_producto" src="<?=verificar_imagen('uploads/'.$imagen)?>">
                                     </div>
                                     <div class="info-pro-pri inline-block">
                                         <p class="txt_nomproducto2" ><?=$producto->nombre?></p>

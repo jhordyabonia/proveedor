@@ -200,7 +200,9 @@ class Editar_empresa extends CI_Controller {
               }
               
               $banners=substr($banners,0,strlen($banners)-1);
-                
+                             
+              if(str_replace('.','',$banners)==$banners)
+               $banners='';
               $this->empresa->update(array('banners'=>$banners),array('usuario'=>$this->id));
               
               #echo "<PRE>";

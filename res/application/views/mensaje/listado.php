@@ -22,7 +22,7 @@
     border-right: 1px solid #F5F5F5;
     border-top: 1px solid rgb(185, 179, 179);
     color: #333333;
-    cursor: alias;
+    cursor: pointer;
 }
 .row1
 {

@@ -199,4 +199,8 @@ public function leer_archivos_y_directorios($ruta)
 		$this->resize_logos("SOP/logos2/",34,20);
 		$this->resize_logos("SOP/logos3/",362,630);
 	}
+    function verificar_imagen($url)
+    {
+        echo verificar_imagen($url);
+    }
 }
