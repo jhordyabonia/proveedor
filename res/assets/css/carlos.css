@@ -242,16 +242,24 @@ img.img_verificacion {
   margin-bottom: 15px;
 }
 .btn:hover {
-  color: #FFF;
+  color: #FFF !important;
+  text-decoration: none;
+}
+.btn:hover, .btn:focus {
+  color: #FFF !important;
   text-decoration: none;
 }
 .btn.focus, .btn:focus, .btn:hover {
-    color: #FFF;
+    color: #FFF !important;
     text-decoration: none;
 }
 
 a:hover {
-  color: #FFF;
+  color: #FFF !important;
+  text-decoration: underline;
+}
+a:hover, a:focus {
+  color: #FFF !important;
   text-decoration: underline;
 }
 .banners-img{
