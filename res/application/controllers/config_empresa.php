@@ -95,9 +95,17 @@ class Config_empresa extends CI_Controller {
   function inicio()
   {
     
-    $tmp=explode('|',$this->datos['empresa']->imagenes);
-    $this->datos['titulos']=explode(',',$tmp[0]);
-    $this->datos['imagenes']=explode(',',$tmp[1]);
+    $tmp_imagenes=explode(',',$this->datos['empresa']->imagenes);
+    #echo "<PRE>";
+    #print_r($tmp_imagenes);
+    #echo "<PRE>";
+    #return;
+    foreach($tmp_imagenes as $img)
+    {
+        $tmp=explode('|',$img);
+        $this->datos['titulos'][]=$tmp[1];
+        $this->datos['imagenes'][]=$tmp[0];
+    }
 
     $this->load->view('template/head',array('titulo'=>"Configuración de Inicio"));
     $this->load->view('template/javascript',$this->datos);

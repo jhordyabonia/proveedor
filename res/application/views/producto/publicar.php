@@ -79,7 +79,7 @@
                 </a>
               </li>
               <li role="presentation">
-                <a href="#publi_completa" aria-controls="publi_completa" role="tab" data-toggle="tab" 
+                <a href="#publi_completa" id="publi_completa_link" aria-controls="publi_completa" role="tab" data-toggle="tab" 
                 style="font-size: 18px;width: 185%;  text-align: center;color: #2a6496;">
                   <span class="glyphicon glyphicon-list-alt" style="font-size: 18px;"></span>
                   Publicacion Avanzada
@@ -1025,6 +1025,11 @@
     });
   </script>
 
+  <script type="text/javascript"> 
+        <?php if($avanzada):?>
+            document.getElementById('publi_completa_link').click();
+        <?php endif;?>
+  </script>
   <div data-toggle="modal" data-target="#confirmar_producto" id="launch_popup_ready">
     </div>
   <div id="ready" onload="JavaScript:ready();">

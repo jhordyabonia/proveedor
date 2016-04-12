@@ -135,9 +135,9 @@ function cambio_categoria_simple(id) {
     }
 }
 
-                    function decimal_point(obj)
+                    function decimal_point(obj,first)
                     {                        
-                        tmp=obj.value;
+                        tmp=no_num(obj.value);
                         while(tmp.indexOf('.')!=-1)
                             {tmp=tmp.replace('.','');}
 
@@ -148,9 +148,13 @@ function cambio_categoria_simple(id) {
                         var i=0;
                         while(tmp.length>2)
                         {
-                            decimal[i]=tmp.substring(tmp.length-3, tmp.length);
+                            if(first)
+                                decimal[i]=tmp.substring(tmp.length-2, tmp.length);
+                            else
+                                decimal[i]=tmp.substring(tmp.length-3, tmp.length);
                             tmp=tmp.replace(decimal[i],'');
                             i++;
+                            first=false;
                         }
                         out=tmp;
                         for(a=i-1;a>=0;a--)
@@ -161,5 +165,30 @@ function cambio_categoria_simple(id) {
 
                         obj.value=out.replace(' ','');
                     }
-
+                    function no_num(input)
+                    {
+                        for(var i=0;i<input.length;i++)                            
+                            {
+                                if(!num(input.charAt(i)))
+                                    {input=input.substr(0,i)+input.substr(i+1,input.length);i=0;}
+                            }
+                        
+                        return  input;
+                        function num(t)
+                        {
+                            if(t=='.')return true;
+                            if(t=='0') return true;
+                            if(t=='1') return true;
+                            if(t=='2') return true;
+                            if(t=='3') return true;
+                            if(t=='4') return true;
+                            if(t=='5') return true;
+                            if(t=='6') return true;
+                            if(t=='7') return true;
+                            if(t=='8') return true;
+                            if(t=='9') return true;
+                            return false;
+                         }
+                      }
+                    
 </script>

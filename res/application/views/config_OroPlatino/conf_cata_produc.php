@@ -60,7 +60,7 @@
 					<div class="titles">
 						<h3 class="text-title-pub">Publicar Producto o Servicio</h3>
 						<ul class="list-item-cata">
-							<li class="item-cata" onclick="location.href='<?=base_url()?>publicar_producto'">
+							<li class="item-cata" onclick="location.href='<?=base_url()?>publicar_producto/avanzada'">
 								<span class="glyphicon glyphicon-open"></span>
 								Publicacion Completa
 							</li>
@@ -197,7 +197,7 @@
 							  	<span class="input-group-addon">
 							  		$
 							  	</span>
-							  	<input type="text" class="form-control" name="precio" id="precio" onkeypress="this.value+=' ';decimal_point(this)" onchange="decimal_point(this)" placeholder="Precio">
+							  	<input type="text" class="form-control" name="precio" id="precio" onkeypress="decimal_point(this,true)" onchange="decimal_point(this,false)" placeholder="Precio">
 							  	<span class="fiel-tramspa input-group-addon">
 							  		por
 							  	</span>
@@ -236,7 +236,7 @@
 							  			<p class="text-subir-img">Subir imagenes del producto</p>
 							  		</a>
 							  		<div class="container-logo-empresa inline-block">
-							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/resize/logos/default.png">
+							  			<img  id="img_logo" class="logo" src="<?=base_url()?>uploads/file2.jpg">
 							  		</div>
 							  	</div>   
 							  	<div style="display:none">
