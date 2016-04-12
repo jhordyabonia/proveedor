@@ -2,17 +2,13 @@
     <div class="row banners">
         <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-
-                <div class="banner item"> 
-                    <img class="banners-img" src="http://lorempixel.com/400/200/sports/">
-                </div>
-                <div class="banner item"> 
-                    <img class="banners-img" src="http://lorempixel.com/200/200/sports/">
-                </div>
-                <div class="banner item active"> 
-                    <img class="banners-img" src="http://lorempixel.com/200/400/sports/">
-                </div>
-
+                {% for banner in empresa.banners %}
+                    {% if not (banner =='') %}
+                        <div class="banner item {% if loop.first %}active{% endif %}"> 
+                            <img class="banners-img" src="{{base_url()}}uploads/banners/{{banner}}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div><!-- /.carousel-inner -->
         </div>
     </div>
