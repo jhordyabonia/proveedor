@@ -59,4 +59,17 @@
     {# Libreria para sliders #}
     <script src="{{ assets_url() }}slick/slick/slick.min.js" ></script>
     <script src="{{js_url()}}slider.js"></script>
+    <script src="{{js_url()}}social.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+           $('.share').ShareLink({
+                // se deben llenar los datos para compartir con los botones
+                title: 'Lorem', 
+                text: 'Lorem ipsum dolor sit amet', 
+                image: '', 
+                url: '', 
+                width: 640, 
+                height: 480 
+            }) 
+        });
 {% endblock javascripts %}
