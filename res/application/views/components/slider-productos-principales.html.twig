@@ -20,54 +20,10 @@
                 </div>
             {% endfor %}
         </div>
-		<div class="col-xs-12">
-			<button class="btn ver_todo" onclick="location.href='{{ base_url() }}empresa/catalogo_producto/{{empresa.id}}'">Ver Todos</button>
-		</div>
+    </div>
+	<div class="col-xs-12">
+		<button class="btn ver_todo" onclick="location.href='{{ base_url() }}empresa/catalogo_producto/{{empresa.id}}'">Ver Todos</button>
 	</div>
 	<!-- ./col-xs-12 -->
 </div>
 <!-- ./row -->
-
-<style>
-/*Tengo mis dudas de estos estilos aca, TODO: Mover estos estilos al archivo adecuado *LCM */
-.banners
-{
-    height: 100px;
-}
-.carousel-inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 135px;
-}
-
-.banners-img 
-{
-    max-height: 100%;
-    max-width: 100%!important;
-}
-.content-slider
-{
-    height: 120px;
-    width: inherit;
-}
-.elipse 
-{
-    /*white-space: nowrap;*/ 
-    margin-top: 18px!important;
-    height: 45px;
-    max-width: 140px; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    /*border: 1px solid #000000;*/
-}
-.content-slider .imagen 
-{
-    max-width: 100%;
-    max-height: 100%;
-    padding-top: 15%;
-}
-.tag {
-    font-size: 13px;
-    }
- </style>

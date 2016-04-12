@@ -41,9 +41,6 @@
 .navbar_empresa a:focus{
 	color: #FF7F27;
 }
-.productos_principales{
-	margin-top: 15px;
-}
 .productos_principales .nombre_producto{
 	font-size: 16px;
     color: black;
@@ -62,12 +59,11 @@
 .productos_principales .imagen{
 	width: 100%
 }
-.productos_principales .ver_todo{
-	background: #FF7F27;
+.ver_todo{
+    background: #FF7F27;
     color: white;
-    font-size: 14px;
-    margin-bottom: 15px;
     float: right;
+    font-size: 14px;
 }
 .productos_principales .solicitud{
 	width: 100%;
