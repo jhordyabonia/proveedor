@@ -241,3 +241,18 @@ img.img_verificacion {
 .row.shadow{
   margin-bottom: 15px;
 }
+.btn:hover {
+  color: #F9C0C0;
+  text-decoration: none;
+}
+a:hover {
+  color: #FFF;
+  text-decoration: underline;
+}
+.banners-img{
+  margin: 0 auto;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+  max-height: 180px;  
+}
