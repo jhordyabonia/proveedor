@@ -216,11 +216,11 @@ $tag .= $producto->nombre . ',';?>
 <?php if ($empresa->videos): ?>
 <div class="videos_empresa">
 	<div class="title_videos col-md-12">
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<ul class="list-title-videos">
 				<li>
-					<ul class=" active list-title">
-						<a class="texto-nuestra_empresa">Videos de la Empresa</a>
+					<ul class="active list-title">
+						<a class="texto-nuestra_empresa">Videos de la empresa</a>
 					</ul>
 				</li>
 			</ul>
