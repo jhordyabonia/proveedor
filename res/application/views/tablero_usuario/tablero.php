@@ -24,7 +24,7 @@
 
 				</div>
 				<!-- aquí colocar condición if para el logo de membresía -->
-				<div class="col-md-3 img_membresia">					
+				<div class="col-md-3 img_membresia hidden-xs">					
 					<?php if($nombre_membresia=="Empresa Platino"):?> 
 						<img src="<?=base_url()?>assets/img/membresia/logo_mem_platino.png" class="membresia">
 					<?php elseif($nombre_membresia=="Empresa Oro"):?> 
@@ -37,7 +37,7 @@
 					<img src="http://proveedor.com.co/assets/img/membresia/logo_mem_platino.png" class="membresia">
 				</div> -->
 				<!-- SOLO MOSTRAR SI SE TIENE MEMBRESIA ESTANDAR -->
-				<div class="col-md-12 actualizar_membresia">
+				<div class="col-md-12 actualizar_membresia hidden-xs">
 					<?php if($nombre_membresia!="Empresa Platino"):?> 
 					<!--
 					<a href="http://clientes.proveedor.com.co/#precio" class="link_tablero_usuario">
@@ -58,7 +58,7 @@
 				<!-- FIN CONTENIDO PARA MOSTRAR EN MEMBRESÍA ESTANDAR -->
 			</div>
 		</div>
-		<div class="col-md-4 contenedor_servicio">
+		<div class="col-md-4 contenedor_servicio hidden-xs">
 			<!-- DESHABILITAR CONTENIDO CUANDO CARGUE MEMBRESÍA PLATINO, SIMPLEMENTE DEJAR CONTENEDOR CON COLOR, BORDES Y SOMBRA,
 				 YA ESTÁ DISEÑADO DE ESTE MODO -->
 			<div class="col-md-12 obtener_servicio">
@@ -75,7 +75,7 @@
 			</div>
 			<!-- FIN CONTENIDO PARA DESHABILITAR EN MEMBRESÍA PLATINO -->
 		</div>
-		<div class="col-md-4 contenedor_obtener_membresia">
+		<div class="col-md-4 contenedor_obtener_membresia hidden-xs">
 			<div class="col-md-12 obtener_membresia">
 				<!-- DESHABILITAR CONTENIDO CUANDO CARGUE MEMBRESÍA PLATINO, SIMPLEMENTE DEJAR CONTENEDOR CON COLOR, BORDES Y SOMBRA,
 				 YA ESTÁ DISEÑADO DE ESTE MODO -->
@@ -110,7 +110,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4 botones_mensajes_oportunidades_comerciales">
+		<div class="col-md-4 botones_mensajes_oportunidades_comerciales hidden-xs">
 			<div class="col-md-12 oportunidades_comerciales">
 				<div class="col-md-12 btn_oport_comerciales">
 					<div class="col-md-9">
@@ -138,7 +138,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12 mensajes">
+			<div class="col-md-12 mensajes hidden-xs">
 				<div class="col-md-12 btn_mensajes">
 					<div class="col-md-9">
 						<a href="<?=base_url()?>mensajes" class="link_tablero_usuario">
@@ -166,54 +166,57 @@
 			</div>
 			
 		</div>
-		<div class="col-md-4 botones_anunciar_pagina_empresa">
-			<div class="col-md-12 anunciar_pagina_empresa">
-				<div class="col-md-6 anunciar">
-					<div class="col-md-12 btn_anunciar">
-						<a href="<?=base_url()?>config_empresa/inicio/"  class="link_tablero_usuario">
-							<p class="centrar_icono marg-top"><i class="fa fa-laptop sty-ico-confi"></i> <i class="fa fa-cog sty-ico-confi"></i></p>
-							<p class="texto_pagina_empresa">Configurar página de Empresa</p>
-						</a>
-						<!--<a href="<?=base_url()?>" class="link_tablero_usuario"><p class="texto_mas_informacion_anunciar">Más Información</p></a>-->
+		<br>
+		<div class="row">
+			<div class="col-md-4 botones_anunciar_pagina_empresa hidden-xs">
+				<div class="col-md-12 anunciar_pagina_empresa">
+					<div class="col-md-6 anunciar">
+						<div class="col-md-12 btn_anunciar">
+							<a href="<?=base_url()?>config_empresa/inicio/"  class="link_tablero_usuario">
+								<p class="centrar_icono marg-top"><i class="fa fa-laptop sty-ico-confi"></i> <i class="fa fa-cog sty-ico-confi"></i></p>
+								<p class="texto_pagina_empresa">Configurar página de Empresa</p>
+							</a>
+							<!--<a href="<?=base_url()?>" class="link_tablero_usuario"><p class="texto_mas_informacion_anunciar">Más Información</p></a>-->
+						</div>
+					</div>
+					<div class="col-md-6 pagina_empresa">
+						<div class="col-md-12 btn_pagina_empresa">
+							<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="link_tablero_usuario">
+								<p class="centrar_icono"><i class="fa fa-laptop ico_portatil"></i></p>
+								<p class="texto_pagina_empresa">Visitar Página de Empresa</p>
+							</a>
+						</div>
 					</div>
 				</div>
-				<div class="col-md-6 pagina_empresa">
-					<div class="col-md-12 btn_pagina_empresa">
-						<a href="<?=base_url()?>perfil/ver_empresa/<?=$empresa->id?>" class="link_tablero_usuario">
-							<p class="centrar_icono"><i class="fa fa-laptop ico_portatil"></i></p>
-							<p class="texto_pagina_empresa">Visitar Página de Empresa</p>
-						</a>
+				<div class="col-md-12 productos_publicados_cotizaciones">
+					<div class="col-md-6 productos_publicados">
+						<div class="col-md-12 btn_productos_publicados">
+							<a href="<?=base_url()?>producto/administrar" class="link_tablero_usuario">
+								<span class="glyphicon glyphicon-list ico_productos_publicados"></span>
+								<p class="texto_prod_publicados">Productos Publicados 
+									  <!-- dentro del span añadir contador de productos publicados -->
+									<span class="numero_prod_publicados">
+										<?php echo $count_productos ?>
+									</span> 
+								</p>
+							</a>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-md-12 productos_publicados_cotizaciones">
-				<div class="col-md-6 productos_publicados">
-					<div class="col-md-12 btn_productos_publicados">
-						<a href="<?=base_url()?>producto/administrar" class="link_tablero_usuario">
-							<span class="glyphicon glyphicon-list ico_productos_publicados"></span>
-							<p class="texto_prod_publicados">Productos Publicados 
-								  <!-- dentro del span añadir contador de productos publicados -->
-								<span class="numero_prod_publicados">
-									<?php echo $count_productos ?>
-								</span> 
-							</p>
-						</a>
+					<div class="col-md-6 cotizaciones">
+						<div class="col-md-12 btn_cotizaciones">
+							<a href="<?=base_url()?>oferta_test/administrar" class="link_tablero_usuario">
+								<span class="glyphicon glyphicon-file ico_cotizaciones"></span>
+								<p class="texto_cotizaciones">Solicitudes Publicadas
+									<!-- dentro del span añadir contador de cotizaciones -->
+									<span class="numero_cotizaciones">
+										<?php echo $count_ofertas ?>
+									</span> 
+								</p>
+							</a>
+						</div>
 					</div>
+					
 				</div>
-				<div class="col-md-6 cotizaciones">
-					<div class="col-md-12 btn_cotizaciones">
-						<a href="<?=base_url()?>oferta_test/administrar" class="link_tablero_usuario">
-							<span class="glyphicon glyphicon-file ico_cotizaciones"></span>
-							<p class="texto_cotizaciones">Solicitudes Publicadas
-								<!-- dentro del span añadir contador de cotizaciones -->
-								<span class="numero_cotizaciones">
-									<?php echo $count_ofertas ?>
-								</span> 
-							</p>
-						</a>
-					</div>
-				</div>
-				
 			</div>
 		</div>
 	</div>

@@ -9,6 +9,7 @@ class Tablero_usuario extends CI_Controller {
 	///Constructor de la clase del control
 	function __construct() {
 		parent::__construct();
+		$this->ci = &get_instance();
 		$this->load->library('session');
 		$this->load->model('new/Mensajes_model','mensajes');
 		$this->load->model('new/Producto_model','producto');
@@ -72,15 +73,14 @@ class Tablero_usuario extends CI_Controller {
     	$datos['administrador']=FALSE;
     	
     	if($datos['usuario']->permisos==1)
-    	{$datos['administrador']=TRUE;}
 
+    	{$datos['administrador']=TRUE;}
 		$datos['titulo']="Tablero de usuario - PROVEEDOR.com.co";
 		$this->load->view('template/head', $datos);
 		$this->load->view('template/javascript', $datos, FALSE);
 		$this->load->view('tablero_usuario/header', $datos, FALSE);
 		$this->load->view('tablero_usuario/tablero', $datos);
 		$this->load->view('template/footer', $datos, FALSE);
-
 		if($this->session->userdata('first_ligin')==1)
 			{
 		    	$this->load->view('popups/confirmacion/registro_completo');
