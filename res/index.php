@@ -197,9 +197,12 @@ if (defined('ENVIRONMENT'))
  * LOAD THE BOOTSTRAP FILE
  * --------------------------------------------------------------------
  *
- * And away we go...
+ * Aca estoy cargando dependencias desde vendor, carpeta que se crea con
+ * composer install
  *
  */
+
+require FCPATH . 'vendor/autoload.php';
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */

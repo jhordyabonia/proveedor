@@ -15,6 +15,21 @@ class ejemplo extends CI_Controller {
         $this->twiggy->display('examples/test', $data);
     }
 
+    public function plates()
+    {
+        $template = new League\Plates\Engine(APPPATH.'views');
+        $datos = array(
+            'nombre' => 'Luis Carlos Martinez',
+            'ciudad' => 'Cali',
+            'correo' => 'karloxmartinez@hotmail.com',
+            'title' => 'Perfil: karloxmartinez@hotmail.com',
+        );
+        // echo "<pre>";
+        // print_r($template);
+        // echo "</pre>";
+        echo $template->render('tablero_usuario/tablero_movil', $datos);
+    }
+
 }
 
 /* End of file ejemplos.php */

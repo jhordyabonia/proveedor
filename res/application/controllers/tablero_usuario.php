@@ -73,19 +73,25 @@ class Tablero_usuario extends CI_Controller {
     	$datos['administrador']=FALSE;
     	
     	if($datos['usuario']->permisos==1)
-
     	{$datos['administrador']=TRUE;}
 		$datos['titulo']="Tablero de usuario - PROVEEDOR.com.co";
-		$this->load->view('template/head', $datos);
-		$this->load->view('template/javascript', $datos, FALSE);
-		$this->load->view('tablero_usuario/header', $datos, FALSE);
-		$this->load->view('tablero_usuario/tablero', $datos);
-		$this->load->view('template/footer', $datos, FALSE);
-		if($this->session->userdata('first_ligin')==1)
+
+	    if ($this->ci->agent->is_mobile()){
+	    	$template = new League\Plates\Engine(APPPATH.'views');
+			echo $template->render('tablero_usuario/tablero_movil', $datos);
+		}else{
+			$this->load->view('template/head', $datos);
+			$this->load->view('template/javascript', $datos, FALSE);
+			$this->load->view('tablero_usuario/header', $datos, FALSE);
+			$this->load->view('tablero_usuario/tablero', $datos);
+			$this->load->view('template/footer', $datos, FALSE);
+			if($this->session->userdata('first_ligin')==1)
 			{
 		    	$this->load->view('popups/confirmacion/registro_completo');
 				$this->session->set_userdata('first_ligin',0);
 			};
+
+		}
 	}
 
 	public function activar_solicitud($id)

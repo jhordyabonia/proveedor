@@ -9,11 +9,18 @@
 .font-gris{
   color: #808080;
 }
+.font-blanca{
+  color: #FFF;
+}
 .font-black{
   color: #000;
 }
 .color-naranja{
   background-color: #FF7F27;
+  color: #FFF;
+}
+.color-azul{
+  background-color: #1D71B8;
   color: #FFF;
 }
 .header{
@@ -279,4 +286,37 @@ a:hover, a:focus {
    overflow: hidden;
    text-overflow: ellipsis; 
    /*border: 1px solid #000000;*/
+}
+
+/*---------------------------------------------------------------------*/
+
+
+.boton-tablero{
+  padding: 15%;
+  min-height: 200px;
+  border-radius: 5%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.center{
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.iconos-tablero{
+  padding: 15px;
+}
+
+.icono-tablero{
+  padding: 0px;
+  font-size: 5em;
+  display: block;
+  text-align: center;
+}
+.logo{
+  padding-left: 0px;
+}
+.enlace_top{
+  font-size: 1.4em;
 }
