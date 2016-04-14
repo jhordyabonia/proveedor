@@ -3,7 +3,7 @@
 <?php $this->start('css') ?><?php $this->stop() ?>
 <div class="row">
     <div class="col-xs-8 logo">
-        <a href="">
+        <a href="<?=base_url()?>">
             <img class="img-responsive" src="http://www.proveedor.com.co/assets/img/index/logo_proveedor.png" alt="">
         </a>
     </div>

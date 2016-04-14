@@ -282,3 +282,6 @@ a.nombre_producto{
 	font-size: 13px;
 }
 /*---------------------------------------*/
+.col-md-12.col-sm-12.col-xs-12 {
+    padding-right: 5px;
+}
