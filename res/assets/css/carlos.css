@@ -292,8 +292,7 @@ a:hover, a:focus {
 
 
 .boton-tablero{
-  padding: 15%;
-  min-height: 200px;
+  height: 200px;
   border-radius: 5%;
   margin-bottom: 15px;
   margin-top: 15px;
@@ -304,12 +303,8 @@ a:hover, a:focus {
   margin-left: auto;
   margin-right: auto;
 }
-.iconos-tablero{
-  padding: 15px;
-}
 
 .icono-tablero{
-  padding: 0px;
   font-size: 5em;
   display: block;
   text-align: center;
@@ -319,4 +314,14 @@ a:hover, a:focus {
 }
 .enlace_top{
   font-size: 1.4em;
+}
+.col-xs-10.center-block.center.boton-tablero.color-azul {
+  padding: 55px 0px; 
+}
+.col-xs-10.center-block.center.boton-tablero.color-naranja {
+    padding: 14px 0px;
+}
+.signout-button {
+    padding: 12px 10px;
+    text-align: right;
 }

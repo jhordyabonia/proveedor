@@ -59,7 +59,7 @@
         <?php } ?>
 
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs hidden-xs" role="tablist">
           <li role="presentation" style="width: 40%;" class="active">
             <a class="style-title-tab1" href="#soli_simple" aria-controls="soli_simple" role="tab" data-toggle="tab">
               <span class="glyphicon glyphicon-ok"></span>
