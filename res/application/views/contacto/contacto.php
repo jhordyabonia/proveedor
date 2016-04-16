@@ -151,7 +151,7 @@
 						</li>
 					</ul>
 					-->
-					<div class="boton-solicitar-cotizacion" data-toggle="modal" data-target="#popup_mensajes">
+					<div class="boton-solicitar-cotizacion" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 						<button class="btn btn-cot-soli">
 							<i class="icono_button_soli fa fa-file-text"></i>
 							<a class="enlace_soli_cot" >SOLICITAR COTIZACION</a>

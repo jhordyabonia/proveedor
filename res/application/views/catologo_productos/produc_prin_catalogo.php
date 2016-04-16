@@ -33,7 +33,7 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-10">
 		<div class="row">
-			<div class="encabezado_pro_pri" data-toggle="modal" data-target="#popup_mensajes">
+			<div class="encabezado_pro_pri" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 				<button class="btn btn_solicitar_coti">
 					<i class="ico_solicitar fa fa-file-text"></i>
 					<a class="enlace_soli" >SOLICITAR COTIZACION</a>
@@ -132,7 +132,7 @@
 		<?php endforeach;?>
 			<!---->
 		</div>
-		<div class="solicitar_cotizacion" style="text-align: center;margin-top: 23px;" data-toggle="modal" data-target="#popup_mensajes">
+		<div class="solicitar_cotizacion" style="text-align: center;margin-top: 23px;" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 			<button class="btn_solicitar_cotizacion">
 					<i class="icono_solicitar fa fa-file-text"></i>
 					<a class="enlace_solicitar" >SOLICITAR COTIZACION</a>

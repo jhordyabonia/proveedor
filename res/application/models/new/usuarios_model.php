@@ -2,6 +2,12 @@
 
 class Usuarios_model extends CI_Model {
 
+    public function construct() 
+    {
+        parent::__construct();
+        $this->load->database('default');
+    }
+        
     const TABLE_NAME = 'usuarios';
 
     const PRI_INDEX = 'id';

@@ -206,7 +206,7 @@ $tag .= $producto->nombre . ',';?>
 		</div>
 	</div>
 <?php endif;?>
-	<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
+	<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 		<button class="btn btn_soli">
 			<i class="icono-soli fa fa-file-text"></i>
 			<p class="texto-soli">SOLICITAR COTIZACION</p>
@@ -291,7 +291,7 @@ $tag .= $producto->nombre . ',';?>
 							<span class="icon_compartir glyphicon glyphicon-earphone"></span>
 							<p class="texto_contacto" >Llamar a la Empresa</p>
 						</button>
-						<button class="btn contactar_empresa" data-toggle="modal" data-target="#popup_mensajes">
+						<button class="btn contactar_empresa" onclick="mensajes()">
 							<span class="icon_compartir glyphicon glyphicon-envelope"></span>
 							<p class="texto_contacto">Contactar Empresa</p>
 						</button>
@@ -355,7 +355,7 @@ $tag .= $producto->nombre . ',';?>
 	</div>
 </div>
 <?php endif;?>
-<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#popup_mensajes">
+<div class="conten_btn_soli_coti col-md-12" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 	<button class="btn btn_soli">
 		<i class="icono-soli fa fa-file-text"></i>
 		<p class="texto-soli">SOLICITAR COTIZACION</p>

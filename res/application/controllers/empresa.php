@@ -39,6 +39,7 @@ class Empresa extends CI_Controller
     }
     public function inicio($id)
     {
+        $datos['tap']='inicio';        
         $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
@@ -118,6 +119,8 @@ class Empresa extends CI_Controller
             $this->load->view('registro/funcionalidades_', $post);
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
             $this->load->view('catologo_productos/header_catalogo', $datos);
+            
+            $this->popup_captura_solicitud(42);
             $this->load->view('index_oroPlatino/index.php', $datos);
             $this->load->view('template/footer');
             $this->load->view('template/footer_empy');
@@ -126,6 +129,7 @@ class Empresa extends CI_Controller
 
     public function catalogo_producto($id, $page=0,$filtro = 0,$tipo_filtro=0)
     {
+        $datos['tap']='catalogo_producto';        
         $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
@@ -236,7 +240,8 @@ class Empresa extends CI_Controller
         }else
         {
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('catologo_productos/header_catalogo', $datos);            
+            $this->popup_captura_solicitud(42);
             $this->load->view('catologo_productos/produc_prin_catalogo', $datos);
             $this->load->view('template/footer');
             $this->load->view('template/footer_empy');
@@ -244,6 +249,7 @@ class Empresa extends CI_Controller
     }
     public function cotizaciones_requeridas($id, $page=0)
     {
+        $datos['tap']='cotizaciones_requeridas';        
         $datos['logued']=$this->session->userdata('is_logued_in');
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa,'refresh');}
 
@@ -308,7 +314,8 @@ class Empresa extends CI_Controller
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_');
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('catologo_productos/header_catalogo', $datos);            
+            $this->popup_captura_solicitud(42);
             $this->load->view('cotizaciones_requeridas/cotizaciones_requeridas');
             $this->load->view('template/footer');
             $this->load->view('template/footer_empy');
@@ -316,6 +323,7 @@ class Empresa extends CI_Controller
     }
     public function nosotros($id)
     {
+        $datos['tap']='nosotros';        
         $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
         if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
@@ -361,7 +369,8 @@ class Empresa extends CI_Controller
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_');
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('catologo_productos/header_catalogo', $datos);            
+            $this->popup_captura_solicitud(42);
             $this->load->view('nosotros/nosotros');
             $this->load->view('template/footer');
             $this->load->view('template/footer_empy');
@@ -370,6 +379,7 @@ class Empresa extends CI_Controller
 
     public function contacto($id)
     {
+        $datos['tap']='contacto';        
         $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
@@ -410,7 +420,8 @@ class Empresa extends CI_Controller
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_');
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('catologo_productos/header_catalogo', $datos);            
+            $this->popup_captura_solicitud(42);
             $this->load->view('contacto/contacto', $datos);
             $this->load->view('template/footer');
             $this->load->view('template/footer_empy');
@@ -420,6 +431,7 @@ class Empresa extends CI_Controller
 
     public function descargar_catalogo($id)
     {
+        $datos['tap']='descargar_catalogo';
         $datos['logued']=$this->session->userdata('is_logued_in');
         $datos['empresa'] = $this->empresa->get($id);
 
@@ -460,7 +472,8 @@ class Empresa extends CI_Controller
             $this->load->view('template/javascript');
             $this->load->view('registro/funcionalidades_');
             $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
-            $this->load->view('catologo_productos/header_catalogo', $datos);
+            $this->load->view('catologo_productos/header_catalogo', $datos);            
+            $this->popup_captura_solicitud(42);
             $this->load->view('descargar_catalogo/descargar_catalogo', $datos);
             $this->load->view('template/footer');
             $this->load->view('template/footer_empy');

@@ -1,7 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Producto_model extends CI_Model {
-
+ 
+    public function construct() 
+    {
+        parent::__construct();
+    }
     const TABLE_NAME = 'producto';
 
     const PRI_INDEX = 'id';

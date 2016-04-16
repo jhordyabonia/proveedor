@@ -34,9 +34,9 @@
 	<div class="col-md-10">
 		<div class="row">
 			<div class="encabezado_pro_pri">
-				<button class="btn btn_solicitar_coti">
+				<button class="btn btn_solicitar_coti" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 					<i class="ico_solicitar fa fa-file-text"></i>
-					<a class="enlace_soli2" href="">SOLICITAR COTIZACION</a>
+					<a class="enlace_soli2" >SOLICITAR COTIZACION</a>
 				</button>
 			</div>
 		</div>
@@ -126,7 +126,7 @@
 		</div>
 		</div>
 		<div class="solicitar_cotizacion2 col-md-12">
-			<button class="btn_solicitar_cotizacion" data-toggle="modal" data-target="#popup_mensajes">
+			<button class="btn_solicitar_cotizacion" data-toggle="modal" data-target="#asistentes_proveedor_popup">
 					<i class="icono_solicitar fa fa-file-text"></i>
 					<a class="enlace_solicitar" href="">SOLICITAR COTIZACION</a>
 				</button>

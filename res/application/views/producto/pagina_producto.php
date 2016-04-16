@@ -131,9 +131,12 @@
 			<div class="col-md-6 contactar" data-toggle="modal" id='popup_launch' data-target="#popup_mensajes">
 				<a hhref="JavaScript:;" class="contacto"><i class="fa fa-envelope sobre"></i> Contactar Proveedor</a>
 			</div>
-			<!-- <div class="col-md-6 chatear">
-				<a href="#" class="chat"><span class="glyphicon glyphicon-comment globo" aria-hidden="true"></span> Chatear Ahora!</a>
-			</div> -->
+            <?php if($producto->tienda=='FALSE'):?>
+            <?php else:?>
+			 <div class="col-md-6 chatear">
+				<a href="<?=$producto->tienda?>" class="chat"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Comprar</a>
+			</div> 
+            <?php endif;?>
 		</div>
 	</div>
 	<div class="col-md-3 contenedor_empresa">
