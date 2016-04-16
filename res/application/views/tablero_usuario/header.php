@@ -6,7 +6,7 @@
             <a href="<?=base_url()?>">
                 <img src="http://www.proveedor.com.co/assets/img/index/logo_proveedor.png" class="img_logo_header">
             </a>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+            <button type="button" class="navbar-toggle collapsed  hidden-xs" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

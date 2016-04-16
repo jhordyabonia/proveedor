@@ -23,14 +23,14 @@
     <!-- sidebar -->
     <div class="col-sm-2" style="padding-left: 2%;">
         <!-- div boton Publicar ofertas -->
-      <div class="col-xs-3 col-xs-push-2 col-sm-12 col-sm-push-0 text-center btn1 ">
+      <div class="col-xs-3 col-xs-push-2 col-sm-12 col-sm-push-0 text-center btn1  hidden-xs">
         <!--<img src="<?php echo img_url(); ?>Tablero_usuario/Publicar_Producto.png" 
         class="img-responsive img_btn1">-->
         <i class="fa fa-file-o ico_btn_soli"></i>
         <h4 class="boton">Publicar Solicitud</h4>
       </div>
     <!-- div boton Administrar mis oferta -->
-        <div class="col-xs-3 col-xs-push-4 col-sm-12 col-sm-push-0 text-center btn2 "
+        <div class="col-xs-3 col-xs-push-4 col-sm-12 col-sm-push-0 text-center btn2  hidden-xs"
         onclick="location.href='<?= base_url() ?>oferta_test/administrar';" 
          style="cursor:pointer;">
           <!--<img src="<?php echo img_url(); ?>Tablero_usuario/Ediccion_de_producto.png" 
