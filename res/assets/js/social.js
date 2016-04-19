@@ -185,7 +185,8 @@
             youmob: 'http://youmob.com/mobit.aspx?title={title}&mob={url}',
             zakladoknet: 'http://zakladok.net/link/?u={url}&t={title}',
             ziczac: 'http://ziczac.it/a/segnala/?gurl={url}&gtit={title}',
-            whatsapp: 'whatsapp://send?text={url} {title}'
+            whatsapp: 'whatsapp://send?text={url} {title}',
+            email: "mailto:?subject='{title}'&body='Éste producto está en Proveedor.com.co, visita está url {url}'"
         }
 
         function link(network){
