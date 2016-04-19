@@ -186,7 +186,7 @@
             zakladoknet: 'http://zakladok.net/link/?u={url}&t={title}',
             ziczac: 'http://ziczac.it/a/segnala/?gurl={url}&gtit={title}',
             whatsapp: 'whatsapp://send?text={url} {title}',
-            email: "mailto:?subject='{title}'&body='Éste producto está en Proveedor.com.co, visita está url {url}'"
+            email: "mailto:?subject='{title}'&body={text}"
         }
 
         function link(network){
