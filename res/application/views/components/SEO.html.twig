@@ -1,0 +1,17 @@
+{# Aqui se debe agregar la información para el contenido que se comparte en redes sociales, si necesita ayuda de como identificar el contenido por favor verifique en https://developers.facebook.com/docs/sharing/webmasters#markup y https://dev.twitter.com/cards/types/summary-large-image #}
+<meta property ="og:url" content="{{base_url()}}empresa/{{tap}}/{{empresa.id}}" />
+<meta property ="og:type" content="{{empresa.tipo}}" />
+<meta property ="og:title" content="{{empresa.nombre}} en Proveedor.com.co" />
+<meta property ="og:description"  content="{{empresa.descripcion}}" />
+<meta property ="og:image"  content="{{base_url()}}uploads/logos/{{empresa.logo}}" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{base_url()}}empresa/{{tap}}/{{empresa.id}}">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:title" content="{{empresa.nombre}} en Proveedor.com.co">
+<meta name="twitter:description" content="{{empresa.descripcion}}">
+<meta name="twitter:image" content="{{base_url()}}uploads/logos/{{empresa.logo}}">
+<!-- Aca se debe imprimir la descripción corta (Crear la descripción con indicaciones de Andres) -->
+<meta name="description" content="{{empresa.tipo}} {{empresa.nombre}} en {{usuario.ciudad}}, {{usuario.departamento}}, {{usuario.pais}}">
+<!-- las etiquetas -->
+<meta name="keywords" content="{{tags}}">
