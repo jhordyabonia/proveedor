@@ -48,19 +48,5 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {# Libreria para sliders #}
-    <script src="{{js_url()}}social.js"></script>
-    <script>
-        jQuery(document).ready(function($) {
-           $('.share').ShareLink({
-                // se deben llenar los datos para compartir con los botones
-                title: 'Lorem', 
-                text: 'Lorem ipsum dolor sit amet', 
-                image: '', 
-                url: '', 
-                width: 640, 
-                height: 480 
-            }) 
-        });
-    </script>
+    {% include "components/script.html.twig" %}
 {% endblock javascripts %}
