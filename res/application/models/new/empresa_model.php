@@ -34,6 +34,29 @@ class Empresa_model extends CI_Model {
             return false;
         }
     }
+    public function get_($where = NULL) 
+    {
+        $out=$this->get($where);
+        #return $out;
+        if($out==FALSE) return false;
+        
+        $out->categoria=39;
+        $id_categorias=explode('|',$out->categorias);
+        foreach ($id_categorias as $key => $id_categoria)
+            if($id_categoria!='')
+               { $out->categoria=$id_categoria; break;}               
+        
+        $this->db->select('id_subcategoria');
+        $this->db->from('subcategoria');
+        $this->db->where('id_categoria',$out->categoria);
+        
+        $result = $this->db->get()->result();
+        if ($result) $result= array_shift($result);
+        
+        $out->subcategoria=$result->id_subcategoria;
+               
+        return $out;
+    }
     
     public function get_all($where = NULL) {
         $this->db->select('*');
