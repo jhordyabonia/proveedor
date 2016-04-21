@@ -1,4 +1,9 @@
 {# Aqui se debe agregar la información para el contenido que se comparte en redes sociales, si necesita ayuda de como identificar el contenido por favor verifique en https://developers.facebook.com/docs/sharing/webmasters#markup y https://dev.twitter.com/cards/types/summary-large-image #}
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="{{empresa.nombre}} en Proveedor.com.co">
+<meta itemprop="description" content="{{empresa.descripcion}}">
+<meta itemprop="image" content="{{base_url()}}uploads/logos/{{empresa.logo}}">
+
 <meta property ="og:url" content="{{base_url()}}empresa/{{tap}}/{{empresa.id}}" />
 <meta property ="og:type" content="{{empresa.tipo}}" />
 <meta property ="og:title" content="{{empresa.nombre}} en Proveedor.com.co" />
