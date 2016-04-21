@@ -14,4 +14,14 @@
     <!-- Aca se debe imprimir la descripción corta (Crear la descripción con indicaciones de Andres) -->
     <meta name="description" content="{{empresa.tipo}} {{empresa.nombre}} en {{usuario.ciudad}},{{usuario.departamento}},{{usuario.pais}}">
     <!-- las etiquetas -->
-    <meta name="keywords" content="{{tags}}">
+     {% set count=0 %}
+     {% set tag_render="proveedor.com.co" %}
+     {% for t in tag %}
+        {% if count < 20 %}
+           {% if t != "" %} 
+            {% set tag_render=tag_render+","+t %}
+            {% set count=count+1 %}
+           {% endif %} 
+        {% endif %}  
+     {% endfor %}
+    <meta name="keywords" content="{{tag_render}}">

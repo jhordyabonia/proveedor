@@ -32,9 +32,12 @@ class Empresa extends CI_Controller
 
     private function duplicado($stack, $needle)
     {
-        foreach ($stack as $key => $value) {
-            if ($value->id == $needle->id) {return true;}
-        }
+        if(is_object)
+        foreach ($stack as $key => $value) 
+            if(is_object($value))
+                if ($value->id == $needle->id) 
+                    return true;
+        
         return false;
     }
     public function inicio($id)
