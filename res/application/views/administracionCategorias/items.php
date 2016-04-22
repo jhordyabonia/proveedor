@@ -1,4 +1,5 @@
-<div class='main row'>    
+<input placeholder="Nombre categoria" onchange="nueva_categoria=this.value;" ><button onclick="make(nueva_categoria)">Agragar</button>   
+<div class='main row' id="main"> 
    <?php if($categorias):?>
         <?php foreach ($categorias as $key => $item):?>
             <div id='div<?=$item->id?>' align='center' class='caja col-md-3 col-xs-3 col-lg-3' 

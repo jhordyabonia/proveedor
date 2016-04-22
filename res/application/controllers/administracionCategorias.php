@@ -7,10 +7,11 @@ class AdministracionCategorias extends CI_Controller
         parent::__construct();
         $this->load->model('new/Categoria2_model','categoria2');
     }
+       
     public function make($nombre,$parent=0)
     {
         $categoria=array('nombre'=>$nombre,'parent'=>$parent);
-        $this->categoria2->insert($categoria);
+        echo @$this->categoria2->insert($categoria);
     }
     public function update($categoria,$parent=0)
     {
@@ -31,6 +32,7 @@ class AdministracionCategorias extends CI_Controller
     }
     public function show($categoria=0)
     {
+        $data['categoria']=$categoria; 
         $data['url']=base_url()."administracionCategorias"; 
         $data['titulo']="administracion Categorias"; 
         echo @$this->load->view('template/head', $data, TRUE);
