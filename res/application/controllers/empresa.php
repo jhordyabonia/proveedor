@@ -89,8 +89,8 @@ class Empresa extends CI_Controller
     
     $datos['empresa']->numero_productos=count($datos['productos']);
     $datos['empresa']->numero_solicitudes=count($datos['solicitudes']);
-    // inicio
-    $datos['descripcion'] = "Toda la información acerca de la empresa: " . $datos['empresa']->tipo . " " . $datos['empresa']->nombre . " en ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
+    // inicio --lista
+    $datos['descripcion'] = "Toda la información acerca de la empresa: " . $datos['empresa']->tipo . " de ". $datos['empresa']->categoria . " " . $datos['empresa']->nombre  . " en ".  $datos['usuario']->direccion .", ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
   
     if ($this->ci->agent->is_mobile())
     {
@@ -223,10 +223,26 @@ class Empresa extends CI_Controller
 
     $datos['empresa']->numero_productos=count($datos['productos']);
     $datos['empresa']->numero_solicitudes=count($datos['productos']);
-    // catalogo_producto
-    $datos['descripcion'] = "Éste es nuestro completo catalogo, somos " . 
-    $datos['empresa']->tipo . " " . $datos['empresa']->nombre . " en ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
+
+    // Esta linea la copie del metodo inicio, espero que no haga daños.
+    $datos['empresa']->categoria = explode('|',$datos['empresa']->categorias); 
     
+    $datos['descripcion'] = 
+    "Este es nuestro completo catálogo, somos " . 
+      $datos['empresa']->tipo . 
+      " de " . 
+      $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria.
+      " " . 
+      $datos['empresa']->nombre .
+      " en " .
+      $datos['usuario']->direccion .
+      ", " .
+      $datos['usuario']->ciudad .
+      ", " .
+      $datos['usuario']->departamento .
+      ", " .
+      $datos['usuario']->pais;
+
     if ($this->ci->agent->is_mobile())
     {
       // print_r($datos);
@@ -238,16 +254,15 @@ class Empresa extends CI_Controller
     }else
     {
       $post['facebook'] = array(
-        'titulo'=> $datos['empresa']->nombre,
-        'mensaje'=> "Visite nuestro catálogo de productos en Proveedor.com.co",
-        'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-catalogo-default.png"
+        'titulo'             => $datos['empresa']->nombre,
+        'mensaje'            => "Visite nuestro catálogo de productos en Proveedor.com.co",
+        'url_image_facebook' => img_url()."facebook-banner/facebook-banner-catalogo-default.png"
       );
       $this->load->view('template/head', array(
-         'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
-         'facebook' => $post['facebook'],
+         'titulo'      => 'Catálogo de productos - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
+         'facebook'    => $post['facebook'],
          'descripcion' => $datos['descripcion'],
-         )
-       );
+      ));
       $this->load->view('template/javascript');
       $this->load->view('registro/funcionalidades_');
       $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -362,23 +377,37 @@ class Empresa extends CI_Controller
       'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
       'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
     );
-    // nosotros
-    $datos['descripcion'] = "Quienes somos: " . $datos['empresa']->tipo . " " . $datos['empresa']->nombre . " en ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
+    
+    $datos['descripcion'] = 
+    "Quienes somos: " . 
+    $datos['empresa']->tipo . 
+    " " .
+    $datos['empresa']->nombre .
+    " en " .
+    $datos['usuario']->ciudad .
+    ", " .
+    $datos['usuario']->departamento .
+    ", " .
+    $datos['usuario']->pais .
+    ", nuestra misión es: " .
+    $datos['empresa']->mision .
+    "y, la visión: " .
+    $datos['empresa']->vision;
 
     if ($this->ci->agent->is_mobile()) 
     {
        # Vista movil
-       
-      $this->popup_captura_solicitud(42);
-      $datos['tag']=explode(',',$datos['tag']);           
-      $this->twiggy->display('empresa/nosotros_movil', $datos);
-      $this->load->view('template/footer');
+       $this->popup_captura_solicitud(42);
+       $datos['tag'] =explode(',',$datos['tag']);           
+       $this->twiggy->display('empresa/nosotros_movil', $datos);
+       $this->load->view('template/footer');
     }else
     {
 
       $this->load->view('template/head', array(
-        'titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
-        'facebook' => $post['facebook']
+        'titulo'      => 'Nuestra empresa - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
+        'facebook'    => $post['facebook'],
+        'descripcion' => $datos['descripcion']
         )
       );
 
@@ -420,6 +449,34 @@ class Empresa extends CI_Controller
                   'mensaje'=> $datos['empresa']->nombre ." Celular ". $datos['usuario']->celular." Sitio WEB: ".$datos['usuario']->web,
                   'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
     // contacto
+    $datos['descripcion'] = 
+    "Quieres contactarte con " . 
+      $datos['empresa']->tipo . 
+      " de " . 
+      $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria.
+      " " . 
+      $datos['empresa']->nombre .
+      " en " .
+      $datos['usuario']->direccion .
+      ", " .
+      $datos['usuario']->ciudad .
+      ", " .
+      $datos['usuario']->departamento .
+      ", " .
+      $datos['usuario']->pais .
+      "está es toda la información de contacto: ".
+      " Telefono: ".
+      $datos['usuario']->telefono .
+      " Ubicación: " . 
+      $datos['usuario']->ciudad .
+      " Página Web: " . 
+      $datos['empresa']->pagina_web .
+      " Facebook: " . 
+      $datos['usuario']->facebook .
+      " Twitter: " . 
+      $datos['usuario']->twitter .
+      " Linkedin: " . 
+      $datos['usuario']->linkedin;
     if ($this->ci->agent->is_mobile()) 
     {
       #Vistas Mobiles
@@ -431,7 +488,8 @@ class Empresa extends CI_Controller
     {
       $this->load->view('template/head', array(
         'titulo' => 'Contacto - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
-         'facebook' => $post['facebook']
+         'facebook' => $post['facebook'],
+         'descripcion' => $datos['descripcion']
         ));
       $this->load->view('template/javascript');
       $this->load->view('registro/funcionalidades_');
@@ -475,6 +533,21 @@ class Empresa extends CI_Controller
     }
 
     // Descargar catologo
+    $datos['descripcion'] = 
+    "Descarga nuestros catálogos, somos " . 
+      $datos['empresa']->tipo . 
+      " de " . 
+      $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria.
+      " " . 
+      $datos['empresa']->nombre .
+      " en " .
+      $datos['usuario']->direccion .
+      ", " .
+      $datos['usuario']->ciudad .
+      ", " .
+      $datos['usuario']->departamento .
+      ", " .
+      $datos['usuario']->pais;
     if ($this->ci->agent->is_mobile()) 
     {
       #vistas mobiles
@@ -487,12 +560,13 @@ class Empresa extends CI_Controller
       $post['facebook'] = array(
         'titulo'=> $datos['empresa']->nombre,
         'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
-        'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
+        'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png",
       );
       $this->load->view('template/head', 
         array(
           'titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
-          'facebook' => $post['facebook']
+          'facebook' => $post['facebook'],
+          'descripcion' => $datos['descripcion']
           )
         );
       $this->load->view('template/javascript');

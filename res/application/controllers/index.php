@@ -56,7 +56,7 @@ class Index extends CI_Controller {
 		$this->load->view('template/head', 
 			array(
 				'titulo' => "PROVEEDOR.com.co: Directorio de Proveedores, Fabricantes, Compradores y Vendedores",
-				'descripcion' => "Portal de intercambios comerciales de las empresas en Colombia!",
+				'descripcion' => "Haga sus negocios y obtenga el directorio de empresas con contactos comerciales y ventas entre proveedores, clientes y compradores para compra y venta al por mayor de productos y servicios en Colombia.",
 				));
 		$this->load->view('template/javascript');
 		$this->load->view('registro/funcionalidades_');
