@@ -24,6 +24,11 @@ function get_meta_image($url_image_facebook = False)
     <meta name="twitter:title" content="<?php echo $titulo ?>" />
     <meta name="twitter:description" content="<?php echo $facebook['mensaje'] ?>" />
     <meta name="twitter:image" content="<?php echo $facebook['url_image_facebook'] ?>" />
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="<?php echo $titulo ?>">
+    <meta itemprop="description" content="<?php echo $facebook['mensaje'] ?>">
+    <meta itemprop="image" content="<?php echo $facebook['url_image_facebook'] ?>">
+
 <?php else: ?>
     <!-- No se agregó la información para compartir en redes sociales -->
 <?php endif ?>

@@ -20,7 +20,9 @@
 					<img class="img-responsive logo img_logo" src="<?=base_url()?>uploads/resize/SOP/logos1/<?=$empresa->logo?>">
 				</div>
 				<div class="div-nom-empresa">
-					<p class="txt_nom_empre"><?=$empresa->nombre?></p>	
+					<h1 class="txt_nom_empre">
+						<?=$empresa->nombre?>
+					</h1>
 				</div>
 				<div class="div-sonrisa">
 					<img class="img-responsive sonri-img" src="<?=base_url()?>assets/img/sonrisaproveedor.png">

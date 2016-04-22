@@ -89,7 +89,9 @@ class Empresa extends CI_Controller
     
     $datos['empresa']->numero_productos=count($datos['productos']);
     $datos['empresa']->numero_solicitudes=count($datos['solicitudes']);
-    
+    // inicio
+    $datos['descripcion'] = "Toda la información acerca de la empresa: " . $datos['empresa']->tipo . " " . $datos['empresa']->nombre . " en ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
+  
     if ($this->ci->agent->is_mobile())
     {
       // print_r($datos);
@@ -113,8 +115,10 @@ class Empresa extends CI_Controller
         'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
       );
 
+
       $this->load->view('template/head', array(
-        'titulo' => $datos['empresa']->nombre,
+        'titulo' =>  "Inicio - " . $datos['empresa']->nombre. " | PROVEEDOR.com.co",
+        'descripcion' => $datos['descripcion'],
         'facebook' => $post['facebook']
       ));
       $this->load->view('template/javascript');
@@ -219,6 +223,9 @@ class Empresa extends CI_Controller
 
     $datos['empresa']->numero_productos=count($datos['productos']);
     $datos['empresa']->numero_solicitudes=count($datos['productos']);
+    // catalogo_producto
+    $datos['descripcion'] = "Éste es nuestro completo catalogo, somos " . 
+    $datos['empresa']->tipo . " " . $datos['empresa']->nombre . " en ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
     
     if ($this->ci->agent->is_mobile())
     {
@@ -236,8 +243,9 @@ class Empresa extends CI_Controller
         'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-catalogo-default.png"
       );
       $this->load->view('template/head', array(
-         'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre,
-         'facebook' => $post['facebook']
+         'titulo' => 'Catálogo de productos - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
+         'facebook' => $post['facebook'],
+         'descripcion' => $datos['descripcion'],
          )
        );
       $this->load->view('template/javascript');
@@ -313,7 +321,9 @@ class Empresa extends CI_Controller
 
     }else
     {
-      $this->load->view('template/head', array('titulo' => 'Cotizaciones Requeridas - ' . $datos['empresa']->nombre));
+      $this->load->view('template/head', array(
+        'titulo' => 'Cotizaciones Requeridas - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
+      ));
       $this->load->view('template/javascript');
       $this->load->view('registro/funcionalidades_');
       $this->load->view('catologo_productos/top_menu_catalogo', array('usuario' => $this->usuarios->get($this->session->userdata('id_usuario'))));
@@ -352,7 +362,8 @@ class Empresa extends CI_Controller
       'mensaje'=> $datos['empresa']->nombre ." ". $datos['empresa']->descripcion,
       'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
     );
-
+    // nosotros
+    $datos['descripcion'] = "Quienes somos: " . $datos['empresa']->tipo . " " . $datos['empresa']->nombre . " en ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
 
     if ($this->ci->agent->is_mobile()) 
     {
@@ -366,7 +377,7 @@ class Empresa extends CI_Controller
     {
 
       $this->load->view('template/head', array(
-        'titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre,
+        'titulo' => 'Nuestra empresa - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
         'facebook' => $post['facebook']
         )
       );
@@ -408,7 +419,7 @@ class Empresa extends CI_Controller
     $post['facebook'] = array('titulo'=> $datos['empresa']->nombre,
                   'mensaje'=> $datos['empresa']->nombre ." Celular ". $datos['usuario']->celular." Sitio WEB: ".$datos['usuario']->web,
                   'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png");
-
+    // contacto
     if ($this->ci->agent->is_mobile()) 
     {
       #Vistas Mobiles
@@ -419,7 +430,7 @@ class Empresa extends CI_Controller
     }else
     {
       $this->load->view('template/head', array(
-        'titulo' => 'Contacto - ' . $datos['empresa']->nombre,
+        'titulo' => 'Contacto - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
          'facebook' => $post['facebook']
         ));
       $this->load->view('template/javascript');
@@ -463,7 +474,7 @@ class Empresa extends CI_Controller
       $datos['tag'].=$value->nombre.",";
     }
 
-
+    // Descargar catologo
     if ($this->ci->agent->is_mobile()) 
     {
       #vistas mobiles
@@ -480,7 +491,7 @@ class Empresa extends CI_Controller
       );
       $this->load->view('template/head', 
         array(
-          'titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre,
+          'titulo' => 'Descargar Catálogo - ' . $datos['empresa']->nombre . " | PROVEEDOR.com.co",
           'facebook' => $post['facebook']
           )
         );

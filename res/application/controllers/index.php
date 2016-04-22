@@ -53,7 +53,11 @@ class Index extends CI_Controller {
 		
 		$data['registro']=$this->session->userdata('registro');
 		
-		$this->load->view('template/head', array('titulo'=>"PROVEEDOR.com.co"));
+		$this->load->view('template/head', 
+			array(
+				'titulo' => "PROVEEDOR.com.co: Directorio de Proveedores, Fabricantes, Compradores y Vendedores",
+				'descripcion' => "Portal de intercambios comerciales de las empresas en Colombia!",
+				));
 		$this->load->view('template/javascript');
 		$this->load->view('registro/funcionalidades_');
 		$this->load->view('index/top_menu',$data);
