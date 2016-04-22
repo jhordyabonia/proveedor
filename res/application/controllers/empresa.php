@@ -438,7 +438,7 @@ class Empresa extends CI_Controller
     
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
-    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0]);   
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;   
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
@@ -461,7 +461,7 @@ class Empresa extends CI_Controller
     "Quieres contactarte con " . 
       $datos['empresa']->tipo . 
       " de " . 
-      $this->categoria->get($datos['empresa']->categoria)->nombre_categoria.
+      $datos['empresa']->categoria.
       " " . 
       $datos['empresa']->nombre .
       " en " .
