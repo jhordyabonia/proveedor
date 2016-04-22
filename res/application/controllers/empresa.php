@@ -472,7 +472,7 @@ class Empresa extends CI_Controller
       $datos['usuario']->departamento .
       ", " .
       $datos['usuario']->pais .
-      "está es toda la información de contacto: ".
+      " está es toda la información de contacto: ".
       " Telefono: ".
       $datos['usuario']->telefono .
       " Ubicación: " . 
