@@ -438,7 +438,7 @@ class Empresa extends CI_Controller
     
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
-    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;   
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0]);   
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
