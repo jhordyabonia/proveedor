@@ -147,6 +147,8 @@ class Empresa extends CI_Controller
     $datos['tipo_filtro']           = $tipo_filtro;
     $datos['filtro']                = $filtro;
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+    $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;    
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
@@ -227,14 +229,11 @@ class Empresa extends CI_Controller
     $datos['empresa']->numero_productos=count($datos['productos']);
     $datos['empresa']->numero_solicitudes=count($datos['productos']);
 
-    // Esta linea la copie del metodo inicio, espero que no haga daños.
-    $datos['empresa']->categoria = explode('|',$datos['empresa']->categorias); 
-    
     $datos['descripcion'] = 
     "Este es nuestro completo catálogo, somos " . 
       $datos['empresa']->tipo . 
       " de " . 
-      $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria.
+      $this->categoria->get($datos['empresa']->categoria)->nombre_categoria.
       " " . 
       $datos['empresa']->nombre .
       " en " .
@@ -284,6 +283,8 @@ class Empresa extends CI_Controller
 
     $datos['empresa']               = $this->empresa->get($id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+    $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria; 
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
@@ -360,6 +361,8 @@ class Empresa extends CI_Controller
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+    $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria; 
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
@@ -434,6 +437,8 @@ class Empresa extends CI_Controller
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa,'refresh');}
     
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+    $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;   
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
@@ -456,7 +461,7 @@ class Empresa extends CI_Controller
     "Quieres contactarte con " . 
       $datos['empresa']->tipo . 
       " de " . 
-      $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria.
+      $this->categoria->get($datos['empresa']->categoria)->nombre_categoria.
       " " . 
       $datos['empresa']->nombre .
       " en " .
@@ -515,6 +520,8 @@ class Empresa extends CI_Controller
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
+    $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
+    $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;   
     $datos['usuario']               = $this->usuarios->get($datos['empresa']->usuario);
     $datos['usuario']->pais         = $this->pais->get($datos['usuario']->pais)->nombre;
     $datos['usuario']->ciudad       = $this->municipio->get($datos['usuario']->ciudad)->municipio;
@@ -540,7 +547,7 @@ class Empresa extends CI_Controller
     "Descarga nuestros catálogos, somos " . 
       $datos['empresa']->tipo . 
       " de " . 
-      $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria.
+      $this->categoria->get($datos['empresa']->categoria)->nombre_categoria.
       " " . 
       $datos['empresa']->nombre .
       " en " .
