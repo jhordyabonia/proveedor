@@ -1,7 +1,7 @@
 <div class='main row'>    
    <?php if($categorias):?>
         <?php foreach ($categorias as $key => $item):?>
-            <div id='<?=$key?>' align='center' class='caja col-md-3 col-xs-3 col-lg-3' 
+            <div id='div<?=$item->id?>' align='center' class='caja col-md-3 col-xs-3 col-lg-3' 
                 draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)' 
                 ondragenter='return false' ondragover='return false'>
                 <a href='<?=$url?>/show/<?=$item->id?>'>
@@ -11,8 +11,8 @@
                 </a>
                 <div class='col-md-4 col-xs-4 col-lg-4'>
                 <div class='funciones'>
-                        <a onclick='update(<?=$item->id?>)'><span class='glyphicon glyphicon-upload'></span>Subir</a>
-                        <a onclick='delete(<?=$item->id?>)'><span class='glyphicon glyphicon-trash'></span>Eliminar</a>
+                        <a onclick='up(<?=$item->id?>)'><span class='glyphicon glyphicon-upload'></span>Subir</a>
+                        <a onclick='del(<?=$item->id?>)'><span class='glyphicon glyphicon-trash'></span>Eliminar</a>
                     </div>
                 </div>            
             </div>

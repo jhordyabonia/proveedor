@@ -4,14 +4,13 @@ function dragstart(caja, evento)
 function drop(target, evento)
 {
     var caja = event.dataTransfer.getData('Data');
-    target.appendChild(document.getElementById(caja));
-}
-function reload()
-{
-              //location.href='#';
-}           
+    //target.appendChild(document.getElementById(caja));
+    up(caja.replace('div',''),target.id.replace('div',''));
+    
+    //document.getElementById(caja).remove();
+}      
 
-function update(categoria,parent)
+function up(categoria,parent)
 {
     var popup=new XMLHttpRequest();
     popup.open('GET', url+'/update/'+categoria+'/'+parent, true);
@@ -22,10 +21,12 @@ function update(categoria,parent)
     {
         if(popup.response!='0')
             alert(popup.response);
+         else
+            document.getElementById('div'+categoria).remove();            
     }
 }
 
-function delete(categoria)
+function del(categoria)
 {
     var popup=new XMLHttpRequest();
     popup.open('GET', url+'/delete/'+categoria, true);
@@ -36,5 +37,7 @@ function delete(categoria)
     {
         if(popup.response!='0')
             alert(popup.response);
+         else
+            document.getElementById('div'+categoria).remove();
     }
 }
