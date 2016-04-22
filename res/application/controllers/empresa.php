@@ -30,12 +30,16 @@ class Empresa extends CI_Controller
     $this->load->model('Asistentes_proveedor_model', 'asistentes_proveedor');
   }
 
+
   private function duplicado($stack, $needle)
   {
-    foreach ($stack as $key => $value) {
-      if ($value->id == $needle->id) {return true;}
-    }
-    return false;
+        if(is_object)
+        foreach ($stack as $key => $value) 
+            if(is_object($value))
+                if ($value->id == $needle->id) 
+                    return true;
+        
+        return false;
   }
   public function inicio($id)
   {
@@ -69,7 +73,6 @@ class Empresa extends CI_Controller
       $tmp_productos[] = $this->cargar_producto($value);
       $datos['tag'].=$value->nombre.",";
       if($top<0)break;
-      $top-=1;
     }
     $datos['productos'] = $tmp_productos;
     $tmp_imagenes=explode(',',$datos['empresa']->imagenes);

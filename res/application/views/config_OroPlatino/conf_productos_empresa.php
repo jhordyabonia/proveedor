@@ -41,7 +41,7 @@
                                         <p class="txt_nomproducto2" ><?=$producto->nombre?></p>
                                         <p class="txt_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
                                         <p class="txt_pedido"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="txt_pedido">pedido mínimo</p>';}?>
-                                        <p class="txt_desc"><?=$producto->descripcion?></p>
+                                        <p class="txt_desc"><?=strip_tags($producto->descripcion)?></p>
                                         <button class="btn btn-selecc-princi">
                                             <span class="ico-config-style glyphicon glyphicon-bookmark"></span>
                                             <p class="selec-pri-txt inline-block" >

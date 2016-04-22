@@ -209,7 +209,7 @@
 												<a href="JavaScript:lanzar_popup(<?=$key?>)" class="text-up-img"><?=$key+1?></a>									
 											</div>
 											<div class="subido-img">
-												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=base_url()?>uploads/<?=$destacado->imagenes?>">
+												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=verificar_imagen('uploads/<?=$destacado->imagenes')?>">
 												<p class="name-file"><a id="nombre_pro_<?=$key?>" class="btn btn1" href="JavaScript:lanzar_popup(<?=$key?>)"><?=$destacado->nombre?></a></p>
 												<a id="link_pro_<?=$key?>" href="JavaScript:eliminar_producto(<?=$key?>)" class="btn-remov-img" style="display:none"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 											</div>
@@ -221,7 +221,7 @@
 												<a href="JavaScript:lanzar_popup(<?=$key?>)" class="text-up-img"><?=$key+1?></a>									
 											</div>
 											<div class="subido-img">
-												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=base_url()?>uploads/<?=$destacado->imagenes?>">
+												<img id="imagen_pro_<?=$key?>" class="imge-subido banner_preview" src="<?=verificar_imagen('uploads/'.$destacado->imagenes)?>">
 												<p class="name-file"><a id="nombre_pro_<?=$key?>" class="" href="JavaScript:lanzar_popup(<?=$key?>)"><?=$destacado->nombre?></a></p>
 												<a id="link_pro_<?=$key?>" href="JavaScript:eliminar_producto(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 											</div>
