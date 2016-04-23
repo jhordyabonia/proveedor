@@ -13,6 +13,7 @@ class AdministracionCategorias extends CI_Controller
         $categoria=array('nombre'=>$nombre,'parent'=>$parent);
         echo @$this->categoria2->insert($categoria);
     }
+
     public function update($categoria,$parent=0)
     {
         if(!$parent)
@@ -35,8 +36,10 @@ class AdministracionCategorias extends CI_Controller
         $data['categoria']=$categoria; 
         $data['url']=base_url()."administracionCategorias"; 
         $data['titulo']="administracion Categorias"; 
-        echo @$this->load->view('template/head', $data, TRUE);
-        echo @$this->load->view('administracionCategorias/assets',FALSE,TRUE); 
+        // Este head tiene un problema grande, el boostrap fue modificado por terceros, asi que debo comentarlo: LCM
+        // echo @$this->load->view('template/head', $data, TRUE);
+        // Para agilizar se agrego esto en el mismo archivo, se debe mirar como se corrige esto, considero que no podemos seguir haciendolo asi
+        // echo @$this->load->view('administracionCategorias/assets',FALSE,TRUE); 
        
         $data['categorias']=$this->categoria2->get_all(array('parent'=>$categoria));
         echo @$this->load->view('administracionCategorias/items',$data,TRUE);
