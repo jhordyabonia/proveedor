@@ -1,161 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <link href="<?= base_url() ?>assets/img/logoweb.ico" rel="shortcut icon" />
-  <link href="<?php echo base_url() ?>assets/bootstrap336/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/font-awesome-450/css/font-awesome.css">
-  <script> var base_url = "<?= base_url() ?>"; </script>
-  <title><?php echo $titulo ?></title>
-  <script>
-    var url = "<?=$url?>"; 
-    var categoria_parent= <?=$categoria?>;   
-    var nueva_categoria="Categoria<?=rand(0,$categoria)?>";      
-    </script> 
-    <link href="<?=base_url()?>assets/css/administracionCategorias/style.css" rel="stylesheet" type="text/css" >
-    <script src="<?=base_url()?>assets/js/administracionCategorias/js.js"></script>
-</head>
-<body>
-    <div class="container">
-        <section>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <link href="<?= base_url() ?>assets/img/logoweb.ico" rel="shortcut icon" />
+      <link href="<?php echo base_url() ?>assets/bootstrap336/css/bootstrap.css" rel="stylesheet">
+      <link rel="stylesheet" href="<?php echo base_url() ?>assets/font-awesome-450/css/font-awesome.css">
+      <script> var base_url = "<?= base_url() ?>"; </script>
+      <title><?php echo $titulo ?></title>
+      <script>
+        var url = "<?=$url?>"; 
+        var categoria_parent= <?=$categoria?>;   
+        var nueva_categoria="Categoria<?=rand(0,$categoria)?>";      
+        </script> 
+        <link href="<?=base_url()?>assets/css/administracionCategorias/style.css" rel="stylesheet" type="text/css" >
+        <script src="<?=base_url()?>assets/js/administracionCategorias/js.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
             <div class="row">
-                <header>
-                    <div class="col-md-12">
-                        <h1>
-                            Administrar Categorias
-                        </h1>
-                    </div>
-                    <hr>
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for="category-name">Nombre:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="category-name" placeholder="Digite el nombre de la categoria">
-                              <span class="input-group-btn">
-                                <button class="btn btn-success" type="button">Crear</button>
-                              </span>
-                            </div><!-- /input-group -->
+                <div class="col-md-12">
+                    <h1>
+                        Administrar Categorias
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- Creation form -->
+                    <div class="form-group">
+                        <label for="category-name">Nombre:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="category-name" placeholder="Digite el nombre de la categoria" onchange="nueva_categoria=this.value;">
+                            <span class="input-group-btn">
+                            <button class="btn btn-success" type="button" onclick="make(nueva_categoria)">Crear</button>
+                          </span>
                         </div>
                     </div>
-                </header>
-                <div class="row">
-                    <div class="col-md-12">
-                        <ol class="breadcrumb">
-                          <li><a href="#">Categoria</a></li>
-                          <li><a href="#">Subcategoria</a></li>
-                          <li class="active">Level 3</li>
-                        </ol>
-                    </div>
+                    <!-- End creation form -->
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                      <li><a href="#">Categoria</a></li>
+                      <li><a href="#">Subcategoria</a></li>
+                      <li class="active">Level 3</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
                 <!-- panel principal para mostrar las categorias -->
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-md-6">
                     <div class="items-category list-group" id="items-category">
-                        <!-- Item category, this repeat in the foreach  -->
-                        <dl class="list-group-item">
-                            <div class="pull-left">
-                                <dt>Categoria</dt>
-                                <dd>Descripcion de la categoria</dd>
-                            </div>
-                            <a href="#" class="pull-right btn btn-danger">
-                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
-                            </a>
-                            <div class="clearfix"></div>
-                        </dl>
-                        <!-- End of item -->
-                        <dl class="list-group-item">
-                            <div class="pull-left">
-                                <dt>Categoria</dt>
-                                <dd>Descripcion de la categoria</dd>
-                            </div>
-                            <a href="#" class="pull-right btn btn-danger">
-                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
-                            </a>
-                            <div class="clearfix"></div>
-                        </dl>
-                        <dl class="list-group-item">
-                            <div class="pull-left">
-                                <dt>Categoria</dt>
-                                <dd>Descripcion de la categoria</dd>
-                            </div>
-                            <a href="#" class="pull-right btn btn-danger">
-                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
-                            </a>
-                            <div class="clearfix"></div>
-                        </dl>
+                       <?php if($categorias):?>
+                            <?php foreach ($categorias as $key => $item):?>
+                            <!-- Item category, this repeat in the foreach  -->
+                                <dl  id='div<?=$item->id?>'  class="list-group-item" draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)' ondragenter='return false' ondragover='return false' onclick="this.classList.add('active')">
+                                    <!-- el evento onclic anterior lo puse para pruebas. Cuando una cateforia esté selecionada -->
+                                    <a href="<?=$url?>/show/<?=$item->id?>">
+                                        <div class="pull-left">
+                                            <dt><?php echo $item->nombre; ?></dt>
+                                        </div>
+                                    </a> 
+                                    <!-- Buttons -->
+                                    <div class="pull-right">
+                                        <div class="btn-group">
+                                            <a onclick='up(<?=$item->id?>)' class="btn btn-success">
+                                                <i class="fa fa-arrow-up fa-fw fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a onclick='del(<?=$item->id?>)' class="btn btn-danger">
+                                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- End Buttons -->
+                                    <div class="clearfix"></div>
+                                </dl>
+                            <!-- End of item -->
+                            <?php endforeach;?>
+                        <?php else:?>
+                            <!-- Item category, this repeat in the foreach  -->
+                            <dl class="list-group-item">
+                                <a href="#">
+                                    <div class="pull-left">
+                                        <dt>Sin categorias</dt>
+                                        <dd>Al parecer no has agregado ninguna categoria, agrega escribe el nombre y dale en el botón crear</dd>
+                                    </div>
+                                </a> 
+                                <div class="clearfix"></div>
+                            </dl>
+                            <!-- End of item -->
+                        <?php endif;?>
                     </div>
                 </div>
-
-                <!-- Panel para mostrar las subcategorias -->
-                <div class="col-sm-6 hidden-xs">
+                <!-- Panel para mostrar las subcategorias (Solo se muestra en desktop y tablet)-->
+                <div class="col-sm-6 col-md-6 hidden-xs">
                     <div class="items-subcategory list-group" id="items-subcategory">
                         <!-- Item category, this repeat in the foreach  -->
                         <dl class="list-group-item">
                             <div class="pull-left">
-                                <dt>Sub-Categoria</dt>
-                                <dd>Descripcion de la Sub-categoria</dd>
+                                <dt>Sin subcategorias</dt>
+                                <dd>Al parecer no has agregado ninguna subcategoria o no tienes selecionada ninguna categoria</dd>
                             </div>
-                            <a href="#" class="pull-right btn btn-danger">
-                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
-                            </a>
                             <div class="clearfix"></div>
                         </dl>
                         <!-- End of item -->
-                        <dl class="list-group-item">
-                            <div class="pull-left">
-                                <dt>Sub-Categoria</dt>
-                                <dd>Descripcion de la Sub-categoria</dd>
-                            </div>
-                            <a href="#" class="pull-right btn btn-danger">
-                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
-                            </a>
-                            <div class="clearfix"></div>
-                        </dl>
-                        <dl class="list-group-item">
-                            <div class="pull-left">
-                                <dt>Sub-Categoria</dt>
-                                <dd>Descripcion de la Sub-categoria</dd>
-                            </div>
-                            <a href="#" class="pull-right btn btn-danger">
-                                <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
-                            </a>
-                            <div class="clearfix"></div>
-                        </dl>
                     </div>
+
                 </div>
             </div>
-        </section>
-    </div>
-    <hr>
-    <div class="container">
-        <input placeholder="Nombre categoria" onchange="nueva_categoria=this.value;">
-        <button onclick="make(nueva_categoria)">Agregar</button> 
-        <div class='main row' id="main">
-           <?php if($categorias):?>
-                <?php foreach ($categorias as $key => $item):?>
-                    <div id='div<?=$item->id?>' align='center' class='caja col-md-3 col-xs-3 col-lg-3' 
-                        draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)' 
-                        ondragenter='return false' ondragover='return false'>
-                        <a href='<?=$url?>/show/<?=$item->id?>'>
-                            <div class='col-md-8 col-xs-8 col-lg-8'>
-                                <span class='glyphicon glyphicon-folder-open directori'></span><br><?=$item->nombre?>
-                            </div>
-                        </a>
-                        <div class='col-md-4 col-xs-4 col-lg-4'>
-                        <div class='funciones'>
-                                <a onclick='up(<?=$item->id?>)'><span class='glyphicon glyphicon-upload'></span>Subir</a>
-                                <a onclick='del(<?=$item->id?>)'><span class='glyphicon glyphicon-trash'></span>Eliminar</a>
-                            </div>
-                        </div>            
-                    </div>
-                <?php endforeach;?>
-            <?php else:?>
-                <h2 align='center'>
-                    <br>No hay subcategorias aquí
-                </h2> 
-            <?php endif;?>
         </div>
-    </div>
-</body>
+    </body>
 </html>
