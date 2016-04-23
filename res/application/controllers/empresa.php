@@ -461,7 +461,7 @@ class Empresa extends CI_Controller
     "Quieres contactarte con " . 
       $datos['empresa']->tipo . 
       " de " . 
-      $this->categoria->get($datos['empresa']->categoria)->nombre_categoria.
+      $datos['empresa']->categoria.
       " " . 
       $datos['empresa']->nombre .
       " en " .
@@ -472,7 +472,7 @@ class Empresa extends CI_Controller
       $datos['usuario']->departamento .
       ", " .
       $datos['usuario']->pais .
-      "está es toda la información de contacto: ".
+      " está es toda la información de contacto: ".
       " Telefono: ".
       $datos['usuario']->telefono .
       " Ubicación: " . 
