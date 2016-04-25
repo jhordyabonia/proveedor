@@ -44,8 +44,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ol class="breadcrumb">
-                        <?php foreach ($path as $key => $value):?>
+                    <ol class="breadcrumb">     
+                          <a href="<?=$url?>">Inicio</a>
+                          <?php foreach ($path as $key => $value):?>
                           <li><a href="<?=$url?>/show2/<?=$key==0?-1:$key?>/<?=implode('%3A',$path)?>%3A<?=$categoriaNombre?>"><?=$value?></a></li>
                         <?php endforeach;?>
                       <li class="active"><?=$categoriaNombre?></li>
