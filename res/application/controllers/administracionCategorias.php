@@ -16,10 +16,10 @@ class AdministracionCategorias extends CI_Controller
 
     public function update($categoria,$parent=0)
     {
-        if(!$parent)
+        if($parent==0)
         {
-            $id=$this->categoria2->get($categoria)->parent;
-            $parent=$id!=0?$this->categoria2->get($id)->parent:0;            
+            $id=$this->categoria2->get($categoria);
+            $parent=$id==FALSE?0:$this->categoria2->get($id->parent)->parent;            
         }
         $result = $this->categoria2->update(array('parent'=>$parent),$categoria);
         
