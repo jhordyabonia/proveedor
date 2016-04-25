@@ -38,7 +38,7 @@ function make()
         
         html= "<dl  id='div"+id+"'  class='list-group-item' draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)' ondragenter='return false' ondragover='return false' onclick='this.classList.add('active')'>";
         html+= "    <a href='"+url+"/show2/0/"+path+"%3A"+categoriaNombre+"%3A"+nueva_categoria+"'>";
-        html+= "        <div class='pull-left'>!";
+        html+= "        <div class='pull-left'>";
         html+= "            <dt>"+nueva_categoria+"</dt>";
         html+= "        </div>";
         html+= "    </a> ";

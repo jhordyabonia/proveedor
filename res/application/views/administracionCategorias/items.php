@@ -57,7 +57,7 @@
                 <!-- panel principal para mostrar las categorias -->
                 <div class="col-sm-6 col-md-6">
                     <div class="items-category list-group" id="items-category">
-                       <div id="main">
+                      <div id="main">
                        <?php if($categorias):?>
                             <?php foreach ($categorias as $key => $item):?>
                             <!-- Item category, this repeat in the foreach  -->
@@ -85,7 +85,6 @@
                                     <div class="clearfix"></div>
                                 </dl>
                             <!-- End of item -->
-                            </div>
                             <?php endforeach;?>
                         <?php else:?>
                             <!-- Item category, this repeat in the foreach  -->
@@ -99,7 +98,8 @@
                                 <div class="clearfix"></div>
                             </dl>
                             <!-- End of item -->
-                        <?php endif;?>
+                        <?php endif;?>                                                    
+                       </div>
                     </div>
                 </div>
                 <!-- Panel para mostrar las subcategorias (Solo se muestra en desktop y tablet)-->
