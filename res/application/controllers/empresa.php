@@ -29,8 +29,7 @@ class Empresa extends CI_Controller
     $this->load->model('new/Subcategoria_model', 'subcategoria');
     $this->load->model('Asistentes_proveedor_model', 'asistentes_proveedor');
   }
-
-
+}
   private function duplicado($stack, $needle)
   {
         if(is_object)

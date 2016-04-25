@@ -31,9 +31,29 @@ class AdministracionCategorias extends CI_Controller
         !$result?FALSE:$this->categoria2->delete(array('parent'=>$categoria));
         echo !$result?'Error, durante la opracón':0;        
     }
-    public function show($categoria=0)
+    
+    public function show2($key,$path="")
+    {
+        $categorias=explode('%3A',$path);
+        if($key==0)$key=count($categorias)-1;
+        if($key==-1)$key=0;
+        $categoria=$categorias[$key]==NULL?0:$this->categoria2->get(array('nombre'=>$categorias[$key]))->id;
+        $path=$categorias[0];
+        foreach ($categorias as $key2 => $value) 
+        {
+           if($key2==0)continue;
+           else if($key2>=$key)break;
+           
+           $path.=$value==''?'':'%3A'.$value;
+        }
+        $this->show($categoria,$path);
+    }
+    private function show($categoria=0,$path="")
     {
         $data['categoria']=$categoria; 
+        $data['categoriaNombre']=$categoria==0?"":$this->categoria2->get($categoria)->nombre; 
+        
+        $data['path']=explode('%3A',$path);
         $data['url']=base_url()."administracionCategorias"; 
         $data['titulo']="administracion Categorias"; 
         // Este head tiene un problema grande, el boostrap fue modificado por terceros, asi que debo comentarlo: LCM

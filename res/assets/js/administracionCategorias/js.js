@@ -19,8 +19,8 @@ function make()
     function show()
     {
        var id=popup.response;            
-    
-        html="<div id='div<"+id+"' align='center' class='caja col-md-3 col-xs-3 col-lg-3'" ;
+    /*
+        html="<div id='div"+id+"' align='center' class='caja col-md-3 col-xs-3 col-lg-3'" ;
         html+=   "draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)'";
         html+=    " ondragenter='return false' ondragover='return false'>";
         html+=     "<a href='"+url+"/show/"+id+"'>";
@@ -34,7 +34,29 @@ function make()
         html+=             "<a onclick='del("+id+")'><span class='glyphicon glyphicon-trash'></span>Eliminar</a>";
         html+=         "</div>";
         html+=    "</div>";      
-        html+= "</div>";
+        html+= "</div>";*/
+        
+        html= "<dl  id='div"+id+"'  class='list-group-item' draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)' ondragenter='return false' ondragover='return false' onclick='this.classList.add('active')'>";
+        html+= "    <a href='"+url+"/show2/0/"+path+"%3A"+categoriaNombre+"%3A"+nueva_categoria+"'>";
+        html+= "        <div class='pull-left'>!";
+        html+= "            <dt>"+nueva_categoria+"</dt>";
+        html+= "        </div>";
+        html+= "    </a> ";
+        html+= "    <div class='pull-right'>";
+        html+= "      <div class='btn-group'>";
+        html+= "        <a onclick='up("+id+")' class='btn btn-success'>";
+        html+= "            <i class='fa fa-arrow-up fa-fw fa-2x' aria-hidden='true'></i>";
+        html+= "        </a>";
+        html+= "       </div>";
+        html+= "        <div class='btn-group'>";
+        html+= "          <a onclick='del("+id+")' class='btn btn-danger'>";
+        html+= "            <i class='fa fa-trash fa-fw fa-2x' aria-hidden='true'></i>";
+        html+= "          </a>";
+        html+= "        </div>";
+        html+= "      </div>";
+        html+= "      <div class='clearfix'></div>";
+        html+= "      </dl>";
+        
         console.log(html);
         var hidden= document.createElement('div');
         hidden.innerHTML=html;
