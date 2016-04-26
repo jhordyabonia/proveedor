@@ -10,7 +10,7 @@ class AdministracionCategorias extends CI_Controller
        
     public function make($nombre,$parent=0)
     {
-        $categoria=array('nombre'=>$nombre,'parent'=>$parent);
+        $categoria=array('nombre'=>$this->fromUrl($nombre),'parent'=>$parent);
         echo @$this->categoria2->insert($categoria);
     }
 
@@ -37,7 +37,7 @@ class AdministracionCategorias extends CI_Controller
         $categorias=explode('%3A',$path);
         if($key==0)$key=count($categorias)-1;
         if($key==-1)$key=0;
-        $categoria=$categorias[$key]==NULL?0:$this->categoria2->get(array('nombre'=>$categorias[$key]))->id;
+        $categoria=$categorias[$key]==NULL?0:$this->categoria2->get(array('nombre'=>$this->fromUrl($categorias[$key])))->id;
         $path=$categorias[0];
         foreach ($categorias as $key2 => $value) 
         {
@@ -53,7 +53,7 @@ class AdministracionCategorias extends CI_Controller
         $data['categoria']=$categoria; 
         $data['categoriaNombre']=$categoria==0?"":$this->categoria2->get($categoria)->nombre; 
         
-        $data['path']=explode('%3A',$path);
+        $data['path']=explode(':',$this->fromUrl($path));
         $data['url']=base_url()."administracionCategorias"; 
         $data['titulo']="administracion Categorias"; 
         // Este head tiene un problema grande, el boostrap fue modificado por terceros, asi que debo comentarlo: LCM
@@ -67,5 +67,30 @@ class AdministracionCategorias extends CI_Controller
     public function index()
     {
        $this->show();
+    }
+    
+    public function fromUrl($s)
+    {  
+        $s=str_replace('%20',' ',$s);
+        $s=str_replace('%5B','[',$s);
+        $s=str_replace('%5D',']',$s);
+        $s=str_replace('%3A',':',$s);
+        $s=str_replace('%2F','/',$s);
+        $s=str_replace('%2b','-',$s);
+        $s=str_replace('%21','#',$s);
+        $s=str_replace('%22','\"',$s);
+        $s=str_replace('%3D','=',$s);
+        $s=str_replace('%3F','?',$s);
+        $s=str_replace('%26','&',$s);
+        $s=str_replace('%40','@',$s);        
+        
+        $s=str_replace('%C3%A1','á',$s);
+        $s=str_replace('%C3%A9','é',$s);
+        $s=str_replace('%C3%AD','í',$s);
+        $s=str_replace('%C3%B3','ó',$s);
+        $s=str_replace('%C3%BA','ú',$s);
+        $s=str_replace('%AA',',',$s);
+        #echo $s;
+        return $s;
     }
 }

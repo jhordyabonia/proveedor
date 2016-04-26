@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -63,7 +64,7 @@
                             <!-- Item category, this repeat in the foreach  -->
                                 <dl  id='div<?=$item->id?>'  class="list-group-item" draggable='true' ondragstart='dragstart(this, event)' ondrop='drop(this, event)' ondragenter='return false' ondragover='return false' onclick="this.classList.add('active')">
                                     <!-- el evento onclic anterior lo puse para pruebas. Cuando una cateforia esté selecionada -->
-                                    <a href="<?=$url?>/show2/0/<?=implode('%3A',$path).'%3A'.$categoriaNombre.'%3A'.$item->nombre?>">
+                                    <a href="<?=$url?>/show2/0/<?=fromUrl(implode('%3A',$path)).'%3A'.fromUrl($categoriaNombre).'%3A'.fromUrl($item->nombre)?>">
                                         <div class="pull-left">
                                             <dt><?php echo $item->nombre; ?></dt>
                                         </div>
@@ -71,7 +72,7 @@
                                     <!-- Buttons -->
                                     <div class="pull-right">
                                         <div class="btn-group">
-                                            <a onclick='up(<?=$item->id?>)' class="btn btn-success">
+                                            <a onclick='up(<?=$item->id?>,"")' class="btn btn-success">
                                                 <i class="fa fa-arrow-up fa-fw fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </div>
@@ -121,3 +122,29 @@
         </div>
     </body>
 </html>
+<?php
+ function fromUrl($s)
+    {  
+        $s=str_replace(' ','%20',$s);
+        $s=str_replace('[','%5B',$s);
+        $s=str_replace(']','%5D',$s);
+        $s=str_replace(':','%3A',$s);
+        $s=str_replace('/','%2F',$s);
+        $s=str_replace('-','%2b',$s);
+        $s=str_replace('#','%21',$s);
+        $s=str_replace('\"','%22',$s);
+        $s=str_replace('=','%3D',$s);
+        $s=str_replace('?','%3F',$s);
+        $s=str_replace('&','%26',$s);
+        $s=str_replace('@','%40',$s);        
+        /**/
+        $s=str_replace('%C3%A1','á',$s);
+        $s=str_replace('%C3%A9','é',$s);
+        $s=str_replace('%C3%AD','í',$s);
+        $s=str_replace('%C3%B3','ó',$s);
+        $s=str_replace('%C3%BA','ú',$s);
+        $s=str_replace(',','%AA',$s);
+        #echo $s;
+        return $s;
+    }
+?>

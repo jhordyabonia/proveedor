@@ -93,7 +93,7 @@ class Empresa extends CI_Controller
     // inicio --lista
     $datos['descripcion'] = "Toda la información acerca de la empresa: " . $datos['empresa']->tipo . " de ". $datos['empresa']->categoria . " " . $datos['empresa']->nombre  . " en ".  $datos['usuario']->direccion .", ".  $datos['usuario']->ciudad .", ". $datos['usuario']->departamento . ", " . $datos['usuario']->pais;
   
-    if ($this->ci->agent->is_mobile())
+    if ($this->ci->agent->is_mobile()||$this->movilRobot())
     {
       // print_r($datos);
       #Vistas Mobiles
@@ -133,7 +133,12 @@ class Empresa extends CI_Controller
       $this->load->view('template/footer_empy');
     }
   }
-
+  private function movilRobot()
+  {
+    if($this->ci->agent->is_robot())
+		  return stripos("Googlebot-Mobile",$this->ci->agent->robot())>=0;	
+    return false;
+  }
   public function catalogo_producto($id, $page=0,$filtro = 0,$tipo_filtro=0)
   {
     $datos['tap']='catalogo_producto';        
@@ -243,7 +248,7 @@ class Empresa extends CI_Controller
       ", " .
       $datos['usuario']->pais;
 
-    if ($this->ci->agent->is_mobile())
+    if ($this->ci->agent->is_mobile()||$this->movilRobot())
     {
       // print_r($datos);
       
@@ -333,7 +338,7 @@ class Empresa extends CI_Controller
     }
     $datos['oportunidades']=$oportunidades_tmp;
 
-    if ($this->ci->agent->is_mobile()) 
+    if ($this->ci->agent->is_mobile()||$this->movilRobot()) 
     {
 
     }else
@@ -398,7 +403,7 @@ class Empresa extends CI_Controller
     "y, la visión: " .
     $datos['empresa']->vision;
 
-    if ($this->ci->agent->is_mobile()) 
+    if ($this->ci->agent->is_mobile()||$this->movilRobot()) 
     {
        # Vista movil
        $this->popup_captura_solicitud(42);
@@ -483,7 +488,7 @@ class Empresa extends CI_Controller
       $datos['usuario']->twitter .
       " Linkedin: " . 
       $datos['usuario']->linkedin;
-    if ($this->ci->agent->is_mobile()) 
+    if ($this->ci->agent->is_mobile()||$this->movilRobot()) 
     {
       #Vistas Mobiles
       $this->load->view('registro/funcionalidades_');
@@ -556,7 +561,7 @@ class Empresa extends CI_Controller
       $datos['usuario']->departamento .
       ", " .
       $datos['usuario']->pais;
-    if ($this->ci->agent->is_mobile()) 
+    if ($this->ci->agent->is_mobile()||$this->movilRobot()) 
     {
       #vistas mobiles
       $this->popup_captura_solicitud(42);

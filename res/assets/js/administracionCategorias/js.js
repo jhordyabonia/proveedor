@@ -8,11 +8,12 @@ function drop(target, evento)
     up(caja.replace('div',''),target.id.replace('div',''));
     
     //document.getElementById(caja).remove();
-}      
+}    
+  
 function make()
 {
     var popup=new XMLHttpRequest();
-    popup.open('GET', url+'/make/'+nueva_categoria+'/'+categoria_parent, true);
+    popup.open('GET', url+'/make/'+toUrl(nueva_categoria)+'/'+categoria_parent, true);
     popup.addEventListener('load',show,false);
     popup.send(null);
 
@@ -66,7 +67,7 @@ function make()
 function up(categoria,parent)
 {
     var popup=new XMLHttpRequest();
-    popup.open('GET', url+'/update/'+categoria+'/'+parent, true);
+    popup.open('GET', url+'/update/'+categoria+'/'+toUrl(parent), true);
     popup.addEventListener('load',show,false);
     popup.send(null);
 
@@ -93,4 +94,36 @@ function del(categoria)
          else
             document.getElementById('div'+categoria).remove();
     }
+}
+
+ function toUrl(s)
+{
+        while(s.indexOf(' ')!=-1)
+            s=s.replace(' ','%20');
+        while(s.indexOf('[')!=-1)
+            s=s.replace('[','%5B');
+        while(s.indexOf(']')!=-1)
+            s=s.replace(']','%5D');
+        while(s.indexOf(':')!=-1)
+            s=s.replace(':','%3A');
+        while(s.indexOf('/')!=-1)
+            s=s.replace('/','%2F');
+        while(s.indexOf('-')!=-1)
+            s=s.replace('-','%2b');
+        while(s.indexOf('\"')!=-1)
+            s=s.replace('\"','%22');
+        while(s.indexOf('\#')!=-1)
+            s=s.replace('\#','%21');
+        while(s.indexOf('=')!=-1)
+            s=s.replace('=','%3d');
+        while(s.indexOf('?')!=-1)
+            s=s.replace('?','%3F');
+        while(s.indexOf('&')!=-1)
+            s=s.replace('&','%26');
+        while(s.indexOf('@')!=-1)
+            s=s.replace('@','%40');
+        while(s.indexOf(',')!=-1)
+            s=s.replace(',','%vx');
+                     
+        return s;
 }
