@@ -100,7 +100,8 @@ class Categoria extends CI_Controller {
         $data['categorias']=$this->categoria->get_all();
         $data['subcategorias']=$this->subcategoria->get_all(array('id_categoria'=>$categoria));
         
-        $data['titulo']=$data['categoria']->nombre_categoria;
+        $data['titulo']=$data['categoria']->nombre_categoria . " - Categoria | PROVEEDOR.com.co";
+
         if($tmp!=FALSE){$data['titulo']=$tmp->nom_subcategoria;}
         $data['url_registro']=base_url()."registro/registro_usuario";
         $data['url_publicar_producto']=base_url()."publicar_producto";
@@ -266,7 +267,12 @@ class Categoria extends CI_Controller {
         $data['registro']=$this->session->userdata('registro');
         $data['paso']=$this->session->userdata('paso');
         $data['id_registro']=$this->session->userdata('id_registro');
-
+        $data['descripcion'] = 'Todos los productos de  tipo: ' . $data['categoria']->nombre_categoria . " para comprar, vender y cotizar están en PROVEEDOR.com.co";
+        $data['facebook'] = array(
+          'titulo'=> $datos['titulo'],
+          'mensaje'=> $data['descripcion'],
+          'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
+        );
         $this->load->view('template/head', $data, FALSE);
         $this->load->view('template/javascript');
         $this->load->view('registro/funcionalidades_');

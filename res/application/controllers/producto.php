@@ -78,7 +78,7 @@ class Producto extends CI_Controller
 				$data['div_membresia']=$this->membresia->get_div($data['empresa']->id);
 				$datos['url_publicar_solicitud']= base_url() . "publicar_producto";
 				$datos['url_publicar_producto']= base_url(). "publicar_oferta";
-				$datos['descripcion'] = $datos['titulo'] . " para comprar, vender y cotizar en " . $data['usuario']->ciudad;
+				$datos['descripcion'] = $datos['titulo'] . "  para comprar, vender y cotizar en " . $data['usuario']->ciudad;
 				//Todo: Mejorar las etiquetas.
 				$datos['tags'] = $datos['titulo'];
 				$datos['facebook'] = array(
