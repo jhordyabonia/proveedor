@@ -271,7 +271,7 @@ class Listados extends CI_Controller {
 		$data['descripcion'] = "Listado de productos, categorias y proveedores con el termino de busqueda: " . $data['nom_producto'] . "para comprar, vender y cotizar están en PROVEEDOR.com.co";
 		$data['facebook'] = array(
 			'titulo'=> $data['titulo'],
-			'mensaje'=> $data['descripcion'],
+			'mensaje'=> ,
 			'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
 			);
 		$this->load->view("template/head", $data);
