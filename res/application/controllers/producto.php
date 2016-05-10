@@ -72,12 +72,20 @@ class Producto extends CI_Controller
 				$datos_imagenes['img_principal'] = $data['producto']->imagenes[0];
 				$array_merge0 = array_merge($datos, $datos_imagenes);
 
-				$datos['titulo']=$data['producto']->nombre." - PROVEEDOR.com.co";
+				$datos['titulo']=$data['producto']->nombre." - Producto | PROVEEDOR.com.co";
 				$datos['id_usuario']= $this->session->userdata('id_usuario');
 
 				$data['div_membresia']=$this->membresia->get_div($data['empresa']->id);
 				$datos['url_publicar_solicitud']= base_url() . "publicar_producto";
 				$datos['url_publicar_producto']= base_url(). "publicar_oferta";
+				$datos['descripcion'] = $datos['titulo'] . "  para comprar, vender y cotizar en " . $data['usuario']->ciudad;
+				//Todo: Mejorar las etiquetas.
+				$datos['tags'] = $datos['titulo'];
+				$datos['facebook'] = array(
+				  'titulo'=> $datos['titulo'],
+				  'mensaje'=> 'Visita este producto en Proveedor.com.co ' . $datos['titulo'] . " para comprar, vender y cotizar en: " . $data['usuario']->ciudad,
+				  'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
+				);
 				$this->load->view('template/head', $datos, FALSE);
 				$this->load->view('template/javascript', FALSE, FALSE);
 				$this->load->view('registro/funcionalidades_',$data);

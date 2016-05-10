@@ -268,6 +268,12 @@ class Listados extends CI_Controller {
 				
 		$data['url_publicar_producto']=base_url()."publicar_producto";
 		$data['url_publicar_solicitud']=base_url()."publicar_oferta";
+		$data['descripcion'] = "Listado de productos, categorias y proveedores con el termino de busqueda: " . $data['nom_producto'] . "para comprar, vender y cotizar están en PROVEEDOR.com.co";
+		$data['facebook'] = array(
+			'titulo'=> $data['titulo'],
+			'mensaje'=> ,
+			'url_image_facebook'=> img_url()."facebook-banner/facebook-banner-inicio-default.png"
+			);
 		$this->load->view("template/head", $data);
 		$this->load->view("template/javascript");
 		$this->load->view('registro/funcionalidades_');
