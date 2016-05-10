@@ -81,6 +81,11 @@
                                                 <i class="fa fa-trash fa-fw fa-2x" aria-hidden="true"></i>
                                             </a>
                                         </div>
+                                        <div class="btn-group">
+                                            <a onclick='adit(<?=$item->id?>)' data-toggle="modal" data-target="popup_editar" class="btn btn-success">
+                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                     <!-- End Buttons -->
                                     <div class="clearfix"></div>
@@ -120,6 +125,42 @@
                 </div>
             </div>
         </div>
+        
+           <link rel="stylesheet" href="<?php echo css_url()?>popup_mensaje.css">
+    <div class="mensaje">
+     <div class="modal fade" id="popup_editar" tabindex="-1" role="dialog" aria-hidden="true" >
+         <div class="modal-dialog">
+		      <div class="modal-header encabezado">
+		         <button type="button" class="close" data-dismiss="modal" >
+                    <span aria-hidden="true">
+                      <span class="fa fa-times cerrar" aria-hidden="true"></span>
+                    </span>
+                    <span class="sr-only">Cerrar</span>
+		        </button>
+		            <h4 class="modal-title text-center titulo_popup"><i class="fa fa-envelope icono_mensaje"></i>Mensaje</h4>
+	          </div>
+                <div class="modal-body text-center popup_central">
+                 <label for="Usuario" id="labe_categoria" class="label_modal">Nombre categoria</label><br>
+                  <div class="input-group quien_envia">
+                    <span class="input-group-addon">
+                      <span class="fa fa-user" aria-hidden="true"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Ingrese el nombre de la categoria" id="nombre_categoria_editar" value="">
+                  </div> 
+                 
+                  <label for="mensaje" class="label_modal">Descripcion:</label>
+                  <div class="col-xs-12 input-group">
+                    <textarea class="form-control caja_mensaje" rows="4"name="mensaje"></textarea>
+                  </div>
+                  <div class="col-md-12 input-group enviar">
+                    <input type="button" class="btn btn-default center-block boton_enviar" value="Guardar" onclick="">
+                  </div>
+                  <br>
+                </div>                
+          </div>
+        </div>
+    </div>  
+    
     </body>
 </html>
 <?php

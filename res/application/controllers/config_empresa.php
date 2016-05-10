@@ -169,7 +169,34 @@ class Config_empresa extends CI_Controller {
     $this->load->view('popups/confirmacion/confirmacion_guardado');
     $this->load->view('template/footer',$this->datos);
     $this->load->view('template/footer_empy',$this->datos);
+  }  ##LLama la vista que mostrara la parte del footer en las vistas
+  
+  function usuario1()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_usuario',$this->datos);      
+  }  
+  function contacto1()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_contacto',$this->datos);      
   }
+  function empresa1()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_perfil_empresa',$this->datos);      
+  }
+  		
 
   ##LLama la vista que mostrara la parte del footer en las vistas
   function catalogo()

@@ -335,10 +335,10 @@ class Tienda extends CI_Controller {
                 $to_insert[$key]=$p;
                 unset($p);                
             }
-            #echo "<PRE>";
-            #print_r($producto);
-            #echo "<PRE>";
-            #return;
+        #echo "<PRE>";
+        #print_r($to_insert);
+        #echo "<PRE>";
+        #return;
         $this->db->close();
         $this->load->database('default');
         $this->db->reconnect();
@@ -698,16 +698,40 @@ class Tienda extends CI_Controller {
                 $tmp.=str_replace('http://tienda.proveedor.com.co/','',$img->guid).',';
                 
         $imgs = $this->producto_tienda->get_all(array('post_parent'=>$id,'post_mime_type'=>'image/gif'),'guid');
+        
         if(!($imgs==FALSE))
             foreach($imgs as $key=>$img)
                 $tmp.=str_replace('http://tienda.proveedor.com.co/','',$img->guid).',';
-              
+        
+        $imgs = $this->producto_tienda->get_all(array('post_id'=>$id,'meta_key'=>'_wp_attached_file'),'meta_value','wp_postmeta');
+        foreach($imgs as $key => $img)
+           $tmp.="wp-content/uploads/".$img->meta_value.',';        
+                  
         $out->imagenes=$tmp==''?'default.jpg':substr($tmp,0,strlen($tmp)-1); 
         
         #echo "<PRE>";
         #print_r($out);
+        #echo 0;
         
         $out->estado="nuevo";
         return $out;        
+    }
+    function testQ($id)
+    {    
+        #$productos = $this->producto_tienda->get_all(NULL,'*','wp_posts','ID');
+        echo "<PRE>";
+        #print_r($empresas);
+        #/*
+        #foreach ($productos as $key => $producto)
+        $tmp='';
+        {    
+            $imgs = $this->producto_tienda->get_all(array('post_id'=>$id,'meta_key'=>'_wp_attached_file'),'meta_value','wp_postmeta');
+            foreach($imgs as $key => $img)
+                $tmp.="wp-content/uploads/".$img->meta_value.',';        
+       
+#            $imgs = $this->producto_tienda->get_all(array('post_id'=>$producto->ID,'meta_key'=>'_wp_attached_file'),'meta_value','wp_postmeta');
+            print_r($imgs);
+        }
+        echo $tmp;#*/
     }
 }?>

@@ -18,7 +18,6 @@
         <?php echo $this->section('content') ?>
     </div>
     <!-- /.container-fluid -->
-        
     <?php echo js("jquery-1.11.1.min.js") ?>
     <?php echo js("bootstrap.min.js") ?>
     <?php echo $this->section('javascripts') ?>

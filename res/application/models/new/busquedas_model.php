@@ -56,6 +56,30 @@ class Busquedas_model extends CI_Model {
             return false;
         }
     }
+    
+    public function archive()
+    {
+        $t=1000;
+        while($t>=0)
+        {
+            $query=$this->db->query("SELECT *, COUNT(`busqueda`) FROM `busquedas` GROUP BY `busqueda` HAVING COUNT(`busqueda`)>1")->result();
+            $style_alert="style='background-color:red;'";
+            foreach ($query as $key => $value)
+            {
+                if($value->contador>0)continue;
+            $this->delete(array('busqueda'=>$value->busqueda));
+            $method='COUNT(`busqueda`)';
+            $log=array(
+                #'id'=>$value->id,
+                'busqueda'=>$value->busqueda,
+                'resultados'=>"Fecha, registro más antigüo: $value->fecha resultado: $value->resultados",
+                'contador'=>$value->$method
+                );
+            $this->insert($log);
+            }
+            $t=$t-1;
+        }
+    }
 
     public function update(Array $data, $where = array()) {
             if (!is_array($where)) {

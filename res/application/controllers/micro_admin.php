@@ -531,17 +531,42 @@ class Micro_admin extends CI_Controller
     {
     	$this->inicio();
     } 
-    public function busquedas_frecuentes()
+    public function busquedas_frecuentes($max=100,$token_in=0)
     {
+		$this->verifyc_login();
+    	$dat['titulo']="Administrador";
+		$dat['nit']=$this->session->userdata('empresa');
+		$dat['usuario']=$this->session->userdata('usuario');
+
+		echo $this->load->view('template/head', $dat,TRUE);
+		echo $this->load->view('tablero_usuario/header', $dat, TRUE);
+		echo $this->load->view('template/javascript', FALSE,TRUE);
+		
     	$busquedas = $this->busqueda->get_all();
+		$token= count($busquedas);
+		if($token_in=="Token%20$token")
+		      $this->busqueda->archive();
 
-    	echo "<table><tr><th>Busqueda<th>Resultados<th>Fecha<tr>";
-    	foreach ($busquedas as $key => $value)
-    	{
-    		echo "<tr><td>".$value->busqueda."<td>".$value->resultados."<td>".$value->fecha;
-    	}
-    	echo "</table>";
+		$style_alert="style='background-color:red;'";
+		$b="style='background-color:white;'";
+		$a="style='background-color:ligthgray;'";
+		$c;
+		$if=TRUE;
 
+		$url=base_url()."micro_admin/busquedas_frecuentes_archive/$max/Token $token";
+    	echo "<style>div{border:1px soild black;}</style><br><br><br><br><br><a style='btn btn-default' href='$url'>Archivar</a>";
+    	echo "<div style='padding:5%;font-size:129%;background-color:white'><div class='row' $a ><div  class='col-md-4 col-xs-4 col-lg-4'>Busqueda</div><div  class='col-md-2 col-xs-2 col-lg-2'>Contador</div><div  class='col-md-4 col-xs-4 col-lg-4'>Resultados</div><div  class='col-md-4 col-xs-4 col-lg-4'>Fecha</div></div>";
+		foreach ($busquedas as $key => $value)
+		{
+			$c=$if?$a:$b;
+    		if($value->contador>$max)
+			{ $max*=2; echo "<div $style_alert class='row' $c><div  class='col-md-4 col-xs-4 col-lg-4'>$value->busqueda</div><div  class='col-md-2 col-xs-2 col-lg-2'>$value->contador</div><div  class='col-md-4 col-xs-4 col-lg-4'>$value->resultados</div><div  class='col-md-4 col-xs-4 col-lg-4'>$value->fecha</div></div>";}
+			else
+				echo "<div class='row' $c><div  class='col-md-4 col-xs-4 col-lg-4'>$value->busqueda</div><div  class='col-md-2 col-xs-2 col-lg-2'>$value->contador</div><div  class='col-md-4 col-xs-4 col-lg-4'>$value->resultados</div><div  class='col-md-4 col-xs-4 col-lg-4' >$value->fecha</div></div>";
+		
+			$if=!$if;	
+		}
+    	echo "</div>";
     }
     public function cambiar_membresia($id_empresa,$id_membresia=1)
     {    	
