@@ -8,3 +8,4 @@
 .vagrant
 precise32.box
 precise64.box
+node_modules
