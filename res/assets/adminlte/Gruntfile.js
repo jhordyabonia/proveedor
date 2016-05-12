@@ -61,6 +61,18 @@ module.exports = function (grunt) {
           "dist/css/skins/skin-purple-light.min.css": "build/less/skins/skin-purple-light.less",
           "dist/css/skins/_all-skins.min.css": "build/less/skins/_all-skins.less"
         }
+      },
+      proveedor: {
+        options: {
+          // Whether to compress or not
+          compress: true
+        },
+        files: {
+          // compilation.css  :  source.less
+          "../css/adminlte.min.css": "build/less/AdminLTE.less",
+          // Skins minified
+          "../css/skins/skin-proveedor.min.css": "build/less/skins/skin-proveedor.less",
+        }
       }
     },
     // Uglify task info. Compress the js files.

@@ -17,7 +17,7 @@ input
 }
 </style>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-proveedor sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
