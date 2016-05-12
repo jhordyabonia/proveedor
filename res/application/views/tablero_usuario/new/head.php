@@ -16,4 +16,8 @@
     <link rel="stylesheet" href="<?php echo assets_url() ?>bootstrap336/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo assets_url() ?>css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo assets_url() ?>css/skins/skin-proveedor.min.css">
+
+    <!-- Added a fonts for the icons, (This will be improved) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   </head>
