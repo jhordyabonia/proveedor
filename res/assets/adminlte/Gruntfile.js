@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     watch: {
       // If any .less file changes in directory "build/less/" run the "less"-task.
       files: ["build/less/*.less", "build/less/skins/*.less", "dist/js/app.js"],
-      tasks: ["less", "uglify"]
+      tasks: ["less:proveedor", "uglify"]
     },
     // "less"-task configuration
     // This task will compile all less files upon saving to create both AdminLTE.css and AdminLTE.min.css

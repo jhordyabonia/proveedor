@@ -87,7 +87,7 @@ class Tablero_usuario1 extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $datos);
 			$this->load->view('tablero_usuario/new/home', $datos);
 			#$this->load->view('tablero_usuario/tablero', $datos);
-			#$this->load->view('template/footer', $datos, FALSE);
+			$this->load->view('tablero_usuario/new/footer', $datos, FALSE);
 			if($this->session->userdata('first_ligin')==1)
 			{
 		    	$this->load->view('popups/confirmacion/registro_completo');

@@ -1,22 +1,3 @@
-<style>
-.input{
-    border: 1px solid #D2D6DE!important;
-}
-input:invalid 
-{ border: 1px solid red;}
-
-input:valid 
-{border: 1px solid green;}
-input
-{ color:black!important;}
-.box-body {
-    padding-left: 10%;
-}
-.btn-block {
-    width: auto; 
-}
-</style>
-
 <body class="hold-transition skin-proveedor sidebar-mini">
     <div class="wrapper">
 
