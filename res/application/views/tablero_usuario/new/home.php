@@ -77,7 +77,7 @@
       <div class="col-md-4">
         <div class="box box-widget widget-user-2">
           <!-- Add the bg color to the header using any of the bg-* classes -->
-          <div class="widget-user-header bg-orange">
+          <div class="widget-user-header bg-yellow">
             <div class="widget-user-image">
               <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">
             </div>
