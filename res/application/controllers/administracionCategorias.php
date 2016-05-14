@@ -14,6 +14,19 @@ class AdministracionCategorias extends CI_Controller
         echo @$this->categoria2->insert($categoria);
     }
 
+    public function update2($categoria)
+    {
+        $data['nombre']=$this->input->post('nombre_'.$categoria);
+        $data['descripcion']=$this->input->post('descripcion_'.$categoria);
+        
+        $result = $this->categoria2->update($data,$categoria);
+        
+        #if(!$result)
+        #    echo 'Error, durante la opracón';
+        #else 
+            redirect($_SERVER['HTTP_REFERER'],'refresh');  
+    }
+    
     public function update($categoria,$parent=0)
     {
         if($parent==0)
@@ -58,6 +71,7 @@ class AdministracionCategorias extends CI_Controller
         $data['titulo']="administracion Categorias"; 
         // Este head tiene un problema grande, el boostrap fue modificado por terceros, asi que debo comentarlo: LCM
         // echo @$this->load->view('template/head', $data, TRUE);
+         $data['js']= @$this->load->view('template/javascript', $data, TRUE);
         // Para agilizar se agrego esto en el mismo archivo, se debe mirar como se corrige esto, considero que no podemos seguir haciendolo asi
         // echo @$this->load->view('administracionCategorias/assets',FALSE,TRUE); 
        

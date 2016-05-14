@@ -23,8 +23,7 @@ class Tablero_usuario1 extends CI_Controller {
 
 	/////funcion para llamar la pagina de perfil de usuario
 	function index() 
-	{
-		
+	{		
   	 	$this->session->set_userdata('path_current',base_url()."tablero_usuario");
 		$iduser = $this->session->userdata('id_usuario');
 		

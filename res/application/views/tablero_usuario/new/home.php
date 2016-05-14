@@ -21,7 +21,7 @@
             <div class="info-box">
               <span class="info-box-icon bg-orange"><i class="glyphicon glyphicon-file ico_file"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text"> SOLICITAR COTIZACIÓN</span>
+                <span class="info-box-text"> SOLICITAR COTIZACIÓN</span>   
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
           </div><!-- /.col -->
@@ -38,8 +38,8 @@
               <span class="info-box-icon bg-blue"><i class="glyphicon glyphicon-stop ico_stop"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">OPORTUNIDADES COMERCIALES</span>
-                <span class="info-box-number">1000</span>
-                <span class="info-box-number-NEW">56</span>
+                <span class="info-box-number"><?=$oportunidades['numero_nuevas']?></span>
+                <span class="info-box-number-NEW"><?=$oportunidades['total_oportunidades']?></span>
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
           </div><!-- /.col -->
@@ -48,7 +48,8 @@
               <span class="info-box-icon bg-red"><i class="ion-ios-chatboxes-outline"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">MENSAJES</span>
-                <span class="info-box-number"><?=$count_productos?></span>
+                <span class="info-box-number"><?=$count_msj?></span>                
+                <span class="info-box-number-NEW"><?=$count_msj2?></span>
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
           </div><!-- /.col -->
@@ -57,7 +58,7 @@
               <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">ADMINISTRAR PRODUCTOS</span>
-                <span class="info-box-number">1020</span>
+                <span class="info-box-number"><?=$count_productos?></span>
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
           </div><!-- /.col -->
@@ -66,7 +67,7 @@
               <span class="info-box-icon bg-yellow"><i class="ion ion-ios-cart-outline"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">ADMINISTRAR COTIZACIONES</span>
-                <span class="info-box-number"><?=$count_msj?></span>
+                <span class="info-box-number-NEW"><?=$count_ofertas;?></span>
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
           </div><!-- /.col -->

@@ -74,7 +74,7 @@
 					{
 						echo '<div class="conte_item_categorias">';
 						echo '<div class="text_categoria">';
-						echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$page.'/'.$categoria['id'].'">';
+						echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->url.'/'.$page.'/'.$categoria['id'].'">';
 						echo $key.' <strong>('.$categoria['cantidad'].')</strong>';
 						echo '</a></p>';
 						echo '</div>';
@@ -82,7 +82,7 @@
 						echo '<div class="item_categoria">';
 						foreach ($categoria['subcategorias'] as $key2=>$subcategoria)
 						{ 
-							echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$page.'/'.$subcategoria['id'].'/1/">';
+							echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->url.'/'.$page.'/'.$subcategoria['id'].'/1/">';
 							echo $key2.' <strong>('.$subcategoria['cantidad'].')</strong>';
 							echo '</a></p>';
 						}                  
@@ -145,7 +145,7 @@
 	<div class="text-align col-md-10">
 		<ul class="pagination">
 		<li>
-	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>/<?=$page-1?>/<?=$filtro?>/<?=$tipo_filtro?>" aria-label="Next">
+	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->url?>/<?=$page-1?>/<?=$filtro?>/<?=$tipo_filtro?>" aria-label="Next">
 	        <span aria-hidden="true">Anterior</span>
 	      </a>
 	    </li>
@@ -154,10 +154,10 @@
 		    	echo '<li><a ';
                 if($page==$key)
                     echo " style='background-color: whitesmoke'";
-                 echo ' href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$key.'/'.$filtro.'/'.$tipo_filtro.'">'.($key+1).'</a></li>';
+                 echo ' href="'.base_url().'empresa/catalogo_producto/'.$empresa->url.'/'.$key.'/'.$filtro.'/'.$tipo_filtro.'">'.($key+1).'</a></li>';
             }?>	    
 	    <li>
-	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>" aria-label="Next">
+	      <a href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->url?>/<?=$page+1?>/<?=$filtro?>/<?=$tipo_filtro?>" aria-label="Next">
 	        <span aria-hidden="true">Siguiente &raquo;</span>
 	      </a>
 	    </li>

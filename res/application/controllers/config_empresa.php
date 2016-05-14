@@ -176,10 +176,14 @@ class Config_empresa extends CI_Controller {
       $this->load->view('tablero_usuario/new/head', $this->datos);
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_usuario',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_clave',$this->datos);      
   }  
   function contacto1()
   {  
+     $this->datos['paises']=$this->pais->get_all();
+     $this->datos['departamentos']=$this->departamento->get_all();
+     $this->datos['municipios']=$this->municipio->get_all(array('id_departamento'=>$this->datos['usuario']->departamento));
+    
       $this->load->view('tablero_usuario/new/head', $this->datos);
       $this->load->view('template/javascript',$this->datos);
       $this->load->view('registro/funcionalidades_');      
@@ -195,6 +199,94 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_perfil_empresa',$this->datos);      
+  }
+  function nosotros1()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_nosotros',$this->datos);      
+  }
+  function publicar_cotizacion1()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_cotizaciones',$this->datos);      
+  }
+  function publicar_producto1()
+  {  
+      $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
+      $this->datos['categorias']=$this->categoria->get_all();
+      $this->datos['unidades']=$this->dimension->get_all();
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_pub_pro',$this->datos);      
+  }
+  function publicidad()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_publicidad',$this->datos);      
+  }
+  function videos()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_videos',$this->datos);      
+  }
+  function catalogos()
+  {  
+      $this->datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$this->datos['empresa']->id));
+      foreach ($this->datos['catalogos'] as $key => $value) 
+      {
+          $value->categoria=$this->categoria->get($value->categoria)->nombre_categoria;
+      }
+      $this->datos['categorias']=$this->categoria->get_all();
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_catalogo',$this->datos);      
+  }
+  function destacados()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_productos',$this->datos);      
+  }
+  function galeria()
+  {  
+      $tmp_imagenes=explode(',',$this->datos['empresa']->imagenes);
+      foreach($tmp_imagenes as $img)
+      {
+          $tmp=explode('|',$img);
+          $this->datos['titulos'][]=$tmp[1];
+          $this->datos['imagenes'][]=$tmp[0];
+      }
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+      $this->load->view('template/javascript',$this->datos);
+      $this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_galeria',$this->datos);      
   }
   		
 

@@ -1,7 +1,7 @@
 
 .list-group-item.active
 {
-    background-color: #EAEAEA;
+    background-color: white;
     border-color: #DDD;
 }
 .list-group-item.active:hover, .list-group-item.active:focus

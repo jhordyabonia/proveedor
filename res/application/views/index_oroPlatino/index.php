@@ -202,7 +202,7 @@ $tag .= $producto->nombre . ',';?>
 		</div>
 		<div class="vercatalogo col-md-12 col-lg-12">
 			<span class="glyphicon glyphicon-th-list"></span>
-			<a class="texto_vercatalogo" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Ver Catálogo > </a>
+			<a class="texto_vercatalogo" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->url?>">Ver Catálogo > </a>
 		</div>
 	</div>
 <?php endif;?>
@@ -276,7 +276,7 @@ $tag .= $producto->nombre . ',';?>
 					s
 					<div class="boton_descargar inline-block">
 						<span class="ico_descar glyphicon glyphicon-download-alt"></span>
-						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>"><p class="texto_des_cata">Descargar Catálogo</p></a>
+						<a href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->url?>"><p class="texto_des_cata">Descargar Catálogo</p></a>
 					</div>
 				</div>
 				<div class="texto_nuestra_empresa">

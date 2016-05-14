@@ -61,37 +61,37 @@
 				<li>
 					<ul class="<?=is_active('inicio',$m)?> list_item">
 						<span class="icon_style glyphicon glyphicon-home"></span>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/inicio/<?=$empresa->id?>">Inicio</a>
+						<a class="enlaces_header" href="<?=base_url()?>empresa/inicio/<?=$empresa->url?>">Inicio</a>
 					</ul>
 				</li>
 				<li>
 					<ul class="<?=is_active('catalogo_producto',$m)?> list_item">
 						<span class="icon_style glyphicon glyphicon-th-list"></span>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->id?>">Catálogo de Productos</a>
+						<a class="enlaces_header" href="<?=base_url()?>empresa/catalogo_producto/<?=$empresa->url?>">Catálogo de Productos</a>
 					</ul>
 				</li>
 				<li>
 					<ul class="<?=is_active('nosotros',$m)?> list_item">
 						<span class="icon_style glyphicon glyphicon-briefcase"></span>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/nosotros/<?=$empresa->id?>">Nosotros</a>
+						<a class="enlaces_header" href="<?=base_url()?>empresa/nosotros/<?=$empresa->url?>">Nosotros</a>
 					</ul>
 				</li>
 				<li>
 					<ul class="<?=is_active('cotizaciones_requeridas',$m)?> list_item">
 						<i class="icon_style fa fa-file-text"></i>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/cotizaciones_requeridas/<?=$empresa->id?>">Cotizaciones requeridas</a>
+						<a class="enlaces_header" href="<?=base_url()?>empresa/cotizaciones_requeridas/<?=$empresa->url?>">Cotizaciones requeridas</a>
 					</ul>
 				</li>
 				<li>
 					<ul class="<?=is_active('contacto',$m)?>  list_item">
 						<span class="icon_style glyphicon glyphicon-earphone" style="font-weight:bold;"></span>
-						<a class="enlaces_header" href="<?=base_url()?>empresa/contacto/<?=$empresa->id?>">Contacto</a>
+						<a class="enlaces_header" href="<?=base_url()?>empresa/contacto/<?=$empresa->url?>">Contacto</a>
 					</ul>
 				</li>
 				<li>
 					<ul class="<?=is_active('descargar_catalogo',$m)?> list_item2">
 						<span class="icon_style glyphicon glyphicon-download-alt"></span>
-						<a class="enlaces_header2" href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->id?>">DESCARGAR CATÁLOGO</a>
+						<a class="enlaces_header2" href="<?=base_url()?>empresa/descargar_catalogo/<?=$empresa->url?>">DESCARGAR CATÁLOGO</a>
 					</ul>
 				</li>
 			</ul>

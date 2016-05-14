@@ -34,22 +34,20 @@
                                     }
                                     ?>
                                 <div class="padding-bottom col-lg-6">
-                                    <div class="imagen-prin inline-block">
-                                        <img class="img-responsive img_preview_producto" src="<?=verificar_imagen('uploads/'.$imagen)?>">
+                                    <div class="imagen-prin inline-block content_imxx">
+                                        <img class="img-responsive imgxx" src="<?=verificar_imagen('uploads/'.$imagen)?>">
                                     </div>
                                     <div class="info-pro-pri inline-block">
                                         <p class="txt_nomproducto2" ><?=$producto->nombre?></p>
                                         <p class="txt_precio"><?php if($producto->precio_unidad==0){echo "Precio a convenir.";}else{echo '$'.decimal_points($producto->precio_unidad);}?></p>
                                         <p class="txt_pedido"><?php if($producto->pedido_minimo==0){echo "Pedido mínimo a convenir.</p>";}else{echo decimal_points($producto->pedido_minimo)." ".($producto->medida).'<p class="txt_pedido">pedido mínimo</p>';}?>
                                         <p class="txt_desc"><?=strip_tags($producto->descripcion)?></p>
-                                        <button class="btn btn-selecc-princi">
-                                            <span class="ico-config-style glyphicon glyphicon-bookmark"></span>
-                                            <p class="selec-pri-txt inline-block" >
-                                                <a class="select_button" href="JavaScript:agregar(<?=$identificador_temporal?>,<?=$producto->id?>);">
-                                                    Seleccionar como Principal
-                                                </a>
-                                            </p>
-                                        </button>
+                                        <div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8" style="padding:2%;">
+                                            <button class="btn btn-primary" onclick="agregar(<?=$identificador_temporal?>,<?=$producto->id?>);">
+                                                <span class="ico-config-style glyphicon glyphicon-bookmark"></span>
+                                                Seleccionar como Principal
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             <?php endforeach;?>

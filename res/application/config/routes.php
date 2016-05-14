@@ -40,10 +40,10 @@
 
 $route['default_controller'] = "index";
 $route['404_override'] = '';
-$route['productos/pagina'] = 'productos';//cuando sea la primera página
-$route['productos/pagina/(:num)'] = 'productos';//cuando no sea la primera página
-$route['categoria/(:num)/(:any)'] = "categoria/index/$1/$2";
-
-
+$route['empresa/(:any)/(:any)/inicio'] = "empresa/inicio/$2";
+$route['empresa/(:any)/(:any)/catalogo-producto'] = "empresa/catalogo_producto/$2";
+$route['empresa/(:any)/(:any)/nosotros'] = "empresa/nosotros/$2";
+$route['empresa/(:any)/(:any)/cotizaciones-requeridas'] = "empresa/cotizaciones_requeridas/$2";
+$route['empresa/(:any)/(:any)/contacto'] = "empresa/contacto/$2";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

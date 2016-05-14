@@ -141,12 +141,16 @@
                     }
                     function limpiar(obj)
                     {
-                        //document.getElementById('err_'+obj.name).innerHTML="";
+                        //ocument.getElementById('err_'+obj.name).innerHTML="";
                         document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                         document.getElementById('msj_err_'+obj.name).innerHTML="";
                     }
+                    function limpiar2(obj)
+                    {   
+                     }
                     function verificar(obj)
                     {
+                        //limpiar2(obj);
                         var div=document.getElementById('err_'+obj.name);
                         if(div!=null)
                         {div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';}
@@ -185,6 +189,8 @@
                         
                         function verificar_requerido(obj)
                         {  
+                            //limpiar2(obj);
+                            
                             var necessary = obj.ondblclick!=null;
                             var div=document.getElementById('err_'+obj.name);
                             var div_msj=document.getElementById('msj_err_'+obj.name);
@@ -202,10 +208,13 @@
                                { msj_err="Debe aceptar los términos y condiciones de uso."}
                            else if(obj.name=="sectores")
                                { msj_err="Debe seleccionar por lo menos 1 sector de empresa."}
+                            
+                            obj.className=' form-control  validacion_success_input'//validation_color
 
                             if(obj.value==''||(obj.type=="select-one"&&obj.value=='0')||(obj.name=="radio"&&!obj.checked))
                             {                                 
-                                err="<i style='font-size:12px;font-family:Arial:'>"+msj_err+"</i><br>";
+                                err="<i class='msj_err_xz'>"+msj_err+"</i><br>";
+                                obj.className='form-control validacion_error_input';//validation_color
                                 div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                                 if(div_msj.innerHTML.indexOf(err)==-1)
                                 {    div_msj.innerHTML=err;  }
@@ -236,6 +245,8 @@
                     function verificar_caracteres(obj,caracteres)
                     {                        
                         //fails=0;
+                        //limpiar2(obj);
+                        
                         var max=0;
                         var space="";
                         crt_exclude="";
@@ -298,6 +309,8 @@
                         var div_msj=document.getElementById('msj_err_'+obj.name);
                         div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                         document.getElementById('parent_msj_err_'+obj.name).style.display='none';
+                        obj.className=' form-control  validacion_success_input'//validation_color
+                       
                         if(max!=0)
                         {   
                              var msj_err="El "+obj.name+" tiene caracteres no permitidos "+print
@@ -305,16 +318,20 @@
                             if(obj.name=="password")
                                { msj_err="La contreseña tiene caracteres no permitidos (caracteres con tilde)."}
                                                            
-                            err="<i style='font-size:12px;font-family:Arial:'>"+msj_err;
+                            err="<i class='msj_err_xz'>"+msj_err;
                             div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                             {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj.name).style.display='';
                              fails=1; stack_err="caracteres: "+obj.name;
+                            obj.className='form-control validacion_error_input';//validation_color
+                             
                         }                       
                     }  
                     function verificar_attime(obj)
                     {
+                        //limpiar2(obj);
+                        
                         var popup=new XMLHttpRequest();
                         var dato=obj.value.replace('@','ARROBA');
                         var url_popup="<?=base_url()?>registro/verificar/"+dato+"/"+obj.name;
@@ -330,6 +347,8 @@
                         {
                             var div=document.getElementById('err_'+obj.name);
                             var div_msj=document.getElementById('msj_err_'+obj.name);
+                            obj.className=' form-control  validacion_success_input'//validation_color
+                            
                             if(div_msj.innerHTML.indexOf("<bd></bd>")!=-1||div_msj.innerHTML=="")
                             {
                                 div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"><bd></bd></span>';
@@ -337,12 +356,13 @@
                                 document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                                 if(popup.response!="0")
                                 {
-                                    err="<i style='font-size:12px;font-family:Arial:'>El "+obj.name+": "+obj.value+" Ya se encuentra registrado!<bd></bd></i><br>";
+                                    err="<i class='msj_err_xz'>El "+obj.name+": "+obj.value+" Ya se encuentra registrado!<bd></bd></i><br>";
                                     div.innerHTML='<span name="err" class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                                     if(div_msj.innerHTML.indexOf(err)==-1)
                                     {    div_msj.innerHTML=err;  } 
                                     document.getElementById('parent_msj_err_'+obj.name).style.display='';
                                     fails=1; stack_err="attime: "+obj.name;
+                                    obj.className='form-control validacion_error_input';//validation_color
                                 }
                             }
                         }
@@ -353,60 +373,73 @@
                         {
                             stack_err="";
                         }*/
+                        //limpiar2(obj);
+                        
                             fails=0;
                         var div=document.getElementById('err_'+obj.name);
                         var div_msj=document.getElementById('msj_err_'+obj.name);
                         div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                         document.getElementById('parent_msj_err_'+obj.name).style.display='none';
+                        obj.className=' form-control  validacion_success_input'//validation_color
+                        
                         if(obj.value.length<max)
                         {         
                             var msj_err="El "+obj.name;          
                            if(obj.name=="password")
                                { msj_err="La contraseña"}
                                          
-                            err="<i style='font-size:12px;font-family:Arial:'>"+msj_err+" debe contener, por lo menos "+max+" caracteres</i><br>";
+                            err="<i class='msj_err_xz'>"+msj_err+" debe contener, por lo menos "+max+" caracteres</i><br>";
                             div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                             {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj.name).style.display='';
                              fails=1; stack_err="largo: "+obj.name;
+                            obj.className='form-control validacion_error_input';//validation_color                             
                         }
                         //stack_err='';
                     }  
                     function verificar_largo_max(obj,max)
                     {                        
                         //fails=0;
+                        //limpiar2(obj);
+                        
                         var div=document.getElementById('err_'+obj.name);
                         var div_msj=document.getElementById('msj_err_'+obj.name);
                         //div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                         //document.getElementById('parent_msj_err_'+obj.name).style.display='none';
+                        obj.className=' form-control  validacion_success_input'//validation_color
                         if(obj.value.length>max)
                         {                                 
-                            err="<i style='font-size:12px;font-family:Arial:'>El "+obj.name+" debe contener, máximo "+max+" caracteres</i><br>";
+                            err="<i class='msj_err_xz'>El "+obj.name+" debe contener, máximo "+max+" caracteres</i><br>";
                             div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                             {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj.name).style.display='';
                              fails=1;  stack_err="largo_max: "+obj.name;
+                            obj.className='form-control validacion_error_input';//validation_color                                                          
                         }
                     }                    
                     function verificar_formato(obj)
                     {                        
+                        //limpiar2(obj);
+                        
                         var div=document.getElementById('err_'+obj.name);
                         var div_msj=document.getElementById('msj_err_'+obj.name);
                         if(obj.value.indexOf("@")!=-1&&obj.value.indexOf(".")!=-1)
                             {  
+                               obj.className='form-control  validacion_success_input'//validation_color
                                fails=0;
                                div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                                document.getElementById('parent_msj_err_'+obj.name).style.display='none';
                             }
                             else
                             { 
-                               err="<i style='font-size:12px;font-family:Arial:'>El formato de "+obj.name+"  no es correcto. Ej.usuario@dominio.com</i><br>";
+                               err="<i class='msj_err_xz'>El formato de "+obj.name+"  no es correcto. Ej.usuario@dominio.com</i><br>";
                                div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                                div_msj.innerHTML=err; 
                                document.getElementById('parent_msj_err_'+obj.name).style.display='';
                                fails=1; stack_err="formato: "+obj.name;
+                               obj.className='form-control validacion_error_input';//validation_color                                                          
                             }
                     }
                     function verificar_igualdad(obj1,obj2)
@@ -416,21 +449,26 @@
                                                         
                         if(obj2.value==""||obj1.value=="")
                         {return;}
+                        limpiar(obj1);
+                        
 
                         if(obj1.value==obj2.value)
                         {                        
                             fails=0;
                             div.innerHTML='<span name="err" class="glyphicon glyphicon-ok-sign boton-verificar-ok validacion_success"></span>';
                             document.getElementById('parent_msj_err_'+obj1.name).style.display='none';
+                            obj1.className+='validacion_success_input'//validation_color
                         }
                         else
                         { 
-                            err="<i style='font-size:12px;font-family:Arial:'>Las contraseñas no coinciden</i><br>";
+                            err="<i class='msj_err_xz'>Las contraseñas no coinciden</i><br>";
                             div.innerHTML='<span class="glyphicon glyphicon-remove-sign boton-verificar-nok validacion_error"></span>';  
                             if(div_msj.innerHTML.indexOf(err)==-1)
                                {    div_msj.innerHTML=err;  }
                             document.getElementById('parent_msj_err_'+obj1.name).style.display='';
                             fails=1; stack_err="igualdad: "+obj1.name;
+                            obj1.className+='validacion_error_input'//validation_color
+                            
                         }
                     }
                     /*
@@ -504,7 +542,7 @@
                           }
                     }        
                      function launch(obj)
-                    {
+                    {                        
                         var popup=new XMLHttpRequest();
                                               
                         var url_popup="<?=base_url()?>registro/get";    
@@ -638,10 +676,42 @@
                 if(obj.value.length>size)
                     obj.value=obj.value.substr(0,size);
             }
-
-                                             
    </script>
 <div id="div_login" ></div>
 <div id="registro" ></div>
 <div id="cotizar" ></div>
 <div id="btn_contactar" data-toggle="modal" data-target="#popup_mensajes" style="display:none"></div>
+<style>
+	.validacion_error
+	{
+		color:#dd4b39;
+	}
+	.validacion_success
+	{
+		color:#00a65a;
+	}
+    .msj_err_xz 
+    {
+		color:#dd4b39;
+        font-size:12px;
+        font-family:Arial;
+    }
+    .validacion_success_input
+     {color:#00a65a; border: 1px solid #00a65a;}
+                        
+    .validacion_error_input
+    {color:#dd4b39; border: 1px solid #dd4b39;}
+    input
+    { border: 1px solid #d2d6de;}
+    .imgxx
+    {
+    max-width: 100%;
+    max-height: 100%;
+    }
+    .content_imxx
+    {        
+        width: 100%;
+    height: 299px;
+    padding: 2% 5% 10% 2%;
+    }
+</style>

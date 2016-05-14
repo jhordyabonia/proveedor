@@ -73,7 +73,7 @@
 					{
 						echo '<div class="conte_item_categorias">';
 						echo '<div class="text_categoria">';
-						echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->id.'/'.$page.'/'.$categoria['id'].'">';
+						echo '<p><a href="'.base_url().'empresa/catalogo_producto/'.$empresa->url.'/'.$page.'/'.$categoria['id'].'">';
 						echo $key.' <strong>('.$categoria['cantidad'].')</strong>';
 						echo '</a></p>';
 						echo '</div>';

@@ -39,14 +39,105 @@ class Empresa extends CI_Controller
         
         return false;
   }
+    
+  private function fromUrl($s)
+  {  
+     $s=str_replace('%20',' ',$s);
+     $s=str_replace('%5B','[',$s);
+     $s=str_replace('%5D',']',$s);
+     $s=str_replace('%3A',':',$s);
+     $s=str_replace('%2F','/',$s);
+     $s=str_replace('%2b','-',$s);
+     $s=str_replace('%21','#',$s);
+     $s=str_replace('%22','\"',$s);
+     $s=str_replace('%3D','=',$s);
+     $s=str_replace('%3F','?',$s);
+     $s=str_replace('%26','&',$s);
+     $s=str_replace('%40','@',$s);        
+        
+     $s=str_replace('%C3%A1','á',$s);
+     $s=str_replace('%C3%A9','é',$s);
+     $s=str_replace('%C3%AD','í',$s);
+     $s=str_replace('%C3%B3','ó',$s);
+     $s=str_replace('%C3%BA','ú',$s);
+     
+     $s=str_replace('%C3%A1','Á',$s);
+     $s=str_replace('%C3%A9','É',$s);
+     $s=str_replace('%C3%AD','Í',$s);
+     $s=str_replace('%C3%B3','Ó',$s);
+     $s=str_replace('%C3%BA','Ú',$s);
+     $s=str_replace('%AA',',',$s);
+     return $s;
+   }
+   private function toUrl($s)
+  {  
+     #$s=str_replace(' ','%20',$s);
+     $s=str_replace('[','%5B',$s);
+     $s=str_replace(']','%5D',$s);
+     $s=str_replace(':','%3A',$s);
+     $s=str_replace('/','%2F',$s);
+     $s=str_replace('-','%2b',$s);
+     $s=str_replace('#','%21',$s);
+     $s=str_replace('\"','%22',$s);
+     $s=str_replace('=','%3D',$s);
+     $s=str_replace('?','%3F',$s);
+     $s=str_replace('&','%26',$s);
+     $s=str_replace('@','%40',$s);        
+        
+     $s=str_replace('á','%C3%A1',$s);
+     $s=str_replace('é','%C3%A9',$s);
+     $s=str_replace('í','%C3%AD',$s);
+     $s=str_replace('ó','%C3%B3',$s);
+     $s=str_replace('ú','%C3%BA',$s);
+     
+     $s=str_replace('Á','%C3%A1',$s);
+     $s=str_replace('É','%C3%A9',$s);
+     $s=str_replace('Í','%C3%AD',$s);
+     $s=str_replace('O','%C3%B3',$s);
+     $s=str_replace('Ú','%C3%BA',$s);
+     
+     $s=str_replace('%AA',',',$s);
+     return $s;
+   }
+  private function url($data,$id)
+  {
+    #$data=$this->toUrl($data);
+    $out=str_replace(' ','-',$data);
+    
+    $data_tmp=$this->empresa->get_all(array('nombre'=>$data));
+    foreach ($data_tmp as $key => $tmp)
+      if($tmp->id==$id) break;
+   # return $this->toUrl($out.($key==0?'':"-$key"));
+    return $out.($key==0?'':"-$key");
+  }
+  public function get($data)
+  {
+    if(is_numeric($data))
+     return  $this->empresa->get($data);
+    
+    #$data=$this->fromUrl($data);
+    
+    $raw=explode('-',$data);
+    $num=$raw[count($raw)-1];     
+    $nombre=implode(' ',$raw);
+    if(is_numeric($num))
+        $nombre= substr($nombre,0,strpos($nombre," $num"));
+      
+    $num=!is_numeric($num)?0:$num; 
+    $out=$this->empresa->get_all(array('nombre'=>$nombre));
+       
+    return $out[$num];
+  }
   public function inicio($id)
   {
     $datos['tap']='inicio';        
     $datos['logued']=$this->session->userdata('is_logued_in');
-    $datos['empresa'] = $this->empresa->get($id);
-
+    $datos['empresa'] = $this->get($id);
+    $id=$datos['empresa']->id;
+    
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id,'refresh');}
 
+    $datos['empresa']->url          = $this->url($datos['empresa']->nombre,$id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
     $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria; 
@@ -143,12 +234,15 @@ class Empresa extends CI_Controller
   {
     $datos['tap']='catalogo_producto';        
     $datos['logued']=$this->session->userdata('is_logued_in');
-    $datos['empresa'] = $this->empresa->get($id);
+    $datos['empresa'] = $this->get($id);
+    $id=$datos['empresa']->id;
 
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/ver_empresa/' . $id_empresa,'refresh');}
 
     $datos['tipo_filtro']           = $tipo_filtro;
     $datos['filtro']                = $filtro;
+    
+    $datos['empresa']->url          = $this->url($datos['empresa']->nombre,$id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
     $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;    
@@ -282,9 +376,12 @@ class Empresa extends CI_Controller
   {
     $datos['tap']='cotizaciones_requeridas';        
     $datos['logued']=$this->session->userdata('is_logued_in');
+    
+    $datos['empresa']               = $this->get($id);  
+    
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/productos_solicitados/' . $id_empresa,'refresh');}
-
-    $datos['empresa']               = $this->empresa->get($id);
+  
+    $datos['empresa']->url          = $this->url($datos['empresa']->nombre,$id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
     $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria; 
@@ -360,9 +457,11 @@ class Empresa extends CI_Controller
   {
     $datos['tap']='nosotros';        
     $datos['logued']=$this->session->userdata('is_logued_in');
-    $datos['empresa'] = $this->empresa->get($id);
+    $datos['empresa'] = $this->get($id);
+    $id=$datos['empresa']->id;
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
+    $datos['empresa']->url          = $this->url($datos['empresa']->nombre,$id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
     $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria; 
@@ -435,10 +534,12 @@ class Empresa extends CI_Controller
   {
     $datos['tap']='contacto';        
     $datos['logued']=$this->session->userdata('is_logued_in');
-    $datos['empresa'] = $this->empresa->get($id);
+    $datos['empresa'] = $this->get($id);
+    $id=$datos['empresa']->id;
 
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/contacto/' . $id_empresa,'refresh');}
     
+    $datos['empresa']->url          = $this->url($datos['empresa']->nombre,$id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
     $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;   
@@ -518,10 +619,12 @@ class Empresa extends CI_Controller
   {
     $datos['tap']='descargar_catalogo';
     $datos['logued']=$this->session->userdata('is_logued_in');
-    $datos['empresa'] = $this->empresa->get($id);
+    $datos['empresa'] = $this->get($id);
+    $id=$datos['empresa']->id;
 
     if ($datos['empresa']->membresia == 1) {redirect(base_url() . 'perfil/perfil_empresa/' . $id,'refresh');}
 
+    $datos['empresa']->url          = $this->url($datos['empresa']->nombre,$id);
     $datos['empresa']->tipo         = $this->tipo_empresa->get($datos['empresa']->tipo)->tipo;
     $datos['empresa']->categoria    = explode('|',$datos['empresa']->categorias); 
     $datos['empresa']->categoria    = $this->categoria->get($datos['empresa']->categoria[0])->nombre_categoria;   

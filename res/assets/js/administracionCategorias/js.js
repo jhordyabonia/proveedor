@@ -54,14 +54,38 @@ function make()
         html+= "            <i class='fa fa-trash fa-fw fa-2x' aria-hidden='true'></i>";
         html+= "          </a>";
         html+= "        </div>";
-        html+= "      </div>";
+        html+= "         <div class='btn-group'>"
+        html+= "                                            <a class='launch_edit btn btn-success' id='launch_edit_"+id+"'>";
+        html+= "                                                <i class='fa fa-pencil-square-o fa-2x' aria-hidden='true'></i>";
+        html+= "                                            </a>";
+        html+= "                                        </div>";
+        html+= "                                    </div>     "; 
+        html+= "                                 <div class='col-md-12' id='div_edit_"+id+"'>";
+        html+= "                                    <form action='"+url+"/update2/"+id+"' method='post' accept-charset='utf-8' enctype='multipart/form-data'>"; 
+        html+= "                                            <br>";
+        html+= "                                            <p>Nombre categoria:</p>";                 
+        html+= "                                                <div class='col-xs-12 input-group'>";
+        html+= "                                                    <input type='text' class='form-control' placeholder='Ingrese el nombre de la categoria' name='nombre_"+id+"' value='"+nueva_categoria+"'>";
+        html+= "                                                </div>";
+        html+= "                                            <p >Descripcion:</p>";
+        html+= "                                            <div class='col-xs-12 input-group'>";
+        html+= "                                                <textarea class='form-control caja_mensaje' rows='4' name='descripcion_"+id+"'></textarea>";
+        html+= "                                            </div>";
+        html+= "                                            <div class='col-md-12 input-group enviar'>";
+        html+= "                                                <input type='submit' class='btn btn-default center-block boton_enviar' value='Guardar' onclick=''>";
+        html+= "                                            </div>";
+        html+= "                                            <br>";
+        html+= "                                     </form>";
+        html+= "                                   </div>";
+                             
         html+= "      <div class='clearfix'></div>";
         html+= "      </dl>";
-        
-        console.log(html);
         var hidden= document.createElement('div');
         hidden.innerHTML=html;
-        document.getElementById('main').appendChild(hidden.children[0]);   
+        document.getElementById('main').appendChild(hidden.children[0]);
+        
+        var t=document.getElementsByName('nombre_'+id);
+        t.item(0).focus();   
     }         
 }
 function up(categoria,parent)
