@@ -1,7 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Mensajes extends CI_Controller {
 	// Constructor de la clase del control
-	function __construct(){
+	function __construct()
+	{
 		parent::__construct();
 		$this->load->model('new/Mensajes_model','mensajes');
 		$this->load->model('new/Remitente_model','remitente');
@@ -18,15 +19,44 @@ class Mensajes extends CI_Controller {
 		$this->load->library('grocery_CRUD');
 
 	    $id=$this->session->userdata('id_usuario');
-	    /*
-	    if($id=='')
-	      {redirect(base_url(),'refresh');}
-	    */
 	    $this->datos['usuario']=$this->usuarios->get($id);
 	    $this->datos['empresa']=$this->empresa->get(array('usuario'=>$id));
+	}	
+	 
+	public function leer($id,$bandeja="enviados")
+	{
+		$datos=$this->leer1($id,$bandeja);
+		$this->load->view('template/head',array('titulo'=>"Leer"));
+		$this->load->view('template/javascript');
+		$this->load->view('config_OroPlatino/top_menu_config',$this->datos);  
+		$this->load->view('mensaje/leer', $datos);
+		$this->load->view('template/footer_empy'); 
 	}
-
  
+	public function enviados()
+	{
+		$this->index("enviados");
+	}
+	public function index($tab="recibidos")
+	{     
+		$this->session->set_userdata('path_current',base_url()."mensajes");
+		if(!$this->veryficar_logged())
+		{  return;  }
+
+		$datos=$this->get($tab);
+
+		$this->load->view('template/head',array('titulo'=>"Mensajes"));
+		$this->load->view('template/javascript');
+		$this->load->view('config_OroPlatino/top_menu_config',$this->datos);
+		$this->load->view('mensaje/listado.php',$datos);
+	}
+	
+	
+	/* Deep Back
+	******************************************************************************************************************************************
+	******************************************************************************************************************************************
+	******************************************************************************************************************************************
+	*/
   public function descargar_adjunto($id_mensaje=0)
   {   	
   	$this->session->set_userdata('path_current',base_url()."mensajes/descargar_adjunto/".$id_mensaje);
@@ -47,49 +77,46 @@ class Mensajes extends CI_Controller {
      force_download($mensaje->adjunto,$data); 
   }
 
-	  function siguiente($bandeja="enviados",$id=0)
-	  {
-		$id_user=$this->session->userdata('id_usuario');
-	  	if($bandeja=="enviados")
-	  	{
-	  		$bandeja_tmp="remitente";
-			$usuario=$this->usuarios->get($id_user);
-			$id_user=$this->remitente->get(array('correo'=>$usuario->email))->id;
-		}
-	  	else{ 	$bandeja_tmp="destinatario"; }
+ function siguiente($bandeja="enviados",$id=0)
+ {
+	$id_user=$this->session->userdata('id_usuario');
+	if($bandeja=="enviados")
+	{
+		$bandeja_tmp="remitente";
+		$usuario=$this->usuarios->get($id_user);
+		$id_user=$this->remitente->get(array('correo'=>$usuario->email))->id;
+	}
+	else{ 	$bandeja_tmp="destinatario"; }
 
-	    $mensajes=$this->mensajes->get_all(array($bandeja_tmp => $id_user));
-	    if(!$mensajes)
-	    	$this->index();
-	    foreach ($mensajes as $key => $value)
-	    {
-	      if($value->id>$id)
-	        {$this->leer($value->id,$bandeja);return;}
-	    }
-	    $this->siguiente($bandeja,0);
-	  }
-	  function anterior($bandeja="enviados",$id=0)
-	  {	
-		$id_user=$this->session->userdata('id_usuario');
-	  	if($bandeja=="enviados")
-	  	{
-	  		$bandeja_tmp="remitente";
-			$usuario=$this->usuarios->get($id_user);
-			$id_user=$this->remitente->get(array('correo'=>$usuario->email))->id;
-		}
-	  	else{ 	$bandeja_tmp="destinatario"; }
+	$mensajes=$this->mensajes->get_all(array($bandeja_tmp => $id_user));
+	if(!$mensajes)
+		$this->index();
+	foreach ($mensajes as $key => $value)
+		if($value->id>$id)
+			{$this->leer($value->id,$bandeja);return;}
+	    
+    $this->siguiente($bandeja,0);
+ }
+function anterior($bandeja="enviados",$id=0)
+{	
+	$id_user=$this->session->userdata('id_usuario');
+	if($bandeja=="enviados")
+	{
+	  $bandeja_tmp="remitente";
+	  $usuario=$this->usuarios->get($id_user);
+	  $id_user=$this->remitente->get(array('correo'=>$usuario->email))->id;
+	}
+	else{ 	$bandeja_tmp="destinatario"; }
 
-	    $mensajes=$this->mensajes->get_all(array($bandeja_tmp => $id_user));
-	    if(!$mensajes)
-	    	$this->index();
-	    foreach ($mensajes as $key => $value)
-	    {
-	      if($value->id<$id)
-	        {$this->leer($value->id,$bandeja);return;}
-	    }
-	    $this->anterior($bandeja,999999);
-	  } 
-	public function leer($id,$bandeja="enviados")
+	 $mensajes=$this->mensajes->get_all(array($bandeja_tmp => $id_user));
+	 if(!$mensajes)
+	   	$this->index();
+	 foreach ($mensajes as $key => $value)
+	     if($value->id<$id)
+	 	       {$this->leer($value->id,$bandeja);return;}
+	  $this->anterior($bandeja,999999);
+ } 
+	public function leer1($id,$bandeja)
 	{		
 	  	 $this->session->set_userdata('path_current',base_url()."mensajes/leer/".$id);
 		 $datos['administrador']=FALSE;
@@ -242,25 +269,11 @@ class Mensajes extends CI_Controller {
 	$datos['usuario']->usuario=$this->session->userdata('usuario');
 	$datos['id_usuario']=$this->session->userdata('id_usuario');
 	$datos['empresa']=$this->empresa->get(array('usuario'=>$datos['id_usuario']));
-
-	$this->load->view('template/head',array('titulo'=>"Leer"));
-	$this->load->view('template/javascript');
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);  
-	$this->load->view('mensaje/leer', $datos);
-	$this->load->view('template/footer_empy'); 
-
-	} 
+	return $datos;
+	}
   // Muestra la vista de mensajes recibidos del tablero de usuario
-  public function enviados()
-  {
-  	$this->index("enviados");
-  }
-  public function index($tab="recibidos")
-  {     
-  	$this->session->set_userdata('path_current',base_url()."mensajes");
-	if(!$this->veryficar_logged())
-	{  return;  }
-
+  private function get($tab)
+  {	  
 	$id_usuario=$this->session->userdata('id_usuario');
 	$datos['tab']=$tab;
 	$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 0));
@@ -308,19 +321,10 @@ class Mensajes extends CI_Controller {
 	if($datos['enviados'])
 	{$datos['numero_enviados']=count($datos['enviados']);}
 	else {$datos['numero_enviados']=0;}
-
-	$this->load->view('template/head',array('titulo'=>"Mensajes"));
-	$this->load->view('template/javascript');
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-	$this->load->view('mensaje/listado.php',$datos);
+	
+	return $datos;
   }
  
-  public function test_encrypt($number)
-  {
-  	$result =$this->crypter->encrypt($number);
-  	echo '<br>'.$result.'<br>';
-  	echo $this->crypter->decrypt($result);
-  }
   private function usuario_noregistrado($id)
   {  	
   	$id=$this->crypter->decrypt($id);
