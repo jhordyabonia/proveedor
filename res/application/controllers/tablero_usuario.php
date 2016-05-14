@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
 	exit('No direct script access allowed');
 }
 
-class Tablero_usuario1 extends CI_Controller {
+class Tablero_usuario extends CI_Controller {
 
 	///Constructor de la clase del control
 	function __construct() {
