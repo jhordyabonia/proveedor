@@ -9,7 +9,7 @@
       </div>
       <div class="pull-left info">
         <p><?=$usuario->nombres?></p>
-        <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
+        <a href="#"><i class="fa fa-circle text-success"></i> En linea</a>
       </div>
     </div>
     <!-- search form -->
@@ -24,16 +24,85 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-      <li class="header">Publicar</li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Inicio</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Oportunidades</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Mensajes</span>
+        </a>
+      </li>
+      <li class="header">
+        Publicar
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Perfil de empresa</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Subir Publicidad</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Productos Principales</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Subir Videos</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Subir Imágenes</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Subir Catalogo</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Misión y Visión</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Publicar Producto</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Solicitar Cotización</span>
+        </a>
+      </li>
+
       <li class="header">Configuración</li>
-      <li class="active">
-        <a href="<?=base_url()?>config_empresa/perfil_empresa"><i class="fa fa-circle-o"></i>Prefil de empresa</a>
+      <li>
+        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+          <i class="fa fa-th"></i> <span>Perfil de empresa</span>
+        </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/contacto"><i class="fa fa-circle-o"></i>Contacto</a>
+        <a href="<?=base_url()?>config_empresa/contacto">
+          <i class="fa fa-circle-o"></i><span>Contacto</span>
+        </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/usuario"><i class="fa fa-circle-o"></i>Usuario</a>
+        <a href="<?=base_url()?>config_empresa/usuario">
+          <i class="fa fa-circle-o"></i><span>Usuario</span>
+        </a>
       </li>
     </ul>
   </section>

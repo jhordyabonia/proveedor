@@ -78,7 +78,7 @@
       <div class="col-md-4">
         <div class="box box-widget widget-user-2">
           <!-- Add the bg color to the header using any of the bg-* classes -->
-          <div class="widget-user-header bg-orange">
+          <div class="widget-user-header bg-yellow">
             <div class="widget-user-image">
               <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">
             </div>
@@ -88,13 +88,30 @@
           </div>
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
-              <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
+              <li><a href="#">Escriba aca la membresia <span class="pull-right badge bg-blue">31</span></a></li>
               <li><a href="#">Productos <span class="pull-right badge bg-blue">5</span></a></li>
               <li><a href="#">Mensajes <span class="pull-right badge bg-blue">12</span></a></li>
               <li><a href="#">Visitas <span class="pull-right badge bg-blue">842</span></a></li>
             </ul>
           </div>
         </div>
+        <div class="info-box bg-aqua">
+          <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Contáctenos</span>
+            <span>soporte@proveedor.com.co</span>
+
+            <div class="progress">
+              <div class="progress-bar" style="width: 100%"></div>
+            </div>
+                <span>
+                  3001234123 - (031)12341234
+                </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
       </div>
     </div><!-- /.row -->
     <!-- Main row -->
