@@ -96,6 +96,13 @@ class Config_empresa extends CI_Controller {
       $this->load->view('tablero_usuario/new/head', $this->datos);
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
+      $this->load->view('config_OroPlatino/movil/conf_usuario',$this->datos);      
+  } 
+  function clave()
+  {  
+      $this->load->view('tablero_usuario/new/head', $this->datos);
+			$this->load->view('tablero_usuario/new/header', $this->datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_clave',$this->datos);      
   }  
   function contacto()
@@ -232,4 +239,4 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_galeria',$this->datos);      
   }
-  }
+ }

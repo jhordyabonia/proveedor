@@ -30,12 +30,12 @@
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>tablero_usuario/oportunidades">
           <i class="fa fa-th"></i> <span>Oportunidades</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/mensajes">
           <i class="fa fa-th"></i> <span>Mensajes</span>
         </a>
       </li>
@@ -48,42 +48,42 @@
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/publicidad">
           <i class="fa fa-th"></i> <span>Subir Publicidad</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/productos_principales">
           <i class="fa fa-th"></i> <span>Productos Principales</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/videos">
           <i class="fa fa-th"></i> <span>Subir Videos</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/galeria">
           <i class="fa fa-th"></i> <span>Subir Imágenes</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/catalogo">
           <i class="fa fa-th"></i> <span>Subir Catalogo</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/nosotros">
           <i class="fa fa-th"></i> <span>Misión y Visión</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/publicar_poducto">
           <i class="fa fa-th"></i> <span>Publicar Producto</span>
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>config_empresa/cotizaciones">
           <i class="fa fa-th"></i> <span>Solicitar Cotización</span>
         </a>
       </li>
@@ -102,6 +102,11 @@
       <li>
         <a href="<?=base_url()?>config_empresa/usuario">
           <i class="fa fa-circle-o"></i><span>Usuario</span>
+        </a>
+      </li>
+      <li>
+        <a href="<?=base_url()?>config_empresa/clave">
+          <i class="fa fa-circle-o"></i><span>Cambiar contraseña</span>
         </a>
       </li>
     </ul>
