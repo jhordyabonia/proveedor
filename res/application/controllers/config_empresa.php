@@ -91,98 +91,18 @@ class Config_empresa extends CI_Controller {
         $this->load->view('config_OroPlatino/conf_productos_empresa.php', $datos);
     }
 
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function inicio()
-  {
-    
-    $tmp_imagenes=explode(',',$this->datos['empresa']->imagenes);
-    #echo "<PRE>";
-    #print_r($tmp_imagenes);
-    #echo "<PRE>";
-    #return;
-    foreach($tmp_imagenes as $img)
-    {
-        $tmp=explode('|',$img);
-        $this->datos['titulos'][]=$tmp[1];
-        $this->datos['imagenes'][]=$tmp[0];
-    }
-
-    $this->load->view('template/head',array('titulo'=>"Configuración de Inicio"));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_inicio',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-  }
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function cotizaciones()
-  {
-    $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
-    $this->datos['categorias']=$this->categoria->get_all();
-    $this->datos['unidades']=$this->dimension->get_all();
-    $this->load->view('template/head',array('titulo'=>'Cotizaciones Requeridas'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_coti_requeridas',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('oferta/funcionalidades');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-  }
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function contacto()
-  {
-    $this->datos['paises']=$this->pais->get_all();
-    $this->datos['departamentos']=$this->departamento->get_all();
-    $this->datos['municipios']=$this->municipio->get_all(array('id_departamento'=>$this->datos['usuario']->departamento));
-    
-    $this->load->view('template/head',array('titulo'=>'Configuración contacto'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_contacto',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('registro/funcionalidades_');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-  }
-
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function nosotros()
-  {
-    $this->load->view('template/head',array('titulo'=>'Nosotros'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_nosotros',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-  }
-  ##LLama la vista que mostrara la parte del footer en las vistas
   function usuario()
-  {
-    $this->load->view('template/head',array('titulo'=>'Configuración de usuario'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_usuario',$this->datos);
-    $this->load->view('registro/funcionalidades_');
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-  }  ##LLama la vista que mostrara la parte del footer en las vistas
-  
-  function usuario1()
   {  
       $this->load->view('tablero_usuario/new/head', $this->datos);
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_clave',$this->datos);      
   }  
-  function contacto1()
+  function contacto()
   {  
-     $this->datos['paises']=$this->pais->get_all();
-     $this->datos['departamentos']=$this->departamento->get_all();
-     $this->datos['municipios']=$this->municipio->get_all(array('id_departamento'=>$this->datos['usuario']->departamento));
+      $this->datos['paises']=$this->pais->get_all();
+      $this->datos['departamentos']=$this->departamento->get_all();
+      $this->datos['municipios']=$this->municipio->get_all(array('id_departamento'=>$this->datos['usuario']->departamento));
     
       $this->load->view('tablero_usuario/new/head', $this->datos);
       $this->load->view('template/javascript',$this->datos);
@@ -191,8 +111,11 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_contacto',$this->datos);      
   }
-  function empresa1()
+  function perfil_empresa()
   {  
+      $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
+      $this->datos['categorias']=$this->categoria->get_all();
+      
       $this->load->view('tablero_usuario/new/head', $this->datos);
       $this->load->view('template/javascript',$this->datos);
       $this->load->view('registro/funcionalidades_');      
@@ -200,7 +123,7 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_perfil_empresa',$this->datos);      
   }
-  function nosotros1()
+  function nosotros()
   {  
       $this->load->view('tablero_usuario/new/head', $this->datos);
       $this->load->view('template/javascript',$this->datos);
@@ -209,8 +132,12 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_nosotros',$this->datos);      
   }
-  function publicar_cotizacion1()
+  function cotizaciones()
   {  
+      $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
+      $this->datos['categorias']=$this->categoria->get_all();
+      $this->datos['unidades']=$this->dimension->get_all();
+      
       $this->load->view('tablero_usuario/new/head', $this->datos);
       $this->load->view('template/javascript',$this->datos);
       $this->load->view('registro/funcionalidades_');      
@@ -218,7 +145,7 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_cotizaciones',$this->datos);      
   }
-  function publicar_producto1()
+  function publicar_producto()
   {  
       $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
       $this->datos['categorias']=$this->categoria->get_all();
@@ -248,7 +175,7 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_videos',$this->datos);      
   }
-  function catalogos()
+  function catalogo()
   {  
       $this->datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$this->datos['empresa']->id));
       foreach ($this->datos['catalogos'] as $key => $value) 
@@ -263,8 +190,25 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_catalogo',$this->datos);      
   }
-  function destacados()
-  {  
+  function productos_principales()
+  {
+    $datos['empresa'] = $this->empresa->get($this->datos['empresa']->id);
+    #$datos['productos'] = $this->producto->get_all(array('empresa'=>$this->datos['empresa']->id));
+    $datos['destacados'] = array();# $this->producto->get_all(array('empresa'=>4264));
+    if($datos['empresa']->productos_destacados!="")
+    {
+      foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value) 
+      {
+        if($value==-1)break;
+        if(is_null($value)||$value==0)
+          {
+            $obj->nombre="Seleccionar producto";
+            $obj->imagenes="file.jpg";
+            $datos['destacados'][]=$obj;
+          }else
+        $datos['destacados'][]=$this->cargar_producto($this->producto->get($value));
+      }
+    }else{$datos['destacados']=FALSE;}
       $this->load->view('tablero_usuario/new/head', $this->datos);
       $this->load->view('template/javascript',$this->datos);
       $this->load->view('registro/funcionalidades_');      
@@ -287,86 +231,5 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_galeria',$this->datos);      
-  }
-  		
-
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function catalogo()
-  {
-    $this->datos['catalogos']=$this->catalogo->get_all(array('empresa'=>$this->datos['empresa']->id));
-    foreach ($this->datos['catalogos'] as $key => $value) 
-    {
-        $value->categoria=$this->categoria->get($value->categoria)->nombre_categoria;
-    }
-    $this->datos['categorias']=$this->categoria->get_all();
-    $this->load->view('template/head',array('titulo'=>'Publicar catalogo'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_subir_catalogo',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('registro/funcionalidades_');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-  }
-
-
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function perfil_empresa()
-  {
-    $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
-    $this->datos['categorias']=$this->categoria->get_all();
-
-    $this->load->view('template/head',array('titulo'=>'Perfil de empresa'));
-    $this->load->view('registro/funcionalidades_');
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_perfil_empresa',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-    $this->load->view('template/javascript',$this->datos);
-  }
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function publicar_producto()
-  {
-    $this->datos['tipos_empresa']=$this->tipo_empresa->get_all();
-    $this->datos['categorias']=$this->categoria->get_all();
-    $this->datos['unidades']=$this->dimension->get_all();
-    $this->load->view('template/head',array('titulo'=>'Subir productos'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_cata_produc',$this->datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
-    $this->load->view('producto/funcionalidades');
-  }
-
-  ##LLama la vista que mostrara la parte del footer en las vistas
-  function productos_principales()
-  {
-    $datos['empresa'] = $this->empresa->get($this->datos['empresa']->id);
-    #$datos['productos'] = $this->producto->get_all(array('empresa'=>$this->datos['empresa']->id));
-    $datos['destacados'] = array();# $this->producto->get_all(array('empresa'=>4264));
-    if($datos['empresa']->productos_destacados!="")
-    {
-      foreach (explode(',',$datos['empresa']->productos_destacados) as $key => $value) 
-      {
-        if($value==-1)break;
-        if(is_null($value)||$value==0)
-          {
-            $obj->nombre="Seleccionar producto";
-            $obj->imagenes="file.jpg";
-            $datos['destacados'][]=$obj;
-          }else
-        $datos['destacados'][]=$this->cargar_producto($this->producto->get($value));
-      }
-    }else{$datos['destacados']=FALSE;}
-    $this->load->view('template/head',array('titulo'=>'Productos destacados'));
-    $this->load->view('template/javascript',$this->datos);
-    $this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-    $this->load->view('config_OroPlatino/conf_productos_principales',$datos);
-    $this->load->view('popups/confirmacion/confirmacion_guardado');
-    $this->load->view('template/footer',$this->datos);
-    $this->load->view('template/footer_empy',$this->datos);
   }
   }

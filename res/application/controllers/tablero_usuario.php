@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
 	exit('No direct script access allowed');
 }
 
-class Tablero_usuario extends CI_Controller {
+class Tablero_usuario1 extends CI_Controller {
 
 	///Constructor de la clase del control
 	function __construct() {
@@ -22,8 +22,8 @@ class Tablero_usuario extends CI_Controller {
 	}
 
 	/////funcion para llamar la pagina de perfil de usuario
-	function index() {
-
+	function index() 
+	{		
   	 	$this->session->set_userdata('path_current',base_url()."tablero_usuario");
 		$iduser = $this->session->userdata('id_usuario');
 		
@@ -75,23 +75,23 @@ class Tablero_usuario extends CI_Controller {
     	if($datos['usuario']->permisos==1)
     	{$datos['administrador']=TRUE;}
 		$datos['titulo']="Tablero de usuario - PROVEEDOR.com.co";
-
-	    if ($this->ci->agent->is_mobile()){
-	    	$template = new League\Plates\Engine(APPPATH.'views');
-			echo $template->render('tablero_usuario/tablero_movil', $datos);
-		}else{
-			$this->load->view('template/head', $datos);
-			$this->load->view('template/javascript', $datos, FALSE);
-			$this->load->view('tablero_usuario/header', $datos, FALSE);
-			$this->load->view('tablero_usuario/tablero', $datos);
-			$this->load->view('template/footer', $datos, FALSE);
+		
+	    #if ($this->ci->agent->is_mobile()){
+	    #	$template = new League\Plates\Engine(APPPATH.'views');
+		#	echo $template->render('tablero_usuario/tablero_movil', $datos);
+		#}else{
+			#$this->load->view('template/head', $datos);
+			$this->load->view('tablero_usuario/new/head', $datos);
+			$this->load->view('tablero_usuario/new/header', $datos);
+			$this->load->view('tablero_usuario/new/nav_bar', $datos);
+			$this->load->view('tablero_usuario/new/home', $datos);
 			if($this->session->userdata('first_ligin')==1)
 			{
 		    	$this->load->view('popups/confirmacion/registro_completo');
 				$this->session->set_userdata('first_ligin',0);
-			};
-
-		}
+			};			
+			$this->load->view('tablero_usuario/new/footer', $datos, FALSE);
+		#}
 	}
 
 	public function activar_solicitud($id)
