@@ -35,7 +35,7 @@
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/mensajes">
+        <a href="<?=base_url()?>mensajes">
           <i class="fa fa-th"></i> <span>Mensajes</span>
         </a>
       </li>
