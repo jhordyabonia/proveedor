@@ -213,7 +213,7 @@
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>" class="img-circle" alt="User Image">
+                    <img src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>" class="img-circle" alt="User Image">
                     <p>
                       <?=$usuario->nombres?>
                       <small>Miembro desde <?=$empresa->fecha?></small>

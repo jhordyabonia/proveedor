@@ -1,8 +1,20 @@
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
 
-<section class="content">
-	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
+  <!-- Main content -->
+  <section class="content">
+    	<div class="row">
+		<div class="col-md-5">
             <div class="box box-warning">
                 <div class="box-header with-border">
                   <h2 class="box-title">
@@ -18,6 +30,7 @@
         <!-- Row del Nombre del Porducto -->
           <div class="row" >
             <div class="col-xs-12"> <span class="">
+              Nombre del producto
                         <i id='err_nombre_avanzado'>
                     <?php if(form_error('nombre_avanzado', '','')!='')
                       {
@@ -41,6 +54,7 @@
             <!-- Row de Categorias del Producto -->
             <div class="row" >
               <div class="col-xs-12">
+                Seleccione una categoria del producto
                     <select class="form-control col-md-12 col-xs-12 col-lg-12 " name="categoria" required onchange="JavaScript:cambio_categoria(this.value);document.getElementById('div_subcategoria2').style.display='';">
                       <option value="" selected>Seleccione una categoria del producto</option>
                       <?php foreach ($categoria as $fila): ?>
@@ -62,6 +76,7 @@
           <!-- Row de Sub-Categorias del Producto -->
             <div class="row" style="margin-bottom:15px;display:none" id="div_subcategoria2" >
               <div class="col-xs-12">
+                Seleccione una subcategoria del producto
                     <select class="form-control col-md-12 col-xs-12 col-lg-12 " required name="subcategoria" id="subcategorias">
                       <option value="" selected>Seleccione una subcategoria del producto</option>
 
@@ -141,6 +156,7 @@
             <!-- descripcion -->
             <div class="row">
               <div class="col-xs-12">
+                Descripción
                   <span class="">
                         <i id='err_descripcion_avanzada'>
                     <?php if(form_error('descripcion_avanzada', '','')!='')
@@ -198,52 +214,7 @@
                       </button>
                 </div>
               </div>
-            </div>
- <script>
-                                function cambiar_clave_f()
-                                {
-                                    document.getElementById('cambiar_clave_link').style.display='none';
-                                    document.getElementById('cambiar_clave').style.display='';
-                                    document.getElementById('password').required=true;
-                                    document.getElementById('password2').required=true;
-                                 }
-                             </script>
-							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">
-								<a id="cambiar_clave_link" href="JavaScript:cambiar_clave_f();">
-									<p>Mas Datos <span style="padding-left:15px" class="ico-requerido glyphicon glyphicon-chevron-down"></span>
-									</p> 
-								</a>
-							</div>
-                            
-<div id="cambiar_clave" style="display:none">
-            <!-- palabras clave -->
-            <div class="row">
-                <div class="col-md-12">
-                  <h4><b>Palabras clave + ENTER</b></h4>
-                  <h6>Las 'palabras clave' hacen que el producto sea más visible a las empresas.</h6>
-                  <?php echo form_error('etiquetas', '<div class="error">', '</div>'); ?>
-                </div>
-                <div class="col-md-12 col-sm-12">
-                  <div class="input-control">
-                    <input type="text" class="form-control col-md-12 col-xs-12 col-lg-12" id="Pclave" name="Pclave">
-                  </div>
-                  <input type="hidden" id="qwerty" name="etiquetas">
-                </div>
-                <div class="col-md-12">
-                  <h6><b>Ingresa la palabra clave y pulsa la tecla ENTER</b></h6>
-                  <h6>Ej.: Zapato en cuero</h6>
-                </div>
-            </div>
-
-            <!-- Campo De Validación -->
-          <!--div class="" style="margin: 0;">
-            <span class="style-val-avan">Validación Correspondiente</span>
-          </-->
-            
-            <!-- <hr style="border: 2px solid #ea5b0c;border-radius: 200px /8px;width: 99%;"/>-->
-           
-            <div class="row">                
-             <div class="input-control">
+               <div class="input-control">
                     <h4 class="seccion" style="height: 40px;padding: 12px;">
                         Negociación
                     </h4>
@@ -271,6 +242,34 @@
                     <label for="precio1_avanzado" generated="true" class="error" style="display: none !important;"></label>
              </div>
              
+            </div>
+ <script>
+                                function cambiar_clave_f()
+                                {
+                                    document.getElementById('cambiar_clave_link').style.display='none';
+                                    document.getElementById('cambiar_clave').style.display='';
+                                    document.getElementById('password').required=true;
+                                    document.getElementById('password2').required=true;
+                                 }
+                             </script>
+							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">
+								<a id="cambiar_clave_link" href="JavaScript:cambiar_clave_f();">
+									<p>Mas Datos <span style="padding-left:15px" class="ico-requerido glyphicon glyphicon-chevron-down"></span>
+									</p> 
+								</a>
+							</div>
+                            
+<div id="cambiar_clave" style="display:none">
+          
+            <!-- Campo De Validación -->
+          <!--div class="" style="margin: 0;">
+            <span class="style-val-avan">Validación Correspondiente</span>
+          </-->
+            
+            <!-- <hr style="border: 2px solid #ea5b0c;border-radius: 200px /8px;width: 99%;"/>-->
+           
+            <div class="row">                
+            
              <div class="input-control">
                  <div class="col-md-1 col-sm-1 col-xs-1">Por:</div>
                  <div class="col-md-11 col-xs-11 col-lg-11">
@@ -420,6 +419,24 @@
                 Información Complementaria
               </h4>
             </div>
+  <!-- palabras clave -->
+            <div class="row">
+                <div class="col-md-12">
+                  <h3 class="seccion" style="height: 40px;padding: 12px;">Palabras clave + ENTER</h3>
+                  <h6 class="seccion" >Las 'palabras clave' hacen que el producto sea más visible a las empresas.</h6>
+                  <?php echo form_error('etiquetas', '<div class="error">', '</div>'); ?>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <div class="input-control">
+                    <input type="text" class="form-control col-md-12 col-xs-12 col-lg-12" id="Pclave" name="Pclave">
+                  </div>
+                  <input type="hidden" id="qwerty" name="etiquetas">
+                </div>
+                <div class="col-md-12">
+                  <h6><b>Ingresa la palabra clave y pulsa la tecla ENTER</b></h6>
+                  <h6>Ej.: Zapato en cuero</h6>
+                </div>
+            </div>
 
             <!-- empresa o sector al que le interesa ... -->
             <div class="row" style="margin-bottom: 16px; display:none">
@@ -482,6 +499,11 @@
               </div>
             </div>
             
+				</div>
+				</div>
+				</div>
+  </section>
+			
             
 <script type="text/javascript">
     var expanded = false;

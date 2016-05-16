@@ -1,7 +1,19 @@
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
 
-<section class="content">
+  <!-- Main content -->
+  <section class="content">
 	<div class="row">
-		<div class="col-md-3"></div>
 		<div class="col-md-6">
             <div class="box box-warning">
                 <div class="box-header with-border">
@@ -16,7 +28,7 @@
                     Para guardar o agregar informacion de "Perfil Empresa", ingrese la informacion
 								en los campos y haga click en "Guardar".</h5>
                   <?=form_open_multipart(base_url().'editar_empresa/perfil')?>
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene2 fa fa-building-o"></i>
 									Nombre de la Empresa
@@ -25,7 +37,7 @@
 							</div>
 
 							<!-- Campo 1 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							   <input required type="text" class="form-control" id="nomnbre" name="nombre" ondblclick="necessary" 
 							  onchange="JavaScript:verificar_largo(this,3);verificar_caracteres(this,'[SYM].:|&.')"
 							   onclick="JavaScript:limpiar(this)"
@@ -34,11 +46,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_nombre"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_nombre"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_nombre"></p>
 							</div>
 
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene fa fa-list-alt"></i>
 									Nit de la Empresa o C.C. del Comerciante
@@ -47,7 +59,7 @@
 							</div>
 
 							<!-- Campo 2 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							  <input required type="text" class="form-control" id="nit" name="nit" ondblclick="necessary"
 							  onchange="JavaScript:eliminar_espacios(this);verificar_attime(this); verificar_caracteres(this,' áéíóúñ [ALPHA][SYM]|-')"
 							  value="<?=$empresa->nit?>"placeholder="Nit de la Empresa o C.C. del Comercial">
@@ -55,11 +67,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_nit"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_nit"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_nit"></p>
 							</div>
 
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<!--<span class="ico-gene glyphicon glyphicon-tags"></span>-->
 									<span class="ico-gene3 glyphicon glyphicon-pencil"></span>
@@ -69,7 +81,7 @@
 							</div>
 
 							<!-- Campo 3 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							 <select required class="form-control" id="tipo_empresa" id="tipo_empresa"
 							  onchange="JavaScript:verificar(this);" name="tipo">
 								  <option>Tipo de Empresa</option>
@@ -81,11 +93,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_tipo"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_tipo"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_tipo"></p>
 							</div>
 
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<span class="ico-gene glyphicon glyphicon-list"></span>
 									Sector de la Empresa
@@ -94,7 +106,7 @@
 							</div>
 
 							<!-- Campo 4 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							  <select required class="form-control" name="categoria">
 								  <option selected>Seleccionar sector de la Empresa</option>
 								  <?php foreach($categorias as $key=> $categoria):?>
@@ -105,11 +117,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_categoria"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_categoria"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_categoria"></p>
 							</div>
 
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<span class="ico-gene3 glyphicon glyphicon-pencil"></span>
 									Descripción de la Empresa
@@ -119,7 +131,7 @@
 							</div>
 
 							<!-- Campo 5 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							  
 							  <textarea required rows="9" class="form-control" name="descripcion" 
 							  ondblclick="necessary" onclick="JavaScript:limpiar(this)"
@@ -130,11 +142,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_descripcion"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_descripcion"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_descripcion"></p>
 							</div>
 
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene4 fa fa-cubes"></i>
 									Productos Principales (separados por comas)
@@ -143,7 +155,7 @@
 							</div>
 
 							<!-- Campo 5 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="prod_princ" 
 							  onchange="JavaScript:verificar(this);" onclick="JavaScript:limpiar(this)"  value="<?=$empresa->productos_principales?>" 
 							  placeholder="Productos Principales (separados por comas)">
@@ -153,29 +165,29 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_prod_prin"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_prod_prin"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_prod_prin"></p>
 							</div>
 
-							<div class="input-group pad-left col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene2 fa fa-shopping-cart"></i>
 									Productos Requeridos (separados por comas)</label>
 							</div>
 
 							<!-- Campo 6 -->
-							<div class="input-group style-padding6 col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="prod_int4"
 							  onchange="JavaScript:verificar(this);" onclick="JavaScript:limpiar(this)"  value="<?=$empresa->productos_de_interes?>"
 							   placeholder="Productos Requeridos (separados por comas)">
 							  </div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_prod_int4"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_prod_int4"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_prod_int4"></p>
 							</div>
 							<!-- Campo 6 -->
-							<div class="input-group style-padding7 inline-block col-xs-12 col-md-6 col-lg-6">
+							<div class="input-group style-padding7 inline-block col-xs-12 col-md-12 col-lg-12">
 								<div class="adjuntar-archivo">
 							  		<a class="enlace-ssubir-imagenes" href="JavaScript:document.getElementById('logo').click()">
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>Subir logotipo de Empresa
@@ -195,7 +207,7 @@
 			                        document.getElementById('img_logo').src=url; 		                        
 	                    		}
                    			</script>
-							<div class="input-group inline-block col-xs-12 col-md-5 col-lg-5">
+							<div class="input-group inline-block col-xs-12 col-md-12 col-lg-12">
 								<div class="adjuntar-archivo">
 							  		<div class="container-logo-empresa inline-block content_imxx">
 							  			<img  id="img_logo" class=" imgxx" src="<?=verificar_imagen('uploads/logos/'.$empresa->logo);?>">
@@ -212,11 +224,11 @@
 							  	</div>
 							</div>
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_"></p>
 							</div>
 							<!-- Campo 4 -->
-							<div class="input-group style-padding8 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group style-padding8 col-xs-12 col-md-12 col-lg-12">
 							  	<div class="conte-radios">
 							  		<h3 class="que-quiero">Que quieres hacer en Proveedor?</h3>
 								  	<div class="radio inline-block">
@@ -241,12 +253,12 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_"   style="margin: 0;display:none;" class="input-group content_validacion col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_"></p>
 							</div>
 							
 							
-							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8" style="padding:2%;">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12" style="padding:2%;">
                                 <button type="submit" class="btn btn-primary">
 									<i class="ico-circle fa fa-floppy-o"></i>
                                     Guardar
@@ -256,3 +268,8 @@
                     
                 </div><!-- /.box-body -->
               </div>
+              </div>
+              </div>
+              </div>
+							
+  </section>

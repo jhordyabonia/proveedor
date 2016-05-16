@@ -1,7 +1,19 @@
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
 
-<section class="content">
-	<div class="row">
-		<div class="col-md-3"></div>
+  <!-- Main content -->
+  <section class="content">
+		<div class="row">
 		<div class="col-md-6">
             <div class="box box-warning">
                 <div class="box-header with-border">
@@ -28,6 +40,7 @@
 							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<span class="ico-gene glyphicon glyphicon-list"></span>
+									Selecciones la categoria del producto o servicio requerido
 							  </span>
 							  <select class="form-control" name="categoria"
 							  id="categoria" 
@@ -55,6 +68,7 @@
 					            <div id="div_subcategorias" style="display:none" class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 								  <span class="">
 								  	<span class="ico-gene glyphicon glyphicon-list"></span>
+										Seleccione una sub-categoria del product
 								  </span>
 								  <select class="form-control new-br" name="subcategorias_simples" id="subcategorias_simples">
 					                      <option value="" selected>Seleccione una sub-categoria del producto</option>       
@@ -77,6 +91,7 @@
 							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<span class="ico-gene glyphicon glyphicon-pencil"></span>
+									Nombre del productos o servicio
 							  </span>
 							  <input type="text" class="form-control" 
 							  name="nombre_producto" required
@@ -100,6 +115,7 @@
 							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
+									Descripcion
 							  </span>
 							  <textarea class="form-control" rows="5" name="descripcion" required
 							  id="textarea3" onchange="JavaScript:verificar_largo(this,10);" onclick="JavaScript:limpiar(this);"
@@ -120,10 +136,18 @@
 
 							<!-- Campo 5 -->
 							<div class="input-group  inline-block style-padding3 col-xs-12 col-md-12 col-lg-12">
+							<span class="">
+							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
+									Cantidad requerida
+							  </span>	
 							  	<input type="text" class="form-control" name="cantidad_requerida" onchange="this.value+=' ';decimal_point(this)"  onKeyPress="decimal_point(this);return soloNumeros(event)"
                  				 required   placeholder="Cantidad requerida">
 							</div>
-							<div class="input-group inline-block style-padding4 col-xs-12 col-md-12 col-lg-12">								
+							<div class="input-group inline-block style-padding4 col-xs-12 col-md-12 col-lg-12">	
+								<span class="">
+							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
+									Unidad
+							  </span>							
 								    <select class="form-control" name="list_medida">
 									 <option value="1">Unidad (und)</option>
 								    	<?php foreach ($unidades as $key => $unidad):?>
@@ -173,6 +197,12 @@
 						</div>
 					</div>
 				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+  </section>
+			
 
 <script type="text/javascript">
 // Solo permite ingresar numeros.

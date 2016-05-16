@@ -5,7 +5,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo assets_url() ?>img/user.svg" class="img-circle" alt="User Image">
+        <img src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p><?=$usuario->nombres?></p>
@@ -25,7 +25,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
+        <a href="<?=base_url()?>tablero_usuario">
           <i class="fa fa-th"></i> <span>Inicio</span>
         </a>
       </li>
@@ -41,11 +41,6 @@
       </li>
       <li class="header">
         Publicar
-      </li>
-      <li>
-        <a href="<?=base_url()?>config_empresa/perfil_empresa">
-          <i class="fa fa-th"></i> <span>Perfil de empresa</span>
-        </a>
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/publicidad">
@@ -78,7 +73,7 @@
         </a>
       </li>
       <li>
-        <a href="<?=base_url()?>config_empresa/publicar_poducto">
+        <a href="<?=base_url()?>config_empresa/publicar_producto">
           <i class="fa fa-th"></i> <span>Publicar Producto</span>
         </a>
       </li>

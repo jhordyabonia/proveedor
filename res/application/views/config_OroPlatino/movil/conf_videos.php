@@ -1,7 +1,19 @@
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
 
-<section class="content">
-	<div class="row">
-		<div class="col-md-3"></div>
+  <!-- Main content -->
+  <section class="content">
+	  <div class="row">
 		<div class="col-md-6">
             <div class="box box-warning">
                 <div class="box-header with-border">
@@ -21,23 +33,25 @@
 							
 							<div id="videos" class="col-xs-12 col-md-12 col-lg-12">
 								<?php $key=0; foreach (explode(',',$empresa->videos) as $key => $video):?>
-									<div class="input-group padig col-xs-12 col-md-8 col-lg-8">
-									  <span class="fiel-tramspa padi2 input-group-addon">
+									<div class="input-group padig col-xs-12 col-md-12 col-lg-12">
+									  <span class=" input-group-addon">
 									  	<?=$key+1?><!-- Url:<br>-->
 									  </span>
-									  <input id="v_<?=$key?>" type="text" class="form-control" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca dirección del video" style="border-radius: 0;width: 74%;">
-									<a id="a_<?=$key?>"  style="display:<?php if(!$video){echo 'none';}?>" href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
+									  <input id="v_<?=$key?>" type="text" class="form-control col-xs-9 col-md-8 col-lg-8" onchange="document.getElementById('a_<?=$key?>').style.display=''" name="videos[]" value="<?=$video?>" placeholder="Introduzca dirección del video" style="border-radius: 0;width: 74%;">
+									<a id="a_<?=$key?>"  style="display:<?php if(!$video){echo 'none';}?>" href="JavaScript:borrar_videos(<?=$key?>)" class="btn-remov-img col-xs-1 col-md-2 col-lg-2">
+									<span class="ico-rem glyphicon glyphicon-remove-sign"></span>
+									<span class="hidden-xs">Borrar</span></a>
 									</div>
 									<!--
-									<div class="input-group padig col-xs-12 col-md-5 col-lg-5">
-									<span class="fiel-tramspa padi2 input-group-addon">
+									<div class="input-group padig col-xs-12 col-md-10 col-lg-10">
+									<span class=" input-group-addon">
 									  Nombre:<br>
 									  </span>
 									<input type="text" class="form-control" name="videos[]" value="" placeholder="Introdusca titulo del video" style="border-radius: 0;">
 									</div>-->
 								<?php endforeach;?>
 									</div>
-							<div class="conten-mas-videos col-xs-12 col-md-5 col-lg-5">
+							<div class="conten-mas-videos col-xs-12 col-md-10 col-lg-10">
 								<script type="text/javascript">
 									videos=<?=count(explode(',',$empresa->videos))?>;
 									
@@ -77,12 +91,12 @@
 										{
 											salvar_videos();
 											if(videos>=20){alert('Limite exedido.');return;}
-											DOM='<div class="input-group padig col-xs-12 col-md-8 col-lg-8">';
-											DOM+='<span class="fiel-tramspa padi2 input-group-addon">';
+											DOM='<div class="input-group padig col-xs-12 col-md-12 col-lg-12">';
+											DOM+='<span class=" input-group-addon">';
 											DOM+=++videos;
 											DOM+='</span>';
-											DOM+='<input id="v_'+videos+'" type="text" onchange="document.getElementById('+"'a_"+videos+"'"+').style.display='+"'';"+'"  class="form-control" name="videos[]" value="" placeholder="Introduzca dirección del video" style="border-radius: 0;width: 74%;">';
-											DOM+='<a style="display:none" id="a_'+videos+'" href="JavaScript:borrar_videos('+videos+')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>';
+											DOM+='<input id="v_'+videos+'" type="text" onchange="document.getElementById('+"'a_"+videos+"'"+').style.display='+"'';"+'"  class="form-control col-xs-9 col-md-8 col-lg-8" name="videos[]" value="" placeholder="Introduzca dirección del video" style="border-radius: 0;width: 74%;">';
+											DOM+='<a style="display:none" id="a_'+videos+'" href="JavaScript:borrar_videos('+videos+')" class="btn-remov-img col-xs-1 col-md-2 col-lg-2"><span class="ico-rem glyphicon glyphicon-remove-sign"></span><span class="hidden-xs">Borrar</span></a>';
 											DOM+='</div>';
 											document.getElementById('videos').innerHTML+=DOM;
 											fijar_videos();
@@ -98,7 +112,7 @@
 							  <p class="text_errors"></p>
 							</div>
 
-							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8" style="padding:2%;">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12" style="padding:2%;">
                                 <button type="submit" class="btn btn-primary">
 									<i class="ico-circle fa fa-floppy-o"></i>
                                     Guardar
@@ -109,3 +123,13 @@
                 </div><!-- /.box-body -->
 					</div>
 				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+  </section>
+			
+				<style>.input-group-addon {
+border: 0!important; 
+}
+</style>

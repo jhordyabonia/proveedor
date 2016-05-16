@@ -1,6 +1,19 @@
-<section class="content">
-	<div class="row">
-		<div class="col-md-3"></div>
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+		<div class="row">
 		<div class="col-md-6">
             <div class="box box-warning">
                 <div class="box-header with-border">
@@ -16,7 +29,7 @@
                     </h5>
                   <?=form_open_multipart(base_url().'editar_empresa/contacto')?>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<span class="ico-gene glyphicon glyphicon-user"></span>
 									Nombre del contacto
@@ -27,18 +40,18 @@
 							</div>
 
 							<!-- Campo 1 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <input required type="text" class="form-control" name="nombres" ondblclick="necessary"
 							  onchange="JavaScript:verificar_largo(this,5); verificar_caracteres(this,'=')"
 							   value="<?=$usuario->nombres?>" placeholder="Nombre del contacto">							  
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_nombres" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_nombres" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_nombres"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene fa fa-list-alt"></i>
 									Cargo/Funcion en la empresa
@@ -50,18 +63,18 @@
 							</div>
 
 							<!-- Campo 2 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">							  
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">							  
 							  <input required type="text" class="form-control" name="cargo"
 							  onchange="JavaScript:verificar_largo(this,2);" 
 							  value="<?=$usuario->cargo?>" placeholder="Cargo/Funcion en la empresa">							  
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_cargo" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_cargo" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_cargo"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<span class="ico-gene glyphicon glyphicon-map-marker"></span>
 									Dirección de la empresa
@@ -72,18 +85,18 @@
 							</div>
 
 							<!-- Campo 3 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">							  
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">							  
 							  <input required type="text" class="form-control" name="direccion"
 							  onchange="JavaScript:verificar_largo(this,5);"
 							   value="<?=$usuario->direccion?>" placeholder="Direccion de la empresa">
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_direccion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_direccion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_direccion"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene fa fa-globe"></i>
 									Selecciona tu pais									
@@ -97,7 +110,7 @@
 							<script type="text/javascript">
 								active_validation=false;;
 							</script>
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">							  
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">							  
 							  <select required class="form-control" name="pais" id="pais" onchange="JavaScript:cambio_pais();verificar(this);"
 							   onload="JavaScript:cambio_pais();" ondblclick="necessary" value="52">
 								  	<option value="0">Selecciona tu pais</option>
@@ -115,11 +128,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_pais" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_pais" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_pais"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene fa fa-globe"></i>
 									Selecciona tu departamento
@@ -130,7 +143,7 @@
 							</div>
 
 							<!-- Campo 4.1 -->
-							<div  id="ubicacion" class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div  id="ubicacion" class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <select required class="form-control" name="provincia" id="provincia" ondblclick="necessary" 
 								 onchange="JavaScript:cambio_departamento(this.value); verificar(this);">
 								  	<option value="">Selecciona tu departamento</option>
@@ -144,11 +157,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_provincia" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_provincia" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_provincia"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene fa fa-globe"></i>
 									Selecciona tu municipio
@@ -159,7 +172,7 @@
 							</div>
 
 							<!-- Campo 4.2 -->
-							<div id="ubicacion2" class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div id="ubicacion2" class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							   <select required class="form-control" name="municipio" id="municipio" value="<?=set_value('municipio'); ?>"
 								 onchange="JavaScript:verificar(this);" ondblclick="necessary" >
 								  	<option value="0">Selecciona tu municipio</option>
@@ -173,11 +186,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_municipio" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_municipio" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_municipio"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<span class="ico-gene glyphicon glyphicon-phone"></span>
 									Teléfono celular
@@ -188,7 +201,7 @@
 							</div>
 
 							<!-- Campo 5 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  
 							  <input required type="text" size="10" class="form-control" name="celular" id="celular" ondblclick="necessary"
 							  onchange="JavaScript:verificar_largo(this,10); verificar_caracteres(this,'[ALPHA][SYM]|-'); limit_size(this,10);"
@@ -196,11 +209,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_celular" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_celular" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_celular"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene2 fa fa-phone"></i>
 									Teléfono fijo y/o PBX
@@ -211,18 +224,18 @@
 							</div>
 
 							<!-- Campo 6 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="telefono" id="telefono"
 							  onchange="JavaScript:verificar(this);"
 							   value="<?=$usuario->telefono?>" placeholder="Teléfono fijo y/o PBX">
 							  </div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_telefono" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_telefono" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_telefono"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene fa fa-laptop"></i>
 									Página Web
@@ -233,18 +246,18 @@
 							</div>
 
 							<!-- Campo 7 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="web" id="web" 
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
 							  value="<?=$usuario->web?>" placeholder="Página Web">
 							  </div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_web" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_web" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_web"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene2 fa fa-facebook-square"></i>
 									Página de facebook
@@ -255,18 +268,18 @@
 							</div>
 
 							<!-- Campo 8 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="facebook"
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
 							   value="<?=$usuario->facebook?>" placeholder="Página de facebook">
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_facebook" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_facebook" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_facebook"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene2 fa fa-twitter"></i>
 									Página de twitter
@@ -277,18 +290,18 @@
 							</div>
 
 							<!-- Campo 9 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="twitter"
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE] ( ) ? ¿ =');"
 							   value="<?=$usuario->twitter?>" placeholder="Página de twitter">
 							  </div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_twitter" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_twitter" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_twitter"></p>
 							</div>
 
-							<div class="input-group pad-left2 col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group pad-left2 col-xs-12 col-md-12 col-lg-12">
 							  <label for="">
 									<i class="ico-gene2 fa fa-linkedin-square"></i>
 									Página de likedin
@@ -299,25 +312,30 @@
 							</div>
 
 							<!-- Campo 10 -->
-							<div class="input-group style-padding col-xs-12 col-md-10 col-lg-10">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <input type="text" class="form-control" name="linkedin"
 							  onchange="JavaScript:verificar_caracteres(this,'[SPACE]@ ( ) ? ¿ =');"
 							   value="<?=$usuario->linkedin?>" placeholder="Página de likedin">
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_linkedin" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_linkedin" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_linkedin"></p>
 							</div>
-                           
-                             <div  class="form-group" style="margin-top: 3%;margin-left: 30%;">
-                                <button type="submit" class="btn btn-block btn-primary btn-lg">
+                           	
+							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8" style="padding:2%;">
+                                <button type="submit" class="btn btn-primary">
 									<i class="ico-circle fa fa-floppy-o"></i>
                                     Guardar
                                  </button>
-                            </div>
+                               </div>			
 
     					<?=form_close()?>
                     
                 </div><!-- /.box-body -->
               </div>
+              </div>
+              </div>
+              </div>
+							
+  </section>

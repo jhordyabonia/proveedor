@@ -693,7 +693,7 @@
     .msj_err_xz 
     {
 		color:#dd4b39;
-        font-size:12px;
+        font-size:13px;
         font-family:Arial;
     }
     .validacion_success_input
@@ -702,7 +702,17 @@
     .validacion_error_input
     {color:#dd4b39; border: 1px solid #dd4b39;}
     input
-    { border: 1px solid #d2d6de;}
+    { 
+      border: 1px solid #d2d6de;
+      margin-bottom: 3%!important;
+      /*margin:2% 2% 2% 2%;*/
+    }
+    textarea{        
+      margin-bottom: 3%!important;
+    }
+    select{        
+      margin-bottom: 3%!important;
+    }
     .imgxx
     {
     max-width: 100%;

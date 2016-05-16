@@ -1,8 +1,22 @@
 
 <section class="content">
-	<div class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+		<div class="row">
+		<div class="col-md-5">
             <div class="box box-warning">
                 <div class="box-header with-border">
                   <h3 class="box-title">
@@ -22,7 +36,7 @@
 							
 						<?= form_open_multipart('editar_empresa/catalogos'); ?>
             				<!-- Campo 1 -->
-							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<i class="ico-gene fa fa-file-pdf-o"></i>
                                 Nombre
@@ -40,12 +54,12 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_nombre" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_nombre" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_nombre"></p>
 							</div>
 
 							<!-- Campo 2 -->
-							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<span class="ico-gene glyphicon glyphicon-list"></span>
                                 Categoria
@@ -67,12 +81,12 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_categoria" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_categoria" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_categoria"></p>
 							</div>
 
 							<!-- Campo 3 -->
-							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<span class="ico-textarea-item glyphicon glyphicon-list-alt"></span>
                                   Descripcion
@@ -91,12 +105,12 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_descripcion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_descripcion" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_descripcion"></p>
 							</div>
 
 							<!-- Campo 1 -->
-							<div class="input-group style-padding col-xs-12 col-md-8 col-lg-8">
+							<div class="input-group style-padding col-xs-12 col-md-12 col-lg-12">
 							  <span class="">
 							  	<span class="ico-gene glyphicon glyphicon-pencil"></span>Palabras claves
 							  </span>
@@ -112,12 +126,12 @@
 							</div>
 
 							<!-- Campo validacion -->							
-							<div id="parent_msj_err_palabras_clave" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_palabras_clave" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_palabras_clave"></p>
 							</div>
 
 							<!-- Campo 6 -->
-							<div class="input-group style-padding2 col-xs-12 col-md-6 col-lg-8">
+							<div class="input-group style-padding2 col-xs-12 col-md-12 col-lg-12">
 								<div class="subir-imagenes-cata" onclick="document.getElementById('catalogo').click()">
 							  		<a class="enlace-ssubir-imagenes">
 							  			<span class="ico-subir-img glyphicon glyphicon-open"></span>
@@ -132,11 +146,11 @@
 							</div>
 
 							<!-- Campo validacion -->
-							<div id="parent_msj_err_catalogo" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-7 col-lg-7">
+							<div id="parent_msj_err_catalogo" style="display:none" class="input-group content_validacion2 col-xs-12 col-md-12 col-lg-12">
 							  <p class="text_errors" id="msj_err_catalogo"></p>
 							</div>
 
-							<div class="input-group style-padding6 col-xs-12 col-md-8 col-lg-8" style="padding:2%;">
+							<div class="input-group style-padding6 col-xs-12 col-md-12 col-lg-12" style="padding:2%;">
                                 <button type="submit" class="btn btn-primary">
 									<i class="ico-circle fa fa-floppy-o"></i>
                                     Guardar
@@ -146,12 +160,13 @@
     					<?=form_close()?>
 						</div>
 						</div>
+						</div>			
 					</div>
 					<div class="catalogo-public">
 						<h3 class="text-cata-publi">Catálogos Publicados (<?php if(!$catalogos){echo 0;}else{ echo count($catalogos);}?>)</h3>	
 						<div class="conten-item-catapu row">
 							<?php foreach($catalogos as $key => $catalogo):?>
-								<div class="col-lg-6">
+								<div class="col-lg-12">
 									<div class="img-pdf-up">
 										<img class="img-pdf" src="<?php echo base_url()?>assets/img/pdf.png">
 									</div>
@@ -184,6 +199,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+  </section>			
 	</div>
 </div>

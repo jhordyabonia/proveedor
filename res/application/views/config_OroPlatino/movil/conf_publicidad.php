@@ -1,7 +1,19 @@
+	<div class="content-wrapper" style="min-height: 916px;">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      <?=$empresa->nombre?>
+      <small>Proveedor.com.co</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active"><?=$empresa->nombre?></li>
+    </ol>
+  </section>
 
-<section class="content">
-	<div class="row">
-		<div class="col-md-3"></div>
+  <!-- Main content -->
+  <section class="content">
+	  <div class="row">
 		<div class="col-md-6">
             <div class="box box-warning">
                 <div class="box-header with-border">
@@ -27,7 +39,7 @@
 									</div>
 								</div>
 								<div id="div_img1" class="subido-img" style="display:<?php if($banners[0]==''){ echo 'none';}?>">
-									<img id="img1" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[0]?>">
+									<img id="img1" class="imge-subido banner_preview imgxx" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[0]?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img1','<?=$banners[0]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
@@ -41,7 +53,7 @@
 									</div>
 								</div>
 								<div id="div_img2" class="subido-img" style="display:<?php if($banners[1]==''){ echo 'none';}?>">
-									<img id="img2" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[1]?>">
+									<img id="img2" class="imge-subido banner_preview imgxx" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[1]?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img2','<?=$banners[1]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>									
 								</div>
@@ -55,7 +67,7 @@
 									</div>
 								</div>
 								<div id="div_img3" class="subido-img" style="display:<?php if($banners[2]==''){ echo 'none';}?>">
-									<img id="img3" class="imge-subido banner_preview" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[2]?>">
+									<img id="img3" class="imge-subido banner_preview imgxx" src="<?=base_url()?>uploads/resize/SOP/banners/<?=$banners[2]?>">
 									<p class="name-file"></p>
 									<a href="JavaScript:ocultar_div('div_img3','<?=$banners[2]?>')" class="btn-remov-img"><span class="ico-rem glyphicon glyphicon-remove-sign"></span>Borrar</a>
 								</div>
@@ -110,3 +122,12 @@
                            </div><!-- /.box-body -->
 					</div>
 				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+  </section>
+			

@@ -96,14 +96,17 @@ class Config_empresa extends CI_Controller {
       $this->load->view('tablero_usuario/new/head', $this->datos);
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_usuario',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_usuario',$this->datos);    
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);
+  
   } 
   function clave()
   {  
       $this->load->view('tablero_usuario/new/head', $this->datos);
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_clave',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_clave',$this->datos); 
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);           
   }  
   function contacto()
   {  
@@ -116,7 +119,8 @@ class Config_empresa extends CI_Controller {
       $this->load->view('registro/funcionalidades_');      
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_contacto',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_contacto',$this->datos);
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);            
   }
   function perfil_empresa()
   {  
@@ -128,7 +132,8 @@ class Config_empresa extends CI_Controller {
       $this->load->view('registro/funcionalidades_');      
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_perfil_empresa',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_perfil_empresa',$this->datos);     
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);       
   }
   function nosotros()
   {  
@@ -150,7 +155,8 @@ class Config_empresa extends CI_Controller {
       $this->load->view('registro/funcionalidades_');      
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_cotizaciones',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_cotizaciones',$this->datos); 
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);           
   }
   function publicar_producto()
   {  
@@ -163,6 +169,7 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_pub_pro',$this->datos);      
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);      
   }
   function publicidad()
   {  
@@ -172,6 +179,7 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_publicidad',$this->datos);      
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);     
   }
   function videos()
   {  
@@ -181,6 +189,7 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_videos',$this->datos);      
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);      
   }
   function catalogo()
   {  
@@ -195,7 +204,8 @@ class Config_empresa extends CI_Controller {
       $this->load->view('registro/funcionalidades_');      
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_catalogo',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_catalogo',$this->datos);     
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);      
   }
   function productos_principales()
   {
@@ -221,7 +231,8 @@ class Config_empresa extends CI_Controller {
       $this->load->view('registro/funcionalidades_');      
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
-      $this->load->view('config_OroPlatino/movil/conf_productos',$this->datos);      
+      $this->load->view('config_OroPlatino/movil/conf_productos',$this->datos);  
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);               
   }
   function galeria()
   {  
@@ -238,5 +249,6 @@ class Config_empresa extends CI_Controller {
 			$this->load->view('tablero_usuario/new/header', $this->datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $this->datos);
       $this->load->view('config_OroPlatino/movil/conf_galeria',$this->datos);      
+      $this->load->view('tablero_usuario/new/footer', $datos, FALSE);      
   }
  }
