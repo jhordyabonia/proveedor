@@ -62,7 +62,7 @@
               </a>
           </div><!-- /.col -->
           <div class="col-md-6 col-sm-6 col-xs-12">            
-          <a href="<?=base_url()?>productos/administrar">
+          <a href="<?=base_url()?>producto/administrar">
               <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                 <div class="info-box-content">
