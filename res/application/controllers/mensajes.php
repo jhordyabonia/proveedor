@@ -45,10 +45,11 @@ class Mensajes extends CI_Controller {
 
 		$datos=$this->get($tab);
 
-		$this->load->view('template/head',array('titulo'=>"Mensajes"));
-		$this->load->view('template/javascript');
-		$this->load->view('config_OroPlatino/top_menu_config',$this->datos);
-		$this->load->view('mensaje/listado.php',$datos);
+		$this->load->view('tablero_usuario/new/head', $datos);
+		$this->load->view('tablero_usuario/new/header', $datos);
+		$this->load->view('tablero_usuario/new/nav_bar', $datos);
+		$this->load->view('tablero_usuario/new/mensajes', $datos);
+		$this->load->view('tablero_usuario/new/footer', $datos, FALSE);
 	}
 	
 	
