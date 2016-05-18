@@ -26,7 +26,7 @@
     <ul class="sidebar-menu">
       <li>
         <a href="<?=base_url()?>tablero_usuario">
-          <i class="fa fa-th"></i> <span>Inicio</span>
+          <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>
         </a>
       </li>
       <li>
@@ -36,7 +36,7 @@
       </li>
       <li>
         <a href="<?=base_url()?>mensajes">
-          <i class="fa fa-th"></i> <span>Mensajes</span>
+          <i class="ion-ios-chatboxes"></i>  <span>Mensajes</span>
         </a>
       </li>
       <li class="header">
@@ -49,7 +49,7 @@
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/productos_principales">
-          <i class="fa fa-th"></i> <span>Productos Principales</span>
+          <i class="glyphicon glyphicon-bookmark"></i> <span>Productos Principales</span>
         </a>
       </li>
       <li>
@@ -64,12 +64,12 @@
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/catalogo">
-          <i class="fa fa-th"></i> <span>Subir Catalogo</span>
+          <i class="glyphicon glyphicon-open"></i> <span>Subir Catalogo</span>
         </a>
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/nosotros">
-          <i class="fa fa-th"></i> <span>Misión y Visión</span>
+          <i class="glyphicon glyphicon-briefcase"></i> <span>Misión y Visión</span>
         </a>
       </li>
       <li>
@@ -86,17 +86,17 @@
       <li class="header">Configuración</li>
       <li>
         <a href="<?=base_url()?>config_empresa/perfil_empresa">
-          <i class="fa fa-th"></i> <span>Perfil de empresa</span>
+          <i class="fa fa-building-o"></i> <span>Perfil de empresa</span>
         </a>
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/contacto">
-          <i class="fa fa-circle-o"></i><span>Contacto</span>
+          <i class="fa fa-phone"></i><span>Contacto</span>
         </a>
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/usuario">
-          <i class="fa fa-circle-o"></i><span>Usuario</span>
+          <i class="fa fa-child"></i><span>Usuario</span>
         </a>
       </li>
       <li>
