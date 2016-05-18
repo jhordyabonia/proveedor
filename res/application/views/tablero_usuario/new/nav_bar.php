@@ -75,12 +75,12 @@
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/publicar_producto">
-          <i class="fa fa-th"></i> <span>Publicar Producto</span>
+          <i class="fa fa-cube"></i> <span>Publicar Producto</span>
         </a>
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/cotizaciones">
-          <i class="fa fa-th"></i> <span>Solicitar Cotización</span>
+          <i class="fa fa-file-text "></i> <span>Solicitar Cotización</span>
         </a>
       </li>
 
