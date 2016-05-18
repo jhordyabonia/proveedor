@@ -44,7 +44,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">OPORTUNIDADES COMERCIALES</span>
                     <span class="info-box-number"><?=$oportunidades['numero_nuevas']?></span>
-                    <span class="info-box-number-NEW"><?=$oportunidades['total_oportunidades']?></span>
+                    <span class="info-box-number-new">Nuevas: <?=$oportunidades['total_oportunidades']?></span>
                   </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
               </a>
@@ -56,7 +56,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">MENSAJES</span>
                     <span class="info-box-number"><?=$count_msj?></span>                
-                    <span class="info-box-number-NEW"><?=$count_msj2?></span>
+                    <span class="info-box-number-new">Nuevas: <?=$count_msj2?></span>
                   </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
               </a>
@@ -78,7 +78,7 @@
                 <span class="info-box-icon bg-yellow"><i class="ion ion-ios-cart-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">ADMINISTRAR COTIZACIONES</span>
-                  <span class="info-box-number-NEW"><?=$count_ofertas;?></span>
+                  <span class="info-box-number-new">Nuevas: <?=$count_ofertas;?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </a>
