@@ -138,7 +138,7 @@
               <li class="dropdown tasks-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-flag-o"></i>
-                  <span class="label label-danger">9</span>
+                  <span class="label label-warning">9</span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">You have 9 tasks</li>
@@ -207,7 +207,9 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>" class="user-image" alt="User Image">
+                 <span class="glyphicon glyphicon-user ico_usuario"></span>
+                 <!--
+                  <img src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>" class="user-image" alt="User Image">-->
                   <span class="hidden-xs"><?=$usuario->nombres?></span>
                 </a>
                 <ul class="dropdown-menu">
