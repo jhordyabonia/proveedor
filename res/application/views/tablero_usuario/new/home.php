@@ -104,10 +104,10 @@
           </div>
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
-              <li><a href="#">Escriba aca la membresia <span class="pull-right badge bg-blue"><?=$nombre_membresia?></span></a></li>
-              <li><a href="#">Productos <span class="pull-right badge bg-blue"><?=$count_ofertas;?></span></a></li>
-              <li><a href="#">Mensajes <span class="pull-right badge bg-blue"><?=$count_msj;?></span></a></li>
-              <li><a href="#">oportunidades <span class="pull-right badge bg-blue"><?=$oportunidades['numero_nuevas']?></span></a></li>
+              <li><a href="#">Membresia: <span class="pull-right badge bg-blue"><?=$nombre_membresia?></span></a></li>
+              <li><a href="#">Productos: <span class="pull-right badge bg-blue"><?=$count_ofertas;?></span></a></li>
+              <li><a href="#">Mensajes: <span class="pull-right badge bg-blue"><?=$count_msj;?></span></a></li>
+              <li><a href="#">Oportunidades: <span class="pull-right badge bg-blue"><?=$oportunidades['numero_nuevas']?></span></a></li>
             </ul>
           </div>
         </div>
