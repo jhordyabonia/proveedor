@@ -20,7 +20,7 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
           <a href="<?=base_url()?>config_empresa/cotizaciones">
             <div class="info-box">
-              <span class="info-box-icon bg-orange"><i class="glyphicon glyphicon-file ico_file"></i></span>
+              <span class="info-box-icon bg-orange"><i class="fa fa-file-text"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text"> SOLICITAR COTIZACIÓN</span>   
               </div><!-- /.info-box-content -->
@@ -30,7 +30,7 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
           <a href="<?=base_url()?>config_empresa/publicar_producto">
               <div class="info-box">
-                <span class="info-box-icon bg-blue"><i class="glyphicon glyphicon-stop ico_stop"></i></span>
+                <span class="info-box-icon bg-blue"><i class="fa fa-cube"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">PUBLICAR PRODUCTO</span>
                 </div><!-- /.info-box-content -->
@@ -56,7 +56,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">MENSAJES</span>
                     <span class="info-box-number"><?=$count_msj?></span>                
-                    <span class="info-box-number-new">Nuevas: <?=$count_msj2?></span>
+                    <span class="info-box-number-new">Nuevos: <?=$count_msj2?></span>
                   </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
               </a>
