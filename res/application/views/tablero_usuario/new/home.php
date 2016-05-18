@@ -22,7 +22,7 @@
             <div class="info-box">
               <span class="info-box-icon bg-orange"><i class="fa fa-file-text"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text"> SOLICITAR COTIZACIÓN</span>   
+                <span class="info-box-text text-orange-darken"> SOLICITAR COTIZACIÓN</span>   
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
             </a>
@@ -32,7 +32,7 @@
               <div class="info-box">
                 <span class="info-box-icon bg-blue"><i class="fa fa-cube"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">PUBLICAR PRODUCTO</span>
+                  <span class="info-box-text text-blue">PUBLICAR PRODUCTO</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
            </a>
