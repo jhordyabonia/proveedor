@@ -114,7 +114,7 @@
         <div class="info-box bg-aqua">
           <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
 
-          <div class="info-box-content">
+          <div class="info-box-content text-white">
             <span class="info-box-text">Contáctenos</span>
             <span>soporte@proveedor.com.co</span>
 
