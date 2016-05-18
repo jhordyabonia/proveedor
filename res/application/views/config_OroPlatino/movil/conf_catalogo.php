@@ -4,8 +4,8 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <?=$empresa->nombre?>
-      <small>Proveedor.com.co</small>
+      <span class="ico-cont-style glyphicon glyphicon-bookmark"></span>
+					Catálogos
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -19,16 +19,13 @@
 		<div class="col-md-5">
             <div class="box box-warning">
                 <div class="box-header with-border">
-                  <h3 class="box-title">
-					<span class="ico-cont-style glyphicon glyphicon-bookmark"></span>
-					Catálogos
-				 </h3>
+                 <div class="titles">
+									<h3 class="text-title-pub">Publicar Catálogos</h3>
+								</div>
                  
                 </div><!-- /.box-header -->
                 <div class="box-body"><div class="content-catalogo-pro">
-					<div class="titles">
-						<h3 class="text-title-pub">Publicar Catálogos</h3>
-					</div>
+					
 					<div class="conten-formulario-cata">						
 						<div class="formulario-subircata">
 							<p class="text-requerido"><span class="ico-requerido "></span>Requerido</p>

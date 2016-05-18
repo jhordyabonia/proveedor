@@ -2,11 +2,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <?=$empresa->nombre?>
+      <i class="fa fa-laptop"></i>Oficina Virtual
       <small>Proveedor.com.co</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="#"><i class="fa fa-dashboard"></i> <big> Inicio</big></a></li>
       <li class="active"><?=$empresa->nombre?></li>
     </ol>
   </section>
@@ -62,7 +62,7 @@
               </a>
           </div><!-- /.col -->
           <div class="col-md-6 col-sm-6 col-xs-12">            
-          <a href="<?=base_url()?>producto/administrar">
+          <a href="<?=base_url()?>productos/administrar">
               <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                 <div class="info-box-content">
@@ -91,12 +91,16 @@
         <div class="box box-widget widget-user-2">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header bg-yellow">
-            <div class="widget-user-image">
-              <img class="img-circle" src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>" alt="User Avatar">
+            <div class="widget-user-image col-md-5 col-xs-5 col-lg-5 col-xl-5">
+                <div class="content-img-circle">
+                  <center>
+                  <img class="imgxx1" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>" alt="User Avatar">
+                </center>
+              </div>
             </div>
             <!-- /.widget-user-image -->
-            <h3 class="widget-user-username"><?=$usuario->nombres?></h3>
-            <h5 class="widget-user-desc"></h5>
+            <h3 class="widget-user-username"><?=$empresa->nombre?></h3>
+            <h5 class="widget-user-desc"><?=$empresa->categoria->nombre_categoria?></h5>
           </div>
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">

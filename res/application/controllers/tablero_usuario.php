@@ -45,6 +45,18 @@ class Tablero_usuario extends CI_Controller {
 		else {$datos['count_msj2']=0;}
 
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$iduser));
+				
+		$categorias_empresa=explode('|',$datos['empresa']->categorias);		
+		$datos['empresa']->categoria=FALSE;
+		for($i=0;$i<count($categorias_empresa);$i++)
+			{
+				if($categorias_empresa[$i]=="")
+					{continue;}
+
+				$datos['empresa']->categoria=$this->categoria->get($categorias_empresa[$i]);	
+				if($datos['empresa']->categoria!=FALSE)
+					break;
+			}
 
 		if(!$datos['empresa'])#completar registro de empresa, en caso de estar incompleto.
 		{
@@ -82,6 +94,8 @@ class Tablero_usuario extends CI_Controller {
 		#}else{
 			#$this->load->view('template/head', $datos);
 			$this->load->view('tablero_usuario/new/head', $datos);
+			$this->load->view('registro/funcionalidades_');      
+			$this->load->view('tablero_usuario/new/style_tmp', $datos);
 			$this->load->view('tablero_usuario/new/header', $datos);
 			$this->load->view('tablero_usuario/new/nav_bar', $datos);
 			$this->load->view('tablero_usuario/new/home', $datos);

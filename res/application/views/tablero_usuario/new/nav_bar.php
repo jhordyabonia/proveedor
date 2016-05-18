@@ -5,7 +5,8 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>" class="img-circle" alt="User Image">
+                 <span class="glyphicon glyphicon-user ico_usuario"></span>
+       <!-- <img src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>" class="img-circle" alt="User Image">-->
       </div>
       <div class="pull-left info">
         <p><?=$usuario->nombres?></p>
