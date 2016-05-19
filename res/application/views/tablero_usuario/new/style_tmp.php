@@ -161,7 +161,7 @@ span.fa.fa-phone.small {
     position: absolute;
     bottom: 50px;
     right: 30px;
-}
+} 
 .info-box .fa {
     font-size: 34px;
 }
