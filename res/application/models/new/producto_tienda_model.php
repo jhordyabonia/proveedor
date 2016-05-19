@@ -9,10 +9,10 @@ class Producto_tienda_model extends CI_Model {
     
   private function tienda_db()
   {
-        $tienda['hostname'] = 'localhost';
-        $tienda['username'] = 'root';
-        $tienda['password'] = 'root';
-        $tienda['database'] = 'iguana_tienda1';
+        $tienda['hostname'] = '64.64.2.101';
+        $tienda['username'] = 'ofi5_soporte';
+        $tienda['password'] = '@]{cWc#E!NIW';
+        $tienda['database'] = 'ofi5_tienda';
         $tienda['dbdriver'] = 'mysql';
         $tienda['dbprefix'] = ''; 
         $tienda['pconnect'] = TRUE; 

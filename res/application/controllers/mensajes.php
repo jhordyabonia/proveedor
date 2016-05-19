@@ -26,24 +26,30 @@ class Mensajes extends CI_Controller {
 	public function leer($id,$bandeja="enviados")
 	{
 		$datos=$this->leer1($id,$bandeja);
-		$this->load->view('template/head',array('titulo'=>"Leer"));
-		$this->load->view('template/javascript');
-		$this->load->view('config_OroPlatino/top_menu_config',$this->datos);  
-		$this->load->view('mensaje/leer', $datos);
-		$this->load->view('template/footer_empy'); 
-	}
- 
+		$this->load->view('tablero_usuario/new/head', $datos);
+		$this->load->view('tablero_usuario/new/header', $datos);
+		$this->load->view('tablero_usuario/new/nav_bar', $datos);
+		$this->load->view('tablero_usuario/new/leer', $datos, FALSE); 
+	} 
 	public function enviados()
 	{
 		$this->index("enviados");
 	}
-	public function index($tab="recibidos")
+	public function recibidos()
+	{
+		$this->index("recibidos");
+	}
+	public function filtro($tab,$filtro)
+	{
+		$this->index($tab,$filtro);
+	}
+	public function index($tab="recibidos",$filtro=FALSE)
 	{     
 		$this->session->set_userdata('path_current',base_url()."mensajes");
 		if(!$this->veryficar_logged())
 		{  return;  }
 
-		$datos=$this->get($tab);
+		$datos=$this->get($tab,$filtro);
 
 		$this->load->view('tablero_usuario/new/head', $datos);
 		$this->load->view('tablero_usuario/new/header', $datos);
@@ -273,19 +279,35 @@ function anterior($bandeja="enviados",$id=0)
 	return $datos;
 	}
   // Muestra la vista de mensajes recibidos del tablero de usuario
-  private function get($tab)
+  private function get($tab,$filtro=FALSE)
   {	  
 	$id_usuario=$this->session->userdata('id_usuario');
 	$datos['tab']=$tab;
-	$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 0));
-	$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 1));
+	switch($filtro)
+	{
+		case 1:$datos['filtro']='de cotizacion.';break;
+		case 2:$datos['filtro']='de producto.';break;
+		case 3:$datos['filtro']='de empresa.';break;
+	}
+	if(!$filtro)
+	{
+		$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 0));
+		$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 1));
+	}else 
+	{
+		$datos['nuevos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 0, 'tipo'=>$filtro));
+		$datos['recibidos'] = $this->mensajes->get_all(array('destinatario' => $id_usuario, 'estado' => 1,'tipo'=>$filtro));
+	}
 	$remitente = $this->usuarios->get($id_usuario)->email;
 	$remitente = $this->remitente->get(array('correo' => $remitente));
 	
 	$datos['enviados']=FALSE;
 	if($remitente)
 	{	
-		$datos['enviados'] =$this->mensajes->get_all(array('remitente' => $remitente->id));		
+		if(!$filtro)
+			$datos['enviados'] =$this->mensajes->get_all(array('remitente' => $remitente->id));
+		else 
+			$datos['enviados'] =$this->mensajes->get_all(array('remitente' => $remitente->id,'tipo'=>$filtro));
 	}
 	if($datos['nuevos'])
 	{

@@ -20,9 +20,9 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
           <a href="<?=base_url()?>config_empresa/cotizaciones">
             <div class="info-box">
-              <span class="info-box-icon bg-orange"><i class="fa fa-file-text"></i></span>
+              <span class="info-box-icon bg-orange"><i class="fa fa-file-text-o"></i></span>
               <div class="info-box-content">
-                <span class="info-box-text text-orange-darken"> SOLICITAR COTIZACIÓN</span>   
+                <span class="info-box-text text-orange-darken botton-home"> SOLICITAR COTIZACIÓN</span>   
               </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
             </a>
@@ -32,7 +32,7 @@
               <div class="info-box">
                 <span class="info-box-icon bg-blue"><i class="fa fa-cube"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text text-blue">PUBLICAR PRODUCTO</span>
+                  <span class="info-box-text text-blue botton-home">PUBLICAR PRODUCTO</span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
            </a>
@@ -40,9 +40,9 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
             <a href="<?=base_url()?>tablero_ususario/oportunidades">
                 <div class="info-box">
-                  <span class="info-box-icon bg-blue"><i class="glyphicon glyphicon-stop ico_stop"></i></span>
+                  <span class="info-box-icon bg-blue"><i class="fa fa-briefcase"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">OPORTUNIDADES COMERCIALES</span>
+                    <span class="info-box-text text-button">OPORTUNIDADES COMERCIALES</span>
                     <span class="info-box-number"><?=$oportunidades['numero_nuevas']?></span>
                     <span class="info-box-number-new">Nuevas: <?=$oportunidades['total_oportunidades']?></span>
                   </div><!-- /.info-box-content -->
@@ -52,9 +52,9 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
             <a href="<?=base_url()?>mensajes">
                 <div class="info-box">
-                  <span class="info-box-icon bg-red"><i class="ion-ios-chatboxes-outline"></i></span>
+                  <span class="info-box-icon bg-red"><i class="fa fa-envelope-o"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">MENSAJES</span>
+                    <span class="info-box-text text-button">MENSAJES</span>
                     <span class="info-box-number"><?=$count_msj?></span>                
                     <span class="info-box-number-new">Nuevos: <?=$count_msj2?></span>
                   </div><!-- /.info-box-content -->
@@ -64,9 +64,9 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
           <a href="<?=base_url()?>productos/administrar">
               <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                <span class="info-box-icon bg-green"><i class="fa fa-cubes"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">ADMINISTRAR PRODUCTOS</span>
+                  <span class="info-box-text text-button">ADMINISTRAR INVENTARIO</span>
                   <span class="info-box-number"><?=$count_productos?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -75,10 +75,10 @@
           <div class="col-md-6 col-sm-6 col-xs-12">            
           <a href="<?=base_url()?>oferta_test/administrar">
               <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-cart-outline"></i></span>
+                <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
                 <div class="info-box-content">
-                  <span class="info-box-text">ADMINISTRAR COTIZACIONES</span>
-                  <span class="info-box-number-new">Nuevas: <?=$count_ofertas;?></span>
+                  <span class="info-box-text text-button">ADMINISTRAR COTIZACIONES</span>
+                  <span class="info-box-number"><?=$count_ofertas;?></span>
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
             </a>
@@ -99,8 +99,8 @@
               </div>
             </div>
             <!-- /.widget-user-image -->
-            <h3 class="widget-user-username"><?=$empresa->nombre?></h3>
-            <h5 class="widget-user-desc"><?=$empresa->categoria->nombre_categoria?></h5>
+            <h3 class="widget-user-username text-title-h3"><?=$empresa->nombre?></h3>
+            <h5 class="widget-user-desc text-title-h5"><?=$empresa->categoria->nombre_categoria?></h5>
           </div>
           <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
@@ -111,8 +111,8 @@
             </ul>
           </div>
         </div>
-        <div class="info-box bg-aqua">
-          <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
+        <div class="info-box bg-green">
+          <span class="info-box-icon"><i class="fa fa-phone small"></i></span>
 
           <div class="info-box-content text-white">
             <span class="info-box-text">Contáctenos</span>
