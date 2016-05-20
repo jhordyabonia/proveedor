@@ -1,3 +1,4 @@
+
 <style>
 	.validacion_error
 	{
@@ -92,9 +93,6 @@ a.logo{
     border-left: 1px solid #d2d6de;
     background-color: #f9fafc;
 }
-.bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
-    background-color: #0073B7 !important;
-}
 .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
     background-color: #0073B7 !important;
 }
@@ -109,11 +107,18 @@ a.logo{
     border-top-left-radius: 3px;
 }
 h3.widget-user-username.text-title-h3{
-    font-size: 20px;
+    font-size: 17px;
+    font-weight: 400;    
+}
+.box-widget {
+    border: none;
+    position: relative;
+    padding: 0px 10px 10px 0px;
 }
 h3.widget-user-username.text-title-h5{
-    font-size: 13px;
+    font-size: 12px!important;
     line-height: 1;
+    font-weight: 100;
 }
 .content-img-circle {
     margin: 4% 0% 0% 0%;
@@ -129,18 +134,28 @@ h3.widget-user-username.text-title-h5{
 }
     .imgxx1
     {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 88%;
+    max-height: 88%;
+    padding: 5% 2% 1% 2%;
     }
     span.info-box-text.text-button{
     font-size: 16px;
     width: 75%;
     line-height: 1.1;
 }
+/*
 span.info-box-text.text-orange-darken.botton-home {
     padding: 14% 0 0 0;
     font-size: 15px;
     font-weight: 600;
+}*/
+
+
+.info-box-icon {
+    line-height: 80px!important;
+}
+i.fa.fa-laptop.padd {
+    padding-right: 7px;
 }
 span.fa.fa-phone.small {
        font-size: 45px;
@@ -149,20 +164,89 @@ span.fa.fa-phone.small {
     padding: 7px 7px 3px 15px;
     display: block;
 }
+.bg-pro-violeta
+{
+  background-color: #673AB7;
+  color:white;  
+}
+.bg-pro-yellow
+{
+  background-color: #3F51B5!important;
+  color:white;
+}
+.bg-white
+{
+  background-color: white!important;  
+}
+.bg-pro-green
+{
+  background-color: #009688;
+  color:white;  
+}
 .botton-home
-{ padding: 14% 0 0 0;
-    font-size: 15px;
-    font-weight: 600;
+{ padding: 11% 12% 0 0;
+    font-size: 17px;
+    font-weight: 500;
+}
+.botton-home2
+{ padding: 8% 12% 0 0;
+}
+.botton-home3
+{ padding: 12% 12% 0 0;
 }
 .info-box-number {
     display: block;
     font-weight: bold;
-    font-size: 27px!important;
+    font-size: 22px!important;
     position: absolute;
     bottom: 50px;
     right: 30px;
 } 
 .info-box .fa {
-    font-size: 34px;
+    font-size: 32px;
 }
-</style>
+.form-control {
+    border-radius: 0!important;
+    background-color: #F4F4F4;
+}
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title {
+    padding: 1% 0% 4% 0%;
+}
+.form-radio {
+    margin-bottom: 10%!important;
+    margin-left: 9%!important;
+}
+a#cambiar_clave_link {
+    font-size: 18px;
+}
+.no-border
+{
+ border: 0;   
+}
+
+.widget-user-2 .widget-user-username, .widget-user-2 .widget-user-desc {
+    margin-left: 0!important;
+}
+.text-index-contacto
+{
+    width: 80px;
+    height: 80px;
+}
+.padding-m
+{
+    /*font-size: 13px!important;
+    */ padding: 0px;
+}
+.info-box-text {
+    text-transform: uppercase;
+    /*font-size: x-small;*/
+}
+a.sidebar-toggle {
+    font-size: 19px;
+    margin: -3px -3px -8px -3px;
+}
+a.sidebar-toggle:hover {
+    font-size: 19px;
+    margin: -3px -3px -8px -3px;
+    padding: 0;
+}</style>

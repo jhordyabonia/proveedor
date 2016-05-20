@@ -15,10 +15,10 @@
     </div>
     <!-- search form -->
     <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
+      <div class="input-group  bg-white">
+        <input type="text" name="q" class="form-control bg-white" placeholder="Buscar...">
         <span class="input-group-btn">
-          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-white text-orange"><i class="fa fa-search"></i></button>
         </span>
       </div>
     </form>
@@ -32,20 +32,20 @@
       </li>
       <li>
         <a href="<?=base_url()?>tablero_usuario/oportunidades">
-          <i class="fa fa-th"></i> <span>Oportunidades</span>
+          <i class="fa fa-briefcase"></i> <span>Oportunidades</span>
         </a>
       </li>
       <li>
         <a href="<?=base_url()?>mensajes">
-          <i class="ion-ios-chatboxes"></i>  <span>Mensajes</span>
+          <i class="fa fa-envelope-o"></i>  <span>Mensajes</span>
         </a>
       </li>
-      <li class="header">
+      <li class="header bg-white">
         Publicar
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/publicidad">
-          <i class="fa fa-th"></i> <span>Subir Publicidad</span>
+          <i class="glyphicon glyphicon-picture"></i> <span>Subir Publicidad</span>
         </a>
       </li>
       <li>
@@ -55,12 +55,12 @@
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/videos">
-          <i class="fa fa-th"></i> <span>Subir Videos</span>
+          <i class="fa fa-video-camera"></i> <span>Subir Videos</span>
         </a>
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/galeria">
-          <i class="fa fa-th"></i> <span>Subir Imágenes</span>
+          <i class="fa fa-camera"></i> <span>Subir Imágenes</span>
         </a>
       </li>
       <li>
@@ -70,7 +70,7 @@
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/nosotros">
-          <i class="glyphicon glyphicon-briefcase"></i> <span>Misión y Visión</span>
+          <i class="fa fa-flag"></i> <span>Misión y Visión</span>
         </a>
       </li>
       <li>
@@ -84,7 +84,7 @@
         </a>
       </li>
 
-      <li class="header">Configuración</li>
+      <li class="header bg-white">Configuración</li>
       <li>
         <a href="<?=base_url()?>config_empresa/perfil_empresa">
           <i class="fa fa-building-o"></i> <span>Perfil de empresa</span>
@@ -102,7 +102,7 @@
       </li>
       <li>
         <a href="<?=base_url()?>config_empresa/clave">
-          <i class="fa fa-circle-o"></i><span>Cambiar contraseña</span>
+          <i class="fa fa-lock"></i><span>Cambiar contraseña</span>
         </a>
       </li>
     </ul>

@@ -2,35 +2,34 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <?=$empresa->nombre?>
+      Publicar
       <small>Proveedor.com.co</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-      <li class="active"><?=$empresa->nombre?></li>
+      <li><a href="<?=base_url()?>tablero_uauario"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li class="active">Publicar producto</li>
     </ol>
   </section>
 
   <!-- Main content -->
   <section class="content">
     	<div class="row">
-		<div class="col-md-5">
+		<div class="col-md-7">
             <div class="box box-warning">
                 <div class="box-header with-border">
                   <h2 class="box-title">
-					<span class="ico-cont-style glyphicon glyphicon-bookmark"></span>
-					Publicar Producto y/o Servicio
-				 </h2>
+                    <span class="ico-cont-style glyphicon glyphicon-bookmark"></span>
+                    Publicar Producto y/o Servicio
+                  </h2>
+                 </div>
                 
-                  <h4 class="seccion" style="height: 40px;padding: 12px;">
-                    Información Basica
-                  </h4>
+                <div class="box-body">
             <?= form_open_multipart('publicar_producto/registrar'); ?>
             
         <!-- Row del Nombre del Porducto -->
           <div class="row" >
-            <div class="col-xs-12"> <span class="">
-              Nombre del producto
+            <div class="col-xs-12 col-md-12"> 
+                  <span class="">
                         <i id='err_nombre_avanzado'>
                     <?php if(form_error('nombre_avanzado', '','')!='')
                       {
@@ -39,7 +38,7 @@
                     ?>
                     </i>
                       </span>
-                  <input  class="form-control col-md-12 col-xs-12 col-lg-12 " name="nombre_avanzado" placeholder="Nombre del producto"
+                  <input  class="form-control col-md-8 col-xs-8 col-lg-8 " name="nombre_avanzado" placeholder="Nombre del producto"
                   onchange="JavaScript:verificar_largo(this,5);" onclick="JavaScript:limpiar(this);"
                   value="<?php echo set_value('nombre_avanzado'); ?>" required type="text" >                   
             </div>
@@ -54,7 +53,6 @@
             <!-- Row de Categorias del Producto -->
             <div class="row" >
               <div class="col-xs-12">
-                Seleccione una categoria del producto
                     <select class="form-control col-md-12 col-xs-12 col-lg-12 " name="categoria" required onchange="JavaScript:cambio_categoria(this.value);document.getElementById('div_subcategoria2').style.display='';">
                       <option value="" selected>Seleccione una categoria del producto</option>
                       <?php foreach ($categoria as $fila): ?>
@@ -76,7 +74,6 @@
           <!-- Row de Sub-Categorias del Producto -->
             <div class="row" style="margin-bottom:15px;display:none" id="div_subcategoria2" >
               <div class="col-xs-12">
-                Seleccione una subcategoria del producto
                     <select class="form-control col-md-12 col-xs-12 col-lg-12 " required name="subcategoria" id="subcategorias">
                       <option value="" selected>Seleccione una subcategoria del producto</option>
 
@@ -156,7 +153,6 @@
             <!-- descripcion -->
             <div class="row">
               <div class="col-xs-12">
-                Descripción
                   <span class="">
                         <i id='err_descripcion_avanzada'>
                     <?php if(form_error('descripcion_avanzada', '','')!='')
@@ -170,7 +166,7 @@
                      onchange="JavaScript:verificar_largo(this,10);" onclick="JavaScript:limpiar(this);" 
                     required class="form-control col-md-12 col-xs-12 col-lg-12 "><?php echo set_value('descripcion_avanzada'); ?></textarea>
                     
-                      <p class="style-max-pala hidden-sm" id="contador_textarea4"> <b>5.000</b> palabras máximo</p>
+                      <p class="style-max-pala hidden-sm pull-right" id="contador_textarea4"> <b>5.000</b> palabras máximo</p>
                     
               </div>
 
@@ -184,10 +180,10 @@
             <!-- servicio de fotos -->
             <div class="row">
                 <div align="center" class="col-md-12 col-sm-12 col-xs-6 " style="cursor:pointer">
-                <button class="btn btn-primary" onclick="JavaScript:document.getElementById('btn_archivos2').click()">
+                <button class="btn btn-lg btn-primary" onclick="JavaScript:document.getElementById('btn_archivos2').click()">
                     <span id="upfile2">
                       <span class="glyphicon glyphicon-picture icono-plus"></span>
-                      Agreagar Imágenes (máximo 5)
+                      Agregar Imágenes (máximo 5)
                     </span>          
                 </button>          
                         <div style="display:none">
@@ -214,19 +210,19 @@
                       </button>
                 </div>
               </div>
-               <div class="input-control">
-                    <h4 class="seccion" style="height: 40px;padding: 12px;">
-                        Negociación
-                    </h4>
-                    <div class="col-md-12 col-xs-12">
-                            <input type="radio" id="precioUni_avanzado" name="rd_precio_avanzado" value="precioUni_avanzado" 
-                            value="pr_unit_avanzado" checked="checked">
-                            Precio unitario
-                    </div>
-                    <div class="col-md-12 col-xs-6" >
-                        <input type="radio" id="precioconvenir_avanzada" name="rd_precio_avanzado" value="precioconvenir_avanzada" 
-                        value="pr_aconv_avanzado">
-                        Precio a convenir  
+               <div class="row">
+                  <div class="input-control">
+                          <div class="col-md-4 col-xs-12" >                      
+                                <input type="radio" id="precioUni_avanzado" class="form-radio" name="rd_precio_avanzado" value="precioUni_avanzado" 
+                                value="pr_unit_avanzado" checked="checked">
+                                Precio unitario
+                          </div>
+                                
+                          <div class="col-md-4 col-xs-12" >
+                            <input type="radio" id="precioconvenir_avanzada" class="form-radio" name="rd_precio_avanzado" value="precioconvenir_avanzada" 
+                            value="pr_aconv_avanzado">
+                            Precio a convenir  
+                         </div>
                     </div>
                 </div>          
                       
@@ -254,7 +250,7 @@
                              </script>
 							<div class="input-group style-padding7 col-xs-12 col-md-6 col-lg-8">
 								<a id="cambiar_clave_link" href="JavaScript:cambiar_clave_f();">
-									<p>Mas Datos <span style="padding-left:15px" class="ico-requerido glyphicon glyphicon-chevron-down"></span>
+									<p>Mas Datos <span style="padding-left:15px" class="fa fa-chevron-circle-down"></span>
 									</p> 
 								</a>
 							</div>
@@ -486,13 +482,15 @@
           	</div>
           	</div>
           	</div><!--Div oculto-->
-							<div class=" style-padding6 col-xs-12 col-md-8 col-lg-8" style="padding:2%;">
-                                <button type="submit" class="btn btn-primary">
-									<i class="ico-circle fa fa-floppy-o"></i>
-                                    Guardar
-                                 </button>
-                               </div>	
-							</div>
+							<div class=" style-padding6 col-xs-12 col-md-12 col-lg-12" style="padding:2%;">
+                  <center>
+                      <button type="submit" class="btn btn-lg bg-orange no-border">
+                        <i class="ico-circle fa fa-floppy-o"></i>
+                        Publicar Producto
+                      </button>
+                  </center>
+               </div>	
+						</div>
 
             <?= form_close() ?>
             

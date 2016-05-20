@@ -21,7 +21,7 @@
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-envelope-o"></i>
-                  <span class="label label-success"><?=$count_msj?></span>
+                  <span class="label bg-blue"><?=$count_msj?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">Total <?=$count_msj?></li>
@@ -135,11 +135,11 @@
                 </ul>
               </li>
               <!-- Tasks: style can be found in dropdown.less -->
-              <li class="dropdown tasks-menu">
+              <!--<li class="dropdown tasks-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-flag-o"></i>
                   <span class="label label-warning">9</span>
-                </a>
+                </a>-->
                 <ul class="dropdown-menu">
                   <li class="header">You have 9 tasks</li>
                   <li>
