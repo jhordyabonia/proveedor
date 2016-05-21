@@ -94,10 +94,22 @@
 						       <?php $white=TRUE; foreach ($nuevos as $key => $value):?>
                       <tr onclick="JavaScript:location.href='<?=base_url()?>mensajes/leer/<?=$value->id?>/<?=$tab?>'">
                         <td><input type="checkbox" class="hidden-xs"></td>
+                        <td>
+                          <?php if($value->tipo==1):?>
+                              <span class="fa fa-circle-o text-yellow"></span>
+                          <?php elseif($value->tipo==2):?>
+                              <span class="fa fa-circle-o text-blue"></span>
+                          <?php elseif($value->tipo==3):?>
+                              <span class="fa fa-circle-o text-red"></span>
+                          <?php else:?>                              
+                              <span class="fa fa-circle-o text-orange"></span>
+                           <?php endif;?>
+                         </td>
                         <td class="mailbox-name"><?=$value->remitente->nombres?></td>
                         <td class="mailbox-subject"><div class="elipse"><b><?=str_replace('Proveedor.com.co - ','',$value->asunto)?></b><?=$value->mensaje?></div>
                         </td>
                         <td class="mailbox-attachment">
+                          <span class="badge">Nuevo</span>
                           <?php if($value->adjunto):?>
                               <span class="fa fa-paperclip clip_icono"></span>
                             <?php endif;?>
@@ -108,6 +120,17 @@
                    <?php foreach ($recibidos as $key => $value):?>
                       <tr onclick="JavaScript:location.href='<?=base_url()?>mensajes/leer/<?=$value->id?>/<?=$tab?>'">
                         <td><input type="checkbox"></td>
+                        <td>
+                          <?php if($value->tipo==1):?>
+                              <span class="fa fa-circle-o text-yellow"></span>
+                          <?php elseif($value->tipo==2):?>
+                              <span class="fa fa-circle-o text-blue"></span>
+                          <?php elseif($value->tipo==3):?>
+                              <span class="fa fa-circle-o text-red"></span>
+                          <?php else:?>                              
+                              <span class="fa fa-circle-o text-orange"></span>
+                           <?php endif;?>
+                         </td>
                         <td class="mailbox-name"><?=$value->remitente->nombres?></td>
                         <td class="mailbox-subject"><div class="elipse"><b><?=str_replace('Proveedor.com.co - ','',$value->asunto)?></b><?=$value->mensaje?></div>
                         </td>

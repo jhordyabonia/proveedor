@@ -84,6 +84,7 @@ class Tablero_usuario extends CI_Controller {
 		$datos['usuario']=$this->usuarios->get($iduser);
     	$datos['administrador']=FALSE;
     	
+		$datos['side_bar']=TRUE;
     	if($datos['usuario']->permisos==1)
     	{$datos['administrador']=TRUE;}
 		$datos['titulo']="Tablero de usuario - PROVEEDOR.com.co";

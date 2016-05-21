@@ -120,6 +120,16 @@ h3.widget-user-username.text-title-h5{
     line-height: 1;
     font-weight: 100;
 }
+.content-img-circle-user {
+    margin: 0% 5% 0% 0%!important;
+    padding: 3% 1% 2% 4%;
+    border-radius: 50%;
+    overflow: hidden;
+    align-items: center;
+    align-content: center;
+    background-color: white;
+    border: solid 1px #F39C12;
+}
 .content-img-circle {
     margin: 4% 0% 0% 0%;
     padding: 20% 0% 0% 0%;
@@ -244,12 +254,30 @@ a#cambiar_clave_link {
 a.sidebar-toggle {
     font-size: 19px;
     margin: -3px -3px -8px -3px;
+    padding: 13px 13px!important;
 }
+.imgxx2 {
+    padding: 0% 2% 0% 0%;
+}
+.pillf {
+    padding: 3% 0% 0% 0%!important;
+    margin: 0% 0% -10% 0%;
+}
+.skin-proveedor .sidebar-menu>li>a:hover {
+    border-left: 3px solid transparent;
+    font-weight: 600;
+    color: #111111!important;
+}
+/*
 a.sidebar-toggle:hover {
     font-size: 19px;
     margin: -3px -3px -8px -3px;
-    padding: 0;
-}
+    float: left;
+    background-color: transparent;
+    background-image: none;
+    padding: initial;
+    font-family: fontAwesome;
+}*/
 .text-pro-title
 {    
     padding-top: 2%;

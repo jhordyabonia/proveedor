@@ -3,17 +3,18 @@
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- Sidebar user panel -->
-    <div class="user-panel">
-      <div class="pull-left image">
-                 <span class="glyphicon glyphicon-user ico_usuario"></span>
-       <!-- <img src="<?=verificar_imagen('uploads/logos/'.$empresa->logo)?>" class="img-circle" alt="User Image">-->
-      </div>
-      <div class="pull-left info">
-        <p><?=$usuario->nombres?></p>
-        <a href="#"><i class="fa fa-circle text-success"></i> En linea</a>
-      </div>
-    </div>
+    <ul class="sidebar-menu">
+      <li class="header bg-white">
+        <center>
+          <span class="content-img-circle-user">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+          <span><?=$usuario->nombres?></span>
+        </center>          
+      </li>
+      <li>
     <!-- search form -->
+    <li>
     <form action="#" method="get" class="sidebar-form">
       <div class="input-group  bg-white">
         <input type="text" name="q" class="form-control bg-white" placeholder="Buscar...">
@@ -22,9 +23,9 @@
         </span>
       </div>
     </form>
+    </li>
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
-    <ul class="sidebar-menu">
       <li>
         <a href="<?=base_url()?>tablero_usuario">
           <i class="glyphicon glyphicon-home"></i> <span>Inicio</span>

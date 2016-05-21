@@ -28,69 +28,29 @@
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
-                      <li><!-- start message -->
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="<?=base_url()?>assets/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Support Team
-                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li><!-- end message -->
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="<?=base_url()?>assets/adminLTE/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            AdminLTE Design Team
-                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="<?=base_url()?>assets/adminLTE/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Developers
-                            <small><i class="fa fa-clock-o"></i> Today</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="<?=base_url()?>assets/adminLTE/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Sales Department
-                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="pull-left">
-                            <img src="<?=base_url()?>assets/adminLTE/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            Reviewers
-                            <small><i class="fa fa-clock-o"></i> 2 days</small>
-                          </h4>
-                          <p>Why not buy a new awesome theme?</p>
-                        </a>
-                      </li>
+                      <?php if(!$nuevos):?>
+                      <h3 align="center">No tienes mensajes nuevos, en este momento.</h3>
+                      <?php else:?>
+                        <?php foreach($nuevos as $key=> $mensaje):?>
+                          <li><!-- start message -->
+                              <a href="<?=base_url()?>mensajes/leer/<?=$mensaje->id?>/recibidos">
+                              <div class="pillf">
+                                  <span align="center" class="content-img-circle-user">
+                                     <i class="glyphicon glyphicon-user imgxx2"></i>
+                                   </span>
+                               </div>
+                              <h4 class="elipse">
+                                <?=str_replace('Proveedor.com.co - ','',$mensaje->asunto);?>
+                              </h4>
+                              <p class="elipse"><?=$mensaje->mensaje?></p>
+                              <h4><small><i class="fa fa-clock-o"></i> <?=$mensaje->fecha?></small></h4>                              
+                            </a>
+                          </li>
+                        <?php endforeach;?>
+                      <?php endif;?>
                     </ul>
                   </li>
-                  <li class="footer"><a href="#">See All Messages</a></li>
+                  <li class="footer"><a href="<?=base_url()?>mensajes">Ver Todos</a></li>
                 </ul>
               </li>
               <!-- Notifications: style can be found in dropdown.less -->
@@ -223,14 +183,11 @@
                   </li>
                   <!-- Menu Body -->
                   <li class="user-body">
-                    <div class="col-xs-4 text-center">
+                    <div align="center" class="col-xs-6 text-center">
                       <a href="<?=base_url()?>empresa/inicio/<?=$empresa->id?>">Ver pagina de empresa</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="<?=base_url()?>config_empresa">Cofiguraciones</a>
+                    </div>                    
+                    <div class="col-xs-6 text-center">
+                      <a href="javascript:void(0);"  data-toggle="control-sidebar">Cofiguraciones</a>
                     </div>
                   </li>
                   <!-- Menu Footer-->

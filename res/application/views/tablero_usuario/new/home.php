@@ -42,7 +42,7 @@
            </a>
           </div><!-- /.col -->
           <div class="col-md-6 col-sm-6 col-xs-12">            
-            <a href="<?=base_url()?>tablero_ususario/oportunidades">
+            <a href="<?=base_url()?>tablero_usuario/oportunidades">
                 <div class="info-box">
                   <span class="info-box-icon bg-blue"><i class="fa fa-briefcase"></i></span>
                   <div class="info-box-content">
@@ -59,8 +59,8 @@
                   <span class="info-box-icon bg-pro-violeta"><i class="fa fa-envelope-o"></i></span>
                   <div class="info-box-content">
                     <span class="info-box-text text-button botton-home3">MENSAJES</span>
-                    <span class="info-box-number"><?=$count_msj?></span>                
-                    <span class="info-box-number-new">Nuevos: <?=$count_msj2?></span>
+                    <span class="info-box-number"><?=$count_msj2?></span>                
+                    <span class="info-box-number-new">Nuevos: <?=$count_msj?></span>
                   </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
               </a>
