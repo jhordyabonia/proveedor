@@ -56,5 +56,11 @@
 <script src="../../../../assets/adminlte/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../../assets/adminlte/dist/js/app.min.js"></script>
-</body>
+</body>  
+<?php if(!$side_bar):?>
+<script language=JavaScript>
+var t=document.getElementById('menu_side_bar');
+setTimeout(function(e){t.click();}, 300);
+</script>
+<?php endif;?>
 </html>

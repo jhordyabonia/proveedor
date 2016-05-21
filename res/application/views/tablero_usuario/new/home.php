@@ -95,7 +95,7 @@
         <div class="box box-widget widget-user-2">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header bg-white">
-            <div class="widget-user-image col-md-12 col-xs-5 col-lg-12 col-xl-12">
+            <div class="widget-user-image col-md-12 col-xs-12 col-lg-12 col-xl-12">
                 <div class="">
                   <center>
                   <img class="imgxx1" src="<?=base_url()?>uploads/logos/<?=$empresa->logo?>" alt="User Avatar">

@@ -249,4 +249,38 @@ a.sidebar-toggle:hover {
     font-size: 19px;
     margin: -3px -3px -8px -3px;
     padding: 0;
-}</style>
+}
+.text-pro-title
+{    
+    padding-top: 2%;
+    font-size: 106%;
+    font-weight: 600;
+}
+.badge-min
+{
+    font-size: 75%;  
+    /*margin-left: -1%!important;*/
+}
+.ico_candado {
+    font-size: 750%;
+    color: #FF7F27;
+}
+p.text-small {
+    font-size: small;
+    color: grey;
+    /*text-align: center;*/
+}
+hr {
+    margin: 0;
+    margin-bottom: 2%;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+thead
+{
+    background-color:lightgray!important;
+}
+th, td{
+    vertical-align: middle!important;
+}
+</style>

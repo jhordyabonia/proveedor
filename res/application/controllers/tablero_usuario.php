@@ -182,7 +182,6 @@ class Tablero_usuario extends CI_Controller {
     }
 	public function oportunidades($categoria=FALSE,$print=TRUE)
 	{	
-
 		$id_usuario=$this->session->userdata('id_usuario');
 		
 		$datos['empresa']=$this->empresa->get(array('usuario'=>$id_usuario));
@@ -276,12 +275,13 @@ class Tablero_usuario extends CI_Controller {
 		$datos['usuario']=$this->usuarios->get($id_usuario);
 		$datos['administrador']=$datos['usuario']->permisos;
 		$datos['titulo']="Oportunidades Comerciales - PROVEEDOR.com.co";
-
-		$this->load->view('template/head', $datos);
-		$this->load->view('template/javascript', FALSE);
-		$this->load->view('tablero_usuario/header', $datos, FALSE);
-		#$dotos['page_count'] = 1;
-	    $this->load->view('tablero_usuario/solicitudes_externas', $datos); 
-		$this->load->view('template/footer', $datos, FALSE);
+		$datos['side_bar']=FALSE;
+		$this->load->view('tablero_usuario/new/head', $datos);
+		$this->load->view('registro/funcionalidades_');      
+		$this->load->view('tablero_usuario/new/style_tmp', $datos);
+		$this->load->view('tablero_usuario/new/header', $datos);
+		$this->load->view('tablero_usuario/new/nav_bar', $datos);
+	    $this->load->view('tablero_usuario/new/oportunidades', $datos); 
+		$this->load->view('tablero_usuario/new/footer', $datos, FALSE);
 	}
 }
